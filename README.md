@@ -7,4 +7,6 @@ Jimmy can edit and commit in VS.
 Vidhan can edit.
 Zane can edit this in VisualStudio. 
 
-Daniel can edit in Visual Studio
+Amarth standing by 
+
+Daniel can edit in visual studio
