@@ -10,25 +10,58 @@ namespace HackAndSlash
     class KeyboardController: IController
     {
         public Game1 Game { get; set; }
+        private Dictionary<Keys, ICommand> controllerMappings;
+
         public KeyboardController(Game1 game)
         {
             Game = game;
+            controllerMappings = new Dictionary<Keys, ICommand>();
         }
 
+        /// <summary>
+        /// Simple method to setup all the default controls in the controllerMappings dictionary.
+        /// </summary>
+        public void Initialize()
+        {
+            RegisterCommand(Keys.W, new MoveUpCommand(Game));
+            RegisterCommand(Keys.A, new MoveLeftCommand(Game));
+            RegisterCommand(Keys.S, new MoveRightCommand(Game));
+            RegisterCommand(Keys.D, new MoveRightCommand(Game));
+            RegisterCommand(Keys.Z, new AttackCommand(Game));
+            RegisterCommand(Keys.N, new AttackCommand(Game));
+            RegisterCommand(Keys.D1, new UsePlayerItemCommand(Game));
+            RegisterCommand(Keys.E, new DamageCommand(Game));
+            RegisterCommand(Keys.T, new BlockCycleCommand(Game));
+            RegisterCommand(Keys.Y, new BlockCycleCommand(Game));
+            RegisterCommand(Keys.U, new ItemCycleCommand(Game));
+            RegisterCommand(Keys.I, new ItemCycleCommand(Game));
+            RegisterCommand(Keys.O, new EnemyCycleCommand(Game));
+            RegisterCommand(Keys.P, new EnemyCycleCommand(Game));
+            RegisterCommand(Keys.R, new ResetCommand(Game));
+            RegisterCommand(Keys.Q, new QuitCommand(Game));
+        }
+
+        /// <summary>
+        /// Method to map each key to a command in the dictionary. Can be used later to allow 
+        /// modification of controls by the user.
+        /// </summary>
+        public void RegisterCommand(Keys key, ICommand command)
+        {
+            controllerMappings.Add(key, command);
+        }
+
+        /// <summary>
+        /// Records which keys are pressed and stores them in an array, then calls the
+        /// execute() method on each key. Allows for multiple keys to be pressed and 
+        /// executed in the same frame.
+        /// </summary>
         public void Update(Texture2D texture)
         {
-            KeyboardState keyState = Keyboard.GetState();
+            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 
-            //Exit
-            if (Keyboard.GetState().IsKeyDown(Keys.D0))
+            foreach (Keys key in pressedKeys)
             {
-                Game.Exit();
-            }
-
-            //Still
-            if (Keyboard.GetState().IsKeyDown(Keys.D1))
-            {
-                //Game.mario = new StillSprite(texture);
+                controllerMappings[key].execute();
             }
         }
     }
