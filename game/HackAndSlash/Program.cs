@@ -2,7 +2,6 @@
 
 namespace HackAndSlash
 {
-
     /// <summary>
     /// The main class.
     /// </summary>
@@ -18,5 +17,4 @@ namespace HackAndSlash
                 game.Run();
         }
     }
-
 }
