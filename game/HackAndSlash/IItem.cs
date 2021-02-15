@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace HackAndSlash
 {
-    public interface ICommand
+    interface IItem
     {
-        void execute();
+        //void createItemAt();
+
+        //void changeToCollected(); // collect or equip
+
+        //void useItem();
     }
 }

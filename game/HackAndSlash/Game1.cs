@@ -101,6 +101,11 @@ namespace HackAndSlash
             textureSnake = Content.Load<Texture2D>("images/snakespritesheet");
             textureBug = Content.Load<Texture2D>("images/bug");
 
+            // Item Textures
+            /*
+             * textureFirewall = Content.Load<Texture2D>("images/firewall");
+             * 
+            */
             SpriteBG = new SpriteBG(textureBG, graphics);
 
             SpriteHolder = new AnimatedSpriteMC(textureMC, 1, 7, 4);

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HackAndSlash
+namespace sprint0
 {
-    public interface ICommand
+    class IPlayer
     {
-        void execute();
+
+
     }
 }

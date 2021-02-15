@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BugEnemy.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
     <Compile Include="Commands\BlockCycleCommand.cs" />
     <Compile Include="Commands\DamageCommand.cs" />
@@ -53,12 +54,20 @@
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Commands\UsePlayerItemCommand.cs" />
+    <Compile Include="EnemySprite.cs" />
+    <Compile Include="FirewallItem.cs" />
     <Compile Include="GlobalSettings.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="IEnemy.cs" />
+    <Compile Include="IItem.cs" />
+    <Compile Include="IPlayer.cs" />
     <Compile Include="ISprite.cs" />
+    <Compile Include="ItemSprite.cs" />
     <Compile Include="KeyboardController.cs" />
     <Compile Include="MouseController.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="SnakeEnemy.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />

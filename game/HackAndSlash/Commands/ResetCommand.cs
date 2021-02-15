@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HackAndSlash.Commands
+namespace HackAndSlash
 {
     public class ResetCommand : ICommand
     {

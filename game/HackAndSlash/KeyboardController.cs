@@ -25,7 +25,7 @@ namespace HackAndSlash
         {
             RegisterCommand(Keys.W, new MoveUpCommand(Game));
             RegisterCommand(Keys.A, new MoveLeftCommand(Game));
-            RegisterCommand(Keys.S, new MoveRightCommand(Game));
+            RegisterCommand(Keys.S, new MoveDownCommand(Game));
             RegisterCommand(Keys.D, new MoveRightCommand(Game));
             RegisterCommand(Keys.Z, new AttackCommand(Game));
             RegisterCommand(Keys.N, new AttackCommand(Game));
@@ -61,7 +61,9 @@ namespace HackAndSlash
 
             foreach (Keys key in pressedKeys)
             {
-                controllerMappings[key].execute();
+                if (controllerMappings.ContainsKey(key)){
+                    controllerMappings[key].execute();
+                }
             }
         }
     }
