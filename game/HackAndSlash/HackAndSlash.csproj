@@ -41,9 +41,20 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Commands.cs" />
+    <Compile Include="Commands\AttackCommand.cs" />
+    <Compile Include="Commands\BlockCycleCommand.cs" />
+    <Compile Include="Commands\DamageCommand.cs" />
+    <Compile Include="Commands\EnemyCycleCommand.cs" />
+    <Compile Include="Commands\ItemCycleCommand.cs" />
+    <Compile Include="Commands\MoveDownCommand.cs" />
+    <Compile Include="Commands\MoveLeftCommand.cs" />
+    <Compile Include="Commands\MoveRightCommand.cs" />
+    <Compile Include="Commands\MoveUpCommand.cs" />
+    <Compile Include="Commands\QuitCommand.cs" />
+    <Compile Include="Commands\ResetCommand.cs" />
+    <Compile Include="Commands\UsePlayerItemCommand.cs" />
     <Compile Include="GlobalSettings.cs" />
-    <Compile Include="ICommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="KeyboardController.cs" />

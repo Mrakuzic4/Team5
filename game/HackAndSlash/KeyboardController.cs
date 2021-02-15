@@ -9,7 +9,7 @@ namespace HackAndSlash
 {
     class KeyboardController: IController
     {
-        public Game1 Game { get; set; }
+        private Game1 Game { get; set; }
         private Dictionary<Keys, ICommand> controllerMappings;
 
         public KeyboardController(Game1 game)

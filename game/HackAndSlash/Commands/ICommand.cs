@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HackAndSlash
+namespace HackAndSlash.Commands
 {
     public interface ICommand
     {
