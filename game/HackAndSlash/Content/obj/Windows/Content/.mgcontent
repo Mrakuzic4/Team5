@@ -4,11 +4,21 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/File.spritefont</File>
-    <File>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/images/BG.jpg</File>
-    <File>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/images/sucOva.png</File>
+    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/File.spritefont</File>
+    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/BG.jpg</File>
+    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/bug.png</File>
+    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/snakespritesheet.png</File>
+    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/sucDown.png</File>
+    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/sucLeft.png</File>
+    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/sucOva.png</File>
+    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/sucUp.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

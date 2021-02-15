@@ -15,6 +15,10 @@ namespace HackAndSlash
         // Sprites  
         private SpriteBG SpriteBG; 
         private ISprite SpriteHolder {  get; set;  }
+        private ISprite EnemyHolder { get; set; }
+        private Texture2D textureSnake { get; set; }
+        private Texture2D textureBug { get; set; }
+
         private Texture2D textureMC;
 
         // Character positions 
@@ -93,9 +97,14 @@ namespace HackAndSlash
             textureMC = Content.Load<Texture2D>("images/sucOva");
             Texture2D textureBG = Content.Load<Texture2D>("images/BG");
 
+            //Enemy textures
+            textureSnake = Content.Load<Texture2D>("images/snakespritesheet");
+            textureBug = Content.Load<Texture2D>("images/bug");
+
             SpriteBG = new SpriteBG(textureBG, graphics);
 
             SpriteHolder = new AnimatedSpriteMC(textureMC, 1, 7, 4);
+            EnemyHolder = new EnemySprite(textureSnake, 5, 10);
         }
 
         /// <summary>
@@ -123,12 +132,22 @@ namespace HackAndSlash
             if (stateKB.IsKeyDown(Keys.Escape))
                 Exit();
 
+            if (stateKB.IsKeyDown(Keys.Q))
+            {
+                EnemyHolder = new EnemySprite(textureSnake, 5, 10);
+            }
+
+            if (stateKB.IsKeyDown(Keys.O))
+            {
+                EnemyHolder = new EnemySprite(textureBug, 4, 6);
+            }
 
             foreach (IController controller in controllerList)
             {
                 controller.Update(textureMC);
             }
             SpriteHolder.Update();
+            EnemyHolder.Update();
 
             base.Update(gameTime);
         }
@@ -143,6 +162,7 @@ namespace HackAndSlash
 
             SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
             SpriteHolder.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
+            EnemyHolder.Draw(spriteBatch, new Vector2(300, 300));
 
             base.Draw(gameTime);
         }

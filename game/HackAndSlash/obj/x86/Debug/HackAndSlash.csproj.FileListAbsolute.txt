@@ -24,3 +24,7 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\obj\x86\Debug\sprint0.exe
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\obj\x86\Debug\sprint0.pdb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\obj\x86\Debug\HackAndSlash.csprojAssemblyReference.cache
+D:\computerGraphics\programs\3902Games\sprint1\game\HackAndSlash\obj\x86\Debug\HackAndSlash.csprojAssemblyReference.cache
+D:\computerGraphics\programs\3902Games\sprint1\game\HackAndSlash\obj\x86\Debug\HackAndSlash.csproj.CoreCompileInputs.cache
+D:\computerGraphics\programs\3902Games\sprint1\game\HackAndSlash\obj\x86\Debug\sprint0.exe
+D:\computerGraphics\programs\3902Games\sprint1\game\HackAndSlash\obj\x86\Debug\sprint0.pdb
