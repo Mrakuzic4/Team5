@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/initialSprint0/sprint0_AC/sprint0/Content/File.spritefont</File>
+    <File>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/initialSprint0/sprint0_AC/sprint0/Content/images/BG.jpg</File>
+    <File>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/initialSprint0/sprint0_AC/sprint0/Content/images/sucOva.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
