@@ -13,8 +13,8 @@ namespace HackAndSlash
         SpriteBatch spriteBatch;
 
         // Sprites  
-        private SpriteBG SpriteBG; 
-        private ISprite SpriteHolder {  get; set;  }
+        private SpriteBG SpriteBG;
+        private ISprite SpriteHolder { get; set; }
         private ISprite EnemyHolder { get; set; }
         private Texture2D textureSnake { get; set; }
         private Texture2D textureBug { get; set; }
@@ -26,7 +26,7 @@ namespace HackAndSlash
         private Vector2 absPositionMC; // Absolute position. As position in the game map
 
         // Attributes for camera clipping and FX 
-        
+
         // Camera clipping 
         private Vector2 horizontal;
         private Vector2 vertical;
@@ -37,7 +37,7 @@ namespace HackAndSlash
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            
+
             Content.RootDirectory = "Content";
         }
 

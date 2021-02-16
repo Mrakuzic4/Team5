@@ -8,5 +8,10 @@ namespace HackAndSlash
 {
     class FirewallItem : IItem
     {
+        //void createItemAt();
+
+        //void changeToCollected();
+
+        //void useItem();
     }
 }

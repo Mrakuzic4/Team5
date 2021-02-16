@@ -3,23 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackAndSlash", "HackAndSlash\HackAndSlash.csproj", "{ED203201-3B45-46FB-B5C8-DD71BAE73A51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackAndSlash", "HackAndSlash\HackAndSlash.csproj", "{E20653EC-98E3-41D5-8EAD-C79C764B2A8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x86 = Debug|x86
-		Release|x86 = Release|x86
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ED203201-3B45-46FB-B5C8-DD71BAE73A51}.Debug|x86.ActiveCfg = Debug|x86
-		{ED203201-3B45-46FB-B5C8-DD71BAE73A51}.Debug|x86.Build.0 = Debug|x86
-		{ED203201-3B45-46FB-B5C8-DD71BAE73A51}.Release|x86.ActiveCfg = Release|x86
-		{ED203201-3B45-46FB-B5C8-DD71BAE73A51}.Release|x86.Build.0 = Release|x86
+		{E20653EC-98E3-41D5-8EAD-C79C764B2A8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E20653EC-98E3-41D5-8EAD-C79C764B2A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E20653EC-98E3-41D5-8EAD-C79C764B2A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E20653EC-98E3-41D5-8EAD-C79C764B2A8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2700C51B-998F-4F15-A5C4-944CBEF8AA02}
+		SolutionGuid = {021A4551-067A-4A65-AD9E-458FB582E2C3}
 	EndGlobalSection
 EndGlobal
