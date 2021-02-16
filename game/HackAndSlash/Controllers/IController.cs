@@ -8,6 +8,6 @@ namespace HackAndSlash
     public interface IController
     {
         void Initialize();
-        void Update(Texture2D texture);
+        void Update();
     }
 }

@@ -4,13 +4,13 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/bg.jpg</File>
-    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/bug.png</File>
-    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/snakespritesheet.png</File>
-    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/sucDown.png</File>
-    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/sucLeft.png</File>
-    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/sucOva.png</File>
-    <File>D:/computerGraphics/programs/3902Games/sprint1/game/HackAndSlash/Content/images/sucUp.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/bg.jpg</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/bug.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/snakespritesheet.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucDown.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucLeft.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucOva.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucUp.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

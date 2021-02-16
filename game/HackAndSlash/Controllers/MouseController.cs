@@ -22,7 +22,7 @@ namespace HackAndSlash
             //no initialization required for sprint 2
         }
 
-        public void Update(Texture2D texture)
+        public void Update()
         {
             MouseState currentState = Mouse.GetState();
             mouseX = currentState.X;

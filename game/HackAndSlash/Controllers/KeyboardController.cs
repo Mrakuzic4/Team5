@@ -9,13 +9,16 @@ namespace HackAndSlash
 {
     class KeyboardController: IController
     {
-        private Game1 Game { get; set; }
+        private Game1 game { get; set; }
         private Dictionary<Keys, ICommand> controllerMappings;
+        //Statemachine to keep track the player's state
+        private PlayerStateMachine playerStateMachine;
 
         public KeyboardController(Game1 game)
         {
-            Game = game;
+            this.game = game;
             controllerMappings = new Dictionary<Keys, ICommand>();
+            playerStateMachine = new PlayerStateMachine(1); //default is facing right
         }
 
         /// <summary>
@@ -23,22 +26,22 @@ namespace HackAndSlash
         /// </summary>
         public void Initialize()
         {
-            RegisterCommand(Keys.W, new MoveUpCommand(Game));
-            RegisterCommand(Keys.A, new MoveLeftCommand(Game));
-            RegisterCommand(Keys.S, new MoveDownCommand(Game));
-            RegisterCommand(Keys.D, new MoveRightCommand(Game));
-            RegisterCommand(Keys.Z, new AttackCommand(Game));
-            RegisterCommand(Keys.N, new AttackCommand(Game));
-            RegisterCommand(Keys.D1, new UsePlayerItemCommand(Game));
-            RegisterCommand(Keys.E, new DamageCommand(Game));
-            RegisterCommand(Keys.T, new BlockCycleCommand(Game));
-            RegisterCommand(Keys.Y, new BlockCycleCommand(Game));
-            RegisterCommand(Keys.U, new ItemCycleCommand(Game));
-            RegisterCommand(Keys.I, new ItemCycleCommand(Game));
-            RegisterCommand(Keys.O, new EnemyCycleCommand(Game));
-            RegisterCommand(Keys.P, new EnemyCycleCommand(Game));
-            RegisterCommand(Keys.R, new ResetCommand(Game));
-            RegisterCommand(Keys.Q, new QuitCommand(Game));
+            RegisterCommand(Keys.W, new MoveUpCommand(game,playerStateMachine));
+            RegisterCommand(Keys.A, new MoveLeftCommand(game, playerStateMachine));
+            RegisterCommand(Keys.S, new MoveDownCommand(game, playerStateMachine));
+            RegisterCommand(Keys.D, new MoveRightCommand(game, playerStateMachine));
+            RegisterCommand(Keys.Z, new AttackCommand(game));
+            RegisterCommand(Keys.N, new AttackCommand(game));
+            RegisterCommand(Keys.D1, new UsePlayerItemCommand(game));
+            RegisterCommand(Keys.E, new DamageCommand(game));
+            RegisterCommand(Keys.T, new BlockCycleCommand(game));
+            RegisterCommand(Keys.Y, new BlockCycleCommand(game));
+            RegisterCommand(Keys.U, new ItemCycleCommand(game));
+            RegisterCommand(Keys.I, new ItemCycleCommand(game));
+            RegisterCommand(Keys.O, new EnemyCycleCommand(game));
+            RegisterCommand(Keys.P, new EnemyCycleCommand(game));
+            RegisterCommand(Keys.R, new ResetCommand(game));
+            RegisterCommand(Keys.Q, new QuitCommand(game));
         }
 
         /// <summary>
@@ -55,7 +58,7 @@ namespace HackAndSlash
         /// execute() method on each key. Allows for multiple keys to be pressed and 
         /// executed in the same frame.
         /// </summary>
-        public void Update(Texture2D texture)
+        public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
 

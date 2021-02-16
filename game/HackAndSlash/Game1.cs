@@ -14,16 +14,27 @@ namespace HackAndSlash
 
         // Sprites  
         private SpriteBG SpriteBG;
+        public ISprite PlayerSprite { set { SpriteHolder = value; } }
         private ISprite SpriteHolder { get; set; }
         private ISprite EnemyHolder { get; set; }
         private Texture2D textureSnake { get; set; }
         private Texture2D textureBug { get; set; }
 
-        private Texture2D textureMC;
-
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
         private Vector2 absPositionMC; // Absolute position. As position in the game map
+
+        public Vector2 Pos
+        {
+            get
+            {
+                return relPositionMC;
+            }
+            set
+            {
+                relPositionMC = value;
+            }
+        }
 
         // Attributes for camera clipping and FX 
 
@@ -89,13 +100,10 @@ namespace HackAndSlash
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
-
-            // Original image from https://www.spriters-resource.com/fullview/146744/
-            // Edited in Photoshop to align the textures 
-            // Create the maincharacter sprite with delay, might look odd depending on your machine 
-            textureMC = Content.Load<Texture2D>("images/sucOva");
-            Texture2D textureBG = Content.Load<Texture2D>("images/BG");
+            //Get sprite from spriteFactory
+            SpriteFactory.Instance.LoadAllTextures(Content);
+            SpriteBG = new SpriteBG(SpriteFactory.Instance.CreateBG(), graphics);
+            SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
             //Enemy textures
             textureSnake = Content.Load<Texture2D>("images/snakespritesheet");
@@ -106,9 +114,6 @@ namespace HackAndSlash
              * textureFirewall = Content.Load<Texture2D>("images/firewall");
              * 
             */
-            SpriteBG = new SpriteBG(textureBG, graphics);
-
-            SpriteHolder = new AnimatedSpriteMC(textureMC, 1, 7, 4);
             EnemyHolder = new EnemySprite(textureSnake, 5, 10);
         }
 
@@ -149,7 +154,7 @@ namespace HackAndSlash
 
             foreach (IController controller in controllerList)
             {
-                controller.Update(textureMC);
+                controller.Update();
             }
             SpriteHolder.Update();
             EnemyHolder.Update();

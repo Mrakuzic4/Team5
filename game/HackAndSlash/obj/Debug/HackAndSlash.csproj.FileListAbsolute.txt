@@ -24,3 +24,29 @@ D:\computerGraphics\programs\3902Games\HeckAndSlash\HackAndSlash\HackAndSlash\bi
 D:\computerGraphics\programs\3902Games\HeckAndSlash\HackAndSlash\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucLeft.xnb
 D:\computerGraphics\programs\3902Games\HeckAndSlash\HackAndSlash\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucOva.xnb
 D:\computerGraphics\programs\3902Games\HeckAndSlash\HackAndSlash\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucUp.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\bg.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\bug.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\snakespritesheet.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucDown.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucLeft.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucOva.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucUp.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\HackAndSlash.exe
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\HackAndSlash.pdb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.csprojAssemblyReference.cache
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.csproj.CoreCompileInputs.cache
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.csproj.CopyComplete
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.exe
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.pdb
