@@ -12,16 +12,38 @@ namespace HackAndSlash
         private Game1 Game { get; set; }
         private Dictionary<Keys, ICommand> controllerMappings;
 
+        /// <summary>
+        /// Constructor which initializes the controllerMappings dictionary with default controls.
+        /// </summary>
+        /// <param name="game"></param>
         public KeyboardController(Game1 game)
         {
             Game = game;
-            controllerMappings = new Dictionary<Keys, ICommand>();
+            controllerMappings = new Dictionary<Keys, ICommand>()
+            {
+                {Keys.W, new MoveUpCommand(Game)},
+                {Keys.A, new MoveLeftCommand(Game)},
+                {Keys.S, new MoveDownCommand(Game)},
+                {Keys.D, new MoveRightCommand(Game)},
+                {Keys.Z, new AttackCommand(Game)},
+                {Keys.N, new AttackCommand(Game)},
+                {Keys.D1, new UsePlayerItemCommand(Game)},
+                {Keys.E, new DamageCommand(Game)},
+                {Keys.T, new BlockCycleCommand(Game)},
+                {Keys.Y, new BlockCycleCommand(Game)},
+                {Keys.U, new ItemCycleCommand(Game)},
+                {Keys.I, new ItemCycleCommand(Game)},
+                {Keys.O, new EnemyCycleCommand(Game)},
+                {Keys.P, new EnemyCycleCommand(Game)},
+                {Keys.R, new ResetCommand(Game)},
+                {Keys.Q, new QuitCommand(Game)}
+            };
         }
 
         /// <summary>
         /// Simple method to setup all the default controls in the controllerMappings dictionary.
         /// </summary>
-        public void Initialize()
+/*        public void Initialize()
         {
             RegisterCommand(Keys.W, new MoveUpCommand(Game));
             RegisterCommand(Keys.A, new MoveLeftCommand(Game));
@@ -39,7 +61,7 @@ namespace HackAndSlash
             RegisterCommand(Keys.P, new EnemyCycleCommand(Game));
             RegisterCommand(Keys.R, new ResetCommand(Game));
             RegisterCommand(Keys.Q, new QuitCommand(Game));
-        }
+        }*/
 
         /// <summary>
         /// Method to map each key to a command in the dictionary. Can be used later to allow 

@@ -55,3 +55,8 @@ D:\computerGraphics\programs\3902Games\sprint1\game\HackAndSlash\bin\Windows\x86
 D:\computerGraphics\programs\3902Games\sprint1\game\HackAndSlash\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 D:\computerGraphics\programs\3902Games\sprint1\game\HackAndSlash\bin\Windows\x86\Debug\SharpDX.XInput.xml
 D:\computerGraphics\programs\3902Games\sprint1\game\HackAndSlash\obj\x86\Debug\HackAndSlash.csproj.CopyComplete
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\Windows\x86\Debug\Content\images\bug.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\Windows\x86\Debug\Content\images\snakespritesheet.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\Windows\x86\Debug\Content\images\sucDown.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\Windows\x86\Debug\Content\images\sucLeft.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\Windows\x86\Debug\Content\images\sucUp.xnb

@@ -53,10 +53,6 @@ namespace HackAndSlash
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new MouseController(this));
-            foreach (IController controller in controllerList)
-            {
-                controller.Initialize();
-            }
 
             // Initilize character position 
             absPositionMC.X = absPositionMC.Y = 0;
