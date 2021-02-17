@@ -17,32 +17,30 @@ namespace HackAndSlash
         public KeyboardController(Game1 game)
         {
             this.game = game;
-            controllerMappings = new Dictionary<Keys, ICommand>();
             playerStateMachine = new PlayerStateMachine(1); //default is facing right
+
+            //add all default controls
+            controllerMappings = new Dictionary<Keys, ICommand>()
+            {
+                {Keys.W, new MoveUpCommand(game,playerStateMachine)},
+                {Keys.A, new MoveLeftCommand(game, playerStateMachine)},
+                {Keys.S, new MoveDownCommand(game, playerStateMachine)},
+                {Keys.D, new MoveRightCommand(game, playerStateMachine)},
+                {Keys.Z, new AttackCommand(game)},
+                {Keys.N, new AttackCommand(game)},
+                {Keys.D1, new UsePlayerItemCommand(game)},
+                {Keys.E, new DamageCommand(game)},
+                {Keys.T, new BlockCycleCommand(game)},
+                {Keys.Y, new BlockCycleCommand(game)},
+                {Keys.U, new ItemCycleCommand(game)},
+                {Keys.I, new ItemCycleCommand(game)},
+                {Keys.O, new EnemyCycleCommand(game)},
+                {Keys.P, new EnemyCycleCommand(game)},
+                {Keys.R, new ResetCommand(game)},
+                {Keys.Q, new QuitCommand(game)}
+            };
         }
 
-        /// <summary>
-        /// Simple method to setup all the default controls in the controllerMappings dictionary.
-        /// </summary>
-        public void Initialize()
-        {
-            RegisterCommand(Keys.W, new MoveUpCommand(game,playerStateMachine));
-            RegisterCommand(Keys.A, new MoveLeftCommand(game, playerStateMachine));
-            RegisterCommand(Keys.S, new MoveDownCommand(game, playerStateMachine));
-            RegisterCommand(Keys.D, new MoveRightCommand(game, playerStateMachine));
-            RegisterCommand(Keys.Z, new AttackCommand(game));
-            RegisterCommand(Keys.N, new AttackCommand(game));
-            RegisterCommand(Keys.D1, new UsePlayerItemCommand(game));
-            RegisterCommand(Keys.E, new DamageCommand(game));
-            RegisterCommand(Keys.T, new BlockCycleCommand(game));
-            RegisterCommand(Keys.Y, new BlockCycleCommand(game));
-            RegisterCommand(Keys.U, new ItemCycleCommand(game));
-            RegisterCommand(Keys.I, new ItemCycleCommand(game));
-            RegisterCommand(Keys.O, new EnemyCycleCommand(game));
-            RegisterCommand(Keys.P, new EnemyCycleCommand(game));
-            RegisterCommand(Keys.R, new ResetCommand(game));
-            RegisterCommand(Keys.Q, new QuitCommand(game));
-        }
 
         /// <summary>
         /// Method to map each key to a command in the dictionary. Can be used later to allow 

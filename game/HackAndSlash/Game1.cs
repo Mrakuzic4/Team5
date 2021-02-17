@@ -18,9 +18,11 @@ namespace HackAndSlash
         private ISprite SpriteHolder { get; set; }
         private ISprite EnemyHolder { get; set; }
         private ISprite ItemHolder { get; set; }
+        private IBlock BlockHolder { get; set; }
         private Texture2D textureSnake { get; set; }
         private Texture2D textureBug { get; set; }
         private Texture2D textureFirewall { get; set; }
+        private Texture2D textureChipBlock { get; set; }
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
         private Vector2 absPositionMC; // Absolute position. As position in the game map
@@ -108,10 +110,14 @@ namespace HackAndSlash
 
             // Item Textures
             textureFirewall = Content.Load<Texture2D>("images/firewall");
+
+            //Block Textures
+            textureChipBlock = Content.Load<Texture2D>("images/ChipBlock");
               
             
             EnemyHolder = new EnemySprite(textureSnake, 5, 10);
             ItemHolder = new ItemSprite(textureFirewall, 1, 2);
+            BlockHolder = new ChipBlock(textureChipBlock, new Vector2(200, 300), spriteBatch);
         }
 
         /// <summary>
