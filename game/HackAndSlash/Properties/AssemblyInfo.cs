@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("sprint0")]
-[assembly: AssemblyProduct("sprint0")]
+[assembly: AssemblyTitle("HackAndSlash")]
+[assembly: AssemblyProduct("HackAndSlash")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCompany("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("feea6970-37a3-4920-af97-6fdd8699dfa9")]
+[assembly: Guid("776276be-6478-4175-85e2-38f666225876")]
 
 // Version information for an assembly consists of the following four values:
 //

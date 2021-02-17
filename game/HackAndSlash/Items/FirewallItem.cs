@@ -8,5 +8,14 @@ namespace HackAndSlash
 {
     class FirewallItem : IItem
     {
+        private ISprite itemSprite;
+        /* void createItemAt()
+        {
+
+        }*/
+
+        //void changeToCollected();
+
+        //void useItem();
     }
 }

@@ -13,20 +13,32 @@ namespace HackAndSlash
         SpriteBatch spriteBatch;
 
         // Sprites  
-        private SpriteBG SpriteBG; 
-        private ISprite SpriteHolder {  get; set;  }
+        private SpriteBG SpriteBG;
+        public ISprite PlayerSprite { set { SpriteHolder = value; } }
+        private ISprite SpriteHolder { get; set; }
         private ISprite EnemyHolder { get; set; }
+        private ISprite ItemHolder { get; set; }
         private Texture2D textureSnake { get; set; }
         private Texture2D textureBug { get; set; }
-
-        private Texture2D textureMC;
-
+        private Texture2D textureFirewall { get; set; }
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
         private Vector2 absPositionMC; // Absolute position. As position in the game map
 
+        public Vector2 Pos
+        {
+            get
+            {
+                return relPositionMC;
+            }
+            set
+            {
+                relPositionMC = value;
+            }
+        }
+
         // Attributes for camera clipping and FX 
-        
+
         // Camera clipping 
         private Vector2 horizontal;
         private Vector2 vertical;
@@ -37,7 +49,7 @@ namespace HackAndSlash
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            
+
             Content.RootDirectory = "Content";
         }
 
@@ -85,27 +97,21 @@ namespace HackAndSlash
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-
-
-            // Original image from https://www.spriters-resource.com/fullview/146744/
-            // Edited in Photoshop to align the textures 
-            // Create the maincharacter sprite with delay, might look odd depending on your machine 
-            textureMC = Content.Load<Texture2D>("images/sucOva");
-            Texture2D textureBG = Content.Load<Texture2D>("images/BG");
+            //Get sprite from spriteFactory
+            SpriteFactory.Instance.LoadAllTextures(Content);
+            SpriteBG = new SpriteBG(SpriteFactory.Instance.CreateBG(), graphics);
+            SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
             //Enemy textures
             textureSnake = Content.Load<Texture2D>("images/snakespritesheet");
             textureBug = Content.Load<Texture2D>("images/bug");
 
             // Item Textures
-            /*
-             * textureFirewall = Content.Load<Texture2D>("images/firewall");
-             * 
-            */
-            SpriteBG = new SpriteBG(textureBG, graphics);
-
-            SpriteHolder = new AnimatedSpriteMC(textureMC, 1, 7, 4);
+            textureFirewall = Content.Load<Texture2D>("images/firewall");
+              
+            
             EnemyHolder = new EnemySprite(textureSnake, 5, 10);
+            ItemHolder = new ItemSprite(textureFirewall, 1, 2);
         }
 
         /// <summary>
@@ -145,10 +151,11 @@ namespace HackAndSlash
 
             foreach (IController controller in controllerList)
             {
-                controller.Update(textureMC);
+                controller.Update();
             }
             SpriteHolder.Update();
             EnemyHolder.Update();
+            ItemHolder.Update();
 
             base.Update(gameTime);
         }
@@ -164,6 +171,7 @@ namespace HackAndSlash
             SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
             SpriteHolder.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
             EnemyHolder.Draw(spriteBatch, new Vector2(300, 300));
+            ItemHolder.Draw(spriteBatch, new Vector2(300, 200));
 
             base.Draw(gameTime);
         }

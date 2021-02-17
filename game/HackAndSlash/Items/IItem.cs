@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +8,10 @@ namespace HackAndSlash
 {
     interface IItem
     {
-        //void useItem();
-
-        //void changeToCollected();
-
         //void createItemAt();
+
+        //void changeToCollected(); // collect or equip
+
+        //void useItem();
     }
 }
