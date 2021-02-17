@@ -17,9 +17,10 @@ namespace HackAndSlash
         public ISprite PlayerSprite { set { SpriteHolder = value; } }
         private ISprite SpriteHolder { get; set; }
         private ISprite EnemyHolder { get; set; }
+        private ISprite ItemHolder { get; set; }
         private Texture2D textureSnake { get; set; }
         private Texture2D textureBug { get; set; }
-
+        private Texture2D textureFirewall { get; set; }
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
         private Vector2 absPositionMC; // Absolute position. As position in the game map
@@ -110,11 +111,11 @@ namespace HackAndSlash
             textureBug = Content.Load<Texture2D>("images/bug");
 
             // Item Textures
-            /*
-             * textureFirewall = Content.Load<Texture2D>("images/firewall");
-             * 
-            */
+            textureFirewall = Content.Load<Texture2D>("images/firewall");
+              
+            
             EnemyHolder = new EnemySprite(textureSnake, 5, 10);
+            ItemHolder = new ItemSprite(textureFirewall, 1, 2);
         }
 
         /// <summary>
@@ -158,6 +159,7 @@ namespace HackAndSlash
             }
             SpriteHolder.Update();
             EnemyHolder.Update();
+            ItemHolder.Update();
 
             base.Update(gameTime);
         }
@@ -173,6 +175,7 @@ namespace HackAndSlash
             SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
             SpriteHolder.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
             EnemyHolder.Draw(spriteBatch, new Vector2(300, 300));
+            ItemHolder.Draw(spriteBatch, new Vector2(300, 200));
 
             base.Draw(gameTime);
         }

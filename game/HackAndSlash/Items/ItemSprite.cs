@@ -15,6 +15,8 @@ namespace HackAndSlash
         public int Columns { get; set; }
         private int totalFrames;
         private int currentFrame;
+        private int delayCounter { get; set; }
+        private int animationDelay { get; set; }
 
         public ItemSprite(Texture2D texture, int rows, int columns)
         {
@@ -23,14 +25,21 @@ namespace HackAndSlash
             Columns = columns;
             totalFrames = rows * columns;
             currentFrame = 0;
+            delayCounter = 0;
+            animationDelay = 15;
         }
 
         public void Update()
         {
-            currentFrame++;
-            if (currentFrame == totalFrames)
+            delayCounter++;
+            if (delayCounter == animationDelay)
             {
-                currentFrame = 0;
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                {
+                    currentFrame = 0;
+                }
+                delayCounter = 0;
             }
         }
 

@@ -50,3 +50,30 @@ C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\obj\Debug\HackAndSl
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.csproj.CopyComplete
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.exe
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.pdb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\bg.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\bug.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\snakespritesheet.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucDown.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucLeft.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucOva.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucUp.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\HackAndSlash.exe
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\HackAndSlash.pdb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.csproj.CopyComplete
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.exe
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.pdb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\firewall.xnb
