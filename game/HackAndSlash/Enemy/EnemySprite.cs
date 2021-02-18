@@ -15,6 +15,7 @@ namespace HackAndSlash
         public int Columns { get; set; }
         private int totalFrames;
         private int currentFrame;
+        
 
         public EnemySprite(Texture2D texture, int rows, int columns)
         {
@@ -47,6 +48,7 @@ namespace HackAndSlash
             spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
+
         }
 
 
