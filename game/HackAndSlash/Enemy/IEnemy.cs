@@ -13,5 +13,8 @@ namespace HackAndSlash
         //void changeToDie();
 
         //void createEnemyAt();
+        
+         //void Update(GameTime gametime);
+        //gametime passed in for frame rate
     }
 }
