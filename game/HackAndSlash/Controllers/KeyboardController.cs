@@ -29,7 +29,7 @@ namespace HackAndSlash
                 {Keys.Z, new AttackCommand(game)},
                 {Keys.N, new AttackCommand(game)},
                 {Keys.D1, new UsePlayerItemCommand(game)},
-                {Keys.E, new DamageCommand(game)},
+                {Keys.E, new DamageCommand(game, playerStateMachine)},
                 {Keys.T, new BlockCycleCommand(game)},
                 {Keys.Y, new BlockCycleCommand(game)},
                 {Keys.U, new ItemCycleCommand(game)},

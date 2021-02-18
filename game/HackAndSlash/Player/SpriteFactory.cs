@@ -102,7 +102,28 @@ namespace HackAndSlash
         {
             return new AnimatedSpriteMC(PlayerSpriteDown, 1, 7, 4);
         }
-        
+
+        //public ISprite CreateUpPlayer()
+        //{
+        //    return new AnimatedSpriteMC(PlayerSpriteUp, 1, 7, 4);
+        //}
+
+        //public ISprite CreateRightPlayer()
+        //{
+        //    return new AnimatedSpriteMC(PlayerSpriteRight, 1, 7, 4);
+        //}
+        //public ISprite CreateLeftPlayer()
+        //{
+        //    return new AnimatedSpriteMC(PlayerSpriteLeft, 1, 7, 4);
+        //}
+
+        //public ISprite CreateDownPlayer()
+        //{
+        //    return new AnimatedSpriteMC(PlayerSpriteDown, 1, 7, 4);
+        //}
+
+
+
         public ISprite CreateSnakeIdle()
         {
             return new EnemySprite(SnakeIdleSprite, 1, 10);

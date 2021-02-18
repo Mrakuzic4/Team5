@@ -4,19 +4,35 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/images/bg.jpg</File>
-    <File>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/images/bug.png</File>
-    <File>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/images/firewall2.png</File>
-    <File>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/images/snakespritesheet.png</File>
-    <File>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/images/sucDown.png</File>
-    <File>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/images/sucLeft.png</File>
-    <File>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/images/sucOva.png</File>
-    <File>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/images/sucUp.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/bg.jpg</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugDie.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugIdle.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugMoveDown.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugMoveUp.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ChipBlock.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/firewall2.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/SnakeAttack.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/SnakeDie.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/SnakeIdle.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/SnakeMoving.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/snakespritesheet.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucDown.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucLeft.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucOva.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucUp.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>images/firewall.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

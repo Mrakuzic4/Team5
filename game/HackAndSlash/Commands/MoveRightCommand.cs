@@ -24,7 +24,7 @@ namespace HackAndSlash
             if (playerStateMachine.Direction != 1)
             {
                 playerStateMachine.ChangeDirection(1);//direction is right
-                game.PlayerSprite = playerStateMachine.idle(); //set the sprite
+                game.PlayerSprite = playerStateMachine.Move(); //set the sprite
             }
             //move the sprite
             game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X+2, game.Pos.Y);

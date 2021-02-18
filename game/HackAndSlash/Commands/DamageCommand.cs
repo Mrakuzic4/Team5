@@ -9,13 +9,16 @@ namespace HackAndSlash
     public class DamageCommand : ICommand
     {
         private Game1 game;
-        public DamageCommand(Game1 game)
+        private PlayerStateMachine playerStateMachine;
+
+        public DamageCommand(Game1 game, PlayerStateMachine playerStateMachine)
         {
             this.game = game;
+            this.playerStateMachine = playerStateMachine;
         }
         public void execute()
         {
-            //game.SpriteHolder = new (method for damaged player sprite)
+            game.PlayerSprite = playerStateMachine.Damaged();//Pass the damaged state
         }
     }
 }

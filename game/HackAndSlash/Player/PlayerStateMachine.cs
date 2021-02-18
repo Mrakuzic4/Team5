@@ -32,8 +32,7 @@ namespace HackAndSlash
 			playerDir = (direction)dir;
 		}
 
-		//IN USE for Testing.
-		public ISprite idle()
+		public ISprite Move()
         {
 			if (playerDir == direction.Left) return SpriteFactory.Instance.CreateLeftPlayer();
 			if (playerDir == direction.Right) return SpriteFactory.Instance.CreateRightPlayer();
@@ -43,17 +42,20 @@ namespace HackAndSlash
 			return SpriteFactory.Instance.CreateRightPlayer();
 		}
 
+		public ISprite Damaged()
+		{
+			if (playerDir == direction.Left) return SpriteFactory.Instance.CreateLeftPlayer();
+			if (playerDir == direction.Right) return SpriteFactory.Instance.CreateRightPlayer();
+			if (playerDir == direction.Down) return SpriteFactory.Instance.CreateDownPlayer();
+			if (playerDir == direction.Up) return SpriteFactory.Instance.CreateUpPlayer();
+			//default to be facing right
+			return SpriteFactory.Instance.CreateRightPlayer();
+		}
 
-		//TODO: more stuff to be implemented for future. Potential template below.
+		public void Attack()
+        {
 
-		//public void BeStomped()
-		//{
-		//	if (health != GoombaHealth.Stomped) // Note: the if is needed so we only do the transition once
-		//	{
-		//		health = GoombaHealth.Stomped;
-		//		// Compute and construct goomba sprite - requires if-else logic with value of health
-		//	}
-		//}
+        }
 
 		public void Update()
 		{
