@@ -7,7 +7,6 @@ namespace HackAndSlash
 {
     public interface IController
     {
-        
         void Update();
     }
 }

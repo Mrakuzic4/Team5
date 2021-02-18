@@ -16,7 +16,11 @@ namespace HackAndSlash
         private SpriteBG SpriteBG;
         public ISprite PlayerSprite { set { SpriteHolder = value; } }
         private ISprite SpriteHolder { get; set; }
-
+        private ISprite ItemHolder { get; set; }
+        private IBlock BlockHolder { get; set; }
+       
+        private Texture2D textureFirewall { get; set; }
+        private Texture2D textureChipBlock { get; set; }
         
         public SnakeEnemy snakefirst;
         public BugEnemy bugfirst;
@@ -66,10 +70,6 @@ namespace HackAndSlash
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new MouseController(this));
-            foreach (IController controller in controllerList)
-            {
-                controller.Initialize();
-            }
 
             // Initilize character position 
             absPositionMC.X = absPositionMC.Y = 0;
@@ -91,8 +91,6 @@ namespace HackAndSlash
 
             graphics.ApplyChanges();
 
-            EnemyPosition = new Vector2(0, 0);
-
         }
 
         /// <summary>
@@ -103,23 +101,27 @@ namespace HackAndSlash
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
             //Get sprite from spriteFactory
             SpriteFactory.Instance.LoadAllTextures(Content);
             SpriteBG = new SpriteBG(SpriteFactory.Instance.CreateBG(), graphics);
             SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
-            // Item Textures
-            /*
-             * textureFirewall = Content.Load<Texture2D>("images/firewall");
-             * 
-            */
-            
-           
             snakefirst = new SnakeEnemy(EnemyPosition, GraphicsDevice);
             bugfirst = new BugEnemy(EnemyPosition, GraphicsDevice);
 
             snakefirst.LoadContent();
             bugfirst.LoadContent();
+
+            // Item Textures
+            textureFirewall = Content.Load<Texture2D>("images/firewall");
+
+            //Block Textures
+            textureChipBlock = Content.Load<Texture2D>("images/ChipBlock");
+              
+            
+            ItemHolder = new ItemSprite(textureFirewall, 1, 2);
+            BlockHolder = new ChipBlock(textureChipBlock, new Vector2(200, 300), spriteBatch);
         }
 
         /// <summary>
@@ -147,14 +149,15 @@ namespace HackAndSlash
             if (stateKB.IsKeyDown(Keys.Escape))
                 Exit();
 
-            
+           
+
             foreach (IController controller in controllerList)
             {
                 controller.Update();
             }
             SpriteHolder.Update();
-
-            //update enemy objects to see which enemy is suppossed to displayed and in which state
+            ItemHolder.Update();
+            
             snakefirst.Update(gameTime);
             bugfirst.Update(gameTime);
 
@@ -171,10 +174,11 @@ namespace HackAndSlash
 
             SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
             SpriteHolder.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
-
-            //call draw on enemy objects which will decide which enemy is to be drawn
+            ItemHolder.Draw(spriteBatch, new Vector2(300, 200));
+            
             snakefirst.Draw();
             bugfirst.Draw();
+
 
             base.Draw(gameTime);
         }

@@ -19,7 +19,7 @@ namespace HackAndSlash
         private Texture2D PlayerSpriteDown;
 
         private Texture2D BGSprite;
-
+        
         private Texture2D SnakeIdleSprite;
         private Texture2D SnakeMoveSprite;
         private Texture2D SnakeAttackSprite;
@@ -56,7 +56,7 @@ namespace HackAndSlash
             PlayerSpriteLeft = content.Load<Texture2D>("images/sucLeft");
             PlayerSpriteUp = content.Load<Texture2D>("images/sucUp");
             PlayerSpriteDown = content.Load<Texture2D>("images/sucDown");
-
+            
             // Original image from https://opengameart.org/content/animated-snake
             // Edited in Adobe Fresco to align specific states
 
@@ -72,6 +72,7 @@ namespace HackAndSlash
             BugMoveDownSprite = content.Load<Texture2D>("images/BugMoveDown");
             BugDieSprite = content.Load<Texture2D>("images/BugDie");
             BugIdleSprite = content.Load<Texture2D>("images/BugIdle");
+
 
             // More Content.Load calls follow
             BGSprite = content.Load<Texture2D>("images/BG");
@@ -101,7 +102,7 @@ namespace HackAndSlash
         {
             return new AnimatedSpriteMC(PlayerSpriteDown, 1, 7, 4);
         }
-
+        
         public ISprite CreateSnakeIdle()
         {
             return new EnemySprite(SnakeIdleSprite, 1, 10);
@@ -149,5 +150,6 @@ namespace HackAndSlash
             return new EnemySprite(BugDieSprite, 1, 6);
             //return new AnimatedSpriteMC(BugDieSprite, 1, 6, 0);
         }
+
     }
 }

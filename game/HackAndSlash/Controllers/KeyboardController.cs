@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace HackAndSlash
 {
-    class KeyboardController : IController
+    class KeyboardController: IController
     {
         private Game1 game { get; set; }
         private Dictionary<Keys, ICommand> controllerMappings;
@@ -62,8 +62,7 @@ namespace HackAndSlash
 
             foreach (Keys key in pressedKeys)
             {
-                if (controllerMappings.ContainsKey(key))
-                {
+                if (controllerMappings.ContainsKey(key)){
                     controllerMappings[key].execute();
                 }
             }
