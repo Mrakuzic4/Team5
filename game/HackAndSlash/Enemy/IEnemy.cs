@@ -13,5 +13,7 @@ namespace HackAndSlash
         //void changeToDie();
 
         //void createEnemyAt();
+
+        //void Update(GameTime gametime);
     }
 }

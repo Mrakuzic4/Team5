@@ -45,7 +45,8 @@
     <Compile Include="Commands\AttackCommand.cs" />
     <Compile Include="Commands\BlockCycleCommand.cs" />
     <Compile Include="Commands\DamageCommand.cs" />
-    <Compile Include="Commands\EnemyCycleCommand.cs" />
+    <Compile Include="Commands\EnemyCycleCommandBug.cs" />
+    <Compile Include="Commands\EnemyCycleCommandSnake.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ItemCycleCommand.cs" />
     <Compile Include="Commands\MoveDownCommand.cs" />

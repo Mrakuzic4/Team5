@@ -16,10 +16,12 @@ namespace HackAndSlash
         private SpriteBG SpriteBG;
         public ISprite PlayerSprite { set { SpriteHolder = value; } }
         private ISprite SpriteHolder { get; set; }
-        private ISprite EnemyHolder { get; set; }
-        private Texture2D textureSnake { get; set; }
-        private Texture2D textureBug { get; set; }
 
+        
+        public SnakeEnemy snakefirst;
+        public BugEnemy bugfirst;
+        private Vector2 EnemyPosition;
+        
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
         private Vector2 absPositionMC; // Absolute position. As position in the game map
@@ -89,6 +91,8 @@ namespace HackAndSlash
 
             graphics.ApplyChanges();
 
+            EnemyPosition = new Vector2(0, 0);
+
         }
 
         /// <summary>
@@ -99,22 +103,23 @@ namespace HackAndSlash
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             //Get sprite from spriteFactory
             SpriteFactory.Instance.LoadAllTextures(Content);
             SpriteBG = new SpriteBG(SpriteFactory.Instance.CreateBG(), graphics);
             SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
-
-            //Enemy textures
-            textureSnake = Content.Load<Texture2D>("images/snakespritesheet");
-            textureBug = Content.Load<Texture2D>("images/bug");
 
             // Item Textures
             /*
              * textureFirewall = Content.Load<Texture2D>("images/firewall");
              * 
             */
-            EnemyHolder = new EnemySprite(textureSnake, 5, 10);
+            
+           
+            snakefirst = new SnakeEnemy(EnemyPosition, GraphicsDevice);
+            bugfirst = new BugEnemy(EnemyPosition, GraphicsDevice);
+
+            snakefirst.LoadContent();
+            bugfirst.LoadContent();
         }
 
         /// <summary>
@@ -142,22 +147,16 @@ namespace HackAndSlash
             if (stateKB.IsKeyDown(Keys.Escape))
                 Exit();
 
-            if (stateKB.IsKeyDown(Keys.Q))
-            {
-                EnemyHolder = new EnemySprite(textureSnake, 5, 10);
-            }
-
-            if (stateKB.IsKeyDown(Keys.O))
-            {
-                EnemyHolder = new EnemySprite(textureBug, 4, 6);
-            }
-
+            
             foreach (IController controller in controllerList)
             {
                 controller.Update();
             }
             SpriteHolder.Update();
-            EnemyHolder.Update();
+
+            //update enemy objects to see which enemy is suppossed to displayed and in which state
+            snakefirst.Update(gameTime);
+            bugfirst.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -172,7 +171,10 @@ namespace HackAndSlash
 
             SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
             SpriteHolder.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
-            EnemyHolder.Draw(spriteBatch, new Vector2(300, 300));
+
+            //call draw on enemy objects which will decide which enemy is to be drawn
+            snakefirst.Draw();
+            bugfirst.Draw();
 
             base.Draw(gameTime);
         }

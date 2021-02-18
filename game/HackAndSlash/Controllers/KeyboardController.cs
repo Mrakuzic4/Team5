@@ -38,8 +38,8 @@ namespace HackAndSlash
             RegisterCommand(Keys.Y, new BlockCycleCommand(game));
             RegisterCommand(Keys.U, new ItemCycleCommand(game));
             RegisterCommand(Keys.I, new ItemCycleCommand(game));
-            RegisterCommand(Keys.O, new EnemyCycleCommand(game));
-            RegisterCommand(Keys.P, new EnemyCycleCommand(game));
+            RegisterCommand(Keys.O, new EnemyCycleCommandSnake(game));
+            RegisterCommand(Keys.P, new EnemyCycleCommandBug(game));
             RegisterCommand(Keys.R, new ResetCommand(game));
             RegisterCommand(Keys.Q, new QuitCommand(game));
         }

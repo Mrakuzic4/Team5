@@ -20,6 +20,17 @@ namespace HackAndSlash
 
         private Texture2D BGSprite;
 
+        private Texture2D SnakeIdleSprite;
+        private Texture2D SnakeMoveSprite;
+        private Texture2D SnakeAttackSprite;
+        private Texture2D SnakeDieSprite;
+
+        private Texture2D BugIdleSprite;
+        private Texture2D BugMoveUpSprite;
+        private Texture2D BugMoveDownSprite;
+        private Texture2D BugDieSprite;
+
+
 
         private static SpriteFactory instance = new SpriteFactory();
 
@@ -46,6 +57,21 @@ namespace HackAndSlash
             PlayerSpriteUp = content.Load<Texture2D>("images/sucUp");
             PlayerSpriteDown = content.Load<Texture2D>("images/sucDown");
 
+            // Original image from https://opengameart.org/content/animated-snake
+            // Edited in Adobe Fresco to align specific states
+
+            SnakeIdleSprite = content.Load<Texture2D>("images/SnakeIdle");
+            SnakeMoveSprite = content.Load<Texture2D>("images/SnakeMoving");
+            SnakeAttackSprite = content.Load<Texture2D>("images/SnakeAttack");
+            SnakeDieSprite = content.Load<Texture2D>("images/SnakeDie");
+
+            //Original image sourced from 
+            //Edited in Adobe fresco to align specific states
+
+            BugMoveUpSprite = content.Load<Texture2D>("images/BugMoveUp");
+            BugMoveDownSprite = content.Load<Texture2D>("images/BugMoveDown");
+            BugDieSprite = content.Load<Texture2D>("images/BugDie");
+            BugIdleSprite = content.Load<Texture2D>("images/BugIdle");
 
             // More Content.Load calls follow
             BGSprite = content.Load<Texture2D>("images/BG");
@@ -76,6 +102,52 @@ namespace HackAndSlash
             return new AnimatedSpriteMC(PlayerSpriteDown, 1, 7, 4);
         }
 
+        public ISprite CreateSnakeIdle()
+        {
+            return new EnemySprite(SnakeIdleSprite, 1, 10);
+            //return new AnimatedSpriteMC(SnakeIdleSprite, 1, 10, 0);
+        }
 
+        public ISprite CreateSnakeMoving()
+        {
+            return new EnemySprite(SnakeMoveSprite, 1, 10);
+            //return new AnimatedSpriteMC(SnakeMoveSprite, 1, 10, 0);
+        }
+
+        public ISprite CreateSnakeAttack()
+        {
+            return new EnemySprite(SnakeAttackSprite, 1, 10);
+            //return new AnimatedSpriteMC(SnakeAttackSprite, 1, 10, 0);
+        }
+
+        public ISprite CreateSnakeDie()
+        {
+            return new EnemySprite(SnakeDieSprite, 1, 10);
+            //return new AnimatedSpriteMC(SnakeDieSprite, 1, 10, 0);
+        }
+
+        public ISprite CreateBugIdle()
+        {
+            return new EnemySprite(BugIdleSprite, 1, 6);
+            //return new AnimatedSpriteMC(BugIdleSprite, 1, 6, 0);
+        }
+
+        public ISprite CreateBugMoveUp()
+        {
+            return new EnemySprite(BugMoveUpSprite, 1, 6);
+            //return new AnimatedSpriteMC(BugMoveUpSprite, 1, 6, 0);
+        }
+
+        public ISprite CreateBugMoveDown()
+        {
+            return new EnemySprite(BugMoveDownSprite, 1, 6);
+            //return new AnimatedSpriteMC(BugMoveDownSprite, 1, 6, 0);
+        }
+
+        public ISprite CreateBugDie()
+        {
+            return new EnemySprite(BugDieSprite, 1, 6);
+            //return new AnimatedSpriteMC(BugDieSprite, 1, 6, 0);
+        }
     }
 }
