@@ -29,7 +29,6 @@ namespace HackAndSlash
             Graphics = graphics;
             EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeIdle();
             
-
         }
 
         public void LoadContent()

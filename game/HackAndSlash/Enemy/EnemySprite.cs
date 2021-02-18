@@ -48,6 +48,7 @@ namespace HackAndSlash
             spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
             spriteBatch.End();
+
         }
 
 

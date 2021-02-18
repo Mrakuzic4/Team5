@@ -11,7 +11,6 @@ namespace HackAndSlash
     public class BugEnemy : IEnemy
     {
         private bugStateMachine bugState;
-        private Texture2D texture;
         private EnemySprite EnemySprite;
         private Vector2 position;
         private SpriteBatch spriteBatch;

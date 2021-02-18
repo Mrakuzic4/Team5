@@ -6,7 +6,6 @@
   <SourceFiles>
     <File>C:/Users/hkomm/OneDrive/Documents/GitHub/Team5/game/HackAndSlash/Content/../../../../../SP2021/CSE3902/BugIdle.png</File>
     <File>C:/Users/hkomm/OneDrive/Documents/GitHub/Team5/game/HackAndSlash/Content/images/bg.jpg</File>
-    <File>C:/Users/hkomm/OneDrive/Documents/GitHub/Team5/game/HackAndSlash/Content/images/bug.png</File>
     <File>C:/Users/hkomm/OneDrive/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugDie.png</File>
     <File>C:/Users/hkomm/OneDrive/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugMoveDown.png</File>
     <File>C:/Users/hkomm/OneDrive/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugMoveUp.png</File>
@@ -22,7 +21,6 @@
   </SourceFiles>
   <DestFiles>
     <File>images/BugIdle.png</File>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
