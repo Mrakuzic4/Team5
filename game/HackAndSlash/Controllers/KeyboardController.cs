@@ -34,8 +34,8 @@ namespace HackAndSlash
                 {Keys.Y, new BlockCycleCommand(game)},
                 {Keys.U, new ItemCycleCommand(game)},
                 {Keys.I, new ItemCycleCommand(game)},
-                {Keys.O, new EnemyCycleCommand(game)},
-                {Keys.P, new EnemyCycleCommand(game)},
+                {Keys.O, new EnemyCycleCommandSnake(game)},
+                {Keys.P, new EnemyCycleCommandBug(game)},
                 {Keys.R, new ResetCommand(game)},
                 {Keys.Q, new QuitCommand(game)}
             };
