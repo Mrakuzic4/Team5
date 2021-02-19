@@ -141,16 +141,6 @@ namespace HackAndSlash
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            KeyboardState stateKB = Keyboard.GetState(); // State for keyboard 
-            MouseState stateM = Mouse.GetState();        // State for mouse
-
-            // Update 
-            // Handling stateKB 0, which quits. Also left the escape key quit option
-            if (stateKB.IsKeyDown(Keys.Escape))
-                Exit();
-
-           
-
             foreach (IController controller in controllerList)
             {
                 controller.Update();
@@ -175,7 +165,6 @@ namespace HackAndSlash
             SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
             SpriteHolder.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
             ItemHolder.Draw(spriteBatch, new Vector2(300, 200));
-            
             snakefirst.Draw();
             bugfirst.Draw();
 
