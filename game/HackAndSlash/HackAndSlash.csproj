@@ -71,7 +71,10 @@
     <Compile Include="Items\FirewallItem.cs" />
     <Compile Include="Items\IItem.cs" />
     <Compile Include="Items\ItemSprite.cs" />
+    <Compile Include="Player\IPlayer.cs" />
+    <Compile Include="Player\DamagedPlayer.cs" />
     <Compile Include="Player\PlayerStateMachine.cs" />
+    <Compile Include="Player\Player.cs" />
     <Compile Include="Player\SpriteFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

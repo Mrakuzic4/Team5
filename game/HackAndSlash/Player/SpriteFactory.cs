@@ -84,23 +84,23 @@ namespace HackAndSlash
             return BGSprite;
         }
 
-        public ISprite CreateUpPlayer()
+        public IPlayer CreateUpPlayer()
         {
-            return new AnimatedSpriteMC(PlayerSpriteUp, 1, 7, 4);
+            return new Player(PlayerSpriteUp, 1, 7, 4);
         }
 
-        public ISprite CreateRightPlayer()
+        public IPlayer CreateRightPlayer()
         {
-            return new AnimatedSpriteMC(PlayerSpriteRight, 1, 7, 4);
+            return new Player(PlayerSpriteRight, 1, 7, 4);
         }
-        public ISprite CreateLeftPlayer()
+        public IPlayer CreateLeftPlayer()
         {
-            return new AnimatedSpriteMC(PlayerSpriteLeft, 1, 7, 4);
+            return new Player(PlayerSpriteLeft, 1, 7, 4);
         }
 
-        public ISprite CreateDownPlayer()
+        public IPlayer CreateDownPlayer()
         {
-            return new AnimatedSpriteMC(PlayerSpriteDown, 1, 7, 4);
+            return new Player(PlayerSpriteDown, 1, 7, 4);
         }
 
         //public ISprite CreateUpPlayer()

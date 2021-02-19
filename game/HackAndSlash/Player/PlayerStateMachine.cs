@@ -14,6 +14,8 @@ namespace HackAndSlash
 		
 		public int Direction { get { return (int) playerDir; } }
 
+		private Game1 game;
+
 
 		//TODO: implement player health.
 		//private PlayerHealth health = GoombaHealth.Normal;
@@ -22,9 +24,10 @@ namespace HackAndSlash
 		/// dir is the direction in integer form, 0 is left, 1 is right, etc.
 		/// </summary>
 		/// <param name="dir"></param>
-		public PlayerStateMachine(int dir)
+		public PlayerStateMachine(int dir, Game1 game)
 		{
 			playerDir = (direction) dir;
+			this.game = game;
 		}
 
 		public void ChangeDirection(int dir)
@@ -32,7 +35,7 @@ namespace HackAndSlash
 			playerDir = (direction)dir;
 		}
 
-		public ISprite Move()
+		public IPlayer Move()
         {
 			if (playerDir == direction.Left) return SpriteFactory.Instance.CreateLeftPlayer();
 			if (playerDir == direction.Right) return SpriteFactory.Instance.CreateRightPlayer();
@@ -42,14 +45,14 @@ namespace HackAndSlash
 			return SpriteFactory.Instance.CreateRightPlayer();
 		}
 
-		public ISprite Damaged()
+		public IPlayer Damaged()
 		{
-			if (playerDir == direction.Left) return SpriteFactory.Instance.CreateLeftPlayer();
-			if (playerDir == direction.Right) return SpriteFactory.Instance.CreateRightPlayer();
-			if (playerDir == direction.Down) return SpriteFactory.Instance.CreateDownPlayer();
-			if (playerDir == direction.Up) return SpriteFactory.Instance.CreateUpPlayer();
+			if (playerDir == direction.Left) return new DamagedPlayer(SpriteFactory.Instance.CreateLeftPlayer(),game);
+			if (playerDir == direction.Right) return new DamagedPlayer(SpriteFactory.Instance.CreateRightPlayer(), game);
+			if (playerDir == direction.Down) return new DamagedPlayer(SpriteFactory.Instance.CreateDownPlayer(), game);
+			if (playerDir == direction.Up) return new DamagedPlayer(SpriteFactory.Instance.CreateUpPlayer(), game);
 			//default to be facing right
-			return SpriteFactory.Instance.CreateRightPlayer();
+			return new DamagedPlayer(SpriteFactory.Instance.CreateRightPlayer(), game);
 		}
 
 		public void Attack()

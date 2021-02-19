@@ -14,8 +14,8 @@ namespace HackAndSlash
 
         // Sprites  
         private SpriteBG SpriteBG;
-        public ISprite PlayerSprite { set { SpriteHolder = value; } }
-        private ISprite SpriteHolder { get; set; }
+        public IPlayer PlayerSprite { set { SpriteHolder = value; } }
+        private IPlayer SpriteHolder { get; set; }
         private ISprite ItemHolder { get; set; }
         private IBlock BlockHolder { get; set; }
        
@@ -173,7 +173,7 @@ namespace HackAndSlash
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
-            SpriteHolder.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
+            SpriteHolder.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
             ItemHolder.Draw(spriteBatch, new Vector2(300, 200));
             
             snakefirst.Draw();

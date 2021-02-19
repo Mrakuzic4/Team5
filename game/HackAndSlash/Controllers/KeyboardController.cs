@@ -17,7 +17,7 @@ namespace HackAndSlash
         public KeyboardController(Game1 game)
         {
             this.game = game;
-            playerStateMachine = new PlayerStateMachine(1); //default is facing right
+            playerStateMachine = new PlayerStateMachine(1, game); //default is facing right
 
             //add all default controls
             controllerMappings = new Dictionary<Keys, ICommand>()

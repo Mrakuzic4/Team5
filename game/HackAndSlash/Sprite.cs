@@ -7,7 +7,7 @@ namespace HackAndSlash
 {
 
 
-    public class AnimatedSpriteMC : ISprite
+    public class AnimatedSpriteMC : IPlayer
     {
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
@@ -51,7 +51,7 @@ namespace HackAndSlash
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -62,7 +62,7 @@ namespace HackAndSlash
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
             spriteBatch.End();
         }
     }
