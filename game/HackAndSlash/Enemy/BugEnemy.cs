@@ -18,6 +18,7 @@ namespace HackAndSlash
 
         private int timeSinceLastFrame = 0;
         private int milliSecondsPerFrame = 80;
+        private int temp = 0;
 
         //make the constructor for the class
         public BugEnemy(Vector2 startPosition, GraphicsDevice graphics)
@@ -44,6 +45,42 @@ namespace HackAndSlash
                     bugState.MachineEnemySprite.Update();
                 }
             }
+            if (temp == 0 && bugState.state !=  bugStateMachine.bugHealth.Not) {
+                bugState.changeToIdle();
+            }
+
+            if (temp == 200 && bugState.state !=  bugStateMachine.bugHealth.Not) {
+                bugState.changeToMoveUp();
+            }
+
+            if (temp == 400 && bugState.state !=  bugStateMachine.bugHealth.Not) {
+                bugState.changeToMoveDown();
+            }
+
+            if (temp == 600 && bugState.state !=  bugStateMachine.bugHealth.Not) {
+                bugState.changeToDie();
+            }
+
+            if (temp == 800 && bugState.state !=  bugStateMachine.bugHealth.Not) {
+                bugState.changeToIdle();
+            }
+
+            if (bugState.state == bugStateMachine.bugHealth.MoveUp) {
+                position.Y--;
+            }
+
+            if (bugState.state == bugStateMachine.bugHealth.MoveDown) {
+                position.Y++;
+            }
+
+            if ((bugState.state != bugStateMachine.bugHealth.MoveUp) && (bugState.state != bugStateMachine.bugHealth.MoveDown)) {
+                position.Y = 100;
+            }
+
+            if (temp > 800) {
+                temp = 0;
+            }
+            temp++;
         }
 
         public void Draw()
