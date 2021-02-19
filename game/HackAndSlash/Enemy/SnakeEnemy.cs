@@ -19,6 +19,7 @@ namespace HackAndSlash
 
         private int timeSinceLastFrame=0;
         private int milliSecondsPerFrame=80;
+        private int temp = 0;
 
 
         //make the constructor for the class
@@ -49,6 +50,38 @@ namespace HackAndSlash
                     snakeState.MachineEnemySprite.Update();
                 }
             }
+            if (temp == 0 && snakeState.state != snakeStateMachine.snakeHealth.Not) {
+                snakeState.changeToIdle();
+            }
+
+            if (temp == 200 && snakeState.state != snakeStateMachine.snakeHealth.Not) {
+                snakeState.changeToAttack();
+            }
+
+            if (temp == 400 && snakeState.state != snakeStateMachine.snakeHealth.Not) {
+                snakeState.changeToMove();
+            }
+
+            if (temp == 600 && snakeState.state != snakeStateMachine.snakeHealth.Not) {
+                snakeState.changeToDie();
+            }
+
+            if (temp == 800 && snakeState.state != snakeStateMachine.snakeHealth.Not) {
+                snakeState.changeToIdle();
+            }
+
+            if (snakeState.state == snakeStateMachine.snakeHealth.Move) {
+                position.X--;
+            }
+
+            if (snakeState.state != snakeStateMachine.snakeHealth.Move) {
+                position.X = 300;
+            }
+
+            if (temp > 800) {
+                temp = 0;
+            }
+            temp++;
         }
 
         //use the state machine in draw to choose the texture. set enemysprite to selected texture, then call draw 
