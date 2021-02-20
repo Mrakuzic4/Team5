@@ -39,7 +39,9 @@ namespace HackAndSlash
         public SnakeEnemy snakefirst;
         public BugEnemy bugfirst;
         private Vector2 EnemyPosition;
-        
+
+
+        public FirewallItem firewallFirst;
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
         private Vector2 absPositionMC; // Absolute position. As position in the game map
@@ -132,14 +134,15 @@ namespace HackAndSlash
             snakefirst.LoadContent();
             bugfirst.LoadContent();
 
-            // Item Textures
-            textureFirewall = Content.Load<Texture2D>("images/firewall");
+            // Items
+            firewallFirst = new FirewallItem(new Vector2(100, 100), GraphicsDevice);
+
+            firewallFirst.LoadContent(); ;
 
             //Block Textures
             textureChipBlock = Content.Load<Texture2D>("images/ChipBlock");
               
             
-            ItemHolder = new ItemSprite(textureFirewall, 1, 2);
             BlockHolder = new ChipBlock(textureChipBlock, new Vector2(200, 300), spriteBatch);
         }
 
@@ -165,10 +168,11 @@ namespace HackAndSlash
                 controller.Update();
             }
             Player.Update();
-            ItemHolder.Update();
             
             snakefirst.Update(gameTime);
             bugfirst.Update(gameTime);
+
+            firewallFirst.Update();
 
             base.Update(gameTime);
         }
@@ -183,7 +187,7 @@ namespace HackAndSlash
 
             SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
             Player.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
-            ItemHolder.Draw(spriteBatch, new Vector2(300, 200), Color.White);
+            firewallFirst.Draw();
             snakefirst.Draw();
             bugfirst.Draw();
 
