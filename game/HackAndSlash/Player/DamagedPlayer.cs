@@ -9,25 +9,11 @@ namespace HackAndSlash
 
     public class DamagedPlayer : IPlayer
     {
-        //public Texture2D Texture { get; set; }
-        //public int Rows { get; set; }
-        //public int Columns { get; set; }
-        //public int UpdateDelay { get; set; }
-
-        //// Frame and fame delays 
-        //private int frameCounter; 
-        //private int currentFrame;
-        //private int totalFrames;
-
-        //private PlayerStateMachine playerStateMachine;
-
-
         private IPlayer DecoratedPlayer;
         private Game1 game;
         private int timer;
         private Color color;
         
-
         public DamagedPlayer(IPlayer decoratedPlayer, Game1 game) 
         {
             timer = 200;
@@ -52,22 +38,32 @@ namespace HackAndSlash
 
         public void RemoveDecorator()
         {
-            game.PlayerSprite = DecoratedPlayer; //for the purpose of not taking damage again???
+            game.Player = DecoratedPlayer; //for the purpose of not taking damage again???
         }
 
         public void Move()
         {
-            throw new System.NotImplementedException();
+            DecoratedPlayer.Move();
         }
 
         public void Attack()
         {
-            throw new System.NotImplementedException();
+            DecoratedPlayer.Attack();
         }
 
         public void Damaged()
         {
             //Does not take damaged!
+        }
+
+        public int GetDir()
+        {
+            return DecoratedPlayer.GetDir();
+        }
+
+        public void ChangeDirection(int dir)
+        {
+            DecoratedPlayer.ChangeDirection(dir);
         }
     }
     

@@ -8,6 +8,6 @@ namespace HackAndSlash
     public interface ISprite
     {
         void Update();
-        void Draw(SpriteBatch spriteBatch, Vector2 location);
+        void Draw(SpriteBatch spriteBatch, Vector2 location, Color color);
     }
 }

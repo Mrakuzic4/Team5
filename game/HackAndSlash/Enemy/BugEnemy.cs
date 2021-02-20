@@ -89,7 +89,7 @@ namespace HackAndSlash
             {
                 //get the appropriate bug sprite from factory and set it to EnemySprite
                 //call EnemySprite.draw
-                bugState.MachineEnemySprite.Draw(spriteBatch, position);
+                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
 
             }
 
@@ -97,21 +97,21 @@ namespace HackAndSlash
             {
                 //get the appropriate bug sprite from factory and set it to EnemySprite
                 //call EnemySprite.draw
-                bugState.MachineEnemySprite.Draw(spriteBatch, position);
+                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
             }
 
             else if (bugState.state == bugStateMachine.bugHealth.MoveDown)
             {
                 //get the appropriate bug sprite from factory and set it to EnemySprite
                 //call EnemySprite.draw
-                bugState.MachineEnemySprite.Draw(spriteBatch, position);
+                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
             }
 
             else if (bugState.state == bugStateMachine.bugHealth.Die)
             {
                 //get the appropriate bug sprite from factory and set it to EnemySprite
                 //call EnemySprite.draw
-                bugState.MachineEnemySprite.Draw(spriteBatch, position);
+                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
             }
 
             else if (bugState.state == bugStateMachine.bugHealth.Not)

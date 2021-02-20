@@ -73,6 +73,8 @@
     <Compile Include="Items\ItemSprite.cs" />
     <Compile Include="Player\IPlayer.cs" />
     <Compile Include="Player\DamagedPlayer.cs" />
+    <Compile Include="Player\AttackPlayer.cs" />
+    <Compile Include="Player\DrawPlayer.cs" />
     <Compile Include="Player\PlayerStateMachine.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Player\SpriteFactory.cs" />

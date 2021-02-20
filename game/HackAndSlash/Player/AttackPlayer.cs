@@ -1,45 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
 namespace HackAndSlash
 {
-    public class ItemSprite : ISprite
+
+
+    public class AttackPlayer : ISprite
     {
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
-        private int totalFrames;
-        private int currentFrame;
-        private int delayCounter { get; set; }
-        private int animationDelay { get; set; }
+        public int UpdateDelay { get; set; }
 
-        public ItemSprite(Texture2D texture, int rows, int columns)
+        // Frame and fame delays 
+        private int frameCounter; 
+        private int currentFrame;
+        private int totalFrames;        
+
+        public AttackPlayer(Texture2D texture, int rows, int columns, int updateDelay)
         {
             Texture = texture;
             Rows = rows;
             Columns = columns;
-            totalFrames = rows * columns;
+            UpdateDelay = updateDelay;
             currentFrame = 0;
-            delayCounter = 0;
-            animationDelay = 15;
+            frameCounter = 0;
+            totalFrames = Rows * Columns;
+        }
+
+        public int GetCurrentFrame()
+        {
+            return currentFrame;
         }
 
         public void Update()
         {
-            delayCounter++;
-            if (delayCounter == animationDelay)
-            {
-                currentFrame++;
+            frameCounter++;
+            // Add delay 
+            if (frameCounter == UpdateDelay) {
+
+                // Loop reset 
                 if (currentFrame == totalFrames)
-                {
                     currentFrame = 0;
-                }
-                delayCounter = 0;
+
+                currentFrame++;
+                frameCounter = 0;
             }
         }
 
@@ -47,17 +54,16 @@ namespace HackAndSlash
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
+            int row = (Rows == 1) ? 0 : (int)((float)currentFrame / (float)Columns);
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
             spriteBatch.End();
         }
-
-
     }
+    
 }

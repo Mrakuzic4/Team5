@@ -12,10 +12,24 @@ namespace HackAndSlash
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        //Player
+        private IPlayer PlayerMain;
+        public IPlayer Player
+        {
+            get
+            {
+                return PlayerMain;
+            }
+            set
+            {
+                PlayerMain = value;
+            }
+        }
+
         // Sprites  
         private SpriteBG SpriteBG;
-        public IPlayer PlayerSprite { set { SpriteHolder = value; } }
-        private IPlayer SpriteHolder { get; set; }
+        public ISprite PlayerSprite { set { SpriteHolder = value; } }
+        private ISprite SpriteHolder { get; set; }
         private ISprite ItemHolder { get; set; }
         private IBlock BlockHolder { get; set; }
        
@@ -67,6 +81,10 @@ namespace HackAndSlash
         protected override void Initialize()
         {
             base.Initialize();
+
+            Player = new Player();//Player object
+            SpriteFactory.Instance.CreateRightPlayer();//Set up the inital sprite
+
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new MouseController(this));
@@ -104,8 +122,9 @@ namespace HackAndSlash
 
             //Get sprite from spriteFactory
             SpriteFactory.Instance.LoadAllTextures(Content);
+
             SpriteBG = new SpriteBG(SpriteFactory.Instance.CreateBG(), graphics);
-            SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
+           // SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
             snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice);
             bugfirst = new BugEnemy(new Vector2(200,100), GraphicsDevice);
@@ -145,7 +164,7 @@ namespace HackAndSlash
             {
                 controller.Update();
             }
-            SpriteHolder.Update();
+            Player.Update();
             ItemHolder.Update();
             
             snakefirst.Update(gameTime);
@@ -162,9 +181,9 @@ namespace HackAndSlash
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y));
-            SpriteHolder.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
-            ItemHolder.Draw(spriteBatch, new Vector2(300, 200));
+            SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
+            Player.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
+            ItemHolder.Draw(spriteBatch, new Vector2(300, 200), Color.White);
             snakefirst.Draw();
             bugfirst.Draw();
 

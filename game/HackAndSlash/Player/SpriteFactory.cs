@@ -84,23 +84,49 @@ namespace HackAndSlash
             return BGSprite;
         }
 
-        public IPlayer CreateUpPlayer()
+        public Texture2D CreatePlayer()
         {
-            return new Player(PlayerSpriteUp, 1, 7, 4);
+            return PlayerSpriteRight; //initial face right
         }
 
-        public IPlayer CreateRightPlayer()
+        public void CreateUpPlayer()
         {
-            return new Player(PlayerSpriteRight, 1, 7, 4);
-        }
-        public IPlayer CreateLeftPlayer()
-        {
-            return new Player(PlayerSpriteLeft, 1, 7, 4);
+            DrawPlayer.Instance.SetTexture(PlayerSpriteUp);
         }
 
-        public IPlayer CreateDownPlayer()
+        public void CreateRightPlayer()
         {
-            return new Player(PlayerSpriteDown, 1, 7, 4);
+            DrawPlayer.Instance.SetTexture(PlayerSpriteRight);
+        }
+        public void CreateLeftPlayer()
+        {
+            DrawPlayer.Instance.SetTexture(PlayerSpriteLeft);
+        }
+
+        public void CreateDownPlayer()
+        {
+            DrawPlayer.Instance.SetTexture(PlayerSpriteDown);
+        }
+
+        //*******************************
+        //Below are player attack state, need new sprite to 
+        public void CreateUpAttackPlayer()
+        {
+            DrawPlayer.Instance.SetTexture(PlayerSpriteUp);
+        }
+
+        public void CreateRightAttackPlayer()
+        {
+            DrawPlayer.Instance.SetTexture(PlayerSpriteRight);
+        }
+        public void CreateLeftAttackPlayer()
+        {
+            DrawPlayer.Instance.SetTexture(PlayerSpriteLeft);
+        }
+
+        public void CreateDownAttackPlayer()
+        {
+            DrawPlayer.Instance.SetTexture(PlayerSpriteDown);
         }
 
         //public ISprite CreateUpPlayer()

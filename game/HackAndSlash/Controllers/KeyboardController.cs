@@ -11,25 +11,27 @@ namespace HackAndSlash
     {
         private Game1 game { get; set; }
         private Dictionary<Keys, ICommand> controllerMappings;
+
         //Statemachine to keep track the player's state
         private PlayerStateMachine playerStateMachine;
 
         public KeyboardController(Game1 game)
         {
             this.game = game;
-            playerStateMachine = new PlayerStateMachine(1, game); //default is facing right
+            playerStateMachine = new PlayerStateMachine(1); //default is facing right
+
 
             //add all default controls
             controllerMappings = new Dictionary<Keys, ICommand>()
             {
-                {Keys.W, new MoveUpCommand(game,playerStateMachine)},
-                {Keys.A, new MoveLeftCommand(game, playerStateMachine)},
-                {Keys.S, new MoveDownCommand(game, playerStateMachine)},
-                {Keys.D, new MoveRightCommand(game, playerStateMachine)},
-                {Keys.Z, new AttackCommand(game)},
-                {Keys.N, new AttackCommand(game)},
+                {Keys.W, new MoveUpCommand(game,game.Player)},
+                {Keys.A, new MoveLeftCommand(game, game.Player)},
+                {Keys.S, new MoveDownCommand(game, game.Player)},
+                {Keys.D, new MoveRightCommand(game, game.Player)},
+                {Keys.Z, new AttackCommand(game, playerStateMachine)},
+                {Keys.N, new AttackCommand(game, playerStateMachine)},
                 {Keys.D1, new UsePlayerItemCommand(game)},
-                {Keys.E, new DamageCommand(game, playerStateMachine)},
+                {Keys.E, new DamageCommand(game, game.Player)},
                 {Keys.T, new BlockCycleCommand(game)},
                 {Keys.Y, new BlockCycleCommand(game)},
                 {Keys.U, new ItemCycleCommand(game)},

@@ -11,20 +11,20 @@ namespace HackAndSlash
     public class MoveRightCommand : ICommand
     {
         private Game1 game;
-        private PlayerStateMachine playerStateMachine;
+        private IPlayer Player;
 
-        public MoveRightCommand(Game1 game, PlayerStateMachine playerStateMachine)
+        public MoveRightCommand(Game1 game, IPlayer Player)
         {
             this.game = game;
-            this.playerStateMachine = playerStateMachine;
+            this.Player = Player;
         }
         public void execute()
         {
             //only change the character facing direction if the state changes
-            if (playerStateMachine.Direction != 1)
+            if (Player.GetDir() != 1)
             {
-                playerStateMachine.ChangeDirection(1);//direction is right
-                game.PlayerSprite = playerStateMachine.Move(); //set the sprite
+                Player.ChangeDirection(1);//face down
+                Player.Move();
             }
             //move the sprite
             game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X+2, game.Pos.Y);

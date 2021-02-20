@@ -9,13 +9,16 @@ namespace HackAndSlash
     public class AttackCommand : ICommand
     {
         private Game1 game;
-        public AttackCommand(Game1 game)
+        private PlayerStateMachine playerStateMachine;
+
+        public AttackCommand(Game1 game, PlayerStateMachine playerStateMachine)
         {
             this.game = game;
+            this.playerStateMachine = playerStateMachine;
         }
         public void execute()
         {
-            //game.SpriteHolder = new (method for attacking player sprite)
+            //game.PlayerSprite = playerStateMachine.Attack(); //Make it like damagedCommand!
         }
     }
 }

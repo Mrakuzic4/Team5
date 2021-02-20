@@ -9,76 +9,46 @@ namespace HackAndSlash
 
     public class Player : IPlayer
     {
-        public Texture2D Texture { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
-        public int UpdateDelay { get; set; }
+        private PlayerStateMachine playerStateMachine;
 
-        // Frame and fame delays 
-        private int frameCounter; 
-        private int currentFrame;
-        private int totalFrames;        
-
-        public Player(Texture2D texture, int rows, int columns, int updateDelay)
+        public Player()
         {
-            Texture = texture;
-            Rows = rows;
-            Columns = columns;
-            UpdateDelay = updateDelay;
-            currentFrame = 0;
-            frameCounter = 0;
-            totalFrames = Rows * Columns;
+            playerStateMachine = new PlayerStateMachine(1); //inital state face right
         }
 
-        public int GetCurrentFrame()
+        public int GetDir()
         {
-            return currentFrame;
+            return playerStateMachine.Direction;
         }
 
-        public void Update()
+        public void ChangeDirection(int dir)
         {
-            frameCounter++;
-            // Add delay 
-            if (frameCounter == UpdateDelay) {
-
-                // Loop reset 
-                if (currentFrame == totalFrames)
-                    currentFrame = 0;
-
-                currentFrame++;
-                frameCounter = 0;
-            }
+            playerStateMachine.ChangeDirection(dir);
         }
-
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
-        {
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
-            int row = (Rows == 1) ? 0 : (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
-
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
-
-            spriteBatch.Begin();
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
-            spriteBatch.End();
-        }
-
 
         public void Move()
         {
-            throw new System.NotImplementedException();
+            playerStateMachine.Move();
         }
 
         public void Attack()
         {
-            throw new System.NotImplementedException();
+            playerStateMachine.Attack(); //to be fixed...
         }
 
         public void Damaged()
         {
-            throw new System.NotImplementedException();
+            playerStateMachine.Damaged();
+        }
+
+        public void Update()
+        {
+            DrawPlayer.Instance.Update();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
+        {
+            DrawPlayer.Instance.Draw(spriteBatch, location, color);
         }
     }
     

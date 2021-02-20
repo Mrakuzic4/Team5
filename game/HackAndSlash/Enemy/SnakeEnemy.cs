@@ -93,7 +93,7 @@ namespace HackAndSlash
                 //get the appropriate snake sprite from factory and set it to EnemySprite
                 //EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeIdle();
                 //call EnemySprite.draw
-                snakeState.MachineEnemySprite.Draw(spriteBatch,position);
+                snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
                 
             }
 
@@ -102,7 +102,7 @@ namespace HackAndSlash
                 //get the appropriate snake sprite from factory and set it to EnemySprite
                 //EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeMoving();
                 //call EnemySprite.draw
-                snakeState.MachineEnemySprite.Draw(spriteBatch, position);
+                snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
             }
 
             else if(snakeState.state == snakeStateMachine.snakeHealth.Attack)
@@ -110,7 +110,7 @@ namespace HackAndSlash
                 //get the appropriate snake sprite from factory and set it to EnemySprite
                 //EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeAttack();
                 //call EnemySprite.draw
-                snakeState.MachineEnemySprite.Draw(spriteBatch, position);
+                snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
             }
 
             else if(snakeState.state == snakeStateMachine.snakeHealth.Die)
@@ -118,7 +118,7 @@ namespace HackAndSlash
                 //get the appropriate snake sprite from factory and set it to EnemySprite
                 //EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeDie();
                 //call EnemySprite.draw
-                snakeState.MachineEnemySprite.Draw(spriteBatch, position);
+                snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
             }
 
             else if(snakeState.state == snakeStateMachine.snakeHealth.Not)
