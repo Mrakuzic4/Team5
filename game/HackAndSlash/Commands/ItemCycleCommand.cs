@@ -15,7 +15,7 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            //change "ItemHolder"(?) field in primary game class
+            game.firewallFirst.changeToUseable();
         }
     }
 }

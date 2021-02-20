@@ -135,7 +135,7 @@ namespace HackAndSlash
             bugfirst.LoadContent();
 
             // Items
-            firewallFirst = new FirewallItem(new Vector2(100, 100), GraphicsDevice);
+            firewallFirst = new FirewallItem(new Vector2(200, 200), GraphicsDevice);
 
             firewallFirst.LoadContent(); ;
 

@@ -19,7 +19,7 @@ namespace HackAndSlash
 
         private FirewallStateMachine itemState;
         private static int numUses = 0;
-        private const int USE_DURATION = 30; // length of effect
+        private const int USE_DURATION = 100; // length of effect
         private int useDurationCounter = 0; 
         private static int cooldown = 0; // item is useable if == 0
         private const int ITEM_COOLDOWN = 30; // time in update cycles between uses
@@ -58,6 +58,7 @@ namespace HackAndSlash
                     break;
                 case FirewallStateMachine.ItemStates.Useable:
                     // check for uses
+                    position = new Vector2();
                     cooldown--;
                     if (cooldown <= 0)
                     {
@@ -85,20 +86,22 @@ namespace HackAndSlash
                         }
                     }
                     // slow down
-                    switch (playerDirection)
-                    {
-                        case 0: // left
-                            position.X -= USE_DURATION / (MAX_RANGE * spriteWidth);
-                            break;
-                        case 1: // right
-                            position.X += USE_DURATION / (MAX_RANGE * spriteWidth);
-                            break;
-                        case 2: // up
-                            position.Y -= USE_DURATION / (MAX_RANGE * spriteHeight);
-                            break;
-                        case 3: // down
-                            position.Y += USE_DURATION / (MAX_RANGE * spriteHeight);
-                            break;
+                    if (useDurationCounter % (USE_DURATION / MAX_RANGE) == 0) {
+                        switch (playerDirection)
+                        {
+                            case 0: // left
+                                position.X -= spriteWidth;
+                                break;
+                            case 1: // right
+                                position.X += spriteWidth;
+                                break;
+                            case 2: // up
+                                position.Y -= spriteHeight;
+                                break;
+                            case 3: // down
+                                position.Y += spriteHeight;
+                                break;
+                        }
                     }
 
                     break;
@@ -127,25 +130,25 @@ namespace HackAndSlash
                     switch (playerDirection)
                     {
                         case 0: // facing left
-                            for(float i = position.X; i > playerPosition.X; i += spriteWidth)
+                            for(float i = position.X; i < playerPosition.X; i += spriteWidth)
                             {
                                 firewallSprite.Draw(spriteBatch, new Vector2(i, playerPosition.Y), Color.White);
                             }
                             break;
                         case 1: // facing right
-                            for (float i = position.X; i < playerPosition.X; i -= spriteWidth)
+                            for (float i = position.X; i > playerPosition.X; i -= spriteWidth)
                             {
                                 firewallSprite.Draw(spriteBatch, new Vector2(i, playerPosition.Y), Color.White);
                             }
                             break;
                         case 3: // facing Up
-                            for (float i = position.Y; i > playerPosition.Y; i += spriteWidth)
+                            for (float i = position.Y; i < playerPosition.Y; i += spriteWidth)
                             {
                                 firewallSprite.Draw(spriteBatch, new Vector2(playerPosition.X, i), Color.White);
                             }
                             break;
                         case 4: // facing down
-                            for (float i = position.Y; i < playerPosition.Y; i -= spriteWidth)
+                            for (float i = position.Y; i > playerPosition.Y; i -= spriteWidth)
                             {
                                 firewallSprite.Draw(spriteBatch, new Vector2(playerPosition.X, i), Color.White);
                             }
@@ -154,18 +157,19 @@ namespace HackAndSlash
                     break;
                 case FirewallStateMachine.ItemStates.Expended:
                     // Gray out in toolbar if numUses == 0
+                    firewallSprite.Draw(spriteBatch, position, Color.Gray);
                     break;
             }
         }
 
-        void collectItem(IPlayer player)
+        public void collectItem(IPlayer player)
         {
             itemState.changeToUseable();
-            position = new Vector2(0,0);
+            position = new Vector2(100, 100);
             numUses++;
         }
 
-        void useItem(int currentPlayerDirection, Vector2 currentPlayerPosition)
+        public void useItem(int currentPlayerDirection, Vector2 currentPlayerPosition)
         {
             if (itemState.state == FirewallStateMachine.ItemStates.Useable && cooldown == 0)
             {
@@ -176,6 +180,30 @@ namespace HackAndSlash
                 cooldown = ITEM_COOLDOWN;
             }
 
+        }
+
+        public void changeToCollectable()
+        {
+            //player drops item
+            itemState.changeToCollectable();
+        }
+
+        public void changeToUseable()
+        {
+            //player collects item
+            itemState.changeToUseable();
+        }
+
+        public void changeToBeingUsed()
+        {
+            //player is using item
+            itemState.changeToBeingUsed();
+        }
+
+        public void changeToExpended()
+        {
+            //player used this instance of the item
+            itemState.changeToExpended();
         }
     }
 
