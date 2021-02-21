@@ -70,6 +70,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GlobalSettings.cs" />
     <Compile Include="ISprite.cs" />
+    <Compile Include="Items\BombItem.cs" />
     <Compile Include="Items\FirewallItem.cs" />
     <Compile Include="Items\IItem.cs" />
     <Compile Include="Items\ItemSprite.cs" />

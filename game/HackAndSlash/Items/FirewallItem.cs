@@ -21,16 +21,16 @@ namespace HackAndSlash
         private static int numUses = 0;
         private const int USE_DURATION = 100; // length of effect
         private int useDurationCounter = 0; 
-        private static int cooldown = 0; // item is useable if == 0
-        private const int ITEM_COOLDOWN = 30; // time in update cycles between uses
-        private const int MAX_RANGE = 5; // range in # of sprites(tiles)
+        private static int cooldown = 0; // item is useable if == 0 
+        private const int ITEM_COOLDOWN = 30; // time in update cycles between uses 
+        private const int MAX_RANGE = 5; // range in # of sprites(tiles) 
         private Vector2 toolBarPosition;
 
         private int playerDirection = 0;
         private Vector2 playerPosition;
         
         // Constructor
-        public FirewallItem(Vector2 startPosition, GraphicsDevice graphics)
+        public FirewallItem(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch gameSpriteBatch)
         {
             position = startPosition;
             itemState = new FirewallStateMachine();
@@ -39,13 +39,7 @@ namespace HackAndSlash
             spriteWidth = firewallSprite.Texture.Width / firewallSprite.Columns;
             spriteHeight = firewallSprite.Texture.Height / firewallSprite.Rows;
             toolBarPosition = new Vector2(10, 10);
-
-        }
-
-        public void LoadContent()
-        {
-            spriteBatch = new SpriteBatch(Graphics);
-
+            spriteBatch = gameSpriteBatch;
         }
 
         public void Update()

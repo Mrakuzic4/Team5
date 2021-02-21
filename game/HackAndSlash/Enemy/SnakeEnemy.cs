@@ -23,18 +23,20 @@ namespace HackAndSlash
 
 
         //make the constructor for the class
-        public SnakeEnemy(Vector2 startPosition, GraphicsDevice graphics)
+        public SnakeEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch SB)
         {
             position = startPosition;
             snakeState = new snakeStateMachine();
             Graphics = graphics;
             EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeIdle();
-            
+            spriteBatch = SB;
+
+
         }
 
         public void LoadContent()
         {
-           spriteBatch = new SpriteBatch(Graphics);
+           // spriteBatch = new SpriteBatch(Graphics);
             
         }
 

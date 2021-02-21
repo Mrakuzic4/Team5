@@ -10,8 +10,6 @@ namespace HackAndSlash
 {
     interface IItem
     {
-        void LoadContent();
-
         void Update();
 
         void Draw();

@@ -21,11 +21,12 @@ namespace HackAndSlash
         private int temp = 0;
 
         //make the constructor for the class
-        public BugEnemy(Vector2 startPosition, GraphicsDevice graphics)
+        public BugEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch spriteBatch)
         {
             position = startPosition;
             bugState = new bugStateMachine();
             Graphics = graphics;
+            this.spriteBatch = spriteBatch;
             EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateBugIdle();
         }
 

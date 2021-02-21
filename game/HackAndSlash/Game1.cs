@@ -128,16 +128,16 @@ namespace HackAndSlash
             SpriteBG = new SpriteBG(SpriteFactory.Instance.CreateBG(), graphics);
            // SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
-            snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice);
-            bugfirst = new BugEnemy(new Vector2(200,100), GraphicsDevice);
+            snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice, spriteBatch);
+            bugfirst = new BugEnemy(new Vector2(200,100), GraphicsDevice, spriteBatch);
 
-            snakefirst.LoadContent();
-            bugfirst.LoadContent();
+            //snakefirst.LoadContent();
+            //bugfirst.LoadContent();
 
             // Items
-            firewallFirst = new FirewallItem(new Vector2(200, 200), GraphicsDevice);
+            firewallFirst = new FirewallItem(new Vector2(200, 200), GraphicsDevice, spriteBatch);
 
-            firewallFirst.LoadContent(); ;
+            //firewallFirst.LoadContent(); ;
 
             //Block Textures
             textureChipBlock = Content.Load<Texture2D>("images/ChipBlock");
@@ -185,13 +185,16 @@ namespace HackAndSlash
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
+            spriteBatch.Begin();
+
+            //SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);sd
             Player.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
             firewallFirst.Draw();
             snakefirst.Draw();
             bugfirst.Draw();
 
-
+            spriteBatch.End();
+            
             base.Draw(gameTime);
         }
     }
