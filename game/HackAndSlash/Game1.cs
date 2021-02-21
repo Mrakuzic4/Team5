@@ -190,6 +190,7 @@ namespace HackAndSlash
             firewallFirst.Draw();
             snakefirst.Draw();
             bugfirst.Draw();
+            BlockHolder.Draw();
 
 
             base.Draw(gameTime);

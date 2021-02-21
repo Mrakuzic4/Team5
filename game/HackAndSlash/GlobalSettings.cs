@@ -51,6 +51,8 @@ namespace HackAndSlash
         public ImageFile fireWall;
         public ImageFile BG;
 
+        public ImageFile ChipBlock;
+
         public ImageDatabase()
         {
             // Initilize images with path/name, column and row 
@@ -72,6 +74,8 @@ namespace HackAndSlash
 
             fireWall = new ImageFile("images/firewall", 1, 2);
             BG = new ImageFile("images/BG", 1, 1);
+
+            ChipBlock = new ImageFile("images/ChipBlock", 1, 1);
         }
     }
 }

@@ -31,5 +31,6 @@ namespace HackAndSlash
             spriteBatch.Draw(block, location, Color.White);
             spriteBatch.End();
         }
+
     }
 }

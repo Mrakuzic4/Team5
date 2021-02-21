@@ -34,6 +34,8 @@ namespace HackAndSlash
 
         private Texture2D FirewallSprite;
 
+        private Texture2D ChipBlock;
+
 
         private static SpriteFactory instance = new SpriteFactory();
 
@@ -82,6 +84,9 @@ namespace HackAndSlash
 
             // More Content.Load calls follow
             BGSprite = content.Load<Texture2D>(IMDB.BG.pathName);
+
+            //Blocks
+            ChipBlock = content.Load<Texture2D>(IMDB.ChipBlock.pathName);
 
         }
 
