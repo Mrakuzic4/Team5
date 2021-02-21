@@ -13,6 +13,8 @@ namespace HackAndSlash
     /// </summary>
     class SpriteFactory
     {
+        ImageDatabase IMDB;
+
         private Texture2D PlayerSpriteRight;
         private Texture2D PlayerSpriteLeft;
         private Texture2D PlayerSpriteUp;
@@ -49,37 +51,37 @@ namespace HackAndSlash
 
         public void LoadAllTextures(ContentManager content)
         {
-
+            IMDB = new ImageDatabase();
             // Original image from https://www.spriters-resource.com/fullview/146744/
             // Edited in Photoshop to align the textures 
             // Create the maincharacter sprite with delay, might look odd depending on your machine 
-            PlayerSpriteRight = content.Load<Texture2D>("images/sucOva");
-            PlayerSpriteLeft = content.Load<Texture2D>("images/sucLeft");
-            PlayerSpriteUp = content.Load<Texture2D>("images/sucUp");
-            PlayerSpriteDown = content.Load<Texture2D>("images/sucDown");
+            PlayerSpriteRight = content.Load<Texture2D>(IMDB.playerMoveRight.pathName);
+            PlayerSpriteLeft = content.Load<Texture2D>(IMDB.playerMoveLeft.pathName);
+            PlayerSpriteUp = content.Load<Texture2D>(IMDB.playerMoveUp.pathName);
+            PlayerSpriteDown = content.Load<Texture2D>(IMDB.playerMoveDown.pathName);
 
             // Original image from https://opengameart.org/content/animated-snake
             // Edited in Adobe Fresco to align specific states
 
-            SnakeIdleSprite = content.Load<Texture2D>("images/SnakeIdle");
-            SnakeMoveSprite = content.Load<Texture2D>("images/SnakeMoving");
-            SnakeAttackSprite = content.Load<Texture2D>("images/SnakeAttack");
-            SnakeDieSprite = content.Load<Texture2D>("images/SnakeDie");
+            SnakeIdleSprite = content.Load<Texture2D>(IMDB.snakeIdle.pathName);
+            SnakeMoveSprite = content.Load<Texture2D>(IMDB.snakeMoveLeft.pathName);
+            SnakeAttackSprite = content.Load<Texture2D>(IMDB.snakeAttackLeft.pathName);
+            SnakeDieSprite = content.Load<Texture2D>(IMDB.snakeDie.pathName);
 
             //Original image sourced from 
             //Edited in Adobe fresco to align specific states
 
-            BugMoveUpSprite = content.Load<Texture2D>("images/BugMoveUp");
-            BugMoveDownSprite = content.Load<Texture2D>("images/BugMoveDown");
-            BugDieSprite = content.Load<Texture2D>("images/BugDie");
-            BugIdleSprite = content.Load<Texture2D>("images/BugIdle");
+            BugMoveUpSprite = content.Load<Texture2D>(IMDB.bugMoveUp.pathName);
+            BugMoveDownSprite = content.Load<Texture2D>(IMDB.bugMoveDown.pathName);
+            BugDieSprite = content.Load<Texture2D>(IMDB.bugDie.pathName);
+            BugIdleSprite = content.Load<Texture2D>(IMDB.bugIdle.pathName);
 
             //Item Sprites 
-            FirewallSprite = content.Load<Texture2D>("images/firewall");
+            FirewallSprite = content.Load<Texture2D>(IMDB.fireWall.pathName);
 
 
             // More Content.Load calls follow
-            BGSprite = content.Load<Texture2D>("images/BG");
+            BGSprite = content.Load<Texture2D>(IMDB.BG.pathName);
 
         }
 
@@ -156,55 +158,55 @@ namespace HackAndSlash
 
         public ISprite CreateSnakeIdle()
         {
-            return new EnemySprite(SnakeIdleSprite, 1, 10);
+            return new EnemySprite(SnakeIdleSprite, IMDB.snakeIdle.C, IMDB.snakeIdle.R);
             //return new AnimatedSpriteMC(SnakeIdleSprite, 1, 10, 0);
         }
 
         public ISprite CreateSnakeMoving()
         {
-            return new EnemySprite(SnakeMoveSprite, 1, 10);
+            return new EnemySprite(SnakeMoveSprite, IMDB.snakeMoveLeft.C, IMDB.snakeMoveLeft.R);
             //return new AnimatedSpriteMC(SnakeMoveSprite, 1, 10, 0);
         }
 
         public ISprite CreateSnakeAttack()
         {
-            return new EnemySprite(SnakeAttackSprite, 1, 10);
+            return new EnemySprite(SnakeAttackSprite, IMDB.snakeAttackLeft.C, IMDB.snakeAttackLeft.R);
             //return new AnimatedSpriteMC(SnakeAttackSprite, 1, 10, 0);
         }
 
         public ISprite CreateSnakeDie()
         {
-            return new EnemySprite(SnakeDieSprite, 1, 10);
+            return new EnemySprite(SnakeDieSprite, IMDB.snakeDie.C, IMDB.snakeIdle.R);
             //return new AnimatedSpriteMC(SnakeDieSprite, 1, 10, 0);
         }
 
         public ISprite CreateBugIdle()
         {
-            return new EnemySprite(BugIdleSprite, 1, 6);
+            return new EnemySprite(BugIdleSprite, IMDB.bugIdle.C, IMDB.bugIdle.R);
             //return new AnimatedSpriteMC(BugIdleSprite, 1, 6, 0);
         }
 
         public ISprite CreateBugMoveUp()
         {
-            return new EnemySprite(BugMoveUpSprite, 1, 6);
+            return new EnemySprite(BugMoveUpSprite, IMDB.bugMoveUp.C, IMDB.bugMoveUp.R);
             //return new AnimatedSpriteMC(BugMoveUpSprite, 1, 6, 0);
         }
 
         public ISprite CreateBugMoveDown()
         {
-            return new EnemySprite(BugMoveDownSprite, 1, 6);
+            return new EnemySprite(BugMoveDownSprite, IMDB.bugMoveDown.C, IMDB.bugMoveDown.R);
             //return new AnimatedSpriteMC(BugMoveDownSprite, 1, 6, 0);
         }
 
         public ISprite CreateBugDie()
         {
-            return new EnemySprite(BugDieSprite, 1, 6);
+            return new EnemySprite(BugDieSprite, IMDB.bugDie.C, IMDB.bugDie.R);
             //return new AnimatedSpriteMC(BugDieSprite, 1, 6, 0);
         }
 
         public  ISprite CreateFirewall()
         {
-            return new ItemSprite(FirewallSprite, 1, 2);
+            return new ItemSprite(FirewallSprite, IMDB.fireWall.C, IMDB.fireWall.R);
         }
 
     }
