@@ -27,9 +27,9 @@ namespace HackAndSlash
         }
         public void Draw()
         {
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
             spriteBatch.Draw(block, location, Color.White);
-            spriteBatch.End();
+            //spriteBatch.End();
         }
 
     }

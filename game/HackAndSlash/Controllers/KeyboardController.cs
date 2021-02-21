@@ -28,6 +28,11 @@ namespace HackAndSlash
                 {Keys.A, new MoveLeftCommand(game, game.Player)},
                 {Keys.S, new MoveDownCommand(game, game.Player)},
                 {Keys.D, new MoveRightCommand(game, game.Player)},
+                {Keys.Up, new MoveUpCommand(game,game.Player)},
+                {Keys.Left, new MoveLeftCommand(game, game.Player)},
+                {Keys.Down, new MoveDownCommand(game, game.Player)},
+                {Keys.Right, new MoveRightCommand(game, game.Player)},
+
                 {Keys.Z, new AttackCommand(game, playerStateMachine)},
                 {Keys.N, new AttackCommand(game, playerStateMachine)},
                 {Keys.D1, new UsePlayerItemCommand(game)},

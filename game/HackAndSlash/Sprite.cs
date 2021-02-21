@@ -50,9 +50,9 @@ namespace HackAndSlash
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
             spriteBatch.Draw(Texture, textureLocation, Color.White);
-            spriteBatch.End();
+            //spriteBatch.End();
         }
     }
 }

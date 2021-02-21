@@ -15,7 +15,7 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            game.firewallFirst.changeToUseable();
+            game.firewallFirst.ChangeToUseable();
         }
     }
 }

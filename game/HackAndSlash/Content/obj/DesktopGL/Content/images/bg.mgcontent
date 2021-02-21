@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/images/bg.jpg</SourceFile>
-  <SourceTime>2021-02-09T17:43:07.8002446-05:00</SourceTime>
-  <DestFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/bg.xnb</DestFile>
-  <DestTime>2021-02-21T11:22:37.5707157-05:00</DestTime>
+  <SourceFile>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/images/bg.jpg</SourceFile>
+  <SourceTime>2021-02-16T17:23:39.2662876-05:00</SourceTime>
+  <DestFile>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/bg.xnb</DestFile>
+  <DestTime>2021-02-21T11:31:53.1888785-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
