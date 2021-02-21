@@ -52,6 +52,7 @@ namespace HackAndSlash
         public ImageFile BG;
 
         public ImageFile ChipBlock;
+        public ImageFile SmoothBlock;
 
         public ImageDatabase()
         {
@@ -76,6 +77,7 @@ namespace HackAndSlash
             BG = new ImageFile("images/BG", 1, 1);
 
             ChipBlock = new ImageFile("images/ChipBlock", 1, 1);
+            SmoothBlock = new ImageFile("images/SmoothBlock", 1, 1);
         }
     }
 }

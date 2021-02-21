@@ -46,8 +46,10 @@
   <ItemGroup>
     <Compile Include="Blocks\ChipBlock.cs" />
     <Compile Include="Blocks\IBlock.cs" />
+    <Compile Include="Blocks\SmoothBlock.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
-    <Compile Include="Commands\BlockCycleCommand.cs" />
+    <Compile Include="Commands\BlockCycleDownCommand.cs" />
+    <Compile Include="Commands\BlockCycleUpCommand.cs" />
     <Compile Include="Commands\DamageCommand.cs" />
     <Compile Include="Commands\EnemyCycleCommandBug.cs" />
     <Compile Include="Commands\EnemyCycleCommandSnake.cs" />

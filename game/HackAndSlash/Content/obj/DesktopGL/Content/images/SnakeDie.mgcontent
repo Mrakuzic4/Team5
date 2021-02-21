@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/images/SnakeDie.png</SourceFile>
-  <SourceTime>2021-02-20T09:31:22.7950631-05:00</SourceTime>
-  <DestFile>C:/Users/admin/source/repos/Team5(2)/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/SnakeDie.xnb</DestFile>
-  <DestTime>2021-02-21T11:31:53.6876017-05:00</DestTime>
+  <SourceFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/images/SnakeDie.png</SourceFile>
+  <SourceTime>2021-02-19T15:59:35.7804491-05:00</SourceTime>
+  <DestFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/SnakeDie.xnb</DestFile>
+  <DestTime>2021-02-21T15:02:09.8846173-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

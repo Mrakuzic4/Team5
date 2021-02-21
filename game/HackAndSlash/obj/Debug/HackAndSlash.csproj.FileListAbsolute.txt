@@ -129,3 +129,4 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.csproj.CopyComplete
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.exe
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.pdb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SmoothBlock.xnb

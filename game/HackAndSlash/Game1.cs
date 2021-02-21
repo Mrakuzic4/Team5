@@ -31,10 +31,9 @@ namespace HackAndSlash
         public ISprite PlayerSprite { set { SpriteHolder = value; } }
         private ISprite SpriteHolder { get; set; }
         private ISprite ItemHolder { get; set; }
-        private IBlock BlockHolder { get; set; }
-       
+        public IBlock BlockHolder { get; set; }
+        
         private Texture2D textureFirewall { get; set; }
-        private Texture2D textureChipBlock { get; set; }
         
         public SnakeEnemy snakefirst;
         public BugEnemy bugfirst;
@@ -64,7 +63,9 @@ namespace HackAndSlash
         private Vector2 horizontal;
         private Vector2 vertical;
 
+        // Object lists
         List<Object> controllerList;
+        public List<IBlock> blockList { get; set; }
 
 
         public Game1()
@@ -139,11 +140,13 @@ namespace HackAndSlash
 
             //firewallFirst.LoadContent(); ;
 
-            //Block Textures
-            textureChipBlock = Content.Load<Texture2D>("images/ChipBlock");
-              
-            
-            BlockHolder = new ChipBlock(textureChipBlock, new Vector2(200, 300), spriteBatch);
+            //Create list of blocks and set blockholder to first block in the list
+            blockList = new List<IBlock>()
+            {
+                {SpriteFactory.Instance.CreateChipBlock(spriteBatch)},
+                {SpriteFactory.Instance.CreateSmoothBlock(spriteBatch)}
+            };
+            BlockHolder = blockList[0];
         }
 
         /// <summary>
@@ -188,11 +191,11 @@ namespace HackAndSlash
             spriteBatch.Begin();
 
             //SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);sd
+            BlockHolder.Draw();
             Player.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
             firewallFirst.Draw();
             snakefirst.Draw();
             bugfirst.Draw();
-            BlockHolder.Draw();
 
             spriteBatch.End();
             
