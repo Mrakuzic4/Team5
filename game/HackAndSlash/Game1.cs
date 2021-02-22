@@ -86,7 +86,7 @@ namespace HackAndSlash
             base.Initialize();
 
             Player = new Player(this);//Player object
-            SpriteFactory.Instance.CreateRightPlayer();//Set up the inital sprite
+            SpriteFactory.Instance.SetRightPlayer();//Set up the inital sprite
 
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));

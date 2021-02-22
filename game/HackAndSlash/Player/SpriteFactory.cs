@@ -12,12 +12,6 @@ namespace HackAndSlash
     {
         ImageDatabase IMDB;
 
-        private Texture2D PlayerSpriteRight;
-        private Texture2D PlayerSpriteLeft;
-        private Texture2D PlayerSpriteUp;
-        private Texture2D PlayerSpriteDown;
-
-        private Texture2D Zelda;
         private Texture2D ZeldaDown;
         private Texture2D ZeldaUp;
         private Texture2D ZeldaLeft;
@@ -65,16 +59,7 @@ namespace HackAndSlash
 
         public void LoadAllTextures(ContentManager content)
         {
-            IMDB = new ImageDatabase();
-            // Original image from https://www.spriters-resource.com/fullview/146744/
-            // Edited in Photoshop to align the textures 
-            // Create the maincharacter sprite with delay, might look odd depending on your machine 
-            //PlayerSpriteRight = content.Load<Texture2D>(IMDB.playerMoveRight.pathName);
-            //PlayerSpriteLeft = content.Load<Texture2D>(IMDB.playerMoveLeft.pathName);
-            //PlayerSpriteUp = content.Load<Texture2D>(IMDB.playerMoveUp.pathName);
-            //PlayerSpriteDown = content.Load<Texture2D>(IMDB.playerMoveDown.pathName);
-
-            Zelda = content.Load<Texture2D>(IMDB.zelda.pathName);
+            IMDB = new ImageDatabase();         
 
             ZeldaDown = content.Load<Texture2D>(IMDB.zeldaDown.pathName);
             ZeldaUp = content.Load<Texture2D>(IMDB.zeldaUp.pathName);
@@ -128,28 +113,27 @@ namespace HackAndSlash
             
         //***********Below are Player movement***************
     
-        public void CreateUpPlayer()
+        public void SetUpPlayer()
         {
             DrawPlayer.Instance.Rows = IMDB.zeldaUp.R;
             DrawPlayer.Instance.Columns = IMDB.zeldaUp.C;
             DrawPlayer.Instance.SetTexture(ZeldaUp);
         }
 
-        //reassign this
-        public void CreateRightPlayer()
+        public void SetRightPlayer()
         {
             DrawPlayer.Instance.Rows = IMDB.zeldaRight.R;
             DrawPlayer.Instance.Columns = IMDB.zeldaRight.C;
             DrawPlayer.Instance.SetTexture(ZeldaRight);
         }
-        public void CreateLeftPlayer()
+        public void SetLeftPlayer()
         {
             DrawPlayer.Instance.Rows = IMDB.zeldaLeft.R;
             DrawPlayer.Instance.Columns = IMDB.zeldaLeft.C;
             DrawPlayer.Instance.SetTexture(ZeldaLeft);
         }
 
-        public void CreateDownPlayer()
+        public void SetDownPlayer()
         {
             DrawPlayer.Instance.Rows = IMDB.zeldaDown.R;
             DrawPlayer.Instance.Columns = IMDB.zeldaDown.C;
@@ -157,27 +141,27 @@ namespace HackAndSlash
         }
 
         //*************Below are Player attack*********************
-        public void CreateUpAttackPlayer()
+        public void SetUpAttackPlayer()
         {
             DrawPlayer.Instance.Rows = IMDB.zeldaAttackUp.R;
             DrawPlayer.Instance.Columns = IMDB.zeldaAttackUp.C;
             DrawPlayer.Instance.SetTexture(ZeldaAttackUp);
         }
 
-        public void CreateRightAttackPlayer()
+        public void SetRightAttackPlayer()
         {
             DrawPlayer.Instance.Rows = IMDB.zeldaAttackRight.R;
             DrawPlayer.Instance.Columns = IMDB.zeldaAttackRight.C;
             DrawPlayer.Instance.SetTexture(ZeldaAttackRight);
         }
-        public void CreateLeftAttackPlayer()
+        public void SetLeftAttackPlayer()
         {
             DrawPlayer.Instance.Rows = IMDB.zeldaAttackLeft.R;
             DrawPlayer.Instance.Columns = IMDB.zeldaAttackLeft.C;
             DrawPlayer.Instance.SetTexture(ZeldaAttackLeft);
         }
 
-        public void CreateDownAttackPlayer()
+        public void SetDownAttackPlayer()
         {
             DrawPlayer.Instance.Rows = IMDB.zeldaAttackDown.R;
             DrawPlayer.Instance.Columns = IMDB.zeldaAttackDown.C;
@@ -189,49 +173,41 @@ namespace HackAndSlash
         public ISprite CreateSnakeIdle()
         {
             return new EnemySprite(SnakeIdleSprite, IMDB.snakeIdle.C, IMDB.snakeIdle.R);
-            //return new AnimatedSpriteMC(SnakeIdleSprite, 1, 10, 0);
         }
 
         public ISprite CreateSnakeMoving()
         {
             return new EnemySprite(SnakeMoveSprite, IMDB.snakeMoveLeft.C, IMDB.snakeMoveLeft.R);
-            //return new AnimatedSpriteMC(SnakeMoveSprite, 1, 10, 0);
         }
 
         public ISprite CreateSnakeAttack()
         {
             return new EnemySprite(SnakeAttackSprite, IMDB.snakeAttackLeft.C, IMDB.snakeAttackLeft.R);
-            //return new AnimatedSpriteMC(SnakeAttackSprite, 1, 10, 0);
         }
 
         public ISprite CreateSnakeDie()
         {
             return new EnemySprite(SnakeDieSprite, IMDB.snakeDie.C, IMDB.snakeIdle.R);
-            //return new AnimatedSpriteMC(SnakeDieSprite, 1, 10, 0);
         }
 
         public ISprite CreateBugIdle()
         {
             return new EnemySprite(BugIdleSprite, IMDB.bugIdle.C, IMDB.bugIdle.R);
-            //return new AnimatedSpriteMC(BugIdleSprite, 1, 6, 0);
         }
 
         public ISprite CreateBugMoveUp()
         {
             return new EnemySprite(BugMoveUpSprite, IMDB.bugMoveUp.C, IMDB.bugMoveUp.R);
-            //return new AnimatedSpriteMC(BugMoveUpSprite, 1, 6, 0);
         }
 
         public ISprite CreateBugMoveDown()
         {
             return new EnemySprite(BugMoveDownSprite, IMDB.bugMoveDown.C, IMDB.bugMoveDown.R);
-            //return new AnimatedSpriteMC(BugMoveDownSprite, 1, 6, 0);
         }
 
         public ISprite CreateBugDie()
         {
             return new EnemySprite(BugDieSprite, IMDB.bugDie.C, IMDB.bugDie.R);
-            //return new AnimatedSpriteMC(BugDieSprite, 1, 6, 0);
         }
 
         public  ISprite CreateFirewall()

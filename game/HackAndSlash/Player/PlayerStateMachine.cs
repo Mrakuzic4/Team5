@@ -37,25 +37,25 @@ namespace HackAndSlash
             switch (playerDir)
             {
 				case GlobalSettings.Direction.Left:
-					SpriteFactory.Instance.CreateLeftPlayer();
+					SpriteFactory.Instance.SetLeftPlayer();
 					//CHange the POs
 					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X - GlobalSettings.STEP_SIZE_X, game.Pos.Y); //move the sprite
 					break;
 					
 				case GlobalSettings.Direction.Up:
-					SpriteFactory.Instance.CreateUpPlayer();
+					SpriteFactory.Instance.SetUpPlayer();
 					//move the sprite
 					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y - GlobalSettings.STEP_SIZE_Y);
 					break;
 
 				case GlobalSettings.Direction.Down:
-					SpriteFactory.Instance.CreateDownPlayer();
+					SpriteFactory.Instance.SetDownPlayer();
 					//move the sprite
 					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y + GlobalSettings.STEP_SIZE_Y);
 					break;
 
 				default: //Default to be right
-					SpriteFactory.Instance.CreateRightPlayer();
+					SpriteFactory.Instance.SetRightPlayer();
 					//move the sprite
 					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X + GlobalSettings.STEP_SIZE_X, game.Pos.Y);
 					break;
@@ -96,19 +96,19 @@ namespace HackAndSlash
 			switch (playerDir)
 			{
 				case GlobalSettings.Direction.Left:
-					SpriteFactory.Instance.CreateLeftAttackPlayer();
+					SpriteFactory.Instance.SetLeftAttackPlayer();
 					break;
 
 				case GlobalSettings.Direction.Up:
-					SpriteFactory.Instance.CreateUpAttackPlayer();
+					SpriteFactory.Instance.SetUpAttackPlayer();
 					break;
 
 				case GlobalSettings.Direction.Down:
-					SpriteFactory.Instance.CreateDownAttackPlayer();
+					SpriteFactory.Instance.SetDownAttackPlayer();
 					break;
 
 				default: //Default to be right
-					SpriteFactory.Instance.CreateRightAttackPlayer();
+					SpriteFactory.Instance.SetRightAttackPlayer();
 					break;
 			}
 		}
@@ -117,19 +117,19 @@ namespace HackAndSlash
 			switch (playerDir)
 			{
 				case GlobalSettings.Direction.Left:
-					SpriteFactory.Instance.CreateLeftPlayer();
+					SpriteFactory.Instance.SetLeftPlayer();
 					break;
 
 				case GlobalSettings.Direction.Up:
-					SpriteFactory.Instance.CreateUpPlayer();
+					SpriteFactory.Instance.SetUpPlayer();
 					break;
 
 				case GlobalSettings.Direction.Down:
-					SpriteFactory.Instance.CreateDownPlayer();
+					SpriteFactory.Instance.SetDownPlayer();
 					break;
 
 				default: //Default to be right
-					SpriteFactory.Instance.CreateRightPlayer();
+					SpriteFactory.Instance.SetRightPlayer();
 					break;
 			}
 		}
