@@ -47,11 +47,9 @@ namespace HackAndSlash
         {
             UpdateDelay = 8;
             currentFrame = 0;
-            //frameCounter = 0;
             stopwatch.Restart();
             Rows = 1;
             Columns = 7;
-            //UpdateDelay = 4;
             totalFrames = Rows * Columns;
         }
 

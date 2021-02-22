@@ -60,6 +60,11 @@ namespace HackAndSlash
         {
             DrawPlayer.Instance.Draw(spriteBatch, location, color);
         }
+
+        public void UseItem()
+        {
+            playerStateMachine.UseItem();
+        }
     }
     
 }

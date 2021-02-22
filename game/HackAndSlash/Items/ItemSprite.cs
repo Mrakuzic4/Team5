@@ -60,7 +60,6 @@ namespace HackAndSlash
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
-
         }
 
 

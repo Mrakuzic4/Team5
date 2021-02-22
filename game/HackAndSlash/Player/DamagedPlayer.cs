@@ -65,6 +65,10 @@ namespace HackAndSlash
         {
             DecoratedPlayer.ChangeDirection(dir);
         }
+        public void UseItem()
+        {
+            DecoratedPlayer.UseItem();
+        }
     }
     
 }

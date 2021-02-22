@@ -29,7 +29,6 @@ namespace HackAndSlash
                 DrawPlayer.Instance.Frame = 2;
                 RemoveDecorator();
             }
-
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
@@ -65,9 +64,10 @@ namespace HackAndSlash
         public void ChangeDirection(GlobalSettings.Direction dir)
         {
             DecoratedPlayer.ChangeDirection(dir);
-            //spriteBatch.Begin();
-            //spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
-            //spriteBatch.End();
+        }
+        public void UseItem()
+        {
+            DecoratedPlayer.UseItem();
         }
     }
 

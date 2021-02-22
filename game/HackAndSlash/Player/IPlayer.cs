@@ -11,6 +11,7 @@ namespace HackAndSlash
         void Draw(SpriteBatch spriteBatch, Vector2 location, Color color);
         void Update();
         void Move();
+        void UseItem();
         void Attack();
         void Damaged();
         int GetDir();
