@@ -26,7 +26,7 @@ namespace HackAndSlash
             if (timer % 10 == 0) DrawPlayer.Instance.Frame += 1;
             if (timer == 0)
             {
-                DrawPlayer.Instance.Frame = 2;
+                DecoratedPlayer.Move();//???
                 RemoveDecorator();
             }
         }
