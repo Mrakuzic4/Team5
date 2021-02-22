@@ -39,25 +39,25 @@ namespace HackAndSlash
             {
 				case direction.Left:
 					SpriteFactory.Instance.CreateLeftPlayer();
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X - 2, game.Pos.Y); //move the sprite
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X - GlobalSettings.STEP_SIZE_X, game.Pos.Y); //move the sprite
 					break;
 					
 				case direction.Up:
 					SpriteFactory.Instance.CreateUpPlayer();
 					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y - 2);
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y - GlobalSettings.STEP_SIZE_Y);
 					break;
 
 				case direction.Down:
 					SpriteFactory.Instance.CreateDownPlayer();
 					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y + 2);
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y + GlobalSettings.STEP_SIZE_Y);
 					break;
 
 				default: //Default to be right
 					SpriteFactory.Instance.CreateRightPlayer();
 					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X + 2, game.Pos.Y);
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X + GlobalSettings.STEP_SIZE_X, game.Pos.Y);
 					break;
 			}
 		}
@@ -70,22 +70,22 @@ namespace HackAndSlash
 			switch (playerDir)
 			{
 				case direction.Left:
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X + 10, game.Pos.Y); //move the sprite
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X + GlobalSettings.KNOCKBACK_DIST_X, game.Pos.Y); //move the sprite
 					break;
 
 				case direction.Up:
 					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y + 10);
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y + GlobalSettings.KNOCKBACK_DIST_Y);
 					break;
 
 				case direction.Down:
 					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y - 10);
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y - GlobalSettings.KNOCKBACK_DIST_Y);
 					break;
 
 				default: //Default to be right
 					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X - 10, game.Pos.Y);
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X - GlobalSettings.KNOCKBACK_DIST_X, game.Pos.Y);
 					break;
 			}
 

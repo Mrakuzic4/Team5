@@ -52,11 +52,10 @@ namespace HackAndSlash
             currentFrame = 0;
             //frameCounter = 0;
             stopwatch.Restart();
-            //Rows = 1;
-            //Columns = 7;
+            Rows = 1;
+            Columns = 7;
             //UpdateDelay = 4;
-            //currentFrame = 0;
-            //totalFrames = Rows * Columns;
+            totalFrames = Rows * Columns;
         }
 
         public void SetTexture(Texture2D texture)
@@ -94,10 +93,10 @@ namespace HackAndSlash
                     stopwatch.Restart();
                     timer = 0;
                 }
-                if (currentFrame == totalFrames)
-                {
-                    currentFrame = 0;
-                }
+            if (currentFrame == totalFrames)
+            {
+                currentFrame = 0;
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)

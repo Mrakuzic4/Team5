@@ -14,8 +14,11 @@ namespace HackAndSlash
 
         public const int STEP_SIZE_X = 5;
         public const int STEP_SIZE_Y = 5;
+        public const int KNOCKBACK_DIST_X = 10;
+        public const int KNOCKBACK_DIST_Y = 10;
 
         public const long DELAY_TIME = 100; // In ms
+        public const long DELAY_KEYBOARD = 200;
     }
 
     class ImageFile

@@ -12,7 +12,7 @@ namespace HackAndSlash
         private Game1 Game;
         private List<IBlock> BlockList;
         private Stopwatch stopwatch;
-        private long delay = GlobalSettings.DELAY_TIME;
+        private long delay = GlobalSettings.DELAY_KEYBOARD;
 
         //constructor which starts stopwatch for delay
         public BlockCycleDownCommand(Game1 game, List<IBlock> blockList)
