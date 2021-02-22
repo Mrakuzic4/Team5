@@ -34,7 +34,6 @@ namespace HackAndSlash
 
         private DrawPlayer()
         {
-
             Rows = 1;
             Columns = 7;
             UpdateDelay = 4;

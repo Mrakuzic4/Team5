@@ -43,7 +43,6 @@ namespace HackAndSlash
         public FirewallItem firewallFirst;
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
-        private Vector2 absPositionMC; // Absolute position. As position in the game map
 
         public Vector2 Pos
         {
@@ -75,6 +74,11 @@ namespace HackAndSlash
             Content.RootDirectory = "Content";
         }
 
+        public void reset() {
+            this.Initialize();
+            this.LoadContent();
+        }
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -91,9 +95,6 @@ namespace HackAndSlash
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new MouseController(this));
-
-            // Initilize character position 
-            absPositionMC.X = absPositionMC.Y = 0;
 
             // Setup window size 
             graphics.PreferredBackBufferWidth = GlobalSettings.WINDOW_WIDTH;

@@ -15,8 +15,7 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            //this.game.Content.Unload();
-            
+            game.reset();
         }
     }
 }
