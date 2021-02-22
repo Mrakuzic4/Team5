@@ -56,12 +56,6 @@ namespace HackAndSlash
             }
         }
 
-        // Attributes for camera clipping and FX 
-
-        // Camera clipping 
-        private Vector2 horizontal;
-        private Vector2 vertical;
-
         // Object lists
         List<Object> controllerList;
         public List<IBlock> blockList { get; set; }
@@ -75,8 +69,8 @@ namespace HackAndSlash
         }
 
         public void reset() {
-            this.Initialize();
-            this.LoadContent();
+            Initialize();
+            LoadContent();
         }
 
         /// <summary>
@@ -104,12 +98,6 @@ namespace HackAndSlash
             // Place character on the up left corner 
             relPositionMC.X = GlobalSettings.WINDOW_WIDTH / GlobalSettings.MAX_DISPLAY_DIV + 1;
             relPositionMC.Y = GlobalSettings.WINDOW_HEIGHT / GlobalSettings.MAX_DISPLAY_DIV + 1;
-
-            // Setup camera clipping aera 
-            horizontal.X = graphics.PreferredBackBufferWidth / GlobalSettings.MAX_DISPLAY_DIV;
-            horizontal.Y = graphics.PreferredBackBufferWidth - 2 * horizontal.X;
-            vertical.X = graphics.PreferredBackBufferHeight / GlobalSettings.MAX_DISPLAY_DIV;
-            vertical.Y = graphics.PreferredBackBufferHeight - 2 * vertical.X;
 
             graphics.ApplyChanges();
 
