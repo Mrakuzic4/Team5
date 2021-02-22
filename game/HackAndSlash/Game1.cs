@@ -30,7 +30,7 @@ namespace HackAndSlash
         private SpriteBG SpriteBG;
         public ISprite PlayerSprite { set { SpriteHolder = value; } }
         private ISprite SpriteHolder { get; set; }
-        private ISprite ItemHolder { get; set; }
+        public IItem ItemHolder { get; set; }
         public IBlock BlockHolder { get; set; }
         
         private Texture2D textureFirewall { get; set; }
@@ -41,6 +41,8 @@ namespace HackAndSlash
 
 
         public FirewallItem firewallFirst;
+        public BombItem bombFirst;
+
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
 
@@ -137,7 +139,9 @@ namespace HackAndSlash
             //bugfirst.LoadContent();
 
             // Items
-            firewallFirst = new FirewallItem(new Vector2(200, 200), GraphicsDevice, spriteBatch);
+            firewallFirst = new FirewallItem(new Vector2(200, 200), spriteBatch);
+            bombFirst = new BombItem(new Vector2(200, 200), spriteBatch);
+            ItemHolder = firewallFirst;
 
             //firewallFirst.LoadContent(); ;
 
@@ -176,7 +180,7 @@ namespace HackAndSlash
             snakefirst.Update(gameTime);
             bugfirst.Update(gameTime);
 
-            firewallFirst.Update();
+            ItemHolder.Update();
 
             base.Update(gameTime);
         }
@@ -194,7 +198,7 @@ namespace HackAndSlash
             //SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);sd
             BlockHolder.Draw();
             Player.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
-            firewallFirst.Draw();
+            ItemHolder.Draw();
             snakefirst.Draw();
             bugfirst.Draw();
 

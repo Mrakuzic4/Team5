@@ -51,6 +51,9 @@ namespace HackAndSlash
         public ImageFile bugDie;
 
         public ImageFile fireWall;
+        public ImageFile bomb;
+        public ImageFile explosion;
+
         public ImageFile BG;
 
         public ImageFile ChipBlock;
@@ -76,6 +79,8 @@ namespace HackAndSlash
             bugDie = new ImageFile("images/BugDie", 1, 6);
 
             fireWall = new ImageFile("images/firewall", 1, 2);
+            bomb = new ImageFile("images/Bomb", 1, 1);
+            explosion = new ImageFile("images/explosion", 1, 3);
             BG = new ImageFile("images/BG", 1, 1);
 
             ChipBlock = new ImageFile("images/ChipBlock", 1, 1);

@@ -30,6 +30,8 @@ namespace HackAndSlash
         private Texture2D BugDieSprite;
 
         private Texture2D FirewallSprite;
+        private Texture2D BombSprite;
+        private Texture2D ExplosionSprite;
 
         private Texture2D ChipBlock;
         private Texture2D SmoothBlock;
@@ -78,7 +80,8 @@ namespace HackAndSlash
 
             //Item Sprites 
             FirewallSprite = content.Load<Texture2D>(IMDB.fireWall.pathName);
-
+            BombSprite = content.Load<Texture2D>(IMDB.bomb.pathName);
+            ExplosionSprite = content.Load<Texture2D>(IMDB.explosion.pathName);
 
             // More Content.Load calls follow
             BGSprite = content.Load<Texture2D>(IMDB.BG.pathName);
@@ -211,6 +214,14 @@ namespace HackAndSlash
         public  ISprite CreateFirewall()
         {
             return new ItemSprite(FirewallSprite, IMDB.fireWall.C, IMDB.fireWall.R);
+        }
+        public ISprite CreateBomb()
+        {
+            return new ItemSprite(BombSprite, IMDB.bomb.C, IMDB.bomb.R);
+        }
+        public ISprite CreateExplosion()
+        {
+            return new ItemSprite(ExplosionSprite, IMDB.explosion.C, IMDB.explosion.R);
         }
 
         public IBlock CreateChipBlock(SpriteBatch spriteBatch)

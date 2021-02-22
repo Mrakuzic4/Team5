@@ -11,7 +11,6 @@ namespace HackAndSlash
         public Vector2 position;
 
         private SpriteBatch spriteBatch;
-        private GraphicsDevice Graphics;
 
         private FirewallStateMachine itemState;
         private static int numUses = 0;
@@ -26,11 +25,10 @@ namespace HackAndSlash
         private Vector2 playerPosition;
         
         // Constructor
-        public FirewallItem(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch gameSpriteBatch)
+        public FirewallItem(Vector2 startPosition, SpriteBatch gameSpriteBatch)
         {
             position = startPosition;
             itemState = new FirewallStateMachine();
-            Graphics = graphics;
             firewallSprite = (ItemSprite)SpriteFactory.Instance.CreateFirewall();
             spriteWidth = firewallSprite.Texture.Width / firewallSprite.Columns;
             spriteHeight = firewallSprite.Texture.Height / firewallSprite.Rows;
@@ -167,6 +165,21 @@ namespace HackAndSlash
         {
             if (itemState.state == FirewallStateMachine.ItemStates.Useable && cooldown == 0)
             {
+                switch (playerDirection)
+                {
+                    case 0:
+                        currentPlayerPosition.X -= spriteWidth;
+                        break;
+                    case 1:
+                        currentPlayerPosition.X += spriteWidth;
+                        break;
+                    case 2:
+                        currentPlayerPosition.Y -= spriteHeight;
+                        break;
+                    case 3:
+                        currentPlayerPosition.Y += spriteHeight;
+                        break;
+                }
                 playerPosition = currentPlayerPosition; // player position when used TEMP: DEFAULT POS
                 position = playerPosition;
                 playerDirection = currentPlayerDirection;// player Direction

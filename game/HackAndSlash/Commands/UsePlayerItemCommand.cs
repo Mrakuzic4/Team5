@@ -16,7 +16,7 @@ namespace HackAndSlash
         public void execute()
         {
             //game.SpriteHolder = new (method for player sprite with item)
-            game.firewallFirst.UseItem(game.Player.GetDir(), game.Pos); // default position for now
+            game.ItemHolder.UseItem(game.Player.GetDir(), game.Pos); // default position for now
         }
     }
 }

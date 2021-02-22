@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace HackAndSlash
 {
-    interface IItem
+    public interface IItem
     {
         void Update();
 

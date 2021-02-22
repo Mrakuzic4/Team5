@@ -15,7 +15,16 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            game.firewallFirst.ChangeToUseable();
+            
+            if (game.ItemHolder == game.firewallFirst)
+            {
+                game.ItemHolder = game.bombFirst;
+            }
+            else
+            {
+                game.ItemHolder = game.firewallFirst;
+            }
+            
         }
     }
 }
