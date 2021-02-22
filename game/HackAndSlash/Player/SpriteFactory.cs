@@ -1,10 +1,7 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace HackAndSlash
 {   /// <summary>
@@ -45,6 +42,9 @@ namespace HackAndSlash
         private Texture2D BugDieSprite;
 
         private Texture2D FirewallSprite;
+
+        private Texture2D ChipBlock;
+        private Texture2D SmoothBlock;
 
 
         private static SpriteFactory instance = new SpriteFactory();
@@ -106,6 +106,10 @@ namespace HackAndSlash
 
             // More Content.Load calls follow
             BGSprite = content.Load<Texture2D>(IMDB.BG.pathName);
+
+            //Blocks
+            ChipBlock = content.Load<Texture2D>(IMDB.ChipBlock.pathName);
+            SmoothBlock = content.Load<Texture2D>(IMDB.SmoothBlock.pathName);
 
         }
 
@@ -231,5 +235,14 @@ namespace HackAndSlash
             return new ItemSprite(FirewallSprite, IMDB.fireWall.C, IMDB.fireWall.R);
         }
 
+        public IBlock CreateChipBlock(SpriteBatch spriteBatch)
+        {
+            return new ChipBlock(ChipBlock, new Vector2(100, 300), spriteBatch);
+        }
+
+        public IBlock CreateSmoothBlock(SpriteBatch spriteBatch)
+        {
+            return new SmoothBlock(SmoothBlock, new Vector2(175, 300), spriteBatch);
+        }
     }
 }

@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
@@ -21,15 +17,16 @@ namespace HackAndSlash
         private static int numUses = 0;
         private const int USE_DURATION = 100; // length of effect
         private int useDurationCounter = 0; 
-        private static int cooldown = 0; // item is useable if == 0
-        private const int ITEM_COOLDOWN = 30; // time in update cycles between uses
-        private const int MAX_RANGE = 5; // range in # of sprites(tiles
+        private static int cooldown = 0; // item is useable if == 0 
+        private const int ITEM_COOLDOWN = 30; // time in update cycles between uses 
+        private const int MAX_RANGE = 5; // range in # of sprites(tiles) 
+        private Vector2 toolBarPosition;
 
         private int playerDirection = 0;
         private Vector2 playerPosition;
         
         // Constructor
-        public FirewallItem(Vector2 startPosition, GraphicsDevice graphics)
+        public FirewallItem(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch gameSpriteBatch)
         {
             position = startPosition;
             itemState = new FirewallStateMachine();
@@ -37,18 +34,12 @@ namespace HackAndSlash
             firewallSprite = (ItemSprite)SpriteFactory.Instance.CreateFirewall();
             spriteWidth = firewallSprite.Texture.Width / firewallSprite.Columns;
             spriteHeight = firewallSprite.Texture.Height / firewallSprite.Rows;
-
-        }
-
-        public void LoadContent()
-        {
-            spriteBatch = new SpriteBatch(Graphics);
-
+            toolBarPosition = new Vector2(10, 10);
+            spriteBatch = gameSpriteBatch;
         }
 
         public void Update()
         {
-            ;
             switch (itemState.state)
             {
                 case FirewallStateMachine.ItemStates.Collectable:
@@ -58,7 +49,7 @@ namespace HackAndSlash
                     break;
                 case FirewallStateMachine.ItemStates.Useable:
                     // check for uses
-                    position = new Vector2();
+                    position = toolBarPosition;
                     cooldown--;
                     if (cooldown <= 0)
                     {
@@ -74,15 +65,14 @@ namespace HackAndSlash
                     if(useDurationCounter >= USE_DURATION)
                     {
                         useDurationCounter = 0;
-                        numUses--;
                         
                         if (numUses > 0)
                         {
-                            itemState.changeToUseable();
+                            itemState.ChangeToUseable();
                         }
                         else
                         {
-                            itemState.changeToExpended();
+                            itemState.ChangeToExpended();
                         }
                     }
                     // slow down
@@ -107,6 +97,7 @@ namespace HackAndSlash
                     break;
                 case FirewallStateMachine.ItemStates.Expended:
                     // single instance is gone
+                    position = toolBarPosition;
                     break;
             }
         }
@@ -122,6 +113,7 @@ namespace HackAndSlash
                 case FirewallStateMachine.ItemStates.Useable:
                     // In bag Draw on toolbar
                     firewallSprite.Draw(spriteBatch, position, Color.White);
+                    // draw text with numUses
                     break;
                 case FirewallStateMachine.ItemStates.BeingUsed:
                     // place over players head then draw wall with loop and updating position
@@ -130,25 +122,25 @@ namespace HackAndSlash
                     switch (playerDirection)
                     {
                         case 0: // facing left
-                            for(float i = position.X; i < playerPosition.X; i += spriteWidth)
+                            for(float i = position.X; i <= playerPosition.X; i += spriteWidth)
                             {
                                 firewallSprite.Draw(spriteBatch, new Vector2(i, playerPosition.Y), Color.White);
                             }
                             break;
                         case 1: // facing right
-                            for (float i = position.X; i > playerPosition.X; i -= spriteWidth)
+                            for (float i = position.X; i >= playerPosition.X; i -= spriteWidth)
                             {
                                 firewallSprite.Draw(spriteBatch, new Vector2(i, playerPosition.Y), Color.White);
                             }
                             break;
-                        case 3: // facing Up
-                            for (float i = position.Y; i < playerPosition.Y; i += spriteWidth)
+                        case 2: // facing Up
+                            for (float i = position.Y; i <= playerPosition.Y; i += spriteHeight)
                             {
                                 firewallSprite.Draw(spriteBatch, new Vector2(playerPosition.X, i), Color.White);
                             }
                             break;
-                        case 4: // facing down
-                            for (float i = position.Y; i > playerPosition.Y; i -= spriteWidth)
+                        case 3: // facing down
+                            for (float i = position.Y; i >= playerPosition.Y; i -= spriteHeight)
                             {
                                 firewallSprite.Draw(spriteBatch, new Vector2(playerPosition.X, i), Color.White);
                             }
@@ -157,53 +149,60 @@ namespace HackAndSlash
                     break;
                 case FirewallStateMachine.ItemStates.Expended:
                     // Gray out in toolbar if numUses == 0
-                    firewallSprite.Draw(spriteBatch, position, Color.Gray);
+                    if (numUses == 0)
+                    {
+                        firewallSprite.Draw(spriteBatch, position, Color.Gray);
+                    }
                     break;
             }
         }
 
-        public void collectItem(IPlayer player)
+        public void CollectItem(IPlayer player)
         {
-            itemState.changeToUseable();
-            position = new Vector2(100, 100);
+            itemState.ChangeToUseable();
             numUses++;
         }
 
-        public void useItem(int currentPlayerDirection, Vector2 currentPlayerPosition)
+        public void UseItem(int currentPlayerDirection, Vector2 currentPlayerPosition)
         {
             if (itemState.state == FirewallStateMachine.ItemStates.Useable && cooldown == 0)
             {
                 playerPosition = currentPlayerPosition; // player position when used TEMP: DEFAULT POS
                 position = playerPosition;
                 playerDirection = currentPlayerDirection;// player Direction
-                itemState.changeToBeingUsed();
+                itemState.ChangeToBeingUsed();
                 cooldown = ITEM_COOLDOWN;
+                numUses--;
+                if (numUses < 0)
+                {
+                    numUses = 0;
+                }
             }
 
         }
 
-        public void changeToCollectable()
+        public void ChangeToCollectable()
         {
             //player drops item
-            itemState.changeToCollectable();
+            itemState.ChangeToCollectable();
         }
 
-        public void changeToUseable()
+        public void ChangeToUseable()
         {
             //player collects item
-            itemState.changeToUseable();
+            itemState.ChangeToUseable();
         }
 
-        public void changeToBeingUsed()
+        public void ChangeToBeingUsed()
         {
             //player is using item
-            itemState.changeToBeingUsed();
+            itemState.ChangeToBeingUsed();
         }
 
-        public void changeToExpended()
+        public void ChangeToExpended()
         {
             //player used this instance of the item
-            itemState.changeToExpended();
+            itemState.ChangeToExpended();
         }
     }
 
@@ -216,25 +215,25 @@ namespace HackAndSlash
             state = ItemStates.Collectable;
         }
 
-        public void changeToCollectable()
+        public void ChangeToCollectable()
         {
             //player drops item
             state = ItemStates.Collectable;
         }
 
-        public void changeToUseable()
+        public void ChangeToUseable()
         {
             //player collects item
             state = ItemStates.Useable;
         }
 
-        public void changeToBeingUsed()
+        public void ChangeToBeingUsed()
         {
             //player is using item
             state = ItemStates.BeingUsed;
         }
 
-        public void changeToExpended()
+        public void ChangeToExpended()
         {
             //player used this instance of the item
             state = ItemStates.Expended;

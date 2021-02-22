@@ -10,46 +10,48 @@ namespace HackAndSlash
 {
     public class SnakeEnemy : IEnemy
     {
-        private snakeStateMachine snakeState;
-        private Texture2D texture;
-        public EnemySprite EnemySprite;
-        private Vector2 position;
-        private SpriteBatch spriteBatch;
-        private GraphicsDevice Graphics;
+        private snakeStateMachine snakeState; // to keep track of the current state of the snake
+        private Vector2 position; // the position of the enemy on screen
+        private SpriteBatch spriteBatch; // the spritebatch used to draw the enemy
+        private GraphicsDevice Graphics; // the graphics device used by the spritebatch
 
-        private int timeSinceLastFrame=0;
+        private int timeSinceLastFrame=0; // used to slow down the rate of animation 
         private int milliSecondsPerFrame=80;
-        private int temp = 0;
+        private int temp = 0; //counter to change states after a certain number of calls to update
 
 
         //make the constructor for the class
-        public SnakeEnemy(Vector2 startPosition, GraphicsDevice graphics)
+        public SnakeEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch SB)
         {
             position = startPosition;
             snakeState = new snakeStateMachine();
             Graphics = graphics;
-            EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeIdle();
-            
+            spriteBatch = SB;
+
+
         }
 
         public void LoadContent()
         {
-           spriteBatch = new SpriteBatch(Graphics);
+           // spriteBatch = new SpriteBatch(Graphics);
             
         }
 
+        //updating the enemy
         public void Update(GameTime gameTime)
         {
-            timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
-            if (timeSinceLastFrame > milliSecondsPerFrame)
+            timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds; //counting elapsed time since last update
+            if (timeSinceLastFrame > milliSecondsPerFrame) // executing when milliSecondsPerFrame seconds have passed
             {
                 timeSinceLastFrame = 0;
 
-                if (snakeState.state != snakeStateMachine.snakeHealth.Not)
+                if (snakeState.state != snakeStateMachine.snakeHealth.Not)// call update on the EnemySprite when not in 'NOT'
                 {
                     snakeState.MachineEnemySprite.Update();
                 }
             }
+
+            //temporary code for sprint2 to shuffle in between states
             if (temp == 0 && snakeState.state != snakeStateMachine.snakeHealth.Not) {
                 snakeState.changeToIdle();
             }
@@ -70,6 +72,14 @@ namespace HackAndSlash
                 snakeState.changeToIdle();
             }
 
+            if (temp > 800)
+            {
+                temp = 0;
+            }
+            temp++;
+            //end of temporary code for sprint2 to shuffle in between states
+
+            //updating position of enemy according to state
             if (snakeState.state == snakeStateMachine.snakeHealth.Move) {
                 position.X--;
             }
@@ -84,49 +94,17 @@ namespace HackAndSlash
             temp++;
         }
 
-        //use the state machine in draw to choose the texture. set enemysprite to selected texture, then call draw 
 
         public void Draw()
         {
-            if(snakeState.state == snakeStateMachine.snakeHealth.Idle)
+            if(snakeState.state != snakeStateMachine.snakeHealth.Not)
             {
-                //get the appropriate snake sprite from factory and set it to EnemySprite
-                //EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeIdle();
-                //call EnemySprite.draw
-                snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
-                
-            }
-
-            else if(snakeState.state == snakeStateMachine.snakeHealth.Move)
-            {
-                //get the appropriate snake sprite from factory and set it to EnemySprite
-                //EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeMoving();
-                //call EnemySprite.draw
                 snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
             }
 
-            else if(snakeState.state == snakeStateMachine.snakeHealth.Attack)
-            {
-                //get the appropriate snake sprite from factory and set it to EnemySprite
-                //EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeAttack();
-                //call EnemySprite.draw
-                snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
-            }
-
-            else if(snakeState.state == snakeStateMachine.snakeHealth.Die)
-            {
-                //get the appropriate snake sprite from factory and set it to EnemySprite
-                //EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeDie();
-                //call EnemySprite.draw
-                snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
-            }
-
-            else if(snakeState.state == snakeStateMachine.snakeHealth.Not)
-            {
-                //do not call draw
-            }
         }
 
+        //Functions to switch the states
         public void changeToIdle()
         {
             snakeState.changeToIdle();
@@ -153,15 +131,14 @@ namespace HackAndSlash
         }
     }
 
-    //2nd row - Idle
-    //3rd row - Moving
-    //4th row - Attack
-    //5th row - Die
+    
     public class snakeStateMachine
     {
-        public enum snakeHealth { Idle, Attack, Move, Die, Not };
-        public snakeHealth state;
-        public EnemySprite MachineEnemySprite;
+        public enum snakeHealth { Idle, Attack, Move, Die, Not }; // the different possible states
+        public snakeHealth state; // the current health state of the bug
+        public EnemySprite MachineEnemySprite; // The EnemySprite implementing ISprite
+
+        //constructor for the class
         public snakeStateMachine()
         {
             state = snakeHealth.Idle;
@@ -169,44 +146,52 @@ namespace HackAndSlash
         }
         public void changeToIdle()
         {
-            //change to idle
+            //change to idle if not already Idle
             if (state != snakeHealth.Idle)
             {
                 state = snakeHealth.Idle;
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeIdle();
+                //get appropriate sprite from sprite factory
             }
 
         }
 
         public void changeToAttack()
         {
+            //change to Attack if not already in Attack
             if (state != snakeHealth.Attack)
             {
                 state = snakeHealth.Attack;
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeAttack();
+                //get appropriate sprite from sprite factory
             }
         }
 
         public void changeToMove()
         {
+            //change to Move if not already Move
             if (state != snakeHealth.Move)
             {
                 state = snakeHealth.Move;
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeMoving();
+                //get appropriate sprite from sprite factory
             }
         }
 
         public void changeToDie()
         {
+            //change to Die if not already Die
             if (state != snakeHealth.Die)
             {
                 state = snakeHealth.Die;
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeDie();
+                //get appropriate sprite from sprite factory
             }
         }
 
         public void changeToNot()
         {
+            //change to Not if not already Not
             if (state != snakeHealth.Not)
             {
                 state = snakeHealth.Not;

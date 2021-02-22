@@ -1,5 +1,5 @@
 ﻿
-
+using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
@@ -17,9 +17,11 @@ namespace HackAndSlash
         public int UpdateDelay { get; set; }
 
         // Frame and fame delays 
-        private int frameCounter; 
         private int currentFrame;
         private int totalFrames;
+        private long animeDelay = GlobalSettings.DELAY_TIME;
+        private Stopwatch stopwatch = new Stopwatch();
+        private long timer;
 
         public int Frame
         {
@@ -49,6 +51,12 @@ namespace HackAndSlash
             UpdateDelay = 8;
             currentFrame = 0;
             frameCounter = 0;
+            //stopwatch.Restart();
+            //Rows = 1;
+            //Columns = 7;
+            //UpdateDelay = 4;
+            //currentFrame = 0;
+            //totalFrames = Rows * Columns;
         }
 
         public void SetTexture(Texture2D texture)
@@ -76,6 +84,19 @@ namespace HackAndSlash
 
                // currentFrame++; //maybe comment it out?
                 frameCounter = 0;
+            // Record the time elapsed 
+           // timer = stopwatch.ElapsedMilliseconds;
+            // Every time the time elpased exceeds the designated delay amount,
+            // update the frame and restart the timer 
+          //  if (timer > animeDelay)
+          //  {
+          //      currentFrame++;
+         //       stopwatch.Restart();
+        //        timer = 0;
+        //    }
+        //    if (currentFrame == totalFrames)
+        //    {
+       //         currentFrame = 0;
             }
         }
 
@@ -89,9 +110,9 @@ namespace HackAndSlash
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width*5, height*5);
 
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
-            spriteBatch.End();
+            //spriteBatch.End();
         }
     }
     

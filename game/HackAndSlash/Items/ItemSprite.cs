@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
@@ -15,31 +15,37 @@ namespace HackAndSlash
         public int Columns { get; set; }
         private int totalFrames;
         private int currentFrame;
+        private long animeDelay = GlobalSettings.DELAY_TIME;
+        private Stopwatch stopwatch = new Stopwatch();
+        private long timer;
         private int delayCounter { get; set; }
-        private int animationDelay { get; set; }
 
         public ItemSprite(Texture2D texture, int rows, int columns)
         {
+            stopwatch.Restart();
             Texture = texture;
             Rows = rows;
             Columns = columns;
             totalFrames = rows * columns;
             currentFrame = 0;
             delayCounter = 0;
-            animationDelay = 15;
         }
 
         public void Update()
         {
-            delayCounter++;
-            if (delayCounter == animationDelay)
+            // Record the time elapsed 
+            timer = stopwatch.ElapsedMilliseconds;
+            // Every time the time elpased exceeds the designated delay amount,
+            // update the frame and restart the timer 
+            if (timer > animeDelay)
             {
                 currentFrame++;
-                if (currentFrame == totalFrames)
-                {
-                    currentFrame = 0;
-                }
-                delayCounter = 0;
+                stopwatch.Restart();
+                timer = 0;
+            }
+            if (currentFrame == totalFrames)
+            {
+                currentFrame = 0;
             }
         }
 
@@ -53,9 +59,8 @@ namespace HackAndSlash
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
 
-            spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
-            spriteBatch.End();
+
         }
 
 

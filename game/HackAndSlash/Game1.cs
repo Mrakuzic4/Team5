@@ -31,10 +31,9 @@ namespace HackAndSlash
         public ISprite PlayerSprite { set { SpriteHolder = value; } }
         private ISprite SpriteHolder { get; set; }
         private ISprite ItemHolder { get; set; }
-        private IBlock BlockHolder { get; set; }
-       
+        public IBlock BlockHolder { get; set; }
+        
         private Texture2D textureFirewall { get; set; }
-        private Texture2D textureChipBlock { get; set; }
         
         public SnakeEnemy snakefirst;
         public BugEnemy bugfirst;
@@ -44,7 +43,6 @@ namespace HackAndSlash
         public FirewallItem firewallFirst;
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
-        private Vector2 absPositionMC; // Absolute position. As position in the game map
 
         public Vector2 Pos
         {
@@ -64,7 +62,9 @@ namespace HackAndSlash
         private Vector2 horizontal;
         private Vector2 vertical;
 
+        // Object lists
         List<Object> controllerList;
+        public List<IBlock> blockList { get; set; }
 
 
         public Game1()
@@ -72,6 +72,11 @@ namespace HackAndSlash
             graphics = new GraphicsDeviceManager(this);
 
             Content.RootDirectory = "Content";
+        }
+
+        public void reset() {
+            this.Initialize();
+            this.LoadContent();
         }
 
         /// <summary>
@@ -90,9 +95,6 @@ namespace HackAndSlash
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new MouseController(this));
-
-            // Initilize character position 
-            absPositionMC.X = absPositionMC.Y = 0;
 
             // Setup window size 
             graphics.PreferredBackBufferWidth = GlobalSettings.WINDOW_WIDTH;
@@ -128,22 +130,24 @@ namespace HackAndSlash
             SpriteBG = new SpriteBG(SpriteFactory.Instance.CreateBG(), graphics);
            // SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
-            snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice);
-            bugfirst = new BugEnemy(new Vector2(200,100), GraphicsDevice);
+            snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice, spriteBatch);
+            bugfirst = new BugEnemy(new Vector2(200,100), GraphicsDevice, spriteBatch);
 
-            snakefirst.LoadContent();
-            bugfirst.LoadContent();
+            //snakefirst.LoadContent();
+            //bugfirst.LoadContent();
 
             // Items
-            firewallFirst = new FirewallItem(new Vector2(200, 200), GraphicsDevice);
+            firewallFirst = new FirewallItem(new Vector2(200, 200), GraphicsDevice, spriteBatch);
 
-            firewallFirst.LoadContent(); ;
+            //firewallFirst.LoadContent(); ;
 
-            //Block Textures
-            textureChipBlock = Content.Load<Texture2D>("images/ChipBlock");
-              
-            
-            BlockHolder = new ChipBlock(textureChipBlock, new Vector2(200, 300), spriteBatch);
+            //Create list of blocks and set blockholder to first block in the list
+            blockList = new List<IBlock>()
+            {
+                {SpriteFactory.Instance.CreateChipBlock(spriteBatch)},
+                {SpriteFactory.Instance.CreateSmoothBlock(spriteBatch)}
+            };
+            BlockHolder = blockList[0];
         }
 
         /// <summary>
@@ -185,13 +189,17 @@ namespace HackAndSlash
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
+            spriteBatch.Begin();
+
+            //SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);sd
+            BlockHolder.Draw();
             Player.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
             firewallFirst.Draw();
             snakefirst.Draw();
             bugfirst.Draw();
 
-
+            spriteBatch.End();
+            
             base.Draw(gameTime);
         }
     }

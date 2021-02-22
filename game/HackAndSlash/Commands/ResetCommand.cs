@@ -15,7 +15,7 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            //reset entire game to its initial state somehow...
+            game.reset();
         }
     }
 }

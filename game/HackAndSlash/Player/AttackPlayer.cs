@@ -65,6 +65,9 @@ namespace HackAndSlash
         public void ChangeDirection(int dir)
         {
             DecoratedPlayer.ChangeDirection(dir);
+            //spriteBatch.Begin();
+            //spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
+            //spriteBatch.End();
         }
     }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HackAndSlash
 {
-    interface IBlock
+    public interface IBlock
     {
         void Update();
         void Draw();

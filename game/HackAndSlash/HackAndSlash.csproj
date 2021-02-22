@@ -46,8 +46,10 @@
   <ItemGroup>
     <Compile Include="Blocks\ChipBlock.cs" />
     <Compile Include="Blocks\IBlock.cs" />
+    <Compile Include="Blocks\SmoothBlock.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
-    <Compile Include="Commands\BlockCycleCommand.cs" />
+    <Compile Include="Commands\BlockCycleDownCommand.cs" />
+    <Compile Include="Commands\BlockCycleUpCommand.cs" />
     <Compile Include="Commands\DamageCommand.cs" />
     <Compile Include="Commands\EnemyCycleCommandBug.cs" />
     <Compile Include="Commands\EnemyCycleCommandSnake.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GlobalSettings.cs" />
     <Compile Include="ISprite.cs" />
+    <Compile Include="Items\BombItem.cs" />
     <Compile Include="Items\FirewallItem.cs" />
     <Compile Include="Items\IItem.cs" />
     <Compile Include="Items\ItemSprite.cs" />
