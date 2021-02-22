@@ -1,5 +1,5 @@
 ﻿
-
+using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
@@ -17,9 +17,11 @@ namespace HackAndSlash
         public int UpdateDelay { get; set; }
 
         // Frame and fame delays 
-        private int frameCounter; 
         private int currentFrame;
         private int totalFrames;
+        private long animeDelay = GlobalSettings.DELAY_TIME;
+        private Stopwatch stopwatch = new Stopwatch();
+        private long timer;
 
         //Singleton
         private static DrawPlayer instance = new DrawPlayer();
@@ -34,11 +36,11 @@ namespace HackAndSlash
 
         private DrawPlayer()
         {
+            stopwatch.Restart();
             Rows = 1;
             Columns = 7;
             UpdateDelay = 4;
             currentFrame = 0;
-            frameCounter = 0;
             totalFrames = Rows * Columns;
         }
 
@@ -54,16 +56,16 @@ namespace HackAndSlash
 
         public void Update()
         {
-            frameCounter++;
-            // Add delay 
-            if (frameCounter == UpdateDelay) {
-
-                // Loop reset 
-                if (currentFrame == totalFrames)
-                    currentFrame = 0;
-
+            timer = stopwatch.ElapsedMilliseconds;
+            if (timer > animeDelay)
+            {
                 currentFrame++;
-                frameCounter = 0;
+                stopwatch.Restart();
+                timer = 0;
+            }
+            if (currentFrame == totalFrames)
+            {
+                currentFrame = 0;
             }
         }
 

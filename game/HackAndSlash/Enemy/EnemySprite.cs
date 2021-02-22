@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace HackAndSlash
 {
@@ -13,9 +14,12 @@ namespace HackAndSlash
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }
         public int Columns { get; set; }
+
         private int totalFrames;
         private int currentFrame;
-        
+        private long animeDelay = GlobalSettings.DELAY_TIME;
+        private Stopwatch stopwatch = new Stopwatch();
+        private long timer; 
 
         public EnemySprite(Texture2D texture, int rows, int columns)
         {
@@ -24,11 +28,18 @@ namespace HackAndSlash
             Columns = columns;
             totalFrames = rows * columns;
             currentFrame = 0;
+            stopwatch.Restart();
         }
 
         public void Update()
         {
-            currentFrame++;
+            timer = stopwatch.ElapsedMilliseconds;
+            if (timer > animeDelay)
+            {
+                currentFrame++;
+                stopwatch.Restart();
+                timer = 0;
+            }
             if (currentFrame == totalFrames)
             {
                 currentFrame = 0;
