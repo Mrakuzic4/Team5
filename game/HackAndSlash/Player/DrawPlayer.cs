@@ -50,8 +50,8 @@ namespace HackAndSlash
         {
             UpdateDelay = 8;
             currentFrame = 0;
-            frameCounter = 0;
-            //stopwatch.Restart();
+            //frameCounter = 0;
+            stopwatch.Restart();
             //Rows = 1;
             //Columns = 7;
             //UpdateDelay = 4;
@@ -74,30 +74,30 @@ namespace HackAndSlash
 
         public void Update()
         {
-            frameCounter++;
+            //frameCounter++;
             // Add delay 
-            if (frameCounter == UpdateDelay) {
+            //if (frameCounter == UpdateDelay) {
 
                 // Loop reset 
-                if (currentFrame == totalFrames)
-                    currentFrame = 0;
+                //if (currentFrame == totalFrames)
+                    //currentFrame = 0;
 
-               // currentFrame++; //maybe comment it out?
-                frameCounter = 0;
-            // Record the time elapsed 
-           // timer = stopwatch.ElapsedMilliseconds;
-            // Every time the time elpased exceeds the designated delay amount,
-            // update the frame and restart the timer 
-          //  if (timer > animeDelay)
-          //  {
-          //      currentFrame++;
-         //       stopwatch.Restart();
-        //        timer = 0;
-        //    }
-        //    if (currentFrame == totalFrames)
-        //    {
-       //         currentFrame = 0;
-            }
+                //currentFrame++; //maybe comment it out?
+                //frameCounter = 0;
+                //Record the time elapsed
+            timer = stopwatch.ElapsedMilliseconds;
+               // Every time the time elpased exceeds the designated delay amount,
+                //update the frame and restart the timer
+            if (timer > animeDelay)
+                {
+                    currentFrame++;
+                    stopwatch.Restart();
+                    timer = 0;
+                }
+                if (currentFrame == totalFrames)
+                {
+                    currentFrame = 0;
+                }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
