@@ -33,7 +33,10 @@ namespace HackAndSlash
 
         public void Update()
         {
+            // Record the time elapsed 
             timer = stopwatch.ElapsedMilliseconds;
+            // Every time the time elpased exceeds the designated delay amount,
+            // update the frame and restart the timer 
             if (timer > animeDelay)
             {
                 currentFrame++;

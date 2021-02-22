@@ -40,6 +40,18 @@ namespace HackAndSlash
         public ImageFile playerMoveLeft;
         public ImageFile playerMoveRight;
 
+        public ImageFile zelda;
+        public ImageFile zeldaDown;
+        public ImageFile zeldaUp;
+        public ImageFile zeldaLeft;
+        public ImageFile zeldaRight;
+
+        public ImageFile zeldaAttackDown;
+        public ImageFile zeldaAttackUp;
+        public ImageFile zeldaAttackLeft;
+        public ImageFile zeldaAttackRight;
+
+
         public ImageFile snakeMoveLeft;
         public ImageFile snakeAttackLeft;
         public ImageFile snakeDie;
@@ -67,6 +79,22 @@ namespace HackAndSlash
             playerMoveDown = new ImageFile("images/sucDown", 1, 7);
             playerMoveLeft = new ImageFile("images/sucLeft", 1, 7);
             playerMoveRight = new ImageFile("images/sucOva", 1, 7);
+
+            zelda = new ImageFile("images/Zelda", 0, 0);
+
+            zeldaDown = new ImageFile("images/ZeldaDown", 2, 1);
+            zeldaUp = new ImageFile("images/ZeldaUp", 2, 1);
+            zeldaLeft = new ImageFile("images/ZeldaLeft", 2, 1);
+            zeldaRight = new ImageFile("images/ZeldaRight", 2, 1);
+
+            zeldaAttackDown = new ImageFile("images/ZeldaAttackDown", 3, 1);
+            zeldaAttackUp = new ImageFile("images/ZeldaAttackUp", 3, 1);
+            zeldaAttackRight = new ImageFile("images/ZeldaAttackRight", 3, 1);
+            zeldaAttackLeft = new ImageFile("images/ZeldaAttackLeft", 3, 1);
+
+            
+
+
 
             snakeMoveLeft = new ImageFile("images/SnakeMoving", 1, 10); 
             snakeAttackLeft = new ImageFile("images/SnakeAttack", 1, 10); 

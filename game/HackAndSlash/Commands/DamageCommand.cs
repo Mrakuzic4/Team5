@@ -18,6 +18,7 @@ namespace HackAndSlash
         }
         public void execute()
         {
+            Player.Damaged();
             game.Player = new DamagedPlayer(Player, game); //Decorator of the PlayerSprite
         }
     }

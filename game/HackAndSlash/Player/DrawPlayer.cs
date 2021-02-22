@@ -23,6 +23,18 @@ namespace HackAndSlash
         private Stopwatch stopwatch = new Stopwatch();
         private long timer;
 
+        public int Frame
+        {
+            get
+            {
+                return currentFrame;
+            }
+            set 
+            { 
+                currentFrame = value; 
+            }
+        }
+
         //Singleton
         private static DrawPlayer instance = new DrawPlayer();
 
@@ -36,17 +48,23 @@ namespace HackAndSlash
 
         private DrawPlayer()
         {
-            stopwatch.Restart();
-            Rows = 1;
-            Columns = 7;
-            UpdateDelay = 4;
+            UpdateDelay = 8;
             currentFrame = 0;
-            totalFrames = Rows * Columns;
+            //frameCounter = 0;
+            stopwatch.Restart();
+            //Rows = 1;
+            //Columns = 7;
+            //UpdateDelay = 4;
+            //currentFrame = 0;
+            //totalFrames = Rows * Columns;
         }
 
         public void SetTexture(Texture2D texture)
         {
             this.Texture = texture;
+            //This is safe because Rows and Columns
+            //are already set before calling SetTexture.
+            totalFrames = Rows * Columns; 
         }
 
         public int GetCurrentFrame()
@@ -56,17 +74,30 @@ namespace HackAndSlash
 
         public void Update()
         {
+            //frameCounter++;
+            // Add delay 
+            //if (frameCounter == UpdateDelay) {
+
+                // Loop reset 
+                //if (currentFrame == totalFrames)
+                    //currentFrame = 0;
+
+                //currentFrame++; //maybe comment it out?
+                //frameCounter = 0;
+                //Record the time elapsed
             timer = stopwatch.ElapsedMilliseconds;
+               // Every time the time elpased exceeds the designated delay amount,
+                //update the frame and restart the timer
             if (timer > animeDelay)
-            {
-                currentFrame++;
-                stopwatch.Restart();
-                timer = 0;
-            }
-            if (currentFrame == totalFrames)
-            {
-                currentFrame = 0;
-            }
+                {
+                    currentFrame++;
+                    stopwatch.Restart();
+                    timer = 0;
+                }
+                if (currentFrame == totalFrames)
+                {
+                    currentFrame = 0;
+                }
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
@@ -77,7 +108,7 @@ namespace HackAndSlash
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width*5, height*5);
 
             //spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
