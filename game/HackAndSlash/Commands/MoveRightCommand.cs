@@ -18,7 +18,7 @@ namespace HackAndSlash
         }
         public void execute()
         {
-                Player.ChangeDirection(1);//face right
+                Player.ChangeDirection(GlobalSettings.Direction.Right);//face right
                 Player.Move();
         }
     }

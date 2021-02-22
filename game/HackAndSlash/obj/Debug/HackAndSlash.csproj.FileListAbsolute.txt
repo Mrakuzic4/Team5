@@ -151,3 +151,6 @@ C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCP
 C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaLeft.xnb
 C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaRight.xnb
 C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaUp.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SmoothBlock.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Bomb.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\explosion.xnb

@@ -5,9 +5,6 @@ using Microsoft.Xna.Framework;
 
 namespace HackAndSlash
 {
-
-
-
     public class DrawPlayer : ISprite
     {
                 
@@ -66,30 +63,14 @@ namespace HackAndSlash
             totalFrames = Rows * Columns; 
         }
 
-        public int GetCurrentFrame()
-        {
-            return currentFrame;
-        }
-
         public void Update()
         {
-            //frameCounter++;
-            // Add delay 
-            //if (frameCounter == UpdateDelay) {
-
-                // Loop reset 
-                //if (currentFrame == totalFrames)
-                    //currentFrame = 0;
-
-                //currentFrame++; //maybe comment it out?
-                //frameCounter = 0;
-                //Record the time elapsed
+            //Record the time elapsed
             timer = stopwatch.ElapsedMilliseconds;
-               // Every time the time elpased exceeds the designated delay amount,
-                //update the frame and restart the timer
+            // Every time the time elpased exceeds the designated delay amount,
+            //update the frame and restart the timer
             if (timer > animeDelay)
                 {
-                    currentFrame++;
                     stopwatch.Restart();
                     timer = 0;
                 }
@@ -109,9 +90,7 @@ namespace HackAndSlash
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width*5, height*5);
 
-            //spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
-            //spriteBatch.End();
         }
     }
     

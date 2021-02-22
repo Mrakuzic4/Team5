@@ -9,8 +9,7 @@ namespace HackAndSlash
 {
 	public class PlayerStateMachine
 	{
-		private enum direction { Left, Right, Up, Down }; //four integer values for direction.
-		private direction playerDir;
+		private GlobalSettings.Direction playerDir;
 		public int Direction { get { return (int) playerDir; } }
 
 		private Game1 game;
@@ -22,33 +21,34 @@ namespace HackAndSlash
 		/// dir is the direction in integer form, 0 is left, 1 is right, etc.
 		/// </summary>
 		/// <param name="dir"></param>
-		public PlayerStateMachine(int dir, Game1 game)
+		public PlayerStateMachine(GlobalSettings.Direction dir, Game1 game)
 		{
 			this.game = game;
-			playerDir = (direction) dir;
+			playerDir = dir;
 		}
 
-		public void ChangeDirection(int dir)
+		public void ChangeDirection(GlobalSettings.Direction dir)
         {
-			playerDir = (direction)dir;
+			playerDir = dir;
 		}
 
 		public void Move()
         {
             switch (playerDir)
             {
-				case direction.Left:
+				case GlobalSettings.Direction.Left:
 					SpriteFactory.Instance.CreateLeftPlayer();
+					//CHange the POs
 					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X - GlobalSettings.STEP_SIZE_X, game.Pos.Y); //move the sprite
 					break;
 					
-				case direction.Up:
+				case GlobalSettings.Direction.Up:
 					SpriteFactory.Instance.CreateUpPlayer();
 					//move the sprite
 					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y - GlobalSettings.STEP_SIZE_Y);
 					break;
 
-				case direction.Down:
+				case GlobalSettings.Direction.Down:
 					SpriteFactory.Instance.CreateDownPlayer();
 					//move the sprite
 					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y + GlobalSettings.STEP_SIZE_Y);
@@ -69,16 +69,16 @@ namespace HackAndSlash
 			//Player falls back when hit by enemies.
 			switch (playerDir)
 			{
-				case direction.Left:
+				case GlobalSettings.Direction.Left:
 					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X + GlobalSettings.KNOCKBACK_DIST_X, game.Pos.Y); //move the sprite
 					break;
 
-				case direction.Up:
+				case GlobalSettings.Direction.Up:
 					//move the sprite
 					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y + GlobalSettings.KNOCKBACK_DIST_Y);
 					break;
 
-				case direction.Down:
+				case GlobalSettings.Direction.Down:
 					//move the sprite
 					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y - GlobalSettings.KNOCKBACK_DIST_Y);
 					break;
@@ -95,15 +95,15 @@ namespace HackAndSlash
         {
 			switch (playerDir)
 			{
-				case direction.Left:
+				case GlobalSettings.Direction.Left:
 					SpriteFactory.Instance.CreateLeftAttackPlayer();
 					break;
 
-				case direction.Up:
+				case GlobalSettings.Direction.Up:
 					SpriteFactory.Instance.CreateUpAttackPlayer();
 					break;
 
-				case direction.Down:
+				case GlobalSettings.Direction.Down:
 					SpriteFactory.Instance.CreateDownAttackPlayer();
 					break;
 
@@ -116,15 +116,15 @@ namespace HackAndSlash
 		{
 			switch (playerDir)
 			{
-				case direction.Left:
+				case GlobalSettings.Direction.Left:
 					SpriteFactory.Instance.CreateLeftPlayer();
 					break;
 
-				case direction.Up:
+				case GlobalSettings.Direction.Up:
 					SpriteFactory.Instance.CreateUpPlayer();
 					break;
 
-				case direction.Down:
+				case GlobalSettings.Direction.Down:
 					SpriteFactory.Instance.CreateDownPlayer();
 					break;
 

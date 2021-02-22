@@ -5,7 +5,7 @@ namespace HackAndSlash
     // Left for some future global (throught out the game kind) variables 
     
 
-    class GlobalSettings
+    public class GlobalSettings
     {
         public const int WINDOW_WIDTH = 600;
         public const int WINDOW_HEIGHT = 400;
@@ -19,6 +19,7 @@ namespace HackAndSlash
 
         public const long DELAY_TIME = 100; // In ms
         public const long DELAY_KEYBOARD = 200;
+        public enum Direction { Left, Right, Up, Down };
     }
 
     class ImageFile

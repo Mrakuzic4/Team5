@@ -135,6 +135,7 @@ namespace HackAndSlash
             DrawPlayer.Instance.SetTexture(ZeldaUp);
         }
 
+        //reassign this
         public void CreateRightPlayer()
         {
             DrawPlayer.Instance.Rows = IMDB.zeldaRight.R;

@@ -16,7 +16,8 @@ namespace HackAndSlash
         }
         public void execute()
         {
-                Player.ChangeDirection(3);//face down
+                //move driection out
+                Player.ChangeDirection(GlobalSettings.Direction.Down);//face down
                 Player.Move();
            
         }

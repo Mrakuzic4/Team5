@@ -15,7 +15,7 @@ namespace HackAndSlash
 
         public Player(Game1 game)
         {
-            playerStateMachine = new PlayerStateMachine(1, game); //inital state face right
+            playerStateMachine = new PlayerStateMachine(GlobalSettings.Direction.Right, game); //inital state face right
             timer = 7; //adding delay to the player sprite animation
             this.game = game;
         }
@@ -25,7 +25,7 @@ namespace HackAndSlash
             return playerStateMachine.Direction;
         }
 
-        public void ChangeDirection(int dir)
+        public void ChangeDirection(GlobalSettings.Direction dir)
         {
             playerStateMachine.ChangeDirection(dir);
         }

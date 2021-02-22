@@ -12,15 +12,10 @@ namespace HackAndSlash
         private Game1 game { get; set; }
         private Dictionary<Keys, ICommand> controllerMappings;
 
-        //Statemachine to keep track the player's state
-        private PlayerStateMachine playerStateMachine;
-
         public KeyboardController(Game1 game)
         {
             this.game = game;
-            playerStateMachine = new PlayerStateMachine(1,game); //default is facing right
-
-
+         
             //add all default controls
             controllerMappings = new Dictionary<Keys, ICommand>()
             {

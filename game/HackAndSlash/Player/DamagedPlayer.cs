@@ -61,7 +61,7 @@ namespace HackAndSlash
             return DecoratedPlayer.GetDir();
         }
 
-        public void ChangeDirection(int dir)
+        public void ChangeDirection(GlobalSettings.Direction dir)
         {
             DecoratedPlayer.ChangeDirection(dir);
         }
