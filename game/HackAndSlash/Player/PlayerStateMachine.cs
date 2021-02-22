@@ -93,22 +93,27 @@ namespace HackAndSlash
 
 		public void Attack()
         {
+			DrawPlayer.Instance.Attack = true;
 			switch (playerDir)
 			{
 				case GlobalSettings.Direction.Left:
 					SpriteFactory.Instance.SetLeftAttackPlayer();
+					DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Left);
 					break;
 
 				case GlobalSettings.Direction.Up:
 					SpriteFactory.Instance.SetUpAttackPlayer();
+					DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Up);
 					break;
 
 				case GlobalSettings.Direction.Down:
 					SpriteFactory.Instance.SetDownAttackPlayer();
+					DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Down);
 					break;
 
 				default: //Default to be right
 					SpriteFactory.Instance.SetRightAttackPlayer();
+					DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Right);
 					break;
 			}
 		}

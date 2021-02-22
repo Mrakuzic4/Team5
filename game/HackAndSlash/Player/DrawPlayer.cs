@@ -20,6 +20,10 @@ namespace HackAndSlash
         private Stopwatch stopwatch = new Stopwatch();
         private long timer;
 
+        private GlobalSettings.Direction direction;
+        private bool isAttack;
+        public bool Attack { set { isAttack = value; } }
+
         public int Frame
         {
             get
@@ -51,6 +55,11 @@ namespace HackAndSlash
             Rows = 1;
             Columns = 7;
             totalFrames = Rows * Columns;
+        }
+
+        public void SetDirection(GlobalSettings.Direction direction)
+        {
+            this.direction = direction;
         }
 
         public void SetTexture(Texture2D texture)
@@ -88,7 +97,22 @@ namespace HackAndSlash
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width*5, height*5);
 
+            if (isAttack)
+            {
+                if(this.direction == GlobalSettings.Direction.Left)
+                {
+                    destinationRectangle = new Rectangle((int)(location.X - 60)  , (int)location.Y, width * 5, height * 5);
+                }
+
+                else if(this.direction == GlobalSettings.Direction.Up)
+                {
+                    destinationRectangle = new Rectangle((int)location.X, (int)(location.Y-60), width * 5, height * 5);
+                }
+            }
+               
+
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
+
         }
     }
     

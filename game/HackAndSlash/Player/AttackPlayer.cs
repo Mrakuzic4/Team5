@@ -39,6 +39,7 @@ namespace HackAndSlash
         public void RemoveDecorator()
         {
             game.Player = DecoratedPlayer; //set it back to movement state.
+            DrawPlayer.Instance.Attack = false;
         }
 
         public void Move()
