@@ -13,10 +13,7 @@ namespace HackAndSlash
 		private direction playerDir;
 		public int Direction { get { return (int) playerDir; } }
 
-		bool takingDamaged;
-		int timer;
-
-
+		private Game1 game;
 
 		//TODO: implement player health.
 		//private PlayerHealth health = GoombaHealth.Normal;
@@ -25,11 +22,10 @@ namespace HackAndSlash
 		/// dir is the direction in integer form, 0 is left, 1 is right, etc.
 		/// </summary>
 		/// <param name="dir"></param>
-		public PlayerStateMachine(int dir)
+		public PlayerStateMachine(int dir, Game1 game)
 		{
+			this.game = game;
 			playerDir = (direction) dir;
-			timer = 200;
-			takingDamaged = false;
 		}
 
 		public void ChangeDirection(int dir)
@@ -39,25 +35,104 @@ namespace HackAndSlash
 
 		public void Move()
         {
-			if (playerDir == direction.Left)  SpriteFactory.Instance.CreateLeftPlayer();
-			if (playerDir == direction.Down)  SpriteFactory.Instance.CreateDownPlayer();
-			if (playerDir == direction.Up)  SpriteFactory.Instance.CreateUpPlayer();
-			//default to be facing right
-			if (playerDir == direction.Right) SpriteFactory.Instance.CreateRightAttackPlayer();
+            switch (playerDir)
+            {
+				case direction.Left:
+					SpriteFactory.Instance.CreateLeftPlayer();
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X - 2, game.Pos.Y); //move the sprite
+					break;
+					
+				case direction.Up:
+					SpriteFactory.Instance.CreateUpPlayer();
+					//move the sprite
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y - 2);
+					break;
+
+				case direction.Down:
+					SpriteFactory.Instance.CreateDownPlayer();
+					//move the sprite
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y + 2);
+					break;
+
+				default: //Default to be right
+					SpriteFactory.Instance.CreateRightPlayer();
+					//move the sprite
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X + 2, game.Pos.Y);
+					break;
+			}
 		}
 
 		public void Damaged()
 		{
-			//health goes down...
+			//TODO: health goes down...
+
+			//Player falls back when hit by enemies.
+			switch (playerDir)
+			{
+				case direction.Left:
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X + 10, game.Pos.Y); //move the sprite
+					break;
+
+				case direction.Up:
+					//move the sprite
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y + 10);
+					break;
+
+				case direction.Down:
+					//move the sprite
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y - 10);
+					break;
+
+				default: //Default to be right
+					//move the sprite
+					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X - 10, game.Pos.Y);
+					break;
+			}
+
 		}
 
 		public void Attack()
         {
-			if (playerDir == direction.Left)  SpriteFactory.Instance.CreateLeftAttackPlayer();
-			if (playerDir == direction.Down)  SpriteFactory.Instance.CreateDownAttackPlayer();
-			if (playerDir == direction.Up)  SpriteFactory.Instance.CreateUpAttackPlayer();
-			//default to be facing right
-			if (playerDir == direction.Right) SpriteFactory.Instance.CreateRightAttackPlayer();
+			switch (playerDir)
+			{
+				case direction.Left:
+					SpriteFactory.Instance.CreateLeftAttackPlayer();
+					break;
+
+				case direction.Up:
+					SpriteFactory.Instance.CreateUpAttackPlayer();
+					break;
+
+				case direction.Down:
+					SpriteFactory.Instance.CreateDownAttackPlayer();
+					break;
+
+				default: //Default to be right
+					SpriteFactory.Instance.CreateRightAttackPlayer();
+					break;
+			}
 		}
+		public void UseItem()
+		{
+			switch (playerDir)
+			{
+				case direction.Left:
+					SpriteFactory.Instance.CreateLeftPlayer();
+					break;
+
+				case direction.Up:
+					SpriteFactory.Instance.CreateUpPlayer();
+					break;
+
+				case direction.Down:
+					SpriteFactory.Instance.CreateDownPlayer();
+					break;
+
+				default: //Default to be right
+					SpriteFactory.Instance.CreateRightPlayer();
+					break;
+			}
+		}
+
 	}
 }

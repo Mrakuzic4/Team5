@@ -6,64 +6,66 @@ using Microsoft.Xna.Framework;
 namespace HackAndSlash
 {
 
-
-    public class AttackPlayer : ISprite
+    public class AttackPlayer : IPlayer
     {
-        public Texture2D Texture { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
-        public int UpdateDelay { get; set; }
+        private IPlayer DecoratedPlayer;
+        private Game1 game;
+        private int timer;
 
-        // Frame and fame delays 
-        private int frameCounter; 
-        private int currentFrame;
-        private int totalFrames;        
-
-        public AttackPlayer(Texture2D texture, int rows, int columns, int updateDelay)
+        public AttackPlayer(IPlayer decoratedPlayer, Game1 game)
         {
-            Texture = texture;
-            Rows = rows;
-            Columns = columns;
-            UpdateDelay = updateDelay;
-            currentFrame = 0;
-            frameCounter = 0;
-            totalFrames = Rows * Columns;
-        }
-
-        public int GetCurrentFrame()
-        {
-            return currentFrame;
+            timer = 30; //Added delay.
+            this.DecoratedPlayer = decoratedPlayer;
+            this.game = game;
+            DrawPlayer.Instance.Frame = 0;
         }
 
         public void Update()
         {
-            frameCounter++;
-            // Add delay 
-            if (frameCounter == UpdateDelay) {
-
-                // Loop reset 
-                if (currentFrame == totalFrames)
-                    currentFrame = 0;
-
-                currentFrame++;
-                frameCounter = 0;
+            timer--;
+            if (timer % 10 == 0) DrawPlayer.Instance.Frame += 1;
+            if (timer == 0)
+            {
+                DrawPlayer.Instance.Frame = 2;
+                RemoveDecorator();
             }
+
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
-            int row = (Rows == 1) ? 0 : (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
+            DecoratedPlayer.Draw(spriteBatch, location, color);
+        }
 
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+        public void RemoveDecorator()
+        {
+            game.Player = DecoratedPlayer; //set it back to movement state.
+        }
 
-            spriteBatch.Begin();
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
-            spriteBatch.End();
+        public void Move()
+        {
+            DecoratedPlayer.Move();
+        }
+
+        public void Attack()
+        {
+            //Does not attack
+        }
+
+        public void Damaged()
+        {
+            DecoratedPlayer.Damaged();
+        }
+
+        public int GetDir()
+        {
+            return DecoratedPlayer.GetDir();
+        }
+
+        public void ChangeDirection(int dir)
+        {
+            DecoratedPlayer.ChangeDirection(dir);
         }
     }
-    
+
 }

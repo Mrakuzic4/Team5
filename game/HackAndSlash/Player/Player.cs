@@ -10,10 +10,14 @@ namespace HackAndSlash
     public class Player : IPlayer
     {
         private PlayerStateMachine playerStateMachine;
+        private int timer;
+        private Game1 game;
 
-        public Player()
+        public Player(Game1 game)
         {
-            playerStateMachine = new PlayerStateMachine(1); //inital state face right
+            playerStateMachine = new PlayerStateMachine(1, game); //inital state face right
+            timer = 7; //adding delay to the player sprite animation
+            this.game = game;
         }
 
         public int GetDir()
@@ -28,12 +32,18 @@ namespace HackAndSlash
 
         public void Move()
         {
+            timer--;
+            if(timer == 0)
+            {
+                DrawPlayer.Instance.Frame += 1;
+                timer = 7;
+            }
             playerStateMachine.Move();
         }
 
         public void Attack()
         {
-            playerStateMachine.Attack(); //to be fixed...
+            playerStateMachine.Attack();
         }
 
         public void Damaged()

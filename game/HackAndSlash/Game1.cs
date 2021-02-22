@@ -84,7 +84,7 @@ namespace HackAndSlash
         {
             base.Initialize();
 
-            Player = new Player();//Player object
+            Player = new Player(this);//Player object
             SpriteFactory.Instance.CreateRightPlayer();//Set up the inital sprite
 
             controllerList = new List<Object>();

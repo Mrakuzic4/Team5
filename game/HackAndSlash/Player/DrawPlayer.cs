@@ -21,6 +21,18 @@ namespace HackAndSlash
         private int currentFrame;
         private int totalFrames;
 
+        public int Frame
+        {
+            get
+            {
+                return currentFrame;
+            }
+            set 
+            { 
+                currentFrame = value; 
+            }
+        }
+
         //Singleton
         private static DrawPlayer instance = new DrawPlayer();
 
@@ -34,18 +46,17 @@ namespace HackAndSlash
 
         private DrawPlayer()
         {
-
-            Rows = 1;
-            Columns = 7;
-            UpdateDelay = 4;
+            UpdateDelay = 8;
             currentFrame = 0;
             frameCounter = 0;
-            totalFrames = Rows * Columns;
         }
 
         public void SetTexture(Texture2D texture)
         {
             this.Texture = texture;
+            //This is safe because Rows and Columns
+            //are already set before calling SetTexture.
+            totalFrames = Rows * Columns; 
         }
 
         public int GetCurrentFrame()
@@ -63,7 +74,7 @@ namespace HackAndSlash
                 if (currentFrame == totalFrames)
                     currentFrame = 0;
 
-                currentFrame++;
+               // currentFrame++; //maybe comment it out?
                 frameCounter = 0;
             }
         }
@@ -76,7 +87,7 @@ namespace HackAndSlash
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width*5, height*5);
 
             spriteBatch.Begin();
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);

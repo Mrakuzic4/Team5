@@ -18,18 +18,18 @@ namespace HackAndSlash
         public KeyboardController(Game1 game)
         {
             this.game = game;
-            playerStateMachine = new PlayerStateMachine(1); //default is facing right
+            playerStateMachine = new PlayerStateMachine(1,game); //default is facing right
 
 
             //add all default controls
             controllerMappings = new Dictionary<Keys, ICommand>()
             {
-                {Keys.W, new MoveUpCommand(game,game.Player)},
-                {Keys.A, new MoveLeftCommand(game, game.Player)},
-                {Keys.S, new MoveDownCommand(game, game.Player)},
-                {Keys.D, new MoveRightCommand(game, game.Player)},
-                {Keys.Z, new AttackCommand(game, playerStateMachine)},
-                {Keys.N, new AttackCommand(game, playerStateMachine)},
+                {Keys.W, new MoveUpCommand(game.Player)},
+                {Keys.A, new MoveLeftCommand(game.Player)},
+                {Keys.S, new MoveDownCommand( game.Player)},
+                {Keys.D, new MoveRightCommand(game.Player)},
+                {Keys.Z, new AttackCommand(game, game.Player)},
+                {Keys.N, new AttackCommand(game, game.Player)},
                 {Keys.D1, new UsePlayerItemCommand(game)},
                 {Keys.E, new DamageCommand(game, game.Player)},
                 {Keys.T, new BlockCycleCommand(game)},
