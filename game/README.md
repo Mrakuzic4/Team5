@@ -1,9 +1,9 @@
 # Team 5 3902 game 
 
-## Control (sptrint 2)
+## Control (sprint 2)
 
-* `WASD` and arrow keys for moving the character  
-* Number key `1` to use the item _(if yo have one)_
+* `WASD` and arrow keys for moving the player character  
+* Number key `1` to use the item _(if you have one)_
 * `U` and `I` key to get yourself an item _(for free for now)_
 * `Q` to quit 
 * `R` to reset 

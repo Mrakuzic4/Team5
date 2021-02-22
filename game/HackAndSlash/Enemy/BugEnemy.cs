@@ -10,15 +10,14 @@ namespace HackAndSlash
 {
     public class BugEnemy : IEnemy
     {
-        private bugStateMachine bugState;
-        private EnemySprite EnemySprite;
-        private Vector2 position;
-        private SpriteBatch spriteBatch;
-        private GraphicsDevice Graphics;
+        private bugStateMachine bugState; // to keep track of the current state of the bug 
+        private Vector2 position; // the position of the enemy on screen
+        private SpriteBatch spriteBatch; // the spritebatch used to draw the enemy
+        private GraphicsDevice Graphics; // the graphics device used by the spritebatch
 
-        private int timeSinceLastFrame = 0;
+        private int timeSinceLastFrame = 0; // used to slow down the rate of animation 
         private int milliSecondsPerFrame = 80;
-        private int temp = 0;
+        private int temp = 0;//counter to change states after a certain number of calls to update
 
         //make the constructor for the class
         public BugEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch spriteBatch)
@@ -27,25 +26,28 @@ namespace HackAndSlash
             bugState = new bugStateMachine();
             Graphics = graphics;
             this.spriteBatch = spriteBatch;
-            EnemySprite = (EnemySprite)SpriteFactory.Instance.CreateBugIdle();
         }
 
+        //Loading the spritebatch 
         public void LoadContent()
         {
             spriteBatch = new SpriteBatch(Graphics);
         }
 
+        //updating the enemy
         public void Update(GameTime gameTime)
         {
-            timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds;
-            if (timeSinceLastFrame > milliSecondsPerFrame)
+            timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds; //counting elapsed time since last update
+            if (timeSinceLastFrame > milliSecondsPerFrame) // executing when milliSecondsPerFrame seconds have passed
             {
                 timeSinceLastFrame = 0;
-                if (bugState.state != bugStateMachine.bugHealth.Not)
+                if (bugState.state != bugStateMachine.bugHealth.Not) // call update on the EnemySprite when not in 'NOT'
                 {
                     bugState.MachineEnemySprite.Update();
                 }
             }
+
+            //temporary code for sprint2 to shuffle in between states
             if (temp == 0 && bugState.state !=  bugStateMachine.bugHealth.Not) {
                 bugState.changeToIdle();
             }
@@ -66,6 +68,14 @@ namespace HackAndSlash
                 bugState.changeToIdle();
             }
 
+            if (temp > 800)
+            {
+                temp = 0;
+            }
+            temp++;
+            //end of temporary code for sprint2 to shuffle in between states
+
+            //updating position of enemy according to state
             if (bugState.state == bugStateMachine.bugHealth.MoveUp) {
                 position.Y--;
             }
@@ -78,49 +88,21 @@ namespace HackAndSlash
                 position.Y = 100;
             }
 
-            if (temp > 800) {
-                temp = 0;
-            }
-            temp++;
+            
         }
 
         public void Draw()
         {
-            if (bugState.state == bugStateMachine.bugHealth.Idle)
+            if (bugState.state != bugStateMachine.bugHealth.Not)
             {
-                //get the appropriate bug sprite from factory and set it to EnemySprite
-                //call EnemySprite.draw
+              
                 bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
 
             }
 
-            else if (bugState.state == bugStateMachine.bugHealth.MoveUp)
-            {
-                //get the appropriate bug sprite from factory and set it to EnemySprite
-                //call EnemySprite.draw
-                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
-            }
-
-            else if (bugState.state == bugStateMachine.bugHealth.MoveDown)
-            {
-                //get the appropriate bug sprite from factory and set it to EnemySprite
-                //call EnemySprite.draw
-                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
-            }
-
-            else if (bugState.state == bugStateMachine.bugHealth.Die)
-            {
-                //get the appropriate bug sprite from factory and set it to EnemySprite
-                //call EnemySprite.draw
-                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
-            }
-
-            else if (bugState.state == bugStateMachine.bugHealth.Not)
-            {
-                //do not call draw
-            }
         }
 
+        //Functions to switch the states
         public void changeToIdle()
         {
             bugState.changeToIdle();
@@ -147,12 +129,14 @@ namespace HackAndSlash
         }
     }
 
+    //The state machine holding the bug health
     public class bugStateMachine
     {
-        public enum bugHealth { Idle, MoveUp,MoveDown, Die, Not };
-        public bugHealth state;
-        public EnemySprite MachineEnemySprite;
+        public enum bugHealth { Idle, MoveUp,MoveDown, Die, Not }; // the different possible states
+        public bugHealth state;// the current health state of the bug
+        public EnemySprite MachineEnemySprite; // The EnemySprite implementing ISprite
 
+        //constructor for the class
         public bugStateMachine()
         {
             state = bugHealth.Not;
@@ -160,30 +144,35 @@ namespace HackAndSlash
         }
         public void changeToIdle()
         {
-            //change to idle
+            //change to idle if not already Idle
             if (state != bugHealth.Idle)
             {
                 state = bugHealth.Idle;
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateBugIdle();
+                //get appropriate sprite from sprite factory
             }
 
         }
 
         public void changeToMoveUp()
         {
+            //change to moveUp if not already moveUp
             if (state != bugHealth.MoveUp)
             {
                 state = bugHealth.MoveUp;
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateBugMoveUp();
+                //get appropriate sprite from sprite factory
             }
         }
 
         public void changeToMoveDown()
         {
+            //change to MoveDown if not already MoveDown
             if (state != bugHealth.MoveDown)
             {
                 state = bugHealth.MoveDown;
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateBugMoveDown();
+                //get appropriate sprite from sprite factory
             }
         }
 
@@ -193,11 +182,13 @@ namespace HackAndSlash
             {
                 state = bugHealth.Die;
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateBugDie();
+                //get appropriate sprite from sprite factory
             }
         }
 
         public void changeToNot()
         {
+            //change to Not if not already Not
             if (state != bugHealth.Not)
             {
                 state = bugHealth.Not;
