@@ -22,6 +22,10 @@ namespace HackAndSlash
         private Texture2D ZeldaAttackLeft;
         private Texture2D ZeldaAttackRight;
 
+        private Texture2D ZeldaUseItemDown;
+        private Texture2D ZeldaUseItemUp;
+        private Texture2D ZeldaUseItemLeft;
+        private Texture2D ZeldaUseItemRight;
 
         private Texture2D BGSprite;
 
@@ -70,6 +74,11 @@ namespace HackAndSlash
             ZeldaAttackUp = content.Load<Texture2D>(IMDB.zeldaAttackUp.pathName);
             ZeldaAttackLeft = content.Load<Texture2D>(IMDB.zeldaAttackLeft.pathName);
             ZeldaAttackRight = content.Load<Texture2D>(IMDB.zeldaAttackRight.pathName);
+
+            ZeldaUseItemDown = content.Load<Texture2D>(IMDB.zeldaUseItemDown.pathName);
+            ZeldaUseItemUp = content.Load<Texture2D>(IMDB.zeldaUseItemUp.pathName);
+            ZeldaUseItemLeft = content.Load<Texture2D>(IMDB.zeldaUseItemLeft.pathName);
+            ZeldaUseItemRight = content.Load<Texture2D>(IMDB.zeldaUseItemRight.pathName);
 
             // Original image from https://opengameart.org/content/animated-snake
             // Edited in Adobe Fresco to align specific states
@@ -168,6 +177,34 @@ namespace HackAndSlash
             DrawPlayer.Instance.SetTexture(ZeldaAttackDown);
         }
 
+        //*************Below are Player use item*********************
+        public void SetUpUseItemPlayer()
+        {
+            DrawPlayer.Instance.Rows = IMDB.zeldaUseItemUp.R;
+            DrawPlayer.Instance.Columns = IMDB.zeldaUseItemUp.C;
+            DrawPlayer.Instance.SetTexture(ZeldaUseItemUp);
+        }
+
+        public void SetRightUseItemPlayer()
+        {
+            DrawPlayer.Instance.Rows = IMDB.zeldaUseItemRight.R;
+            DrawPlayer.Instance.Columns = IMDB.zeldaUseItemRight.C;
+            DrawPlayer.Instance.SetTexture(ZeldaUseItemRight);
+        }
+
+        public void SetLeftUseItemPlayer()
+        {
+            DrawPlayer.Instance.Rows = IMDB.zeldaUseItemLeft.R;
+            DrawPlayer.Instance.Columns = IMDB.zeldaUseItemLeft.C;
+            DrawPlayer.Instance.SetTexture(ZeldaUseItemLeft);
+        }
+
+        public void SetDownUseItemPlayer()
+        {
+            DrawPlayer.Instance.Rows = IMDB.zeldaUseItemDown.R;
+            DrawPlayer.Instance.Columns = IMDB.zeldaUseItemDown.C;
+            DrawPlayer.Instance.SetTexture(ZeldaUseItemDown);
+        }
         //*****************Below are enemies sprites******************
 
         public ISprite CreateSnakeIdle()

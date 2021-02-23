@@ -122,19 +122,19 @@ namespace HackAndSlash
 			switch (playerDir)
 			{
 				case GlobalSettings.Direction.Left:
-					SpriteFactory.Instance.SetLeftPlayer();
+					SpriteFactory.Instance.SetLeftUseItemPlayer();
 					break;
 
 				case GlobalSettings.Direction.Up:
-					SpriteFactory.Instance.SetUpPlayer();
+					SpriteFactory.Instance.SetUpUseItemPlayer();
 					break;
 
 				case GlobalSettings.Direction.Down:
-					SpriteFactory.Instance.SetDownPlayer();
+					SpriteFactory.Instance.SetDownUseItemPlayer();
 					break;
 
 				default: //Default to be right
-					SpriteFactory.Instance.SetRightPlayer();
+					SpriteFactory.Instance.SetRightUseItemPlayer();
 					break;
 			}
 		}
