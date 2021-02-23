@@ -16,3 +16,6 @@ SPRINT 2 REFLECTION
   
 - Things aimed to be done differently next time
   * More joint review sessions to make sure everyone is comfortable with their tasks
+  * Start on the tasks early and formulate a planned approach
+
+
