@@ -30,7 +30,7 @@ namespace HackAndSlash
                 {Keys.Down, new MoveDownCommand(game.Player)},
                 {Keys.Right, new MoveRightCommand(game.Player)},
 
-                {Keys.D1, new UsePlayerItemCommand(game)},
+                {Keys.D1, new UsePlayerItemCommand(game, game.Player)},
                 {Keys.E, new DamageCommand(game, game.Player)},
                 {Keys.T, new BlockCycleDownCommand(game, game.blockList)},
                 {Keys.Y, new BlockCycleUpCommand(game, game.blockList)},

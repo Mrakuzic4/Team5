@@ -44,7 +44,6 @@ namespace HackAndSlash
         public ImageFile playerMoveLeft;
         public ImageFile playerMoveRight;
 
-        public ImageFile zelda;
         public ImageFile zeldaDown;
         public ImageFile zeldaUp;
         public ImageFile zeldaLeft;
