@@ -13,6 +13,9 @@ namespace HackAndSlash
         public int Columns { get; set; }
         public int UpdateDelay { get; set; }
 
+        private Vector2 relPositionMC; // Relative position. As position in display window 
+
+
         // Frame and fame delays 
         private int currentFrame;
         private int totalFrames;
@@ -55,6 +58,16 @@ namespace HackAndSlash
             Rows = 1;
             Columns = 7;
             totalFrames = Rows * Columns;
+        }
+
+        public Vector2 GetPos()
+        {
+            return relPositionMC;
+        }
+
+        public void SetPos(Vector2 pos)
+        {
+            relPositionMC = pos;
         }
 
         public void SetDirection(GlobalSettings.Direction direction)

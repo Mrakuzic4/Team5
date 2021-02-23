@@ -19,7 +19,7 @@ namespace HackAndSlash
         {
             Player.UseItem();
             game.Player = new UseItemPlayer(Player, game); //Decorator of the PlayerSprite
-            game.ItemHolder.UseItem(game.Player.GetDir(), game.Pos); // default position for now
+            game.ItemHolder.UseItem(game.Player.GetDir(), Player.GetPos()); // default position for now
         }
     }
 }

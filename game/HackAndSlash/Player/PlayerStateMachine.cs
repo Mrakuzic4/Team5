@@ -13,6 +13,7 @@ namespace HackAndSlash
 		public int Direction { get { return (int) playerDir; } }
 
 		private Game1 game;
+		private IPlayer Player;
 
 		//TODO: implement player health.
 		//private PlayerHealth health = GoombaHealth.Normal;
@@ -21,10 +22,11 @@ namespace HackAndSlash
 		/// dir is the direction in integer form, 0 is left, 1 is right, etc.
 		/// </summary>
 		/// <param name="dir"></param>
-		public PlayerStateMachine(GlobalSettings.Direction dir, Game1 game)
+		public PlayerStateMachine(GlobalSettings.Direction dir, Game1 game, IPlayer Player)
 		{
 			this.game = game;
 			playerDir = dir;
+			this.Player = Player;
 		}
 
 		public void ChangeDirection(GlobalSettings.Direction dir)
@@ -38,26 +40,26 @@ namespace HackAndSlash
             {
 				case GlobalSettings.Direction.Left:
 					SpriteFactory.Instance.SetLeftPlayer();
-					//CHange the POs
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X - GlobalSettings.STEP_SIZE_X, game.Pos.Y); //move the sprite
+					//Change the Pos
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X - GlobalSettings.STEP_SIZE_X, Player.GetPos().Y));
 					break;
 					
 				case GlobalSettings.Direction.Up:
 					SpriteFactory.Instance.SetUpPlayer();
 					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y - GlobalSettings.STEP_SIZE_Y);
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X, Player.GetPos().Y - GlobalSettings.STEP_SIZE_Y));
 					break;
 
 				case GlobalSettings.Direction.Down:
 					SpriteFactory.Instance.SetDownPlayer();
 					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y + GlobalSettings.STEP_SIZE_Y);
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X, Player.GetPos().Y + GlobalSettings.STEP_SIZE_Y));
 					break;
 
 				default: //Default to be right
 					SpriteFactory.Instance.SetRightPlayer();
 					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X + GlobalSettings.STEP_SIZE_X, game.Pos.Y);
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X + GlobalSettings.STEP_SIZE_X, Player.GetPos().Y));
 					break;
 			}
 		}
@@ -70,22 +72,24 @@ namespace HackAndSlash
 			switch (playerDir)
 			{
 				case GlobalSettings.Direction.Left:
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X + GlobalSettings.KNOCKBACK_DIST_X, game.Pos.Y); //move the sprite
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X + GlobalSettings.KNOCKBACK_DIST_X, Player.GetPos().Y));
 					break;
 
 				case GlobalSettings.Direction.Up:
 					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y + GlobalSettings.KNOCKBACK_DIST_Y);
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X , Player.GetPos().Y + GlobalSettings.KNOCKBACK_DIST_X));
+
 					break;
 
 				case GlobalSettings.Direction.Down:
 					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X, game.Pos.Y - GlobalSettings.KNOCKBACK_DIST_Y);
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X, Player.GetPos().Y - GlobalSettings.KNOCKBACK_DIST_X));
 					break;
 
 				default: //Default to be right
-					//move the sprite
-					game.Pos = new Microsoft.Xna.Framework.Vector2(game.Pos.X - GlobalSettings.KNOCKBACK_DIST_X, game.Pos.Y);
+						 //move the sprite
+
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X - GlobalSettings.KNOCKBACK_DIST_X, Player.GetPos().Y));
 					break;
 			}
 

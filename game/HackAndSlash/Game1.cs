@@ -28,8 +28,6 @@ namespace HackAndSlash
 
         // Sprites  
         private SpriteBG SpriteBG;
-        public ISprite PlayerSprite { set { SpriteHolder = value; } }
-        private ISprite SpriteHolder { get; set; }
         public IItem ItemHolder { get; set; }
         public IBlock BlockHolder { get; set; }
         
@@ -37,26 +35,10 @@ namespace HackAndSlash
         
         public SnakeEnemy snakefirst;
         public BugEnemy bugfirst;
-        private Vector2 EnemyPosition;
 
 
         public FirewallItem firewallFirst;
         public BombItem bombFirst;
-
-        // Character positions 
-        private Vector2 relPositionMC; // Relative position. As position in display window 
-
-        public Vector2 Pos
-        {
-            get
-            {
-                return relPositionMC;
-            }
-            set
-            {
-                relPositionMC = value;
-            }
-        }
 
         // Object lists
         List<Object> controllerList;
@@ -98,8 +80,8 @@ namespace HackAndSlash
 
 
             // Place character on the up left corner 
-            relPositionMC.X = GlobalSettings.WINDOW_WIDTH / GlobalSettings.MAX_DISPLAY_DIV + 1;
-            relPositionMC.Y = GlobalSettings.WINDOW_HEIGHT / GlobalSettings.MAX_DISPLAY_DIV + 1;
+            //relPositionMC.X = GlobalSettings.WINDOW_WIDTH / GlobalSettings.MAX_DISPLAY_DIV + 1;
+            //relPositionMC.Y = GlobalSettings.WINDOW_HEIGHT / GlobalSettings.MAX_DISPLAY_DIV + 1;
 
             graphics.ApplyChanges();
 
@@ -184,7 +166,7 @@ namespace HackAndSlash
             spriteBatch.Begin();
             //SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);sd
             BlockHolder.Draw();
-            Player.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);
+            Player.Draw(spriteBatch, Player.GetPos(), Color.White);
             ItemHolder.Draw();
             snakefirst.Draw();
             bugfirst.Draw();

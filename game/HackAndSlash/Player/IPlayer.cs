@@ -8,6 +8,8 @@ namespace HackAndSlash
 {
     public interface IPlayer
     {
+        void SetPos(Vector2 Pos);
+        Vector2 GetPos();
         void Draw(SpriteBatch spriteBatch, Vector2 location, Color color);
         void Update();
         void Move();
@@ -16,5 +18,6 @@ namespace HackAndSlash
         void Damaged();
         int GetDir();
         void ChangeDirection(GlobalSettings.Direction dir);
+
     }
 }

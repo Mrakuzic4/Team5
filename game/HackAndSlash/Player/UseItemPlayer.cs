@@ -13,12 +13,25 @@ namespace HackAndSlash
         private int timer;
         private const int TIME = 85; //added delay
 
+        private Vector2 relPositionMC; // Relative position. As position in display window 
+
+
         public UseItemPlayer(IPlayer decoratedPlayer, Game1 game)
         {
             timer = TIME; //Added delay.
             this.DecoratedPlayer = decoratedPlayer;
             this.game = game;
             DrawPlayer.Instance.Frame = 0;
+            this.relPositionMC = decoratedPlayer.GetPos();
+        }
+        public Vector2 GetPos()
+        {
+            return relPositionMC;
+        }
+
+        public void SetPos(Vector2 pos)
+        {
+            relPositionMC = pos;
         }
 
         public void Update()
