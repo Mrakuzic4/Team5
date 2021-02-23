@@ -33,8 +33,6 @@ namespace HackAndSlash
 
         public void LoadContent()
         {
-           // spriteBatch = new SpriteBatch(Graphics);
-            
         }
 
         //updating the enemy
