@@ -46,6 +46,9 @@ namespace HackAndSlash
         private Texture2D ChipBlock;
         private Texture2D SmoothBlock;
 
+        private Texture2D BlockDemo;
+        private Texture2D BlockBlank1;
+        private Texture2D LevelEagleBorder;
 
         private static SpriteFactory instance = new SpriteFactory();
 
@@ -108,11 +111,27 @@ namespace HackAndSlash
             ChipBlock = content.Load<Texture2D>(IMDB.ChipBlock.pathName);
             SmoothBlock = content.Load<Texture2D>(IMDB.SmoothBlock.pathName);
 
+            // Level map related 
+            BlockDemo = content.Load<Texture2D>(IMDB.BlockDemo.pathName);
+            BlockBlank1 = content.Load<Texture2D>(IMDB.BlockBlank1.pathName);
+            LevelEagleBorder = content.Load<Texture2D>(IMDB.LevelEagleBorder.pathName);
         }
 
         public Texture2D CreateBG()
         {
             return BGSprite;
+        }
+        public Texture2D GetBlockDemo()
+        {
+            return BlockDemo;
+        }
+        public Texture2D GetBlockBlank1()
+        {
+            return BlockBlank1;
+        }
+        public Texture2D GetLevelEagleBorder()
+        {
+            return LevelEagleBorder;
         }
 
         public Texture2D CreatePlayer()

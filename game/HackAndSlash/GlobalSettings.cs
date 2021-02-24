@@ -1,4 +1,7 @@
 ﻿
+using System.Collections.Generic;
+
+using Microsoft.Xna.Framework.Graphics;
 
 namespace HackAndSlash
 {
@@ -7,18 +10,23 @@ namespace HackAndSlash
 
     public class GlobalSettings
     {
-        public const int WINDOW_WIDTH = 600;
-        public const int WINDOW_HEIGHT = 400;
+        public const int WINDOW_WIDTH = 1024;
+        public const int WINDOW_HEIGHT = 704;
 
+        public const int BASE_SCALAR = 64; // Pixel unit
+
+        public const int BORDER_OFFSET = 128; // Size of the map border 
+        public const int TILE_ROW = 7;
+        public const int TILE_COLUMN = 12;
         public const int MAX_DISPLAY_DIV = 6;
 
-        public const int STEP_SIZE_X = 5;
+        public const int STEP_SIZE_X = 5; // Distance moved in each update 
         public const int STEP_SIZE_Y = 5;
-        public const int KNOCKBACK_DIST_X = 10;
+        public const int KNOCKBACK_DIST_X = 10; // Knockback Distance 
         public const int KNOCKBACK_DIST_Y = 10;
 
         public const long DELAY_TIME = 100; // In ms
-        public const long DELAY_KEYBOARD = 200;
+        public const long DELAY_KEYBOARD = 200; // For keyboard pressing event 
         public enum Direction { Left, Right, Up, Down };
     }
 
@@ -37,6 +45,7 @@ namespace HackAndSlash
         }
     }
 
+    // This class is used to record all the meta-info of the pictures 
     class ImageDatabase
     {
         public ImageFile playerMoveUp;
@@ -77,6 +86,10 @@ namespace HackAndSlash
 
         public ImageFile ChipBlock;
         public ImageFile SmoothBlock;
+
+        public ImageFile BlockDemo;
+        public ImageFile BlockBlank1;
+        public ImageFile LevelEagleBorder;
 
         public ImageDatabase()
         {
@@ -119,6 +132,13 @@ namespace HackAndSlash
 
             ChipBlock = new ImageFile("images/ChipBlock", 1, 1);
             SmoothBlock = new ImageFile("images/SmoothBlock", 1, 1);
+
+            // For level blocks, they must be the same size as BASE_SCALAR
+            BlockDemo = new ImageFile("images/BlockDemo", 1, 1);
+            BlockBlank1 = new ImageFile("images/BlockBlank1", 1, 1);
+
+            LevelEagleBorder = new ImageFile("images/LevelEagleBorder", 1, 1);
         }
     }
+
 }

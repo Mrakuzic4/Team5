@@ -36,13 +36,6 @@ namespace HackAndSlash
             return false; 
         }
 
-        public void UpdateCoordX(int coordX)
-        {
-            textureLocation.X -= coordX;
-            if (!withinBorder())
-                textureLocation.X += coordX;
-        }
-
         public void Update()
         {
             
@@ -50,9 +43,9 @@ namespace HackAndSlash
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
-            //spriteBatch.Begin();
+            
             spriteBatch.Draw(Texture, textureLocation, Color.White);
-            //spriteBatch.End();
+            
         }
     }
 }

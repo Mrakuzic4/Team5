@@ -77,6 +77,9 @@
     <Compile Include="Items\FirewallItem.cs" />
     <Compile Include="Items\IItem.cs" />
     <Compile Include="Items\ItemSprite.cs" />
+    <Compile Include="Levels\ILevel.cs" />
+    <Compile Include="Levels\Level.cs" />
+    <Compile Include="Levels\LevelDatabase.cs" />
     <Compile Include="Player\UseItemPlayer.cs" />
     <Compile Include="Player\IPlayer.cs" />
     <Compile Include="Player\DamagedPlayer.cs" />

@@ -40,6 +40,8 @@ namespace HackAndSlash
         public FirewallItem firewallFirst;
         public BombItem bombFirst;
 
+        private ILevel level; 
+
         // Object lists
         List<Object> controllerList;
         public List<IBlock> blockList { get; set; }
@@ -66,6 +68,8 @@ namespace HackAndSlash
         protected override void Initialize()
         {
             base.Initialize();
+
+            level = new Level(GraphicsDevice, spriteBatch);
 
             Player = new Player(this);//Player object
             SpriteFactory.Instance.SetRightPlayer();//Set up the inital sprite
@@ -163,8 +167,10 @@ namespace HackAndSlash
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            
+
             spriteBatch.Begin();
-            //SpriteBG.Draw(spriteBatch, new Vector2(relPositionMC.X, relPositionMC.Y), Color.White);sd
+            level.Draw();
             BlockHolder.Draw();
             Player.Draw(spriteBatch, Player.GetPos(), Color.White);
             ItemHolder.Draw();
