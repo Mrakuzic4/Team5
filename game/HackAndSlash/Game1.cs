@@ -167,8 +167,6 @@ namespace HackAndSlash
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            
-
             spriteBatch.Begin();
             level.Draw();
             BlockHolder.Draw();
