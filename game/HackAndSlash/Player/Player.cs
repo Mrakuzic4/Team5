@@ -23,6 +23,7 @@ namespace HackAndSlash
             this.game = game;
             relPositionMC.X = GlobalSettings.WINDOW_WIDTH / GlobalSettings.MAX_DISPLAY_DIV + 1;
             relPositionMC.Y = GlobalSettings.WINDOW_HEIGHT / GlobalSettings.MAX_DISPLAY_DIV + 1;
+            SpriteFactory.Instance.SetRightPlayer();//Set up the inital sprite
         }
 
         public Vector2 GetPos()

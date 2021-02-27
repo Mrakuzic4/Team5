@@ -8,18 +8,15 @@ namespace HackAndSlash
 {
     public class DamageCommand : ICommand
     {
-        private Game1 game;
         private IPlayer Player;
 
-        public DamageCommand(Game1 game, IPlayer Player)
+        public DamageCommand(IPlayer Player)
         {
-            this.game = game;
             this.Player = Player;
         }
         public void execute()
         {
             Player.Damaged();
-            game.Player = new DamagedPlayer(Player, game); //Decorator of the PlayerSprite
         }
     }
 }

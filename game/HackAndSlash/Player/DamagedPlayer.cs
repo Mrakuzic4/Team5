@@ -64,6 +64,7 @@ namespace HackAndSlash
         public void Damaged()
         {
             //Does not take damaged!
+            //Do nothing!
         }
 
         public int GetDir()
