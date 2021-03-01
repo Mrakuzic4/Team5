@@ -16,28 +16,32 @@ namespace HackAndSlash
         {
             this.game = game;
          
-            //add all default controls
+            //Add all default controls
             controllerMappings = new Dictionary<Keys, ICommand>()
             {
+                //PlayerMovement
                 {Keys.W, new MoveUpCommand(game.Player)},
                 {Keys.A, new MoveLeftCommand(game.Player)},
                 {Keys.S, new MoveDownCommand( game.Player)},
                 {Keys.D, new MoveRightCommand(game.Player)},
-                {Keys.Z, new AttackCommand(game, game.Player)},
-                {Keys.N, new AttackCommand(game, game.Player)},
                 {Keys.Up, new MoveUpCommand(game.Player)},
                 {Keys.Left, new MoveLeftCommand(game.Player)},
                 {Keys.Down, new MoveDownCommand(game.Player)},
                 {Keys.Right, new MoveRightCommand(game.Player)},
-
+                //PlayerFunction
+                {Keys.Z, new AttackCommand(game, game.Player)},
+                {Keys.N, new AttackCommand(game, game.Player)},
                 {Keys.D1, new UsePlayerItemCommand(game, game.Player)},
-                {Keys.E, new DamageCommand(game, game.Player)},
-                {Keys.T, new BlockCycleDownCommand(game, game.blockList)},
-                {Keys.Y, new BlockCycleUpCommand(game, game.blockList)},
+                {Keys.E, new DamageCommand(game.Player)},
                 {Keys.U, new ItemUseableCommand(game)},
                 {Keys.I, new ItemCycleCommand(game)},
+                //BlockFunction
+                {Keys.T, new BlockCycleDownCommand(game, game.blockList)},
+                {Keys.Y, new BlockCycleUpCommand(game, game.blockList)},
+                //EnemyFunction
                 {Keys.O, new EnemyCycleCommandSnake(game)},
                 {Keys.P, new EnemyCycleCommandBug(game)},
+                //GameFunction
                 {Keys.R, new ResetCommand(game)},
                 {Keys.Q, new QuitCommand(game)}
             };

@@ -14,26 +14,22 @@ namespace HackAndSlash
         private int timer;
         private Color color;
 
-        private Vector2 relPositionMC; // Relative position. As position in display window 
-
-
         public DamagedPlayer(IPlayer decoratedPlayer, Game1 game) 
         {
             timer = 200;
             this.DecoratedPlayer = decoratedPlayer;
             this.game = game;
             this.color = Color.Red;
-            this.relPositionMC = decoratedPlayer.GetPos();
         }
 
         public Vector2 GetPos()
         {
-            return relPositionMC;
+            return this.DecoratedPlayer.GetPos();
         }
 
         public void SetPos(Vector2 pos)
         {
-            relPositionMC = pos;
+            this.DecoratedPlayer.SetPos(pos);
         }
 
         public void Update()
@@ -68,6 +64,7 @@ namespace HackAndSlash
         public void Damaged()
         {
             //Does not take damaged!
+            //Do nothing!
         }
 
         public int GetDir()

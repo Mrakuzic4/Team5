@@ -77,6 +77,7 @@
     <Compile Include="Items\FirewallItem.cs" />
     <Compile Include="Items\IItem.cs" />
     <Compile Include="Items\ItemSprite.cs" />
+    <Compile Include="Items\OverclockItem.cs" />
     <Compile Include="Levels\ILevel.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="Levels\LevelDatabase.cs" />
@@ -253,6 +254,9 @@
     <Content Include="Content\BugMoveDown.png" />
     <Content Include="Content\BugMoveUp.png" />
     <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\images\BlockBlank1.png" />
+    <Content Include="Content\images\BlockDemo.png" />
+    <Content Include="Content\images\Bomb.png" />
     <Content Include="Content\images\bug.png" />
     <Content Include="Content\images\BugDie.png" />
     <Content Include="Content\images\BugIdle.png" />
@@ -260,7 +264,11 @@
     <Content Include="Content\images\BugMoveDown.png" />
     <Content Include="Content\images\BugMoveUp.png" />
     <Content Include="Content\images\ChipBlock.png" />
+    <Content Include="Content\images\explosion.png" />
     <Content Include="Content\images\firewall2.png" />
+    <Content Include="Content\images\LevelEagleBorder.png" />
+    <Content Include="Content\images\NES - The Legend of Zelda - Link.png" />
+    <Content Include="Content\images\SmoothBlock.png" />
     <Content Include="Content\images\SnakeAttack.png" />
     <Content Include="Content\images\SnakeDie.png" />
     <Content Include="Content\images\SnakeIdle.png" />
@@ -270,6 +278,19 @@
     <Content Include="Content\images\sucLeft.png" />
     <Content Include="Content\images\sucOva.png" />
     <Content Include="Content\images\sucUp.png" />
+    <Content Include="Content\images\ZeldaAttackDown.png" />
+    <Content Include="Content\images\ZeldaAttackLeft.png" />
+    <Content Include="Content\images\ZeldaAttackRight.png" />
+    <Content Include="Content\images\ZeldaAttackUp.png" />
+    <Content Include="Content\images\ZeldaDown.png" />
+    <Content Include="Content\images\ZeldaLeft.png" />
+    <Content Include="Content\images\ZeldaRight.png" />
+    <Content Include="Content\images\ZeldaUp.png" />
+    <Content Include="Content\images\ZeldaUseItemDown.png" />
+    <Content Include="Content\images\ZeldaUseItemLeft.png" />
+    <Content Include="Content\images\ZeldaUseItemRight.png" />
+    <Content Include="Content\images\ZeldaUseItemUp.png" />
+    <Content Include="Content\ZeldaDown.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\DesktopGL\AnyCPU\Release\" />

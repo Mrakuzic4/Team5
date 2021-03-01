@@ -71,8 +71,7 @@ namespace HackAndSlash
 
             level = new Level(GraphicsDevice, spriteBatch);
 
-            Player = new Player(this);//Player object
-            SpriteFactory.Instance.SetRightPlayer();//Set up the inital sprite
+            PlayerMain = new Player(this);//Player object
 
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
@@ -82,13 +81,7 @@ namespace HackAndSlash
             graphics.PreferredBackBufferWidth = GlobalSettings.WINDOW_WIDTH;
             graphics.PreferredBackBufferHeight = GlobalSettings.WINDOW_HEIGHT;
 
-
-            // Place character on the up left corner 
-            //relPositionMC.X = GlobalSettings.WINDOW_WIDTH / GlobalSettings.MAX_DISPLAY_DIV + 1;
-            //relPositionMC.Y = GlobalSettings.WINDOW_HEIGHT / GlobalSettings.MAX_DISPLAY_DIV + 1;
-
             graphics.ApplyChanges();
-
         }
 
         /// <summary>
@@ -134,7 +127,6 @@ namespace HackAndSlash
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
             Content.Unload();
         }
 
@@ -149,7 +141,7 @@ namespace HackAndSlash
             {
                 controller.Update();
             }
-            Player.Update();
+            PlayerMain.Update();
             
             snakefirst.Update(gameTime);
             bugfirst.Update(gameTime);
@@ -167,12 +159,10 @@ namespace HackAndSlash
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            
-
             spriteBatch.Begin();
             level.Draw();
             BlockHolder.Draw();
-            Player.Draw(spriteBatch, Player.GetPos(), Color.White);
+            PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
             ItemHolder.Draw();
             snakefirst.Draw();
             bugfirst.Draw();

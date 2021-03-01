@@ -68,6 +68,8 @@ namespace HackAndSlash
 		{
 			//TODO: health goes down...
 
+			game.Player = new DamagedPlayer(Player, game); //Decorator of the PlayerSprite
+
 			//Player falls back when hit by enemies.
 			switch (playerDir)
 			{

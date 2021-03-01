@@ -165,7 +165,7 @@ namespace HackAndSlash
         {
             if (itemState.state == FirewallStateMachine.ItemStates.Useable && cooldown == 0)
             {
-                switch (playerDirection)
+                switch (currentPlayerDirection)
                 {
                     case 0:
                         currentPlayerPosition.X -= spriteWidth;

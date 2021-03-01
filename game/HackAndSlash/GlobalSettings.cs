@@ -125,7 +125,7 @@ namespace HackAndSlash
             bugIdle = new ImageFile("images/BugIdle", 1, 6);
             bugDie = new ImageFile("images/BugDie", 1, 6);
 
-            fireWall = new ImageFile("images/firewall", 1, 2);
+            fireWall = new ImageFile("images/firewall3", 1, 2);
             bomb = new ImageFile("images/Bomb", 1, 1);
             explosion = new ImageFile("images/explosion", 1, 3);
             BG = new ImageFile("images/BG", 1, 1);
