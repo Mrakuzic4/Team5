@@ -11,17 +11,16 @@ namespace HackAndSlash
     public class MoveLeftCommand : ICommand
     {
 
-        private IPlayer Player;
+        private Game1 game;
 
-        public MoveLeftCommand(IPlayer Player)
+        public MoveLeftCommand(Game1 game)
         {
-            this.Player = Player;
+            this.game = game;
         }
         public void execute()
         {        
-            Player.ChangeDirection(0);//face left
-            Player.Move();
-         
+            game.Player.ChangeDirection(0);//face left
+            game.Player.Move();
         }
     }
 }

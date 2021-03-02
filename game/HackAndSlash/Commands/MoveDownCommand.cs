@@ -8,17 +8,17 @@ namespace HackAndSlash
 {
     public class MoveDownCommand : ICommand
     {
-        private IPlayer Player;
+        private Game1 game;
 
-        public MoveDownCommand( IPlayer Player)
+        public MoveDownCommand(Game1 game)
         {
-            this.Player = Player;
+            this.game = game;
         }
         public void execute()
         {
                 //move driection out
-                Player.ChangeDirection(GlobalSettings.Direction.Down);//face down
-                Player.Move();
+                game.Player.ChangeDirection(GlobalSettings.Direction.Down);//face down
+                game.Player.Move();
            
         }
     }

@@ -59,7 +59,7 @@ namespace HackAndSlash
 
         public void Attack()
         {
-            //Does not attack
+            //Does not attack when using item.
         }
 
         public void Damaged()
@@ -78,7 +78,7 @@ namespace HackAndSlash
         }
         public void UseItem()
         {
-            DecoratedPlayer.UseItem();
+            //Does not UseItem
         }
     }
 
