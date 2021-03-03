@@ -108,18 +108,18 @@ namespace HackAndSlash
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width*5, height*5);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 64, 64);
 
             if (isAttack)
             {
                 if(this.direction == GlobalSettings.Direction.Left)
                 {
-                    destinationRectangle = new Rectangle((int)(location.X - 60)  , (int)location.Y, width * 5, height * 5);
+                    destinationRectangle = new Rectangle((int)(location.X - 60)  , (int)location.Y, width * 4, height * 4);
                 }
 
                 else if(this.direction == GlobalSettings.Direction.Up)
                 {
-                    destinationRectangle = new Rectangle((int)location.X, (int)(location.Y-60), width * 5, height * 5);
+                    destinationRectangle = new Rectangle((int)location.X, (int)(location.Y-60), width * 4, height * 4);
                 }
             }
                

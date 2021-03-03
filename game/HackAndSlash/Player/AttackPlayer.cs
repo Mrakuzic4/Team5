@@ -78,7 +78,7 @@ namespace HackAndSlash
         }
         public void UseItem()
         {
-            DecoratedPlayer.UseItem();
+            //Does not use item when attacking.
         }
     }
 

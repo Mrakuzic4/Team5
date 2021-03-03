@@ -9,17 +9,14 @@ namespace HackAndSlash
     public class UsePlayerItemCommand : ICommand
     {
         private Game1 game;
-        IPlayer Player;
-        public UsePlayerItemCommand(Game1 game, IPlayer Player)
+        public UsePlayerItemCommand(Game1 game)
         {
             this.game = game;
-            this.Player = Player;
         }
         public void execute()
         {
-            Player.UseItem();
-            game.Player = new UseItemPlayer(Player, game); //Decorator of the PlayerSprite
-            game.ItemHolder.UseItem(game.Player.GetDir(), Player.GetPos()); // default position for now
+            game.Player.UseItem();
+            game.ItemHolder.UseItem(game.Player.GetDir(), game.Player.GetPos()); // default position for now
         }
     }
 }

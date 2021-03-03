@@ -20,19 +20,19 @@ namespace HackAndSlash
             controllerMappings = new Dictionary<Keys, ICommand>()
             {
                 //PlayerMovement
-                {Keys.W, new MoveUpCommand(game.Player)},
-                {Keys.A, new MoveLeftCommand(game.Player)},
-                {Keys.S, new MoveDownCommand( game.Player)},
-                {Keys.D, new MoveRightCommand(game.Player)},
-                {Keys.Up, new MoveUpCommand(game.Player)},
-                {Keys.Left, new MoveLeftCommand(game.Player)},
-                {Keys.Down, new MoveDownCommand(game.Player)},
-                {Keys.Right, new MoveRightCommand(game.Player)},
+                {Keys.W, new MoveUpCommand(game)},
+                {Keys.A, new MoveLeftCommand(game)},
+                {Keys.S, new MoveDownCommand(game)},
+                {Keys.D, new MoveRightCommand(game)},
+                {Keys.Up, new MoveUpCommand(game)},
+                {Keys.Left, new MoveLeftCommand(game)},
+                {Keys.Down, new MoveDownCommand(game)},
+                {Keys.Right, new MoveRightCommand(game)},
                 //PlayerFunction
-                {Keys.Z, new AttackCommand(game, game.Player)},
-                {Keys.N, new AttackCommand(game, game.Player)},
-                {Keys.D1, new UsePlayerItemCommand(game, game.Player)},
-                {Keys.E, new DamageCommand(game.Player)},
+                {Keys.Z, new AttackCommand(game)},
+                {Keys.N, new AttackCommand(game)},
+                {Keys.D1, new UsePlayerItemCommand(game)},
+                {Keys.E, new DamageCommand(game)},
                 {Keys.U, new ItemUseableCommand(game)},
                 {Keys.I, new ItemCycleCommand(game)},
                 //BlockFunction

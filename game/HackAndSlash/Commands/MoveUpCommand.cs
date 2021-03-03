@@ -9,16 +9,16 @@ namespace HackAndSlash
 {
     public class MoveUpCommand : ICommand
     {
-        private IPlayer Player;
+        private Game1 game;
 
-        public MoveUpCommand(IPlayer Player)
+        public MoveUpCommand(Game1 game)
         {
-            this.Player = Player;
+            this.game = game;
         }
         public void execute()
         {
-            Player.ChangeDirection(GlobalSettings.Direction.Up);//face Up
-            Player.Move();
+            game.Player.ChangeDirection(GlobalSettings.Direction.Up);//face Up
+            game.Player.Move();
         }
     }
 }

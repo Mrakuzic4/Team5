@@ -99,6 +99,7 @@ namespace HackAndSlash
 
 		public void Attack()
         {
+			game.Player = new AttackPlayer(Player, game); //Decorator of the PlayerSprite
 			DrawPlayer.Instance.Attack = true;
 			switch (playerDir)
 			{
@@ -125,6 +126,7 @@ namespace HackAndSlash
 		}
 		public void UseItem()
 		{
+			game.Player = new UseItemPlayer(Player, game); //Decorator of the PlayerSprite
 			switch (playerDir)
 			{
 				case GlobalSettings.Direction.Left:

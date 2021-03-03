@@ -48,7 +48,8 @@ namespace HackAndSlash
 
         public void RemoveDecorator()
         {
-            game.Player = DecoratedPlayer; //for the purpose of not taking damage again???
+            game.Player = DecoratedPlayer; //Set it back to the normal
+
         }
 
         public void Move()

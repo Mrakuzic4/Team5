@@ -11,7 +11,7 @@ namespace HackAndSlash
     {
         private PlayerStateMachine playerStateMachine;
         private int timer;
-        private Game1 game;
+       // private Game1 game;
 
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
@@ -19,11 +19,11 @@ namespace HackAndSlash
         public Player(Game1 game)
         {
             playerStateMachine = new PlayerStateMachine(GlobalSettings.Direction.Right, game, this); //inital state face right
+            SpriteFactory.Instance.SetRightPlayer();//Set up the inital sprite
             timer = 7; //adding delay to the player sprite animation
-            this.game = game;
+            //this.game = game;
             relPositionMC.X = GlobalSettings.WINDOW_WIDTH / GlobalSettings.MAX_DISPLAY_DIV + 1;
             relPositionMC.Y = GlobalSettings.WINDOW_HEIGHT / GlobalSettings.MAX_DISPLAY_DIV + 1;
-            SpriteFactory.Instance.SetRightPlayer();//Set up the inital sprite
         }
 
         public Vector2 GetPos()
