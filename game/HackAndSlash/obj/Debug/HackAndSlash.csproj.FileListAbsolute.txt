@@ -248,3 +248,11 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BlockWater.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.dll
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.xml
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoorHorizontalLeft.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoorHorizontalRight.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoorVerticalDown.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoorVerticalUp.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BlockWater.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BlockX.xnb
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.dll
+C:\Users\admin\source\repos\Team5(2)\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.xml

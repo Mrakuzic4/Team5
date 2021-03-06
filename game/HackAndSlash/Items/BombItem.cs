@@ -27,6 +27,7 @@ namespace HackAndSlash
         private const int EXPLOSION_DIAMETER = 3;
         private Vector2 toolBarPosition;
 
+        public Vector2[] collidableTiles;
         private enum animationState { blinkWhite, blinkRed, explode };
         private animationState bombAnimationState;
 
@@ -41,6 +42,8 @@ namespace HackAndSlash
             explosionSprite = (ItemSprite)SpriteFactory.Instance.CreateExplosion();
             spriteWidth = explosionSprite.Texture.Width / explosionSprite.Columns;
             spriteHeight = explosionSprite.Texture.Height / explosionSprite.Rows;
+            collidableTiles = new Vector2[1];
+            collidableTiles[0] = position;
         }
         public void Update()
         {
@@ -52,6 +55,8 @@ namespace HackAndSlash
                 case BombStateMachine.ItemStates.Useable:
                     // check for uses
                     position = toolBarPosition;
+                    collidableTiles = new Vector2[1];
+                    collidableTiles[0] = position;
                     cooldown--;
                     if (cooldown <= 0)
                     {
@@ -105,6 +110,8 @@ namespace HackAndSlash
                 case BombStateMachine.ItemStates.Expended:
                     // single instance is gone
                     position = toolBarPosition;
+                    collidableTiles = new Vector2[1];
+                    collidableTiles[0] = position;
                     break;
             }
         }
@@ -134,11 +141,16 @@ namespace HackAndSlash
                             break;
                         case animationState.explode:
                             // draw full explosion
-                             for (float i = position.X; i < position.X + EXPLOSION_DIAMETER * spriteWidth; i += spriteWidth)
+                            collidableTiles = new Vector2[EXPLOSION_DIAMETER * EXPLOSION_DIAMETER];
+                            int c = 0;
+                            for (float i = position.X; i < position.X + EXPLOSION_DIAMETER * spriteWidth; i += spriteWidth)
                             {
                                 for(float j = position.Y; j < position.Y + EXPLOSION_DIAMETER * spriteHeight; j += spriteHeight)
-                                {                          
-                                    explosionSprite.Draw(spriteBatch, new Vector2(i, j), Color.White);
+                                {
+                                    Vector2 tempPosition = new Vector2(i, j);
+                                    explosionSprite.Draw(spriteBatch, tempPosition, Color.White);
+                                    collidableTiles[c] = tempPosition;
+                                    c++;
                                 }
                             }
 
