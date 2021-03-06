@@ -267,6 +267,10 @@
     <Content Include="Content\images\explosion.png" />
     <Content Include="Content\images\firewall2.png" />
     <Content Include="Content\images\LevelEagleBorder.png" />
+    <Content Include="Content\images\levels\eagleDoorHorizontalLeft.png" />
+    <Content Include="Content\images\levels\eagleDoorHorizontalRight.png" />
+    <Content Include="Content\images\levels\eagleDoorVerticalDown.png" />
+    <Content Include="Content\images\levels\eagleDoorVerticalUp.png" />
     <Content Include="Content\images\NES - The Legend of Zelda - Link.png" />
     <Content Include="Content\images\SmoothBlock.png" />
     <Content Include="Content\images\SnakeAttack.png" />

@@ -16,7 +16,14 @@ namespace HackAndSlash
         private Color defaultTint = Color.White;
 
         private int[,] mapMatrix; 
-        private Dictionary<int, Texture2D>  levelStyle; 
+        private Dictionary<int, Texture2D>  levelStyle;
+
+        // Up, Bottom, Left Right 
+        private bool[] hasDoor = { true, true, true, true };
+        private bool[] doorOpen = { false, false, false, false };
+        private bool[] doorHidden = { false, false, false, false };
+        private bool[] doorLocked = { false, false, false, false };
+
 
         public Level(GraphicsDevice graphics, SpriteBatch spriteBatch)
         {
@@ -28,10 +35,10 @@ namespace HackAndSlash
             levelStyle = LevelDatabase.Instance.DemoLevelStyle; 
 
             AlterTexture();
+            //addOpenDoor(0);
         }   
 
         
-
         // Generate a texture filled with default color 
         private Texture2D GenerateTexture(int width, int height, Func<int, Color> paint)
         {
@@ -77,6 +84,32 @@ namespace HackAndSlash
             }
         }
 
+        public void addOpenDoor(int Direction)
+        {
+            Texture2D[] Doors = SpriteFactory.Instance.GetLevelEagleDoorNormOpen();
+
+            foreach (int Dir in new int[] {0, 1, 2, 3 })
+            {
+                if (Dir == Direction)
+                {
+                    doorOpen[Dir] = true;
+
+                    Texture2D Door = Doors[Dir];
+                    int Count = Door.Width * Door.Height;
+                    Color[] RawData = new Color[Count];
+                    Door.GetData<Color>(RawData);
+
+                    levelTexture.SetData(0, new Rectangle(0, 0, Door.Width, Door.Height),
+                        RawData, 0, Count);
+                }
+            }
+        }
+
+        // Up, Bottom, Left Right 
+        public bool canGoThrough(int Dir)
+        {
+            return doorOpen[Dir];
+        }
 
         public void Update()
         {
