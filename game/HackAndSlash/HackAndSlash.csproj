@@ -44,9 +44,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Blocks\ChipBlock.cs" />
+    <Compile Include="Blocks\BlockX.cs" />
     <Compile Include="Blocks\IBlock.cs" />
-    <Compile Include="Blocks\SmoothBlock.cs" />
+    <Compile Include="Blocks\BlockWater.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
     <Compile Include="Commands\BlockCycleDownCommand.cs" />
     <Compile Include="Commands\BlockCycleUpCommand.cs" />
@@ -56,6 +56,8 @@
     <Compile Include="Commands\EnemyCycleCommandSnake.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ItemCycleCommand.cs" />
+    <Compile Include="Commands\LevelCycleDownCommand.cs" />
+    <Compile Include="Commands\LevelCycleUpCommand.cs" />
     <Compile Include="Commands\MoveDownCommand.cs" />
     <Compile Include="Commands\MoveLeftCommand.cs" />
     <Compile Include="Commands\MoveRightCommand.cs" />
@@ -96,6 +98,9 @@
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -240,6 +245,7 @@
     <None Include="Content\obj\DesktopGL\images\sucLeft.mgcontent" />
     <None Include="Content\obj\DesktopGL\images\sucOva.mgcontent" />
     <None Include="Content\obj\DesktopGL\images\sucUp.mgcontent" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\DesktopGL\AnyCPU\Debug\HackAndSlash.exe" />

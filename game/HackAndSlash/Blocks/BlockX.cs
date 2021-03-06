@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace HackAndSlash
 {
-    class ChipBlock : IBlock
+    class BlockX : IBlock
     {
         private Texture2D block;
         private Vector2 location { get; set; }
         private SpriteBatch spriteBatch;
 
-        public ChipBlock(Texture2D block, Vector2 location, SpriteBatch spriteBatch)
+        public BlockX(Texture2D block, Vector2 location, SpriteBatch spriteBatch)
         {
             this.spriteBatch = spriteBatch;
             this.location = location;
@@ -27,7 +27,7 @@ namespace HackAndSlash
         }
         public void Draw()
         {
-            spriteBatch.Draw(block, location, null, Color.White, 0f, Vector2.Zero, .5f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(block, location, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
     }

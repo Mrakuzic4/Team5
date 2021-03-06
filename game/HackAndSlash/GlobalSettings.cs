@@ -84,8 +84,8 @@ namespace HackAndSlash
 
         public ImageFile BG;
 
-        public ImageFile ChipBlock;
-        public ImageFile SmoothBlock;
+        public ImageFile BlockX;
+        public ImageFile BlockWater;
 
         public ImageFile BlockDemo;
         public ImageFile BlockBlank1;
@@ -130,8 +130,8 @@ namespace HackAndSlash
             explosion = new ImageFile("images/explosion", 1, 3);
             BG = new ImageFile("images/BG", 1, 1);
 
-            ChipBlock = new ImageFile("images/ChipBlock", 1, 1);
-            SmoothBlock = new ImageFile("images/SmoothBlock", 1, 1);
+            BlockX = new ImageFile("images/BlockX", 1, 1);
+            BlockWater = new ImageFile("images/BlockWater", 1, 1);
 
             // For level blocks, they must be the same size as BASE_SCALAR
             BlockDemo = new ImageFile("images/BlockDemo", 1, 1);

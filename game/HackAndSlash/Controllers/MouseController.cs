@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace HackAndSlash
 {
@@ -12,9 +13,15 @@ namespace HackAndSlash
         public ButtonState LeftButton { get; }
         private int mouseX;
         private int mouseY;
+        private ICommand LevelUp;
+        private ICommand LevelDown;
         public MouseController(Game1 game)
         {
             Game = game;
+            isMouseVisible = true;
+            Game.IsMouseVisible = isMouseVisible;
+            LevelUp = new LevelCycleUpCommand(game);
+            LevelDown = new LevelCycleDownCommand(game);
         }
 
 
@@ -25,32 +32,14 @@ namespace HackAndSlash
             mouseY = currentState.Y;
             if (currentState.RightButton == ButtonState.Pressed)
             {
-                //Game.Exit();
+                LevelUp.execute();
+            }
+            if (currentState.LeftButton == ButtonState.Pressed)
+            {
+                LevelDown.execute();
             }
 
-            //Still
-            //if ((mouseX < 300) && (mouseY < 200) && (currentState.LeftButton == ButtonState.Pressed))
-            //{
-            //    Game.mario = new StillSprite(texture);
-            //}
-
-            ////Animate Still
-            //if ((mouseX < 300) && (mouseY > 200) && (currentState.LeftButton == ButtonState.Pressed))
-            //{
-            //    Game.mario = new MovingSprite(texture);
-            //}
-
-            ////Still + Up Down
-            //if ((mouseX > 300) && (mouseY < 200) && (currentState.LeftButton == ButtonState.Pressed))
-            //{
-            //    Game.mario = new AnimatedSprite(texture);
-            //}
-
-            ////Animate + Left Right
-            //if ((mouseX > 300) && (mouseY > 200) && (currentState.LeftButton == ButtonState.Pressed))
-            //{
-            //    Game.mario = new MovingAnimatedSprite(texture);
-            //}
+           
         }
     }
 }

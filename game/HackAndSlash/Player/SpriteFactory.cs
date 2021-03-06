@@ -43,8 +43,8 @@ namespace HackAndSlash
         private Texture2D BombSprite;
         private Texture2D ExplosionSprite;
 
-        private Texture2D ChipBlock;
-        private Texture2D SmoothBlock;
+        private Texture2D BlockX;
+        private Texture2D BlockWater;
 
         private Texture2D BlockDemo;
         private Texture2D BlockBlank1;
@@ -108,8 +108,8 @@ namespace HackAndSlash
             BGSprite = content.Load<Texture2D>(IMDB.BG.pathName);
 
             //Blocks
-            ChipBlock = content.Load<Texture2D>(IMDB.ChipBlock.pathName);
-            SmoothBlock = content.Load<Texture2D>(IMDB.SmoothBlock.pathName);
+            BlockX = content.Load<Texture2D>(IMDB.BlockX.pathName);
+            BlockWater = content.Load<Texture2D>(IMDB.BlockWater.pathName);
 
             // Level map related 
             BlockDemo = content.Load<Texture2D>(IMDB.BlockDemo.pathName);
@@ -279,14 +279,14 @@ namespace HackAndSlash
             return new ItemSprite(ExplosionSprite, IMDB.explosion.C, IMDB.explosion.R);
         }
 
-        public IBlock CreateChipBlock(SpriteBatch spriteBatch)
+        public IBlock CreateBlockX(SpriteBatch spriteBatch)
         {
-            return new ChipBlock(ChipBlock, new Vector2(100, 300), spriteBatch);
+            return new BlockX(BlockX, new Vector2(100, 300), spriteBatch);
         }
 
-        public IBlock CreateSmoothBlock(SpriteBatch spriteBatch)
+        public IBlock CreateBlockWater(SpriteBatch spriteBatch)
         {
-            return new SmoothBlock(SmoothBlock, new Vector2(175, 300), spriteBatch);
+            return new BlockWater(BlockWater, new Vector2(175, 300), spriteBatch);
         }
     }
 }
