@@ -21,6 +21,8 @@ namespace HackAndSlash
         private const int MAX_RANGE = 5; // range in # of sprites(tiles) 
         private Vector2 toolBarPosition;
 
+        public Vector2[] collidableTiles;
+
         private int playerDirection = 0;
         private Vector2 playerPosition;
         
@@ -34,6 +36,8 @@ namespace HackAndSlash
             spriteHeight = firewallSprite.Texture.Height / firewallSprite.Rows;
             toolBarPosition = new Vector2(10, 10);
             spriteBatch = gameSpriteBatch;
+            collidableTiles = new Vector2[1];
+            collidableTiles[0] = position;
         }
 
         public void Update()
@@ -48,6 +52,8 @@ namespace HackAndSlash
                 case FirewallStateMachine.ItemStates.Useable:
                     // check for uses
                     position = toolBarPosition;
+                    collidableTiles = new Vector2[1];
+                    collidableTiles[0] = position;
                     cooldown--;
                     if (cooldown <= 0)
                     {
@@ -73,7 +79,7 @@ namespace HackAndSlash
                             itemState.ChangeToExpended();
                         }
                     }
-                    // slow down
+                    // TODO: Check for collisions that shorten total length (walls)
                     if (useDurationCounter % (USE_DURATION / MAX_RANGE) == 0) {
                         switch (playerDirection)
                         {
@@ -96,6 +102,8 @@ namespace HackAndSlash
                 case FirewallStateMachine.ItemStates.Expended:
                     // single instance is gone
                     position = toolBarPosition;
+                    collidableTiles = new Vector2[1];
+                    collidableTiles[0] = position;
                     break;
             }
         }
@@ -117,40 +125,55 @@ namespace HackAndSlash
                     // place over players head then draw wall with loop and updating position
                     firewallSprite.Draw(spriteBatch, position, Color.White);
                     // draw back to player starting position
+                    collidableTiles = new Vector2[MAX_RANGE];
+                    int c = 0;
+                    Vector2 tempPosition;
                     switch (playerDirection)
                     {
                         case 0: // facing left
                             for(float i = position.X; i <= playerPosition.X; i += spriteWidth)
                             {
-                                firewallSprite.Draw(spriteBatch, new Vector2(i, playerPosition.Y), Color.White);
+                                tempPosition = new Vector2(i, playerPosition.Y);
+                                firewallSprite.Draw(spriteBatch, tempPosition, Color.White);
+                                collidableTiles[c] = tempPosition;
+                                c++;
                             }
                             break;
                         case 1: // facing right
                             for (float i = position.X; i >= playerPosition.X; i -= spriteWidth)
                             {
-                                firewallSprite.Draw(spriteBatch, new Vector2(i, playerPosition.Y), Color.White);
+                                tempPosition = new Vector2(i, playerPosition.Y);
+                                firewallSprite.Draw(spriteBatch, tempPosition, Color.White);
+                                collidableTiles[c] = tempPosition;
+                                c++;
                             }
                             break;
                         case 2: // facing Up
                             for (float i = position.Y; i <= playerPosition.Y; i += spriteHeight)
                             {
-                                firewallSprite.Draw(spriteBatch, new Vector2(playerPosition.X, i), Color.White);
+                                tempPosition = new Vector2(playerPosition.X, i);
+                                firewallSprite.Draw(spriteBatch, tempPosition, Color.White);
+                                collidableTiles[c] = tempPosition;
+                                c++;
+
                             }
                             break;
                         case 3: // facing down
                             for (float i = position.Y; i >= playerPosition.Y; i -= spriteHeight)
                             {
-                                firewallSprite.Draw(spriteBatch, new Vector2(playerPosition.X, i), Color.White);
+                                tempPosition = new Vector2(playerPosition.X, i);
+                                firewallSprite.Draw(spriteBatch, tempPosition, Color.White);
+                                collidableTiles[c] = tempPosition;
+                                c++;
                             }
                             break;
                     }
                     break;
                 case FirewallStateMachine.ItemStates.Expended:
-                    // Gray out in toolbar if numUses == 0
-                    if (numUses == 0)
-                    {
-                        firewallSprite.Draw(spriteBatch, position, Color.Gray);
-                    }
+                    // Gray out in toolbar
+                    firewallSprite.Draw(spriteBatch, position, Color.Gray);
+                    collidableTiles = new Vector2[1];
+                    collidableTiles[0] = position;
                     break;
             }
         }
