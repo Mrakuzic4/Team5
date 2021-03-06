@@ -35,7 +35,8 @@ namespace HackAndSlash
             levelStyle = LevelDatabase.Instance.DemoLevelStyle; 
 
             AlterTexture();
-            //addOpenDoor(0);
+            addOpenDoor(0);
+            addOpenDoor(2);
         }   
 
         
@@ -86,23 +87,24 @@ namespace HackAndSlash
 
         public void addOpenDoor(int Direction)
         {
-            Texture2D[] Doors = SpriteFactory.Instance.GetLevelEagleDoorNormOpen();
+            doorOpen[Direction] = true;
+            //Texture2D[] Doors = SpriteFactory.Instance.GetLevelEagleDoorNormOpen();
 
-            foreach (int Dir in new int[] {0, 1, 2, 3 })
-            {
-                if (Dir == Direction)
-                {
-                    doorOpen[Dir] = true;
+            //foreach (int Dir in new int[] {0, 1, 2, 3 })
+            //{
+            //    if (Dir == Direction)
+            //    {
+            //        doorOpen[Dir] = true;
 
-                    Texture2D Door = Doors[Dir];
-                    int Count = Door.Width * Door.Height;
-                    Color[] RawData = new Color[Count];
-                    Door.GetData<Color>(RawData);
+            //        Texture2D Door = Doors[Dir];
+            //        int Count = Door.Width * Door.Height;
+            //        Color[] RawData = new Color[Count];
+            //        Door.GetData<Color>(RawData);
 
-                    levelTexture.SetData(0, new Rectangle(0, 0, Door.Width, Door.Height),
-                        RawData, 0, Count);
-                }
-            }
+            //        levelTexture.SetData(0, new Rectangle(0, 0, Door.Width, Door.Height),
+            //            RawData, 0, Count);
+            //    }
+            //}
         }
 
         // Up, Bottom, Left Right 
@@ -119,7 +121,14 @@ namespace HackAndSlash
 
         public void Draw()
         {
+            Texture2D[] Doors = SpriteFactory.Instance.GetLevelEagleDoorNormOpen();
+
             spriteBatch.Draw(levelTexture, new Vector2(0, 0), defaultTint);
+
+            foreach (int Dir in new int[] { 0, 1, 2, 3 })
+            {
+                if (doorOpen[Dir]) spriteBatch.Draw(Doors[Dir], new Vector2(0, 0), defaultTint);
+            }
         }
     }
 }
