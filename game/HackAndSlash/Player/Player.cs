@@ -71,6 +71,10 @@ namespace HackAndSlash
         public void Update()
         {
             DrawPlayer.Instance.Update();
+            //Player Collision Detector Here????????????
+            if (this.relPositionMC.X < 0) this.relPositionMC.X = 0;
+            if (this.relPositionMC.Y < 0) this.relPositionMC.Y = 0;
+
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
