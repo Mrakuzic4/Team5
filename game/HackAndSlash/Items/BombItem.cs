@@ -28,6 +28,7 @@ namespace HackAndSlash
         private Vector2 toolBarPosition;
 
         public Vector2[] collidableTiles;
+        public ItemCollisionHandler bombCollisionHandler;
         private enum animationState { blinkWhite, blinkRed, explode };
         private animationState bombAnimationState;
 
@@ -44,6 +45,7 @@ namespace HackAndSlash
             spriteHeight = explosionSprite.Texture.Height / explosionSprite.Rows;
             collidableTiles = new Vector2[1];
             collidableTiles[0] = position;
+            bombCollisionHandler = new ItemCollisionHandler();
         }
         public void Update()
         {
@@ -51,6 +53,10 @@ namespace HackAndSlash
             {
                 case BombStateMachine.ItemStates.Collectable:
                     // check for collision collision -> collect Item
+                    if(bombCollisionHandler.CheckForPlayerCollision(collidableTiles))
+                    {
+                        CollectItem();
+                    }
                     break;
                 case BombStateMachine.ItemStates.Useable:
                     // check for uses
@@ -168,7 +174,7 @@ namespace HackAndSlash
             }
         }
 
-        public void CollectItem(IPlayer player)
+        public void CollectItem()
         {
             itemState.ChangeToUseable();
             numUses++;
@@ -194,12 +200,24 @@ namespace HackAndSlash
                         break;
                 }
                 position = currentPlayerPosition; // player Direction
-                itemState.ChangeToBeingUsed();
-                cooldown = ITEM_COOLDOWN;
-                numUses--;
-                if (numUses < 0)
+                // add to collidable tiles
+                collidableTiles = new Vector2[1];
+                collidableTiles[0] = position;
+
+                if (bombCollisionHandler.CheckForWall(collidableTiles) || bombCollisionHandler.CheckForBlock(collidableTiles))
                 {
-                    numUses = 0;
+                    // cant use Item, change to useable
+                    itemState.ChangeToUseable();
+                }
+                else
+                {
+                    itemState.ChangeToBeingUsed();
+                    cooldown = ITEM_COOLDOWN;
+                    numUses--;
+                    if (numUses < 0)
+                    {
+                        numUses = 0;
+                    }
                 }
             }
         }

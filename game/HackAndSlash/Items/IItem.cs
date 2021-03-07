@@ -14,7 +14,7 @@ namespace HackAndSlash
 
         void Draw();
 
-        void CollectItem(IPlayer player);
+        void CollectItem();
 
         void UseItem(int currentPlayerDirection, Vector2 currentPlayerPosition);
 
