@@ -47,6 +47,7 @@
     <Compile Include="Blocks\BlockX.cs" />
     <Compile Include="Blocks\IBlock.cs" />
     <Compile Include="Blocks\BlockWater.cs" />
+    <Compile Include="Collision\PlayerBlockCollision.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
     <Compile Include="Commands\BlockCycleDownCommand.cs" />
     <Compile Include="Commands\BlockCycleUpCommand.cs" />

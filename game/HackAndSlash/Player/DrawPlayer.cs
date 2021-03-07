@@ -108,7 +108,7 @@ namespace HackAndSlash
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 64, 64);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width *4, height*4);
 
             if (isAttack)
             {
