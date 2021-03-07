@@ -278,6 +278,10 @@
     <Content Include="Content\images\levels\eagleDoorHorizontalRight.png" />
     <Content Include="Content\images\levels\eagleDoorVerticalDown.png" />
     <Content Include="Content\images\levels\eagleDoorVerticalUp.png" />
+    <Content Include="Content\images\levels\eagleHoleHorizontalLeft.png" />
+    <Content Include="Content\images\levels\eagleHoleHorizontalRight.png" />
+    <Content Include="Content\images\levels\eagleHoleVerticalDown.png" />
+    <Content Include="Content\images\levels\eagleHoleVerticalUp.png" />
     <Content Include="Content\images\NES - The Legend of Zelda - Link.png" />
     <Content Include="Content\images\SmoothBlock.png" />
     <Content Include="Content\images\SnakeAttack.png" />
