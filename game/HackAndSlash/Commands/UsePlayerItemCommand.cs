@@ -16,7 +16,7 @@ namespace HackAndSlash
         public void execute()
         {
             game.Player.UseItem();
-            game.ItemHolder.UseItem(game.Player.GetDir(), game.Player.GetPos()); // default position for now
+            game.ItemHolder.UseItem(game.Player.GetDir()); // default position for now
         }
     }
 }

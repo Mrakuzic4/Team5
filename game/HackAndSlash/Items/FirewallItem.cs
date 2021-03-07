@@ -6,6 +6,8 @@ namespace HackAndSlash
 {
     public class FirewallItem : IItem
     {
+        private IPlayer player; //Player reference
+
         private ItemSprite firewallSprite;
         public int spriteWidth, spriteHeight;
         public Vector2 position;
@@ -24,12 +26,14 @@ namespace HackAndSlash
         public Vector2[] collidableTiles;
         public ItemCollisionHandler firewallCollisionHandler;
 
-        private int playerDirection = 0;
+        private GlobalSettings.Direction playerDirection = GlobalSettings.Direction.Right;
         private Vector2 playerPosition;
         
         // Constructor
-        public FirewallItem(Vector2 startPosition, SpriteBatch gameSpriteBatch)
+        public FirewallItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, IPlayer player)
         {
+            this.player = player; //Reference of player from Game1
+
             position = startPosition;
             itemState = new FirewallStateMachine();
             firewallSprite = (ItemSprite)SpriteFactory.Instance.CreateFirewall();
@@ -39,7 +43,7 @@ namespace HackAndSlash
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Vector2[1];
             collidableTiles[0] = position;
-            firewallCollisionHandler = new ItemCollisionHandler();
+            firewallCollisionHandler = new ItemCollisionHandler(this.player);
         }
 
         public void Update()
@@ -90,28 +94,28 @@ namespace HackAndSlash
                         Vector2[] newPosition = new Vector2[1];
                         switch (playerDirection)
                         {
-                            case 0: // left
+                            case GlobalSettings.Direction.Left: // left
                                 newPosition[0] = new Vector2(position.X - spriteWidth, position.Y);
                                 if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition)) 
                                 {
                                     position.X -= spriteWidth;
                                 }
                                 break;
-                            case 1: // right
+                            case GlobalSettings.Direction.Right: // right
                                 newPosition[0] = new Vector2(position.X + spriteWidth, position.Y);
                                 if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
                                 {
                                     position.X += spriteWidth;
                                 }
                                 break;
-                            case 2: // up
+                            case GlobalSettings.Direction.Up: // up
                                 newPosition[0] = new Vector2(position.X, position.Y - spriteHeight);
                                 if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
                                 {
                                     position.Y -= spriteHeight;
                                 }
                                 break;
-                            case 3: // down
+                            case GlobalSettings.Direction.Down: // down
                                 newPosition[0] = new Vector2(position.X, position.Y + spriteHeight);
                                 if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
                                 {
@@ -153,7 +157,7 @@ namespace HackAndSlash
                     Vector2 tempPosition;
                     switch (playerDirection)
                     {
-                        case 0: // facing left
+                        case GlobalSettings.Direction.Left : // facing left
                             for(float i = position.X; i <= playerPosition.X; i += spriteWidth)
                             {
                                 tempPosition = new Vector2(i, playerPosition.Y);
@@ -162,7 +166,7 @@ namespace HackAndSlash
                                 c++;
                             }
                             break;
-                        case 1: // facing right
+                        case GlobalSettings.Direction.Right: // facing right
                             for (float i = position.X; i >= playerPosition.X; i -= spriteWidth)
                             {
                                 tempPosition = new Vector2(i, playerPosition.Y);
@@ -171,7 +175,7 @@ namespace HackAndSlash
                                 c++;
                             }
                             break;
-                        case 2: // facing Up
+                        case GlobalSettings.Direction.Up: // facing Up
                             for (float i = position.Y; i <= playerPosition.Y; i += spriteHeight)
                             {
                                 tempPosition = new Vector2(playerPosition.X, i);
@@ -181,7 +185,7 @@ namespace HackAndSlash
 
                             }
                             break;
-                        case 3: // facing down
+                        case GlobalSettings.Direction.Down: // facing down
                             for (float i = position.Y; i >= playerPosition.Y; i -= spriteHeight)
                             {
                                 tempPosition = new Vector2(playerPosition.X, i);
@@ -207,14 +211,15 @@ namespace HackAndSlash
             numUses++;
         }
 
-        public void UseItem(int currentPlayerDirection, Vector2 currentPlayerPosition)
+        public void UseItem(GlobalSettings.Direction currentPlayerDirection)
         {
+            Vector2 currentPlayerPosition = this.player.GetPos();
             if (itemState.state == FirewallStateMachine.ItemStates.Useable && cooldown == 0)
             {
                 Vector2[] newPosition = new Vector2[1];
                 switch (currentPlayerDirection)
                 {
-                    case 0: // left
+                    case GlobalSettings.Direction.Left: // left
                         newPosition[0] = new Vector2(currentPlayerPosition.X - spriteWidth, currentPlayerPosition.Y);
                         if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
                         {
@@ -226,7 +231,7 @@ namespace HackAndSlash
                             itemState.ChangeToUseable();
                         }
                         break;
-                    case 1: // right
+                    case GlobalSettings.Direction.Right: // right
                         newPosition[0] = new Vector2(currentPlayerPosition.X + spriteWidth, currentPlayerPosition.Y);
                         if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
                         {
@@ -238,7 +243,7 @@ namespace HackAndSlash
                             itemState.ChangeToUseable();
                         }
                         break;
-                    case 2: // up
+                    case GlobalSettings.Direction.Up: // up
                         newPosition[0] = new Vector2(currentPlayerPosition.X, currentPlayerPosition.Y - spriteHeight);
                         if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
                         {
@@ -250,7 +255,7 @@ namespace HackAndSlash
                             itemState.ChangeToUseable();
                         }
                         break;
-                    case 3: // down
+                    case GlobalSettings.Direction.Down: // down
                         newPosition[0] = new Vector2(currentPlayerPosition.X, currentPlayerPosition.Y + spriteHeight);
                         if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
                         {

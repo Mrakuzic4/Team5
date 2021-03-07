@@ -71,8 +71,6 @@ namespace HackAndSlash
 
             level = new Level(GraphicsDevice, spriteBatch);
 
-            PlayerMain = new Player(this);//Player object
-
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new MouseController(this));
@@ -101,13 +99,13 @@ namespace HackAndSlash
 
             snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice, spriteBatch);
             bugfirst = new BugEnemy(new Vector2(200,100), GraphicsDevice, spriteBatch);
-
-            //snakefirst.LoadContent();
-            //bugfirst.LoadContent();
+         
+            //Player
+            PlayerMain = new Player(this);//Player object
 
             // Items
-            firewallFirst = new FirewallItem(new Vector2(200, 200), spriteBatch);
-            bombFirst = new BombItem(new Vector2(200, 200), spriteBatch);
+            firewallFirst = new FirewallItem(new Vector2(200, 200), spriteBatch, this.PlayerMain);
+            bombFirst = new BombItem(new Vector2(200, 200), spriteBatch, this.PlayerMain);
             ItemHolder = firewallFirst;
 
             //firewallFirst.LoadContent(); ;

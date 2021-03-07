@@ -16,7 +16,7 @@ namespace HackAndSlash
         void UseItem();
         void Attack();
         void Damaged();
-        int GetDir();
+        GlobalSettings.Direction GetDir();
         void ChangeDirection(GlobalSettings.Direction dir);
 
     }

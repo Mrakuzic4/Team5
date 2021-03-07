@@ -16,6 +16,8 @@ namespace HackAndSlash
 
         private SpriteBatch spriteBatch;
 
+        private IPlayer player; //Player reference
+
         private BombStateMachine itemState;
         private static int numUses = 0;
         private const int USE_DURATION = 80; // length of effect
@@ -32,8 +34,10 @@ namespace HackAndSlash
         private enum animationState { blinkWhite, blinkRed, explode };
         private animationState bombAnimationState;
 
-        public BombItem(Vector2 startPosition, SpriteBatch gameSpriteBatch)
+        public BombItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, IPlayer player)
         {
+            this.player = player; //Reference of player from Game1
+
             position = startPosition;
             spriteBatch = gameSpriteBatch;
             toolBarPosition = new Vector2(20, 10);
@@ -45,7 +49,7 @@ namespace HackAndSlash
             spriteHeight = explosionSprite.Texture.Height / explosionSprite.Rows;
             collidableTiles = new Vector2[1];
             collidableTiles[0] = position;
-            bombCollisionHandler = new ItemCollisionHandler();
+            bombCollisionHandler = new ItemCollisionHandler(this.player);
         }
         public void Update()
         {
@@ -180,22 +184,23 @@ namespace HackAndSlash
             numUses++;
         }
 
-        public void UseItem(int currentPlayerDirection, Vector2 currentPlayerPosition)
+        public void UseItem(GlobalSettings.Direction currentPlayerDirection)
         {
+            Vector2 currentPlayerPosition = player.GetPos();
             if (itemState.state == BombStateMachine.ItemStates.Useable && cooldown == 0)
             {
                 switch (currentPlayerDirection)
                 {
-                    case 0:
+                    case GlobalSettings.Direction.Left:
                         currentPlayerPosition.X -= spriteWidth;
                         break;
-                    case 1:
+                    case GlobalSettings.Direction.Right:
                         currentPlayerPosition.X += spriteWidth;
                         break;
-                    case 2:
+                    case GlobalSettings.Direction.Up:
                         currentPlayerPosition.Y -= spriteHeight;
                         break;
-                    case 3:
+                    case GlobalSettings.Direction.Down:
                         currentPlayerPosition.Y += spriteHeight;
                         break;
                 }

@@ -16,7 +16,7 @@ namespace HackAndSlash
 
         void CollectItem();
 
-        void UseItem(int currentPlayerDirection, Vector2 currentPlayerPosition);
+        void UseItem(GlobalSettings.Direction currentPlayerDirection);
 
         void ChangeToCollectable();
 

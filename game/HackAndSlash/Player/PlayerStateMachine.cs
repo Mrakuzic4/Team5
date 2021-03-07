@@ -10,7 +10,7 @@ namespace HackAndSlash
 	public class PlayerStateMachine
 	{
 		private GlobalSettings.Direction playerDir;
-		public int Direction { get { return (int) playerDir; } }
+		public GlobalSettings.Direction Direction { get { return playerDir; } }
 
 		private Game1 game;
 		private IPlayer Player;

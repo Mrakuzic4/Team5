@@ -68,7 +68,7 @@ namespace HackAndSlash
             DecoratedPlayer.Damaged();
         }
 
-        public int GetDir()
+        public GlobalSettings.Direction GetDir()
         {
             return DecoratedPlayer.GetDir();
         }

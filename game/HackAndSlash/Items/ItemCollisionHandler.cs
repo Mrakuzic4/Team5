@@ -12,11 +12,12 @@ namespace HackAndSlash
         private CollisionID[] collisionIndexAndType;
         private enum CollisionType { Enemy, Player, Block, Wall };
 
+        private IPlayer player;
 
         // constructor
-        public ItemCollisionHandler()
+        public ItemCollisionHandler(IPlayer player)
         {
-            
+            this.player = player;
         }
         // Methods
         // Check for collision calls all other checks, passed collidable tiles list
@@ -83,10 +84,9 @@ namespace HackAndSlash
         public bool CheckForPlayerCollision(Vector2[] collidableItemTiles)
         {
             bool collidingWithPlayer = false;
-            Vector2 playerPosition = new Vector2(0, 0); // TODO: get PP somehow
             foreach (Vector2 itemTile in collidableItemTiles)
             {
-                if (itemTile.Equals(playerPosition))
+                if (itemTile.Equals(player.GetPos())) //Player position reference!
                 {
                     collidingWithPlayer = true;
                 }

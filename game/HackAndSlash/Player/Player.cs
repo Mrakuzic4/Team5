@@ -36,8 +36,7 @@ namespace HackAndSlash
             relPositionMC = pos;
         }
 
-
-        public int GetDir()
+        public GlobalSettings.Direction GetDir()
         {
             return playerStateMachine.Direction;
         }
