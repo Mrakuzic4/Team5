@@ -78,8 +78,8 @@
     <Compile Include="Items\BombItem.cs" />
     <Compile Include="Items\FirewallItem.cs" />
     <Compile Include="Items\IItem.cs" />
+    <Compile Include="Items\ItemCollisionHandler.cs" />
     <Compile Include="Items\ItemSprite.cs" />
-    <Compile Include="Items\OverclockItem.cs" />
     <Compile Include="Levels\ILevel.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="Levels\LevelDatabase.cs" />

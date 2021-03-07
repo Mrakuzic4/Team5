@@ -22,6 +22,7 @@ namespace HackAndSlash
         private Vector2 toolBarPosition;
 
         public Vector2[] collidableTiles;
+        public ItemCollisionHandler firewallCollisionHandler;
 
         private int playerDirection = 0;
         private Vector2 playerPosition;
@@ -38,6 +39,7 @@ namespace HackAndSlash
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Vector2[1];
             collidableTiles[0] = position;
+            firewallCollisionHandler = new ItemCollisionHandler();
         }
 
         public void Update()
@@ -47,6 +49,10 @@ namespace HackAndSlash
                 case FirewallStateMachine.ItemStates.Collectable:
                     // check for collision collision -> collect Item
                     // if numUses != 0
+                    if (firewallCollisionHandler.CheckForPlayerCollision(collidableTiles))
+                    {
+                        CollectItem();
+                    }
                     firewallSprite.Update();
                     break;
                 case FirewallStateMachine.ItemStates.Useable:
@@ -81,19 +87,36 @@ namespace HackAndSlash
                     }
                     // TODO: Check for collisions that shorten total length (walls)
                     if (useDurationCounter % (USE_DURATION / MAX_RANGE) == 0) {
+                        Vector2[] newPosition = new Vector2[1];
                         switch (playerDirection)
                         {
                             case 0: // left
-                                position.X -= spriteWidth;
+                                newPosition[0] = new Vector2(position.X - spriteWidth, position.Y);
+                                if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition)) 
+                                {
+                                    position.X -= spriteWidth;
+                                }
                                 break;
                             case 1: // right
-                                position.X += spriteWidth;
+                                newPosition[0] = new Vector2(position.X + spriteWidth, position.Y);
+                                if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
+                                {
+                                    position.X += spriteWidth;
+                                }
                                 break;
                             case 2: // up
-                                position.Y -= spriteHeight;
+                                newPosition[0] = new Vector2(position.X, position.Y - spriteHeight);
+                                if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
+                                {
+                                    position.Y -= spriteHeight;
+                                }
                                 break;
                             case 3: // down
-                                position.Y += spriteHeight;
+                                newPosition[0] = new Vector2(position.X, position.Y + spriteHeight);
+                                if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
+                                {
+                                    position.Y += spriteHeight;
+                                }
                                 break;
                         }
                     }
@@ -178,7 +201,7 @@ namespace HackAndSlash
             }
         }
 
-        public void CollectItem(IPlayer player)
+        public void CollectItem()
         {
             itemState.ChangeToUseable();
             numUses++;
@@ -188,25 +211,62 @@ namespace HackAndSlash
         {
             if (itemState.state == FirewallStateMachine.ItemStates.Useable && cooldown == 0)
             {
+                Vector2[] newPosition = new Vector2[1];
                 switch (currentPlayerDirection)
                 {
-                    case 0:
-                        currentPlayerPosition.X -= spriteWidth;
+                    case 0: // left
+                        newPosition[0] = new Vector2(currentPlayerPosition.X - spriteWidth, currentPlayerPosition.Y);
+                        if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
+                        {
+                            currentPlayerPosition.X -= spriteWidth;
+                            itemState.ChangeToBeingUsed();
+                        }
+                        else
+                        {
+                            itemState.ChangeToUseable();
+                        }
                         break;
-                    case 1:
-                        currentPlayerPosition.X += spriteWidth;
+                    case 1: // right
+                        newPosition[0] = new Vector2(currentPlayerPosition.X + spriteWidth, currentPlayerPosition.Y);
+                        if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
+                        {
+                            currentPlayerPosition.X += spriteWidth;
+                            itemState.ChangeToBeingUsed();
+                        }
+                        else
+                        {
+                            itemState.ChangeToUseable();
+                        }
                         break;
-                    case 2:
-                        currentPlayerPosition.Y -= spriteHeight;
+                    case 2: // up
+                        newPosition[0] = new Vector2(currentPlayerPosition.X, currentPlayerPosition.Y - spriteHeight);
+                        if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
+                        {
+                            currentPlayerPosition.Y -= spriteHeight;
+                            itemState.ChangeToBeingUsed();
+                        }
+                        else
+                        {
+                            itemState.ChangeToUseable();
+                        }
                         break;
-                    case 3:
-                        currentPlayerPosition.Y += spriteHeight;
+                    case 3: // down
+                        newPosition[0] = new Vector2(currentPlayerPosition.X, currentPlayerPosition.Y + spriteHeight);
+                        if (!firewallCollisionHandler.CheckForWall(newPosition) && !firewallCollisionHandler.CheckForBlock(newPosition))
+                        {
+                            currentPlayerPosition.Y += spriteHeight;
+                            itemState.ChangeToBeingUsed();
+                        }
+                        else
+                        {
+                            itemState.ChangeToUseable();
+                        }
                         break;
                 }
                 playerPosition = currentPlayerPosition; // player position when used TEMP: DEFAULT POS
                 position = playerPosition;
                 playerDirection = currentPlayerDirection;// player Direction
-                itemState.ChangeToBeingUsed();
+                // itemState.ChangeToBeingUsed();
                 cooldown = ITEM_COOLDOWN;
                 numUses--;
                 if (numUses < 0)
