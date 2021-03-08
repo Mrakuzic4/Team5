@@ -91,6 +91,7 @@ namespace HackAndSlash
         public ImageFile BlockBlank1;
         public ImageFile LevelEagleBorder;
         public ImageFile[] LevelEagleDoorNormOpen;
+        public ImageFile[] LevelEagleHole;
 
         public ImageDatabase()
         {
@@ -144,6 +145,12 @@ namespace HackAndSlash
                 new ImageFile("images/levels/eagleDoorVerticalDown", 1, 1),
                 new ImageFile("images/levels/eagleDoorHorizontalLeft", 1, 1),
                 new ImageFile("images/levels/eagleDoorHorizontalRight", 1, 1)};
+            LevelEagleHole = new ImageFile[]{
+                new ImageFile("images/levels/eagleHoleVerticalUp", 1, 1),
+                new ImageFile("images/levels/eagleHoleVerticalDown", 1, 1),
+                new ImageFile("images/levels/eagleHoleHorizontalLeft", 1, 1),
+                new ImageFile("images/levels/eagleHoleHorizontalRight", 1, 1)};
+
         }
     }
 
