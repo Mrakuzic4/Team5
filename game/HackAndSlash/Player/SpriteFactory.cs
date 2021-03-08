@@ -301,12 +301,13 @@ namespace HackAndSlash
 
         public IBlock CreateBlockX(SpriteBatch spriteBatch)
         {
-            return new BlockX(BlockX, new Vector2(100, 300), spriteBatch);
+            return new BlockX(BlockX, new Vector2(GlobalSettings.BORDER_OFFSET, GlobalSettings.BORDER_OFFSET), spriteBatch);
         }
 
         public IBlock CreateBlockWater(SpriteBatch spriteBatch)
         {
-            return new BlockWater(BlockWater, new Vector2(175, 300), spriteBatch);
+            return new BlockWater(BlockWater, 
+                new Vector2(GlobalSettings.BORDER_OFFSET, GlobalSettings.BORDER_OFFSET), spriteBatch);
         }
     }
 }

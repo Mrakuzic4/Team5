@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace HackAndSlash
 {
     public interface IBlock
     {
+        Rectangle rectangle { get; }
+
         void Update();
         void Draw();
     }

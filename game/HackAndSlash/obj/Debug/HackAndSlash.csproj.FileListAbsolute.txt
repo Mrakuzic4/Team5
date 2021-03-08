@@ -264,7 +264,6 @@ C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCP
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BlockX.xnb
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.dll
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.xml
-<<<<<<< HEAD
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoorHorizontalLeft.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoorHorizontalRight.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoorVerticalDown.xnb
@@ -272,4 +271,8 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 =======
 D:\computerGraphics\programs\3902Games\main\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucOva.xnb
 D:\computerGraphics\programs\3902Games\main\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucUp.xnb
->>>>>>> d1f6993c740a839753d36c5b66d642048b98723f
+
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleHorizontalLeft.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleHorizontalRight.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleVerticalDown.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleVerticalUp.xnb

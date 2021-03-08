@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<<<<<<< HEAD
   <SourceFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/images/ChipBlock.png</SourceFile>
   <SourceTime>2021-02-17T17:02:27.4588934-05:00</SourceTime>
   <DestFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ChipBlock.xnb</DestFile>
-  <DestTime>2021-03-07T18:07:26.1834537-05:00</DestTime>
-=======
-  <SourceFile>D:/computerGraphics/programs/3902Games/main/game/HackAndSlash/Content/images/ChipBlock.png</SourceFile>
-  <SourceTime>2021-03-06T13:32:39.7473311-05:00</SourceTime>
-  <DestFile>D:/computerGraphics/programs/3902Games/main/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ChipBlock.xnb</DestFile>
-  <DestTime>2021-03-07T22:11:09.8295417-05:00</DestTime>
->>>>>>> d1f6993c740a839753d36c5b66d642048b98723f
+  <DestTime>2021-03-08T11:46:20.3530272-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

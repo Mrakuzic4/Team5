@@ -13,7 +13,7 @@ namespace HackAndSlash
         private Texture2D block;
         private Vector2 location { get; set; }
         private SpriteBatch spriteBatch;
-        private Rectangle rectangle;
+        public Rectangle rectangle { get; }
 
         public BlockX(Texture2D block, Vector2 location, SpriteBatch spriteBatch)
         {

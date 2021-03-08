@@ -28,6 +28,7 @@ namespace HackAndSlash
         public const long DELAY_TIME = 100; // In ms
         public const long DELAY_KEYBOARD = 200; // For keyboard pressing event 
         public enum Direction { Left, Right, Up, Down };
+        public enum CollisionType { None, Left, Right, Top, Bottom, }
     }
 
     class ImageFile
