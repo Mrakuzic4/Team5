@@ -50,6 +50,7 @@ namespace HackAndSlash
         private Texture2D BlockBlank1;
         private Texture2D LevelEagleBorder;
         private Texture2D[] LevelEagleDoorNormOpen;
+        private Texture2D[] LevelEagleHoles;
 
         private static SpriteFactory instance = new SpriteFactory();
 
@@ -121,6 +122,11 @@ namespace HackAndSlash
                 content.Load<Texture2D>(IMDB.LevelEagleDoorNormOpen[1].pathName),
                 content.Load<Texture2D>(IMDB.LevelEagleDoorNormOpen[2].pathName),
                 content.Load<Texture2D>(IMDB.LevelEagleDoorNormOpen[3].pathName) };
+            LevelEagleHoles = new Texture2D[] {
+                content.Load<Texture2D>(IMDB.LevelEagleHole[0].pathName),
+                content.Load<Texture2D>(IMDB.LevelEagleHole[1].pathName),
+                content.Load<Texture2D>(IMDB.LevelEagleHole[2].pathName),
+                content.Load<Texture2D>(IMDB.LevelEagleHole[3].pathName)};
         }
 
         public Texture2D CreateBG()
@@ -142,6 +148,10 @@ namespace HackAndSlash
         public Texture2D[] GetLevelEagleDoorNormOpen()
         {
             return LevelEagleDoorNormOpen;
+        }
+        public Texture2D[] GetLevelEagleHoles()
+        {
+            return LevelEagleHoles;
         }
 
         public Texture2D CreatePlayer()

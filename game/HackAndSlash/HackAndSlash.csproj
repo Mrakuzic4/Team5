@@ -82,6 +82,7 @@
     <Compile Include="Items\ItemCollisionHandler.cs" />
     <Compile Include="Items\ItemSprite.cs" />
     <Compile Include="Levels\ILevel.cs" />
+    <Compile Include="Levels\JsonParser.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="Levels\LevelDatabase.cs" />
     <Compile Include="Player\UseItemPlayer.cs" />
@@ -211,6 +212,7 @@
     <None Include="Content\bin\DesktopGL\images\sucLeft.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucOva.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucUp.xnb" />
+    <None Include="Content\info\levelDemoM1.json" />
     <None Include="Content\obj\DesktopGL\.mgcontent" />
     <None Include="Content\obj\DesktopGL\.mgstats" />
     <None Include="Content\obj\DesktopGL\Content\.mgcontent" />

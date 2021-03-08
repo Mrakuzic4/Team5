@@ -19,9 +19,8 @@ namespace HackAndSlash
         private Dictionary<int, Texture2D>  levelStyle;
 
         // Up, Bottom, Left Right 
-        private bool[] hasDoor = { true, true, true, true };
         private bool[] doorOpen = { false, false, false, false };
-        private bool[] doorHidden = { false, false, false, false };
+        private bool[] doorHole= { false, false, false, false };
         private bool[] doorLocked = { false, false, false, false };
 
 
@@ -34,9 +33,11 @@ namespace HackAndSlash
             mapMatrix = LevelDatabase.Instance.DemoM1;
             levelStyle = LevelDatabase.Instance.DemoLevelStyle; 
 
+
             AlterTexture();
             addOpenDoor(0);
             addOpenDoor(2);
+            addOpenHole(1);
         }   
 
         
@@ -85,6 +86,11 @@ namespace HackAndSlash
             }
         }
 
+        public void addOpenHole(int Direction)
+        {
+            doorHole[Direction] = true;
+        }
+
         public void addOpenDoor(int Direction)
         {
             doorOpen[Direction] = true;
@@ -121,13 +127,17 @@ namespace HackAndSlash
 
         public void Draw()
         {
+            // Iterator 
+            int[] iter = { 0, 1, 2, 3 };
             Texture2D[] Doors = SpriteFactory.Instance.GetLevelEagleDoorNormOpen();
+            Texture2D[] Holes = SpriteFactory.Instance.GetLevelEagleHoles();
 
             spriteBatch.Draw(levelTexture, new Vector2(0, 0), defaultTint);
 
-            foreach (int Dir in new int[] { 0, 1, 2, 3 })
+            foreach (int Dir in iter)
             {
                 if (doorOpen[Dir]) spriteBatch.Draw(Doors[Dir], new Vector2(0, 0), defaultTint);
+                if (doorHole[Dir]) spriteBatch.Draw(Holes[Dir], new Vector2(0, 0), defaultTint);
             }
         }
     }
