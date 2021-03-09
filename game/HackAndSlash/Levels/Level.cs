@@ -23,6 +23,7 @@ namespace HackAndSlash
         private bool[] doorHole= { false, false, false, false };
         private bool[] doorLocked = { false, false, false, false };
 
+        private JsonParser parser; 
 
         public Level(GraphicsDevice graphics, SpriteBatch spriteBatch)
         {
@@ -31,8 +32,9 @@ namespace HackAndSlash
 
             levelTexture = GenerateTexture(GlobalSettings.WINDOW_WIDTH, GlobalSettings.WINDOW_HEIGHT, pixel => defaultColor);
             mapMatrix = LevelDatabase.Instance.DemoM1;
-            levelStyle = LevelDatabase.Instance.DemoLevelStyle; 
+            levelStyle = LevelDatabase.Instance.DemoLevelStyle;
 
+            parser = new JsonParser();
 
             AlterTexture();
             addOpenDoor(0);
