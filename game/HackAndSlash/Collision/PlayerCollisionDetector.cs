@@ -10,27 +10,29 @@ namespace HackAndSlash
 {
     class PlayerCollisionDetector
     {
-        private Player player;
+        //private Player player;
         private Game1 game;
 
         public PlayerCollisionDetector(Player player, Game1 game)
         {
-            this.player = player;
+            //Is the Player reference necessary???????????????????
+           // this.player = player;
             this.game = game;
         }
 
-        public CollisionType CheckBlockCollisions(Rectangle hitbox)
+        public CollisionType CheckBlockCollisions(Rectangle playerHitbox)
         {
+
             //check if player is colliding with each block in the current room
             foreach (IBlock block in game.blockList)
             {
-                Rectangle collision = Rectangle.Intersect(hitbox, block.rectangle);
+                Rectangle collisionBox = Rectangle.Intersect(playerHitbox, block.rectangle);
 
                 //left or right intersection
-                if(collision.Height > collision.Width)
+                if(collisionBox.Height > collisionBox.Width)
                 {
                     //right collision
-                    if (collision.X > hitbox.X)
+                    if (collisionBox.X > playerHitbox.X)
                     {
                         return GlobalSettings.CollisionType.Right;
                     }
@@ -41,10 +43,10 @@ namespace HackAndSlash
                     }
                 }
                 //top or bottom collision
-                else if (collision.Height < collision.Width)
+                else if (collisionBox.Height < collisionBox.Width)
                 {
                     //top collision
-                    if (collision.Y > hitbox.Y)
+                    if (collisionBox.Y > playerHitbox.Y)
                     {
                         return GlobalSettings.CollisionType.Top;
                     }

@@ -12,9 +12,9 @@ namespace HackAndSlash
         private PlayerStateMachine playerStateMachine;
         private int timer;
         // private Game1 game;
-        private Rectangle hitbox;
+        private Rectangle playerHitBox;
         private PlayerCollisionDetector playerCollisionDetector;
-        private PlayerBlockCollision playerBlockCollision;
+        private PlayerBlockCollisionHandler playerBlockCollision;
 
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
@@ -27,9 +27,9 @@ namespace HackAndSlash
             //this.game = game;
             relPositionMC.X = GlobalSettings.WINDOW_WIDTH / GlobalSettings.MAX_DISPLAY_DIV + 1;
             relPositionMC.Y = GlobalSettings.WINDOW_HEIGHT / GlobalSettings.MAX_DISPLAY_DIV + 1;
-            hitbox = new Rectangle((int)relPositionMC.X, (int)relPositionMC.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            playerHitBox = new Rectangle((int)relPositionMC.X, (int)relPositionMC.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
             playerCollisionDetector = new PlayerCollisionDetector(this, game);
-            playerBlockCollision = new PlayerBlockCollision();
+            playerBlockCollision = new PlayerBlockCollisionHandler();
         }
 
         public Vector2 GetPos()
@@ -76,12 +76,23 @@ namespace HackAndSlash
         public void Update()
         {
             DrawPlayer.Instance.Update();
-            hitbox.Location = new Point((int)relPositionMC.X, (int)relPositionMC.Y);
-            playerBlockCollision.HandleCollision(this, playerCollisionDetector.CheckBlockCollisions(hitbox));
-            //Player Collision Detector Here????????????
-            if (this.relPositionMC.X < 0) this.relPositionMC.X = 0;
-            if (this.relPositionMC.Y < 0) this.relPositionMC.Y = 0;
 
+            //Player Boundary Check
+            //Top and Left Boundary work just fine
+            if (this.relPositionMC.X < GlobalSettings.BORDER_OFFSET) this.relPositionMC.X = GlobalSettings.BORDER_OFFSET;
+            if (this.relPositionMC.Y < GlobalSettings.BORDER_OFFSET) this.relPositionMC.Y = GlobalSettings.BORDER_OFFSET;
+            //Bottom and Right Boundary need to take the window and sprite size into account.
+            int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
+            int rightBound = GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
+
+            if (this.relPositionMC.Y > bottomBound) this.relPositionMC.Y = bottomBound;
+            if (this.relPositionMC.X > rightBound) this.relPositionMC.X = rightBound;
+
+            //Player Collision Detector
+            playerHitBox.Location = new Point((int)relPositionMC.X, (int)relPositionMC.Y);//hitbox for player, wraps around player.
+            playerBlockCollision.HandleCollision(this, playerCollisionDetector.CheckBlockCollisions(playerHitBox));
+            
+            //TODO: More Collision...
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)

@@ -7,7 +7,7 @@ using static HackAndSlash.GlobalSettings;
 
 namespace HackAndSlash
 {
-    class PlayerBlockCollision
+    class PlayerBlockCollisionHandler
     {
         public void HandleCollision(IPlayer player, CollisionType collisionType) //Possibly need ICollision?? See the 2D collision slide.
         {

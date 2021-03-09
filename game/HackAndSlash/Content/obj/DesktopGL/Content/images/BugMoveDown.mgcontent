@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/images/BugMoveDown.png</SourceFile>
-  <SourceTime>2021-02-19T15:59:35.7764601-05:00</SourceTime>
-  <DestFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/BugMoveDown.xnb</DestFile>
-  <DestTime>2021-03-08T11:46:20.2044132-05:00</DestTime>
+  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugMoveDown.png</SourceFile>
+  <SourceTime>2021-02-17T22:04:07.1957141-05:00</SourceTime>
+  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/BugMoveDown.xnb</DestFile>
+  <DestTime>2021-03-08T22:12:54.6261483-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
