@@ -47,13 +47,7 @@
     <Compile Include="Blocks\BlockX.cs" />
     <Compile Include="Blocks\IBlock.cs" />
     <Compile Include="Blocks\BlockWater.cs" />
-<<<<<<< Updated upstream
     <Compile Include="Collision\PlayerBlockCollisionHandler.cs" />
-=======
-    <Compile Include="Collision\EnemyBlockCollision.cs" />
-    <Compile Include="Collision\EnemyCollisionDetector.cs" />
-    <Compile Include="Collision\PlayerBlockCollision.cs" />
->>>>>>> Stashed changes
     <Compile Include="Collision\PlayerCollisionDetector.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
     <Compile Include="Commands\BlockCycleDownCommand.cs" />
