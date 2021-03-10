@@ -83,9 +83,11 @@
     <Compile Include="Items\ItemCollisionHandler.cs" />
     <Compile Include="Items\ItemSprite.cs" />
     <Compile Include="Levels\ILevel.cs" />
+    <Compile Include="Levels\IMap.cs" />
     <Compile Include="Levels\JsonParser.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="Levels\LevelDatabase.cs" />
+    <Compile Include="Levels\Map.cs" />
     <Compile Include="Player\UseItemPlayer.cs" />
     <Compile Include="Player\IPlayer.cs" />
     <Compile Include="Player\DamagedPlayer.cs" />
