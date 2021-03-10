@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
+    "",
     "\\game",
-    "\\game\\HackAndSlash",
-    "\\game\\HackAndSlash\\bin"
+    "\\game\\HackAndSlash"
   ],
+  "SelectedNode": "\\game\\HackAndSlash\\Enemy",
   "PreviewInSolutionExplorer": false
 }
