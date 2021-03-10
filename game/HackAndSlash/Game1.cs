@@ -12,6 +12,8 @@ namespace HackAndSlash
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public Map currentMap; 
+
         //Player
         private IPlayer PlayerMain;
         public IPlayer Player
@@ -91,6 +93,8 @@ namespace HackAndSlash
         /// </summary>
         protected override void LoadContent()
         {
+            currentMap = new JsonParser(MapDatabase.demoLevelM1).getCurrentMapInfo();
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -115,7 +119,7 @@ namespace HackAndSlash
             // A list of level maps for further transition cutscene 
             levelList = new List<ILevel>()
             {
-                new Level(GraphicsDevice, spriteBatch)
+                new Level(GraphicsDevice, spriteBatch, currentMap.Arrangement)
             };
 
             //Create list of blocks and set blockholder to first block in the list

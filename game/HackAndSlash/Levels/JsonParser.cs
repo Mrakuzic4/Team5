@@ -10,23 +10,20 @@ namespace HackAndSlash
 {
     class JsonParser
     {
-
+        
         private string targetLocation = @"Content/info/levelDemoM1.json";
-        private string targetContent; 
+        private string targetContent;
+        private Map currentMapInfo;
 
-        public class LevelMapSearch
+        public JsonParser(string TargetFile)
         {
-            public int[,] mapArrangement; 
-
-        }
-
-        public JsonParser()
-        {
+            targetLocation = TargetFile; 
             Parse();
         }
 
         private void ReadFile()
         {
+
             if (File.Exists(targetLocation))
             {
                 targetContent = File.ReadAllText(targetLocation);
@@ -38,19 +35,12 @@ namespace HackAndSlash
             ReadFile();
 
             // If this line gives error, modify the properties of the .json file 
-            JsonTextReader reader = new JsonTextReader(new StringReader(targetContent));
+            currentMapInfo = JsonConvert.DeserializeObject<Map>(targetContent);
 
-            //while (reader.Read())
-            //{
-            //    if (reader.Value != null)
-            //    {
-            //        Console.WriteLine("Token: {0}, Value: {1}", reader.TokenType, reader.Value);
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Token: {0}", reader.TokenType);
-            //    }
-            //}
+        }
+        public Map getCurrentMapInfo()
+        {
+            return currentMapInfo;
         }
     }
 }

@@ -70,6 +70,7 @@
     <Compile Include="Controllers\IController.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Controllers\MouseController.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="Enemy\BugEnemy.cs" />
     <Compile Include="Enemy\EnemySprite.cs" />
     <Compile Include="Enemy\IEnemy.cs" />
@@ -215,7 +216,9 @@
     <None Include="Content\bin\DesktopGL\images\sucLeft.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucOva.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucUp.xnb" />
-    <None Include="Content\info\levelDemoM1.json" />
+    <Content Include="Content\info\levelDemoM1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
