@@ -37,7 +37,8 @@ namespace HackAndSlash
         {
             ReadFile();
 
-            //JsonTextReader reader = new JsonTextReader(new StringReader(targetContent));
+            // If this line gives error, modify the properties of the .json file 
+            JsonTextReader reader = new JsonTextReader(new StringReader(targetContent));
 
             //while (reader.Read())
             //{
