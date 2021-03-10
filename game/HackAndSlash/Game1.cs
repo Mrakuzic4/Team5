@@ -97,8 +97,8 @@ namespace HackAndSlash
             SpriteBG = new SpriteBG(SpriteFactory.Instance.CreateBG(), graphics);
            // SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
-            snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice, spriteBatch, this);
-            bugfirst = new BugEnemy(new Vector2(300,50), GraphicsDevice, spriteBatch, this);
+            snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice, spriteBatch);
+            bugfirst = new BugEnemy(new Vector2(200,100), GraphicsDevice, spriteBatch);
          
             //Player
             PlayerMain = new Player(this);//Player object
