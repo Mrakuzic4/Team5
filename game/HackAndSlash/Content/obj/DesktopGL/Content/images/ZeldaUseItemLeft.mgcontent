@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<<<<<<< Updated upstream
   <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaUseItemLeft.png</SourceFile>
   <SourceTime>2021-02-22T21:16:10.1254929-05:00</SourceTime>
   <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ZeldaUseItemLeft.xnb</DestFile>
-  <DestTime>2021-03-08T22:12:55.9079571-05:00</DestTime>
-=======
-  <SourceFile>C:/Users/vidha/source/repos/updated/game/HackAndSlash/Content/images/ZeldaUseItemLeft.png</SourceFile>
-  <SourceTime>2021-03-08T14:24:57.325044-05:00</SourceTime>
-  <DestFile>C:/Users/vidha/source/repos/updated/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ZeldaUseItemLeft.xnb</DestFile>
-  <DestTime>2021-03-08T14:26:16.4423316-05:00</DestTime>
->>>>>>> Stashed changes
+  <DestTime>2021-03-10T11:26:05.568477-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
