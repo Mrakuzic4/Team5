@@ -19,22 +19,28 @@ namespace HackAndSlash
         private int milliSecondsPerFrame=80;
         private int temp = 0; //counter to change states after a certain number of calls to update
 
-
         //make the constructor for the class
-        public SnakeEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch SB)
+        public SnakeEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch SB, Game1 game)
         {
             position = startPosition;
             snakeState = new snakeStateMachine();
             Graphics = graphics;
             spriteBatch = SB;
-
-
         }
 
         public void LoadContent()
         {
         }
 
+        public Vector2 GetPos()
+        {
+            return position;
+        }
+
+        public void SetPos(Vector2 pos)
+        {
+            position = pos;
+        }
         //updating the enemy
         public void Update(GameTime gameTime)
         {
@@ -90,6 +96,7 @@ namespace HackAndSlash
                 temp = 0;
             }
             temp++;
+
         }
 
 

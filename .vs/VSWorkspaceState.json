@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "\\game",
+    "\\game\\HackAndSlash",
+    "\\game\\HackAndSlash\\bin"
   ],
   "PreviewInSolutionExplorer": false
 }

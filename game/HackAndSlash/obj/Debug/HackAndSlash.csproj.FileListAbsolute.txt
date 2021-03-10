@@ -275,7 +275,77 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleHorizontalRight.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleVerticalDown.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleVerticalUp.xnb
+<<<<<<< Updated upstream
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleHorizontalLeft.xnb
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleHorizontalRight.xnb
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleVerticalDown.xnb
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleVerticalUp.xnb
+=======
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\bug.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SmoothBlock.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoorHorizontalLeft.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoorHorizontalRight.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoorVerticalDown.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoorVerticalUp.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleHorizontalLeft.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleHorizontalRight.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleVerticalDown.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleHoleVerticalUp.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\bg.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BlockBlank1.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BlockDemo.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BlockWater.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BlockX.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Bomb.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BugDie.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BugIdle.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BugMoveDown.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BugMoveUp.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ChipBlock.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\explosion.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\firewall.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\firewall3.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\LevelEagleBorder.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeAttack.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeDie.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeIdle.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeMoving.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\snakespritesheet.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucDown.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucLeft.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucOva.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucUp.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Zelda.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaAttackDown.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaAttackLeft.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaAttackRight.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaAttackUp.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaDown.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaLeft.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaRight.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaUp.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaUseItemDown.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaUseItemLeft.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaUseItemRight.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaUseItemUp.xnb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\HackAndSlash.exe
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\HackAndSlash.pdb
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.dll
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.xml
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\obj\Debug\HackAndSlash.csprojAssemblyReference.cache
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\obj\Debug\HackAndSlash.csproj.CoreCompileInputs.cache
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\obj\Debug\HackAndSlash.csproj.CopyComplete
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\obj\Debug\HackAndSlash.exe
+C:\Users\vidha\source\repos\updated\game\HackAndSlash\obj\Debug\HackAndSlash.pdb
+>>>>>>> Stashed changes

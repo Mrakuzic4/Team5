@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using HackAndSlash.Collision;
 
 namespace HackAndSlash
 {
@@ -19,13 +20,30 @@ namespace HackAndSlash
         private int milliSecondsPerFrame = 80;
         private int temp = 0;//counter to change states after a certain number of calls to update
 
+        private Rectangle hitbox;
+        private EnemyCollisionDetector enemyCollisionDetector;
+        private EnemyBlockCollision enemyBlockCollision;
+        
         //make the constructor for the class
-        public BugEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch spriteBatch)
+        public BugEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch spriteBatch, Game1 game)
         {
             position = startPosition;
             bugState = new bugStateMachine();
             Graphics = graphics;
             this.spriteBatch = spriteBatch;
+            hitbox = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            enemyCollisionDetector = new EnemyCollisionDetector(game,this);
+            enemyBlockCollision = new EnemyBlockCollision();
+        }
+
+        public Vector2 GetPos()
+        {
+            return position;
+        }
+
+        public void SetPos(Vector2 pos)
+        {
+            position = pos;
         }
 
         //Loading the spritebatch 
@@ -47,48 +65,22 @@ namespace HackAndSlash
                 }
             }
 
-            //temporary code for sprint2 to shuffle in between states
-            if (temp == 0 && bugState.state !=  bugStateMachine.bugHealth.Not) {
-                bugState.changeToIdle();
-            }
-
-            if (temp == 200 && bugState.state !=  bugStateMachine.bugHealth.Not) {
-                bugState.changeToMoveUp();
-            }
-
-            if (temp == 400 && bugState.state !=  bugStateMachine.bugHealth.Not) {
-                bugState.changeToMoveDown();
-            }
-
-            if (temp == 600 && bugState.state !=  bugStateMachine.bugHealth.Not) {
-                bugState.changeToDie();
-            }
-
-            if (temp == 800 && bugState.state !=  bugStateMachine.bugHealth.Not) {
-                bugState.changeToIdle();
-            }
-
-            if (temp > 800)
+            if (bugState.state == bugStateMachine.bugHealth.MoveUp)
             {
-                temp = 0;
+                // Move up
             }
-            temp++;
-            //end of temporary code for sprint2 to shuffle in between states
-
-            //updating position of enemy according to state
-            if (bugState.state == bugStateMachine.bugHealth.MoveUp) {
-                position.Y--;
+            else if (bugState.state == bugStateMachine.bugHealth.MoveDown)
+            {
+                //Move down
             }
-
-            if (bugState.state == bugStateMachine.bugHealth.MoveDown) {
-                position.Y++;
+            else if (bugState.state == bugStateMachine.bugHealth.MoveLeft)
+            {
+                //Move left
             }
-
-            if ((bugState.state != bugStateMachine.bugHealth.MoveUp) && (bugState.state != bugStateMachine.bugHealth.MoveDown)) {
-                position.Y = 100;
+            else if (bugState.state == bugStateMachine.bugHealth.MoveRight)
+            {
+                //Move right
             }
-
-            
         }
 
         public void Draw()
@@ -118,6 +110,16 @@ namespace HackAndSlash
             bugState.changeToMoveDown();
         }
 
+        public void changeToMoveLeft()
+        {
+            bugState.changeToMoveDown();
+        }
+
+        public void changeToMoveRight()
+        {
+            bugState.changeToMoveDown();
+        }
+
         public void changeToDie()
         {
             bugState.changeToDie();
@@ -132,14 +134,14 @@ namespace HackAndSlash
     //The state machine holding the bug health
     public class bugStateMachine
     {
-        public enum bugHealth { Idle, MoveUp,MoveDown, Die, Not }; // the different possible states
+        public enum bugHealth { Idle, MoveUp, MoveDown, MoveLeft, MoveRight, Die, Not }; // the different possible states
         public bugHealth state;// the current health state of the bug
         public EnemySprite MachineEnemySprite; // The EnemySprite implementing ISprite
 
         //constructor for the class
         public bugStateMachine()
         {
-            state = bugHealth.Not;
+            state = bugHealth.Idle;
             MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateBugIdle();
         }
         public void changeToIdle()
@@ -172,6 +174,26 @@ namespace HackAndSlash
             {
                 state = bugHealth.MoveDown;
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateBugMoveDown();
+                //get appropriate sprite from sprite factory
+            }
+        }
+
+        public void changeToMoveLeft()
+        {
+            if (state != bugHealth.MoveLeft)
+            {
+                state = bugHealth.MoveLeft;
+                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateBugMoveLeft();
+                //get appropriate sprite from sprite factory
+            }
+        }
+
+        public void changeToMoveRight()
+        {
+            if (state != bugHealth.MoveRight)
+            {
+                state = bugHealth.MoveRight;
+                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateBugMoveRight();
                 //get appropriate sprite from sprite factory
             }
         }

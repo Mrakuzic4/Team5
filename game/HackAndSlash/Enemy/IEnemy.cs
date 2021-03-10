@@ -22,5 +22,8 @@ namespace HackAndSlash
 
         //changing the state of the enemy to Not - meaning the enemy is not currently updated or drawn
         void changeToNot();
+
+        Vector2 GetPos();
+        void SetPos(Vector2 pos);
     }
 }
