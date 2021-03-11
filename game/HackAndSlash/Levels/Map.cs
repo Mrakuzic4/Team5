@@ -8,18 +8,19 @@ using System.Threading.Tasks;
 
 namespace HackAndSlash
 {
-    class Map :IMap
+    public class Map : IMap
     {
-        private int[,] mapArrangement; 
 
-        private IEnemy[] enemies;
+        public int[,] Arrangement { get; set; }
 
-        private IItem[] items;
-
-        private bool[] doorOpen;
-        private bool[] doorLocked;
-        private bool[] doorCracked; 
+        public int DropPotions {  get; set;  }
+        public int DropKeys { get; set; }
 
 
+        public int[] LockedDoors { get; set; }
+        public int[] OpenDoors { get; set; }
+        public int[] HiddenDoors { get; set; }
+
+        public string style { get; set; }
     }
 }

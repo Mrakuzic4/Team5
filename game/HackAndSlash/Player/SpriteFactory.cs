@@ -286,6 +286,8 @@ namespace HackAndSlash
             return new EnemySprite(BugDieSprite, IMDB.bugDie.C, IMDB.bugDie.R);
         }
 
+        //*************************Below are item  ***************************//
+
         public  ISprite CreateFirewall()
         {
             return new ItemSprite(FirewallSprite, IMDB.fireWall.C, IMDB.fireWall.R);
@@ -299,6 +301,9 @@ namespace HackAndSlash
             return new ItemSprite(ExplosionSprite, IMDB.explosion.C, IMDB.explosion.R);
         }
 
+
+    //*****************************Below are block objects******************************//
+
         public IBlock CreateBlockX(SpriteBatch spriteBatch)
         {
             return new BlockX(BlockX, new Vector2(GlobalSettings.BORDER_OFFSET, GlobalSettings.BORDER_OFFSET), spriteBatch);
@@ -307,7 +312,7 @@ namespace HackAndSlash
         public IBlock CreateBlockWater(SpriteBatch spriteBatch)
         {
             return new BlockWater(BlockWater, 
-                new Vector2(GlobalSettings.BORDER_OFFSET, GlobalSettings.BORDER_OFFSET), spriteBatch);
+                new Vector2(GlobalSettings.BORDER_OFFSET+64, GlobalSettings.BORDER_OFFSET+64), spriteBatch);
         }
     }
 }

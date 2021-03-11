@@ -12,6 +12,8 @@ namespace HackAndSlash
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public Map currentMap; 
+
         //Player
         private IPlayer PlayerMain;
         public IPlayer Player
@@ -27,12 +29,13 @@ namespace HackAndSlash
         }
 
         // Sprites  
-        private SpriteBG SpriteBG;
         public IItem ItemHolder { get; set; }
         public IBlock BlockHolder { get; set; }
         
+
         private Texture2D textureFirewall { get; set; }
         
+
         public SnakeEnemy snakefirst;
         public BugEnemy bugfirst;
 
@@ -40,13 +43,15 @@ namespace HackAndSlash
         public FirewallItem firewallFirst;
         public BombItem bombFirst;
 
-        private ILevel level; 
-
         // Object lists
         List<Object> controllerList;
         public List<IBlock> blockList { get; set; }
+        public List<ILevel> levelList { get; set; }
+        public List<IEnemy> enemyList { get; set;  }
 
-
+        /* ============================================================
+         * ======================== Methods ===========================
+         * ============================================================ */
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -69,7 +74,7 @@ namespace HackAndSlash
         {
             base.Initialize();
 
-            level = new Level(GraphicsDevice, spriteBatch);
+            //level = new Level(GraphicsDevice, spriteBatch);
 
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
@@ -88,17 +93,24 @@ namespace HackAndSlash
         /// </summary>
         protected override void LoadContent()
         {
+            currentMap = new JsonParser(MapDatabase.demoLevelM1).getCurrentMapInfo();
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Get sprite from spriteFactory
             SpriteFactory.Instance.LoadAllTextures(Content);
 
-            SpriteBG = new SpriteBG(SpriteFactory.Instance.CreateBG(), graphics);
            // SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
+            //Enemy
             snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice, spriteBatch);
-            bugfirst = new BugEnemy(new Vector2(200,100), GraphicsDevice, spriteBatch);
+            bugfirst = new BugEnemy(new Vector2(128,128), GraphicsDevice, spriteBatch);
+
+            enemyList = new List<IEnemy>()
+            {
+                snakefirst,bugfirst
+            };
          
             //Player
             PlayerMain = new Player(this);//Player object
@@ -108,7 +120,13 @@ namespace HackAndSlash
             bombFirst = new BombItem(new Vector2(200, 200), spriteBatch, this.PlayerMain);
             ItemHolder = firewallFirst;
 
-            //firewallFirst.LoadContent(); ;
+            //firewallFirst.LoadContent(); 
+
+            // A list of level maps for further transition cutscene 
+            levelList = new List<ILevel>()
+            {
+                new Level(GraphicsDevice, spriteBatch, currentMap.Arrangement)
+            };
 
             //Create list of blocks and set blockholder to first block in the list
             blockList = new List<IBlock>()
@@ -156,9 +174,10 @@ namespace HackAndSlash
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp);
 
-            spriteBatch.Begin();
-            level.Draw();
+            foreach (ILevel levelMap in levelList) levelMap.Draw();
+            //foreach (IBlock block in blockList) block.Draw();
             BlockHolder.Draw();
             PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
             ItemHolder.Draw();

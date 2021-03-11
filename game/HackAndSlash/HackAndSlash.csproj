@@ -47,13 +47,8 @@
     <Compile Include="Blocks\BlockX.cs" />
     <Compile Include="Blocks\IBlock.cs" />
     <Compile Include="Blocks\BlockWater.cs" />
-<<<<<<< Updated upstream
+    <Compile Include="Collision\PlayerEnemyCollisionHandler.cs" />
     <Compile Include="Collision\PlayerBlockCollisionHandler.cs" />
-=======
-    <Compile Include="Collision\EnemyBlockCollision.cs" />
-    <Compile Include="Collision\EnemyCollisionDetector.cs" />
-    <Compile Include="Collision\PlayerBlockCollision.cs" />
->>>>>>> Stashed changes
     <Compile Include="Collision\PlayerCollisionDetector.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
     <Compile Include="Commands\BlockCycleDownCommand.cs" />
@@ -76,6 +71,7 @@
     <Compile Include="Controllers\IController.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Controllers\MouseController.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="Enemy\BugEnemy.cs" />
     <Compile Include="Enemy\EnemySprite.cs" />
     <Compile Include="Enemy\IEnemy.cs" />
@@ -89,9 +85,11 @@
     <Compile Include="Items\ItemCollisionHandler.cs" />
     <Compile Include="Items\ItemSprite.cs" />
     <Compile Include="Levels\ILevel.cs" />
+    <Compile Include="Levels\IMap.cs" />
     <Compile Include="Levels\JsonParser.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="Levels\LevelDatabase.cs" />
+    <Compile Include="Levels\Map.cs" />
     <Compile Include="Player\UseItemPlayer.cs" />
     <Compile Include="Player\IPlayer.cs" />
     <Compile Include="Player\DamagedPlayer.cs" />
@@ -219,7 +217,9 @@
     <None Include="Content\bin\DesktopGL\images\sucLeft.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucOva.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucUp.xnb" />
-    <None Include="Content\info\levelDemoM1.json" />
+    <Content Include="Content\info\levelDemoM1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HackAndSlash
 {
-    class IMap
+    public class IMap
     {
     }
 }

@@ -19,6 +19,8 @@ namespace HackAndSlash
         private int milliSecondsPerFrame=80;
         private int temp = 0; //counter to change states after a certain number of calls to update
 
+        //Snake position
+        private Rectangle rectangle;
 
         //make the constructor for the class
         public SnakeEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch SB)
@@ -27,9 +29,15 @@ namespace HackAndSlash
             snakeState = new snakeStateMachine();
             Graphics = graphics;
             spriteBatch = SB;
-
+            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
 
         }
+
+        public Rectangle getRectangle()
+        {
+            return rectangle;
+        }
+
 
         public void LoadContent()
         {
@@ -78,6 +86,7 @@ namespace HackAndSlash
             //end of temporary code for sprint2 to shuffle in between states
 
             //updating position of enemy according to state
+            /*
             if (snakeState.state == snakeStateMachine.snakeHealth.Move) {
                 position.X--;
             }
@@ -89,7 +98,9 @@ namespace HackAndSlash
             if (temp > 800) {
                 temp = 0;
             }
-            temp++;
+            */
+            
+            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
         }
 
 

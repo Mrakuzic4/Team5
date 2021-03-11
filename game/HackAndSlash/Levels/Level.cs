@@ -25,16 +25,15 @@ namespace HackAndSlash
 
         private JsonParser parser; 
 
-        public Level(GraphicsDevice graphics, SpriteBatch spriteBatch)
+        public Level(GraphicsDevice graphics, SpriteBatch spriteBatch, int[,] Arrangement)
         {
             this.graphics = graphics;
             this.spriteBatch = spriteBatch;
 
             levelTexture = GenerateTexture(GlobalSettings.WINDOW_WIDTH, GlobalSettings.WINDOW_HEIGHT, pixel => defaultColor);
-            mapMatrix = LevelDatabase.Instance.DemoM1;
+            mapMatrix = Arrangement;
             levelStyle = LevelDatabase.Instance.DemoLevelStyle;
 
-            parser = new JsonParser();
 
             AlterTexture();
             addOpenDoor(0);

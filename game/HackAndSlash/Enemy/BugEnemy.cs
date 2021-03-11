@@ -19,6 +19,9 @@ namespace HackAndSlash
         private int milliSecondsPerFrame = 80;
         private int temp = 0;//counter to change states after a certain number of calls to update
 
+        //Bug position
+        public Rectangle rectangle { get; set;  }
+
         //make the constructor for the class
         public BugEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch spriteBatch)
         {
@@ -26,6 +29,9 @@ namespace HackAndSlash
             bugState = new bugStateMachine();
             Graphics = graphics;
             this.spriteBatch = spriteBatch;
+            rectangle = new Rectangle((int)position.X + 10, (int)position.Y + 10, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+
+
         }
 
         //Loading the spritebatch 
@@ -76,7 +82,7 @@ namespace HackAndSlash
             //end of temporary code for sprint2 to shuffle in between states
 
             //updating position of enemy according to state
-            if (bugState.state == bugStateMachine.bugHealth.MoveUp) {
+            /*if (bugState.state == bugStateMachine.bugHealth.MoveUp) {
                 position.Y--;
             }
 
@@ -88,7 +94,9 @@ namespace HackAndSlash
                 position.Y = 100;
             }
 
-            
+            */
+            rectangle = new Rectangle((int)position.X + 10, (int)position.Y + 10, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+
         }
 
         public void Draw()
@@ -100,6 +108,11 @@ namespace HackAndSlash
 
             }
 
+        }
+
+        public Rectangle getRectangle()
+        {
+            return rectangle;
         }
 
         //Functions to switch the states
@@ -139,7 +152,7 @@ namespace HackAndSlash
         //constructor for the class
         public bugStateMachine()
         {
-            state = bugHealth.Not;
+            state = bugHealth.Idle;
             MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateBugIdle();
         }
         public void changeToIdle()

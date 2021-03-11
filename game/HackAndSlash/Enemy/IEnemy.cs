@@ -8,10 +8,10 @@ using Microsoft.Xna.Framework;
 
 namespace HackAndSlash
 {
-    interface IEnemy
+    public interface IEnemy
     {
-        
-         void Update(GameTime gametime);
+
+        void Update(GameTime gametime);
         //gametime passed in for frame rate
 
         //Draw method for each of the enemies
@@ -22,5 +22,8 @@ namespace HackAndSlash
 
         //changing the state of the enemy to Not - meaning the enemy is not currently updated or drawn
         void changeToNot();
+
+        //return current rectangle of enemy
+        Rectangle getRectangle();
     }
 }
