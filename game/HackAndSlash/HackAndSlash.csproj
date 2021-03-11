@@ -47,6 +47,7 @@
     <Compile Include="Blocks\BlockX.cs" />
     <Compile Include="Blocks\IBlock.cs" />
     <Compile Include="Blocks\BlockWater.cs" />
+    <Compile Include="Collision\PlayerEnemyCollisionHandler.cs" />
     <Compile Include="Collision\PlayerBlockCollisionHandler.cs" />
     <Compile Include="Collision\PlayerCollisionDetector.cs" />
     <Compile Include="Commands\AttackCommand.cs" />

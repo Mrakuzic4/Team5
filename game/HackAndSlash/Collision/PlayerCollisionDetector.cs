@@ -24,8 +24,9 @@ namespace HackAndSlash
         {
 
             //check if player is colliding with each block in the current room
-            foreach (IBlock block in game.blockList)
-            {
+            //foreach (IBlock block in game.blockList)
+            //{
+                IBlock block = game.BlockHolder;
                 Rectangle collisionBox = Rectangle.Intersect(playerHitbox, block.rectangle);
 
                 //left or right intersection
@@ -56,7 +57,49 @@ namespace HackAndSlash
                         return GlobalSettings.CollisionType.Bottom;
                     }
                 }
+            //}
+            //no collision detected
+            return GlobalSettings.CollisionType.None;
+        }
+
+        public CollisionType CheckEnemyCollisions(Rectangle playerHitbox)
+        {
+
+            //check if player is colliding with each block in the current room
+            //foreach (IBlock block in game.blockList)
+            //{
+            IBlock block = game.BlockHolder;
+            Rectangle collisionBox = Rectangle.Intersect(playerHitbox, block.rectangle);
+
+            //left or right intersection
+            if (collisionBox.Height > collisionBox.Width)
+            {
+                //right collision
+                if (collisionBox.X > playerHitbox.X)
+                {
+                    return GlobalSettings.CollisionType.Right;
+                }
+                //left collision
+                else
+                {
+                    return GlobalSettings.CollisionType.Left;
+                }
             }
+            //top or bottom collision
+            else if (collisionBox.Height < collisionBox.Width)
+            {
+                //top collision
+                if (collisionBox.Y > playerHitbox.Y)
+                {
+                    return GlobalSettings.CollisionType.Top;
+                }
+                //bottom collision
+                else
+                {
+                    return GlobalSettings.CollisionType.Bottom;
+                }
+            }
+            //}
             //no collision detected
             return GlobalSettings.CollisionType.None;
         }

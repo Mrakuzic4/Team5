@@ -47,7 +47,7 @@ namespace HackAndSlash
         List<Object> controllerList;
         public List<IBlock> blockList { get; set; }
         public List<ILevel> levelList { get; set; }
-
+        public List<IEnemy> enemyList { get; set;  }
 
         /* ============================================================
          * ======================== Methods ===========================
@@ -103,8 +103,14 @@ namespace HackAndSlash
 
            // SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
+            //Enemy
             snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice, spriteBatch);
-            bugfirst = new BugEnemy(new Vector2(200,100), GraphicsDevice, spriteBatch);
+            bugfirst = new BugEnemy(new Vector2(128,128), GraphicsDevice, spriteBatch);
+
+            enemyList = new List<IEnemy>()
+            {
+                snakefirst,bugfirst
+            };
          
             //Player
             PlayerMain = new Player(this);//Player object
@@ -114,7 +120,7 @@ namespace HackAndSlash
             bombFirst = new BombItem(new Vector2(200, 200), spriteBatch, this.PlayerMain);
             ItemHolder = firewallFirst;
 
-            //firewallFirst.LoadContent(); ;
+            //firewallFirst.LoadContent(); 
 
             // A list of level maps for further transition cutscene 
             levelList = new List<ILevel>()
