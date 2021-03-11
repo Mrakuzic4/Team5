@@ -209,7 +209,9 @@ namespace HackAndSlash
                 collidableTiles = new Vector2[1];
                 collidableTiles[0] = position;
 
-                if (bombCollisionHandler.CheckForWall(collidableTiles) || bombCollisionHandler.CheckForBlock(collidableTiles))
+                Rectangle checkTile = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
+
+                if (bombCollisionHandler.CheckForWall(checkTile) || bombCollisionHandler.CheckForBlock(checkTile))
                 {
                     // cant use Item, change to useable
                     itemState.ChangeToUseable();

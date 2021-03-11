@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/SnakeIdle.png</SourceFile>
-  <SourceTime>2021-02-17T22:04:07.1977147-05:00</SourceTime>
-  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/SnakeIdle.xnb</DestFile>
-  <DestTime>2021-03-10T11:26:05.2904778-05:00</DestTime>
+  <SourceFile>C:/Users/admin/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/SnakeIdle.png</SourceFile>
+  <SourceTime>2021-03-11T14:38:49.6327403-05:00</SourceTime>
+  <DestFile>C:/Users/admin/Source/Repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/images/SnakeIdle.xnb</DestFile>
+  <DestTime>2021-03-11T14:39:23.448334-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
