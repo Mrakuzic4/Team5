@@ -25,7 +25,7 @@ namespace HackAndSlash
 
         private JsonParser parser; 
 
-        public Level(GraphicsDevice graphics, SpriteBatch spriteBatch, int[,] Arrangement)
+        public Level(GraphicsDevice graphics, SpriteBatch spriteBatch, int[,] Arrangement, int Defaultblock)
         {
             this.graphics = graphics;
             this.spriteBatch = spriteBatch;
@@ -72,7 +72,7 @@ namespace HackAndSlash
                     Vector2 StartPoint = new Vector2(GlobalSettings.BORDER_OFFSET + c * GlobalSettings.BASE_SCALAR,
                         GlobalSettings.BORDER_OFFSET + r * GlobalSettings.BASE_SCALAR);
 
-                    int TileTypeNow = mapMatrix[r, c];
+                    int TileTypeNow = mapMatrix[r, c] > 31 ? 1 : 0;
                     Texture2D TextureNow = levelStyle[TileTypeNow];
                     int CountNow = TextureNow.Width * TextureNow.Height;
                     Color[] RawDataNow = new Color[CountNow];
