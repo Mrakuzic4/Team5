@@ -10,7 +10,6 @@ namespace HackAndSlash
 {
     class SwordEnemyCollisionHandler
     {
-        int count = 0;
         public void HandleCollision(IPlayer player, IEnemy damagedEnemy) //Possibly need ICollision?? See the 2D collision slide.
         {
             //If enemy is not null, then it means the sword collides with an enemy and damagedEnemy is set.

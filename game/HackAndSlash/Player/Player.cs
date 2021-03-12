@@ -121,8 +121,6 @@ namespace HackAndSlash
             //Item animation
             game.ItemHolder.UseItem(GetDir());
 
-            //Item collides with Enemy
-
         }
 
         private void stayInBoundary()
