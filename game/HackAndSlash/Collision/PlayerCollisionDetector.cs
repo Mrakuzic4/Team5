@@ -63,9 +63,9 @@ namespace HackAndSlash
         {
 
             //check if player is colliding with each block in the current room
-            foreach (IBlock block in game.blockList)
+            foreach (IEnemy enemy in game.enemyList)
             {
-            Rectangle collisionBox = Rectangle.Intersect(playerHitbox, block.rectangle);
+            Rectangle collisionBox = Rectangle.Intersect(playerHitbox, enemy.getRectangle());
 
             //left or right intersection
             if (collisionBox.Height > collisionBox.Width)

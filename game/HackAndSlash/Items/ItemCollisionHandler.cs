@@ -9,7 +9,7 @@ namespace HackAndSlash
         private const int TOP_WALL_POSITION = 128;
         private const int RIGHT_WALL_POSITION = GlobalSettings.WINDOW_WIDTH - 192;
         private const int BOTTOM_WALL_POSITION = GlobalSettings.WINDOW_HEIGHT - 192;
-        private  Rectangle[] WALL_RECTANGLES = { 
+        private Rectangle[] WALL_RECTANGLES = { 
             new Rectangle(0, 0, GlobalSettings.BORDER_OFFSET, GlobalSettings.WINDOW_HEIGHT), 
             new Rectangle(0, 0, GlobalSettings.WINDOW_WIDTH, GlobalSettings.BORDER_OFFSET), 
             new Rectangle(GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET, 0, GlobalSettings.BORDER_OFFSET, GlobalSettings.WINDOW_HEIGHT), 
@@ -18,6 +18,7 @@ namespace HackAndSlash
         private enum CollisionType { Enemy, Player, Block, Wall };
 
         private IPlayer player;
+        private Game game;
 
         // constructor
         public ItemCollisionHandler(IPlayer player)
@@ -25,12 +26,6 @@ namespace HackAndSlash
             this.player = player;
         }
         // Methods
-        // Check for collision calls all other checks, passed collidable tiles list
-        public void CheckForCollision(Vector2[] collidableItemTiles)
-        {
-            CheckForWall(collidableItemTiles);
-            return;
-        }
         // check for wall (stop unless bomb explosion)
         public bool CheckForWall(Vector2[] collidableItemTiles)
         {
@@ -113,10 +108,10 @@ namespace HackAndSlash
         }
         // chcek for enemy (damage enemy once [cooldown in enemy?], no stops)
         // check for player (pickup if collectable)
-        public bool CheckForPlayerCollision(Vector2[] collidableItemTiles)
+        public bool CheckForPlayerCollision(Rectangle[] collidableItemTiles)
         {
             bool collidingWithPlayer = false;
-            foreach (Vector2 itemTile in collidableItemTiles)
+            foreach (Rectangle itemTile in collidableItemTiles)
             {
                 if (itemTile.Equals(player.GetPos())) //Player position reference!
                 {
@@ -124,6 +119,17 @@ namespace HackAndSlash
                 }
             }
             return collidingWithPlayer;
+        }
+
+        // Check for enemy collision
+        public bool CheckForEnemy(Rectangle[] collidableItemTiles)
+        {
+            bool CollidesWithEnemy = false;
+            foreach (Rectangle itemTile in collidableItemTiles)
+            {
+                
+            }
+            return CollidesWithEnemy;
         }
         // nested class to store colliding tiles and type
         private class CollisionID

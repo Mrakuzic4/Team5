@@ -11,8 +11,11 @@ namespace HackAndSlash
     {
         public void HandleCollision(IPlayer player, CollisionType collisionType) //Possibly need ICollision?? See the 2D collision slide.
         {
-            if(collisionType!=CollisionType.None)
-            player.Damaged();
+            if (collisionType != CollisionType.None)
+            {
+                player.Damaged();
+            }
+            
             //switch (collisionType)
             //{
             //    case CollisionType.Right:

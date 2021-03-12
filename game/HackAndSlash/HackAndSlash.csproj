@@ -50,6 +50,7 @@
     <Compile Include="Collision\EnemyBlockCollision.cs" />
     <Compile Include="Collision\EnemyCollisionDetector.cs" />
     <Compile Include="Collision\PlayerEnemyCollisionHandler.cs" />
+    <Compile Include="Collision\ItemEnemyCollisionHandler.cs" />
     <Compile Include="Collision\PlayerBlockCollisionHandler.cs" />
     <Compile Include="Collision\PlayerCollisionDetector.cs" />
     <Compile Include="Commands\AttackCommand.cs" />

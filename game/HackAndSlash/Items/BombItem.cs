@@ -29,7 +29,7 @@ namespace HackAndSlash
         private const int EXPLOSION_DIAMETER = 3;
         private Vector2 toolBarPosition;
 
-        public Vector2[] collidableTiles;
+        public Rectangle[] collidableTiles;
         public ItemCollisionHandler bombCollisionHandler;
         private enum animationState { blinkWhite, blinkRed, explode };
         private animationState bombAnimationState;
@@ -47,8 +47,8 @@ namespace HackAndSlash
             explosionSprite = (ItemSprite)SpriteFactory.Instance.CreateExplosion();
             spriteWidth = explosionSprite.Texture.Width / explosionSprite.Columns;
             spriteHeight = explosionSprite.Texture.Height / explosionSprite.Rows;
-            collidableTiles = new Vector2[1];
-            collidableTiles[0] = position;
+            collidableTiles = new Rectangle[1];
+            collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteHeight, spriteWidth);
             bombCollisionHandler = new ItemCollisionHandler(this.player);
         }
         public void Update()
@@ -65,8 +65,8 @@ namespace HackAndSlash
                 case BombStateMachine.ItemStates.Useable:
                     // check for uses
                     position = toolBarPosition;
-                    collidableTiles = new Vector2[1];
-                    collidableTiles[0] = position;
+                    collidableTiles = new Rectangle[1];
+                    collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteHeight, spriteWidth);
                     cooldown--;
                     if (cooldown <= 0)
                     {
@@ -120,8 +120,8 @@ namespace HackAndSlash
                 case BombStateMachine.ItemStates.Expended:
                     // single instance is gone
                     position = toolBarPosition;
-                    collidableTiles = new Vector2[1];
-                    collidableTiles[0] = position;
+                    collidableTiles = new Rectangle[1];
+                    collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteHeight, spriteWidth);
                     break;
             }
         }
@@ -151,19 +151,20 @@ namespace HackAndSlash
                             break;
                         case animationState.explode:
                             // draw full explosion
-                            collidableTiles = new Vector2[EXPLOSION_DIAMETER * EXPLOSION_DIAMETER];
+                            collidableTiles = new Rectangle[EXPLOSION_DIAMETER * EXPLOSION_DIAMETER];
                             int c = 0;
                             for (float i = position.X; i < position.X + EXPLOSION_DIAMETER * spriteWidth; i += spriteWidth)
                             {
                                 for(float j = position.Y; j < position.Y + EXPLOSION_DIAMETER * spriteHeight; j += spriteHeight)
                                 {
                                     Vector2 tempPosition = new Vector2(i, j);
+                                    Rectangle tempTile = new Rectangle((int)i, (int)j, spriteWidth, spriteHeight);
                                     explosionSprite.Draw(spriteBatch, tempPosition, Color.White);
-                                    collidableTiles[c] = tempPosition;
+                                    collidableTiles[c] = tempTile;
                                     c++;
                                 }
                             }
-
+                            // Check for enemys to damage them
 
                             break;
                     }
@@ -206,8 +207,8 @@ namespace HackAndSlash
                 }
                 position = currentPlayerPosition; // player Direction
                 // add to collidable tiles
-                collidableTiles = new Vector2[1];
-                collidableTiles[0] = position;
+                collidableTiles = new Rectangle[1];
+                collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteHeight, spriteWidth);
 
                 Rectangle checkTile = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
 
@@ -227,6 +228,16 @@ namespace HackAndSlash
                     }
                 }
             }
+        }
+        
+        // returns collidableTiles for enemy damage or player collection
+        public Rectangle[] getCollidableTiles(bool isEnemy)
+        {
+            Rectangle[] RectanglesList = { new Rectangle(0, 0, 1, 1) };
+            if ((isEnemy && itemState.state == BombStateMachine.ItemStates.BeingUsed) || (!isEnemy && itemState.state == BombStateMachine.ItemStates.Collectable))
+                RectanglesList = collidableTiles;
+
+            return RectanglesList;
         }
 
         public void ChangeToCollectable()

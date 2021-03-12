@@ -23,7 +23,7 @@ namespace HackAndSlash
         private const int MAX_RANGE = 5; // range in # of sprites(tiles) 
         private Vector2 toolBarPosition;
 
-        public Vector2[] collidableTiles;
+        public Rectangle[] collidableTiles;
         public ItemCollisionHandler firewallCollisionHandler;
 
         private GlobalSettings.Direction playerDirection = GlobalSettings.Direction.Right;
@@ -41,8 +41,8 @@ namespace HackAndSlash
             spriteHeight = firewallSprite.Texture.Height / firewallSprite.Rows;
             toolBarPosition = new Vector2(10, 10);
             spriteBatch = gameSpriteBatch;
-            collidableTiles = new Vector2[1];
-            collidableTiles[0] = position;
+            collidableTiles = new Rectangle[1];
+            collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
             firewallCollisionHandler = new ItemCollisionHandler(this.player);
         }
 
@@ -62,8 +62,8 @@ namespace HackAndSlash
                 case FirewallStateMachine.ItemStates.Useable:
                     // check for uses
                     position = toolBarPosition;
-                    collidableTiles = new Vector2[1];
-                    collidableTiles[0] = position;
+                    collidableTiles = new Rectangle[1];
+                    collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
                     cooldown--;
                     if (cooldown <= 0)
                     {
@@ -129,8 +129,8 @@ namespace HackAndSlash
                 case FirewallStateMachine.ItemStates.Expended:
                     // single instance is gone
                     position = toolBarPosition;
-                    collidableTiles = new Vector2[1];
-                    collidableTiles[0] = position;
+                    collidableTiles = new Rectangle[1];
+                    collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
                     break;
             }
         }
@@ -152,8 +152,9 @@ namespace HackAndSlash
                     // place over players head then draw wall with loop and updating position
                     firewallSprite.Draw(spriteBatch, position, Color.White);
                     // draw back to player starting position
-                    collidableTiles = new Vector2[MAX_RANGE];
+                    collidableTiles = new Rectangle[MAX_RANGE];
                     int c = 0;
+                    Rectangle tempTile;
                     Vector2 tempPosition;
                     switch (playerDirection)
                     {
@@ -161,8 +162,9 @@ namespace HackAndSlash
                             for(float i = position.X; i <= playerPosition.X; i += spriteWidth)
                             {
                                 tempPosition = new Vector2(i, playerPosition.Y);
+                                tempTile = new Rectangle((int)i, (int)playerPosition.Y, spriteWidth, spriteHeight);
                                 firewallSprite.Draw(spriteBatch, tempPosition, Color.White);
-                                collidableTiles[c] = tempPosition;
+                                collidableTiles[c] = tempTile;
                                 c++;
                             }
                             break;
@@ -170,8 +172,9 @@ namespace HackAndSlash
                             for (float i = position.X; i >= playerPosition.X; i -= spriteWidth)
                             {
                                 tempPosition = new Vector2(i, playerPosition.Y);
+                                tempTile = new Rectangle((int)i, (int)playerPosition.Y, spriteWidth, spriteHeight);
                                 firewallSprite.Draw(spriteBatch, tempPosition, Color.White);
-                                collidableTiles[c] = tempPosition;
+                                collidableTiles[c] = tempTile;
                                 c++;
                             }
                             break;
@@ -179,8 +182,9 @@ namespace HackAndSlash
                             for (float i = position.Y; i <= playerPosition.Y; i += spriteHeight)
                             {
                                 tempPosition = new Vector2(playerPosition.X, i);
+                                tempTile = new Rectangle((int)playerPosition.X, (int)i, spriteWidth, spriteHeight);
                                 firewallSprite.Draw(spriteBatch, tempPosition, Color.White);
-                                collidableTiles[c] = tempPosition;
+                                collidableTiles[c] = tempTile;
                                 c++;
 
                             }
@@ -189,18 +193,21 @@ namespace HackAndSlash
                             for (float i = position.Y; i >= playerPosition.Y; i -= spriteHeight)
                             {
                                 tempPosition = new Vector2(playerPosition.X, i);
+                                tempTile = new Rectangle((int)playerPosition.X, (int)i, spriteWidth, spriteHeight);
+
                                 firewallSprite.Draw(spriteBatch, tempPosition, Color.White);
-                                collidableTiles[c] = tempPosition;
+                                collidableTiles[c] = tempTile;
                                 c++;
                             }
                             break;
                     }
+                    // check for enemies to damage them
                     break;
                 case FirewallStateMachine.ItemStates.Expended:
                     // Gray out in toolbar
                     firewallSprite.Draw(spriteBatch, position, Color.Gray);
-                    collidableTiles = new Vector2[1];
-                    collidableTiles[0] = position;
+                    collidableTiles = new Rectangle[1];
+                    collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
                     break;
             }
         }
@@ -280,6 +287,16 @@ namespace HackAndSlash
                 }
             }
 
+        }
+
+        // returns collidableTiles for enemy damage or player collection
+        public Rectangle[] getCollidableTiles(bool isEnemy)
+        {
+            Rectangle[] RectanglesList = { new Rectangle(0, 0, 1, 1) };
+            if ((isEnemy && itemState.state == FirewallStateMachine.ItemStates.BeingUsed) || (!isEnemy && itemState.state == FirewallStateMachine.ItemStates.BeingUsed))
+                RectanglesList = collidableTiles;
+
+            return RectanglesList;
         }
 
         public void ChangeToCollectable()

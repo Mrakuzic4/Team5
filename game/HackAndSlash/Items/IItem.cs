@@ -25,5 +25,7 @@ namespace HackAndSlash
         void ChangeToBeingUsed();
 
         void ChangeToExpended();
+
+        Rectangle[] getCollidableTiles(bool isEnemy);
     }
 }

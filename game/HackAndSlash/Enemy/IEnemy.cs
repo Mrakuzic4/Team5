@@ -27,6 +27,7 @@ namespace HackAndSlash
         void changeToMoveRight();
         void changeToMoveUp();
         void changeToMoveDown();
+        void changeToDie();
 
         Vector2 GetPos();
 

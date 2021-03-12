@@ -16,6 +16,7 @@ namespace HackAndSlash
         private GraphicsDevice Graphics; // the graphics device used by the spritebatch
 
         private int timeSinceDirectionChange = 0;
+        private int deathTimer = 0;
         private int timeSinceLastFrame = 0; // used to slow down the rate of animation 
         private int milliSecondsPerFrame = 80;
         private int temp = 0;//counter to change states after a certain number of calls to update
@@ -79,10 +80,10 @@ namespace HackAndSlash
                 }
             }
 
-
+            //Boundary collisions
             if (bugState.state == bugStateMachine.bugHealth.MoveUp)
             {
-                // Move up - deal with boundary cases
+                // Move up
                 if (position.Y >= GlobalSettings.BORDER_OFFSET)
                 {
                     position.Y--;
@@ -130,7 +131,7 @@ namespace HackAndSlash
                 }
             }
 
-            if (timeSinceDirectionChange > 8000)
+            if (timeSinceDirectionChange > 8000 && bugState.state!= bugStateMachine.bugHealth.Not && bugState.state != bugStateMachine.bugHealth.Die)
             {
                 timeSinceDirectionChange = 0;
                 randomDirection = random.Next(0, 3);
@@ -153,15 +154,39 @@ namespace HackAndSlash
 
             hitbox.Location = new Point((int)position.X , (int)position.Y);
             enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
+            if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
+            {
+                bugState.changeToDie();
+            }
+
+
+
+
+            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+
+            //Remove bug from screen 3 seconds after death
+            if (bugState.state == bugStateMachine.bugHealth.Die)
+            {
+                deathTimer += gameTime.ElapsedGameTime.Milliseconds;
+                //wait 3 seconds
+                if (deathTimer > 3000)
+                {
+                    deathTimer = 0;
+                    bugState.changeToNot();
+                }
+            }
         }
 
         public void Draw()
         {
-            if (bugState.state != bugStateMachine.bugHealth.Not)
+            if (bugState.state == bugStateMachine.bugHealth.Die)
             {
-              
-                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
+                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.Red);
+            }
 
+            else if((bugState.state != bugStateMachine.bugHealth.Not) && (bugState.state != bugStateMachine.bugHealth.Die))
+            {
+                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
             }
 
         }

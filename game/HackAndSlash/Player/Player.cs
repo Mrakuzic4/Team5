@@ -15,9 +15,14 @@ namespace HackAndSlash
 
         //Collision
         private Rectangle playerHitBox;
+        private Rectangle playerSwordHitBox;
+
         private PlayerCollisionDetector playerCollisionDetector;
+
+
         private PlayerBlockCollisionHandler playerBlockCollisionHandler;
         private PlayerEnemyCollisionHandler playerEnemyCollisionHandler;
+        private ItemEnemyCollisionHandler itemEnemyCollisionHandler;
 
 
         // Character positions 
@@ -41,6 +46,7 @@ namespace HackAndSlash
             playerCollisionDetector = new PlayerCollisionDetector(this, game);
             playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
             playerEnemyCollisionHandler = new PlayerEnemyCollisionHandler();
+            itemEnemyCollisionHandler = new ItemEnemyCollisionHandler();
         }
 
         public Vector2 GetPos()
@@ -76,7 +82,19 @@ namespace HackAndSlash
 
         public void Attack()
         {
+            //Sprite Animation and Decorator
             playerStateMachine.Attack();
+
+            //Player sword collides with enemies
+            switch (GetDir()){
+                case GlobalSettings.Direction.Right:
+                    playerSwordHitBox = new Rectangle((int)relPositionMC.X+GlobalSettings.BASE_SCALAR,(int) relPositionMC.Y+GlobalSettings.BASE_SCALAR/2,50,10); //width is 50, height is 10 for now
+                    break;
+                case GlobalSettings.Direction.Left:
+                    break;
+            }
+
+            itemEnemyCollisionHandler.HandleCollision(game.bugfirst, game.Player, playerCollisionDetector.CheckEnemyCollisions(playerHitBox));
         }
 
         public void Damaged()
@@ -98,9 +116,9 @@ namespace HackAndSlash
             //Player Block Collision
             playerBlockCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckBlockCollisions(playerHitBox));
             //Player Enemy Collision
-            playerEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckEnemyCollisions(playerHitBox)); ;
+            playerEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckEnemyCollisions(playerHitBox));
 
-
+            
             //TODO: More Collision...
         }
 
@@ -111,7 +129,13 @@ namespace HackAndSlash
 
         public void UseItem()
         {
+            //Player Animation
             playerStateMachine.UseItem();
+            //Item animation
+            game.ItemHolder.UseItem(GetDir());
+
+            //Item collides with Enemy
+
         }
 
         private void stayInBoundary()
