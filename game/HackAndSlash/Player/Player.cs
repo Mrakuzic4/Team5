@@ -15,14 +15,12 @@ namespace HackAndSlash
 
         //Collision
         private Rectangle playerHitBox;
-        private Rectangle playerSwordHitBox;
 
         private PlayerCollisionDetector playerCollisionDetector;
 
-
         private PlayerBlockCollisionHandler playerBlockCollisionHandler;
         private PlayerEnemyCollisionHandler playerEnemyCollisionHandler;
-        private ItemEnemyCollisionHandler itemEnemyCollisionHandler;
+        private SwordEnemyCollisionHandler itemEnemyCollisionHandler;
 
 
         // Character positions 
@@ -46,7 +44,7 @@ namespace HackAndSlash
             playerCollisionDetector = new PlayerCollisionDetector(this, game);
             playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
             playerEnemyCollisionHandler = new PlayerEnemyCollisionHandler();
-            itemEnemyCollisionHandler = new ItemEnemyCollisionHandler();
+            itemEnemyCollisionHandler = new SwordEnemyCollisionHandler();
         }
 
         public Vector2 GetPos()
@@ -84,17 +82,9 @@ namespace HackAndSlash
         {
             //Sprite Animation and Decorator
             playerStateMachine.Attack();
-
-            //Player sword collides with enemies
-            switch (GetDir()){
-                case GlobalSettings.Direction.Right:
-                    playerSwordHitBox = new Rectangle((int)relPositionMC.X+GlobalSettings.BASE_SCALAR,(int) relPositionMC.Y+GlobalSettings.BASE_SCALAR/2,50,10); //width is 50, height is 10 for now
-                    break;
-                case GlobalSettings.Direction.Left:
-                    break;
-            }
-
-            itemEnemyCollisionHandler.HandleCollision(game.bugfirst, game.Player, playerCollisionDetector.CheckEnemyCollisions(playerHitBox));
+           
+            //Collision of the sword hitbox and the enemy
+            itemEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckSwordEnemyCollisions());
         }
 
         public void Damaged()
@@ -110,7 +100,6 @@ namespace HackAndSlash
             stayInBoundary();
 
             //Player Collision Detector
-
             //hitbox for player, wraps around player.
             playerHitBox.Location = new Point((int)relPositionMC.X, (int)relPositionMC.Y);
             //Player Block Collision
@@ -118,8 +107,6 @@ namespace HackAndSlash
             //Player Enemy Collision
             playerEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckEnemyCollisions(playerHitBox));
 
-            
-            //TODO: More Collision...
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
