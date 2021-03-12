@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BlockDemo.png</SourceFile>
-  <SourceTime>2021-03-11T14:38:49.6247457-05:00</SourceTime>
-  <DestFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/images/BlockDemo.xnb</DestFile>
-  <DestTime>2021-03-12T10:01:23.5612306-05:00</DestTime>
+  <SourceFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/BlockDemo.png</SourceFile>
+  <SourceTime>2021-03-08T14:54:53.5244037-05:00</SourceTime>
+  <DestFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/bin/DesktopGL/Content/images/BlockDemo.xnb</DestFile>
+  <DestTime>2021-03-12T09:55:30.7331203-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
