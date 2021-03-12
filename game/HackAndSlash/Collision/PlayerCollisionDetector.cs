@@ -15,8 +15,6 @@ namespace HackAndSlash
 
         public PlayerCollisionDetector(Player player, Game1 game)
         {
-            //Is the Player reference necessary???????????????????
-           // this.player = player;
             this.game = game;
         }
 
@@ -24,9 +22,8 @@ namespace HackAndSlash
         {
 
             //check if player is colliding with each block in the current room
-            //foreach (IBlock block in game.blockList)
-            //{
-                IBlock block = game.BlockHolder;
+            foreach (IBlock block in game.blockList)
+            {
                 Rectangle collisionBox = Rectangle.Intersect(playerHitbox, block.rectangle);
 
                 //left or right intersection
@@ -57,7 +54,7 @@ namespace HackAndSlash
                         return GlobalSettings.CollisionType.Bottom;
                     }
                 }
-            //}
+            }
             //no collision detected
             return GlobalSettings.CollisionType.None;
         }
@@ -66,9 +63,8 @@ namespace HackAndSlash
         {
 
             //check if player is colliding with each block in the current room
-            //foreach (IBlock block in game.blockList)
-            //{
-            IBlock block = game.BlockHolder;
+            foreach (IBlock block in game.blockList)
+            {
             Rectangle collisionBox = Rectangle.Intersect(playerHitbox, block.rectangle);
 
             //left or right intersection
@@ -99,7 +95,7 @@ namespace HackAndSlash
                     return GlobalSettings.CollisionType.Bottom;
                 }
             }
-            //}
+            }
             //no collision detected
             return GlobalSettings.CollisionType.None;
         }

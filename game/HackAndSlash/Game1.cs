@@ -30,7 +30,6 @@ namespace HackAndSlash
 
         // Sprites  
         public IItem ItemHolder { get; set; }
-        public IBlock BlockHolder { get; set; }
         
 
         private Texture2D textureFirewall { get; set; }
@@ -79,6 +78,7 @@ namespace HackAndSlash
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
             controllerList.Add(new MouseController(this));
+            controllerList.Add(new GamepadController(this));
 
             // Setup window size 
             graphics.PreferredBackBufferWidth = GlobalSettings.WINDOW_WIDTH;
@@ -134,7 +134,6 @@ namespace HackAndSlash
                 {SpriteFactory.Instance.CreateBlockX(spriteBatch)},
                 {SpriteFactory.Instance.CreateBlockWater(spriteBatch)}
             };
-            BlockHolder = blockList[0];
         }
 
         /// <summary>
@@ -177,8 +176,7 @@ namespace HackAndSlash
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp);
 
             foreach (ILevel levelMap in levelList) levelMap.Draw();
-            //foreach (IBlock block in blockList) block.Draw();
-            BlockHolder.Draw();
+            foreach (IBlock block in blockList) block.Draw();
             PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
             ItemHolder.Draw();
             snakefirst.Draw();
