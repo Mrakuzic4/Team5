@@ -51,8 +51,6 @@
     <Compile Include="Collision\PlayerBlockCollisionHandler.cs" />
     <Compile Include="Collision\PlayerCollisionDetector.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
-    <Compile Include="Commands\BlockCycleDownCommand.cs" />
-    <Compile Include="Commands\BlockCycleUpCommand.cs" />
     <Compile Include="Commands\ItemUseableCommand.cs" />
     <Compile Include="Commands\DamageCommand.cs" />
     <Compile Include="Commands\EnemyCycleCommandBug.cs" />
@@ -68,6 +66,7 @@
     <Compile Include="Commands\QuitCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Commands\UsePlayerItemCommand.cs" />
+    <Compile Include="Controllers\GamepadController.cs" />
     <Compile Include="Controllers\IController.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Controllers\MouseController.cs" />

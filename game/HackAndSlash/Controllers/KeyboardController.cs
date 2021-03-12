@@ -35,9 +35,6 @@ namespace HackAndSlash
                 {Keys.E, new DamageCommand(game)},
                 {Keys.U, new ItemUseableCommand(game)},
                 {Keys.I, new ItemCycleCommand(game)},
-                //BlockFunction
-                {Keys.T, new BlockCycleDownCommand(game, game.blockList)},
-                {Keys.Y, new BlockCycleUpCommand(game, game.blockList)},
                 //EnemyFunction
                 {Keys.O, new EnemyCycleCommandSnake(game)},
                 {Keys.P, new EnemyCycleCommandBug(game)},

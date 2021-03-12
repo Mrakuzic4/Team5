@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/SnakeAttack.png</SourceFile>
-  <SourceTime>2021-02-17T22:04:07.1967147-05:00</SourceTime>
-  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/SnakeAttack.xnb</DestFile>
-  <DestTime>2021-03-10T11:26:05.2074798-05:00</DestTime>
+  <SourceFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/images/SnakeAttack.png</SourceFile>
+  <SourceTime>2021-02-19T15:59:35.7794533-05:00</SourceTime>
+  <DestFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/SnakeAttack.xnb</DestFile>
+  <DestTime>2021-03-11T17:54:08.6160352-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
