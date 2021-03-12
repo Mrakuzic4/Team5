@@ -30,7 +30,7 @@ namespace HackAndSlash
         public ImageFile zeldaUseItemRight;
 
         public ImageFile snakeMoveLeft;
-        public ImageFile snakeAttackLeft;
+        public ImageFile snakeMoveRight;
         public ImageFile snakeDie;
         public ImageFile snakeIdle;
 
@@ -80,8 +80,8 @@ namespace HackAndSlash
             zeldaUseItemLeft = new ImageFile("images/ZeldaUseItemLeft", 1, 1);
             zeldaUseItemRight = new ImageFile("images/ZeldaUseItemRight", 1, 1);
 
-            snakeMoveLeft = new ImageFile("images/SnakeMoving", 1, 10);
-            snakeAttackLeft = new ImageFile("images/SnakeAttack", 1, 10);
+            snakeMoveLeft = new ImageFile("images/SnakeLeftMoving", 1, 10);
+            snakeMoveRight = new ImageFile("images/SnakeEnemyRight", 1, 10);
             snakeDie = new ImageFile("images/SnakeDie", 1, 10);
             snakeIdle = new ImageFile("images/SnakeIdle", 1, 10);
 

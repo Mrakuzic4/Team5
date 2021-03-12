@@ -36,8 +36,9 @@
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/NES - The Legend of Zelda - Link.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/SnakeAttack.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/SnakeDie.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/SnakeEnemyRight.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/SnakeIdle.png</File>
-    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/SnakeMoving.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/SnakeLeftMoving.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/snakespritesheet.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/sucDown.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/sucLeft.png</File>
@@ -87,6 +88,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>images/Zelda.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

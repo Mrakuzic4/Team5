@@ -104,8 +104,8 @@ namespace HackAndSlash
            // SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
             //Enemy
-            snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice, spriteBatch);
-            bugfirst = new BugEnemy(new Vector2(300,128), GraphicsDevice, spriteBatch, this);
+            snakefirst = new SnakeEnemy(new Vector2(128,500), GraphicsDevice, spriteBatch, this);
+            bugfirst = new BugEnemy(new Vector2(700,128), GraphicsDevice, spriteBatch, this);
 
             enemyList = new List<IEnemy>()
             {

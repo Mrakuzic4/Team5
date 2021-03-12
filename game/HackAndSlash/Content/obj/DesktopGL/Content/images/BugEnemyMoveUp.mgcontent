@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/BugEnemyMoveUp.png</SourceFile>
-  <SourceTime>2021-03-11T20:16:22.6090369-05:00</SourceTime>
+  <SourceTime>2021-03-12T14:00:30.8776581-05:00</SourceTime>
   <DestFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/bin/DesktopGL/Content/images/BugEnemyMoveUp.xnb</DestFile>
-  <DestTime>2021-03-12T09:55:31.1352628-05:00</DestTime>
+  <DestTime>2021-03-12T16:53:59.9826303-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

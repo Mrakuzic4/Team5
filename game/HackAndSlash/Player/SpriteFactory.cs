@@ -30,8 +30,8 @@ namespace HackAndSlash
         private Texture2D BGSprite;
 
         private Texture2D SnakeIdleSprite;
-        private Texture2D SnakeMoveSprite;
-        private Texture2D SnakeAttackSprite;
+        private Texture2D SnakeMoveLeft;
+        private Texture2D SnakeMoveRight;
         private Texture2D SnakeDieSprite;
 
         private Texture2D BugIdleSprite;
@@ -91,8 +91,8 @@ namespace HackAndSlash
             // Edited in Adobe Fresco to align specific states
 
             SnakeIdleSprite = content.Load<Texture2D>(IMDB.snakeIdle.pathName);
-            SnakeMoveSprite = content.Load<Texture2D>(IMDB.snakeMoveLeft.pathName);
-            SnakeAttackSprite = content.Load<Texture2D>(IMDB.snakeAttackLeft.pathName);
+            SnakeMoveLeft = content.Load<Texture2D>(IMDB.snakeMoveLeft.pathName);
+            SnakeMoveRight = content.Load<Texture2D>(IMDB.snakeMoveRight.pathName);
             SnakeDieSprite = content.Load<Texture2D>(IMDB.snakeDie.pathName);
 
             //Original image sourced from 
@@ -255,14 +255,14 @@ namespace HackAndSlash
             return new EnemySprite(SnakeIdleSprite, IMDB.snakeIdle.C, IMDB.snakeIdle.R);
         }
 
-        public ISprite CreateSnakeMoving()
+        public ISprite CreateSnakeLeftMoving()
         {
-            return new EnemySprite(SnakeMoveSprite, IMDB.snakeMoveLeft.C, IMDB.snakeMoveLeft.R);
+            return new EnemySprite(SnakeMoveLeft, IMDB.snakeMoveLeft.C, IMDB.snakeMoveLeft.R);
         }
 
-        public ISprite CreateSnakeAttack()
+        public ISprite CreateSnakeRightMoving()
         {
-            return new EnemySprite(SnakeAttackSprite, IMDB.snakeAttackLeft.C, IMDB.snakeAttackLeft.R);
+            return new EnemySprite(SnakeMoveRight, IMDB.snakeMoveRight.C, IMDB.snakeMoveRight.R);
         }
 
         public ISprite CreateSnakeDie()

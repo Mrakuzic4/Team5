@@ -499,3 +499,5 @@ C:\Users\hkomm\git\repository\HighSixMain\game\HackAndSlash\obj\Debug\HackAndSla
 C:\Users\hkomm\git\repository\HighSixMain\game\HackAndSlash\obj\Debug\HackAndSlash.csproj.CopyComplete
 C:\Users\hkomm\git\repository\HighSixMain\game\HackAndSlash\obj\Debug\HackAndSlash.exe
 C:\Users\hkomm\git\repository\HighSixMain\game\HackAndSlash\obj\Debug\HackAndSlash.pdb
+C:\Users\hkomm\git\repository\HighSixMain\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeEnemyRight.xnb
+C:\Users\hkomm\git\repository\HighSixMain\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeLeftMoving.xnb

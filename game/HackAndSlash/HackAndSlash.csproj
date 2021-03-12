@@ -219,6 +219,7 @@
     <None Include="Content\bin\DesktopGL\images\sucLeft.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucOva.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucUp.xnb" />
+    <Content Include="Content\images\SnakeEnemyRight.png" />
     <Content Include="Content\info\levelDemoM1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -263,7 +264,7 @@
     <Content Include="Content\images\SnakeAttack.png" />
     <Content Include="Content\images\SnakeDie.png" />
     <Content Include="Content\images\SnakeIdle.png" />
-    <Content Include="Content\images\SnakeMoving.png" />
+    <Content Include="Content\images\SnakeLeftMoving.png" />
     <Content Include="Content\images\snakespritesheet.png" />
     <Content Include="Content\images\sucDown.png" />
     <Content Include="Content\images\sucLeft.png" />

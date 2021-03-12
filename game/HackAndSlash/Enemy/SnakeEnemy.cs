@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using HackAndSlash.Collision;
 
 namespace HackAndSlash
 {
@@ -15,21 +16,38 @@ namespace HackAndSlash
         private SpriteBatch spriteBatch; // the spritebatch used to draw the enemy
         private GraphicsDevice Graphics; // the graphics device used by the spritebatch
 
-        private int timeSinceLastFrame=0; // used to slow down the rate of animation 
+        private int timeSinceLastFrame=0; // used to slow down the rate of animation
+        private int timeSinceDirectionChange = 0;
+        private int deathTimer = 0;
         private int milliSecondsPerFrame=80;
         private int temp = 0; //counter to change states after a certain number of calls to update
 
+        private System.Random random;
+        private int randomDirection = 0; //0-left, 1-up, 2-right, 3- down
+
+        private EnemyCollisionDetector enemyCollisionDetector;
+        private EnemyBlockCollision enemyBlockCollision;
+        private Rectangle hitbox;
+
+        private int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
+        private int rightBound = GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
         //Snake position
-        private Rectangle rectangle;
+        private Rectangle rectangle { get; set; }
 
         //make the constructor for the class
-        public SnakeEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch SB)
+        public SnakeEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch SB, Game1 game)
         {
             position = startPosition;
             snakeState = new snakeStateMachine();
             Graphics = graphics;
             spriteBatch = SB;
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+
+            random = new System.Random();
+
+            enemyCollisionDetector = new EnemyCollisionDetector(game, this);
+            enemyBlockCollision = new EnemyBlockCollision();
+            hitbox = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
 
         }
 
@@ -39,9 +57,6 @@ namespace HackAndSlash
         }
 
 
-        public void LoadContent()
-        {
-        }
 
         public Vector2 GetPos()
         {
@@ -56,6 +71,7 @@ namespace HackAndSlash
         //updating the enemy
         public void Update(GameTime gameTime)
         {
+            timeSinceDirectionChange += gameTime.ElapsedGameTime.Milliseconds;
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds; //counting elapsed time since last update
             if (timeSinceLastFrame > milliSecondsPerFrame) // executing when milliSecondsPerFrame seconds have passed
             {
@@ -67,92 +83,142 @@ namespace HackAndSlash
                 }
             }
 
-            //temporary code for sprint2 to shuffle in between states
-            if (temp == 0 && snakeState.state != snakeStateMachine.snakeHealth.Not) {
-                snakeState.changeToIdle();
+            //Boundary collisions
+            if (snakeState.state == snakeStateMachine.snakeHealth.MoveUp)
+            {
+                // Move up
+                if (position.Y >= GlobalSettings.BORDER_OFFSET)
+                {
+                    position.Y--;
+                }
+
+                else
+                {
+                    snakeState.changeToMoveDown();
+                }
+            }
+            else if (snakeState.state == snakeStateMachine.snakeHealth.MoveDown)
+            {
+                //Move down
+                if (position.Y <= bottomBound)
+                {
+                    position.Y++;
+                }
+
+                else
+                {
+                    snakeState.changeToMoveUp();
+                }
+            }
+            else if (snakeState.state == snakeStateMachine.snakeHealth.MoveLeft)
+            {
+                //Move left
+                if (position.X >= GlobalSettings.BORDER_OFFSET)
+                {
+                    position.X--;
+                }
+                else
+                {
+                    snakeState.changeToRightMove();
+                }
+            }
+            else if (snakeState.state == snakeStateMachine.snakeHealth.MoveRight)
+            {
+                //Move right
+                if (position.X <= rightBound)
+                {
+                    position.X++;
+                }
+                else
+                {
+                    snakeState.changeToLeftMove();
+                }
             }
 
-            if (temp == 200 && snakeState.state != snakeStateMachine.snakeHealth.Not) {
-                snakeState.changeToAttack();
+            if (timeSinceDirectionChange > 8000 && snakeState.state != snakeStateMachine.snakeHealth.Not && snakeState.state != snakeStateMachine.snakeHealth.Die)
+            {
+                timeSinceDirectionChange = 0;
+                randomDirection = random.Next(0, 3);
+                switch (randomDirection)
+                {
+                    case 0:
+                        snakeState.changeToLeftMove();
+                        break;
+                    case 1:
+                        snakeState.changeToMoveUp();
+                        break;
+                    case 2:
+                        snakeState.changeToRightMove();
+                        break;
+                    case 3:
+                        snakeState.changeToMoveDown();
+                        break;
+                }
             }
 
-            if (temp == 400 && snakeState.state != snakeStateMachine.snakeHealth.Not) {
-                snakeState.changeToMove();
-            }
-
-            if (temp == 600 && snakeState.state != snakeStateMachine.snakeHealth.Not) {
+            hitbox.Location = new Point((int)position.X, (int)position.Y);
+            enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
+            if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
+            {
                 snakeState.changeToDie();
             }
 
-            if (temp == 800 && snakeState.state != snakeStateMachine.snakeHealth.Not) {
-                snakeState.changeToIdle();
-            }
-
-            if (temp > 800)
-            {
-                temp = 0;
-            }
-            temp++;
-            //end of temporary code for sprint2 to shuffle in between states
-
-            //updating position of enemy according to state
-            /*
-            if (snakeState.state == snakeStateMachine.snakeHealth.Move) {
-                position.X--;
-            }
-
-            if (snakeState.state != snakeStateMachine.snakeHealth.Move) {
-                position.X = 300;
-            }
-
-            if (temp > 800) {
-                temp = 0;
-            }
-            */
-            
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+
+            //Remove bug from screen 3 seconds after death
+            if (snakeState.state == snakeStateMachine.snakeHealth.Die)
+            {
+                deathTimer += gameTime.ElapsedGameTime.Milliseconds;
+                //wait 3 seconds
+                if (deathTimer > 3000)
+                {
+                    deathTimer = 0;
+                    snakeState.changeToNot();
+                }
+            }
+
         }
 
 
         public void Draw()
         {
-            if(snakeState.state != snakeStateMachine.snakeHealth.Not)
+            if (snakeState.state == snakeStateMachine.snakeHealth.Die)
+            {
+                snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.Red);
+            }
+
+            else if ((snakeState.state != snakeStateMachine.snakeHealth.Not) && (snakeState.state != snakeStateMachine.snakeHealth.Die))
             {
                 snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
             }
 
         }
 
+       
         //Functions to switch the states
         public void changeToIdle()
         {
             snakeState.changeToIdle();
         }
 
-        public void changeToAttack()
+        public void changeToMoveRight()
         {
-            snakeState.changeToAttack();
-        }
-
-        public void changeToMove()
-        {
-            snakeState.changeToMove();
-        }
-
-        public void changeToMoveUp()
-        {
-        }
-
-        public void changeToMoveDown()
-        {
+            snakeState.changeToRightMove();
         }
 
         public void changeToMoveLeft()
         {
+            snakeState.changeToLeftMove();
         }
 
-        public void changeToMoveRight()
+        public void changeToMoveUp()
         {
+            snakeState.changeToMoveUp();
+        }
+
+        public void changeToMoveDown()
+        {
+            snakeState.changeToMoveDown();
         }
 
         public void changeToDie()
@@ -169,14 +235,14 @@ namespace HackAndSlash
     
     public class snakeStateMachine
     {
-        public enum snakeHealth { Idle, Attack, Move, Die, Not }; // the different possible states
+        public enum snakeHealth { Idle,MoveUp, MoveDown, MoveLeft, MoveRight, Die, Not }; // the different possible states
         public snakeHealth state; // the current health state of the bug
         public EnemySprite MachineEnemySprite; // The EnemySprite implementing ISprite
 
         //constructor for the class
         public snakeStateMachine()
         {
-            state = snakeHealth.Idle;
+            state = snakeHealth.MoveUp;
             MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeIdle();
         }
         public void changeToIdle()
@@ -191,24 +257,46 @@ namespace HackAndSlash
 
         }
 
-        public void changeToAttack()
+        public void changeToRightMove()
         {
             //change to Attack if not already in Attack
-            if (state != snakeHealth.Attack)
+            if (state != snakeHealth.MoveRight)
             {
-                state = snakeHealth.Attack;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeAttack();
+                state = snakeHealth.MoveRight;
+                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeRightMoving();
                 //get appropriate sprite from sprite factory
             }
         }
 
-        public void changeToMove()
+        public void changeToLeftMove()
         {
             //change to Move if not already Move
-            if (state != snakeHealth.Move)
+            if (state != snakeHealth.MoveLeft)
             {
-                state = snakeHealth.Move;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeMoving();
+                state = snakeHealth.MoveLeft;
+                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeLeftMoving();
+                //get appropriate sprite from sprite factory
+            }
+        }
+
+        public void changeToMoveUp()
+        {
+            //change to Move if not already Move
+            if (state != snakeHealth.MoveUp)
+            {
+                state = snakeHealth.MoveUp;
+                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeIdle();
+                //get appropriate sprite from sprite factory
+            }
+        }
+
+        public void changeToMoveDown()
+        {
+            //change to Move if not already Move
+            if (state != snakeHealth.MoveDown)
+            {
+                state = snakeHealth.MoveDown;
+                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateSnakeIdle();
                 //get appropriate sprite from sprite factory
             }
         }

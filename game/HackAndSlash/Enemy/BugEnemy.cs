@@ -159,9 +159,6 @@ namespace HackAndSlash
                 bugState.changeToDie();
             }
 
-
-
-
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
 
             //Remove bug from screen 3 seconds after death
