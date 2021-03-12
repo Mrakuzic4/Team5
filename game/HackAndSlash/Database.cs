@@ -90,7 +90,7 @@ namespace HackAndSlash
             bugMoveLeft = new ImageFile("images/BugEnemyLeft", 1, 6);
             bugMoveRight = new ImageFile("images/BugEnemyRight", 1, 6);
             bugIdle = new ImageFile("images/BugEnemyIdle", 1, 6);
-            bugDie = new ImageFile("images/BugEnemyIdle", 1, 6);
+            bugDie = new ImageFile("images/BugIdle", 1, 6);
             
             fireWall = new ImageFile("images/firewall3", 1, 2);
             bomb = new ImageFile("images/Bomb", 1, 1);
