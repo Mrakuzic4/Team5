@@ -5,10 +5,15 @@ namespace HackAndSlash
 {
     public class ItemCollisionHandler
     {
-        private const int LEFT_WALL_POSITION = 64;
-        private const int TOP_WALL_POSITION = 64;
-        private const int RIGHT_WALL_POSITION = GlobalSettings.WINDOW_WIDTH - 128;
-        private const int BOTTOM_WALL_POSITION = GlobalSettings.WINDOW_HEIGHT - 128;
+        private const int LEFT_WALL_POSITION = 128;
+        private const int TOP_WALL_POSITION = 128;
+        private const int RIGHT_WALL_POSITION = GlobalSettings.WINDOW_WIDTH - 192;
+        private const int BOTTOM_WALL_POSITION = GlobalSettings.WINDOW_HEIGHT - 192;
+        private  Rectangle[] WALL_RECTANGLES = { 
+            new Rectangle(0, 0, GlobalSettings.BORDER_OFFSET, GlobalSettings.WINDOW_HEIGHT), 
+            new Rectangle(0, 0, GlobalSettings.WINDOW_WIDTH, GlobalSettings.BORDER_OFFSET), 
+            new Rectangle(GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET, 0, GlobalSettings.BORDER_OFFSET, GlobalSettings.WINDOW_HEIGHT), 
+            new Rectangle(0, GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET, GlobalSettings.WINDOW_WIDTH, GlobalSettings.BORDER_OFFSET) };
         private CollisionID[] collisionIndexAndType;
         private enum CollisionType { Enemy, Player, Block, Wall };
 
@@ -62,6 +67,19 @@ namespace HackAndSlash
             }
             return collidesWithWall;
         }
+
+        public bool CheckForWall(Rectangle checkTile)
+        {
+            bool collidesWithWall = false;
+            foreach (Rectangle wall in WALL_RECTANGLES)
+            {
+                if (checkTile.Intersects(wall))
+                {
+                    collidesWithWall = true;
+                }
+            }
+            return collidesWithWall;
+        }
         // check for block (stop from placing or moving, unless bomb explosion)
         public bool CheckForBlock(Vector2[] collidableItemTiles)
         {
@@ -79,8 +97,22 @@ namespace HackAndSlash
             }
             return collidingWithBlock;
         }
-            // chcek for enemy (damage enemy once [cooldown in enemy?], no stops)
-            // check for player (pickup if collectable)
+
+        public bool CheckForBlock(Rectangle checkTile)
+        {
+            bool collidingWithBlock = false;
+            Rectangle[] blockPositions = { new Rectangle(128, 128, 64, 64) }; // TODO: get blocks location somehow
+            foreach (Rectangle blockTile in blockPositions)
+            {
+                if (checkTile.Intersects(blockTile))
+                {
+                    collidingWithBlock = true;
+                }
+            }
+            return collidingWithBlock;
+        }
+        // chcek for enemy (damage enemy once [cooldown in enemy?], no stops)
+        // check for player (pickup if collectable)
         public bool CheckForPlayerCollision(Vector2[] collidableItemTiles)
         {
             bool collidingWithPlayer = false;
