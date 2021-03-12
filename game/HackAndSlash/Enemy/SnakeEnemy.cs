@@ -43,6 +43,16 @@ namespace HackAndSlash
         {
         }
 
+        public Vector2 GetPos()
+        {
+            return position;
+        }
+
+        public void SetPos(Vector2 pos)
+        {
+            position = pos;
+        }
+
         //updating the enemy
         public void Update(GameTime gameTime)
         {
@@ -127,6 +137,22 @@ namespace HackAndSlash
         public void changeToMove()
         {
             snakeState.changeToMove();
+        }
+
+        public void changeToMoveUp()
+        {
+        }
+
+        public void changeToMoveDown()
+        {
+        }
+
+        public void changeToMoveLeft()
+        {
+        }
+
+        public void changeToMoveRight()
+        {
         }
 
         public void changeToDie()

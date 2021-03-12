@@ -23,6 +23,15 @@ namespace HackAndSlash
         //changing the state of the enemy to Not - meaning the enemy is not currently updated or drawn
         void changeToNot();
 
+        void changeToMoveLeft();
+        void changeToMoveRight();
+        void changeToMoveUp();
+        void changeToMoveDown();
+
+        Vector2 GetPos();
+
+        void SetPos(Vector2 pos);
+
         //return current rectangle of enemy
         Rectangle getRectangle();
     }

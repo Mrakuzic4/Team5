@@ -38,6 +38,8 @@ namespace HackAndSlash
         private Texture2D BugMoveUpSprite;
         private Texture2D BugMoveDownSprite;
         private Texture2D BugDieSprite;
+        private Texture2D BugMoveLeftSprite;
+        private Texture2D BugMoveRightSprite;
 
         private Texture2D FirewallSprite;
         private Texture2D BombSprite;
@@ -98,6 +100,8 @@ namespace HackAndSlash
 
             BugMoveUpSprite = content.Load<Texture2D>(IMDB.bugMoveUp.pathName);
             BugMoveDownSprite = content.Load<Texture2D>(IMDB.bugMoveDown.pathName);
+            BugMoveLeftSprite = content.Load<Texture2D>(IMDB.bugMoveLeft.pathName);
+            BugMoveRightSprite = content.Load<Texture2D>(IMDB.bugMoveRight.pathName);
             BugDieSprite = content.Load<Texture2D>(IMDB.bugDie.pathName);
             BugIdleSprite = content.Load<Texture2D>(IMDB.bugIdle.pathName);
 
@@ -279,6 +283,17 @@ namespace HackAndSlash
         public ISprite CreateBugMoveDown()
         {
             return new EnemySprite(BugMoveDownSprite, IMDB.bugMoveDown.C, IMDB.bugMoveDown.R);
+        }
+
+        public ISprite CreateBugMoveLeft()
+        {
+            return new EnemySprite(BugMoveLeftSprite, IMDB.bugMoveLeft.C, IMDB.bugMoveLeft.R);
+        }
+
+
+        public ISprite CreateBugMoveRight()
+        {
+            return new EnemySprite(BugMoveRightSprite, IMDB.bugMoveRight.C, IMDB.bugMoveRight.R);
         }
 
         public ISprite CreateBugDie()

@@ -105,7 +105,7 @@ namespace HackAndSlash
 
             //Enemy
             snakefirst = new SnakeEnemy(new Vector2(300,200), GraphicsDevice, spriteBatch);
-            bugfirst = new BugEnemy(new Vector2(128,128), GraphicsDevice, spriteBatch);
+            bugfirst = new BugEnemy(new Vector2(300,128), GraphicsDevice, spriteBatch, this);
 
             enemyList = new List<IEnemy>()
             {
