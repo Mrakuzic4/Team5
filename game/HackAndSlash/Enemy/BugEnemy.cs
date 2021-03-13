@@ -24,6 +24,8 @@ namespace HackAndSlash
         private System.Random random;
         private int randomDirection = 0; //0-left, 1-up, 2-right, 3- down
 
+        private Color tintColor;
+
         private EnemyCollisionDetector enemyCollisionDetector;
         private EnemyBlockCollision enemyBlockCollision;
         private Rectangle hitbox;
@@ -166,7 +168,7 @@ namespace HackAndSlash
             {
                 deathTimer += gameTime.ElapsedGameTime.Milliseconds;
                 //wait 3 seconds
-                if (deathTimer > 3000)
+                if (deathTimer > 2000)
                 {
                     deathTimer = 0;
                     bugState.changeToNot();
@@ -178,12 +180,14 @@ namespace HackAndSlash
         {
             if (bugState.state == bugStateMachine.bugHealth.Die)
             {
-                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.Red);
+                tintColor = Color.DarkRed;
+                bugState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
             }
 
             else if((bugState.state != bugStateMachine.bugHealth.Not) && (bugState.state != bugStateMachine.bugHealth.Die))
             {
-                bugState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
+                tintColor = Color.White;
+                bugState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
             }
 
         }
@@ -191,6 +195,11 @@ namespace HackAndSlash
         public Rectangle getRectangle()
         {
             return rectangle;
+        }
+
+        public void damage()
+        {
+            bugState.changeToDie();
         }
 
         //Functions to switch the states

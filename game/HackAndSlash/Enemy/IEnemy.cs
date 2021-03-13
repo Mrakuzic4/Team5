@@ -20,6 +20,8 @@ namespace HackAndSlash
         //changing the state of the enemy to be idle
         void changeToIdle();
 
+        void damage();
+
         //changing the state of the enemy to Not - meaning the enemy is not currently updated or drawn
         void changeToNot();
 

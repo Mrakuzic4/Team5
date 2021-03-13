@@ -29,6 +29,9 @@ namespace HackAndSlash
         private EnemyBlockCollision enemyBlockCollision;
         private Rectangle hitbox;
 
+        private int damageTaken;
+        private Color tintColor;
+
         private int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
         private int rightBound = GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
         //Snake position
@@ -48,7 +51,7 @@ namespace HackAndSlash
             enemyCollisionDetector = new EnemyCollisionDetector(game, this);
             enemyBlockCollision = new EnemyBlockCollision();
             hitbox = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
-
+            damageTaken = 0;
         }
 
         public Rectangle getRectangle()
@@ -184,17 +187,38 @@ namespace HackAndSlash
         {
             if (snakeState.state == snakeStateMachine.snakeHealth.Die)
             {
-                snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.Red);
+                tintColor = Color.Red;
+                snakeState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
             }
 
             else if ((snakeState.state != snakeStateMachine.snakeHealth.Not) && (snakeState.state != snakeStateMachine.snakeHealth.Die))
             {
-                snakeState.MachineEnemySprite.Draw(spriteBatch, position, Color.White);
+                if (damageTaken == 1)
+                {
+                    tintColor = Color.OrangeRed;
+                    snakeState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
+                else
+                {
+                    tintColor = Color.White;
+                    snakeState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
             }
 
         }
 
        
+        public void damage()
+        {
+            damageTaken++;
+
+            if(damageTaken == 2)
+            {
+                damageTaken = 0;
+                snakeState.changeToDie();
+            }
+
+        }
         //Functions to switch the states
         public void changeToIdle()
         {

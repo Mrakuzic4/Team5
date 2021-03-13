@@ -15,7 +15,7 @@ namespace HackAndSlash
             //If enemy is not null, then it means the sword collides with an enemy and damagedEnemy is set.
             if (damagedEnemy != null)
             {
-                damagedEnemy.changeToDie();
+                damagedEnemy.damage();
             }
         }
     }
