@@ -32,15 +32,13 @@ namespace HackAndSlash
         public IItem ItemHolder { get; set; }
         
 
-        private Texture2D textureFirewall { get; set; }
-        
-
         public SnakeEnemy snakefirst;
         public BugEnemy bugfirst;
 
 
         public FirewallItem firewallFirst;
         public BombItem bombFirst;
+        public ThrowingKnifeItem throwingKnifeFirst;
 
         // Object lists
         List<Object> controllerList;
@@ -116,8 +114,9 @@ namespace HackAndSlash
             PlayerMain = new Player(this);//Player object
 
             // Items
-            firewallFirst = new FirewallItem(new Vector2(200, 200), spriteBatch, this.PlayerMain);
-            bombFirst = new BombItem(new Vector2(200, 200), spriteBatch, this.PlayerMain);
+            firewallFirst = new FirewallItem(new Vector2(200, 200), spriteBatch, this);
+            bombFirst = new BombItem(new Vector2(200, 200), spriteBatch, this);
+            throwingKnifeFirst = new ThrowingKnifeItem(new Vector2(200, 200), spriteBatch, this);
             ItemHolder = firewallFirst;
 
             //firewallFirst.LoadContent(); 

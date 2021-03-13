@@ -16,6 +16,7 @@ namespace HackAndSlash
 
         private SpriteBatch spriteBatch;
 
+        private Game1 game;
         private IPlayer player; //Player reference
 
         private BombStateMachine itemState;
@@ -34,9 +35,10 @@ namespace HackAndSlash
         private enum animationState { blinkWhite, blinkRed, explode };
         private animationState bombAnimationState;
 
-        public BombItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, IPlayer player)
+        public BombItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game)
         {
-            this.player = player; //Reference of player from Game1
+            this.game = game;
+            player = game.Player; //Reference of player from Game1
 
             position = startPosition;
             spriteBatch = gameSpriteBatch;
@@ -211,8 +213,8 @@ namespace HackAndSlash
                 collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteHeight, spriteWidth);
 
                 Rectangle checkTile = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
-
-                if (bombCollisionHandler.CheckForWall(checkTile) || bombCollisionHandler.CheckForBlock(checkTile))
+                List<IBlock> blockList = game.blockList;
+                if (bombCollisionHandler.CheckForWall(checkTile) || bombCollisionHandler.CheckForBlock(checkTile, blockList))
                 {
                     // cant use Item, change to useable
                     itemState.ChangeToUseable();

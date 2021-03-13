@@ -1,4 +1,6 @@
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace HackAndSlash
@@ -35,12 +37,14 @@ namespace HackAndSlash
         }
 
         // check for block (stop from placing or moving, unless bomb explosion)
-        public bool CheckForBlock(Rectangle checkTile)
+
+        public bool CheckForBlock(Rectangle checkTile, List<IBlock> blockList)
         {
             bool collidingWithBlock = false;
-            Rectangle[] blockPositions = { new Rectangle(128, 128, 64, 64) }; // TODO: get blocks location somehow
-            foreach (Rectangle blockTile in blockPositions)
+            Rectangle blockTile;
+            foreach (IBlock block in blockList)
             {
+                blockTile = block.rectangle;
                 if (checkTile.Intersects(blockTile))
                 {
                     collidingWithBlock = true;

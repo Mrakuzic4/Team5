@@ -44,6 +44,11 @@ namespace HackAndSlash
         private Texture2D FirewallSprite;
         private Texture2D BombSprite;
         private Texture2D ExplosionSprite;
+        private Texture2D ThrowingKnifeLeftSprite;
+        private Texture2D ThrowingKnifeRightSprite;
+        private Texture2D ThrowingKnifeUpSprite;
+        private Texture2D ThrowingKnifeDownSprite;
+
 
         private Texture2D BlockX;
         private Texture2D BlockWater;
@@ -109,6 +114,10 @@ namespace HackAndSlash
             FirewallSprite = content.Load<Texture2D>(IMDB.fireWall.pathName);
             BombSprite = content.Load<Texture2D>(IMDB.bomb.pathName);
             ExplosionSprite = content.Load<Texture2D>(IMDB.explosion.pathName);
+            ThrowingKnifeUpSprite = content.Load<Texture2D>(IMDB.throwingKnifeUp.pathName);
+            ThrowingKnifeDownSprite = content.Load<Texture2D>(IMDB.throwingKnifeDown.pathName);
+            ThrowingKnifeLeftSprite = content.Load<Texture2D>(IMDB.throwingKnifeLeft.pathName);
+            ThrowingKnifeRightSprite = content.Load<Texture2D>(IMDB.throwingKnifeRight.pathName);
 
             // More Content.Load calls follow
             BGSprite = content.Load<Texture2D>(IMDB.BG.pathName);
@@ -316,8 +325,26 @@ namespace HackAndSlash
             return new ItemSprite(ExplosionSprite, IMDB.explosion.C, IMDB.explosion.R);
         }
 
+        public ISprite CreateThrowingKnife(GlobalSettings.Direction direction)
+        {
+            ISprite knifeSprite = new ItemSprite(ThrowingKnifeUpSprite, IMDB.throwingKnifeUp.C, IMDB.throwingKnifeUp.R); ;
+            switch (direction)
+            {
+                case (GlobalSettings.Direction.Left):
+                    knifeSprite = new ItemSprite(ThrowingKnifeLeftSprite, IMDB.throwingKnifeLeft.C, IMDB.throwingKnifeLeft.R);
+                    break;
+                case (GlobalSettings.Direction.Right):
+                    knifeSprite = new ItemSprite(ThrowingKnifeRightSprite, IMDB.throwingKnifeRight.C, IMDB.throwingKnifeRight.R);
+                    break;
+                case (GlobalSettings.Direction.Down):
+                    knifeSprite = new ItemSprite(ThrowingKnifeDownSprite, IMDB.throwingKnifeDown.C, IMDB.throwingKnifeDown.R);
+                    break;
 
-    //*****************************Below are block objects******************************//
+            }
+            return knifeSprite;
+        }
+
+        //*****************************Below are block objects******************************//
 
         public IBlock CreateBlockX(SpriteBatch spriteBatch)
         {

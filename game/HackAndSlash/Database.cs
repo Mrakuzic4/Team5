@@ -44,6 +44,10 @@ namespace HackAndSlash
         public ImageFile fireWall;
         public ImageFile bomb;
         public ImageFile explosion;
+        public ImageFile throwingKnifeUp;
+        public ImageFile throwingKnifeDown;
+        public ImageFile throwingKnifeLeft;
+        public ImageFile throwingKnifeRight;
 
         public ImageFile BG;
 
@@ -95,6 +99,11 @@ namespace HackAndSlash
             fireWall = new ImageFile("images/firewall3", 1, 2);
             bomb = new ImageFile("images/Bomb", 1, 1);
             explosion = new ImageFile("images/explosion", 1, 3);
+            throwingKnifeUp = new ImageFile("images/throwingKnifeUp", 1, 1);
+            throwingKnifeDown = new ImageFile("images/throwingKnifeDown", 1, 1);
+            throwingKnifeLeft = new ImageFile("images/throwingKnifeLeft", 1, 1);
+            throwingKnifeRight = new ImageFile("images/throwingKnifeRight", 1, 1);
+
             BG = new ImageFile("images/BG", 1, 1);
 
             BlockX = new ImageFile("images/BlockX", 1, 1);
