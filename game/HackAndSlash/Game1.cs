@@ -13,6 +13,7 @@ namespace HackAndSlash
         SpriteBatch spriteBatch;
 
         public Map currentMap; 
+        private MapGenerator generator;
 
         //Player
         private IPlayer PlayerMain;
@@ -92,6 +93,7 @@ namespace HackAndSlash
         protected override void LoadContent()
         {
             currentMap = new JsonParser(MapDatabase.demoLevelM1).getCurrentMapInfo();
+            generator = new MapGenerator(currentMap);
 
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -99,7 +101,7 @@ namespace HackAndSlash
             //Get sprite from spriteFactory
             SpriteFactory.Instance.LoadAllTextures(Content);
 
-           // SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
+            // SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
             //Enemy
             snakefirst = new SnakeEnemy(new Vector2(128,200), GraphicsDevice, spriteBatch, this);
