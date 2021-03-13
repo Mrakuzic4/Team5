@@ -219,10 +219,12 @@
     <None Include="Content\bin\DesktopGL\images\sucLeft.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucOva.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucUp.xnb" />
+    <Content Include="Content\images\levels\blockAllMight.png" />
     <Content Include="Content\images\SnakeEnemyRight.png" />
     <Content Include="Content\info\levelDemoM1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Content\info\levelDemoM2.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
