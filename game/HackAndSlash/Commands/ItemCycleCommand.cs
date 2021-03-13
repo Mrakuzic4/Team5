@@ -27,6 +27,10 @@ namespace HackAndSlash
                 {
                     game.ItemHolder = game.bombFirst;
                 }
+                else if (game.ItemHolder == game.bombFirst)
+                {
+                    game.ItemHolder = game.throwingKnifeFirst;
+                }
                 else
                 {
                     game.ItemHolder = game.firewallFirst;

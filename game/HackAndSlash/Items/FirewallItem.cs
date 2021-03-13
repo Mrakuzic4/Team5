@@ -1,4 +1,6 @@
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
@@ -6,6 +8,7 @@ namespace HackAndSlash
 {
     public class FirewallItem : IItem
     {
+        private Game1 game;
         private IPlayer player; //Player reference
 
         private ItemSprite firewallSprite;
@@ -30,9 +33,10 @@ namespace HackAndSlash
         private Vector2 playerPosition;
         
         // Constructor
-        public FirewallItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, IPlayer player)
+        public FirewallItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game)
         {
-            this.player = player; //Reference of player from Game1
+            this.game = game;
+            this.player = this.game.Player; //Reference of player from Game1
 
             position = startPosition;
             itemState = new FirewallStateMachine();
@@ -92,32 +96,33 @@ namespace HackAndSlash
                     // TODO: Check for collisions that shorten total length (walls)
                     if (useDurationCounter % (USE_DURATION / MAX_RANGE) == 0) {
                         Rectangle checkTile;
+                        List<IBlock> blockList = game.blockList;
                         switch (playerDirection)
                         {
                             case GlobalSettings.Direction.Left: // left
                                 checkTile = new Rectangle((int)position.X - spriteWidth, (int)position.Y, spriteWidth, spriteHeight);
-                                if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile)) 
+                                if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList)) 
                                 {
                                     position.X -= spriteWidth;
                                 }
                                 break;
                             case GlobalSettings.Direction.Right: // right
                                 checkTile = new Rectangle((int)position.X + spriteWidth, (int)position.Y, spriteWidth, spriteHeight);
-                                if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile))
+                                if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.X += spriteWidth;
                                 }
                                 break;
                             case GlobalSettings.Direction.Up: // up
                                 checkTile = new Rectangle((int)position.X, (int)position.Y - spriteHeight, spriteWidth, spriteHeight);
-                                if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile))
+                                if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.Y -= spriteHeight;
                                 }
                                 break;
                             case GlobalSettings.Direction.Down: // down
                                 checkTile = new Rectangle((int)position.X, (int)position.Y + spriteHeight, spriteWidth, spriteHeight);
-                                if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile))
+                                if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.Y += spriteHeight;
                                 }
@@ -224,11 +229,12 @@ namespace HackAndSlash
             if (itemState.state == FirewallStateMachine.ItemStates.Useable && cooldown == 0)
             {
                 Rectangle checkTile;
+                List<IBlock> blockList = game.blockList;
                 switch (currentPlayerDirection)
                 {
                     case GlobalSettings.Direction.Left: // left
                         checkTile = new Rectangle((int)currentPlayerPosition.X - spriteWidth, (int)currentPlayerPosition.Y, spriteWidth, spriteHeight);
-                        if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile))
+                        if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.X -= spriteWidth;
                             itemState.ChangeToBeingUsed();
@@ -240,7 +246,7 @@ namespace HackAndSlash
                         break;
                     case GlobalSettings.Direction.Right: // right
                         checkTile = new Rectangle((int)currentPlayerPosition.X + spriteWidth, (int)currentPlayerPosition.Y, spriteWidth, spriteHeight);
-                        if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile))
+                        if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.X += spriteWidth;
                             itemState.ChangeToBeingUsed();
@@ -252,7 +258,7 @@ namespace HackAndSlash
                         break;
                     case GlobalSettings.Direction.Up: // up
                         checkTile = new Rectangle((int)currentPlayerPosition.X, (int)currentPlayerPosition.Y - spriteHeight, spriteWidth, spriteHeight);
-                        if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile))
+                        if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.Y -= spriteHeight;
                             itemState.ChangeToBeingUsed();
@@ -264,7 +270,7 @@ namespace HackAndSlash
                         break;
                     case GlobalSettings.Direction.Down: // down
                         checkTile = new Rectangle((int)currentPlayerPosition.X, (int)currentPlayerPosition.Y + spriteHeight, spriteWidth, spriteHeight);
-                        if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile))
+                        if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.Y += spriteHeight;
                             itemState.ChangeToBeingUsed();

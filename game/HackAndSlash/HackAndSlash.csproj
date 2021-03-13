@@ -82,6 +82,7 @@
     <Compile Include="GlobalSettings.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="Items\BombItem.cs" />
+    <Compile Include="Items\ThrowingKnifeItem.cs" />
     <Compile Include="Items\FirewallItem.cs" />
     <Compile Include="Items\IItem.cs" />
     <Compile Include="Items\ItemCollisionHandler.cs" />
