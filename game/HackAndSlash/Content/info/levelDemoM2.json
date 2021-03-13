@@ -13,9 +13,9 @@
       "DropPotions": 0,
       "DropKeys": 0,
        
-      "LockedDoors": [ 0, 0, 0, 0 ],
-      "OpenDoors": [ 0, 0, 1, 1 ],
-      "HiddenDoors": [ 0, 0, 0, 0 ],
+      "LockedDoors": [ false, false, false, false ],
+      "OpenDoors": [ true, true, false, false ],
+      "HiddenDoors": [ false, false, true, false ],
  
       "DefaultBlock": 0
 }  

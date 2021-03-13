@@ -9,12 +9,16 @@ namespace HackAndSlash
 {
     public class Level : ILevel
     {
+        private const int ALL_MIGHT_DIV = 16;
+
         private GraphicsDevice graphics;
         private SpriteBatch spriteBatch;
         private Texture2D levelTexture;
+        private Texture2D blockAllMight; 
         private Color defaultColor = Color.Black;
         private Color defaultTint = Color.White;
 
+        private int defaultBlockIndex; 
         private int[,] mapMatrix; 
         private Dictionary<int, Texture2D>  levelStyle;
 
@@ -23,24 +27,26 @@ namespace HackAndSlash
         private bool[] doorHole= { false, false, false, false };
         private bool[] doorLocked = { false, false, false, false };
 
-        private JsonParser parser; 
+        
 
-        public Level(GraphicsDevice graphics, SpriteBatch spriteBatch, int[,] Arrangement, int Defaultblock)
+        public Level(GraphicsDevice graphics, SpriteBatch spriteBatch, int[,] Arrangement, int Defaultblock,
+            bool[] DO, bool[] DH, bool[] DL)
         {
             this.graphics = graphics;
             this.spriteBatch = spriteBatch;
+            this.defaultBlockIndex = Defaultblock;
+            this.doorOpen = DO;
+            this.doorHole = DH;
+            this.doorLocked = DL;
 
             levelTexture = GenerateTexture(GlobalSettings.WINDOW_WIDTH, GlobalSettings.WINDOW_HEIGHT, pixel => defaultColor);
             mapMatrix = Arrangement;
             levelStyle = LevelDatabase.Instance.DemoLevelStyle;
 
+            blockAllMight = SpriteFactory.Instance.getBlockAllMight();
 
             AlterTexture();
-            addOpenDoor(0);
-            addOpenDoor(2);
-            addOpenHole(1);
         }   
-
         
         // Generate a texture filled with default color 
         private Texture2D GenerateTexture(int width, int height, Func<int, Color> paint)
@@ -53,6 +59,26 @@ namespace HackAndSlash
 
             texture.SetData(data);
             return texture;
+        }
+
+        // Crop from the all might texture 
+        private Texture2D getBlockByIndex(int index)
+        {
+            Texture2D block = GenerateTexture(GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR, pixel => defaultColor);
+            int row = index / ALL_MIGHT_DIV; 
+            int col = index % ALL_MIGHT_DIV;
+
+            Rectangle SourceRectangle = new Rectangle(
+                col * GlobalSettings.BASE_SCALAR,
+                row * GlobalSettings.BASE_SCALAR,
+                GlobalSettings.BASE_SCALAR,
+                GlobalSettings.BASE_SCALAR);
+
+            Color[] data = new Color[SourceRectangle.Width * SourceRectangle.Height];
+            blockAllMight.GetData<Color>(0, SourceRectangle, data, 0, data.Length);
+            block.SetData(data);
+
+            return block;
         }
 
         // Overwrite the texture, add the border and tiles 
@@ -72,8 +98,10 @@ namespace HackAndSlash
                     Vector2 StartPoint = new Vector2(GlobalSettings.BORDER_OFFSET + c * GlobalSettings.BASE_SCALAR,
                         GlobalSettings.BORDER_OFFSET + r * GlobalSettings.BASE_SCALAR);
 
-                    int TileTypeNow = mapMatrix[r, c] > 31 ? 1 : 0; 
-                    Texture2D TextureNow = levelStyle[TileTypeNow];
+                    int TileTypeNow = (mapMatrix[r, c] >= 0 && mapMatrix[r, c] < 256) ? 
+                        mapMatrix[r, c] : defaultBlockIndex;
+                    Texture2D TextureNow = getBlockByIndex(TileTypeNow);
+                    
                     int CountNow = TextureNow.Width * TextureNow.Height;
                     Color[] RawDataNow = new Color[CountNow];
                     TextureNow.GetData<Color>(RawDataNow);
@@ -117,7 +145,7 @@ namespace HackAndSlash
         // Up, Bottom, Left Right 
         public bool canGoThrough(int Dir)
         {
-            return doorOpen[Dir];
+            return doorOpen[Dir] || doorHole[Dir];
         }
 
         public void Update()

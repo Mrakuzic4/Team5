@@ -17,9 +17,9 @@ namespace HackAndSlash
         public int DropKeys { get; set; }
 
 
-        public int[] LockedDoors { get; set; }
-        public int[] OpenDoors { get; set; }
-        public int[] HiddenDoors { get; set; }
+        public bool[] LockedDoors { get; set; }
+        public bool[] OpenDoors { get; set; }
+        public bool[] HiddenDoors { get; set; }
 
         public int DefaultBlock { get; set; } 
     }
