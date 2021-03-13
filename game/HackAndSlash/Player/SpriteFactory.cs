@@ -52,7 +52,7 @@ namespace HackAndSlash
 
         private Texture2D BlockX;
         private Texture2D BlockWater;
-
+        private Texture2D BlockAllMight; 
         private Texture2D BlockDemo;
         private Texture2D BlockBlank1;
         private Texture2D LevelEagleBorder;
@@ -125,10 +125,11 @@ namespace HackAndSlash
             //Blocks
             BlockX = content.Load<Texture2D>(IMDB.BlockX.pathName);
             BlockWater = content.Load<Texture2D>(IMDB.BlockWater.pathName);
-
+            
             // Level map related 
             BlockDemo = content.Load<Texture2D>(IMDB.BlockDemo.pathName);
             BlockBlank1 = content.Load<Texture2D>(IMDB.BlockBlank1.pathName);
+            BlockAllMight = content.Load<Texture2D>(IMDB.BlockAllMight.pathName);
             LevelEagleBorder = content.Load<Texture2D>(IMDB.LevelEagleBorder.pathName);
             LevelEagleDoorNormOpen = new Texture2D[] {
                 content.Load<Texture2D>(IMDB.LevelEagleDoorNormOpen[0].pathName),
@@ -153,6 +154,10 @@ namespace HackAndSlash
         public Texture2D GetBlockBlank1()
         {
             return BlockBlank1;
+        }
+        public Texture2D getBlockAllMight()
+        {
+            return BlockAllMight;
         }
         public Texture2D GetLevelEagleBorder()
         {

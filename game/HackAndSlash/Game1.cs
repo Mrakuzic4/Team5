@@ -124,7 +124,8 @@ namespace HackAndSlash
             // A list of level maps for further transition cutscene 
             levelList = new List<ILevel>()
             {
-                new Level(GraphicsDevice, spriteBatch, currentMap.Arrangement, currentMap.DefaultBlock) 
+                new Level(GraphicsDevice, spriteBatch, currentMap.Arrangement, currentMap.DefaultBlock,
+                currentMap.OpenDoors, currentMap.HiddenDoors, currentMap.LockedDoors) 
             };
 
             //Create list of blocks and set blockholder to first block in the list

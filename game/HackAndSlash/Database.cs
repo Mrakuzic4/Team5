@@ -53,7 +53,7 @@ namespace HackAndSlash
 
         public ImageFile BlockX;
         public ImageFile BlockWater;
-
+        public ImageFile BlockAllMight;
         public ImageFile BlockDemo;
         public ImageFile BlockBlank1;
         public ImageFile LevelEagleBorder;
@@ -112,7 +112,7 @@ namespace HackAndSlash
             // For level blocks, they must be the same size as BASE_SCALAR
             BlockDemo = new ImageFile("images/BlockDemo", 1, 1);
             BlockBlank1 = new ImageFile("images/BlockBlank1", 1, 1);
-
+            BlockAllMight = new ImageFile("images/levels/blockAllMight", 1, 1);
             LevelEagleBorder = new ImageFile("images/LevelEagleBorder", 1, 1);
             LevelEagleDoorNormOpen = new ImageFile[] {
                 new ImageFile("images/levels/eagleDoorVerticalUp", 1, 1),
