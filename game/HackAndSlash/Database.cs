@@ -51,8 +51,7 @@ namespace HackAndSlash
 
         public ImageFile BG;
 
-        public ImageFile BlockX;
-        public ImageFile BlockWater;
+        public ImageFile BlockMovable;
         public ImageFile BlockAllMight;
         public ImageFile BlockDemo;
         public ImageFile BlockBlank1;
@@ -106,8 +105,7 @@ namespace HackAndSlash
 
             BG = new ImageFile("images/BG", 1, 1);
 
-            BlockX = new ImageFile("images/BlockX", 1, 1);
-            BlockWater = new ImageFile("images/BlockWater", 1, 1);
+            BlockMovable = new ImageFile("images/BlockX", 1, 1);
 
             // For level blocks, they must be the same size as BASE_SCALAR
             BlockDemo = new ImageFile("images/BlockDemo", 1, 1);

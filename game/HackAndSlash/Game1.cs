@@ -130,12 +130,8 @@ namespace HackAndSlash
                 currentMap.OpenDoors, currentMap.HiddenDoors, currentMap.LockedDoors) 
             };
 
-            //Create list of blocks and set blockholder to first block in the list
-            blockList = new List<IBlock>()
-            {
-                {SpriteFactory.Instance.CreateBlockX(spriteBatch)},
-                {SpriteFactory.Instance.CreateBlockWater(spriteBatch)}
-            };
+            //Create list of blocks
+            blockList = generator.GetBlockList(spriteBatch);
         }
 
         /// <summary>

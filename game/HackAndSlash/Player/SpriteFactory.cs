@@ -50,8 +50,7 @@ namespace HackAndSlash
         private Texture2D ThrowingKnifeDownSprite;
 
 
-        private Texture2D BlockX;
-        private Texture2D BlockWater;
+        private Texture2D BlockMovable;
         private Texture2D BlockAllMight; 
         private Texture2D BlockDemo;
         private Texture2D BlockBlank1;
@@ -123,8 +122,7 @@ namespace HackAndSlash
             BGSprite = content.Load<Texture2D>(IMDB.BG.pathName);
 
             //Blocks
-            BlockX = content.Load<Texture2D>(IMDB.BlockX.pathName);
-            BlockWater = content.Load<Texture2D>(IMDB.BlockWater.pathName);
+            BlockMovable = content.Load<Texture2D>(IMDB.BlockMovable.pathName);
             
             // Level map related 
             BlockDemo = content.Load<Texture2D>(IMDB.BlockDemo.pathName);
@@ -351,15 +349,15 @@ namespace HackAndSlash
 
         //*****************************Below are block objects******************************//
 
-        public IBlock CreateBlockX(SpriteBatch spriteBatch)
+        public IBlock CreateBlockMovableUpDown(SpriteBatch spriteBatch)
         {
-            return new BlockX(BlockX, new Vector2(GlobalSettings.BORDER_OFFSET, GlobalSettings.BORDER_OFFSET), spriteBatch);
+            return new BlockMovable(BlockMovable, new Vector2(GlobalSettings.BORDER_OFFSET, GlobalSettings.BORDER_OFFSET), spriteBatch, true);
         }
 
-        public IBlock CreateBlockWater(SpriteBatch spriteBatch)
+        public IBlock CreateBlockMovableLeftRight(SpriteBatch spriteBatch)
         {
-            return new BlockWater(BlockWater, 
-                new Vector2(GlobalSettings.BORDER_OFFSET+64, GlobalSettings.BORDER_OFFSET+64), spriteBatch);
+            return new BlockMovable(BlockMovable, new Vector2(GlobalSettings.BORDER_OFFSET, GlobalSettings.BORDER_OFFSET), spriteBatch, false);
         }
+
     }
 }

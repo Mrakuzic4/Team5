@@ -28,9 +28,8 @@ namespace HackAndSlash
                     int Index = mapInfo.Arrangement[r, c];
                     if (Index >= 32)
                     {
-                        // I have absoultely no idea why all the rectangles are offset by 2 
-                        BlockList.Add(new BlockInvis(new Vector2((c+2) * GlobalSettings.BASE_SCALAR,
-                                    (r + 2) * GlobalSettings.BASE_SCALAR), spriteBatch));
+                        BlockList.Add(new BlockInvis(new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET),
+                                    (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET)), spriteBatch));
                     }
                 }
             }
