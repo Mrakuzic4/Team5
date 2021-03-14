@@ -197,6 +197,11 @@ namespace HackAndSlash
                 {
                     tintColor = Color.OrangeRed;
                     moblinState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                } 
+                else if (damageTaken == 2) 
+                {
+                    tintColor = Color.Magenta;
+                    moblinState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
                 }
                 else
                 {
@@ -212,7 +217,7 @@ namespace HackAndSlash
         {
             damageTaken++;
 
-            if (damageTaken == 2)
+            if (damageTaken == 3)
             {
                 damageTaken = 0;
                 moblinState.changeToDie();
@@ -266,8 +271,8 @@ namespace HackAndSlash
         //constructor for the class
         public moblinStateMachine()
         {
-            state = moblinHealth.MoveUp;
-            MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinIdle();
+            state = moblinHealth.MoveLeft;
+            MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinMoveLeft();
         }
         public void changeToIdle()
         {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/vidha/source/repos/moblin/game/HackAndSlash/Content/images/MoblinLeft.png</SourceFile>
-  <SourceTime>2021-03-14T10:54:49.7964411-04:00</SourceTime>
-  <DestFile>C:/Users/vidha/source/repos/moblin/game/HackAndSlash/Content/bin/DesktopGL/Content/images/MoblinLeft.xnb</DestFile>
-  <DestTime>2021-03-14T11:02:00.091822-04:00</DestTime>
+  <SourceFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/MoblinLeft.png</SourceFile>
+  <SourceTime>2021-03-14T11:42:47.7890663-04:00</SourceTime>
+  <DestFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/bin/DesktopGL/Content/images/MoblinLeft.xnb</DestFile>
+  <DestTime>2021-03-14T11:52:36.9079386-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
