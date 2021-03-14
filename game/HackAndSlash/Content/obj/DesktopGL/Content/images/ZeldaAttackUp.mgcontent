@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/images/ZeldaAttackUp.png</SourceFile>
-  <SourceTime>2021-02-22T18:36:59.6217416-05:00</SourceTime>
-  <DestFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ZeldaAttackUp.xnb</DestFile>
-  <DestTime>2021-03-14T11:39:49.8225497-04:00</DestTime>
+  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaAttackUp.png</SourceFile>
+  <SourceTime>2021-02-22T17:22:47.0143705-05:00</SourceTime>
+  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ZeldaAttackUp.xnb</DestFile>
+  <DestTime>2021-03-14T15:45:02.6468149-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

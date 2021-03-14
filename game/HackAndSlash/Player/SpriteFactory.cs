@@ -358,6 +358,11 @@ namespace HackAndSlash
             return new EnemySprite(MoblinMoveDownSprite, IMDB.moblinMoveDown.C, IMDB.moblinMoveDown.R);
         }
 
+        public ISprite CreateEnemyBomb()
+        {
+            return new EnemySprite(MoblinBombSprite, IMDB.moblinBomb.C, IMDB.moblinBomb.R);
+        }
+
         //*************************Below are item  ***************************//
 
         public  ISprite CreateFirewall()

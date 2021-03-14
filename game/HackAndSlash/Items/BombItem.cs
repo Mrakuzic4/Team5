@@ -42,7 +42,7 @@ namespace HackAndSlash
 
             position = startPosition;
             spriteBatch = gameSpriteBatch;
-            toolBarPosition = new Vector2(20, 10);
+            toolBarPosition = new Vector2(64, 0);
             itemState = new BombStateMachine();
             itemState.ChangeToCollectable();
             bombSprite = (ItemSprite)SpriteFactory.Instance.CreateBomb();

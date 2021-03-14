@@ -45,7 +45,7 @@ namespace HackAndSlash
             return BlockList;
         }
 
-        public List<IEnemy> GetEnemyList(SpriteBatch spriteBatch)
+        public List<IEnemy> GetEnemyList(SpriteBatch spriteBatch, GraphicsDevice graphics, Game1 game)
         {
              List<IEnemy> EnemyList = new List<IEnemy>();
 
@@ -54,10 +54,22 @@ namespace HackAndSlash
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
                 {
                     int Index = mapInfo.Arrangement[r, c];
-                    /*
-                     If Index is between -1 to -256, add an enemy into the list
-                     */
-                    Vector2 position = new Vector2(r * GlobalSettings.BASE_SCALAR, c * GlobalSettings.BASE_SCALAR);
+                    Vector2 position = new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET),
+                                    (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET));
+                    switch (Index)
+                    {
+                        case -1:
+                            EnemyList.Add(new SnakeEnemy(position, graphics, spriteBatch, game));
+                            break;
+                        case -2:
+                            EnemyList.Add(new SnakeEnemy(position, graphics, spriteBatch, game));
+                            break;
+                        case -3:
+                            EnemyList.Add(new SnakeEnemy(position, graphics, spriteBatch, game));
+                            break;
+                        default:
+                            break; 
+                    }
                 }
             }
 

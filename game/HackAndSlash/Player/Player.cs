@@ -10,8 +10,11 @@ namespace HackAndSlash
     public class Player : IPlayer
     {
         private PlayerStateMachine playerStateMachine;
-        private int timer;
         private Game1 game;
+
+        private int timer;
+        private const int delay = 7;//adding delay to the player sprite animation
+
 
         //Collision
         private Rectangle playerHitBox;
@@ -20,7 +23,7 @@ namespace HackAndSlash
 
         private PlayerBlockCollisionHandler playerBlockCollisionHandler;
         private PlayerEnemyCollisionHandler playerEnemyCollisionHandler;
-        private SwordEnemyCollisionHandler itemEnemyCollisionHandler;
+        private SwordEnemyCollisionHandler swordEnemyCollisionHandler;
 
 
         // Character positions 
@@ -30,9 +33,8 @@ namespace HackAndSlash
         {
             playerStateMachine = new PlayerStateMachine(GlobalSettings.Direction.Right, game, this); //inital state face right
             SpriteFactory.Instance.SetRightPlayer();//Set up the inital sprite
-            timer = 7; //adding delay to the player sprite animation
-           
-            
+            timer = delay;//adding delay to the player sprite animation
+
             this.game = game;
 
             //Inital Position
@@ -41,10 +43,10 @@ namespace HackAndSlash
 
             //Collision
             playerHitBox = new Rectangle((int)relPositionMC.X, (int)relPositionMC.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
-            playerCollisionDetector = new PlayerCollisionDetector(this, game);
+            playerCollisionDetector = new PlayerCollisionDetector( game);
             playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
             playerEnemyCollisionHandler = new PlayerEnemyCollisionHandler();
-            itemEnemyCollisionHandler = new SwordEnemyCollisionHandler();
+            swordEnemyCollisionHandler = new SwordEnemyCollisionHandler();
         }
 
         public Vector2 GetPos()
@@ -73,7 +75,7 @@ namespace HackAndSlash
             if(timer == 0)
             {
                 DrawPlayer.Instance.Frame += 1;
-                timer = 7;
+                timer = delay;
             }
             playerStateMachine.Move();
         }
@@ -82,9 +84,8 @@ namespace HackAndSlash
         {
             //Sprite Animation and Decorator
             playerStateMachine.Attack();
-           
-            //Collision of the sword hitbox and the enemy
-            itemEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckSwordEnemyCollisions());
+
+            this.swordEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckSwordEnemyCollisions());
         }
 
         public void Damaged()
