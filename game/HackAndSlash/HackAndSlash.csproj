@@ -44,6 +44,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Blocks\BlockInvis.cs" />
     <Compile Include="Blocks\BlockX.cs" />
     <Compile Include="Blocks\IBlock.cs" />
     <Compile Include="Blocks\BlockWater.cs" />

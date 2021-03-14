@@ -49,7 +49,7 @@ namespace HackAndSlash
         }   
         
         // Generate a texture filled with default color 
-        private Texture2D GenerateTexture(int width, int height, Func<int, Color> paint)
+        public Texture2D GenerateTexture(int width, int height, Func<int, Color> paint)
         {
             Texture2D texture = new Texture2D(graphics, width, height);
 

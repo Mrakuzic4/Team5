@@ -58,8 +58,8 @@ namespace HackAndSlash
         }
 
         public void reset() {
-            Initialize();
-            LoadContent();
+            blockList = generator.GetBlockList(spriteBatch);
+            //enemyList = generator.GetEnemyList(spriteBatch);
         }
 
         /// <summary>

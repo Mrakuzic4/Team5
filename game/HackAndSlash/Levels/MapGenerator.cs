@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace HackAndSlash
 {
@@ -16,7 +17,7 @@ namespace HackAndSlash
             this.mapInfo = MapInfo;
         }
 
-        public List<IBlock> GetBlockList()
+        public List<IBlock> GetBlockList(SpriteBatch spriteBatch)
         {
             List<IBlock> BlockList = new List<IBlock>(); 
 
@@ -25,16 +26,19 @@ namespace HackAndSlash
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
                 {
                     int Index = mapInfo.Arrangement[r, c];
-                    /*
-                     If Index is bigger or equal to 32, add a static block into the list
-                     */
+                    if (Index >= 32)
+                    {
+                        // I have absoultely no idea why all the rectangles are offset by 2 
+                        BlockList.Add(new BlockInvis(new Vector2((c+2) * GlobalSettings.BASE_SCALAR,
+                                    (r + 2) * GlobalSettings.BASE_SCALAR), spriteBatch));
+                    }
                 }
             }
 
             return BlockList;
         }
 
-        public List<IEnemy> GetEnemyList()
+        public List<IEnemy> GetEnemyList(SpriteBatch spriteBatch)
         {
              List<IEnemy> EnemyList = new List<IEnemy>();
 
@@ -53,7 +57,7 @@ namespace HackAndSlash
             return EnemyList;
         }
 
-        public List<IItem> GetItemList()
+        public List<IItem> GetItemList(SpriteBatch spriteBatch)
         {
             List<IItem> ItemList = new List<IItem>();
 
