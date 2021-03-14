@@ -29,6 +29,18 @@ namespace HackAndSlash
             }
         }
 
+        //Player's SwordHitBox
+        private Rectangle swordHitbox;
+
+        public Rectangle SwordHitBox
+        {
+            set
+            {
+                swordHitbox = value;
+            }
+        }
+
+
         // Sprites  
         public IItem ItemHolder { get; set; }
         
@@ -59,7 +71,7 @@ namespace HackAndSlash
 
         public void reset() {
             blockList = generator.GetBlockList(spriteBatch);
-            //enemyList = generator.GetEnemyList(spriteBatch);
+            enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice,this);
         }
 
         /// <summary>
@@ -117,9 +129,9 @@ namespace HackAndSlash
             PlayerMain = new Player(this);//Player object
 
             // Items
-            firewallFirst = new FirewallItem(new Vector2(200, 200), spriteBatch, this);
-            bombFirst = new BombItem(new Vector2(200, 200), spriteBatch, this);
-            throwingKnifeFirst = new ThrowingKnifeItem(new Vector2(200, 200), spriteBatch, this);
+            firewallFirst = new FirewallItem(new Vector2(192, 192), spriteBatch, this);
+            bombFirst = new BombItem(new Vector2(192, 192), spriteBatch, this);
+            throwingKnifeFirst = new ThrowingKnifeItem(new Vector2(192, 192), spriteBatch, this);
             ItemHolder = firewallFirst;
 
             //firewallFirst.LoadContent(); 
@@ -156,12 +168,18 @@ namespace HackAndSlash
                 controller.Update();
             }
             PlayerMain.Update();
-            
-            snakefirst.Update(gameTime);
-            bugfirst.Update(gameTime);
-            moblinfirst.Update(gameTime);
+
+            foreach (IEnemy enemy in enemyList) enemy.Update(gameTime);
+            //snakefirst.Update(gameTime);
+            //bugfirst.Update(gameTime);
+            //moblinfirst.Update(gameTime);
 
             ItemHolder.Update();
+
+            //Collision detector and handler of player
+
+
+
 
             base.Update(gameTime);
         }
@@ -177,11 +195,12 @@ namespace HackAndSlash
 
             foreach (ILevel levelMap in levelList) levelMap.Draw();
             foreach (IBlock block in blockList) block.Draw();
+            foreach (IEnemy enemy in enemyList) enemy.Draw();
             PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
             ItemHolder.Draw();
-            snakefirst.Draw();
-            moblinfirst.Draw();
-            bugfirst.Draw();
+            //snakefirst.Draw();
+            //moblinfirst.Draw();
+            //bugfirst.Draw();
 
             spriteBatch.End();
             

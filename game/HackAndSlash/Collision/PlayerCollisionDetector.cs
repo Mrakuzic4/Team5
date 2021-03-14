@@ -10,14 +10,12 @@ namespace HackAndSlash
 {
     class PlayerCollisionDetector
     {
-        private Player player;
         private Game1 game;
         private IEnemy enemy; //the enemy that takes damage.
 
-        public PlayerCollisionDetector(Player player, Game1 game)
+        public PlayerCollisionDetector(Game1 game)
         {
             this.game = game;
-            this.player = player;
         }
         /// <summary>
         /// Check the collision between player and blocks.
@@ -78,18 +76,17 @@ namespace HackAndSlash
         /// <returns>Collision side</returns>
         public IEnemy CheckSwordEnemyCollisions()
         {
-            //parameters for the sword hitbox
             Rectangle playerSwordHitBox;
             int middle = GlobalSettings.BASE_SCALAR / 2;
             int thinnerSideOfSword = GlobalSettings.BASE_SCALAR / 3; //the hitbox of the sword would be a rectangle instead of a square, this is the parameter for the narrower part of the rectangle.
 
             //Player sword collides with enemies
-            switch (player.GetDir())
+            switch (game.Player.GetDir())
             {
                 //width and height set of the sword hitbox set to Base_SCALAR, Base_SCALAR/2
                 case GlobalSettings.Direction.Right:
                     //Player's sword hitbox is located at the hand of the player
-                    playerSwordHitBox = new Rectangle((int) game.Player.GetPos().X + GlobalSettings.BASE_SCALAR, (int)game.Player.GetPos().Y + middle, GlobalSettings.BASE_SCALAR, thinnerSideOfSword);
+                    playerSwordHitBox = new Rectangle((int)game.Player.GetPos().X + GlobalSettings.BASE_SCALAR, (int)game.Player.GetPos().Y + middle, GlobalSettings.BASE_SCALAR, thinnerSideOfSword);
                     break;
                 case GlobalSettings.Direction.Left:
                     playerSwordHitBox = new Rectangle((int)game.Player.GetPos().X - GlobalSettings.BASE_SCALAR, (int)game.Player.GetPos().Y + middle, GlobalSettings.BASE_SCALAR, thinnerSideOfSword);
@@ -101,6 +98,7 @@ namespace HackAndSlash
                     playerSwordHitBox = new Rectangle((int)game.Player.GetPos().X + middle, (int)game.Player.GetPos().Y + GlobalSettings.BASE_SCALAR, thinnerSideOfSword, GlobalSettings.BASE_SCALAR);
                     break;
             }
+
             CheckEnemyCollisions(playerSwordHitBox);
             return this.enemy; //It is safe to return null value becuase it is handled in the collision handler.
         }

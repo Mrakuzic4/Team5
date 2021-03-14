@@ -78,6 +78,7 @@
     <Compile Include="Enemy\EnemySprite.cs" />
     <Compile Include="Enemy\IEnemy.cs" />
     <Compile Include="Enemy\MoblinEnemy.cs" />
+    <Compile Include="Enemy\MoblinItem.cs" />
     <Compile Include="Enemy\SnakeEnemy.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GlobalSettings.cs" />

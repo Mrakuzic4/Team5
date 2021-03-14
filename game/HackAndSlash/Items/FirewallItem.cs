@@ -43,7 +43,7 @@ namespace HackAndSlash
             firewallSprite = (ItemSprite)SpriteFactory.Instance.CreateFirewall();
             spriteWidth = firewallSprite.Texture.Width / firewallSprite.Columns;
             spriteHeight = firewallSprite.Texture.Height / firewallSprite.Rows;
-            toolBarPosition = new Vector2(10, 10);
+            toolBarPosition = new Vector2(64, 0);
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);

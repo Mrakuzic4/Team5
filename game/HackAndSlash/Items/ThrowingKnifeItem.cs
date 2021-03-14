@@ -11,6 +11,16 @@ namespace HackAndSlash
 {
     public class ThrowingKnifeItem : IItem
     {
+        /*
+         * Copy Throwing knife to new item class
+         * Reskin with new sprites iand add to database
+         * have player check if they are colliding with an enmemy item by using getCollidableTiles(true)
+         * enemy will call use item with their direction
+         * change collectable and expended to usable states
+         * make a new IItem in game (or maybe in moblin) so it can appear with player items
+         * 
+         */
+        
         private Game1 game;
         private IPlayer player; //Player reference
 
@@ -46,7 +56,7 @@ namespace HackAndSlash
             throwingKnifeSprite = (ItemSprite)SpriteFactory.Instance.CreateThrowingKnife(GlobalSettings.Direction.Up);
             spriteWidth = throwingKnifeSprite.Texture.Width / throwingKnifeSprite.Columns;
             spriteHeight = throwingKnifeSprite.Texture.Height / throwingKnifeSprite.Rows;
-            toolBarPosition = new Vector2(10, 10);
+            toolBarPosition = new Vector2(64, 0);
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
@@ -108,12 +118,20 @@ namespace HackAndSlash
                                 {
                                     position.X -= spriteWidth;
                                 }
+                                else
+                                {
+                                    ChangeToExpended();
+                                }
                                 break;
                             case GlobalSettings.Direction.Right: // right
                                 checkTile = new Rectangle((int)position.X + spriteWidth, (int)position.Y, spriteWidth, spriteHeight);
                                 if (!throwingKnifeCollisionHandler.CheckForWall(checkTile) && !throwingKnifeCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.X += spriteWidth;
+                                }
+                                else
+                                {
+                                    ChangeToExpended();
                                 }
                                 break;
                             case GlobalSettings.Direction.Up: // up
@@ -122,12 +140,20 @@ namespace HackAndSlash
                                 {
                                     position.Y -= spriteHeight;
                                 }
+                                else
+                                {
+                                    ChangeToExpended();
+                                }
                                 break;
                             case GlobalSettings.Direction.Down: // down
                                 checkTile = new Rectangle((int)position.X, (int)position.Y + spriteHeight, spriteWidth, spriteHeight);
                                 if (!throwingKnifeCollisionHandler.CheckForWall(checkTile) && !throwingKnifeCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.Y += spriteHeight;
+                                }
+                                else
+                                {
+                                    ChangeToExpended();
                                 }
                                 break;
                         }

@@ -10,6 +10,7 @@ namespace HackAndSlash
     public class Level : ILevel
     {
         private const int ALL_MIGHT_DIV = 16;
+        private const int ALL_MIGH_COUNT = 256;
 
         private GraphicsDevice graphics;
         private SpriteBatch spriteBatch;
@@ -98,7 +99,7 @@ namespace HackAndSlash
                     Vector2 StartPoint = new Vector2(GlobalSettings.BORDER_OFFSET + c * GlobalSettings.BASE_SCALAR,
                         GlobalSettings.BORDER_OFFSET + r * GlobalSettings.BASE_SCALAR);
 
-                    int TileTypeNow = (mapMatrix[r, c] >= 0 && mapMatrix[r, c] < 256) ? 
+                    int TileTypeNow = (mapMatrix[r, c] >= 0 && mapMatrix[r, c] < ALL_MIGH_COUNT) ? 
                         mapMatrix[r, c] : defaultBlockIndex;
                     Texture2D TextureNow = getBlockByIndex(TileTypeNow);
                     
