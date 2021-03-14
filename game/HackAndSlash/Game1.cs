@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -58,7 +59,7 @@ namespace HackAndSlash
         }
 
         public void reset() {
-            blockList = generator.GetBlockList(spriteBatch);
+            blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
             //enemyList = generator.GetEnemyList(spriteBatch);
         }
 
@@ -132,7 +133,7 @@ namespace HackAndSlash
             };
 
             //Create list of blocks
-            blockList = generator.GetBlockList(spriteBatch);
+            blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
         }
 
         /// <summary>
@@ -162,6 +163,15 @@ namespace HackAndSlash
             moblinfirst.Update(gameTime);
 
             ItemHolder.Update();
+
+            if (blockList.OfType<BlockMovable>().Any())
+            {
+                List<BlockMovable> movableBlocks = blockList.OfType<BlockMovable>().ToList();
+                foreach (BlockMovable block in movableBlocks)
+                {
+                    block.Update();
+                }
+            }
 
             base.Update(gameTime);
         }

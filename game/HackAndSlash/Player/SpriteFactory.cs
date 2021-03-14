@@ -394,14 +394,16 @@ namespace HackAndSlash
 
         //*****************************Below are block objects******************************//
 
-        public IBlock CreateBlockMovableUpDown(SpriteBatch spriteBatch)
+        public IBlock CreateBlockMovableVertical(SpriteBatch spriteBatch, int r, int c)
         {
-            return new BlockMovable(BlockMovable, new Vector2(GlobalSettings.BORDER_OFFSET, GlobalSettings.BORDER_OFFSET), spriteBatch, true);
+            return new BlockMovable(BlockMovable, new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET), 
+                (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET)), spriteBatch, true);
         }
 
-        public IBlock CreateBlockMovableLeftRight(SpriteBatch spriteBatch)
+        public IBlock CreateBlockMovableHorizontal(SpriteBatch spriteBatch, int r, int c)
         {
-            return new BlockMovable(BlockMovable, new Vector2(GlobalSettings.BORDER_OFFSET, GlobalSettings.BORDER_OFFSET), spriteBatch, false);
+            return new BlockMovable(BlockMovable, new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET),
+                (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET)), spriteBatch, false);
         }
 
     }

@@ -13,5 +13,6 @@ namespace HackAndSlash
 
         void Update();
         void Draw();
+        void ChangeToMoving(GlobalSettings.CollisionType type);
     }
 }

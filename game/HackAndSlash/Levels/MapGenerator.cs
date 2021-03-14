@@ -17,7 +17,7 @@ namespace HackAndSlash
             this.mapInfo = MapInfo;
         }
 
-        public List<IBlock> GetBlockList(SpriteBatch spriteBatch)
+        public List<IBlock> GetBlockList(SpriteBatch spriteBatch, SpriteFactory spriteFactory)
         {
             List<IBlock> BlockList = new List<IBlock>(); 
 
@@ -26,10 +26,18 @@ namespace HackAndSlash
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
                 {
                     int Index = mapInfo.Arrangement[r, c];
-                    if (Index >= 32)
+                    if (Index == 32 || Index == 33)
                     {
                         BlockList.Add(new BlockInvis(new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET),
                                     (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET)), spriteBatch));
+                    }
+                    else if (Index == 40)
+                    {
+                        BlockList.Add(spriteFactory.CreateBlockMovableVertical(spriteBatch, r, c));
+                    }
+                    else if (Index == 41)
+                    {
+                        BlockList.Add(spriteFactory.CreateBlockMovableHorizontal(spriteBatch, r, c));
                     }
                 }
             }

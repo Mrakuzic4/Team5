@@ -36,9 +36,18 @@ namespace HackAndSlash
                 
                 //Jump out of the loop when the collision is dectected 
                 type = checkHorizontalCollision(collisionBox,playerHitbox);
-                if (type != CollisionType.None) break; 
+                if (type != CollisionType.None)
+                {
+                    if (block is BlockMovable) block.ChangeToMoving(type);
+                    break;
+                }
                 type = checkVerticalCollision(collisionBox, playerHitbox);
-                if (type != CollisionType.None) break;
+                if (type != CollisionType.None)
+                {
+                    if (block is BlockMovable) block.ChangeToMoving(type);
+                    break;
+                }
+                    
             }
             return type;
         }

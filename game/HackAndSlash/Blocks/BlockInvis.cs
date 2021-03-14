@@ -25,5 +25,10 @@ namespace HackAndSlash
         {
             // Do nothing 
         }
+
+        public void ChangeToMoving(GlobalSettings.CollisionType type)
+        {
+            //Do nothing
+        }
     }
 }

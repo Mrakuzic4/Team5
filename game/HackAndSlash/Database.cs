@@ -117,7 +117,7 @@ namespace HackAndSlash
 
             BG = new ImageFile("images/BG", 1, 1);
 
-            BlockMovable = new ImageFile("images/BlockX", 1, 1);
+            BlockMovable = new ImageFile("images/blockMovable", 1, 1);
 
             // For level blocks, they must be the same size as BASE_SCALAR
             BlockDemo = new ImageFile("images/BlockDemo", 1, 1);
