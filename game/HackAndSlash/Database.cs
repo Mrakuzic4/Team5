@@ -41,6 +41,12 @@ namespace HackAndSlash
         public ImageFile bugIdle;
         public ImageFile bugDie;
 
+        public ImageFile moblinMoveUp;
+        public ImageFile moblinMoveDown;
+        public ImageFile moblinMoveRight;
+        public ImageFile moblinMoveLeft;
+        public ImageFile moblinBomb;
+
         public ImageFile fireWall;
         public ImageFile bomb;
         public ImageFile explosion;
@@ -94,7 +100,13 @@ namespace HackAndSlash
             bugMoveRight = new ImageFile("images/BugEnemyRight", 1, 6);
             bugIdle = new ImageFile("images/BugEnemyIdle", 1, 6);
             bugDie = new ImageFile("images/BugIdle", 1, 6);
-            
+
+            moblinMoveUp = new ImageFile("images/MoblinUp", 1, 2);
+            moblinMoveDown = new ImageFile("images/MoblinDown", 1, 2);
+            moblinMoveLeft = new ImageFile("images/MoblinLeft", 1, 2);
+            moblinMoveRight = new ImageFile("images/MoblinRight", 1, 2);
+            moblinBomb = new ImageFile("images/MoblinBomb", 1, 1);
+
             fireWall = new ImageFile("images/firewall3", 1, 2);
             bomb = new ImageFile("images/Bomb", 1, 1);
             explosion = new ImageFile("images/explosion", 1, 3);

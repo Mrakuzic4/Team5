@@ -35,7 +35,7 @@ namespace HackAndSlash
 
         public SnakeEnemy snakefirst;
         public BugEnemy bugfirst;
-
+        public MoblinEnemy moblinfirst;
 
         public FirewallItem firewallFirst;
         public BombItem bombFirst;
@@ -106,10 +106,11 @@ namespace HackAndSlash
             //Enemy
             snakefirst = new SnakeEnemy(new Vector2(128,200), GraphicsDevice, spriteBatch, this);
             bugfirst = new BugEnemy(new Vector2(700,128), GraphicsDevice, spriteBatch, this);
+            moblinfirst = new MoblinEnemy(new Vector2(500, 200), GraphicsDevice, spriteBatch, this);
 
             enemyList = new List<IEnemy>()
             {
-                snakefirst,bugfirst
+                snakefirst,bugfirst,moblinfirst
             };
          
             //Player
@@ -158,6 +159,7 @@ namespace HackAndSlash
             
             snakefirst.Update(gameTime);
             bugfirst.Update(gameTime);
+            moblinfirst.Update(gameTime);
 
             ItemHolder.Update();
 
@@ -178,6 +180,7 @@ namespace HackAndSlash
             PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
             ItemHolder.Draw();
             snakefirst.Draw();
+            moblinfirst.Draw();
             bugfirst.Draw();
 
             spriteBatch.End();
