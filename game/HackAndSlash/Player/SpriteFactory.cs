@@ -41,6 +41,12 @@ namespace HackAndSlash
         private Texture2D BugMoveLeftSprite;
         private Texture2D BugMoveRightSprite;
 
+        private Texture2D MoblinMoveUpSprite;
+        private Texture2D MoblinMoveDownSprite;
+        private Texture2D MoblinMoveLeftSprite;
+        private Texture2D MoblinMoveRightSprite;
+        private Texture2D MoblinBombSprite;
+
         private Texture2D FirewallSprite;
         private Texture2D BombSprite;
         private Texture2D ExplosionSprite;
@@ -109,6 +115,12 @@ namespace HackAndSlash
             BugMoveRightSprite = content.Load<Texture2D>(IMDB.bugMoveRight.pathName);
             BugDieSprite = content.Load<Texture2D>(IMDB.bugDie.pathName);
             BugIdleSprite = content.Load<Texture2D>(IMDB.bugIdle.pathName);
+
+            MoblinMoveUpSprite = content.Load<Texture2D>(IMDB.moblinMoveUp.pathName);
+            MoblinMoveDownSprite = content.Load<Texture2D>(IMDB.moblinMoveDown.pathName);
+            MoblinMoveLeftSprite = content.Load<Texture2D>(IMDB.moblinMoveLeft.pathName);
+            MoblinMoveRightSprite = content.Load<Texture2D>(IMDB.moblinMoveRight.pathName);
+            MoblinBombSprite = content.Load<Texture2D>(IMDB.moblinBomb.pathName);
 
             //Item Sprites 
             FirewallSprite = content.Load<Texture2D>(IMDB.fireWall.pathName);
@@ -281,8 +293,10 @@ namespace HackAndSlash
 
         public ISprite CreateSnakeDie()
         {
-            return new EnemySprite(SnakeDieSprite, IMDB.snakeDie.C, IMDB.snakeIdle.R);
+            return new EnemySprite(SnakeDieSprite, IMDB.snakeDie.C, IMDB.snakeDie.R);
         }
+
+
 
         public ISprite CreateBugIdle()
         {
@@ -313,6 +327,37 @@ namespace HackAndSlash
         public ISprite CreateBugDie()
         {
             return new EnemySprite(BugDieSprite, IMDB.bugDie.C, IMDB.bugDie.R);
+        }
+
+        public ISprite CreateMoblinMoveUp()
+        {
+            return new EnemySprite(MoblinMoveUpSprite, IMDB.moblinMoveUp.C, IMDB.moblinMoveUp.R);
+        }
+
+        public ISprite CreateMoblinMoveDown()
+        {
+            return new EnemySprite(MoblinMoveDownSprite, IMDB.moblinMoveDown.C, IMDB.moblinMoveDown.R);
+        }
+
+        public ISprite CreateMoblinMoveLeft()
+        {
+            return new EnemySprite(MoblinMoveLeftSprite, IMDB.moblinMoveLeft.C, IMDB.moblinMoveLeft.R);
+        }
+
+
+        public ISprite CreateMoblinMoveRight()
+        {
+            return new EnemySprite(MoblinMoveRightSprite, IMDB.moblinMoveRight.C, IMDB.moblinMoveRight.R);
+        }
+
+        public ISprite CreateMoblinDie()
+        {
+            return new EnemySprite(MoblinMoveDownSprite, IMDB.moblinMoveDown.C, IMDB.moblinMoveDown.R);
+        }
+
+        public ISprite CreateMoblinIdle()
+        {
+            return new EnemySprite(MoblinMoveDownSprite, IMDB.moblinMoveDown.C, IMDB.moblinMoveDown.R);
         }
 
         //*************************Below are item  ***************************//

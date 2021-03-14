@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/admin/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/BugDie.png</SourceFile>
-  <SourceTime>2021-03-11T14:38:49.6277449-05:00</SourceTime>
-  <DestFile>C:/Users/admin/Source/Repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/images/BugDie.xnb</DestFile>
-  <DestTime>2021-03-13T15:41:31.4625167-05:00</DestTime>
+  <SourceFile>C:/Users/vidha/source/repos/moblin/game/HackAndSlash/Content/images/BugDie.png</SourceFile>
+  <SourceTime>2021-03-14T10:56:51.47365-04:00</SourceTime>
+  <DestFile>C:/Users/vidha/source/repos/moblin/game/HackAndSlash/Content/bin/DesktopGL/Content/images/BugDie.xnb</DestFile>
+  <DestTime>2021-03-14T11:01:58.1220616-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

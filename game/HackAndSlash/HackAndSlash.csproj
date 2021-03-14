@@ -78,6 +78,7 @@
     <Compile Include="Enemy\BugEnemy.cs" />
     <Compile Include="Enemy\EnemySprite.cs" />
     <Compile Include="Enemy\IEnemy.cs" />
+    <Compile Include="Enemy\MoblinEnemy.cs" />
     <Compile Include="Enemy\SnakeEnemy.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GlobalSettings.cs" />
@@ -223,6 +224,11 @@
     <None Include="Content\bin\DesktopGL\images\sucOva.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucUp.xnb" />
     <Content Include="Content\images\levels\blockAllMight.png" />
+    <Content Include="Content\images\MoblinBomb.png" />
+    <Content Include="Content\images\MoblinDown.png" />
+    <Content Include="Content\images\MoblinLeft.png" />
+    <Content Include="Content\images\MoblinRight.png" />
+    <Content Include="Content\images\MoblinUp.png" />
     <Content Include="Content\images\SnakeEnemyRight.png" />
     <Content Include="Content\info\levelDemoM1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
