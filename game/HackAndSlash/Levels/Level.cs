@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
@@ -21,7 +19,6 @@ namespace HackAndSlash
 
         private int defaultBlockIndex; 
         private int[,] mapMatrix; 
-        private Dictionary<int, Texture2D>  levelStyle;
 
         // Up, Bottom, Left Right 
         private bool[] doorOpen = { false, false, false, false };
@@ -42,7 +39,6 @@ namespace HackAndSlash
 
             levelTexture = GenerateTexture(GlobalSettings.WINDOW_WIDTH, GlobalSettings.WINDOW_HEIGHT, pixel => defaultColor);
             mapMatrix = Arrangement;
-            levelStyle = LevelDatabase.Instance.DemoLevelStyle;
 
             blockAllMight = SpriteFactory.Instance.getBlockAllMight();
 
@@ -119,28 +115,12 @@ namespace HackAndSlash
         public void addOpenHole(int Direction)
         {
             doorHole[Direction] = true;
+            doorOpen[Direction] = false;
         }
 
         public void addOpenDoor(int Direction)
         {
             doorOpen[Direction] = true;
-            //Texture2D[] Doors = SpriteFactory.Instance.GetLevelEagleDoorNormOpen();
-
-            //foreach (int Dir in new int[] {0, 1, 2, 3 })
-            //{
-            //    if (Dir == Direction)
-            //    {
-            //        doorOpen[Dir] = true;
-
-            //        Texture2D Door = Doors[Dir];
-            //        int Count = Door.Width * Door.Height;
-            //        Color[] RawData = new Color[Count];
-            //        Door.GetData<Color>(RawData);
-
-            //        levelTexture.SetData(0, new Rectangle(0, 0, Door.Width, Door.Height),
-            //            RawData, 0, Count);
-            //    }
-            //}
         }
 
         // Up, Bottom, Left Right 
