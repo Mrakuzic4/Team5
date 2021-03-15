@@ -9,7 +9,10 @@ namespace HackAndSlash
 {
     class PlayerBlockCollisionHandler
     {
-        public void HandleCollision(IPlayer player, CollisionType collisionType) //Possibly need ICollision?? See the 2D collision slide.
+        /// <summary>
+        /// Adjusts player position according to each collision type
+        /// </summary>
+        public void HandleCollision(IPlayer player, CollisionType collisionType) 
         {
             switch (collisionType)
             {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/levels/eagleDoorHorizontalLeft.png</SourceFile>
-  <SourceTime>2021-03-07T12:31:42.0030469-05:00</SourceTime>
-  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/levels/eagleDoorHorizontalLeft.xnb</DestFile>
-  <DestTime>2021-03-14T15:45:01.6621912-04:00</DestTime>
+  <SourceFile>C:/Users/admin/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/levels/eagleDoorHorizontalLeft.png</SourceFile>
+  <SourceTime>2021-03-11T14:38:49.644733-05:00</SourceTime>
+  <DestFile>C:/Users/admin/Source/Repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/images/levels/eagleDoorHorizontalLeft.xnb</DestFile>
+  <DestTime>2021-03-15T13:14:42.3386916-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

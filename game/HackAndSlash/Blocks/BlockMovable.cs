@@ -17,9 +17,12 @@ namespace HackAndSlash
         private bool isMoving; //holds whether the block is currently moving
         private bool hasMoved; //holds whether the block has already been moved or not
         private int counter;
-        private GlobalSettings.CollisionType type { get; set; }
+        private GlobalSettings.CollisionType collisionType { get; set; }
         public Rectangle rectangle { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public BlockMovable(Texture2D block, Vector2 location, SpriteBatch spriteBatch, bool vertical)
         {
             this.spriteBatch = spriteBatch;
@@ -29,11 +32,13 @@ namespace HackAndSlash
             isMoving = false;
             hasMoved = false;
             counter = 0;
-            type = GlobalSettings.CollisionType.None;
+            collisionType = GlobalSettings.CollisionType.None;
             rectangle = new Rectangle((int)location.X, (int)location.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
         }
 
-        //handles movement of the block, locks the blocks movement after it has already moved 1 tile
+        /// <summary>
+        /// Handles updating the blocks location, locks the block if it has already been moved
+        /// </summary>
         public void Update()
         {
             if (hasMoved == false && isMoving == true)
@@ -49,22 +54,26 @@ namespace HackAndSlash
             spriteBatch.Draw(block, location, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
-        //checks to confirm the collision type corresponds with the blocks movement type(vertical/horizontal)
+        /// <summary>
+        /// Changes block to its moving state, checks to confirm collision type corresponds with block movement(horizontal/vertical)
+        /// </summary>
         public void ChangeToMoving(GlobalSettings.CollisionType type)
         {
             if ((vertical == true && (type == GlobalSettings.CollisionType.Top || type == GlobalSettings.CollisionType.Bottom)) ||
                 (vertical == false && (type == GlobalSettings.CollisionType.Left || type == GlobalSettings.CollisionType.Right)))
             {
                 isMoving = true;
-                this.type = type;
+                collisionType = type;
             }
             
         }
 
-        //updates the block location 1 pixel vertically each frame
+        /// <summary>
+        /// Updates block location 1 pixel vertically per frame
+        /// </summary>
         private void HandleVerticalCollision()
         {
-            if (type == GlobalSettings.CollisionType.Top)
+            if (collisionType == GlobalSettings.CollisionType.Top)
             {
                 location = new Vector2(location.X, location.Y+1);
             }
@@ -75,10 +84,12 @@ namespace HackAndSlash
             rectangle = new Rectangle((int)location.X, (int)location.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
         }
 
-        //updates the block location 1 pixel horizontally each frame
+        /// <summary>
+        /// Updates block location 1 pixel horizontally per frame
+        /// </summary>
         private void HandleHorizontalCollision() 
         {
-            if (type == GlobalSettings.CollisionType.Left)
+            if (collisionType == GlobalSettings.CollisionType.Left)
             {
                 location = new Vector2(location.X - 1, location.Y);
             }

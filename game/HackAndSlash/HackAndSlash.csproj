@@ -55,6 +55,9 @@
     <Compile Include="Collision\PlayerBlockCollisionHandler.cs" />
     <Compile Include="Collision\PlayerCollisionDetector.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
+    <Compile Include="Commands\UseThrowingKnifeCommand.cs" />
+    <Compile Include="Commands\UseFirewallCommand.cs" />
+    <Compile Include="Commands\UseBombCommand.cs" />
     <Compile Include="Commands\ItemUseableCommand.cs" />
     <Compile Include="Commands\DamageCommand.cs" />
     <Compile Include="Commands\EnemyCycleCommandBug.cs" />
@@ -94,7 +97,7 @@
     <Compile Include="Levels\IMap.cs" />
     <Compile Include="Levels\JsonParser.cs" />
     <Compile Include="Levels\Level.cs" />
-    <Compile Include="Levels\LevelDatabase.cs" />
+    <Compile Include="Levels\LevelCycling.cs" />
     <Compile Include="Levels\Map.cs" />
     <Compile Include="Levels\MapGenerator.cs" />
     <Compile Include="Player\UseItemPlayer.cs" />

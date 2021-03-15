@@ -42,7 +42,9 @@ namespace HackAndSlash
             relPositionMC.Y = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET;
 
             //Collision
-            playerHitBox = new Rectangle((int)relPositionMC.X, (int)relPositionMC.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            playerHitBox = new Rectangle((int)relPositionMC.X + GlobalSettings.PLAYER_HITBOX_X_OFFSET, 
+                (int)relPositionMC.Y + GlobalSettings.PLAYER_HITBOX_Y_OFFSET, 
+                GlobalSettings.PLAYER_HITBOX_WIDTH, GlobalSettings.PLAYER_HITBOX_HEIGHT);
             playerCollisionDetector = new PlayerCollisionDetector( game);
             playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
             playerEnemyCollisionHandler = new PlayerEnemyCollisionHandler();
@@ -102,7 +104,8 @@ namespace HackAndSlash
 
             //Player Collision Detector
             //hitbox for player, wraps around player.
-            playerHitBox.Location = new Point((int)relPositionMC.X, (int)relPositionMC.Y);
+            playerHitBox.Location = new Point((int)relPositionMC.X + GlobalSettings.PLAYER_HITBOX_X_OFFSET,
+                (int)relPositionMC.Y + GlobalSettings.PLAYER_HITBOX_Y_OFFSET);
             //Player Block Collision
             playerBlockCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckBlockCollisions(playerHitBox));
             //Player Enemy Collision

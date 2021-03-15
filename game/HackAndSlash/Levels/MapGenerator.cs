@@ -17,6 +17,17 @@ namespace HackAndSlash
             this.mapInfo = MapInfo;
         }
 
+        // Not fully implemented 
+        public List<ILevel> getLevelList(GraphicsDevice GD, SpriteBatch spriteBatch, Map map)
+        {
+            List <ILevel> levelList = new List<ILevel>();
+
+            levelList.Add(new Level(GD, spriteBatch, map.Arrangement, map.DefaultBlock,
+                map.OpenDoors, map.HiddenDoors, map.LockedDoors));
+
+            return levelList;
+        }
+
         public List<IBlock> GetBlockList(SpriteBatch spriteBatch, SpriteFactory spriteFactory)
         {
             List<IBlock> BlockList = new List<IBlock>(); 
@@ -76,7 +87,7 @@ namespace HackAndSlash
             return EnemyList;
         }
 
-        public List<IItem> GetItemList(SpriteBatch spriteBatch)
+        public List<IItem> GetItemList(SpriteBatch spriteBatch, Game1 game)
         {
             List<IItem> ItemList = new List<IItem>();
 
@@ -88,8 +99,23 @@ namespace HackAndSlash
                     /*
                      If Index is smaller than -256, add an item into the list
                      */
-                    Vector2 position = new Vector2(r * GlobalSettings.BASE_SCALAR, c * GlobalSettings.BASE_SCALAR);
+                    Vector2 position = new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET),
+                            (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET));
 
+                    switch (Index)
+                    {
+                        case -257:
+                            ItemList.Add(new FirewallItem(position, spriteBatch, game));
+                            break;
+                        case -258:
+                            ItemList.Add(new BombItem(position, spriteBatch, game));
+                            break;
+                        case -259:
+                            ItemList.Add(new ThrowingKnifeItem(position, spriteBatch, game));
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
 

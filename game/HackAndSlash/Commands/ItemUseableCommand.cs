@@ -15,7 +15,7 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            game.ItemHolder.ChangeToUseable();
+            foreach (IItem item in game.itemList) item.ChangeToUseable();
         }
     }
 }

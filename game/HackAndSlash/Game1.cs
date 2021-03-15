@@ -15,6 +15,7 @@ namespace HackAndSlash
 
         public Map currentMap; 
         private MapGenerator generator;
+        private int mapCycleIndex; 
 
         //Player
         private IPlayer PlayerMain;
@@ -58,8 +59,8 @@ namespace HackAndSlash
         List<Object> controllerList;
         public List<IBlock> blockList { get; set; }
         public List<ILevel> levelList { get; set; }
-        public List<IEnemy> enemyList { get; set;  }
-
+        public List<IEnemy> enemyList { get; set; }
+        public List<IItem> itemList { get; set; }
         /* ============================================================
          * ======================== Methods ===========================
          * ============================================================ */
@@ -70,9 +71,29 @@ namespace HackAndSlash
             Content.RootDirectory = "Content";
         }
 
-        public void reset() {
-            blockList = generator.GetBlockList(spriteBatch,SpriteFactory.Instance);
-            enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice,this);
+        public void reset(bool cycleUp) {
+
+            /* the following 2 lines shall be modified,
+             * currently they're just for sprint 3 cycleing */
+            if (cycleUp == true)
+            {
+                mapCycleIndex++;
+                if (mapCycleIndex >= GlobalSettings.CYCLE_BOUND) mapCycleIndex = 0;
+            }
+            else
+            {
+                mapCycleIndex--;
+                if (mapCycleIndex < 0) mapCycleIndex = GlobalSettings.CYCLE_BOUND - 1;
+            }
+
+
+            currentMap = new LevelCycling().S3EagleCycle[mapCycleIndex];
+            generator = new MapGenerator(currentMap);
+
+            levelList = generator.getLevelList(GraphicsDevice, spriteBatch, currentMap);
+            blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
+            enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
+            itemList = generator.GetItemList(spriteBatch, this);
         }
 
         /// <summary>
@@ -85,7 +106,7 @@ namespace HackAndSlash
         {
             base.Initialize();
 
-            //level = new Level(GraphicsDevice, spriteBatch);
+            mapCycleIndex = 0;
 
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
@@ -130,12 +151,14 @@ namespace HackAndSlash
             PlayerMain = new Player(this);//Player object
 
             // Items
-            firewallFirst = new FirewallItem(new Vector2(192, 192), spriteBatch, this);
+            firewallFirst = new FirewallItem(new Vector2(128, 128), spriteBatch, this);
             bombFirst = new BombItem(new Vector2(192, 192), spriteBatch, this);
-            throwingKnifeFirst = new ThrowingKnifeItem(new Vector2(192, 192), spriteBatch, this);
-            ItemHolder = firewallFirst;
+            throwingKnifeFirst = new ThrowingKnifeItem(new Vector2(256, 256), spriteBatch, this);
 
-            //firewallFirst.LoadContent(); 
+            itemList = new List<IItem>()
+            {
+                firewallFirst,bombFirst,throwingKnifeFirst
+            };
 
             // A list of level maps for further transition cutscene 
             levelList = new List<ILevel>()
@@ -171,11 +194,8 @@ namespace HackAndSlash
             PlayerMain.Update();
 
             foreach (IEnemy enemy in enemyList) enemy.Update(gameTime);
-            //snakefirst.Update(gameTime);
-            //bugfirst.Update(gameTime);
-            //moblinfirst.Update(gameTime);
 
-            ItemHolder.Update();
+            foreach (IItem item in itemList) item.Update();
 
             if (blockList.OfType<BlockMovable>().Any())
             {
@@ -204,13 +224,9 @@ namespace HackAndSlash
             foreach (IBlock block in blockList) block.Draw();
             foreach (IEnemy enemy in enemyList) enemy.Draw();
             PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
-            ItemHolder.Draw();
-            //snakefirst.Draw();
-            //moblinfirst.Draw();
-            //bugfirst.Draw();
+            foreach (IItem item in itemList) item.Draw();
 
             spriteBatch.End();
-            
             base.Draw(gameTime);
         }
     }
