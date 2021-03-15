@@ -1,6 +1,6 @@
 # Team 5 3902 game 
 
-## Control (sprint 2)
+## Keyboard Control (sprint 3)
 
 * `WASD` and arrow keys for moving the player character  
 * Number key `1` to use the item _(if you have one)_
@@ -8,13 +8,16 @@
 * `Q` to quit 
 * `R` to reset 
 * `O` and `P` to toggle between enemy displayed in the map 
-* `T` and `Y` to toggle between blovk displayed in the map 
+
+## Gamepad Contol (not tested yet)
+* `DPAD` direction buttons for moving the player character
+* `A` button for attacking
 
 ## Know issues 
 
   ### Gaming experience 
 
-  * `T` and `Y` may cause block blinking if pressed too long 
+  * Player may clip through static blocks if more than one movement key is held down
 
 
   ### Code-wise 
