@@ -16,7 +16,7 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            //cycle up the currently displayed level
+            Game.reset(true);
         }
     }
 }
