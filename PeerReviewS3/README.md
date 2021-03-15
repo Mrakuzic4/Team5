@@ -7,8 +7,8 @@ For easier track of who reviewed who's code, here's a table:
 | Vidhan Bhardwaj (bhardwaj.73)  | No  | No |
 | Amarth Chen (chen.8759)  | No  | YES |
 | Harshitha Kommaraju (kommaraju.3)  | No  | No |
-| Zane Mrakuzic (mrakuzic.4)  | No  | No |
-| Daniel Neff (neff.331)  | No  | No |
+| Zane Mrakuzic (mrakuzic.4)  | No  | YES |
+| Daniel Neff (neff.331)  | YES  | No |
 | Jimmy Yuan (yuan.799)  | YES  | No |
 
 Mark yourself and the one you reviewed as `Yes` after it's done. 
