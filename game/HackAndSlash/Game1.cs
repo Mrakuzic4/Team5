@@ -15,6 +15,7 @@ namespace HackAndSlash
 
         public Map currentMap; 
         private MapGenerator generator;
+        private int mapCycleIndex; 
 
         //Player
         private IPlayer PlayerMain;
@@ -71,8 +72,19 @@ namespace HackAndSlash
         }
 
         public void reset() {
+
+            /* the following 2 lines shall be modified,
+             * currently they're just for sprint 3 cycleing */
+            mapCycleIndex++;
+            if (mapCycleIndex >= GlobalSettings.CYCLE_BOUND) mapCycleIndex = 0;
+
+            currentMap = new LevelCycling().S3EagleCycle[mapCycleIndex];
+            generator = new MapGenerator(currentMap);
+
+            levelList = generator.getLevelList(GraphicsDevice, spriteBatch, currentMap);
             blockList = generator.GetBlockList(spriteBatch,SpriteFactory.Instance);
             enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice,this);
+
         }
 
         /// <summary>
@@ -85,7 +97,7 @@ namespace HackAndSlash
         {
             base.Initialize();
 
-            //level = new Level(GraphicsDevice, spriteBatch);
+            mapCycleIndex = 0;
 
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
