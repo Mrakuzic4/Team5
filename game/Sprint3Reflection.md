@@ -2,7 +2,7 @@ SPRINT 3 REFLECTION
 
 - Sprint Task Assignments
   * Decided on 02/25/21
-  * Sprint split into following tasks: player collision, enemy collision, new projectile enemy, new projectile item, level-loading
+  * Sprint split into following tasks: player collision, enemy collision, new projectile enemy, new projectile item, level-loading, new movable blocks
  
 - Overall team performance compared to Sprint2:
   * Each individual member contributed to the project and worked on their tasks.
@@ -19,6 +19,7 @@ SPRINT 3 REFLECTION
   * Enemies take damges by colliding into player's sword and player's item.
   * Levels of map implemented with JSON file.
   * Mouse right-click command to cycle through different levels of map.
+  * Added movable blocks.
   
 - Things aimed to be done differently next time
   * Start on the tasks early and formulate a planned approach
