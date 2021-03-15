@@ -142,5 +142,12 @@ namespace HackAndSlash
     {
         // Means "Level Demo Map 1"
         public const string demoLevelM1 = @"Content/info/levelDemoM1.json";
+
+        public const string eagleM1 = @"Content/info/eagleM1.json";
+        public const string eagleM2 = @"Content/info/eagleM2.json";
+        public const string eagleM3 = @"Content/info/eagleM3.json";
+        public const string eagleM4 = @"Content/info/eagleM4.json";
+        public const string eagleM5 = @"Content/info/eagleM5.json";
+        public const string eagleM6 = @"Content/info/eagleM6.json";
     }
 }

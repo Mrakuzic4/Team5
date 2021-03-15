@@ -33,6 +33,13 @@ namespace HackAndSlash
         public const long DELAY_KEYBOARD = 200; // For keyboard pressing event 
         public enum Direction { Left, Right, Up, Down };
         public enum CollisionType { None, Left, Right, Top, Bottom, }
+
+
+        /* Some fields created for level cycling in sprint 3.
+         * Future updates might just get rid of these.
+         */
+        public const int CYCLE_BOUND = 6;
+
     }
 
     class ImageFile
