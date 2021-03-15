@@ -26,16 +26,18 @@
 
   ### Gaming experience 
 
-  * Player may clip through static blocks if more than one movement key is held down
+  * Player may clip through static blocks if more than one key is pressed 
   * Enemies may suddenly become high on drugs if they find themseleves stuck in between 2 blocks 
   * Link needs to squeeze himself against the block/wall in order to pass through some "bottlenecks"
-  * Link got the spirit and will try to use item even if he has none 
-  * In newly loaded maps, Link might stuck a bit while using items 
+  * Link got the spirit and will try to use items even if he has none 
+  * Loading new maps may cause Link to stuck when using items 
+  * The newly loaded maps look confusing
 
   ### Code-wise 
   
   * Some residues from discarded patches 
   * Magic numbers in some files, but mostly sprint-3-specific
+  * More reguarding code quality in folder `PeerReviewS3`
 
 
 ## Devs 
