@@ -91,9 +91,9 @@ namespace HackAndSlash
             generator = new MapGenerator(currentMap);
 
             levelList = generator.getLevelList(GraphicsDevice, spriteBatch, currentMap);
-            blockList = generator.GetBlockList(spriteBatch,SpriteFactory.Instance);
-            enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice,this);
-
+            blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
+            enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
+            itemList = generator.GetItemList(spriteBatch, this);
         }
 
         /// <summary>
@@ -194,9 +194,6 @@ namespace HackAndSlash
             PlayerMain.Update();
 
             foreach (IEnemy enemy in enemyList) enemy.Update(gameTime);
-            //snakefirst.Update(gameTime);
-            //bugfirst.Update(gameTime);
-            //moblinfirst.Update(gameTime);
 
             foreach (IItem item in itemList) item.Update();
 
@@ -228,12 +225,8 @@ namespace HackAndSlash
             foreach (IEnemy enemy in enemyList) enemy.Draw();
             PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
             foreach (IItem item in itemList) item.Draw();
-            //snakefirst.Draw();
-            //moblinfirst.Draw();
-            //bugfirst.Draw();
 
             spriteBatch.End();
-            
             base.Draw(gameTime);
         }
     }
