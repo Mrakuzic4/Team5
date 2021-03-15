@@ -24,6 +24,10 @@ namespace HackAndSlash
         public const int STEP_SIZE_Y = 5;
         public const int KNOCKBACK_DIST_X = 64; // Knockback Distance 
         public const int KNOCKBACK_DIST_Y = 64;
+        public const int PLAYER_HITBOX_WIDTH = 54;
+        public const int PLAYER_HITBOX_HEIGHT = 40;
+        public const int PLAYER_HITBOX_Y_OFFSET = 24;
+        public const int PLAYER_HITBOX_X_OFFSET = 5;
 
         public const long DELAY_TIME = 100; // In ms
         public const long DELAY_KEYBOARD = 200; // For keyboard pressing event 
