@@ -71,12 +71,21 @@ namespace HackAndSlash
             Content.RootDirectory = "Content";
         }
 
-        public void reset() {
+        public void reset(bool cycleUp) {
 
             /* the following 2 lines shall be modified,
              * currently they're just for sprint 3 cycleing */
-            mapCycleIndex++;
-            if (mapCycleIndex >= GlobalSettings.CYCLE_BOUND) mapCycleIndex = 0;
+            if (cycleUp == true)
+            {
+                mapCycleIndex++;
+                if (mapCycleIndex >= GlobalSettings.CYCLE_BOUND) mapCycleIndex = 0;
+            }
+            else
+            {
+                mapCycleIndex--;
+                if (mapCycleIndex < 0) mapCycleIndex = GlobalSettings.CYCLE_BOUND - 1;
+            }
+
 
             currentMap = new LevelCycling().S3EagleCycle[mapCycleIndex];
             generator = new MapGenerator(currentMap);
