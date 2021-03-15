@@ -56,7 +56,7 @@ namespace HackAndSlash
             throwingKnifeSprite = (ItemSprite)SpriteFactory.Instance.CreateThrowingKnife(GlobalSettings.Direction.Up);
             spriteWidth = throwingKnifeSprite.Texture.Width / throwingKnifeSprite.Columns;
             spriteHeight = throwingKnifeSprite.Texture.Height / throwingKnifeSprite.Rows;
-            toolBarPosition = new Vector2(64, 0);
+            toolBarPosition = new Vector2(128, 0);
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
@@ -191,7 +191,7 @@ namespace HackAndSlash
                     break;
                 case ThrowingKnifeStateMachine.ItemStates.Expended:
                     // Gray out in toolbar
-                    throwingKnifeSprite.Draw(spriteBatch, position, Color.Gray);
+                    throwingKnifeSprite.Draw(spriteBatch, toolBarPosition, Color.Gray);
                     collidableTiles = new Rectangle[1];
                     collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
                     break;
@@ -211,6 +211,7 @@ namespace HackAndSlash
             {
                 Rectangle checkTile;
                 List<IBlock> blockList = game.blockList;
+                throwingKnifeSprite = (ItemSprite)SpriteFactory.Instance.CreateThrowingKnife(currentPlayerDirection);
                 switch (currentPlayerDirection)
                 {
                     case GlobalSettings.Direction.Left: // left
@@ -262,7 +263,7 @@ namespace HackAndSlash
                         }
                         break;
                 }
-                throwingKnifeSprite = (ItemSprite)SpriteFactory.Instance.CreateThrowingKnife(currentPlayerDirection);
+
                 playerPosition = currentPlayerPosition; // player position when used TEMP: DEFAULT POS
                 position = playerPosition;
                 playerDirection = currentPlayerDirection;// player Direction

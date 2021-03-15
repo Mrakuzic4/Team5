@@ -21,7 +21,7 @@ namespace HackAndSlash
         public void execute()
         {
             //if delay time has elapsed
-            if (stopwatch.ElapsedMilliseconds > delay)
+            /* if (stopwatch.ElapsedMilliseconds > delay)
             {
                 if (game.ItemHolder == game.firewallFirst)
                 {
@@ -37,6 +37,7 @@ namespace HackAndSlash
                 }
                 stopwatch.Restart();
             }
+            */
             
         }
     }

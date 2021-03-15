@@ -43,7 +43,7 @@ namespace HackAndSlash
             firewallSprite = (ItemSprite)SpriteFactory.Instance.CreateFirewall();
             spriteWidth = firewallSprite.Texture.Width / firewallSprite.Columns;
             spriteHeight = firewallSprite.Texture.Height / firewallSprite.Rows;
-            toolBarPosition = new Vector2(64, 0);
+            toolBarPosition = new Vector2(0, 0);
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
@@ -210,7 +210,7 @@ namespace HackAndSlash
                     break;
                 case FirewallStateMachine.ItemStates.Expended:
                     // Gray out in toolbar
-                    firewallSprite.Draw(spriteBatch, position, Color.Gray);
+                    firewallSprite.Draw(spriteBatch, toolBarPosition, Color.Gray);
                     collidableTiles = new Rectangle[1];
                     collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
                     break;

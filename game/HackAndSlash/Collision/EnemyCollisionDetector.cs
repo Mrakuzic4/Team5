@@ -64,44 +64,48 @@ namespace HackAndSlash.Collision
 
         public CollisionType CheckItemCollision(Rectangle hitbox)
         {
-            foreach (Rectangle itemTile in game.ItemHolder.getCollidableTiles(true)) { 
-                Rectangle collision = Rectangle.Intersect(hitbox, itemTile);
-                //System.Diagnostics.Debug.WriteLine("Rectangle: " + block.rectangle.X + "," + block.rectangle.Y);
-                //left or right intersection
-                if (collision.Height > collision.Width)
+            foreach (IItem ItemHolder in game.itemList)
+            {
+                foreach (Rectangle itemTile in ItemHolder.getCollidableTiles(true))
                 {
-                    //right collision
-                    if (collision.X >= hitbox.X)
+                    Rectangle collision = Rectangle.Intersect(hitbox, itemTile);
+                    //System.Diagnostics.Debug.WriteLine("Rectangle: " + block.rectangle.X + "," + block.rectangle.Y);
+                    //left or right intersection
+                    if (collision.Height > collision.Width)
                     {
-                        //System.Diagnostics.Debug.WriteLine("right collision detected");
-                        return GlobalSettings.CollisionType.Right;
+                        //right collision
+                        if (collision.X >= hitbox.X)
+                        {
+                            //System.Diagnostics.Debug.WriteLine("right collision detected");
+                            return GlobalSettings.CollisionType.Right;
+                        }
+                        //left collision
+                        else
+                        {
+                            //System.Diagnostics.Debug.WriteLine("Left collision detected");
+                            return GlobalSettings.CollisionType.Left;
+                        }
                     }
-                    //left collision
-                    else
+                    //top or bottom collision
+                    else if (collision.Height < collision.Width)
                     {
-                        //System.Diagnostics.Debug.WriteLine("Left collision detected");
-                        return GlobalSettings.CollisionType.Left;
+                        //top collision
+                        if (collision.Y >= hitbox.Y)
+                        {
+                            //System.Diagnostics.Debug.WriteLine("top collision detected");
+                            return GlobalSettings.CollisionType.Top;
+                        }
+                        //bottom collision
+                        else
+                        {
+                            //System.Diagnostics.Debug.WriteLine("bottom collision detected");
+                            return GlobalSettings.CollisionType.Bottom;
+                        }
                     }
                 }
-                //top or bottom collision
-                else if (collision.Height < collision.Width)
-                {
-                    //top collision
-                    if (collision.Y >= hitbox.Y)
-                    {
-                        //System.Diagnostics.Debug.WriteLine("top collision detected");
-                        return GlobalSettings.CollisionType.Top;
-                    }
-                    //bottom collision
-                    else
-                    {
-                        //System.Diagnostics.Debug.WriteLine("bottom collision detected");
-                        return GlobalSettings.CollisionType.Bottom;
-                    }
-                }  
             }
-            //no collision detected
-            return GlobalSettings.CollisionType.None;
+                //no collision detected
+                return GlobalSettings.CollisionType.None;
         }
     }
 }

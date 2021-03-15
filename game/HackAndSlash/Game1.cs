@@ -59,8 +59,8 @@ namespace HackAndSlash
         List<Object> controllerList;
         public List<IBlock> blockList { get; set; }
         public List<ILevel> levelList { get; set; }
-        public List<IEnemy> enemyList { get; set;  }
-
+        public List<IEnemy> enemyList { get; set; }
+        public List<IItem> itemList { get; set; }
         /* ============================================================
          * ======================== Methods ===========================
          * ============================================================ */
@@ -142,12 +142,14 @@ namespace HackAndSlash
             PlayerMain = new Player(this);//Player object
 
             // Items
-            firewallFirst = new FirewallItem(new Vector2(192, 192), spriteBatch, this);
+            firewallFirst = new FirewallItem(new Vector2(128, 128), spriteBatch, this);
             bombFirst = new BombItem(new Vector2(192, 192), spriteBatch, this);
-            throwingKnifeFirst = new ThrowingKnifeItem(new Vector2(192, 192), spriteBatch, this);
-            ItemHolder = firewallFirst;
+            throwingKnifeFirst = new ThrowingKnifeItem(new Vector2(256, 256), spriteBatch, this);
 
-            //firewallFirst.LoadContent(); 
+            itemList = new List<IItem>()
+            {
+                firewallFirst,bombFirst,throwingKnifeFirst
+            };
 
             // A list of level maps for further transition cutscene 
             levelList = new List<ILevel>()
@@ -187,7 +189,7 @@ namespace HackAndSlash
             //bugfirst.Update(gameTime);
             //moblinfirst.Update(gameTime);
 
-            ItemHolder.Update();
+            foreach (IItem item in itemList) item.Update();
 
             if (blockList.OfType<BlockMovable>().Any())
             {
@@ -216,7 +218,7 @@ namespace HackAndSlash
             foreach (IBlock block in blockList) block.Draw();
             foreach (IEnemy enemy in enemyList) enemy.Draw();
             PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
-            ItemHolder.Draw();
+            foreach (IItem item in itemList) item.Draw();
             //snakefirst.Draw();
             //moblinfirst.Draw();
             //bugfirst.Draw();
