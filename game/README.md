@@ -10,12 +10,17 @@
 * Mouse click `LMB` and `RMB` to switch between maps _(It is, again, recommanded that you pick up all the items before switching to other maps)_
 * `U` and `I` key to auto collect/reload the item in the map _(only for now)_
 
-## Gamepad Contol (not tested yet)
-* `DPAD` direction buttons for moving the player character
-* `A` button for attacking
+  ### Gamepad Contol (not tested yet)
+  * `DPAD` direction buttons for moving the player character
+  * `A` button for attacking
 
-## Features from previous patches but will likly be removed in the future
-* `O` and `P` to toggle between enemy displayed in the map 
+  ### Features from previous patches but will likly be removed in the future
+  * `O` and `P` to toggle between enemy displayed in the map 
+
+## Running the project
+* Project build using MonoGame 3.7.1 
+* This project uses NuGet package `Json.net` to parse Json files. 
+* Json files were hand-typen, and need to be marked as `Content` and `Always copy` in `Properties` in order to make the parser able to find them. 
 
 ## Known issues 
 
@@ -25,6 +30,7 @@
   * Enemies may suddenly become high on drugs if they find themseleves stuck in between 2 blocks 
   * Link needs to squeeze himself against the block/wall in order to pass through some "bottlenecks"
   * Link got the spirit and will try to use item even if he has none 
+  * In newly loaded maps, Link might stuck a bit while using items 
 
   ### Code-wise 
   
