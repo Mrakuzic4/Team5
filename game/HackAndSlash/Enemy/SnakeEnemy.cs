@@ -254,6 +254,11 @@ namespace HackAndSlash
         {
             snakeState.changeToNot();
         }
+
+        public GlobalSettings.Direction GetDirection()
+        {
+            return GlobalSettings.Direction.Right;
+        }
     }
 
     

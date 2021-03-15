@@ -237,6 +237,11 @@ namespace HackAndSlash
         {
             bugState.changeToNot();
         }
+
+        public GlobalSettings.Direction GetDirection()
+        {
+            return GlobalSettings.Direction.Right;
+        }
     }
 
     //The state machine holding the bug health

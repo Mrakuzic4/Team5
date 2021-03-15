@@ -360,7 +360,7 @@ namespace HackAndSlash
 
         public ISprite CreateEnemyBomb()
         {
-            return new EnemySprite(MoblinBombSprite, IMDB.moblinBomb.C, IMDB.moblinBomb.R);
+            return new ItemSprite(MoblinBombSprite, IMDB.moblinBomb.C, IMDB.moblinBomb.R);
         }
 
         //*************************Below are item  ***************************//

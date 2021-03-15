@@ -10,7 +10,7 @@ namespace HackAndSlash
 {
     public interface IEnemy
     {
-
+        GlobalSettings.Direction GetDirection();
         void Update(GameTime gametime);
         //gametime passed in for frame rate
 

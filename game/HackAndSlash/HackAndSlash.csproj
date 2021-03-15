@@ -49,6 +49,7 @@
     <Compile Include="Blocks\IBlock.cs" />
     <Compile Include="Collision\EnemyBlockCollision.cs" />
     <Compile Include="Collision\EnemyCollisionDetector.cs" />
+    <Compile Include="Collision\EnemyItemCollisionHandler.cs" />
     <Compile Include="Collision\PlayerEnemyCollisionHandler.cs" />
     <Compile Include="Collision\SwordEnemyCollisionHandler.cs" />
     <Compile Include="Collision\PlayerBlockCollisionHandler.cs" />

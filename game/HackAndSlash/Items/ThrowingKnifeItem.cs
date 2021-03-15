@@ -11,15 +11,6 @@ namespace HackAndSlash
 {
     public class ThrowingKnifeItem : IItem
     {
-        /*
-         * Copy Throwing knife to new item class
-         * Reskin with new sprites iand add to database
-         * have player check if they are colliding with an enmemy item by using getCollidableTiles(true)
-         * enemy will call use item with their direction
-         * change collectable and expended to usable states
-         * make a new IItem in game (or maybe in moblin) so it can appear with player items
-         * 
-         */
         
         private Game1 game;
         private IPlayer player; //Player reference

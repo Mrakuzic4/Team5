@@ -17,6 +17,7 @@ namespace HackAndSlash
         private GraphicsDevice Graphics; // the graphics device used by the spritebatch
 
         private int timeSinceLastFrame = 0; // used to slow down the rate of animation
+        private int timeSinceLastBomb = 0;
         private int timeSinceDirectionChange = 0;
         private int deathTimer = 0;
         private int milliSecondsPerFrame = 80;
@@ -29,6 +30,9 @@ namespace HackAndSlash
         private EnemyBlockCollision enemyBlockCollision;
         private Rectangle hitbox;
 
+        private IItem bombItem;
+        public GlobalSettings.Direction direction {get;set;}
+
         private int damageTaken;
         private Color tintColor;
 
@@ -40,6 +44,7 @@ namespace HackAndSlash
         //make the constructor for the class
         public MoblinEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch SB, Game1 game)
         {
+            
             position = startPosition;
             moblinState = new moblinStateMachine();
             Graphics = graphics;
@@ -52,6 +57,9 @@ namespace HackAndSlash
             enemyBlockCollision = new EnemyBlockCollision();
             hitbox = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
             damageTaken = 0;
+
+            bombItem = new MoblinItem(spriteBatch, game, this);
+
         }
 
         public Rectangle getRectangle()
@@ -74,6 +82,7 @@ namespace HackAndSlash
         //updating the enemy
         public void Update(GameTime gameTime)
         {
+            timeSinceLastBomb += gameTime.ElapsedGameTime.Milliseconds;
             timeSinceDirectionChange += gameTime.ElapsedGameTime.Milliseconds;
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds; //counting elapsed time since last update
             if (timeSinceLastFrame > milliSecondsPerFrame) // executing when milliSecondsPerFrame seconds have passed
@@ -92,7 +101,7 @@ namespace HackAndSlash
                 // Move up
                 if (position.Y >= GlobalSettings.BORDER_OFFSET)
                 {
-                    position.Y--;
+                   // position.Y--;
                 }
 
                 else
@@ -105,7 +114,7 @@ namespace HackAndSlash
                 //Move down
                 if (position.Y <= bottomBound)
                 {
-                    position.Y++;
+                   // position.Y++;
                 }
 
                 else
@@ -118,7 +127,7 @@ namespace HackAndSlash
                 //Move left
                 if (position.X >= GlobalSettings.BORDER_OFFSET)
                 {
-                    position.X--;
+                   // position.X--;
                 }
                 else
                 {
@@ -130,7 +139,7 @@ namespace HackAndSlash
                 //Move right
                 if (position.X <= rightBound)
                 {
-                    position.X++;
+                   // position.X++;
                 }
                 else
                 {
@@ -145,18 +154,28 @@ namespace HackAndSlash
                 switch (randomDirection)
                 {
                     case 0:
+                        direction = GlobalSettings.Direction.Left;
                         moblinState.changeToLeftMove();
                         break;
                     case 1:
+                        direction = GlobalSettings.Direction.Up;
                         moblinState.changeToMoveUp();
                         break;
                     case 2:
+                        direction = GlobalSettings.Direction.Right;
                         moblinState.changeToRightMove();
                         break;
                     case 3:
+                        direction = GlobalSettings.Direction.Down;
                         moblinState.changeToMoveDown();
                         break;
                 }
+            }
+
+            if (timeSinceLastBomb > 4000 && moblinState.state != moblinStateMachine.moblinHealth.Not && moblinState.state != moblinStateMachine.moblinHealth.Die)
+            {
+                timeSinceLastBomb = 0;
+                bombItem.ChangeToBeingUsed();
             }
 
             hitbox.Location = new Point((int)position.X, (int)position.Y);
@@ -179,6 +198,7 @@ namespace HackAndSlash
                     moblinState.changeToNot();
                 }
             }
+            bombItem.Update();
 
         }
 
@@ -197,8 +217,8 @@ namespace HackAndSlash
                 {
                     tintColor = Color.OrangeRed;
                     moblinState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
-                } 
-                else if (damageTaken == 2) 
+                }
+                else if (damageTaken == 2)
                 {
                     tintColor = Color.Magenta;
                     moblinState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
@@ -209,7 +229,7 @@ namespace HackAndSlash
                     moblinState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
                 }
             }
-
+            bombItem.Draw();
         }
 
 
@@ -232,22 +252,30 @@ namespace HackAndSlash
 
         public void changeToMoveRight()
         {
+            direction = GlobalSettings.Direction.Right;
             moblinState.changeToRightMove();
+            //direction = GlobalSettings.Direction.Right;
         }
 
         public void changeToMoveLeft()
         {
+            direction = GlobalSettings.Direction.Left;
             moblinState.changeToLeftMove();
+           // direction = GlobalSettings.Direction.Left;
         }
 
         public void changeToMoveUp()
         {
+            direction = GlobalSettings.Direction.Up;
             moblinState.changeToMoveUp();
+            //direction = GlobalSettings.Direction.Up;
         }
 
         public void changeToMoveDown()
         {
+            direction = GlobalSettings.Direction.Right;
             moblinState.changeToMoveDown();
+            //direction = GlobalSettings.Direction.Down;
         }
 
         public void changeToDie()
@@ -258,6 +286,11 @@ namespace HackAndSlash
         public void changeToNot()
         {
             moblinState.changeToNot();
+        }
+
+        public GlobalSettings.Direction GetDirection()
+        {
+            return direction;
         }
     }
 
@@ -274,6 +307,8 @@ namespace HackAndSlash
             state = moblinHealth.MoveLeft;
             MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinMoveLeft();
         }
+
+
         public void changeToIdle()
         {
             //change to idle if not already Idle
