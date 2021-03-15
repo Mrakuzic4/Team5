@@ -13,7 +13,7 @@
 * `DPAD` direction buttons for moving the player character
 * `A` button for attacking
 
-## Know issues 
+## Known issues 
 
   ### Gaming experience 
 
@@ -22,7 +22,7 @@
 
   ### Code-wise 
   
-  * Some classes of similar behavor are having vastly different implementation 
+  * Some classes of similar behavior are having vastly different implementation 
   * Player has a relatively high coupling 
 
 
