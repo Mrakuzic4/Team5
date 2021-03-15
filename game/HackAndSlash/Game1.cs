@@ -137,18 +137,19 @@ namespace HackAndSlash
 
             // SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
 
+            //Player
+            PlayerMain = new Player(this);//Player object
+            
             //Enemy
             snakefirst = new SnakeEnemy(new Vector2(128,200), GraphicsDevice, spriteBatch, this);
             bugfirst = new BugEnemy(new Vector2(700,128), GraphicsDevice, spriteBatch, this);
-            moblinfirst = new MoblinEnemy(new Vector2(500, 200), GraphicsDevice, spriteBatch, this);
+            moblinfirst = new MoblinEnemy(new Vector2(448 , 320), GraphicsDevice, spriteBatch, this);
 
             enemyList = new List<IEnemy>()
             {
                 snakefirst,bugfirst,moblinfirst
             };
          
-            //Player
-            PlayerMain = new Player(this);//Player object
 
             // Items
             firewallFirst = new FirewallItem(new Vector2(128, 128), spriteBatch, this);
