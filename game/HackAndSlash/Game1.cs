@@ -143,7 +143,7 @@ namespace HackAndSlash
             //Enemy
             snakefirst = new SnakeEnemy(new Vector2(128,200), GraphicsDevice, spriteBatch, this);
             bugfirst = new BugEnemy(new Vector2(700,128), GraphicsDevice, spriteBatch, this);
-            moblinfirst = new MoblinEnemy(new Vector2(448 , 320), GraphicsDevice, spriteBatch, this);
+            moblinfirst = new MoblinEnemy(new Vector2(448 , 192), GraphicsDevice, spriteBatch, this);
 
             enemyList = new List<IEnemy>()
             {
