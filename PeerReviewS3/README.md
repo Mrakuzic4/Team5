@@ -4,8 +4,8 @@ For easier track of who reviewed who's code, here's a table:
 
 | Member  | Review written | Being reviewed |
 | ------------- | ------------- | ------------- |
-| Vidhan Bhardwaj (bhardwaj.73)  | YES  | No |
-| Amarth Chen (chen.8759)  | No  | YES |
+| Vidhan Bhardwaj (bhardwaj.73)  | YES  | YES |
+| Amarth Chen (chen.8759)  | YES | YES |
 | Harshitha Kommaraju (kommaraju.3)  | YES  | No |
 | Zane Mrakuzic (mrakuzic.4)  | No  | YES |
 | Daniel Neff (neff.331)  | YES  | YES |
