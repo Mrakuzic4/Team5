@@ -21,6 +21,7 @@
 * Project build using MonoGame 3.7.1 
 * This project uses NuGet package `Json.net` to parse Json files. 
 * Json files were hand-typen, and need to be marked as `Content` and `Always copy` in `Properties` in order to make the parser able to find them. 
+* Some debug and local files have been accidentally pushed into the repo during the dev provess, but constitutes no threat for compiling or running the peoject. 
 
 ## Known issues 
 
