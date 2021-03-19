@@ -15,7 +15,9 @@ namespace HackAndSlash
 
         public Map currentMap; 
         private MapGenerator generator;
-        private int mapCycleIndex; 
+        private int mapCycleIndex;
+
+        public bool elapsing = true; // set to false when invoking pause, bag, transition, etc. 
 
         //Player
         private IPlayer PlayerMain;
@@ -188,28 +190,36 @@ namespace HackAndSlash
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            foreach (IController controller in controllerList)
+            if (!elapsing)
             {
-                controller.Update();
+
             }
-            PlayerMain.Update();
-
-            foreach (IEnemy enemy in enemyList) enemy.Update(gameTime);
-
-            foreach (IItem item in itemList) item.Update();
-
-            if (blockList.OfType<BlockMovable>().Any())
+            else // When the pause or bag state is not flagged 
             {
-                List<BlockMovable> movableBlocks = blockList.OfType<BlockMovable>().ToList();
-                foreach (BlockMovable block in movableBlocks)
+                foreach (IController controller in controllerList)
                 {
-                    block.Update();
+                    controller.Update();
                 }
+                PlayerMain.Update();
+
+                foreach (IEnemy enemy in enemyList) enemy.Update(gameTime);
+
+                foreach (IItem item in itemList) item.Update();
+
+                if (blockList.OfType<BlockMovable>().Any())
+                {
+                    List<BlockMovable> movableBlocks = blockList.OfType<BlockMovable>().ToList();
+                    foreach (BlockMovable block in movableBlocks)
+                    {
+                        block.Update();
+                    }
+                }
+
+                //Collision detector and handler of player
+
+                base.Update(gameTime);
             }
-
-            //Collision detector and handler of player
-
-            base.Update(gameTime);
+            
         }
 
         /// <summary>

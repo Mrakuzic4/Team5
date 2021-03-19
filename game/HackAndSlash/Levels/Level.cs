@@ -7,6 +7,8 @@ namespace HackAndSlash
 {
     public class Level : ILevel
     {
+        private bool test = true; 
+
         private const int ALL_MIGHT_DIV = 16;
         private const int ALL_MIGH_COUNT = 256;
 
@@ -112,6 +114,7 @@ namespace HackAndSlash
             }
         }
 
+
         public void addOpenHole(int Direction)
         {
             doorHole[Direction] = true;
@@ -134,6 +137,22 @@ namespace HackAndSlash
             // Reserved for changing levels and breaking doors 
         }
 
+        // Designed for the transition animation 
+        public void DrawTransition(Vector2 Position)
+        {
+            // Iterator 
+            int[] iter = { 0, 1, 2, 3 };
+            Texture2D[] Doors = SpriteFactory.Instance.GetLevelEagleDoorNormOpen();
+            Texture2D[] Holes = SpriteFactory.Instance.GetLevelEagleHoles();
+
+            spriteBatch.Draw(levelTexture, Position, defaultTint);
+
+            foreach (int Dir in iter)
+            {
+                if (doorOpen[Dir]) spriteBatch.Draw(Doors[Dir], Position, defaultTint);
+                if (doorHole[Dir]) spriteBatch.Draw(Holes[Dir], Position, defaultTint);
+            }
+        }
 
         public void Draw()
         {

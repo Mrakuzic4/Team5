@@ -100,6 +100,7 @@
     <Compile Include="Levels\LevelCycling.cs" />
     <Compile Include="Levels\Map.cs" />
     <Compile Include="Levels\MapGenerator.cs" />
+    <Compile Include="Levels\MapTransition.cs" />
     <Compile Include="Player\UseItemPlayer.cs" />
     <Compile Include="Player\IPlayer.cs" />
     <Compile Include="Player\DamagedPlayer.cs" />

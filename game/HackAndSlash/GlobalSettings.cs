@@ -10,6 +10,10 @@ namespace HackAndSlash
 
     public class GlobalSettings
     {
+        public const int GAME_AREA_WIDTH = 1024;
+        public const int GAME_AREA_HEIGHT = 704;
+        public const int HEADSUP_DISPLAY = 192; // 3 times 64
+
         public const int WINDOW_WIDTH = 1024;
         public const int WINDOW_HEIGHT = 704;
 
