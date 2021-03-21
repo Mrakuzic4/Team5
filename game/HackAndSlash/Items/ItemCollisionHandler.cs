@@ -8,9 +8,9 @@ namespace HackAndSlash
     public class ItemCollisionHandler
     {
         private Rectangle[] WALL_RECTANGLES = { 
-            new Rectangle(0, 0, GlobalSettings.BORDER_OFFSET, GlobalSettings.WINDOW_HEIGHT), 
-            new Rectangle(0, 0, GlobalSettings.WINDOW_WIDTH, GlobalSettings.BORDER_OFFSET), 
-            new Rectangle(GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET, 0, GlobalSettings.BORDER_OFFSET, GlobalSettings.WINDOW_HEIGHT), 
+            new Rectangle(0, GlobalSettings.HEADSUP_DISPLAY, GlobalSettings.BORDER_OFFSET, GlobalSettings.WINDOW_HEIGHT), 
+            new Rectangle(0, GlobalSettings.HEADSUP_DISPLAY, GlobalSettings.WINDOW_WIDTH, GlobalSettings.BORDER_OFFSET), 
+            new Rectangle(GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET, GlobalSettings.HEADSUP_DISPLAY, GlobalSettings.BORDER_OFFSET, GlobalSettings.WINDOW_HEIGHT), 
             new Rectangle(0, GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET, GlobalSettings.WINDOW_WIDTH, GlobalSettings.BORDER_OFFSET) };
 
         private IPlayer player;

@@ -87,7 +87,7 @@ namespace HackAndSlash
             int CountBorder = Border.Width * Border.Height;
             Color[] RawDataBorder = new Color[CountBorder];
             Border.GetData<Color>(RawDataBorder);
-            levelTexture.SetData(0, new Rectangle(0, 0, Border.Width, Border.Height), RawDataBorder, 0, CountBorder);
+            levelTexture.SetData(0, new Rectangle(0, GlobalSettings.HEADSUP_DISPLAY, Border.Width, Border.Height), RawDataBorder, 0, CountBorder);
 
             // Add tiles 
             for (int r = 0; r < GlobalSettings.TILE_ROW; r++)
@@ -95,7 +95,7 @@ namespace HackAndSlash
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
                 {
                     Vector2 StartPoint = new Vector2(GlobalSettings.BORDER_OFFSET + c * GlobalSettings.BASE_SCALAR,
-                        GlobalSettings.BORDER_OFFSET + r * GlobalSettings.BASE_SCALAR);
+                        GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY + r * GlobalSettings.BASE_SCALAR);
 
                     int TileTypeNow = (mapMatrix[r, c] >= 0 && mapMatrix[r, c] < ALL_MIGH_COUNT) ? 
                         mapMatrix[r, c] : defaultBlockIndex;
@@ -165,8 +165,8 @@ namespace HackAndSlash
 
             foreach (int Dir in iter)
             {
-                if (doorOpen[Dir]) spriteBatch.Draw(Doors[Dir], new Vector2(0, 0), defaultTint);
-                if (doorHole[Dir]) spriteBatch.Draw(Holes[Dir], new Vector2(0, 0), defaultTint);
+                if (doorOpen[Dir]) spriteBatch.Draw(Doors[Dir], new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
+                if (doorHole[Dir]) spriteBatch.Draw(Holes[Dir], new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
             }
         }
     }

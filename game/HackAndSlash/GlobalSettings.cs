@@ -1,21 +1,22 @@
 ﻿
 using System.Collections.Generic;
-
+using System;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace HackAndSlash
 {
     // Left for some future global (throught out the game kind) variables 
-    
+
 
     public class GlobalSettings
     {
         public const int GAME_AREA_WIDTH = 1024;
         public const int GAME_AREA_HEIGHT = 704;
-        public const int HEADSUP_DISPLAY = 192; // 3 times 64
+        public const int HEADSUP_DISPLAY = 128; // 2 times 64
 
         public const int WINDOW_WIDTH = 1024;
-        public const int WINDOW_HEIGHT = 704;
+        public const int WINDOW_HEIGHT = GAME_AREA_HEIGHT + HEADSUP_DISPLAY;
 
         public const int BASE_SCALAR = 64; // Pixel unit
 
@@ -43,6 +44,16 @@ namespace HackAndSlash
          * Future updates might just get rid of these.
          */
         public const int CYCLE_BOUND = 6;
+
+        public GlobalSettings () {
+            
+        }
+
+
+        public Vector2 PlayAreaPosition(int x, int y)
+        {
+            return new Vector2(BORDER_OFFSET + x * BASE_SCALAR, HEADSUP_DISPLAY + BORDER_OFFSET + y * BASE_SCALAR);
+        }
 
     }
 

@@ -17,6 +17,8 @@ namespace HackAndSlash
         private MapGenerator generator;
         private int mapCycleIndex;
 
+        public GlobalSettings gameSettings;
+
         public bool elapsing = true; // set to false when invoking pause, bag, transition, etc. 
 
         //Player
@@ -69,7 +71,7 @@ namespace HackAndSlash
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-
+            gameSettings = new GlobalSettings();
             Content.RootDirectory = "Content";
         }
 
@@ -143,9 +145,9 @@ namespace HackAndSlash
             PlayerMain = new Player(this);//Player object
             
             //Enemy
-            snakefirst = new SnakeEnemy(new Vector2(128,200), GraphicsDevice, spriteBatch, this);
-            bugfirst = new BugEnemy(new Vector2(700,128), GraphicsDevice, spriteBatch, this);
-            moblinfirst = new MoblinEnemy(new Vector2(448 , 192), GraphicsDevice, spriteBatch, this);
+            snakefirst = new SnakeEnemy(gameSettings.PlayAreaPosition(1, 3), GraphicsDevice, spriteBatch, this);
+            bugfirst = new BugEnemy(gameSettings.PlayAreaPosition(10, 2), GraphicsDevice, spriteBatch, this);
+            moblinfirst = new MoblinEnemy(gameSettings.PlayAreaPosition(7, 2), GraphicsDevice, spriteBatch, this);
 
             enemyList = new List<IEnemy>()
             {
@@ -154,9 +156,9 @@ namespace HackAndSlash
          
 
             // Items
-            firewallFirst = new FirewallItem(new Vector2(128, 128), spriteBatch, this);
-            bombFirst = new BombItem(new Vector2(192, 192), spriteBatch, this);
-            throwingKnifeFirst = new ThrowingKnifeItem(new Vector2(256, 256), spriteBatch, this);
+            firewallFirst = new FirewallItem(gameSettings.PlayAreaPosition(0,0), spriteBatch, this);
+            bombFirst = new BombItem(gameSettings.PlayAreaPosition(1, 1), spriteBatch, this);
+            throwingKnifeFirst = new ThrowingKnifeItem(gameSettings.PlayAreaPosition(2, 2), spriteBatch, this);
 
             itemList = new List<IItem>()
             {

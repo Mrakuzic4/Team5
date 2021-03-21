@@ -402,13 +402,13 @@ namespace HackAndSlash
         public IBlock CreateBlockMovableVertical(SpriteBatch spriteBatch, int r, int c)
         {
             return new BlockMovable(BlockMovable, new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET), 
-                (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET)), spriteBatch, true);
+                (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY)), spriteBatch, true);
         }
 
         public IBlock CreateBlockMovableHorizontal(SpriteBatch spriteBatch, int r, int c)
         {
             return new BlockMovable(BlockMovable, new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET),
-                (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET)), spriteBatch, false);
+                (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY)), spriteBatch, false);
         }
 
     }

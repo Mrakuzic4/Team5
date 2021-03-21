@@ -40,7 +40,7 @@ namespace HackAndSlash
                     if (Index == 32 || Index == 33)
                     {
                         BlockList.Add(new BlockInvis(new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET),
-                                    (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET)), spriteBatch));
+                                    (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY)), spriteBatch));
                     }
                     else if (Index == 40)
                     {
