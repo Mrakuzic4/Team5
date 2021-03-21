@@ -100,7 +100,7 @@ namespace HackAndSlash
             DrawPlayer.Instance.Update();
 
             //Player Boundary Check
-            stayInBoundary();
+            //stayInBoundary();
 
             //Player Collision Detector
             //hitbox for player, wraps around player.

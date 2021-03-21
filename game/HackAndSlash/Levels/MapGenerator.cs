@@ -30,8 +30,38 @@ namespace HackAndSlash
 
         public List<IBlock> GetBlockList(SpriteBatch spriteBatch, SpriteFactory spriteFactory)
         {
-            List<IBlock> BlockList = new List<IBlock>(); 
+            List<IBlock> BlockList = new List<IBlock>();
 
+            int TopPosition = GlobalSettings.HEADSUP_DISPLAY + GlobalSettings.BASE_SCALAR;
+            int ButtPosition = GlobalSettings.WINDOW_HEIGHT - 2 * GlobalSettings.BASE_SCALAR;
+            int LeftPosition = GlobalSettings.BASE_SCALAR;
+            int RightPosition = GlobalSettings.WINDOW_WIDTH - 2 * GlobalSettings.BASE_SCALAR;
+            int HorizontalPos, VerticalPos = 0; 
+
+            // The following are for the creation of walls (in lieu of boundary check)
+            for (int i = 0; i < GlobalSettings.TILE_COLUMN; i++)
+            {
+                if (i < 6)
+                    HorizontalPos = (int)((i + 1.25) * GlobalSettings.BASE_SCALAR); // resulting formula with magic number 
+                else
+                    HorizontalPos = (int)((i + 2.75) * GlobalSettings.BASE_SCALAR);
+                
+                BlockList.Add(new BlockInvis(new Vector2(HorizontalPos, TopPosition), spriteBatch));
+                BlockList.Add(new BlockInvis(new Vector2(HorizontalPos, ButtPosition), spriteBatch));
+            }
+            for (int i = 0; i < GlobalSettings.TILE_ROW; i++)
+            {
+                if (i < 3)
+                    VerticalPos = GlobalSettings.HEADSUP_DISPLAY + (int)((i +2.25) * GlobalSettings.BASE_SCALAR);
+                if (i > 3)
+                    VerticalPos = GlobalSettings.HEADSUP_DISPLAY + (int)((i + 2.15) * GlobalSettings.BASE_SCALAR);
+                
+                BlockList.Add(new BlockInvis(new Vector2(LeftPosition, VerticalPos), spriteBatch));
+                BlockList.Add(new BlockInvis(new Vector2(RightPosition, VerticalPos), spriteBatch));
+            }   
+
+
+            // The following loop is for blocks in the main gameplay aera 
             for (int r = 0; r < GlobalSettings.TILE_ROW; r++)
             {
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
@@ -66,7 +96,7 @@ namespace HackAndSlash
                 {
                     int Index = mapInfo.Arrangement[r, c];
                     Vector2 position = new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET),
-                                    (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET));
+                                    (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY));
                     switch (Index)
                     {
                         case -1:
