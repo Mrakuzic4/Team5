@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace HackAndSlash
 {
@@ -12,10 +11,6 @@ namespace HackAndSlash
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-        public Map currentMap; 
-        private MapGenerator generator;
-        private int mapCycleIndex;
 
         public GlobalSettings gameSettings;
 
@@ -47,6 +42,13 @@ namespace HackAndSlash
             }
         }
 
+        // Level and map related 
+        public Map currentMap;
+        private MapGenerator generator;
+        private int mapCycleIndex;
+        // Partically due to planning, "level" and "map" are used interchangeable 
+
+        private Color defaultFill = Color.Black; 
 
         // Sprites  
         public IItem ItemHolder { get; set; }
@@ -238,7 +240,7 @@ namespace HackAndSlash
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(defaultFill);
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp);
 
             if (!gamePaused)

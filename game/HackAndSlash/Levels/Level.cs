@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace HackAndSlash
 {
@@ -14,8 +15,9 @@ namespace HackAndSlash
 
         private GraphicsDevice graphics;
         private SpriteBatch spriteBatch;
-        private Texture2D levelTexture;
-        private Texture2D blockAllMight; 
+        public Texture2D levelTexture; // Can be accessed to make map transition 
+        private Texture2D blockAllMight;
+        private Texture2D doors; 
         private Color defaultColor = Color.Black;
         private Color defaultTint = Color.White;
 
@@ -23,11 +25,21 @@ namespace HackAndSlash
         private int[,] mapMatrix; 
 
         // Up, Bottom, Left Right 
-        private bool[] doorOpen = { false, false, false, false };
-        private bool[] doorHole= { false, false, false, false };
-        private bool[] doorLocked = { false, false, false, false };
-
-        
+        private bool[] doorOpen =   { false, false, false, false };    // Highest priority 
+        private bool[] doorHole=    { false, false, false, false };    // Second in command 
+        private bool[] doorLocked = { false, false, false, false };    // Lowest priority  
+        private bool[] doorHiden =  { false, false, false, false };    // Does not draw 
+        private Dictionary<int, int> doorDirMapping = new Dictionary<int, int>(){
+            {0, 0},
+            {1, 3},
+            {2, 1},
+            {3, 2}
+            };  // Mapping the direction Enum to the image of th4 doors 
+        private int[] iter = { 0, 1, 2, 3 }; // Minimize magic number in door iteration 
+        private const int DOOR_OPEN_INDEX = 1;
+        private const int DOOR_LOCKED_INDEX = 2;
+        private const int DOOR_MYS_INDEX = 3;
+        private const int DOOR_HOLE_INDEX = 4;
 
         public Level(GraphicsDevice graphics, SpriteBatch spriteBatch, int[,] Arrangement, int Defaultblock,
             bool[] DO, bool[] DH, bool[] DL)
@@ -36,10 +48,10 @@ namespace HackAndSlash
             this.spriteBatch = spriteBatch;
             this.defaultBlockIndex = Defaultblock;
             this.doorOpen = DO;
-            this.doorHole = DH;
+            this.doorHiden = DH;
             this.doorLocked = DL;
 
-            levelTexture = GenerateTexture(GlobalSettings.WINDOW_WIDTH, GlobalSettings.WINDOW_HEIGHT, pixel => defaultColor);
+            levelTexture = GenerateTexture(GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.GAME_AREA_HEIGHT, pixel => defaultColor);
             mapMatrix = Arrangement;
 
             blockAllMight = SpriteFactory.Instance.getBlockAllMight();
@@ -87,7 +99,7 @@ namespace HackAndSlash
             int CountBorder = Border.Width * Border.Height;
             Color[] RawDataBorder = new Color[CountBorder];
             Border.GetData<Color>(RawDataBorder);
-            levelTexture.SetData(0, new Rectangle(0, GlobalSettings.HEADSUP_DISPLAY, Border.Width, Border.Height), RawDataBorder, 0, CountBorder);
+            levelTexture.SetData(0, new Rectangle(0, 0, Border.Width, Border.Height), RawDataBorder, 0, CountBorder);
 
             // Add tiles 
             for (int r = 0; r < GlobalSettings.TILE_ROW; r++)
@@ -95,7 +107,7 @@ namespace HackAndSlash
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
                 {
                     Vector2 StartPoint = new Vector2(GlobalSettings.BORDER_OFFSET + c * GlobalSettings.BASE_SCALAR,
-                        GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY + r * GlobalSettings.BASE_SCALAR);
+                        GlobalSettings.BORDER_OFFSET + r * GlobalSettings.BASE_SCALAR);
 
                     int TileTypeNow = (mapMatrix[r, c] >= 0 && mapMatrix[r, c] < ALL_MIGH_COUNT) ? 
                         mapMatrix[r, c] : defaultBlockIndex;
@@ -112,19 +124,67 @@ namespace HackAndSlash
                         RawDataNow, 0, CountNow);
                 }
             }
+            UpdateDoors();
         }
 
-
-        public void addOpenHole(int Direction)
+        // Update the doors, used both in initialization and when new doors are being dynamically added 
+        public void UpdateDoors()
         {
-            doorHole[Direction] = true;
-            doorOpen[Direction] = false;
+            Texture2D doors = SpriteFactory.Instance.GetLevelEagleDoors();
+            int DoorSizeUnit = GlobalSettings.BASE_SCALAR * 2;
+
+            int HorizontalPos = GlobalSettings.GAME_AREA_WIDTH / 2 - GlobalSettings.BASE_SCALAR;
+            int VerticalPos = GlobalSettings.GAME_AREA_HEIGHT / 2 - GlobalSettings.BASE_SCALAR;
+            int TopPosition = 0;
+            int ButtPosition = GlobalSettings.GAME_AREA_HEIGHT - GlobalSettings.BORDER_OFFSET;
+
+            int LeftPosition = 0;
+            int RightPosition = GlobalSettings.GAME_AREA_WIDTH - GlobalSettings.BORDER_OFFSET;
+
+            int Col = 0;
+            Rectangle SourceRectangle, DestRectangle = new Rectangle(0, 0, DoorSizeUnit, DoorSizeUnit); 
+
+            
+            foreach (int Dir in iter)
+            {
+                // Pre-launch check 
+                Col = 0;
+                if (doorLocked[Dir]) Col = DOOR_LOCKED_INDEX;
+                if (doorHole[Dir])   Col = DOOR_HOLE_INDEX;
+                if (doorOpen[Dir])   Col = DOOR_OPEN_INDEX;
+                switch (Dir) {
+                    case 0:
+                        DestRectangle.X = HorizontalPos;
+                        DestRectangle.Y = TopPosition;
+                        break;
+                    case 1:
+                        DestRectangle.X = HorizontalPos;
+                        DestRectangle.Y = ButtPosition;
+                        break;
+                    case 2:
+                        DestRectangle.X = LeftPosition;
+                        DestRectangle.Y = VerticalPos;
+                        break;
+                    case 3:
+                        DestRectangle.X = RightPosition;
+                        DestRectangle.Y = VerticalPos;
+                        break;
+                    default: break; // Not possible 
+                }
+                SourceRectangle = new Rectangle(
+                    Col * DoorSizeUnit, doorDirMapping[Dir] * DoorSizeUnit,
+                    DoorSizeUnit, DoorSizeUnit);
+
+                // Copy 
+                Color[] data = new Color[SourceRectangle.Width * SourceRectangle.Height];
+                doors.GetData<Color>(0, SourceRectangle, data, 0, data.Length);
+
+                // Paste 
+                levelTexture.SetData(0, DestRectangle,
+                        data, 0, data.Length);
+            }
         }
 
-        public void addOpenDoor(int Direction)
-        {
-            doorOpen[Direction] = true;
-        }
 
         // Up, Bottom, Left Right 
         public bool canGoThrough(int Dir)
@@ -141,33 +201,16 @@ namespace HackAndSlash
         public void DrawTransition(Vector2 Position)
         {
             // Iterator 
-            int[] iter = { 0, 1, 2, 3 };
-            Texture2D[] Doors = SpriteFactory.Instance.GetLevelEagleDoorNormOpen();
-            Texture2D[] Holes = SpriteFactory.Instance.GetLevelEagleHoles();
-
-            spriteBatch.Draw(levelTexture, Position, defaultTint);
-
-            foreach (int Dir in iter)
-            {
-                if (doorOpen[Dir]) spriteBatch.Draw(Doors[Dir], Position, defaultTint);
-                if (doorHole[Dir]) spriteBatch.Draw(Holes[Dir], Position, defaultTint);
-            }
         }
 
         public void Draw()
         {
             // Iterator 
-            int[] iter = { 0, 1, 2, 3 };
             Texture2D[] Doors = SpriteFactory.Instance.GetLevelEagleDoorNormOpen();
             Texture2D[] Holes = SpriteFactory.Instance.GetLevelEagleHoles();
 
-            spriteBatch.Draw(levelTexture, new Vector2(0, 0), defaultTint);
+            spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
 
-            foreach (int Dir in iter)
-            {
-                if (doorOpen[Dir]) spriteBatch.Draw(Doors[Dir], new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
-                if (doorHole[Dir]) spriteBatch.Draw(Holes[Dir], new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
-            }
         }
     }
 }
