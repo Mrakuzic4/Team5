@@ -39,7 +39,7 @@ namespace HackAndSlash
 
             //Inital Position
             relPositionMC.X = GlobalSettings.BORDER_OFFSET;
-            relPositionMC.Y = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET;
+            relPositionMC.Y = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
 
             //Collision
             playerHitBox = new Rectangle((int)relPositionMC.X + GlobalSettings.PLAYER_HITBOX_X_OFFSET, 
@@ -100,7 +100,7 @@ namespace HackAndSlash
             DrawPlayer.Instance.Update();
 
             //Player Boundary Check
-            //stayInBoundary();
+            // stayInBoundary();
 
             //Player Collision Detector
             //hitbox for player, wraps around player.
@@ -131,7 +131,7 @@ namespace HackAndSlash
         {
             //Top and Left Boundary work just fine
             if (this.relPositionMC.X < GlobalSettings.BORDER_OFFSET) this.relPositionMC.X = GlobalSettings.BORDER_OFFSET;
-            if (this.relPositionMC.Y < GlobalSettings.BORDER_OFFSET) this.relPositionMC.Y = GlobalSettings.BORDER_OFFSET;
+            if (this.relPositionMC.Y < GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY) this.relPositionMC.Y = GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY;
             //Bottom and Right Boundary need to take the window and sprite size into account.
             int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
             int rightBound = GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;

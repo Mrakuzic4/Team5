@@ -56,7 +56,17 @@ namespace HackAndSlash
                 case MoblinBombStateMachine.ItemStates.BeingUsed:
                     bombSprite.Update();
                     useDurationCounter++;
-                    
+                    if (useDurationCounter >= USE_DURATION)
+                    {
+                        useDurationCounter = 0;
+                        ChangeToExpended();   
+                    }
+
+                    if (moblinBombCollisionHandler.CheckForPlayerCollision(collidableTiles[0]))
+                    {
+                        this.game.Player.Damaged();
+                        ChangeToExpended();
+                    }
 
                     if (useDurationCounter % (USE_DURATION / MAX_RANGE) == 0)
                     {
@@ -69,13 +79,7 @@ namespace HackAndSlash
                                 if (!moblinBombCollisionHandler.CheckForWall(checkTile) && !moblinBombCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.X -= spriteWidth;
-                                }
-
-                                else if(moblinBombCollisionHandler.CheckForPlayerCollision(checkTile))
-                                {
-                                    this.game.Player.Damaged();
-                                    ChangeToExpended();
-                                }
+                                } 
                                 else
                                 {
                                     ChangeToExpended();
@@ -87,34 +91,23 @@ namespace HackAndSlash
                                 {
                                     position.X += spriteWidth;
                                 }
-
-                                else if (moblinBombCollisionHandler.CheckForPlayerCollision(checkTile))
-                                {
-                                    this.game.Player.Damaged();
-                                    ChangeToExpended();
-                                }
                                 else
                                 {
                                     ChangeToExpended();
                                 }
+                                
                                 break;
                             case GlobalSettings.Direction.Up: // up
                                 checkTile = new Rectangle((int)position.X, (int)position.Y - spriteHeight, spriteWidth, spriteHeight);
                                 if (!moblinBombCollisionHandler.CheckForWall(checkTile) && !moblinBombCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.Y -= spriteHeight;
-                                    ChangeToExpended();
-                                }
-
-                                else if (moblinBombCollisionHandler.CheckForPlayerCollision(checkTile))
-                                {
-                                    this.game.Player.Damaged();
-                                    ChangeToExpended();
                                 }
                                 else
                                 {
                                     ChangeToExpended();
                                 }
+                                
                                 break;
                             case GlobalSettings.Direction.Down: // down
                                 checkTile = new Rectangle((int)position.X, (int)position.Y + spriteHeight, spriteWidth, spriteHeight);
@@ -122,22 +115,14 @@ namespace HackAndSlash
                                 {
                                     position.Y += spriteHeight;
                                 }
-
-                                else if (moblinBombCollisionHandler.CheckForPlayerCollision(checkTile))
-                                {
-                                    this.game.Player.Damaged();
-                                    ChangeToExpended();
-                                }
                                 else
                                 {
                                     ChangeToExpended();
                                 }
+
                                 break;
-                        }
-
-                        
+                        }                        
                     }
-
                     break;
                 case MoblinBombStateMachine.ItemStates.Expended:
                     collidableTiles = new Rectangle[1];
@@ -184,6 +169,7 @@ namespace HackAndSlash
 
         public void ChangeToExpended()
         {
+            position = enemy.GetPos();
             itemState.ChangeToExpended();
         }
 

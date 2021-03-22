@@ -147,7 +147,7 @@ namespace HackAndSlash
             //Enemy
             snakefirst = new SnakeEnemy(gameSettings.PlayAreaPosition(1, 3), GraphicsDevice, spriteBatch, this);
             bugfirst = new BugEnemy(gameSettings.PlayAreaPosition(10, 2), GraphicsDevice, spriteBatch, this);
-            moblinfirst = new MoblinEnemy(gameSettings.PlayAreaPosition(7, 2), GraphicsDevice, spriteBatch, this);
+            moblinfirst = new MoblinEnemy(gameSettings.PlayAreaPosition(10, 3), GraphicsDevice, spriteBatch, this);
 
             enemyList = new List<IEnemy>()
             {
