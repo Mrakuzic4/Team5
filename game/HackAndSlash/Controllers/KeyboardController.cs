@@ -42,7 +42,8 @@ namespace HackAndSlash
                 {Keys.P, new EnemyCycleCommandBug(game)},
                 //GameFunction
                 {Keys.R, new ResetCommand(game)},
-                {Keys.Q, new QuitCommand(game)}
+                {Keys.Q, new QuitCommand(game)},
+                {Keys.Escape, new PauseCommand(game)}
             };
         }
 
