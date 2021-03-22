@@ -37,7 +37,12 @@ namespace HackAndSlash
         public const long DELAY_TIME = 100; // In ms
         public const long DELAY_KEYBOARD = 200; // For keyboard pressing event 
         public enum Direction { Left, Right, Up, Down };
-        public enum CollisionType { None, Left, Right, Top, Bottom, }
+        public enum CollisionType { None, Left, Right, Top, Bottom, };
+
+        public const int PAUSE_CONTINUE_X = 185;
+        public const int PAUSE_CONTINUE_Y = 440;
+        public const int PAUSE_QUIT_X = 310;
+        public const int PAUSE_QUIT_Y = 512;
 
 
         /* Some fields created for level cycling in sprint 3.

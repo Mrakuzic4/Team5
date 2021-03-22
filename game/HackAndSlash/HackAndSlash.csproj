@@ -55,6 +55,7 @@
     <Compile Include="Collision\PlayerBlockCollisionHandler.cs" />
     <Compile Include="Collision\PlayerCollisionDetector.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
+    <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\UseThrowingKnifeCommand.cs" />
     <Compile Include="Commands\UseFirewallCommand.cs" />
     <Compile Include="Commands\UseBombCommand.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprite.cs" />
+    <Compile Include="UI\PauseOverlay.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

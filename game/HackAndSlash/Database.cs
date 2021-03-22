@@ -65,6 +65,9 @@ namespace HackAndSlash
         public ImageFile[] LevelEagleDoorNormOpen;
         public ImageFile[] LevelEagleHole;
 
+        public ImageFile PauseOverlay;
+        public ImageFile SwordSelector;
+
         public ImageDatabase()
         {
             // Initilize images with path/name, column and row 
@@ -135,6 +138,8 @@ namespace HackAndSlash
                 new ImageFile("images/levels/eagleHoleHorizontalLeft", 1, 1),
                 new ImageFile("images/levels/eagleHoleHorizontalRight", 1, 1)};
 
+            PauseOverlay = new ImageFile("images/UI/GamePauseOverlay", 1, 1);
+            SwordSelector = new ImageFile("images/UI/SwordSelector", 1, 1);
         }
     }
 

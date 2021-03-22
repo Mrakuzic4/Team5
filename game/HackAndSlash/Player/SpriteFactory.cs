@@ -64,6 +64,9 @@ namespace HackAndSlash
         private Texture2D[] LevelEagleDoorNormOpen;
         private Texture2D[] LevelEagleHoles;
 
+        private Texture2D PauseOverlay;
+        private Texture2D SwordSelector;
+
         private static SpriteFactory instance = new SpriteFactory();
 
         public static SpriteFactory Instance
@@ -151,6 +154,10 @@ namespace HackAndSlash
                 content.Load<Texture2D>(IMDB.LevelEagleHole[1].pathName),
                 content.Load<Texture2D>(IMDB.LevelEagleHole[2].pathName),
                 content.Load<Texture2D>(IMDB.LevelEagleHole[3].pathName)};
+
+            //UI Related
+            PauseOverlay = content.Load<Texture2D>(IMDB.PauseOverlay.pathName);
+            SwordSelector = content.Load<Texture2D>(IMDB.SwordSelector.pathName);
         }
 
         public Texture2D CreateBG()
@@ -180,6 +187,14 @@ namespace HackAndSlash
         public Texture2D[] GetLevelEagleHoles()
         {
             return LevelEagleHoles;
+        }
+        public Texture2D GetPauseOverlay()
+        {
+            return PauseOverlay;
+        }
+        public Texture2D GetSwordSelector()
+        {
+            return SwordSelector;
         }
 
         public Texture2D CreatePlayer()

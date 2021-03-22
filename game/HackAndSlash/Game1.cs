@@ -19,7 +19,8 @@ namespace HackAndSlash
 
         public GlobalSettings gameSettings;
 
-        public bool elapsing = true; // set to false when invoking pause, bag, transition, etc. 
+        public bool elapsing = true; // set to false when invoking pause, bag, transition, etc.
+        public bool gamePaused = false; //set to true if pause button has been pressed
 
         //Player
         private IPlayer PlayerMain;
@@ -58,6 +59,9 @@ namespace HackAndSlash
         public FirewallItem firewallFirst;
         public BombItem bombFirst;
         public ThrowingKnifeItem throwingKnifeFirst;
+
+        //UI Elements
+        private PauseOverlay pauseOverlay;
 
         // Object lists
         List<Object> controllerList;
@@ -174,6 +178,10 @@ namespace HackAndSlash
 
             //Create list of blocks
             blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
+
+            //UI Elements
+            pauseOverlay = new PauseOverlay(this, SpriteFactory.Instance.GetPauseOverlay(), 
+                SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
         }
 
         /// <summary>
@@ -194,7 +202,7 @@ namespace HackAndSlash
         {
             if (!elapsing)
             {
-
+                if (gamePaused) pauseOverlay.Update();
             }
             else // When the pause or bag state is not flagged 
             {
@@ -233,11 +241,16 @@ namespace HackAndSlash
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp);
 
-            foreach (ILevel levelMap in levelList) levelMap.Draw();
-            foreach (IBlock block in blockList) block.Draw();
-            foreach (IEnemy enemy in enemyList) enemy.Draw();
-            PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
-            foreach (IItem item in itemList) item.Draw();
+            if (!gamePaused)
+            {
+                foreach (ILevel levelMap in levelList) levelMap.Draw();
+                foreach (IBlock block in blockList) block.Draw();
+                foreach (IEnemy enemy in enemyList) enemy.Draw();
+                PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
+                foreach (IItem item in itemList) item.Draw();
+            }
+            else pauseOverlay.Draw();
+            
 
             spriteBatch.End();
             base.Draw(gameTime);
