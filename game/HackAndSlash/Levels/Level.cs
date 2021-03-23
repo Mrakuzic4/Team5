@@ -8,14 +8,17 @@ namespace HackAndSlash
 {
     public class Level : ILevel
     {
-        private bool test = true; 
+        private bool test = true;
+        public bool active = true; 
 
         private const int ALL_MIGHT_DIV = 16;
         private const int ALL_MIGH_COUNT = 256;
+        private const int EDGE_PRESERVE = 17 * 4;
 
         private GraphicsDevice graphics;
         private SpriteBatch spriteBatch;
         public Texture2D levelTexture; // Can be accessed to make map transition 
+        public Texture2D levelOverlay; 
         private Texture2D blockAllMight;
         private Texture2D doors; 
         private Color defaultColor = Color.Black;
@@ -57,6 +60,9 @@ namespace HackAndSlash
             blockAllMight = SpriteFactory.Instance.getBlockAllMight();
 
             AlterTexture();
+            GenerateOverlay();
+
+            AddHole(1);
         }   
         
         // Generate a texture filled with default color 
@@ -186,11 +192,38 @@ namespace HackAndSlash
         }
 
 
+        // Create a overlay texture for the layering effect when player goes through doors 
+        private Texture2D GenerateOverlay()
+        { 
+            Texture2D TranspBlock = GenerateTexture(GlobalSettings.GAME_AREA_WIDTH - EDGE_PRESERVE*2, 
+                GlobalSettings.GAME_AREA_HEIGHT - EDGE_PRESERVE*2, pixel => Color.Transparent);
+
+            // MonoGame cannot just use assigment to copy texture 
+            levelOverlay = GenerateTexture(GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.GAME_AREA_HEIGHT, pixel => Color.Transparent);
+            Color[] SrcData = new Color[levelTexture.Width * levelTexture.Height];
+            levelTexture.GetData<Color>(SrcData);
+            levelOverlay.SetData(SrcData);
+
+            Color[] TranspData = new Color[TranspBlock.Width * TranspBlock.Height];
+            TranspBlock.GetData<Color>(TranspData);
+            levelOverlay.SetData(0, new Rectangle(EDGE_PRESERVE, EDGE_PRESERVE, TranspBlock.Width, TranspBlock.Height),
+                TranspData, 0, TranspData.Length);
+
+            return levelOverlay; 
+        }
+
         // Up, Bottom, Left Right 
         public bool canGoThrough(int Dir)
         {
             return doorOpen[Dir] || doorHole[Dir];
         }
+
+        public void AddHole(int Dir)
+        {
+            doorHole[Dir] = true;
+            UpdateDoors();
+        }
+
 
         public void Update()
         {
@@ -205,12 +238,15 @@ namespace HackAndSlash
 
         public void Draw()
         {
-            // Iterator 
-            Texture2D[] Doors = SpriteFactory.Instance.GetLevelEagleDoorNormOpen();
-            Texture2D[] Holes = SpriteFactory.Instance.GetLevelEagleHoles();
+            if (active)
+                spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
 
-            spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
+        }
 
+        public void DrawOverlay()
+        {
+            if (active)
+                spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
         }
     }
 }

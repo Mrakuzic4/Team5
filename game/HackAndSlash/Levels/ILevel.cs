@@ -11,6 +11,6 @@ namespace HackAndSlash
         void Update();
 
         void Draw();
-
+        void DrawOverlay();
     }
 }

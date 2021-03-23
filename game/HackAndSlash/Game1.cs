@@ -250,6 +250,8 @@ namespace HackAndSlash
                 foreach (IEnemy enemy in enemyList) enemy.Draw();
                 PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
                 foreach (IItem item in itemList) item.Draw();
+
+                foreach (ILevel levelMap in levelList) levelMap.DrawOverlay();
             }
             else pauseOverlay.Draw();
             
