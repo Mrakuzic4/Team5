@@ -23,10 +23,13 @@ namespace HackAndSlash
 
         private GraphicsDevice graphics;
         private SpriteBatch spriteBatch;
-        public Texture2D levelTexture; // Can be accessed to make map transitioning 
+
+        public Texture2D headsUpFill; 
         public Texture2D levelOverlay;
-        public Texture2D nextLevel; 
+        public Texture2D nextLevel;
+        public Texture2D levelTexture; // Can be accessed to make map transitioning 
         private Texture2D blockAllMight;
+
         //private Texture2D doors; 
         private Color defaultColor = Color.Black;
         private Color defaultTint = Color.White;
@@ -61,6 +64,7 @@ namespace HackAndSlash
             this.doorHiden = DH;
             this.doorLocked = DL;
 
+            headsUpFill = GenerateTexture(GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.HEADSUP_DISPLAY, pixel => defaultColor);
             levelTexture = GenerateTexture(GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.GAME_AREA_HEIGHT, pixel => defaultColor);
             mapMatrix = Arrangement;
 
@@ -240,7 +244,7 @@ namespace HackAndSlash
                 position.Y += TRANSITION_STEP;
                 timer = 0; 
             }
-            if (position.Y > GlobalSettings.GAME_AREA_HEIGHT + TRANSITION_STEP)
+            if (position.Y > GlobalSettings.GAME_AREA_HEIGHT + GlobalSettings.HEADSUP_DISPLAY)
             {
                 transFinsihed = true;
                 transitioning = false; 
@@ -256,6 +260,7 @@ namespace HackAndSlash
             if (transitioning)
             {
                 spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + position, defaultTint);
+                spriteBatch.Draw(nextLevel, new Vector2(0, -GlobalSettings.GAME_AREA_HEIGHT) + position, defaultTint);
             }
             else
             {
@@ -268,6 +273,7 @@ namespace HackAndSlash
             if (transitioning)
             {
                 spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + position, defaultTint);
+                spriteBatch.Draw(headsUpFill, new Vector2(0, 0), defaultTint);
             }
             else
             {

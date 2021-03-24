@@ -107,11 +107,11 @@ namespace HackAndSlash
             currentLevel.nextLevel = NextLevel.levelTexture;
             currentLevel.transitioning = true;
             currentLevel.transFinsihed = false;
-            
 
-            blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
-            enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
-            itemList = generator.GetItemList(spriteBatch, this);
+            // Empty the list to avoid things being drawn during transition 
+            blockList = new List<IBlock>();
+            enemyList = new List<IEnemy>();
+            itemList = new List<IItem>();
         }
 
         /// <summary>
@@ -216,7 +216,13 @@ namespace HackAndSlash
             {
                 currentLevel.Update(gameTime);
                 if (currentLevel.transFinsihed)
+                {
                     currentLevel = generator.getLevel(GraphicsDevice, spriteBatch, currentMap);
+                    blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
+                    enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
+                    itemList = generator.GetItemList(spriteBatch, this);
+                }
+                    
             }
             else // When the pause or bag state is not flagged 
             {
@@ -265,6 +271,10 @@ namespace HackAndSlash
                 foreach (IItem item in itemList) item.Draw();
 
                 currentLevel.DrawOverlay();
+
+                /*
+                 * Put UI elements here 
+                 */
             }
             else { 
                 pauseOverlay.Draw(); 
