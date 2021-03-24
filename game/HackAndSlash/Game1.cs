@@ -103,6 +103,7 @@ namespace HackAndSlash
             currentMap = new LevelCycling().S3EagleCycle[mapCycleIndex];
             generator = new MapGenerator(currentMap);
 
+            // Pre-launch warmup for transition 
             NextLevel = generator.getLevel(GraphicsDevice, spriteBatch, currentMap);
             currentLevel.nextLevel = NextLevel.levelTexture;
             currentLevel.transitioning = true;
@@ -215,7 +216,7 @@ namespace HackAndSlash
             else if (currentLevel.transitioning)
             {
                 currentLevel.Update(gameTime);
-                if (currentLevel.transFinsihed)
+                if (currentLevel.transFinsihed) // Flagging it into finished is done in Level.cs 
                 {
                     currentLevel = generator.getLevel(GraphicsDevice, spriteBatch, currentMap);
                     blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
