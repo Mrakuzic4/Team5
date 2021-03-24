@@ -12,6 +12,16 @@ namespace HackAndSlash
 		private GlobalSettings.Direction playerDir;
 		public GlobalSettings.Direction Direction { get { return playerDir; } }
 
+		public const int maxHealth = 6; //6 indicates 3 full hearts
+		private int health;
+		public int Health
+        {
+            get
+            {
+				return health;
+            }
+        }
+
 		private Game1 game;
 		private IPlayer Player;
 
@@ -27,6 +37,7 @@ namespace HackAndSlash
 			this.game = game;
 			playerDir = dir;
 			this.Player = Player;
+			health = maxHealth;
 		}
 
 		public void ChangeDirection(GlobalSettings.Direction dir)
@@ -66,7 +77,8 @@ namespace HackAndSlash
 
 		public void Damaged()
 		{
-			//TODO: health goes down...
+			//Health goes down by a half heart
+			health--;
 
 			game.Player = new DamagedPlayer(Player, game); //Decorator of the PlayerSprite
 
