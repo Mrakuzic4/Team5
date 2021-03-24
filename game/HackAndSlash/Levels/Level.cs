@@ -8,40 +8,51 @@ namespace HackAndSlash
 {
     public class Level : ILevel
     {
-        //private bool test = true;
-
-        public bool transitioning = false;
-        public bool transFinsihed = false;
-        private Vector2 position = new Vector2(0, 0);
-        private int timer = 0;
-
         private const int ALL_MIGHT_DIV = 16;
         private const int ALL_MIGH_COUNT = 256;
         private const int EDGE_PRESERVE = 17 * 4;
         private const int UPDATE_DELAY = 5; 
-        private const int TRANSITION_STEP = 10; 
+        private const int TRANSITION_STEP_Y = 8;
+        private const int TRANSITION_STEP_X = 16;
+        private const int DOOR_OPEN_INDEX = 1;
+        private const int DOOR_LOCKED_INDEX = 2;
+        private const int DOOR_MYS_INDEX = 3;
+        private const int DOOR_HOLE_INDEX = 4;
 
         private GraphicsDevice graphics;
         private SpriteBatch spriteBatch;
 
+        // Textures 
         public Texture2D headsUpFill; 
         public Texture2D levelOverlay;
         public Texture2D nextLevel;
-        public Texture2D levelTexture; // Can be accessed to make map transitioning 
-        private Texture2D blockAllMight;
+        public Texture2D levelTexture;   // Can be accessed to make map transitioning 
+        private Texture2D blockAllMight; // Containing all blocks 
 
-        //private Texture2D doors; 
-        private Color defaultColor = Color.Black;
-        private Color defaultTint = Color.White;
+        // Transiton related 
+        int TransDir = 0;
+        public bool transitioning = false;
+        public bool transFinsihed = false;
+        public Vector2[] nextLvPos = { 
+            new Vector2(0, -GlobalSettings.GAME_AREA_HEIGHT + GlobalSettings.HEADSUP_DISPLAY), // Go through top door 
+            new Vector2(0, GlobalSettings.HEADSUP_DISPLAY + GlobalSettings.GAME_AREA_HEIGHT), // Go through bottom door 
+            new Vector2(-GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.HEADSUP_DISPLAY ), // Go through left door 
+            new Vector2(GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.HEADSUP_DISPLAY )  // Go through right door 
+        }; // Position for next level 
+        private Vector2 delta = new Vector2(0, 0); 
+        private int timer = 0;
 
+        // For generating maps 
         private int defaultBlockIndex; 
-        private int[,] mapMatrix; 
+        private int[,] mapMatrix;
 
+        // Doors related 
         // Up, Bottom, Left Right 
-        private bool[] doorOpen =   { false, false, false, false };    // Highest priority 
-        private bool[] doorHole=    { false, false, false, false };    // Second in command 
-        private bool[] doorLocked = { false, false, false, false };    // Lowest priority  
-        private bool[] doorHiden =  { false, false, false, false };    // Does not draw 
+        public bool[] transDirList = { false, false, false, false };
+        private bool[] doorOpen =    { false, false, false, false };    // Highest priority 
+        private bool[] doorHole=     { false, false, false, false };    // Second in command 
+        private bool[] doorLocked =  { false, false, false, false };    // Lowest priority  
+        private bool[] doorHiden =   { false, false, false, false };    // Does not draw 
         private Dictionary<int, int> doorDirMapping = new Dictionary<int, int>(){
             {0, 0},
             {1, 3},
@@ -49,10 +60,10 @@ namespace HackAndSlash
             {3, 2}
             };  // Mapping the direction Enum to the image of th4 doors 
         private int[] iter = { 0, 1, 2, 3 }; // Minimize magic number in door iteration 
-        private const int DOOR_OPEN_INDEX = 1;
-        private const int DOOR_LOCKED_INDEX = 2;
-        private const int DOOR_MYS_INDEX = 3;
-        private const int DOOR_HOLE_INDEX = 4;
+
+        // Misc 
+        private Color defaultColor = Color.Black;
+        private Color defaultTint = Color.White;
 
         public Level(GraphicsDevice graphics, SpriteBatch spriteBatch, int[,] Arrangement, int Defaultblock,
             bool[] DO, bool[] DH, bool[] DL)
@@ -223,12 +234,16 @@ namespace HackAndSlash
             return levelOverlay; 
         }
 
-        // Up, Bottom, Left Right 
+        
         public bool canGoThrough(int Dir)
         {
+            // Up, Bottom, Left Right 
             return doorOpen[Dir] || doorHole[Dir];
         }
 
+        /// <summary>
+        /// If it can go through, then there must be another room 
+        /// </summary>
         public void AddHole(int Dir)
         {
             doorHole[Dir] = true;
@@ -236,15 +251,26 @@ namespace HackAndSlash
         }
 
 
+        // Only useful during map transition 
         public void Update(GameTime gameTime)
         {
+             
+            transDirList[3] = true; // Placeholder for testing directional transition  
+            for (int i = 0; i < transDirList.Length; i++)
+                if (transDirList[i]) TransDir = i; 
+
             timer += gameTime.ElapsedGameTime.Milliseconds;
             if (timer > UPDATE_DELAY)
             {
-                position.Y += TRANSITION_STEP;
+                if (transDirList[0] || transDirList[1]) // up and down 
+                    delta.Y += transDirList[0]? TRANSITION_STEP_Y : -TRANSITION_STEP_Y;
+                else
+                    delta.X += transDirList[2]? TRANSITION_STEP_X : -TRANSITION_STEP_X;
                 timer = 0; 
             }
-            if (position.Y > GlobalSettings.GAME_AREA_HEIGHT + GlobalSettings.HEADSUP_DISPLAY)
+
+            if ((delta.Y> 0? delta.Y: -delta.Y) > GlobalSettings.GAME_AREA_HEIGHT ||
+                (delta.X > 0 ? delta.X : -delta.X) > GlobalSettings.GAME_AREA_WIDTH)
             {
                 transFinsihed = true;
                 transitioning = false; 
@@ -259,8 +285,8 @@ namespace HackAndSlash
         {
             if (transitioning)
             {
-                spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + position, defaultTint);
-                spriteBatch.Draw(nextLevel, new Vector2(0, -GlobalSettings.GAME_AREA_HEIGHT) + position, defaultTint);
+                spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + delta, defaultTint);
+                spriteBatch.Draw(nextLevel, nextLvPos[TransDir] + delta, defaultTint);
             }
             else
             {
@@ -272,7 +298,7 @@ namespace HackAndSlash
         {
             if (transitioning)
             {
-                spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + position, defaultTint);
+                spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + delta, defaultTint);
                 spriteBatch.Draw(headsUpFill, new Vector2(0, 0), defaultTint);
             }
             else

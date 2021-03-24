@@ -32,6 +32,12 @@ namespace HackAndSlash
             };
         }
         
+        public Map NextMap(int Dir)
+        {
+            // Placeholder method 
+            return S3EagleCycle[0];
+        }
+
     }
 
 }
