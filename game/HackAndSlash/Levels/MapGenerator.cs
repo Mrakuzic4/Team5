@@ -18,14 +18,12 @@ namespace HackAndSlash
         }
 
         // Not fully implemented 
-        public List<ILevel> getLevelList(GraphicsDevice GD, SpriteBatch spriteBatch, Map map)
+        public Level getLevel(GraphicsDevice GD, SpriteBatch spriteBatch, Map map)
         {
-            List <ILevel> levelList = new List<ILevel>();
+            Level level = new Level(GD, spriteBatch, map.Arrangement, map.DefaultBlock,
+                map.OpenDoors, map.HiddenDoors, map.LockedDoors);
 
-            levelList.Add(new Level(GD, spriteBatch, map.Arrangement, map.DefaultBlock,
-                map.OpenDoors, map.HiddenDoors, map.LockedDoors));
-
-            return levelList;
+            return level;
         }
 
         public List<IBlock> GetBlockList(SpriteBatch spriteBatch, SpriteFactory spriteFactory)

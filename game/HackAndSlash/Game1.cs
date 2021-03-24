@@ -44,6 +44,7 @@ namespace HackAndSlash
 
         // Level and map related 
         public Map currentMap;
+        public Level currentLevel; 
         private MapGenerator generator;
         private int mapCycleIndex;
         // Partically due to planning, "level" and "map" are used interchangeable 
@@ -83,6 +84,8 @@ namespace HackAndSlash
 
         public void reset(bool cycleUp) {
 
+            Level NextLevel; 
+
             /* the following 2 lines shall be modified,
              * currently they're just for sprint 3 cycleing */
             if (cycleUp == true)
@@ -100,7 +103,12 @@ namespace HackAndSlash
             currentMap = new LevelCycling().S3EagleCycle[mapCycleIndex];
             generator = new MapGenerator(currentMap);
 
-            levelList = generator.getLevelList(GraphicsDevice, spriteBatch, currentMap);
+            NextLevel = generator.getLevel(GraphicsDevice, spriteBatch, currentMap);
+            currentLevel.nextLevel = NextLevel.levelTexture;
+            currentLevel.transitioning = true;
+            currentLevel.transFinsihed = false;
+            
+
             blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
             enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
             itemList = generator.GetItemList(spriteBatch, this);
@@ -172,11 +180,9 @@ namespace HackAndSlash
             };
 
             // A list of level maps for further transition cutscene 
-            levelList = new List<ILevel>()
-            {
-                new Level(GraphicsDevice, spriteBatch, currentMap.Arrangement, currentMap.DefaultBlock,
-                currentMap.OpenDoors, currentMap.HiddenDoors, currentMap.LockedDoors) 
-            };
+            currentLevel = new Level(GraphicsDevice, spriteBatch, currentMap.Arrangement, currentMap.DefaultBlock,
+                currentMap.OpenDoors, currentMap.HiddenDoors, currentMap.LockedDoors); 
+            
 
             //Create list of blocks
             blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
@@ -205,6 +211,12 @@ namespace HackAndSlash
             if (!elapsing)
             {
                 if (gamePaused) pauseOverlay.Update();
+            } 
+            else if (currentLevel.transitioning)
+            {
+                currentLevel.Update(gameTime);
+                if (currentLevel.transFinsihed)
+                    currentLevel = generator.getLevel(GraphicsDevice, spriteBatch, currentMap);
             }
             else // When the pause or bag state is not flagged 
             {
@@ -245,15 +257,18 @@ namespace HackAndSlash
 
             if (!gamePaused)
             {
-                foreach (ILevel levelMap in levelList) levelMap.Draw();
+                currentLevel.Draw();
+
                 foreach (IBlock block in blockList) block.Draw();
                 foreach (IEnemy enemy in enemyList) enemy.Draw();
                 PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
                 foreach (IItem item in itemList) item.Draw();
 
-                foreach (ILevel levelMap in levelList) levelMap.DrawOverlay();
+                currentLevel.DrawOverlay();
             }
-            else pauseOverlay.Draw();
+            else { 
+                pauseOverlay.Draw(); 
+            }
             
 
             spriteBatch.End();

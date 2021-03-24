@@ -8,19 +8,26 @@ namespace HackAndSlash
 {
     public class Level : ILevel
     {
-        private bool test = true;
-        public bool active = true; 
+        //private bool test = true;
+
+        public bool transitioning = false;
+        public bool transFinsihed = false;
+        private Vector2 position = new Vector2(0, 0);
+        private int timer = 0;
 
         private const int ALL_MIGHT_DIV = 16;
         private const int ALL_MIGH_COUNT = 256;
         private const int EDGE_PRESERVE = 17 * 4;
+        private const int UPDATE_DELAY = 5; 
+        private const int TRANSITION_STEP = 10; 
 
         private GraphicsDevice graphics;
         private SpriteBatch spriteBatch;
-        public Texture2D levelTexture; // Can be accessed to make map transition 
-        public Texture2D levelOverlay; 
+        public Texture2D levelTexture; // Can be accessed to make map transitioning 
+        public Texture2D levelOverlay;
+        public Texture2D nextLevel; 
         private Texture2D blockAllMight;
-        private Texture2D doors; 
+        //private Texture2D doors; 
         private Color defaultColor = Color.Black;
         private Color defaultTint = Color.White;
 
@@ -225,28 +232,48 @@ namespace HackAndSlash
         }
 
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            // Reserved for changing levels and breaking doors 
+            timer += gameTime.ElapsedGameTime.Milliseconds;
+            if (timer > UPDATE_DELAY)
+            {
+                position.Y += TRANSITION_STEP;
+                timer = 0; 
+            }
+            if (position.Y > GlobalSettings.GAME_AREA_HEIGHT + TRANSITION_STEP)
+            {
+                transFinsihed = true;
+                transitioning = false; 
+            }
+            
         }
 
-        // Designed for the transition animation 
-        public void DrawTransition(Vector2 Position)
-        {
-            // Iterator 
-        }
+        // Designed for the transitioning animation 
+
 
         public void Draw()
         {
-            if (active)
+            if (transitioning)
+            {
+                spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + position, defaultTint);
+            }
+            else
+            {
                 spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
-
+            }
         }
 
         public void DrawOverlay()
         {
-            if (active)
+            if (transitioning)
+            {
+                spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + position, defaultTint);
+            }
+            else
+            {
                 spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
+            }
+                
         }
     }
 }
