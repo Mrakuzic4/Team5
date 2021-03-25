@@ -31,9 +31,9 @@ namespace HackAndSlash
                 //PlayerFunction
                 {Keys.Z, new AttackCommand(game)},
                 {Keys.N, new AttackCommand(game)},
-                {Keys.D1, new UseFirewallCommand(game)},
-                {Keys.D2, new UseBombCommand(game)},
-                {Keys.D3, new UseThrowingKnifeCommand(game)},
+                {Keys.D1, new UseFirstItemCommand(game)},
+                {Keys.D2, new UseSecondItemCommand(game)},
+                {Keys.D3, new UseThirdItemCommand(game)},
                 {Keys.E, new DamageCommand(game)},
                 {Keys.U, new ItemUseableCommand(game)},
                 {Keys.I, new ItemCycleCommand(game)},

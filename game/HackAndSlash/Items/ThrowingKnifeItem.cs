@@ -37,7 +37,7 @@ namespace HackAndSlash
         private Vector2 playerPosition;
 
         // Constructor
-        public ThrowingKnifeItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game)
+        public ThrowingKnifeItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game, int itemNum)
         {
             this.game = game;
             this.player = this.game.Player; //Reference of player from Game1
@@ -47,7 +47,7 @@ namespace HackAndSlash
             throwingKnifeSprite = (ItemSprite)SpriteFactory.Instance.CreateThrowingKnife(GlobalSettings.Direction.Up);
             spriteWidth = throwingKnifeSprite.Texture.Width / throwingKnifeSprite.Columns;
             spriteHeight = throwingKnifeSprite.Texture.Height / throwingKnifeSprite.Rows;
-            toolBarPosition = new Vector2(128, 0);
+            toolBarPosition = new Vector2(itemNum * GlobalSettings.BASE_SCALAR, 0);
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);

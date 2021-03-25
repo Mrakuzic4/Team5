@@ -35,14 +35,14 @@ namespace HackAndSlash
         private enum animationState { blinkWhite, blinkRed, explode };
         private animationState bombAnimationState;
 
-        public BombItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game)
+        public BombItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game, int itemNum)
         {
             this.game = game;
             player = game.Player; //Reference of player from Game1
 
             position = startPosition;
             spriteBatch = gameSpriteBatch;
-            toolBarPosition = new Vector2(64, 0);
+            toolBarPosition = new Vector2(itemNum * GlobalSettings.BASE_SCALAR, 0);
             itemState = new BombStateMachine();
             itemState.ChangeToCollectable();
             bombSprite = (ItemSprite)SpriteFactory.Instance.CreateBomb();

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugEnemyLeft.png</SourceFile>
-  <SourceTime>2021-03-11T21:16:22.2123339-05:00</SourceTime>
-  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/BugEnemyLeft.xnb</DestFile>
-  <DestTime>2021-03-23T21:46:22.8430522-04:00</DestTime>
+  <SourceFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugEnemyLeft.png</SourceFile>
+  <SourceTime>2021-03-11T21:05:52.1926825-05:00</SourceTime>
+  <DestFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/images/BugEnemyLeft.xnb</DestFile>
+  <DestTime>2021-03-25T16:50:26.6399814-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

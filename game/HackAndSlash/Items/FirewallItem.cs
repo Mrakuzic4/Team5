@@ -33,7 +33,7 @@ namespace HackAndSlash
         private Vector2 playerPosition;
         
         // Constructor
-        public FirewallItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game)
+        public FirewallItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game, int toolBarSlot)
         {
             this.game = game;
             this.player = this.game.Player; //Reference of player from Game1
@@ -43,7 +43,7 @@ namespace HackAndSlash
             firewallSprite = (ItemSprite)SpriteFactory.Instance.CreateFirewall();
             spriteWidth = firewallSprite.Texture.Width / firewallSprite.Columns;
             spriteHeight = firewallSprite.Texture.Height / firewallSprite.Rows;
-            toolBarPosition = new Vector2(0, 0);
+            toolBarPosition = new Vector2(toolBarSlot * GlobalSettings.BASE_SCALAR, 0);
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
@@ -65,13 +65,16 @@ namespace HackAndSlash
                     break;
                 case FirewallStateMachine.ItemStates.Useable:
                     // check for uses
-                    position = toolBarPosition;
                     collidableTiles = new Rectangle[1];
                     collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
                     cooldown--;
                     if (cooldown <= 0)
                     {
                         cooldown = 0;
+                    }
+                    if (numUses == 0)
+                    {
+                        ChangeToExpended();
                     }
                     break;
                 case FirewallStateMachine.ItemStates.BeingUsed:
@@ -86,15 +89,16 @@ namespace HackAndSlash
                         
                         if (numUses > 0)
                         {
-                            itemState.ChangeToUseable();
+                            ChangeToUseable();
                         }
                         else
                         {
-                            itemState.ChangeToExpended();
+                            ChangeToExpended();
                         }
                     }
-                    // TODO: Check for collisions that shorten total length (walls)
-                    if (useDurationCounter % (USE_DURATION / MAX_RANGE) == 0) {
+
+                    // Check for collisions that shorten total length (walls)
+                    else if (useDurationCounter % (USE_DURATION / MAX_RANGE) == 0) {
                         Rectangle checkTile;
                         List<IBlock> blockList = game.blockList;
                         switch (playerDirection)
@@ -219,7 +223,7 @@ namespace HackAndSlash
 
         public void CollectItem()
         {
-            itemState.ChangeToUseable();
+            ChangeToUseable();
             numUses++;
         }
 
@@ -237,11 +241,11 @@ namespace HackAndSlash
                         if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.X -= spriteWidth;
-                            itemState.ChangeToBeingUsed();
+                            ChangeToBeingUsed();
                         }
                         else
                         {
-                            itemState.ChangeToUseable();
+                            ChangeToUseable();
                         }
                         break;
                     case GlobalSettings.Direction.Right: // right
@@ -249,11 +253,11 @@ namespace HackAndSlash
                         if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.X += spriteWidth;
-                            itemState.ChangeToBeingUsed();
+                            ChangeToBeingUsed();
                         }
                         else
                         {
-                            itemState.ChangeToUseable();
+                            ChangeToUseable();
                         }
                         break;
                     case GlobalSettings.Direction.Up: // up
@@ -261,11 +265,11 @@ namespace HackAndSlash
                         if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.Y -= spriteHeight;
-                            itemState.ChangeToBeingUsed();
+                            ChangeToBeingUsed();
                         }
                         else
                         {
-                            itemState.ChangeToUseable();
+                            ChangeToUseable();
                         }
                         break;
                     case GlobalSettings.Direction.Down: // down
@@ -273,11 +277,11 @@ namespace HackAndSlash
                         if (!firewallCollisionHandler.CheckForWall(checkTile) && !firewallCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.Y += spriteHeight;
-                            itemState.ChangeToBeingUsed();
+                            ChangeToBeingUsed();
                         }
                         else
                         {
-                            itemState.ChangeToUseable();
+                            ChangeToUseable();
                         }
                         break;
                 }
@@ -315,6 +319,7 @@ namespace HackAndSlash
         {
             //player collects item
             itemState.ChangeToUseable();
+            position = toolBarPosition;
         }
 
         public void ChangeToBeingUsed()
@@ -327,6 +332,8 @@ namespace HackAndSlash
         {
             //player used this instance of the item
             itemState.ChangeToExpended();
+            position = toolBarPosition;
+
         }
     }
 

@@ -171,15 +171,7 @@ namespace HackAndSlash
          
 
             // Items
-            firewallFirst = new FirewallItem(gameSettings.PlayAreaPosition(0,0), spriteBatch, this);
-            bombFirst = new BombItem(gameSettings.PlayAreaPosition(1, 1), spriteBatch, this);
-            throwingKnifeFirst = new ThrowingKnifeItem(gameSettings.PlayAreaPosition(2, 2), spriteBatch, this);
-
-            itemList = new List<IItem>()
-            {
-                firewallFirst,bombFirst,throwingKnifeFirst
-            };
-
+            itemList = generator.GetItemList(spriteBatch, this);
             // A list of level maps for further transition cutscene 
             currentLevel = new Level(GraphicsDevice, spriteBatch, currentMap.Arrangement, currentMap.DefaultBlock,
                 currentMap.OpenDoors, currentMap.HiddenDoors, currentMap.LockedDoors); 

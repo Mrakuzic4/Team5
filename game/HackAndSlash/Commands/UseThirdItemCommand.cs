@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace HackAndSlash
 {
-    public class UseFirewallCommand : ICommand
+    public class UseThirdItemCommand : ICommand
     {
         private Game1 game;
-        public UseFirewallCommand(Game1 game)
+        public UseThirdItemCommand(Game1 game)
         {
             this.game = game;
         }
         public void execute()
         {
-            game.ItemHolder = game.firewallFirst;
+            game.ItemHolder = game.itemList[2];
             game.Player.UseItem();
         }
     }

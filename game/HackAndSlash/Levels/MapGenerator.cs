@@ -10,11 +10,13 @@ namespace HackAndSlash
 {
     class MapGenerator
     {
-        Map mapInfo; 
+        Map mapInfo;
+        GlobalSettings mapSettings;
 
         public MapGenerator(Map MapInfo)
         {
             this.mapInfo = MapInfo;
+            mapSettings = new GlobalSettings();
         }
 
         // Not fully implemented 
@@ -67,8 +69,7 @@ namespace HackAndSlash
                     int Index = mapInfo.Arrangement[r, c];
                     if (Index == 32 || Index == 33)
                     {
-                        BlockList.Add(new BlockInvis(new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET),
-                                    (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY)), spriteBatch));
+                        BlockList.Add(new BlockInvis(mapSettings.PlayAreaPosition(c, r), spriteBatch));
                     }
                     else if (Index == 40)
                     {
@@ -93,8 +94,7 @@ namespace HackAndSlash
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
                 {
                     int Index = mapInfo.Arrangement[r, c];
-                    Vector2 position = new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET),
-                                    (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY));
+                    Vector2 position = mapSettings.PlayAreaPosition(c, r);
                     switch (Index)
                     {
                         case -1:
@@ -118,7 +118,8 @@ namespace HackAndSlash
         public List<IItem> GetItemList(SpriteBatch spriteBatch, Game1 game)
         {
             List<IItem> ItemList = new List<IItem>();
-
+            int itemNum = 0;
+            bool hasFirewall = false;
             for (int r = 0; r < GlobalSettings.TILE_ROW; r++)
             {
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
@@ -127,19 +128,30 @@ namespace HackAndSlash
                     /*
                      If Index is smaller than -256, add an item into the list
                      */
-                    Vector2 position = new Vector2((c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET),
-                            (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET));
+                    Vector2 position = mapSettings.PlayAreaPosition(c, r);
 
                     switch (Index)
                     {
                         case -257:
-                            ItemList.Add(new FirewallItem(position, spriteBatch, game));
+                            if (!hasFirewall)
+                            {
+                                ItemList.Add(new FirewallItem(position, spriteBatch, game, itemNum));
+                                itemNum++;
+                                hasFirewall = true;
+                            }
+                            else
+                            {
+                                ItemList.Add(new FirewallItem(position, spriteBatch, game, -1));
+                                itemNum++;
+                            }
                             break;
                         case -258:
-                            ItemList.Add(new BombItem(position, spriteBatch, game));
+                            ItemList.Add(new BombItem(position, spriteBatch, game, itemNum));
+                            itemNum++;
                             break;
                         case -259:
-                            ItemList.Add(new ThrowingKnifeItem(position, spriteBatch, game));
+                            ItemList.Add(new ThrowingKnifeItem(position, spriteBatch, game, itemNum));
+                            itemNum++;
                             break;
                         default:
                             break;
