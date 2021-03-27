@@ -15,6 +15,8 @@ namespace HackAndSlash
         private int timer;
         private const int delay = 7;//adding delay to the player sprite animation
 
+        private bool canMove;
+
 
         //Collision
         private Rectangle playerHitBox;
@@ -28,6 +30,18 @@ namespace HackAndSlash
 
         // Character positions 
         private Vector2 relPositionMC; // Relative position. As position in display window 
+
+        public Vector2 Pos
+        {
+            get
+            {
+                return relPositionMC;
+            }
+            set
+            {
+                relPositionMC = value;
+            }
+        }
 
         public Player(Game1 game)
         {
@@ -49,6 +63,13 @@ namespace HackAndSlash
             playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
             playerEnemyCollisionHandler = new PlayerEnemyCollisionHandler();
             swordEnemyCollisionHandler = new SwordEnemyCollisionHandler();
+
+            canMove = true;
+        }
+
+        public void unlockMovement()
+        {
+            this.canMove = true;
         }
 
         public Vector2 GetPos()
@@ -73,13 +94,18 @@ namespace HackAndSlash
 
         public void Move()
         {
-            timer--;
-            if(timer == 0)
+            if (canMove)
             {
-                DrawPlayer.Instance.Frame += 1;
-                timer = delay;
+                canMove = false;
+
+                timer--;
+                if (timer == 0)
+                {
+                    DrawPlayer.Instance.Frame++;
+                    timer = delay;
+                }
+                playerStateMachine.Move();
             }
-            playerStateMachine.Move();
         }
 
         public void Attack()
@@ -101,6 +127,8 @@ namespace HackAndSlash
 
             //Player Boundary Check
             // stayInBoundary();
+
+            //game.currentLevel.canGoThrough;
 
             //Player Collision Detector
             //hitbox for player, wraps around player.

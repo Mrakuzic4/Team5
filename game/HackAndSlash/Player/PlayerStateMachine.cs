@@ -12,7 +12,7 @@ namespace HackAndSlash
 		private GlobalSettings.Direction playerDir;
 		public GlobalSettings.Direction Direction { get { return playerDir; } }
 
-		public const int maxHealth = 6; //6 indicates 3 full hearts
+		public int maxHealth = 6; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
 		private int health;
 		public int Health
         {
@@ -24,9 +24,6 @@ namespace HackAndSlash
 
 		private Game1 game;
 		private IPlayer Player;
-
-		//TODO: implement player health.
-		//private PlayerHealth health = GoombaHealth.Normal;
 
 		/// <summary>
 		/// dir is the direction in integer form, 0 is left, 1 is right, etc.
@@ -47,14 +44,14 @@ namespace HackAndSlash
 
 		public void Move()
         {
-            switch (playerDir)
-            {
+			switch (playerDir)
+			{
 				case GlobalSettings.Direction.Left:
 					SpriteFactory.Instance.SetLeftPlayer();
 					//Change the Pos
 					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X - GlobalSettings.STEP_SIZE_X, Player.GetPos().Y));
 					break;
-					
+
 				case GlobalSettings.Direction.Up:
 					SpriteFactory.Instance.SetUpPlayer();
 					//move the sprite
@@ -108,7 +105,6 @@ namespace HackAndSlash
 			}
 
 		}
-
 		public void Attack()
         {
 			game.Player = new AttackPlayer(Player, game); //Decorator of the PlayerSprite

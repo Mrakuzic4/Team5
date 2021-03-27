@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Input;
+
 
 namespace HackAndSlash
 {
@@ -16,10 +18,9 @@ namespace HackAndSlash
         }
         public void execute()
         {
-                //move driection out
-                game.Player.ChangeDirection(GlobalSettings.Direction.Down);//face down
-                game.Player.Move();
-           
+            game.Player.ChangeDirection(GlobalSettings.Direction.Down);//face down
+            game.Player.Move();
+                      
         }
     }
 }

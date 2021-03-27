@@ -41,6 +41,11 @@ namespace HackAndSlash
             }
         }
 
+        public void unlockMovement()
+        {
+            this.DecoratedPlayer.unlockMovement();
+        }
+
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             DecoratedPlayer.Draw(spriteBatch, location, color);

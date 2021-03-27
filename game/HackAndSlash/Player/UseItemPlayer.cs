@@ -30,6 +30,11 @@ namespace HackAndSlash
             this.DecoratedPlayer.SetPos(pos);
         }
 
+        public void unlockMovement()
+        {
+            this.DecoratedPlayer.unlockMovement();
+        }
+
         public void Update()
         {
             timer--;

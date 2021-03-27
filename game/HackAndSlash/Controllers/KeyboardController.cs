@@ -68,10 +68,16 @@ namespace HackAndSlash
 
             foreach (Keys key in pressedKeys)
             {
-                if (controllerMappings.ContainsKey(key)){
+                if (controllerMappings.ContainsKey(key))
+                {
                     controllerMappings[key].execute();
                 }
             }
+            //Player only allows to move in one direction.
+            if (Keyboard.GetState().IsKeyUp(Keys.W)) this.game.Player.unlockMovement();
+            if (Keyboard.GetState().IsKeyUp(Keys.D)) this.game.Player.unlockMovement();
+            if (Keyboard.GetState().IsKeyUp(Keys.S)) this.game.Player.unlockMovement();
+            if (Keyboard.GetState().IsKeyUp(Keys.A)) this.game.Player.unlockMovement();
         }
     }
 }
