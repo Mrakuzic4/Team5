@@ -30,19 +30,21 @@ namespace HackAndSlash
         private const int EXPLOSION_DIAMETER = 3;
         private Vector2 toolBarPosition;
 
+        public static bool inInventory = false;
+
         public Rectangle[] collidableTiles;
         public ItemCollisionHandler bombCollisionHandler;
         private enum animationState { blinkWhite, blinkRed, explode };
         private animationState bombAnimationState;
 
-        public BombItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game, int itemNum)
+        public BombItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game)
         {
             this.game = game;
             player = game.Player; //Reference of player from Game1
 
             position = startPosition;
             spriteBatch = gameSpriteBatch;
-            toolBarPosition = new Vector2(itemNum * GlobalSettings.BASE_SCALAR, 0);
+            toolBarPosition = new Vector2(GlobalSettings.BASE_SCALAR, 0);
             itemState = new BombStateMachine();
             itemState.ChangeToCollectable();
             bombSprite = (ItemSprite)SpriteFactory.Instance.CreateBomb();
@@ -124,6 +126,10 @@ namespace HackAndSlash
                     position = toolBarPosition;
                     collidableTiles = new Rectangle[1];
                     collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteHeight, spriteWidth);
+                    if (numUses > 0)
+                    {
+                        ChangeToUseable();
+                    }
                     break;
             }
         }
@@ -183,7 +189,21 @@ namespace HackAndSlash
 
         public void CollectItem()
         {
-            itemState.ChangeToUseable();
+            if (!inInventory)
+            {
+                ChangeToUseable();
+                inInventory = true;
+                game.useableItemList.Add(this);
+            }
+            else if (game.useableItemList.Contains(this))
+            {
+                ChangeToUseable();
+            }
+            else
+            {
+                ChangeToExpended();
+                toolBarPosition = new Vector2(0, -64);
+            }
             numUses++;
         }
 
@@ -241,6 +261,12 @@ namespace HackAndSlash
 
             return RectanglesList;
         }
+
+        public void SetToolbarPosition(int index)
+        {
+            toolBarPosition = new Vector2(index * GlobalSettings.BASE_SCALAR, 0);
+        }
+
 
         public void ChangeToCollectable()
         {

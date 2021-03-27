@@ -72,6 +72,8 @@ namespace HackAndSlash
         public List<ILevel> levelList { get; set; }
         public List<IEnemy> enemyList { get; set; }
         public List<IItem> itemList { get; set; }
+
+        public List<IItem> useableItemList { get; set; }
         /* ============================================================
          * ======================== Methods ===========================
          * ============================================================ */
@@ -172,6 +174,7 @@ namespace HackAndSlash
 
             // Items
             itemList = generator.GetItemList(spriteBatch, this);
+            useableItemList = new List<IItem>();
             // A list of level maps for further transition cutscene 
             currentLevel = new Level(GraphicsDevice, spriteBatch, currentMap.Arrangement, currentMap.DefaultBlock,
                 currentMap.OpenDoors, currentMap.HiddenDoors, currentMap.LockedDoors); 
@@ -228,6 +231,14 @@ namespace HackAndSlash
                 foreach (IEnemy enemy in enemyList) enemy.Update(gameTime);
 
                 foreach (IItem item in itemList) item.Update();
+                foreach (IItem item in useableItemList)
+                {
+                    if (!itemList.Contains(item))
+                    {
+                        itemList.Add(item);
+                    }
+                    item.SetToolbarPosition(useableItemList.IndexOf(item));
+                }
 
                 if (blockList.OfType<BlockMovable>().Any())
                 {

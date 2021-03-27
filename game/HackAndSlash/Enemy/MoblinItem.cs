@@ -189,6 +189,12 @@ namespace HackAndSlash
         {
 
         }
+
+        public void SetToolbarPosition(int index)
+        {
+
+        }
+
     }
 
     public class MoblinBombStateMachine

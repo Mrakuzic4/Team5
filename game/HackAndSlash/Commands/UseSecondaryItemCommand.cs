@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace HackAndSlash
 {
-    public class UseFirstItemCommand : ICommand
+    public class UseSecondaryItemCommand : ICommand
     {
         private Game1 game;
-        public UseFirstItemCommand(Game1 game)
+        public UseSecondaryItemCommand(Game1 game)
         {
             this.game = game;
         }
         public void execute()
         {
-            game.ItemHolder = game.itemList[0];
+            game.ItemHolder = game.useableItemList[1];
             game.Player.UseItem();
         }
     }

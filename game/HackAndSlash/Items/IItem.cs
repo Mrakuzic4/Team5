@@ -26,6 +26,8 @@ namespace HackAndSlash
 
         void ChangeToExpended();
 
+        void SetToolbarPosition(int index);
+
         Rectangle[] getCollidableTiles(bool isEnemy);
     }
 }

@@ -21,23 +21,19 @@ namespace HackAndSlash
         public void execute()
         {
             //if delay time has elapsed
-            /* if (stopwatch.ElapsedMilliseconds > delay)
+            if (stopwatch.ElapsedMilliseconds > delay)
             {
-                if (game.ItemHolder == game.firewallFirst)
+                IItem temp = game.useableItemList[0];
+                int count = game.useableItemList.Count();
+                for (int i = 1; i < count; i++)
                 {
-                    game.ItemHolder = game.bombFirst;
+                    game.useableItemList[i - 1] = game.useableItemList[i];
                 }
-                else if (game.ItemHolder == game.bombFirst)
-                {
-                    game.ItemHolder = game.throwingKnifeFirst;
-                }
-                else
-                {
-                    game.ItemHolder = game.firewallFirst;
-                }
+                game.useableItemList[count - 1] = temp;
+
                 stopwatch.Restart();
             }
-            */
+
             
         }
     }

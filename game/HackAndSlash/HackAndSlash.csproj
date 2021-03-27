@@ -56,9 +56,8 @@
     <Compile Include="Collision\PlayerCollisionDetector.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />
-    <Compile Include="Commands\UseThirdItemCommand.cs" />
-    <Compile Include="Commands\UseFirstItemCommand.cs" />
-    <Compile Include="Commands\UseSecondItemCommand.cs" />
+    <Compile Include="Commands\UsePrimaryItemCommand.cs" />
+    <Compile Include="Commands\UseSecondaryItemCommand.cs" />
     <Compile Include="Commands\ItemUseableCommand.cs" />
     <Compile Include="Commands\DamageCommand.cs" />
     <Compile Include="Commands\EnemyCycleCommandBug.cs" />

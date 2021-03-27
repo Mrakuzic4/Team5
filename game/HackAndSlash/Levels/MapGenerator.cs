@@ -133,24 +133,15 @@ namespace HackAndSlash
                     switch (Index)
                     {
                         case -257:
-                            if (!hasFirewall)
-                            {
-                                ItemList.Add(new FirewallItem(position, spriteBatch, game, itemNum));
-                                itemNum++;
-                                hasFirewall = true;
-                            }
-                            else
-                            {
-                                ItemList.Add(new FirewallItem(position, spriteBatch, game, -1));
-                                itemNum++;
-                            }
+                            ItemList.Add(new FirewallItem(position, spriteBatch, game));
+                            itemNum++;
                             break;
                         case -258:
-                            ItemList.Add(new BombItem(position, spriteBatch, game, itemNum));
+                            ItemList.Add(new BombItem(position, spriteBatch, game));
                             itemNum++;
                             break;
                         case -259:
-                            ItemList.Add(new ThrowingKnifeItem(position, spriteBatch, game, itemNum));
+                            ItemList.Add(new ThrowingKnifeItem(position, spriteBatch, game));
                             itemNum++;
                             break;
                         default:

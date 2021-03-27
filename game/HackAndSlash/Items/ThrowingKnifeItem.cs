@@ -30,6 +30,8 @@ namespace HackAndSlash
         private const int MAX_RANGE = 5; // range in # of sprites(tiles) 
         private Vector2 toolBarPosition;
 
+        public static bool inInventory = false;
+
         public Rectangle[] collidableTiles;
         public ItemCollisionHandler throwingKnifeCollisionHandler;
 
@@ -37,7 +39,7 @@ namespace HackAndSlash
         private Vector2 playerPosition;
 
         // Constructor
-        public ThrowingKnifeItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game, int itemNum)
+        public ThrowingKnifeItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game)
         {
             this.game = game;
             this.player = this.game.Player; //Reference of player from Game1
@@ -47,7 +49,7 @@ namespace HackAndSlash
             throwingKnifeSprite = (ItemSprite)SpriteFactory.Instance.CreateThrowingKnife(GlobalSettings.Direction.Up);
             spriteWidth = throwingKnifeSprite.Texture.Width / throwingKnifeSprite.Columns;
             spriteHeight = throwingKnifeSprite.Texture.Height / throwingKnifeSprite.Rows;
-            toolBarPosition = new Vector2(itemNum * GlobalSettings.BASE_SCALAR, 0);
+            toolBarPosition = new Vector2(2 * GlobalSettings.BASE_SCALAR, 0);
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
@@ -156,6 +158,10 @@ namespace HackAndSlash
                     position = toolBarPosition;
                     collidableTiles = new Rectangle[1];
                     collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
+                    if (numUses > 0)
+                    {
+                        ChangeToUseable();
+                    }
                     break;
             }
         }
@@ -191,7 +197,21 @@ namespace HackAndSlash
 
         public void CollectItem()
         {
-            itemState.ChangeToUseable();
+            if (!inInventory)
+            {
+                ChangeToUseable();
+                inInventory = true;
+                game.useableItemList.Add(this);
+            }
+            else if (game.useableItemList.Contains(this))
+            {
+                ChangeToUseable();
+            }
+            else
+            {
+                ChangeToExpended();
+                toolBarPosition = new Vector2(0, -64);
+            }
             numUses++;
         }
 
@@ -278,6 +298,12 @@ namespace HackAndSlash
 
             return RectanglesList;
         }
+
+        public void SetToolbarPosition(int index)
+        {
+            toolBarPosition = new Vector2(index * GlobalSettings.BASE_SCALAR, 0);
+        }
+
 
         public void ChangeToCollectable()
         {
