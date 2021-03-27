@@ -147,7 +147,7 @@ namespace HackAndSlash
         /// </summary>
         protected override void LoadContent()
         {
-            currentMap = new JsonParser(MapDatabase.demoLevelM1).getCurrentMapInfo();
+            currentMap = new LevelCycling().StartUpLevel();
             generator = new MapGenerator(currentMap);
 
             // Create a new SpriteBatch, which can be used to draw textures.
@@ -161,6 +161,8 @@ namespace HackAndSlash
             //Player
             PlayerMain = new Player(this);//Player object
             
+            /// TODO: Consider removing all explicit declarations of emeyies and only leave them in the list
+            ///       and access only by list index. 
             //Enemy
             snakefirst = new SnakeEnemy(gameSettings.PlayAreaPosition(1, 3), GraphicsDevice, spriteBatch, this);
             bugfirst = new BugEnemy(gameSettings.PlayAreaPosition(10, 2), GraphicsDevice, spriteBatch, this);
@@ -271,7 +273,8 @@ namespace HackAndSlash
 
                 foreach (IBlock block in blockList) block.Draw();
                 foreach (IEnemy enemy in enemyList) enemy.Draw();
-                PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
+                if (!currentLevel.transitioning)
+                    PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
                 foreach (IItem item in itemList) item.Draw();
 
                 currentLevel.DrawOverlay();

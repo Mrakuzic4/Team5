@@ -45,10 +45,12 @@ namespace HackAndSlash
         // For generating maps 
         private int defaultBlockIndex; 
         private int[,] mapMatrix;
+        private Map[] neighbors { get; set; }
+        public int[] mapIndex = GlobalSettings.STRAT_UP_INDEX;
 
         // Doors related 
         // Up, Bottom, Left Right 
-        public bool[] transDirList = { false, false, false, false };
+        public bool[] transDirList = { true, false, false, false };
         private bool[] doorOpen =    { false, false, false, false };    // Highest priority 
         private bool[] doorHole=     { false, false, false, false };    // Second in command 
         private bool[] doorLocked =  { false, false, false, false };    // Lowest priority  
@@ -74,6 +76,8 @@ namespace HackAndSlash
             this.doorOpen = DO;
             this.doorHiden = DH;
             this.doorLocked = DL;
+
+            neighbors = new Map[] { null, null, null, null};
 
             headsUpFill = GenerateTexture(GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.HEADSUP_DISPLAY, pixel => defaultColor);
             levelTexture = GenerateTexture(GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.GAME_AREA_HEIGHT, pixel => defaultColor);
@@ -175,7 +179,7 @@ namespace HackAndSlash
             
             foreach (int Dir in iter)
             {
-                // Pre-launch check 
+                // Pre-launch check to pick up proper clipping area 
                 Col = 0;
                 if (doorLocked[Dir]) Col = DOOR_LOCKED_INDEX;
                 if (doorHole[Dir])   Col = DOOR_HOLE_INDEX;
@@ -241,6 +245,10 @@ namespace HackAndSlash
             return doorOpen[Dir] || doorHole[Dir];
         }
 
+        public void ResetTransDir()
+        {
+            transDirList = new bool[] { false, false, false, false };
+        }
         /// <summary>
         /// If it can go through, then there must be another room 
         /// </summary>
@@ -254,8 +262,7 @@ namespace HackAndSlash
         // Only useful during map transition 
         public void Update(GameTime gameTime)
         {
-             
-            transDirList[3] = true; // Placeholder for testing directional transition  
+            //transDirList[3] = true; // Placeholder for testing directional transition  
             for (int i = 0; i < transDirList.Length; i++)
                 if (transDirList[i]) TransDir = i; 
 

@@ -156,5 +156,16 @@ namespace HackAndSlash
         public const string eagleM4 = @"Content/info/eagleM4.json";
         public const string eagleM5 = @"Content/info/eagleM5.json";
         public const string eagleM6 = @"Content/info/eagleM6.json";
+
+        public static string[,] eagle = new string[6,6] { 
+                {@"Content/info/eagleM1.json", @"Content/info/eagleM6.json", @"Content/info/eagleM5.json", null, null, null},
+                {null, null, @"Content/info/eagleM6.json", null, @"Content/info/eagleM4.json", @"Content/info/eagleM6.json"},
+                {@"Content/info/eagleM3.json", @"Content/info/eagleM2.json", @"Content/info/eagleM1.json", @"Content/info/eagleM6.json", @"Content/info/eagleM5.json", null},
+                {null, @"Content/info/eagleM3.json", @"Content/info/eagleM2.json", @"Content/info/eagleM1.json", null, null},
+                {null, null, @"Content/info/eagleM3.json", null, null, null},
+                {null, @"Content/info/eagleM5.json", @"Content/info/eagleM4.json", @"Content/info/eagleM3.json", null, null},
+            };
+
+  
     }
 }

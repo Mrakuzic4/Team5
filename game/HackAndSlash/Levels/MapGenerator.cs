@@ -40,9 +40,11 @@ namespace HackAndSlash
 
             // The following are for the creation of walls (in lieu of boundary check)
             for (int i = 0; i < GlobalSettings.TILE_COLUMN; i++)
-            {
+            {   
+                // All resulting magic numbers are to avoid player
+                // from stuck in between and cannot plass through doors 
                 if (i < 6)
-                    HorizontalPos = (int)((i + 1.25) * GlobalSettings.BASE_SCALAR); // resulting formula with magic number 
+                    HorizontalPos = (int)((i + 1.25) * GlobalSettings.BASE_SCALAR);  
                 else
                     HorizontalPos = (int)((i + 2.75) * GlobalSettings.BASE_SCALAR);
                 
@@ -93,6 +95,9 @@ namespace HackAndSlash
             {
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
                 {
+                    /*
+                     If Index is in between -1 and -255, add an enemy into the list
+                     */
                     int Index = mapInfo.Arrangement[r, c];
                     Vector2 position = mapSettings.PlayAreaPosition(c, r);
                     switch (Index)

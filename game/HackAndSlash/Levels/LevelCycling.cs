@@ -12,12 +12,11 @@ namespace HackAndSlash
     public class LevelCycling
     {
 
-        public int[,] eagleComp = new int[,] {
-            { }
-        };
+        private const int LEVEL_SIZE = 6;
 
         // Field created jjust to fullfill sprint 3 scycling feature 
         public List<Map> S3EagleCycle;
+        public Map[,] levelEagle; 
 
         public LevelCycling()
         {
@@ -30,8 +29,27 @@ namespace HackAndSlash
                 new JsonParser(MapDatabase.eagleM5).getCurrentMapInfo(),
                 new JsonParser(MapDatabase.eagleM6).getCurrentMapInfo()
             };
+
+            string[,] EaglePaths = MapDatabase.eagle;
+            levelEagle = new Map[LEVEL_SIZE, LEVEL_SIZE]; 
+            for(int i = 0; i < LEVEL_SIZE; i++)
+            {
+                for (int j = 0; j < LEVEL_SIZE; j++)
+                {
+                    if (EaglePaths[i, j] != null)
+                        levelEagle[i, j] = new JsonParser(EaglePaths[i, j]).getCurrentMapInfo();
+                    else
+                        levelEagle[i, j] = null;
+                }
+            }
+
         }
         
+        public Map StartUpLevel()
+        {
+            return levelEagle[5, 2];
+        }
+
         public Map NextMap(int Dir)
         {
             // Placeholder method 

@@ -44,6 +44,7 @@ namespace HackAndSlash
         public const int PAUSE_QUIT_X = 310;
         public const int PAUSE_QUIT_Y = 512;
 
+        public static int[] STRAT_UP_INDEX = new int[] {5, 2};
 
         /* Some fields created for level cycling in sprint 3.
          * Future updates might just get rid of these.

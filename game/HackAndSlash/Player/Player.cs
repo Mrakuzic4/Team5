@@ -126,9 +126,7 @@ namespace HackAndSlash
             DrawPlayer.Instance.Update();
 
             //Player Boundary Check
-            // stayInBoundary();
-
-            //game.currentLevel.canGoThrough;
+            stayInBoundary();
 
             //Player Collision Detector
             //hitbox for player, wraps around player.
@@ -157,15 +155,65 @@ namespace HackAndSlash
 
         private void stayInBoundary()
         {
-            //Top and Left Boundary work just fine
-            if (this.relPositionMC.X < GlobalSettings.BORDER_OFFSET) this.relPositionMC.X = GlobalSettings.BORDER_OFFSET;
-            if (this.relPositionMC.Y < GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY) this.relPositionMC.Y = GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY;
-            //Bottom and Right Boundary need to take the window and sprite size into account.
+            // Note that the level used a different directional index
             int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
             int rightBound = GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
 
-            if (this.relPositionMC.Y > bottomBound) this.relPositionMC.Y = bottomBound;
-            if (this.relPositionMC.X > rightBound) this.relPositionMC.X = rightBound;
+            // left 
+            if (this.relPositionMC.X < GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR)
+            {
+                if (game.currentLevel.canGoThrough(2))
+                {
+                    game.currentLevel.ResetTransDir();
+                    game.currentLevel.transDirList[2] = true;
+                    SetPos(new Vector2(rightBound + GlobalSettings.BASE_SCALAR, relPositionMC.Y));
+                    game.reset(true);
+                }
+                else
+                    this.relPositionMC.X = GlobalSettings.BORDER_OFFSET;
+            }
+
+            // right 
+            if (this.relPositionMC.X > rightBound + GlobalSettings.BASE_SCALAR)
+            {
+                if (game.currentLevel.canGoThrough(3))
+                {
+                    game.currentLevel.ResetTransDir();
+                    game.currentLevel.transDirList[3] = true;
+                    SetPos(new Vector2(GlobalSettings.BASE_SCALAR, relPositionMC.Y));
+                    game.reset(true);
+                }
+                else
+                    this.relPositionMC.X = rightBound;
+            }
+
+            // Up
+            if (this.relPositionMC.Y < GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY - GlobalSettings.BASE_SCALAR)
+            {
+                if (game.currentLevel.canGoThrough(0))
+                {
+                    game.currentLevel.ResetTransDir();
+                    game.currentLevel.transDirList[0] = true;
+                    SetPos(new Vector2(relPositionMC.X, bottomBound));
+                    game.reset(true);
+                }
+                else
+                    this.relPositionMC.Y = GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY;
+            }
+
+            //Bottom
+            if (this.relPositionMC.Y > bottomBound + GlobalSettings.BASE_SCALAR)
+            {
+                if (game.currentLevel.canGoThrough(1))
+                {
+                    game.currentLevel.ResetTransDir();
+                    game.currentLevel.transDirList[1] = true;
+                    SetPos(new Vector2(relPositionMC.X, GlobalSettings.HEADSUP_DISPLAY + GlobalSettings.BASE_SCALAR));
+                    game.reset(true);
+                }
+                else
+                    this.relPositionMC.Y = bottomBound;
+            }   
         }
 
        
