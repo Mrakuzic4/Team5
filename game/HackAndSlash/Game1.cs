@@ -31,6 +31,10 @@ namespace HackAndSlash
             }
         }
 
+        //Player's Health
+        private ISprite DrawHealth;
+
+
         //Player's SwordHitBox
         private Rectangle swordHitbox;
 
@@ -156,10 +160,14 @@ namespace HackAndSlash
             //Get sprite from spriteFactory
             SpriteFactory.Instance.LoadAllTextures(Content);
 
-            // SpriteHolder = SpriteFactory.Instance.CreateRightPlayer();
-
             //Player
             PlayerMain = new Player(this);//Player object
+
+            //Player's Health 
+            this.DrawHealth = new DrawPlayerHealth(this,SpriteFactory.Instance.GetEmptyHeart(), 
+                SpriteFactory.Instance.GetHalfHeart(),
+                SpriteFactory.Instance.GetFullHeart());
+
             
             /// TODO: Consider removing all explicit declarations of emeyies and only leave them in the list
             ///       and access only by list index. 
@@ -172,7 +180,6 @@ namespace HackAndSlash
             {
                 snakefirst,bugfirst,moblinfirst
             };
-         
 
             // Items
             itemList = generator.GetItemList(spriteBatch, this);
@@ -228,7 +235,6 @@ namespace HackAndSlash
                 {
                     controller.Update();
                 }
-                PlayerMain.Update();
 
                 foreach (IEnemy enemy in enemyList) enemy.Update(gameTime);
 
@@ -250,6 +256,9 @@ namespace HackAndSlash
                         block.Update();
                     }
                 }
+
+                PlayerMain.Update();
+                DrawHealth.Update();
 
                 //Collision detector and handler of player
 
@@ -276,6 +285,8 @@ namespace HackAndSlash
                 if (!currentLevel.transitioning)
                     PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
                 foreach (IItem item in itemList) item.Draw();
+
+                DrawHealth.Draw(spriteBatch, new Vector2(0,100), Color.White);
 
                 currentLevel.DrawOverlay();
 

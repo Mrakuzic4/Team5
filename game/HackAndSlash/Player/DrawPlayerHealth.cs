@@ -7,125 +7,103 @@ namespace HackAndSlash
 {
     public class DrawPlayerHealth : ISprite
     {
-                
-        public Texture2D Texture { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
-        public int UpdateDelay { get; set; }
+        private Game1 game;
 
-        private Vector2 relPositionMC; // Relative position. As position in display window 
+        //three heart sprites
+        Texture2D emptyHeart;
+        Texture2D halfHeart;
+        Texture2D fullHeart;
 
+        //number of different hearts
+        private int full; 
+        private int half;
+        private int empty;
 
-        // Frame and fame delays 
-        private int currentFrame;
-        private int totalFrames;
-        private long animeDelay = GlobalSettings.DELAY_TIME;
-        private Stopwatch stopwatch = new Stopwatch();
-        private long timer;
+        private Rectangle destinationRectangle; //position of the heart that is to be drawn
 
-        private GlobalSettings.Direction direction;
-        private bool isAttack;
-        public bool Attack { set { isAttack = value; } }
+        //Position of Hearts on HUD
+        private const int Y = 84;
+        private const int X = 768;
+        private const int destSize = 32;
+        private const int srcSize = 8;
 
-        public int Frame
+        public DrawPlayerHealth(Game1 game, Texture2D emptyHeart, Texture2D halfHeart, Texture2D fullheart)
         {
-            get
-            {
-                return currentFrame;
-            }
-            set 
-            { 
-                currentFrame = value; 
-            }
+            this.game = game;
+            this.fullHeart = fullheart;
+            this.halfHeart = halfHeart;
+            this.emptyHeart = emptyHeart;
+            this.full = this.game.Player.GetMaxHealth();
+            this.half = 0;
+            this.empty = 0;
+            destinationRectangle = new Rectangle(X, Y, destSize, destSize);
         }
 
-        //Singleton
-        private static DrawPlayerHealth instance = new DrawPlayerHealth();
-
-        public static DrawPlayerHealth Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
-        private DrawPlayerHealth()
-        {
-            UpdateDelay = 8;
-            currentFrame = 0;
-            stopwatch.Restart();
-            Rows = 1;
-            Columns = 7;
-            totalFrames = Rows * Columns;
-        }
-
-        public Vector2 GetPos()
-        {
-            return relPositionMC;
-        }
-
-        public void SetPos(Vector2 pos)
-        {
-            relPositionMC = pos;
-        }
-
-        public void SetDirection(GlobalSettings.Direction direction)
-        {
-            this.direction = direction;
-        }
-
-        public void SetTexture(Texture2D texture)
-        {
-            this.Texture = texture;
-            //This is safe because Rows and Columns
-            //are already set before calling SetTexture.
-            totalFrames = Rows * Columns; 
-        }
-
+        /// <summary>
+        /// Calculate the number of different kinds of hearts needed on HUD.
+        /// full=6 indicates HP = full / 2 = 3
+        /// </summary>
         public void Update()
         {
-            //Record the time elapsed
-            timer = stopwatch.ElapsedMilliseconds;
-            // Every time the time elpased exceeds the designated delay amount,
-            //update the frame and restart the timer
-            if (timer > animeDelay)
-                {
-                    stopwatch.Restart();
-                    timer = 0;
-                }
-            if (currentFrame == totalFrames)
+            int currentHealth = this.game.Player.GetCurrentHealth();
+            int maxHealth = this.game.Player.GetMaxHealth();
+            int notEmptyHearts; //for the purpose of calculating empty hearts, number of not empty Hearts
+
+            //number of half heart, could be either 0 or 1
+            half = currentHealth % 2;
+            //two times the number of full hearts
+            if (half != 0)
             {
-                currentFrame = 0;
+                full = currentHealth - 1;
+                notEmptyHearts = currentHealth + 1;
             }
+            else
+            {
+                full = currentHealth;
+                notEmptyHearts = full;
+            }
+            //two times the number of empty hearts
+            empty = maxHealth - notEmptyHearts;
+
+            //Correct number of full and empty hearts
+            empty /= 2;
+            full /= 2;
         }
 
+        /// <summary>
+        /// Draw different hearts on HUD.
+        /// </summary>
+        /// <param name="spriteBatch"></param>
+        /// <param name="location"></param>
+        /// <param name="color"></param>
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
-            int width = Texture.Width / Columns;
-            int height = Texture.Height / Rows;
-            int row = (Rows == 1) ? 0 : (int)((float)currentFrame / (float)Columns);
-            int column = currentFrame % Columns;
 
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width *4, height*4);
+            Rectangle sourceRectangle = new Rectangle(0, 0, srcSize, srcSize);
 
-            if (isAttack)
+            //draw full hearts
+            for (int i = 1; i < full+1; i++)
             {
-                if(this.direction == GlobalSettings.Direction.Left)
-                {
-                    destinationRectangle = new Rectangle((int)(location.X - 60)  , (int)location.Y, width * 4, height * 4);
-                }
-
-                else if(this.direction == GlobalSettings.Direction.Up)
-                {
-                    destinationRectangle = new Rectangle((int)location.X, (int)(location.Y-60), width * 4, height * 4);
-                }
+                spriteBatch.Draw(fullHeart, destinationRectangle, sourceRectangle, color);
+                destinationRectangle = new Rectangle(X + destSize * i, Y, destSize, destSize);
             }
-               
+            int destinationRectangleForHalf = destinationRectangle.X; //this is not true if there is no full hearts.
 
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
+            //draw half hearts
+            for (int i = 1; i < half+1; i++)
+            {
+                spriteBatch.Draw(halfHeart, destinationRectangle, sourceRectangle, color);
+                destinationRectangle = new Rectangle(destinationRectangleForHalf + destSize * i, Y, destSize, destSize);
+            }
+            int destinationRectangleForEmpty = destinationRectangle.X;
 
+            //draw empty hearts
+            for (int i = 1; i < empty+1; i++)
+            {
+                spriteBatch.Draw(emptyHeart, destinationRectangle, sourceRectangle, color);
+                destinationRectangle = new Rectangle(destinationRectangleForEmpty + destSize * i, Y, destSize, destSize);
+            }
+            destinationRectangle = new Rectangle(X, Y, destSize, destSize); //reset the dest rectangle
         }
     }
     

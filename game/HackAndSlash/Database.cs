@@ -29,6 +29,10 @@ namespace HackAndSlash
         public ImageFile zeldaUseItemLeft;
         public ImageFile zeldaUseItemRight;
 
+        public ImageFile fullHeart;
+        public ImageFile halfHeart;
+        public ImageFile emptyHeart;
+
         public ImageFile snakeMoveLeft;
         public ImageFile snakeMoveRight;
         public ImageFile snakeDie;
@@ -92,6 +96,10 @@ namespace HackAndSlash
             zeldaUseItemUp = new ImageFile("images/ZeldaUseItemUp", 1, 1);
             zeldaUseItemLeft = new ImageFile("images/ZeldaUseItemLeft", 1, 1);
             zeldaUseItemRight = new ImageFile("images/ZeldaUseItemRight", 1, 1);
+
+            fullHeart = new ImageFile("images/fullHeart", 1, 1);
+            halfHeart = new ImageFile("images/halfHeart", 1, 1);
+            emptyHeart = new ImageFile("images/emptyHeart", 1, 1);
 
             snakeMoveLeft = new ImageFile("images/SnakeLeftMoving", 1, 10);
             snakeMoveRight = new ImageFile("images/SnakeEnemyRight", 1, 10);

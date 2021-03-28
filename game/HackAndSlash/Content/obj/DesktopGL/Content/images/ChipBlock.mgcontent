@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ChipBlock.png</SourceFile>
-  <SourceTime>2021-03-11T14:38:49.6307418-05:00</SourceTime>
-  <DestFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ChipBlock.xnb</DestFile>
-  <DestTime>2021-03-27T12:55:30.1983589-04:00</DestTime>
+  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ChipBlock.png</SourceFile>
+  <SourceTime>2021-02-17T21:28:14.3691676-05:00</SourceTime>
+  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ChipBlock.xnb</DestFile>
+  <DestTime>2021-03-27T23:24:59.5042722-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

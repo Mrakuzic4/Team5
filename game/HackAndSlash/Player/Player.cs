@@ -15,9 +15,6 @@ namespace HackAndSlash
         private int timer;
         private const int delay = 7;//adding delay to the player sprite animation
 
-        private bool canMove;
-
-
         //Collision
         private Rectangle playerHitBox;
 
@@ -43,6 +40,15 @@ namespace HackAndSlash
             }
         }
 
+        //Player's Movement Lock
+        private bool canMove;
+
+        //Player's Health
+        private const int INIT_MAX_HEALTH = 6; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
+        private int maxHealth; 
+        private int currentHealth;
+
+
         public Player(Game1 game)
         {
             playerStateMachine = new PlayerStateMachine(GlobalSettings.Direction.Right, game, this); //inital state face right
@@ -65,11 +71,24 @@ namespace HackAndSlash
             swordEnemyCollisionHandler = new SwordEnemyCollisionHandler();
 
             canMove = true;
+
+            //Player's health initialize
+            maxHealth = INIT_MAX_HEALTH;
+            currentHealth = maxHealth;
         }
 
         public void unlockMovement()
         {
             this.canMove = true;
+        }
+
+        public int GetMaxHealth()
+        {
+            return this.maxHealth;
+        }
+        public int GetCurrentHealth()
+        {
+            return this.currentHealth;
         }
 
         public Vector2 GetPos()
@@ -118,6 +137,8 @@ namespace HackAndSlash
 
         public void Damaged()
         {
+            //Health goes down by a half heart when damaged
+            currentHealth--;
             playerStateMachine.Damaged();
         }
 

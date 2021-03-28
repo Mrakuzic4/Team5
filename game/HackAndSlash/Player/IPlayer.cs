@@ -19,6 +19,8 @@ namespace HackAndSlash
         void unlockMovement();
         GlobalSettings.Direction GetDir();
         void ChangeDirection(GlobalSettings.Direction dir);
+        int GetMaxHealth();
+        int GetCurrentHealth();
 
     }
 }

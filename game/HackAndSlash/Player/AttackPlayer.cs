@@ -19,7 +19,14 @@ namespace HackAndSlash
             this.game = game;
             DrawPlayer.Instance.Frame = 0;
         }
-
+        public int GetMaxHealth()
+        {
+            return DecoratedPlayer.GetMaxHealth();
+        }
+        public int GetCurrentHealth()
+        {
+            return DecoratedPlayer.GetCurrentHealth();
+        }
         public Vector2 GetPos()
         {
             return this.DecoratedPlayer.GetPos();

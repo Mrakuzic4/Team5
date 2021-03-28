@@ -21,7 +21,14 @@ namespace HackAndSlash
             this.game = game;
             this.color = Color.Red;
         }
-
+        public int GetMaxHealth()
+        {
+            return DecoratedPlayer.GetMaxHealth();
+        }
+        public int GetCurrentHealth()
+        {
+            return DecoratedPlayer.GetCurrentHealth();
+        }
         public Vector2 GetPos()
         {
             return this.DecoratedPlayer.GetPos();

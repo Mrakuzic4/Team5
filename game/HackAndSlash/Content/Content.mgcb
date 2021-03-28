@@ -229,6 +229,18 @@
 /processorParam:TextureFormat=Color
 /build:images/ChipBlock.png
 
+#begin images/EmptyHeart.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/EmptyHeart.png;images/emptyHeart.png
+
 #begin images/explosion.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -264,6 +276,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:images/firewall3.png
+
+#begin images/HalfHeart.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/HalfHeart.png;images/halfHeart.png
 
 #begin images/LevelEagleBorder.png
 /importer:TextureImporter
@@ -660,6 +684,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:images/UI/SwordSelector.png
+
+#begin images/WholeHeart.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/WholeHeart.png;images/fullHeart.png
 
 #begin images/ZeldaAttackDown.png
 /importer:TextureImporter

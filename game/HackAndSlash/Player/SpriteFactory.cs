@@ -27,6 +27,11 @@ namespace HackAndSlash
         private Texture2D ZeldaUseItemLeft;
         private Texture2D ZeldaUseItemRight;
 
+        private Texture2D fullHeart;
+        private Texture2D halfHeart;
+        private Texture2D emptyHeart;
+
+
         private Texture2D BGSprite;
 
         private Texture2D SnakeIdleSprite;
@@ -86,6 +91,7 @@ namespace HackAndSlash
         {
             IMDB = new ImageDatabase();         
 
+            //Zelda
             ZeldaDown = content.Load<Texture2D>(IMDB.zeldaDown.pathName);
             ZeldaUp = content.Load<Texture2D>(IMDB.zeldaUp.pathName);
             ZeldaLeft = content.Load<Texture2D>(IMDB.zeldaLeft.pathName);
@@ -100,6 +106,11 @@ namespace HackAndSlash
             ZeldaUseItemUp = content.Load<Texture2D>(IMDB.zeldaUseItemUp.pathName);
             ZeldaUseItemLeft = content.Load<Texture2D>(IMDB.zeldaUseItemLeft.pathName);
             ZeldaUseItemRight = content.Load<Texture2D>(IMDB.zeldaUseItemRight.pathName);
+
+            //Zelda's Health--full heart, half heart, empty heart
+            fullHeart = content.Load<Texture2D>(IMDB.fullHeart.pathName);
+            halfHeart = content.Load<Texture2D>(IMDB.halfHeart.pathName);
+            emptyHeart = content.Load<Texture2D>(IMDB.emptyHeart.pathName);
 
             // Original image from https://opengameart.org/content/animated-snake
             // Edited in Adobe Fresco to align specific states
@@ -160,6 +171,21 @@ namespace HackAndSlash
             //UI Related
             PauseOverlay = content.Load<Texture2D>(IMDB.PauseOverlay.pathName);
             SwordSelector = content.Load<Texture2D>(IMDB.SwordSelector.pathName);
+        }
+
+        public Texture2D GetFullHeart()
+        {
+            return fullHeart;
+        }
+
+        public Texture2D GetHalfHeart()
+        {
+            return halfHeart;
+        }
+
+        public Texture2D GetEmptyHeart()
+        {
+            return emptyHeart;
         }
 
         public Texture2D CreateBG()
