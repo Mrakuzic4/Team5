@@ -73,6 +73,8 @@ namespace HackAndSlash
         private Texture2D PauseOverlay;
         private Texture2D SwordSelector;
 
+        private Texture2D TextCharacters;
+
         private static SpriteFactory instance = new SpriteFactory();
 
         public static SpriteFactory Instance
@@ -171,6 +173,7 @@ namespace HackAndSlash
             //UI Related
             PauseOverlay = content.Load<Texture2D>(IMDB.PauseOverlay.pathName);
             SwordSelector = content.Load<Texture2D>(IMDB.SwordSelector.pathName);
+            TextCharacters = content.Load<Texture2D>(IMDB.TextCharacters.pathName);
         }
 
         public Texture2D GetFullHeart()
@@ -227,6 +230,11 @@ namespace HackAndSlash
         public Texture2D GetSwordSelector()
         {
             return SwordSelector;
+        }
+
+        public Texture2D GetTextCharacters()
+        {
+            return TextCharacters;
         }
 
         public Texture2D CreatePlayer()
@@ -423,6 +431,11 @@ namespace HackAndSlash
         public ISprite CreateExplosion()
         {
             return new ItemSprite(ExplosionSprite, IMDB.explosion.C, IMDB.explosion.R);
+        }
+
+        public ISprite CreateTextCharacters()
+        {
+            return new TextSprite(TextCharacters, IMDB.TextCharacters.C, IMDB.TextCharacters.R);
         }
 
         public ISprite CreateThrowingKnife(GlobalSettings.Direction direction)

@@ -73,6 +73,8 @@ namespace HackAndSlash
         public ImageFile PauseOverlay;
         public ImageFile SwordSelector;
 
+        public ImageFile TextCharacters;
+
         public ImageDatabase()
         {
             // Initilize images with path/name, column and row 
@@ -150,6 +152,8 @@ namespace HackAndSlash
 
             PauseOverlay = new ImageFile("images/UI/GamePauseOverlay", 1, 1);
             SwordSelector = new ImageFile("images/UI/SwordSelector", 1, 1);
+
+            TextCharacters = new ImageFile("images/TextCharacters", 4, 13);
         }
     }
 

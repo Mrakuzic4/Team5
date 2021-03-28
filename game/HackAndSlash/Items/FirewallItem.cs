@@ -33,6 +33,8 @@ namespace HackAndSlash
 
         private GlobalSettings.Direction playerDirection = GlobalSettings.Direction.Right;
         private Vector2 playerPosition;
+
+        private TextSprite textSprites;
         
         // Constructor
         public FirewallItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game)
@@ -50,6 +52,7 @@ namespace HackAndSlash
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
             firewallCollisionHandler = new ItemCollisionHandler(this.player);
+            textSprites = (TextSprite)SpriteFactory.Instance.CreateTextCharacters();
         }
 
         public void Update()
@@ -163,6 +166,7 @@ namespace HackAndSlash
                     // In bag Draw on toolbar
                     firewallSprite.Draw(spriteBatch, position, Color.White);
                     // draw text with numUses
+                    textSprites.Draw(spriteBatch, numUses.ToString(), new Vector2(toolBarPosition.X, toolBarPosition.Y + 64), Color.White);
                     break;
                 case FirewallStateMachine.ItemStates.BeingUsed:
                     // place over players head then draw wall with loop and updating position
@@ -244,7 +248,7 @@ namespace HackAndSlash
             else
             {
                 ChangeToExpended();
-                toolBarPosition = new Vector2(0, -64);
+                toolBarPosition = new Vector2(0, -128);
             }
             numUses++;
         }
