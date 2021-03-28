@@ -52,6 +52,7 @@
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/sucLeft.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/sucOva.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/sucUp.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/TextSprites.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeDown.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeLeft.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeRight.png</File>
@@ -120,6 +121,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File>images/TextCharacters.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

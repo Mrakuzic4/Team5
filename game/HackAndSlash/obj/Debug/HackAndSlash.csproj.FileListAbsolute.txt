@@ -583,3 +583,5 @@ C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCP
 C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\GamePauseOverlay.xnb
 C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\SwordSelector.xnb
 C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoors.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\TextSprites.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\TextCharacters.xnb

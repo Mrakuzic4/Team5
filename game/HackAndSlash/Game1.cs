@@ -66,6 +66,8 @@ namespace HackAndSlash
         //UI Elements
         private PauseOverlay pauseOverlay;
 
+        private Texture2D textSprites;
+
         // Object lists
         List<Object> controllerList;
         public List<IBlock> blockList { get; set; }
@@ -177,6 +179,8 @@ namespace HackAndSlash
             // Items
             itemList = generator.GetItemList(spriteBatch, this);
             useableItemList = new List<IItem>();
+            textSprites = SpriteFactory.Instance.GetTextCharacters();
+
             // A list of level maps for further transition cutscene 
             currentLevel = new Level(GraphicsDevice, spriteBatch, currentMap.Arrangement, currentMap.DefaultBlock,
                 currentMap.OpenDoors, currentMap.HiddenDoors, currentMap.LockedDoors); 
@@ -235,6 +239,7 @@ namespace HackAndSlash
                 foreach (IItem item in itemList) item.Update();
                 foreach (IItem item in useableItemList)
                 {
+                    // keep item uses between rooms
                     if (!itemList.Contains(item))
                     {
                         itemList.Add(item);

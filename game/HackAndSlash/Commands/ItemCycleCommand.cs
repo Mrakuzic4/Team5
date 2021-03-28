@@ -21,7 +21,7 @@ namespace HackAndSlash
         public void execute()
         {
             //if delay time has elapsed
-            if (stopwatch.ElapsedMilliseconds > delay)
+            if (game.useableItemList.Count() > 0 && stopwatch.ElapsedMilliseconds > delay)
             {
                 IItem temp = game.useableItemList[0];
                 int count = game.useableItemList.Count();
