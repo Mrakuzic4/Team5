@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/Food.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/TextSprites.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/NES - The Legend of Zelda - File Select - Copy.png</File>
     <File>C:/Users/vidha/source/repos/moblin/game/HackAndSlash/Content/images/bg.jpg</File>
@@ -70,8 +71,8 @@
     <File>C:/Users/vidha/source/repos/moblin/game/HackAndSlash/Content/images/ZeldaUseItemUp.png</File>
   </SourceFiles>
   <DestFiles>
-    <File>images/TextCharacters.png</File>
     <File xsi:nil="true" />
+    <File>images/TextCharacters.png</File>
     <File>images/firewall.png</File>
     <File>images/Zelda.png</File>
   </DestFiles>

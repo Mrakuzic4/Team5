@@ -80,6 +80,11 @@ namespace HackAndSlash
             DecoratedPlayer.Damaged();
         }
 
+        public void Healed()
+        {
+            DecoratedPlayer.Healed();
+        }
+
         public GlobalSettings.Direction GetDir()
         {
             return DecoratedPlayer.GetDir();

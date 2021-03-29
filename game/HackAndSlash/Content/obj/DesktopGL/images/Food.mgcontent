@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/UI/GamePauseOverlay.png</SourceFile>
-  <SourceTime>2021-03-22T15:57:16.602061-04:00</SourceTime>
-  <DestFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/images/UI/GamePauseOverlay.xnb</DestFile>
-  <DestTime>2021-03-29T11:07:04.1697164-04:00</DestTime>
+  <SourceFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/Food.png</SourceFile>
+  <SourceTime>2021-03-29T13:47:39.196248-04:00</SourceTime>
+  <DestFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/images/Food.xnb</DestFile>
+  <DestTime>2021-03-29T13:47:58.9835422-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

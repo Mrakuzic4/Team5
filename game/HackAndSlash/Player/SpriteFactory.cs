@@ -59,6 +59,7 @@ namespace HackAndSlash
         private Texture2D ThrowingKnifeRightSprite;
         private Texture2D ThrowingKnifeUpSprite;
         private Texture2D ThrowingKnifeDownSprite;
+        private Texture2D FoodSprite;
 
 
         private Texture2D BlockMovable;
@@ -146,6 +147,7 @@ namespace HackAndSlash
             ThrowingKnifeDownSprite = content.Load<Texture2D>(IMDB.throwingKnifeDown.pathName);
             ThrowingKnifeLeftSprite = content.Load<Texture2D>(IMDB.throwingKnifeLeft.pathName);
             ThrowingKnifeRightSprite = content.Load<Texture2D>(IMDB.throwingKnifeRight.pathName);
+            FoodSprite = content.Load<Texture2D>(IMDB.food.pathName);
 
             // More Content.Load calls follow
             BGSprite = content.Load<Texture2D>(IMDB.BG.pathName);
@@ -455,6 +457,11 @@ namespace HackAndSlash
 
             }
             return knifeSprite;
+        }
+
+        public ISprite CreateFood()
+        {
+            return new ItemSprite(FoodSprite, IMDB.food.C, IMDB.food.R);
         }
 
         //*****************************Below are block objects******************************//

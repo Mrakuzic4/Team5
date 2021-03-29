@@ -149,6 +149,10 @@ namespace HackAndSlash
                             ItemList.Add(new ThrowingKnifeItem(position, spriteBatch, game));
                             itemNum++;
                             break;
+                        case -260:
+                            ItemList.Add(new FoodItem(position, spriteBatch, game));
+                            itemNum++;
+                            break;
                         default:
                             break;
                     }

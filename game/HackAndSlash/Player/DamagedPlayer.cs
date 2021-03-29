@@ -79,6 +79,10 @@ namespace HackAndSlash
             //Does not take damaged!
             //Do nothing!
         }
+        public void Healed()
+        {
+            DecoratedPlayer.Healed();
+        }
 
         public GlobalSettings.Direction GetDir()
         {

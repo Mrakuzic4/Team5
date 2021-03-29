@@ -22,9 +22,12 @@
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugMoveUp.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugRefactoredIdle.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ChipBlock.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/EmptyHeart.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/explosion.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/firewall2.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/firewall3.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/Food.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/HalfHeart.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/LevelEagleBorder.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/blockAllMight.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/eagleDoorHorizontalLeft.png</File>
@@ -59,6 +62,7 @@
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeUp.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/UI/GamePauseOverlay.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/UI/SwordSelector.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/WholeHeart.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaAttackDown.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaAttackLeft.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaAttackRight.png</File>
@@ -91,9 +95,12 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File>images/emptyHeart.png</File>
     <File xsi:nil="true" />
     <File>images/firewall.png</File>
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>images/halfHeart.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
@@ -128,6 +135,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File>images/fullHeart.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

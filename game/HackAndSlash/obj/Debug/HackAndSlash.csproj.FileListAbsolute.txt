@@ -585,3 +585,7 @@ C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debu
 C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\levels\eagleDoors.xnb
 C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\TextSprites.xnb
 C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\TextCharacters.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\emptyHeart.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\fullHeart.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\halfHeart.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Food.xnb

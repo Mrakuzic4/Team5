@@ -140,6 +140,15 @@ namespace HackAndSlash
             //Health goes down by a half heart when damaged
             currentHealth--;
             playerStateMachine.Damaged();
+        } 
+        // make player heal method in IPlayer and all player wrappers
+        public void Healed()
+        {
+            currentHealth++;
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
         }
 
         public void Update()
