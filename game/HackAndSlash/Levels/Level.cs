@@ -30,14 +30,14 @@ namespace HackAndSlash
         private Texture2D blockAllMight; // Containing all blocks 
 
         // Transiton related 
-        int TransDir = 0;
+        public int TransDir = (int)GlobalSettings.Direction.Left;
         public bool transitioning = false;
         public bool transFinsihed = false;
         public Vector2[] nextLvPos = { 
-            new Vector2(0, -GlobalSettings.GAME_AREA_HEIGHT + GlobalSettings.HEADSUP_DISPLAY), // Go through top door 
-            new Vector2(0, GlobalSettings.HEADSUP_DISPLAY + GlobalSettings.GAME_AREA_HEIGHT), // Go through bottom door 
             new Vector2(-GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.HEADSUP_DISPLAY ), // Go through left door 
-            new Vector2(GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.HEADSUP_DISPLAY )  // Go through right door 
+            new Vector2(GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.HEADSUP_DISPLAY ),  // Go through right door 
+            new Vector2(0, -GlobalSettings.GAME_AREA_HEIGHT + GlobalSettings.HEADSUP_DISPLAY), // Go through top door 
+            new Vector2(0, GlobalSettings.HEADSUP_DISPLAY + GlobalSettings.GAME_AREA_HEIGHT) // Go through bottom door 
         }; // Position for next level 
         private Vector2 delta = new Vector2(0, 0); 
         private int timer = 0;
@@ -49,18 +49,19 @@ namespace HackAndSlash
         public int[] mapIndex = GlobalSettings.STRAT_UP_INDEX;
 
         // Doors related 
-        // Up, Bottom, Left Right 
+
+        // Left, Right, Up, Down
         public bool[] transDirList = { true, false, false, false };
         private bool[] doorOpen =    { false, false, false, false };    // Highest priority 
         private bool[] doorHole=     { false, false, false, false };    // Second in command 
         private bool[] doorLocked =  { false, false, false, false };    // Lowest priority  
         private bool[] doorHiden =   { false, false, false, false };    // Does not draw 
         private Dictionary<int, int> doorDirMapping = new Dictionary<int, int>(){
-            {0, 0},
-            {1, 3},
-            {2, 1},
-            {3, 2}
-            };  // Mapping the direction Enum to the image of th4 doors 
+            {0, 1},
+            {1, 2},
+            {2, 0},
+            {3, 3}
+            };  // Mapping the direction Enum to the image of the doors 
         private int[] iter = { 0, 1, 2, 3 }; // Minimize magic number in door iteration 
 
         // Misc 
@@ -88,7 +89,6 @@ namespace HackAndSlash
             AlterTexture();
             GenerateOverlay();
 
-            AddHole(1);
         }   
         
         // Generate a texture filled with default color 
@@ -185,21 +185,21 @@ namespace HackAndSlash
                 if (doorHole[Dir])   Col = DOOR_HOLE_INDEX;
                 if (doorOpen[Dir])   Col = DOOR_OPEN_INDEX;
                 switch (Dir) {
-                    case 0:
-                        DestRectangle.X = HorizontalPos;
-                        DestRectangle.Y = TopPosition;
-                        break;
-                    case 1:
-                        DestRectangle.X = HorizontalPos;
-                        DestRectangle.Y = ButtPosition;
-                        break;
-                    case 2:
+                    case (int)GlobalSettings.Direction.Left:
                         DestRectangle.X = LeftPosition;
                         DestRectangle.Y = VerticalPos;
                         break;
-                    case 3:
+                    case (int)GlobalSettings.Direction.Right:
                         DestRectangle.X = RightPosition;
                         DestRectangle.Y = VerticalPos;
+                        break;
+                    case (int)GlobalSettings.Direction.Up:
+                        DestRectangle.X = HorizontalPos;
+                        DestRectangle.Y = TopPosition;
+                        break;
+                    case (int)GlobalSettings.Direction.Down:
+                        DestRectangle.X = HorizontalPos;
+                        DestRectangle.Y = ButtPosition;
                         break;
                     default: break; // Not possible 
                 }
@@ -263,16 +263,17 @@ namespace HackAndSlash
         public void Update(GameTime gameTime)
         {
             //transDirList[3] = true; // Placeholder for testing directional transition  
-            for (int i = 0; i < transDirList.Length; i++)
-                if (transDirList[i]) TransDir = i; 
+            //for (int i = 0; i < transDirList.Length; i++)
+            //    if (transDirList[i]) TransDir = i; 
 
             timer += gameTime.ElapsedGameTime.Milliseconds;
             if (timer > UPDATE_DELAY)
             {
-                if (transDirList[0] || transDirList[1]) // up and down 
-                    delta.Y += transDirList[0]? TRANSITION_STEP_Y : -TRANSITION_STEP_Y;
+                if (TransDir == (int)GlobalSettings.Direction.Up 
+                    || TransDir == (int)GlobalSettings.Direction.Down) // up and down 
+                    delta.Y += (TransDir == (int)GlobalSettings.Direction.Up) ? TRANSITION_STEP_Y : -TRANSITION_STEP_Y;
                 else
-                    delta.X += transDirList[2]? TRANSITION_STEP_X : -TRANSITION_STEP_X;
+                    delta.X += (TransDir == (int)GlobalSettings.Direction.Left) ? TRANSITION_STEP_X : -TRANSITION_STEP_X;
                 timer = 0; 
             }
 
@@ -282,7 +283,6 @@ namespace HackAndSlash
                 transFinsihed = true;
                 transitioning = false; 
             }
-            
         }
 
         // Designed for the transitioning animation 

@@ -52,7 +52,7 @@ namespace HackAndSlash
         public const int CYCLE_BOUND = 6;
 
         public GlobalSettings () {
-            
+            // Hahaha
         }
 
 
