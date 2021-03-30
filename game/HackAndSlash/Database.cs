@@ -170,14 +170,25 @@ namespace HackAndSlash
         public const string eagleM4 = @"Content/info/eagleM4.json";
         public const string eagleM5 = @"Content/info/eagleM5.json";
         public const string eagleM6 = @"Content/info/eagleM6.json";
+        public const string eagleM7 = @"Content/info/eagleM7.json";
+        public const string eagleM8 = @"Content/info/eagleM8.json";
+        public const string eagleM9 = @"Content/info/eagleM9.json";
+        public const string eagleM10 = @"Content/info/eagleM10.json";
+        public const string eagleM11 = @"Content/info/eagleM11.json";
+        public const string eagleM12 = @"Content/info/eagleM12.json";
+        public const string eagleM13 = @"Content/info/eagleM13.json";
+        public const string eagleM14 = @"Content/info/eagleM14.json";
+        public const string eagleM15 = @"Content/info/eagleM15.json";
+        public const string eagleM16 = @"Content/info/eagleM16.json";
+        public const string eagleM17 = @"Content/info/eagleM17.json";
 
         public static string[,] eagle = new string[6,6] { 
-                {@"Content/info/eagleM1.json", @"Content/info/eagleM6.json", @"Content/info/eagleM5.json", null, null, null},
-                {null, null, @"Content/info/eagleM6.json", null, @"Content/info/eagleM4.json", @"Content/info/eagleM6.json"},
-                {@"Content/info/eagleM3.json", @"Content/info/eagleM2.json", @"Content/info/eagleM1.json", @"Content/info/eagleM6.json", @"Content/info/eagleM5.json", null},
-                {null, @"Content/info/eagleM3.json", @"Content/info/eagleM2.json", @"Content/info/eagleM1.json", null, null},
-                {null, null, @"Content/info/eagleM3.json", null, null, null},
-                {null, @"Content/info/eagleM5.json", @"Content/info/eagleM4.json", @"Content/info/eagleM3.json", null, null},
+                {null, @"Content/info/eagleM1.json", @"Content/info/eagleM2.json", null, null, null},
+                {null, null, @"Content/info/eagleM3.json", null, @"Content/info/eagleM4.json", @"Content/info/eagleM5.json"},
+                {@"Content/info/eagleM6.json", @"Content/info/eagleM7.json", @"Content/info/eagleM8.json", @"Content/info/eagleM9.json", @"Content/info/eagleM10.json", null},
+                {null, @"Content/info/eagleM11.json", @"Content/info/eagleM12.json", @"Content/info/eagleM13.json", null, null},
+                {null, null, @"Content/info/eagleM14.json", null, null, null},
+                {null, @"Content/info/eagleM15.json", @"Content/info/eagleM16.json", @"Content/info/eagleM17.json", null, null},
             };
 
   

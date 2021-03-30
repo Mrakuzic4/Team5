@@ -27,7 +27,18 @@ namespace HackAndSlash
                 new JsonParser(MapDatabase.eagleM3).getCurrentMapInfo(),
                 new JsonParser(MapDatabase.eagleM4).getCurrentMapInfo(),
                 new JsonParser(MapDatabase.eagleM5).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM6).getCurrentMapInfo()
+                new JsonParser(MapDatabase.eagleM6).getCurrentMapInfo(),
+                new JsonParser(MapDatabase.eagleM7).getCurrentMapInfo(),
+                new JsonParser(MapDatabase.eagleM8).getCurrentMapInfo(),
+                new JsonParser(MapDatabase.eagleM9).getCurrentMapInfo(),
+                new JsonParser(MapDatabase.eagleM10).getCurrentMapInfo(),
+                new JsonParser(MapDatabase.eagleM11).getCurrentMapInfo(),
+                new JsonParser(MapDatabase.eagleM12).getCurrentMapInfo(),
+                new JsonParser(MapDatabase.eagleM13).getCurrentMapInfo(),
+                new JsonParser(MapDatabase.eagleM14).getCurrentMapInfo(),
+                new JsonParser(MapDatabase.eagleM15).getCurrentMapInfo(),
+                new JsonParser(MapDatabase.eagleM16).getCurrentMapInfo(),
+                new JsonParser(MapDatabase.eagleM17).getCurrentMapInfo()
             };
 
             string[,] EaglePaths = MapDatabase.eagle;

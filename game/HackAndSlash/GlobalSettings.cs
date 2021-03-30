@@ -49,7 +49,7 @@ namespace HackAndSlash
         /* Some fields created for level cycling in sprint 3.
          * Future updates might just get rid of these.
          */
-        public const int CYCLE_BOUND = 6;
+        public const int CYCLE_BOUND = 17;
 
         public GlobalSettings () {
             // Hahaha

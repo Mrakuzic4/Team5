@@ -1,0 +1,21 @@
+﻿{  
+
+      "Arrangement": [
+        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, -2, 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, -2, 32, 32, 0, 0, -2, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 32, 32, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+        [ -258, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -257 ] 
+      ],
+
+      "DropPotions": 0,
+      "DropKeys": 0,
+       
+      "LockedDoors": [ false, false, false, false ],
+      "OpenDoors": [ false, false, true, true ],
+      "HiddenDoors": [ false, false, false, false ],
+ 
+      "DefaultBlock": 0
+}  
