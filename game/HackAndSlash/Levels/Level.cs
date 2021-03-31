@@ -279,16 +279,37 @@ namespace HackAndSlash
         /// The contract is that:
         ///     "If the player can go through, then there must be another room."
         /// </summary>
+        /// <param name="Dir">
+        ///     Relative direction of the room intended to go  
+        /// </param>
+        /// <returns>true of false</returns>
         public bool CanGoThrough(int Dir)
         {
             // Up, Bottom, Left Right 
             return (doorOpen[Dir] || doorHole[Dir]) && (neighbors[Dir] != null);
         }
+
+        /// <summary>
+        /// Return the map info about room at Dir.
+        /// Notive that the contract is:
+        ///     "If this is invoked, then there must be something in that direction."
+        /// </summary>
+        /// <param name="Dir">
+        ///     Relative direction of the room intended to go  
+        /// </param>
+        /// <returns>A map or null</returns>
         public Map NextRoom(int Dir)
         {
             return neighbors[Dir]; 
         }
-        public void MoveToRoom(int Dir)
+
+        /// <summary>
+        ///     Mark a movement into next room
+        /// </summary>
+        /// <param name="Dir">
+        ///     The direction of previous movement 
+        /// </param>
+        public void MovedToRoom(int Dir)
         {
             int MoveX = 0, MoveY = 0;
 
@@ -302,13 +323,13 @@ namespace HackAndSlash
             levelCycler.currentLocationIndex[1] += MoveX;
         }
         
+        // For explosions to add a hole on the wall 
         public void AddHole(int Dir)
         {
             doorHole[Dir] = true;
             doorOpen[Dir] = false;
             UpdateDrawDoors();
         }
-
 
         // Only useful during map transition 
         public void Update(GameTime gameTime)
@@ -331,9 +352,6 @@ namespace HackAndSlash
                 transitioning = false;
             }
         }
-
-        // Designed for the transitioning animation 
-
 
         public void Draw()
         {

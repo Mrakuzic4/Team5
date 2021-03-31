@@ -219,18 +219,21 @@ namespace HackAndSlash
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            // Pausing or other thing that takes over the screen 
             if (!elapsing)
             {
                 if (gamePaused) pauseOverlay.Update();
             } 
+            // Transitioning between rooms 
             else if (currentLevel.transitioning)
             {
                 currentLevel.Update(gameTime);
-                if (currentLevel.transFinsihed) // Flagging it into finished is done in Level.cs 
+                // Flagging transFinsihed into true is done in Update() method in Level.cs 
+                if (currentLevel.transFinsihed) 
                 {
                     currentLevel = generator.getLevel(GraphicsDevice, spriteBatch);
                     currentLevel.currentMapInfo = currentMapInfo;
-                    currentLevel.MoveToRoom(transitionDir);
+                    currentLevel.MovedToRoom(transitionDir);
                     currentLevel.Generate();
                     transitionDir = 5; 
 
@@ -238,9 +241,10 @@ namespace HackAndSlash
                     enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
                     itemList = generator.GetItemList(spriteBatch, this);
                 }
-                    
             }
-            else // When the pause, transit, or bag state is not flagged 
+            // When the pause, transit, or bag state is not flagged 
+            // i.e. the game area is running 
+            else
             {
                 foreach (IController controller in controllerList)
                 {
@@ -294,11 +298,16 @@ namespace HackAndSlash
 
                 foreach (IBlock block in blockList) block.Draw();
                 foreach (IEnemy enemy in enemyList) enemy.Draw();
-                if (!currentLevel.transitioning)
-                    PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
                 foreach (IItem item in itemList) item.Draw();
 
-                currentLevel.DrawOverlay();
+                // Player is not drawn during transition 
+                if (!currentLevel.transitioning)
+                {
+                    PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
+                }
+
+                // Masking part of the display, also used for masking extra transition animation 
+                currentLevel.DrawOverlay(); 
 
                 /*
                  * Put UI and Headsup elements below to avoid being covered by overlay  
