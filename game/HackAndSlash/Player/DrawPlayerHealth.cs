@@ -13,6 +13,7 @@ namespace HackAndSlash
         Texture2D emptyHeart;
         Texture2D halfHeart;
         Texture2D fullHeart;
+        Texture2D fontLife;
 
         //number of different hearts
         private int full; 
@@ -20,14 +21,20 @@ namespace HackAndSlash
         private int empty;
 
         private Rectangle destinationRectangle; //position of the heart that is to be drawn
+        private Rectangle fontRectangle; //position of the font that is to be drawn
 
         //Position of Hearts on HUD
         private const int Y = 84;
         private const int X = 768;
-        private const int destSize = 32;
-        private const int srcSize = 8;
+        private const int DEST_SIZE = 32;
+        private const int SRC_SIZE = 8;
 
-        public DrawPlayerHealth(Game1 game, Texture2D emptyHeart, Texture2D halfHeart, Texture2D fullheart)
+        //Position of Fonts on HUD
+        private const int Y_Font = 4;
+
+        private const int SCALE = 4;
+
+        public DrawPlayerHealth(Game1 game, Texture2D emptyHeart, Texture2D halfHeart, Texture2D fullheart, Texture2D fontLife)
         {
             this.game = game;
             this.fullHeart = fullheart;
@@ -36,7 +43,9 @@ namespace HackAndSlash
             this.full = this.game.Player.GetMaxHealth();
             this.half = 0;
             this.empty = 0;
-            destinationRectangle = new Rectangle(X, Y, destSize, destSize);
+            this.fontLife = fontLife;
+            destinationRectangle = new Rectangle(X, Y, DEST_SIZE, DEST_SIZE);
+            fontRectangle = new Rectangle(X, Y_Font, fontLife.Width*SCALE, fontLife.Height*SCALE);
         }
 
         /// <summary>
@@ -78,14 +87,18 @@ namespace HackAndSlash
         /// <param name="color"></param>
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
+            //Draw font "-Life-"
+            Rectangle sourceRectangle = new Rectangle(0, 0, 48, 8);
+            spriteBatch.Draw(fontLife, fontRectangle, sourceRectangle, color);
 
-            Rectangle sourceRectangle = new Rectangle(0, 0, srcSize, srcSize);
+            //Draw Hearts
+            sourceRectangle = new Rectangle(0, 0, SRC_SIZE, SRC_SIZE); //reset source rectangle.
 
             //draw full hearts
             for (int i = 1; i < full+1; i++)
             {
                 spriteBatch.Draw(fullHeart, destinationRectangle, sourceRectangle, color);
-                destinationRectangle = new Rectangle(X + destSize * i, Y, destSize, destSize);
+                destinationRectangle = new Rectangle(X + DEST_SIZE * i, Y, DEST_SIZE, DEST_SIZE);
             }
             int destinationRectangleForHalf = destinationRectangle.X; //this is not true if there is no full hearts.
 
@@ -93,7 +106,7 @@ namespace HackAndSlash
             for (int i = 1; i < half+1; i++)
             {
                 spriteBatch.Draw(halfHeart, destinationRectangle, sourceRectangle, color);
-                destinationRectangle = new Rectangle(destinationRectangleForHalf + destSize * i, Y, destSize, destSize);
+                destinationRectangle = new Rectangle(destinationRectangleForHalf + DEST_SIZE * i, Y, DEST_SIZE, DEST_SIZE);
             }
             int destinationRectangleForEmpty = destinationRectangle.X;
 
@@ -101,9 +114,9 @@ namespace HackAndSlash
             for (int i = 1; i < empty+1; i++)
             {
                 spriteBatch.Draw(emptyHeart, destinationRectangle, sourceRectangle, color);
-                destinationRectangle = new Rectangle(destinationRectangleForEmpty + destSize * i, Y, destSize, destSize);
+                destinationRectangle = new Rectangle(destinationRectangleForEmpty + DEST_SIZE * i, Y, DEST_SIZE, DEST_SIZE);
             }
-            destinationRectangle = new Rectangle(X, Y, destSize, destSize); //reset the dest rectangle
+            destinationRectangle = new Rectangle(X, Y, DEST_SIZE, DEST_SIZE); //reset the dest rectangle
         }
     }
     

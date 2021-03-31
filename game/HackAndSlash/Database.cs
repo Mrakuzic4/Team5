@@ -9,6 +9,8 @@ namespace HackAndSlash
     // This class is used to record all the meta-info of the pictures 
     class ImageDatabase
     {
+        public ImageFile Font_Life;
+
         public ImageFile playerMoveUp;
         public ImageFile playerMoveDown;
         public ImageFile playerMoveLeft;
@@ -79,6 +81,7 @@ namespace HackAndSlash
         public ImageDatabase()
         {
             // Initilize images with path/name, column and row 
+            Font_Life = new ImageFile("images/font/Font_life", 1, 1);
 
             playerMoveUp = new ImageFile("images/sucUp", 1, 7);
             playerMoveDown = new ImageFile("images/sucDown", 1, 7);

@@ -31,7 +31,6 @@ namespace HackAndSlash
         private Texture2D halfHeart;
         private Texture2D emptyHeart;
 
-
         private Texture2D BGSprite;
 
         private Texture2D SnakeIdleSprite;
@@ -61,7 +60,6 @@ namespace HackAndSlash
         private Texture2D ThrowingKnifeDownSprite;
         private Texture2D FoodSprite;
 
-
         private Texture2D BlockMovable;
         private Texture2D BlockAllMight; 
         private Texture2D BlockDemo;
@@ -75,6 +73,8 @@ namespace HackAndSlash
         private Texture2D SwordSelector;
 
         private Texture2D TextCharacters;
+
+        private Texture2D Font_Life;
 
         private static SpriteFactory instance = new SpriteFactory();
 
@@ -92,7 +92,10 @@ namespace HackAndSlash
 
         public void LoadAllTextures(ContentManager content)
         {
-            IMDB = new ImageDatabase();         
+            IMDB = new ImageDatabase();
+
+            //Font
+            Font_Life = content.Load<Texture2D>(IMDB.Font_Life.pathName);
 
             //Zelda
             ZeldaDown = content.Load<Texture2D>(IMDB.zeldaDown.pathName);
@@ -176,6 +179,11 @@ namespace HackAndSlash
             PauseOverlay = content.Load<Texture2D>(IMDB.PauseOverlay.pathName);
             SwordSelector = content.Load<Texture2D>(IMDB.SwordSelector.pathName);
             TextCharacters = content.Load<Texture2D>(IMDB.TextCharacters.pathName);
+        }
+
+        public Texture2D GetFontLife()
+        {
+            return Font_Life;
         }
 
         public Texture2D GetFullHeart()

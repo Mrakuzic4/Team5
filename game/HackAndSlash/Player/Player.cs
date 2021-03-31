@@ -139,6 +139,11 @@ namespace HackAndSlash
         {
             //Health goes down by a half heart when damaged
             currentHealth--;
+            if (currentHealth == 0)
+            {
+                game.reset(5); //Reset the room upon player's death.
+                currentHealth = maxHealth; //fully heal Player after death
+            }
             playerStateMachine.Damaged();
         } 
         // make player heal method in IPlayer and all player wrappers

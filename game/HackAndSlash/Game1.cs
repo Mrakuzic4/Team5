@@ -193,7 +193,8 @@ namespace HackAndSlash
             //Player's Health 
             this.DrawHealth = new DrawPlayerHealth(this,SpriteFactory.Instance.GetEmptyHeart(), 
                 SpriteFactory.Instance.GetHalfHeart(),
-                SpriteFactory.Instance.GetFullHeart());
+                SpriteFactory.Instance.GetFullHeart(),
+                SpriteFactory.Instance.GetFontLife());
 
             /// TODO: Consider removing all explicit declarations of emeyies and only leave them in the list
             ///       and access only by list index. 
