@@ -64,7 +64,7 @@ namespace HackAndSlash
         
         public Map StartUpLevel()
         {
-            return levelEagle[5, 2]; // Only works for level eagle 
+            return levelEagle[GlobalSettings.STRAT_UP_INDEX[0], GlobalSettings.STRAT_UP_INDEX[1]]; // Only works for level eagle 
         }
 
         // If that direction has a room 
@@ -82,11 +82,11 @@ namespace HackAndSlash
 
                 case (int)GlobalSettings.Direction.Left:
                     if (currentLocationIndex[1] <= 0) return false;
-                    return (currentMapSet[currentLocationIndex[0] - 1, currentLocationIndex[1]] != null);
+                    return (currentMapSet[currentLocationIndex[0], currentLocationIndex[1] - 1] != null);
 
                 case (int)GlobalSettings.Direction.Right:
                     if (currentLocationIndex[1] >= currentMapSet.GetLength(1) - 1) return false;
-                    return (currentMapSet[currentLocationIndex[1] + 1, currentLocationIndex[1]] != null);
+                    return (currentMapSet[currentLocationIndex[0], currentLocationIndex[1] + 1] != null);
 
                 default:
                     return false;
@@ -115,11 +115,6 @@ namespace HackAndSlash
                 default:
                     return null;
             }
-        }
-        public Map NextMap(int Dir)
-        {
-            // Placeholder method 
-            return S3EagleCycle[0];
         }
 
     }

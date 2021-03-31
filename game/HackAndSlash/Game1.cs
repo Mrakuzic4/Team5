@@ -101,18 +101,6 @@ namespace HackAndSlash
                 // This is the real reset 
                 // Nullify `R` for now 
             }
-
-            /* the following commented lines are backup for keyboard cycling */
-            //if (cycleUp == true)
-            //{
-            //    mapCycleIndex++;
-            //    if (mapCycleIndex >= GlobalSettings.CYCLE_BOUND) mapCycleIndex = 0;
-            //}
-            //else
-            //{
-            //    mapCycleIndex--;
-            //    if (mapCycleIndex < 0) mapCycleIndex = GlobalSettings.CYCLE_BOUND - 1;
-            //}
             else
             {
                 currentMapInfo = currentLevel.NextRoom(Direction);
@@ -128,6 +116,7 @@ namespace HackAndSlash
                 currentLevel.transFinsihed = false;
 
                 // Empty the list to avoid things being drawn during transition 
+                // Recreation of the lists is in Update() 
                 blockList = new List<IBlock>();
                 enemyList = new List<IEnemy>();
                 itemList = new List<IItem>();
@@ -309,14 +298,13 @@ namespace HackAndSlash
                     PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
                 foreach (IItem item in itemList) item.Draw();
 
-                DrawHealth.Draw(spriteBatch, new Vector2(0,100), Color.White);
-
                 currentLevel.DrawOverlay();
 
                 /*
-                 * Put UI elements here 
+                 * Put UI and Headsup elements below to avoid being covered by overlay  
                  */
-        }
+                DrawHealth.Draw(spriteBatch, new Vector2(0, 100), Color.White);
+            }
             else { 
                 pauseOverlay.Draw(); 
             }

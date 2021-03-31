@@ -60,7 +60,6 @@ namespace HackAndSlash
 
         // Doors related 
         // Left, Right, Up, Down as in global settings 
-        public bool[] transDirList = { true, false, false, false };
         private bool[] doorOpen =    { false, false, false, false };    // Highest priority 
         private bool[] doorHole=     { false, false, false, false };    // Second in command 
         private bool[] doorLocked =  { false, false, false, false };    // Lowest priority  
@@ -88,7 +87,7 @@ namespace HackAndSlash
             // Primaries 
             graphics = Graphics;
             spriteBatch = SB;
-            levelCycler = new LevelCycling();
+            //levelCycler = new LevelCycling();
         }   
 
         public void FirstTimeStartUp()
@@ -98,18 +97,6 @@ namespace HackAndSlash
 
         public void Generate()
         {
-            // Error checking on non-existent doors 
-            foreach (int Direction in iter)
-            {
-                if (!levelCycler.HasNextRoom(Direction))
-                {
-                    doorOpen[Direction] = false;
-                    doorHole[Direction] = false;
-                    doorLocked[Direction] = false;
-                    doorHiden[Direction] = false;
-                }
-            }
-
             // Derivatives 
             defaultBlockIndex = currentMapInfo.DefaultBlock;
             doorOpen = currentMapInfo.OpenDoors;
@@ -314,15 +301,11 @@ namespace HackAndSlash
             levelCycler.currentLocationIndex[0] += MoveY;
             levelCycler.currentLocationIndex[1] += MoveX;
         }
-
-        public void ResetTransDir()
-        {
-            transDirList = new bool[] { false, false, false, false };
-        }
         
         public void AddHole(int Dir)
         {
             doorHole[Dir] = true;
+            doorOpen[Dir] = false;
             UpdateDrawDoors();
         }
 
