@@ -493,6 +493,18 @@
 /processorParam:TextureFormat=Color
 /build:images/MoblinUp.png
 
+#begin images/NES - The Legend of Zelda - Fonts.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/NES - The Legend of Zelda - Fonts.png
+
 #begin images/NES - The Legend of Zelda - Link.png
 /importer:TextureImporter
 /processor:TextureProcessor
