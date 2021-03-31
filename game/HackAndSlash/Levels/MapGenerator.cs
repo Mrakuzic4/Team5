@@ -19,7 +19,6 @@ namespace HackAndSlash
             mapSettings = new GlobalSettings();
         }
 
-        // Not fully implemented 
         public Level getLevel(GraphicsDevice GD, SpriteBatch spriteBatch)
         {
             Level level = new Level(GD, spriteBatch);
@@ -102,14 +101,14 @@ namespace HackAndSlash
                     Vector2 position = mapSettings.PlayAreaPosition(c, r);
                     switch (Index)
                     {
-                        case -1:
+                        case GlobalSettings.SNAKE_ENEMY:
                             EnemyList.Add(new SnakeEnemy(position, graphics, spriteBatch, game));
                             break;
-                        case -2:
-                            EnemyList.Add(new SnakeEnemy(position, graphics, spriteBatch, game));
+                        case GlobalSettings.BUG_ENEMY:
+                            EnemyList.Add(new BugEnemy(position, graphics, spriteBatch, game));
                             break;
-                        case -3:
-                            EnemyList.Add(new SnakeEnemy(position, graphics, spriteBatch, game));
+                        case GlobalSettings.MOBLIN_ENEMY:
+                            EnemyList.Add(new MoblinEnemy(position, graphics, spriteBatch, game));
                             break;
                         default:
                             break; 
@@ -137,19 +136,19 @@ namespace HackAndSlash
 
                     switch (Index)
                     {
-                        case -257:
+                        case GlobalSettings.FIREWALL_ITEM:
                             ItemList.Add(new FirewallItem(position, spriteBatch, game));
                             itemNum++;
                             break;
-                        case -258:
+                        case GlobalSettings.BOMB_ITEM:
                             ItemList.Add(new BombItem(position, spriteBatch, game));
                             itemNum++;
                             break;
-                        case -259:
+                        case GlobalSettings.THROWING_KNIFE_ITEM:
                             ItemList.Add(new ThrowingKnifeItem(position, spriteBatch, game));
                             itemNum++;
                             break;
-                        case -260:
+                        case GlobalSettings.FOOD_ITEM:
                             ItemList.Add(new FoodItem(position, spriteBatch, game));
                             itemNum++;
                             break;

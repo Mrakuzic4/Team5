@@ -53,6 +53,21 @@ namespace HackAndSlash
          */
         public const int CYCLE_BOUND = 17;
 
+        // Index for item 
+        public const int FIREWALL_ITEM = -257;
+        public const int BOMB_ITEM = -258;
+        public const int THROWING_KNIFE_ITEM = -259;
+        public const int FOOD_ITEM = -260;
+
+        // Index for enemy 
+        public const int SNAKE_ENEMY = -1;
+        public const int BUG_ENEMY = -2;
+        public const int MOBLIN_ENEMY = -3;
+
+        // Misc
+        public static Random RND = new Random(); 
+        public const int PRNG_WEIGHT = 10; // Increse this to make it more random
+
         public GlobalSettings () {
             // Hahaha
         }

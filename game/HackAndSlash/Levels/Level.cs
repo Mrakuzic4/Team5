@@ -56,7 +56,7 @@ namespace HackAndSlash
         private Map[] neighbors { get; set; }
         public int[] mapIndex = GlobalSettings.STRAT_UP_INDEX;
 
-        public LevelCycling levelCycler = new LevelCycling(); 
+        public LevelCycling levelCycler; 
 
         // Doors related 
         // Left, Right, Up, Down as in global settings 
@@ -84,10 +84,8 @@ namespace HackAndSlash
 
         public Level(GraphicsDevice Graphics, SpriteBatch SB)
         {
-            // Primaries 
             graphics = Graphics;
             spriteBatch = SB;
-            //levelCycler = new LevelCycling();
         }   
 
         public void FirstTimeStartUp()

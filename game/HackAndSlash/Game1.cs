@@ -48,7 +48,8 @@ namespace HackAndSlash
 
         // Level and map related 
         public Map currentMapInfo;
-        public Level currentLevel; 
+        public Level currentLevel;
+        public LevelCycling levelCycleRecord; 
         private MapGenerator generator;
         private int transitionDir; 
         private int mapCycleIndex;
@@ -59,7 +60,8 @@ namespace HackAndSlash
         // Sprites  
         public IItem ItemHolder { get; set; }
         
-
+        // Please consider removing these explicit declerations since some of them are pretty much 
+        // only used in load content and never used once new rooms are loaded 
         public SnakeEnemy snakefirst;
         public BugEnemy bugfirst;
         public MoblinEnemy moblinfirst;
@@ -81,6 +83,9 @@ namespace HackAndSlash
         public List<IItem> itemList { get; set; }
 
         public List<IItem> useableItemList { get; set; }
+
+        public int numOfEnemy { get; set; }
+        public int numOfDropped { get; set; }
         /* ============================================================
          * ======================== Methods ===========================
          * ============================================================ */
@@ -99,12 +104,16 @@ namespace HackAndSlash
             if(Direction == 5)
             {
                 currentLevel = generator.getLevel(GraphicsDevice, spriteBatch);
+                currentLevel.levelCycler = levelCycleRecord;
                 currentLevel.currentMapInfo = currentMapInfo;
                 currentLevel.Generate();
 
                 blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
                 enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
                 itemList = generator.GetItemList(spriteBatch, this);
+
+                numOfEnemy = enemyList.Count();
+                numOfDropped = 0; 
             }
             else
             {
@@ -113,6 +122,7 @@ namespace HackAndSlash
 
                 // Pre-launch warmup for transition 
                 NextLevel = generator.getLevel(GraphicsDevice, spriteBatch);
+                NextLevel.levelCycler = levelCycleRecord;
                 NextLevel.currentMapInfo = currentMapInfo;
                 NextLevel.Generate();
 
@@ -166,10 +176,12 @@ namespace HackAndSlash
             //Get sprite from spriteFactory
             SpriteFactory.Instance.LoadAllTextures(Content);
 
-            /* =============================== In game contents =============================== */ 
+            /* =============================== In game contents =============================== */
 
             // The level map
+            levelCycleRecord = new LevelCycling(); 
             currentLevel = new Level(GraphicsDevice, spriteBatch);
+            currentLevel.levelCycler = levelCycleRecord; 
             currentLevel.FirstTimeStartUp();
             currentLevel.Generate();
             currentMapInfo = currentLevel.currentMapInfo;
@@ -237,6 +249,7 @@ namespace HackAndSlash
                 if (currentLevel.transFinsihed) 
                 {
                     currentLevel = generator.getLevel(GraphicsDevice, spriteBatch);
+                    currentLevel.levelCycler = levelCycleRecord;
                     currentLevel.currentMapInfo = currentMapInfo;
                     currentLevel.MovedToRoom(transitionDir);
                     currentLevel.Generate();
@@ -245,6 +258,9 @@ namespace HackAndSlash
                     blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
                     enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
                     itemList = generator.GetItemList(spriteBatch, this);
+
+                    numOfEnemy = enemyList.Count();
+                    numOfDropped = 0;
                 }
             }
             // When the pause, transit, or bag state is not flagged 

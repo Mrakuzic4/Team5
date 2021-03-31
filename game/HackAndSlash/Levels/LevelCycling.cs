@@ -117,6 +117,26 @@ namespace HackAndSlash
             }
         }
 
+        /// <summary>
+        /// Remove the item/enemy from this room, so that the player cannot exploit on it. 
+        /// </summary>
+        /// <param name="Index">Index of the item/enemy.</param>
+        public void RemoveOneIndex(int Index)
+        {
+            Map ActiveMap = currentMapSet[currentLocationIndex[0] - 1, currentLocationIndex[1]];
+
+            for (int i = 0; i < GlobalSettings.TILE_ROW; i++)
+            {
+                for (int j = 0; j < GlobalSettings.TILE_COLUMN; j++)
+                {
+                    if(ActiveMap.Arrangement[i, j] == Index)
+                    {
+                        ActiveMap.Arrangement[i, j] = ActiveMap.DefaultBlock;
+                    }
+                }
+            }
+        }
+
     }
 
 }

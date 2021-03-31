@@ -102,6 +102,7 @@
     <Compile Include="Levels\Map.cs" />
     <Compile Include="Levels\MapGenerator.cs" />
     <Compile Include="Levels\MapTransition.cs" />
+    <Compile Include="Misc\PRNG.cs" />
     <Compile Include="Player\DrawPlayerHealth.cs" />
     <Compile Include="Player\UseItemPlayer.cs" />
     <Compile Include="Player\IPlayer.cs" />
