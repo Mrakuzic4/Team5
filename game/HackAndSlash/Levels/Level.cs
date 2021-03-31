@@ -4,6 +4,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
+
+/// <summary>
+/// Largley due to the lack of consideration at the start, 
+/// word "level" and "map" are used interchangeable in many locations 
+/// </summary>
+
+
 namespace HackAndSlash
 {
     public class Level : ILevel
@@ -25,7 +32,7 @@ namespace HackAndSlash
         // Textures 
         public Texture2D headsUpFill; 
         public Texture2D levelOverlay;
-        public Texture2D nextLevel;
+        public Texture2D nextLevelTexture;
         public Texture2D levelTexture;   // Can be accessed to make map transitioning 
         private Texture2D blockAllMight; // Containing all blocks 
 
@@ -45,12 +52,14 @@ namespace HackAndSlash
         // For generating maps 
         private int defaultBlockIndex; 
         private int[,] mapMatrix;
+        public Map currentMapInfo { get;set; }
         private Map[] neighbors { get; set; }
         public int[] mapIndex = GlobalSettings.STRAT_UP_INDEX;
 
-        // Doors related 
+        public LevelCycling levelCycler = new LevelCycling(); 
 
-        // Left, Right, Up, Down
+        // Doors related 
+        // Left, Right, Up, Down as in global settings 
         public bool[] transDirList = { true, false, false, false };
         private bool[] doorOpen =    { false, false, false, false };    // Highest priority 
         private bool[] doorHole=     { false, false, false, false };    // Second in command 
@@ -68,28 +77,60 @@ namespace HackAndSlash
         private Color defaultColor = Color.Black;
         private Color defaultTint = Color.White;
 
-        public Level(GraphicsDevice graphics, SpriteBatch spriteBatch, int[,] Arrangement, int Defaultblock,
-            bool[] DO, bool[] DH, bool[] DL)
+
+        /* ============================================================
+         * ======================== Methods ===========================
+         * ============================================================ */
+
+
+        public Level(GraphicsDevice Graphics, SpriteBatch SB)
         {
-            this.graphics = graphics;
-            this.spriteBatch = spriteBatch;
-            this.defaultBlockIndex = Defaultblock;
-            this.doorOpen = DO;
-            this.doorHiden = DH;
-            this.doorLocked = DL;
+            // Primaries 
+            graphics = Graphics;
+            spriteBatch = SB;
+            levelCycler = new LevelCycling();
+        }   
 
-            neighbors = new Map[] { null, null, null, null};
+        public void FirstTimeStartUp()
+        {
+            currentMapInfo = levelCycler.StartUpLevel();
+        }
 
+        public void Generate()
+        {
+            // Error checking on non-existent doors 
+            foreach (int Direction in iter)
+            {
+                if (!levelCycler.HasNextRoom(Direction))
+                {
+                    doorOpen[Direction] = false;
+                    doorHole[Direction] = false;
+                    doorLocked[Direction] = false;
+                    doorHiden[Direction] = false;
+                }
+            }
+
+            // Derivatives 
+            defaultBlockIndex = currentMapInfo.DefaultBlock;
+            doorOpen = currentMapInfo.OpenDoors;
+            doorHiden = currentMapInfo.HiddenDoors;
+            doorLocked = currentMapInfo.LockedDoors;
+            mapMatrix = currentMapInfo.Arrangement;
+
+            // Generate placeholder textures 
             headsUpFill = GenerateTexture(GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.HEADSUP_DISPLAY, pixel => defaultColor);
             levelTexture = GenerateTexture(GlobalSettings.GAME_AREA_WIDTH, GlobalSettings.GAME_AREA_HEIGHT, pixel => defaultColor);
-            mapMatrix = Arrangement;
 
+            // Read blocks texture 
             blockAllMight = SpriteFactory.Instance.getBlockAllMight();
 
+            // Set neighbors 
+            UpdateNeighbors();
+
+            // Fill textures  
             AlterTexture();
             GenerateOverlay();
-
-        }   
+        }
         
         // Generate a texture filled with default color 
         public Texture2D GenerateTexture(int width, int height, Func<int, Color> paint)
@@ -156,11 +197,11 @@ namespace HackAndSlash
                         RawDataNow, 0, CountNow);
                 }
             }
-            UpdateDoors();
+            UpdateDrawDoors();
         }
 
         // Update the doors, used both in initialization and when new doors are being dynamically added 
-        public void UpdateDoors()
+        public void UpdateDrawDoors()
         {
             Texture2D doors = SpriteFactory.Instance.GetLevelEagleDoors();
             int DoorSizeUnit = GlobalSettings.BASE_SCALAR * 2;
@@ -217,7 +258,16 @@ namespace HackAndSlash
             }
         }
 
+        public void UpdateNeighbors()
+        {
+            neighbors = new Map[] {
+                levelCycler.GetNextRoom((int)GlobalSettings.Direction.Left),
+                levelCycler.GetNextRoom((int)GlobalSettings.Direction.Right),
+                levelCycler.GetNextRoom((int)GlobalSettings.Direction.Up),
+                levelCycler.GetNextRoom((int)GlobalSettings.Direction.Down)
+            };
 
+        }
         // Create a overlay texture for the layering effect when player goes through doors 
         private Texture2D GenerateOverlay()
         { 
@@ -238,34 +288,48 @@ namespace HackAndSlash
             return levelOverlay; 
         }
 
-        
-        public bool canGoThrough(int Dir)
+        /// <summary>
+        /// The contract is that:
+        ///     "If the player can go through, then there must be another room."
+        /// </summary>
+        public bool CanGoThrough(int Dir)
         {
             // Up, Bottom, Left Right 
-            return doorOpen[Dir] || doorHole[Dir];
+            return (doorOpen[Dir] || doorHole[Dir]) && (neighbors[Dir] != null);
+        }
+        public Map NextRoom(int Dir)
+        {
+            return neighbors[Dir]; 
+        }
+        public void MoveToRoom(int Dir)
+        {
+            int MoveX = 0, MoveY = 0;
+
+            MoveX = ((Dir == (int)GlobalSettings.Direction.Left) ? -1 : 0);
+            MoveX = ((Dir == (int)GlobalSettings.Direction.Right) ? 1 : MoveX);
+
+            MoveY = ((Dir == (int)GlobalSettings.Direction.Up) ? -1 : 0);
+            MoveY = ((Dir == (int)GlobalSettings.Direction.Down) ? 1 : MoveY);
+
+            levelCycler.currentLocationIndex[0] += MoveY;
+            levelCycler.currentLocationIndex[1] += MoveX;
         }
 
         public void ResetTransDir()
         {
             transDirList = new bool[] { false, false, false, false };
         }
-        /// <summary>
-        /// If it can go through, then there must be another room 
-        /// </summary>
+        
         public void AddHole(int Dir)
         {
             doorHole[Dir] = true;
-            UpdateDoors();
+            UpdateDrawDoors();
         }
 
 
         // Only useful during map transition 
         public void Update(GameTime gameTime)
         {
-            //transDirList[3] = true; // Placeholder for testing directional transition  
-            //for (int i = 0; i < transDirList.Length; i++)
-            //    if (transDirList[i]) TransDir = i; 
-
             timer += gameTime.ElapsedGameTime.Milliseconds;
             if (timer > UPDATE_DELAY)
             {
@@ -281,7 +345,7 @@ namespace HackAndSlash
                 (delta.X > 0 ? delta.X : -delta.X) > GlobalSettings.GAME_AREA_WIDTH)
             {
                 transFinsihed = true;
-                transitioning = false; 
+                transitioning = false;
             }
         }
 
@@ -293,7 +357,7 @@ namespace HackAndSlash
             if (transitioning)
             {
                 spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + delta, defaultTint);
-                spriteBatch.Draw(nextLevel, nextLvPos[TransDir] + delta, defaultTint);
+                spriteBatch.Draw(nextLevelTexture, nextLvPos[TransDir] + delta, defaultTint);
             }
             else
             {

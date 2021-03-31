@@ -47,9 +47,10 @@ namespace HackAndSlash
         }
 
         // Level and map related 
-        public Map currentMap;
+        public Map currentMapInfo;
         public Level currentLevel; 
         private MapGenerator generator;
+        private int transitionDir; 
         private int mapCycleIndex;
         // Partically due to planning, "level" and "map" are used interchangeable 
 
@@ -90,37 +91,48 @@ namespace HackAndSlash
             Content.RootDirectory = "Content";
         }
 
-        public void reset(bool cycleUp) {
+        public void reset(int Direction) {
 
-            Level NextLevel; 
+            transitionDir = Direction;
+            Level NextLevel;
 
-            /* the following 2 lines shall be modified,
-             * currently they're just for sprint 3 cycleing */
-            if (cycleUp == true)
+            if(Direction == 5)
             {
-                mapCycleIndex++;
-                if (mapCycleIndex >= GlobalSettings.CYCLE_BOUND) mapCycleIndex = 0;
+                // This is the real reset 
+                // Nullify `R` for now 
             }
+
+            /* the following commented lines are backup for keyboard cycling */
+            //if (cycleUp == true)
+            //{
+            //    mapCycleIndex++;
+            //    if (mapCycleIndex >= GlobalSettings.CYCLE_BOUND) mapCycleIndex = 0;
+            //}
+            //else
+            //{
+            //    mapCycleIndex--;
+            //    if (mapCycleIndex < 0) mapCycleIndex = GlobalSettings.CYCLE_BOUND - 1;
+            //}
             else
             {
-                mapCycleIndex--;
-                if (mapCycleIndex < 0) mapCycleIndex = GlobalSettings.CYCLE_BOUND - 1;
+                currentMapInfo = currentLevel.NextRoom(Direction);
+                generator = new MapGenerator(currentMapInfo);
+
+                // Pre-launch warmup for transition 
+                NextLevel = generator.getLevel(GraphicsDevice, spriteBatch);
+                NextLevel.currentMapInfo = currentMapInfo;
+                NextLevel.Generate();
+
+                currentLevel.nextLevelTexture = NextLevel.levelTexture;
+                currentLevel.transitioning = true;
+                currentLevel.transFinsihed = false;
+
+                // Empty the list to avoid things being drawn during transition 
+                blockList = new List<IBlock>();
+                enemyList = new List<IEnemy>();
+                itemList = new List<IItem>();
             }
-
-
-            currentMap = new LevelCycling().S3EagleCycle[mapCycleIndex];
-            generator = new MapGenerator(currentMap);
-
-            // Pre-launch warmup for transition 
-            NextLevel = generator.getLevel(GraphicsDevice, spriteBatch, currentMap);
-            currentLevel.nextLevel = NextLevel.levelTexture;
-            currentLevel.transitioning = true;
-            currentLevel.transFinsihed = false;
-
-            // Empty the list to avoid things being drawn during transition 
-            blockList = new List<IBlock>();
-            enemyList = new List<IEnemy>();
-            itemList = new List<IItem>();
+            
         }
 
         /// <summary>
@@ -153,14 +165,21 @@ namespace HackAndSlash
         /// </summary>
         protected override void LoadContent()
         {
-            currentMap = new LevelCycling().StartUpLevel();
-            generator = new MapGenerator(currentMap);
-
+            
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //Get sprite from spriteFactory
             SpriteFactory.Instance.LoadAllTextures(Content);
+
+            /* =============================== In game contents =============================== */ 
+
+            // The level map
+            currentLevel = new Level(GraphicsDevice, spriteBatch);
+            currentLevel.FirstTimeStartUp();
+            currentLevel.Generate();
+            currentMapInfo = currentLevel.currentMapInfo;
+            generator = new MapGenerator(currentMapInfo);
 
             //Player
             PlayerMain = new Player(this);//Player object
@@ -170,7 +189,6 @@ namespace HackAndSlash
                 SpriteFactory.Instance.GetHalfHeart(),
                 SpriteFactory.Instance.GetFullHeart());
 
-            
             /// TODO: Consider removing all explicit declarations of emeyies and only leave them in the list
             ///       and access only by list index. 
             //Enemy
@@ -187,11 +205,6 @@ namespace HackAndSlash
             itemList = generator.GetItemList(spriteBatch, this);
             useableItemList = new List<IItem>();
             textSprites = SpriteFactory.Instance.GetTextCharacters();
-
-            // A list of level maps for further transition cutscene 
-            currentLevel = new Level(GraphicsDevice, spriteBatch, currentMap.Arrangement, currentMap.DefaultBlock,
-                currentMap.OpenDoors, currentMap.HiddenDoors, currentMap.LockedDoors); 
-            
 
             //Create list of blocks
             blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
@@ -226,14 +239,19 @@ namespace HackAndSlash
                 currentLevel.Update(gameTime);
                 if (currentLevel.transFinsihed) // Flagging it into finished is done in Level.cs 
                 {
-                    currentLevel = generator.getLevel(GraphicsDevice, spriteBatch, currentMap);
+                    currentLevel = generator.getLevel(GraphicsDevice, spriteBatch);
+                    currentLevel.currentMapInfo = currentMapInfo;
+                    currentLevel.MoveToRoom(transitionDir);
+                    currentLevel.Generate();
+                    transitionDir = 5; 
+
                     blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
                     enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
                     itemList = generator.GetItemList(spriteBatch, this);
                 }
                     
             }
-            else // When the pause or bag state is not flagged 
+            else // When the pause, transit, or bag state is not flagged 
             {
                 foreach (IController controller in controllerList)
                 {
@@ -298,7 +316,7 @@ namespace HackAndSlash
                 /*
                  * Put UI elements here 
                  */
-            }
+        }
             else { 
                 pauseOverlay.Draw(); 
             }

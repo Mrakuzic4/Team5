@@ -37,6 +37,7 @@ namespace HackAndSlash
         public const long DELAY_TIME = 100; // In ms
         public const long DELAY_KEYBOARD = 200; // For keyboard pressing event 
         public enum Direction { Left, Right, Up, Down };
+        public const int RESET_DIRECTION = 4; // The 5th "direction" for resetting 
         public enum CollisionType { None, Left, Right, Top, Bottom, };
 
         public const int PAUSE_CONTINUE_X = 185;

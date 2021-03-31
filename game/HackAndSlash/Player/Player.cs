@@ -192,12 +192,11 @@ namespace HackAndSlash
             // left 
             if (this.relPositionMC.X < GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR)
             {
-                if (game.currentLevel.canGoThrough((int)GlobalSettings.Direction.Left))
+                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Left))
                 {
-                    game.currentLevel.ResetTransDir();
                     game.currentLevel.TransDir = (int)GlobalSettings.Direction.Left;
                     SetPos(new Vector2(rightBound + GlobalSettings.BASE_SCALAR, relPositionMC.Y));
-                    game.reset(true);
+                    game.reset((int)GlobalSettings.Direction.Left);
                 }
                 else
                     this.relPositionMC.X = GlobalSettings.BORDER_OFFSET;
@@ -206,12 +205,11 @@ namespace HackAndSlash
             // right 
             if (this.relPositionMC.X > rightBound + GlobalSettings.BASE_SCALAR)
             {
-                if (game.currentLevel.canGoThrough((int)GlobalSettings.Direction.Right))
+                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Right))
                 {
-                    game.currentLevel.ResetTransDir();
                     game.currentLevel.TransDir = (int)GlobalSettings.Direction.Right;
                     SetPos(new Vector2(GlobalSettings.BASE_SCALAR, relPositionMC.Y));
-                    game.reset(true);
+                    game.reset((int)GlobalSettings.Direction.Right);
                 }
                 else
                     this.relPositionMC.X = rightBound;
@@ -220,12 +218,11 @@ namespace HackAndSlash
             // Up
             if (this.relPositionMC.Y < GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY - GlobalSettings.BASE_SCALAR)
             {
-                if (game.currentLevel.canGoThrough((int)GlobalSettings.Direction.Up))
+                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Up))
                 {
-                    game.currentLevel.ResetTransDir();
                     game.currentLevel.TransDir = (int)GlobalSettings.Direction.Up;
                     SetPos(new Vector2(relPositionMC.X, bottomBound));
-                    game.reset(true);
+                    game.reset((int)GlobalSettings.Direction.Up);
                 }
                 else
                     this.relPositionMC.Y = GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY;
@@ -234,12 +231,11 @@ namespace HackAndSlash
             //Bottom
             if (this.relPositionMC.Y > bottomBound + GlobalSettings.BASE_SCALAR)
             {
-                if (game.currentLevel.canGoThrough((int)GlobalSettings.Direction.Down))
+                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Down))
                 {
-                    game.currentLevel.ResetTransDir();
                     game.currentLevel.TransDir = (int)GlobalSettings.Direction.Down;
                     SetPos(new Vector2(relPositionMC.X, GlobalSettings.HEADSUP_DISPLAY + GlobalSettings.BASE_SCALAR));
-                    game.reset(true);
+                    game.reset((int)GlobalSettings.Direction.Down);
                 }
                 else
                     this.relPositionMC.Y = bottomBound;

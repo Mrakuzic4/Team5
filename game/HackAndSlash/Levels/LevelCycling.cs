@@ -15,8 +15,12 @@ namespace HackAndSlash
         private const int LEVEL_SIZE = 6;
 
         // Field created jjust to fullfill sprint 3 scycling feature 
-        public List<Map> S3EagleCycle;
-        public Map[,] levelEagle; 
+        public List<Map> S3EagleCycle; // this is only used for sprint 3 
+        public Map[,] levelEagle;
+        public Map[,] levelCrescent; // For future use 
+
+        public Map[,] currentMapSet;
+        public int[] currentLocationIndex = GlobalSettings.STRAT_UP_INDEX;
 
         public LevelCycling()
         {
@@ -54,13 +58,64 @@ namespace HackAndSlash
                 }
             }
 
+            currentMapSet = levelEagle; // For initilization, set eagle as the default level 
+
         }
         
         public Map StartUpLevel()
         {
-            return levelEagle[5, 2];
+            return levelEagle[5, 2]; // Only works for level eagle 
         }
 
+        // If that direction has a room 
+        public bool HasNextRoom(int Direction)
+        {
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    if (currentLocationIndex[0] <= 0) return false;
+                    return (currentMapSet[currentLocationIndex[0] - 1, currentLocationIndex[1]] != null);
+
+                case (int)GlobalSettings.Direction.Down:
+                    if (currentLocationIndex[0] >= currentMapSet.GetLength(0) - 1) return false;
+                    return (currentMapSet[currentLocationIndex[0] + 1, currentLocationIndex[1]] != null);
+
+                case (int)GlobalSettings.Direction.Left:
+                    if (currentLocationIndex[1] <= 0) return false;
+                    return (currentMapSet[currentLocationIndex[0] - 1, currentLocationIndex[1]] != null);
+
+                case (int)GlobalSettings.Direction.Right:
+                    if (currentLocationIndex[1] >= currentMapSet.GetLength(1) - 1) return false;
+                    return (currentMapSet[currentLocationIndex[1] + 1, currentLocationIndex[1]] != null);
+
+                default:
+                    return false;
+            }
+        }
+        public Map GetNextRoom(int Direction)
+        {
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    if (currentLocationIndex[0] <= 0) return null;
+                    return (currentMapSet[currentLocationIndex[0] - 1, currentLocationIndex[1]]);
+
+                case (int)GlobalSettings.Direction.Down:
+                    if (currentLocationIndex[0] >= currentMapSet.GetLength(0) - 1) return null;
+                    return (currentMapSet[currentLocationIndex[0] + 1, currentLocationIndex[1]]);
+
+                case (int)GlobalSettings.Direction.Left:
+                    if (currentLocationIndex[1] <= 0) return null;
+                    return (currentMapSet[currentLocationIndex[0], currentLocationIndex[1] - 1]);
+
+                case (int)GlobalSettings.Direction.Right:
+                    if (currentLocationIndex[1] >= currentMapSet.GetLength(1) - 1) return null;
+                    return (currentMapSet[currentLocationIndex[0], currentLocationIndex[1] + 1]);
+
+                default:
+                    return null;
+            }
+        }
         public Map NextMap(int Dir)
         {
             // Placeholder method 
