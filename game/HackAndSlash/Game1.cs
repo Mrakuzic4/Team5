@@ -98,8 +98,13 @@ namespace HackAndSlash
 
             if(Direction == 5)
             {
-                // This is the real reset 
-                // Nullify `R` for now 
+                currentLevel = generator.getLevel(GraphicsDevice, spriteBatch);
+                currentLevel.currentMapInfo = currentMapInfo;
+                currentLevel.Generate();
+
+                blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
+                enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
+                itemList = generator.GetItemList(spriteBatch, this);
             }
             else
             {
