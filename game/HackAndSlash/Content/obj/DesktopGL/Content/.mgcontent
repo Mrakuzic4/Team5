@@ -68,6 +68,7 @@
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ThrowingKnifeLeft.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ThrowingKnifeRight.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ThrowingKnifeUp.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/UI/GameOverOverlay.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/UI/GamePauseOverlay.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/UI/SwordSelector.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/WholeHeart.png</File>
@@ -145,6 +146,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>images/TextCharacters.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

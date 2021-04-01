@@ -16,6 +16,8 @@ namespace HackAndSlash
 
         public bool elapsing = true; // set to false when invoking pause, bag, transition, etc.
         public bool gamePaused = false; //set to true if pause button has been pressed
+        public bool gameOver = false; //set to true if pause button has been pressed
+
 
         //Player
         private IPlayer PlayerMain;
@@ -72,6 +74,7 @@ namespace HackAndSlash
 
         //UI Elements
         private PauseOverlay pauseOverlay;
+        private GameOverOverlay gameOverOverlay;
 
         private Texture2D textSprites;
 
@@ -219,6 +222,8 @@ namespace HackAndSlash
             //UI Elements
             pauseOverlay = new PauseOverlay(this, SpriteFactory.Instance.GetPauseOverlay(), 
                 SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
+            gameOverOverlay = new GameOverOverlay(this, SpriteFactory.Instance.GetGameOverOverlay(),
+                            SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
         }
 
         /// <summary>
@@ -241,6 +246,7 @@ namespace HackAndSlash
             if (!elapsing)
             {
                 if (gamePaused) pauseOverlay.Update();
+                if (gameOver) gameOverOverlay.Update();
             } 
             // Transitioning between rooms 
             else if (currentLevel.transitioning)
@@ -314,7 +320,13 @@ namespace HackAndSlash
             GraphicsDevice.Clear(defaultFill);
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp);
 
-            if (!gamePaused)
+            if(gamePaused){ 
+                pauseOverlay.Draw(); 
+            }else if (gameOver)
+            {
+                gameOverOverlay.Draw();
+            }
+            else
             {
                 currentLevel.Draw();
 
@@ -329,15 +341,12 @@ namespace HackAndSlash
                 }
 
                 // Masking part of the display, also used for masking extra transition animation 
-                currentLevel.DrawOverlay(); 
+                currentLevel.DrawOverlay();
 
                 /*
                  * Put UI and Headsup elements below to avoid being covered by overlay  
                  */
                 DrawHealth.Draw(spriteBatch, new Vector2(0, 100), Color.White);
-            }
-            else { 
-                pauseOverlay.Draw(); 
             }
             
 

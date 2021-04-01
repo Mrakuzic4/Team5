@@ -76,6 +76,8 @@ namespace HackAndSlash
         public ImageFile PauseOverlay;
         public ImageFile SwordSelector;
 
+        public ImageFile GameOverOverlay;
+
         public ImageFile TextCharacters;
 
         public ImageDatabase()
@@ -155,8 +157,10 @@ namespace HackAndSlash
                 new ImageFile("images/levels/eagleHoleHorizontalLeft", 1, 1),
                 new ImageFile("images/levels/eagleHoleHorizontalRight", 1, 1)};
 
+            //UI
             PauseOverlay = new ImageFile("images/UI/GamePauseOverlay", 1, 1);
             SwordSelector = new ImageFile("images/UI/SwordSelector", 1, 1);
+            GameOverOverlay = new ImageFile("images/UI/GameOverOverlay", 1, 1);
 
             TextCharacters = new ImageFile("images/TextCharacters", 4, 13);
         }

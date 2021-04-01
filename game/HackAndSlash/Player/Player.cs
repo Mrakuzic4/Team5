@@ -13,7 +13,7 @@ namespace HackAndSlash
         private Game1 game;
 
         private int timer;
-        private const int delay = 7;//adding delay to the player sprite animation
+        private const int DELAY = 7;//adding delay to the player sprite animation
 
         //Collision
         private Rectangle playerHitBox;
@@ -53,7 +53,7 @@ namespace HackAndSlash
         {
             playerStateMachine = new PlayerStateMachine(GlobalSettings.Direction.Right, game, this); //inital state face right
             SpriteFactory.Instance.SetRightPlayer();//Set up the inital sprite
-            timer = delay;//adding delay to the player sprite animation
+            timer = DELAY;//adding delay to the player sprite animation
 
             this.game = game;
 
@@ -121,7 +121,7 @@ namespace HackAndSlash
                 if (timer == 0)
                 {
                     DrawPlayer.Instance.Frame++;
-                    timer = delay;
+                    timer = DELAY;
                 }
                 playerStateMachine.Move();
             }
@@ -139,12 +139,14 @@ namespace HackAndSlash
         {
             //Health goes down by a half heart when damaged
             currentHealth--;
+            playerStateMachine.Damaged();
             if (currentHealth == 0)
             {
-                game.reset(5); //Reset the room upon player's death.
-                currentHealth = maxHealth; //fully heal Player after death
+                this.game.elapsing = false;
+                this.game.gameOver = true;
+                //game.reset(5); //Reset the room upon player's death.
+                //currentHealth = maxHealth; //fully heal Player after death
             }
-            playerStateMachine.Damaged();
         } 
         // make player heal method in IPlayer and all player wrappers
         public void Healed()
