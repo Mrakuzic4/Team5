@@ -319,6 +319,8 @@ namespace HackAndSlash
 
             levelCycler.currentLocationIndex[0] += MoveY;
             levelCycler.currentLocationIndex[1] += MoveX;
+
+            mapIndex = levelCycler.currentLocationIndex; 
         }
         
         // For explosions to add a hole on the wall 
