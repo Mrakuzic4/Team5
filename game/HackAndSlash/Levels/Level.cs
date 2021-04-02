@@ -364,16 +364,8 @@ namespace HackAndSlash
             }
             else
             {
-                
-                if (gameOver)
-                {
-                    
-                    spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), Color.DarkMagenta);
-                }
-                else
-                {
-                    spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
-                }
+                Color tint = gameOver ? Color.DarkMagenta : defaultTint; 
+                spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), tint);
             }
         }
 
@@ -386,16 +378,8 @@ namespace HackAndSlash
             }
             else
             {
-                if (gameOver)
-                {
-                    
-                    spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), Color.Magenta);
-                }
-
-                else
-                {
-                    spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
-                }
+                Color tint = gameOver ? Color.Magenta : defaultTint;
+                spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), tint);
             }
                 
         }

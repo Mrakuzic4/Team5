@@ -13,10 +13,11 @@ namespace HackAndSlash
         private Game1 game;
         private int timer;
         private Color color;
+        private const int MAX_TIME = 100;
 
         public DamagedPlayer(IPlayer decoratedPlayer, Game1 game) 
         {
-            timer = 200;
+            timer = MAX_TIME;
             this.DecoratedPlayer = decoratedPlayer;
             this.game = game;
             this.color = Color.Red;
