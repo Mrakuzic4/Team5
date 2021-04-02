@@ -15,8 +15,11 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            game.ItemHolder = game.useableItemList[0];
-            game.Player.UseItem();
+            if (game.useableItemList.Count >= 1)
+            {
+                game.ItemHolder = game.useableItemList[0];
+                game.Player.UseItem();
+            }
         }
     }
 }

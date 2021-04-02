@@ -26,10 +26,13 @@ namespace HackAndSlash
             controllerMappings = new Dictionary<Buttons, ICommand>()
             { 
                 {Buttons.A, new AttackCommand(game) },
+                {Buttons.B, new UsePrimaryItemCommand(game) },
+                {Buttons.X, new UseSecondaryItemCommand(game) },
                 {Buttons.DPadDown, new MoveDownCommand(game) },
                 {Buttons.DPadLeft, new MoveLeftCommand(game) },
                 {Buttons.DPadRight, new MoveRightCommand(game) },
-                {Buttons.DPadUp, new MoveUpCommand(game) }
+                {Buttons.DPadUp, new MoveUpCommand(game) },
+                {Buttons.Start, new PauseCommand(game) }
             };
         }
 
