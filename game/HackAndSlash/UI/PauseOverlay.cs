@@ -28,15 +28,15 @@ namespace HackAndSlash
         }
         public void Update()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            if (Keyboard.GetState().IsKeyDown(Keys.S) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
             {
                 CurrentSelection = SelectorQuitLoc;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            if (Keyboard.GetState().IsKeyDown(Keys.W) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))
             {
                 CurrentSelection = SelectorContinueLoc;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A))
             {
                 if (CurrentSelection == SelectorContinueLoc)
                 {

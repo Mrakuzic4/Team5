@@ -69,6 +69,7 @@ namespace HackAndSlash
                     if (throwingKnifeCollisionHandler.CheckForPlayerCollision(collidableTiles))
                     {
                         CollectItem();
+                        game.levelCycleRecord.RemoveOneIndex(GlobalSettings.THROWING_KNIFE_ITEM);
                     }
                     throwingKnifeSprite.Update();
                     break;
