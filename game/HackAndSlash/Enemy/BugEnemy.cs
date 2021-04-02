@@ -22,6 +22,7 @@ namespace HackAndSlash
         private int temp = 0;//counter to change states after a certain number of calls to update
 
         private System.Random random;
+        private int[] directionHistory = new int[] { 0, 0, 0, 0 }; 
         private int randomDirection = 0; //0-left, 1-up, 2-right, 3- down
 
         private Color tintColor;
@@ -68,6 +69,25 @@ namespace HackAndSlash
             position = pos;
         }
 
+        public void Turn(int Direction)
+        {
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Left:
+                    bugState.changeToMoveLeft();
+                    break;
+                case (int)GlobalSettings.Direction.Up:
+                    bugState.changeToMoveUp();
+                    break;
+                case (int)GlobalSettings.Direction.Right:
+                    bugState.changeToMoveRight();
+                    break;
+                case (int)GlobalSettings.Direction.Down:
+                    bugState.changeToMoveDown();
+                    break;
+            }
+        }
+
         //updating the enemy
         public void Update(GameTime gameTime)
         {
@@ -93,7 +113,11 @@ namespace HackAndSlash
 
                 else
                 {
-                    bugState.changeToMoveDown();
+                    // Not reaching here at all 
+                    int NewDirection = new PRNG().DirectionMask(directionHistory, 
+                        new bool[] { false, false, false, true});
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
                 }
             }
             else if (bugState.state == bugStateMachine.bugHealth.MoveDown)
@@ -106,7 +130,11 @@ namespace HackAndSlash
 
                 else
                 {
-                    bugState.changeToMoveUp();
+                    // Not reaching here at all 
+                    int NewDirection = new PRNG().DirectionMask(directionHistory,
+                        new bool[] { false, false, true, false });
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
                 }
             }
             else if (bugState.state == bugStateMachine.bugHealth.MoveLeft)
@@ -115,9 +143,13 @@ namespace HackAndSlash
                 if (position.X >= GlobalSettings.BORDER_OFFSET)
                 {
                     position.X--;
-                } else
+                } else if (position.X < GlobalSettings.BORDER_OFFSET)
                 {
-                    bugState.changeToMoveRight();
+                    // Not reaching here at all 
+                    int NewDirection = new PRNG().DirectionMask(directionHistory,
+                        new bool[] { true, false, false, false });
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
                 }
             }
             else if (bugState.state == bugStateMachine.bugHealth.MoveRight)
@@ -127,31 +159,22 @@ namespace HackAndSlash
                 {
                     position.X++;
                 }
-                else
+                else if (position.X > rightBound)
                 {
-                    bugState.changeToMoveLeft();
+                    // Not reaching here at all 
+                    int NewDirection = new PRNG().DirectionMask(directionHistory,
+                        new bool[] { false, true, false, false });
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
                 }
             }
 
             if (timeSinceDirectionChange > 8000 && bugState.state!= bugStateMachine.bugHealth.Not && bugState.state != bugStateMachine.bugHealth.Die)
             {
                 timeSinceDirectionChange = 0;
-                randomDirection = random.Next(0, 3);
-                switch (randomDirection)
-                {
-                    case 0:
-                        bugState.changeToMoveLeft();
-                        break;
-                    case 1:
-                        bugState.changeToMoveUp();
-                        break;
-                    case 2:
-                        bugState.changeToMoveRight();
-                        break;
-                    case 3:
-                        bugState.changeToMoveDown();
-                        break;
-                }
+                int NewDirection = new PRNG().Directional(directionHistory);
+                directionHistory[NewDirection] += 1;
+                Turn(NewDirection);
             }
 
             hitbox.Location = new Point((int)position.X , (int)position.Y);

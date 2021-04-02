@@ -8,16 +8,22 @@ namespace HackAndSlash
 {
     class PRNG
     {
+        private int[] directionIter = new int[] { 0, 1, 2, 3 }; 
 
-        public int DirectionalPRNG(int[] PreviousDirections)
+        public PRNG()
+        {
+
+        }
+
+        public int Directional(int[] PreviousDirections)
         {
             int Max = PreviousDirections.Max();
             int[] Possibilities = new int[] { 0, 0, 0, 0 };
             int BestDirection = 0;
 
-            foreach (int Dirs in PreviousDirections)
+            foreach (int Dirs in directionIter)
             {
-                Possibilities[Dirs] = (PreviousDirections[Dirs] - Max) * GlobalSettings.RND.Next();
+                Possibilities[Dirs] = (PreviousDirections[Dirs] - Max + 1) * GlobalSettings.RND.Next();
                 if (Possibilities[Dirs] > Possibilities[BestDirection])
                     BestDirection = Dirs; 
             }
@@ -35,13 +41,13 @@ namespace HackAndSlash
         /// true if that direction is masked and cannot go. e.g. [0, 1, 1, 0]
         /// </param>
         /// <returns></returns>
-        public int DirectionMaskPRNG(int[] PreviousDirections, bool[] MaskedDirections)
+        public int DirectionMask(int[] PreviousDirections, bool[] MaskedDirections)
         {
             int Max = PreviousDirections.Max();
             int[] Possibilities = new int[] { 0, 0, 0, 0 };
             int BestDirection = 0;
 
-            foreach (int Dirs in PreviousDirections)
+            foreach (int Dirs in directionIter)
             {
                 Possibilities[Dirs] = (Max - PreviousDirections[Dirs]) * GlobalSettings.RND.Next();
                 if (Possibilities[Dirs] > Possibilities[BestDirection]
@@ -53,7 +59,7 @@ namespace HackAndSlash
         }
 
 
-        public int DropRatePRNG(int TotalChance, int RemainingChance, int TotalDrop, int Dropped)
+        public int DropRate(int TotalChance, int RemainingChance, int TotalDrop, int Dropped)
         {
             int DropRate = 0;
 
@@ -81,13 +87,13 @@ namespace HackAndSlash
         /// <returns>
         /// True or false of whether or not to drop 
         /// </returns>
-        public bool DropPRNG(int TotalChance, int RemainingChance, int TotalDrop, int Dropped)
+        public bool Drop(int TotalChance, int RemainingChance, int TotalDrop, int Dropped)
         {
             if (Dropped >= TotalDrop) return false;
             else
             {
                 return (GlobalSettings.RND.Next(100) <
-                    DropRatePRNG(TotalChance, RemainingChance, TotalDrop, Dropped));
+                    DropRate(TotalChance, RemainingChance, TotalDrop, Dropped));
             }
         }
     }
