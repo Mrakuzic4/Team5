@@ -65,6 +65,7 @@ namespace HackAndSlash
                     if (firewallCollisionHandler.CheckForPlayerCollision(collidableTiles))
                     {
                         CollectItem();
+                        game.levelCycleRecord.RemoveOneIndex(GlobalSettings.FIREWALL_ITEM);
                     }
                     firewallSprite.Update();
                     break;

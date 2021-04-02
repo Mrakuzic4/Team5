@@ -69,6 +69,7 @@ namespace HackAndSlash
                     if(bombCollisionHandler.CheckForPlayerCollision(collidableTiles))
                     {
                         CollectItem();
+                        game.levelCycleRecord.RemoveOneIndex(GlobalSettings.BOMB_ITEM);
                     }
                     break;
                 case BombStateMachine.ItemStates.Useable:
