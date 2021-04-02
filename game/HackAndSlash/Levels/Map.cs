@@ -21,6 +21,8 @@ namespace HackAndSlash
         public bool[] OpenDoors { get; set; }
         public bool[] HiddenDoors { get; set; }
 
+        public bool[] MysteryDoors { get; set; }
+
         public int DefaultBlock { get; set; } 
     }
 }
