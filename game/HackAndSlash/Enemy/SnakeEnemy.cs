@@ -23,6 +23,7 @@ namespace HackAndSlash
         private int temp = 0; //counter to change states after a certain number of calls to update
 
         private System.Random random;
+        private int[] directionHistory = new int[] { 0, 0, 0, 0 };
         private int randomDirection = 0; //0-left, 1-up, 2-right, 3- down
 
         private EnemyCollisionDetector enemyCollisionDetector;
@@ -71,6 +72,25 @@ namespace HackAndSlash
             position = pos;
         }
 
+        public void Turn(int Direction)
+        {
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Left:
+                    snakeState.changeToLeftMove();
+                    break;
+                case (int)GlobalSettings.Direction.Up:
+                    snakeState.changeToMoveUp();
+                    break;
+                case (int)GlobalSettings.Direction.Right:
+                    snakeState.changeToRightMove();
+                    break;
+                case (int)GlobalSettings.Direction.Down:
+                    snakeState.changeToMoveDown();
+                    break;
+            }
+        }
+
         //updating the enemy
         public void Update(GameTime gameTime)
         {
@@ -90,51 +110,63 @@ namespace HackAndSlash
             if (snakeState.state == snakeStateMachine.snakeHealth.MoveUp)
             {
                 // Move up
-                if (position.Y >= GlobalSettings.BORDER_OFFSET)
+                if (position.Y > GlobalSettings.BORDER_OFFSET)
                 {
                     position.Y--;
                 }
 
                 else
                 {
-                    snakeState.changeToMoveDown();
+                    int NewDirection = new PRNG().DirectionMask(directionHistory,
+                        new bool[] { false, false, false, true });
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
                 }
             }
             else if (snakeState.state == snakeStateMachine.snakeHealth.MoveDown)
             {
                 //Move down
-                if (position.Y <= bottomBound)
+                if (position.Y < bottomBound)
                 {
                     position.Y++;
                 }
 
                 else
                 {
-                    snakeState.changeToMoveUp();
+                    int NewDirection = new PRNG().DirectionMask(directionHistory,
+                        new bool[] { false, false, true, false });
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
                 }
             }
             else if (snakeState.state == snakeStateMachine.snakeHealth.MoveLeft)
             {
                 //Move left
-                if (position.X >= GlobalSettings.BORDER_OFFSET)
+                if (position.X > GlobalSettings.BORDER_OFFSET)
                 {
                     position.X--;
                 }
                 else
                 {
-                    snakeState.changeToRightMove();
+                    int NewDirection = new PRNG().DirectionMask(directionHistory,
+                        new bool[] { true, false, false, false });
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
                 }
             }
             else if (snakeState.state == snakeStateMachine.snakeHealth.MoveRight)
             {
                 //Move right
-                if (position.X <= rightBound)
+                if (position.X < rightBound)
                 {
                     position.X++;
                 }
                 else
                 {
-                    snakeState.changeToLeftMove();
+                    int NewDirection = new PRNG().DirectionMask(directionHistory,
+                        new bool[] { false, true, false, false });
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
                 }
             }
 

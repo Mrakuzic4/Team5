@@ -106,14 +106,13 @@ namespace HackAndSlash
             if (bugState.state == bugStateMachine.bugHealth.MoveUp)
             {
                 // Move up
-                if (position.Y >= GlobalSettings.BORDER_OFFSET)
+                if (position.Y > GlobalSettings.BORDER_OFFSET)
                 {
                     position.Y--;
                 }
 
                 else
                 {
-                    // Not reaching here at all 
                     int NewDirection = new PRNG().DirectionMask(directionHistory, 
                         new bool[] { false, false, false, true});
                     directionHistory[NewDirection] += 1;
@@ -123,14 +122,13 @@ namespace HackAndSlash
             else if (bugState.state == bugStateMachine.bugHealth.MoveDown)
             {
                 //Move down
-                if (position.Y <= bottomBound)
+                if (position.Y < bottomBound)
                 {
                     position.Y++;
                 }
 
                 else
                 {
-                    // Not reaching here at all 
                     int NewDirection = new PRNG().DirectionMask(directionHistory,
                         new bool[] { false, false, true, false });
                     directionHistory[NewDirection] += 1;
@@ -140,12 +138,11 @@ namespace HackAndSlash
             else if (bugState.state == bugStateMachine.bugHealth.MoveLeft)
             {
                 //Move left
-                if (position.X >= GlobalSettings.BORDER_OFFSET)
+                if (position.X > GlobalSettings.BORDER_OFFSET)
                 {
                     position.X--;
-                } else if (position.X < GlobalSettings.BORDER_OFFSET)
+                } else if (position.X <= GlobalSettings.BORDER_OFFSET)
                 {
-                    // Not reaching here at all 
                     int NewDirection = new PRNG().DirectionMask(directionHistory,
                         new bool[] { true, false, false, false });
                     directionHistory[NewDirection] += 1;
@@ -155,13 +152,12 @@ namespace HackAndSlash
             else if (bugState.state == bugStateMachine.bugHealth.MoveRight)
             {
                 //Move right
-                if (position.X <= rightBound)
+                if (position.X < rightBound)
                 {
                     position.X++;
                 }
-                else if (position.X > rightBound)
+                else if (position.X >= rightBound)
                 {
-                    // Not reaching here at all 
                     int NewDirection = new PRNG().DirectionMask(directionHistory,
                         new bool[] { false, true, false, false });
                     directionHistory[NewDirection] += 1;

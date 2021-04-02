@@ -49,7 +49,7 @@ namespace HackAndSlash
 
             foreach (int Dirs in directionIter)
             {
-                Possibilities[Dirs] = (Max - PreviousDirections[Dirs]) * GlobalSettings.RND.Next();
+                Possibilities[Dirs] = (Max - PreviousDirections[Dirs] + 1) * GlobalSettings.RND.Next();
                 if (Possibilities[Dirs] > Possibilities[BestDirection]
                     && !MaskedDirections[Dirs])
                     BestDirection = Dirs;
