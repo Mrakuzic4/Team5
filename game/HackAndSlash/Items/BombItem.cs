@@ -107,6 +107,9 @@ namespace HackAndSlash
                         // move to top left corner of explosion
                         position = new Vector2(position.X - spriteWidth * ((EXPLOSION_DIAMETER - 1) / 2), position.Y - spriteHeight * ((EXPLOSION_DIAMETER - 1) / 2));
                         bombAnimationState = animationState.explode;
+                        int HoleDirection = new BombWallCollision(position, game.currentMapInfo).direction;
+                        if (HoleDirection >= 0)
+                            game.currentLevel.AddHole(HoleDirection);
                     }
                     else if (useDurationCounter > EXPLOSION_DELAY) 
                     { 
@@ -132,6 +135,7 @@ namespace HackAndSlash
                     position = toolBarPosition;
                     collidableTiles = new Rectangle[1];
                     collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteHeight, spriteWidth);
+
                     if (numUses > 0)
                     {
                         ChangeToUseable();
