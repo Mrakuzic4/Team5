@@ -35,8 +35,9 @@ namespace HackAndSlash
         public int[] currentFocusIndex { get; set; }
         private double clipX = 0;
         private double clipY = 0;
-        private Vector2 playerOffset = new Vector2(0, 0);
-        private Vector2 transOffset = new Vector2(0, 0);
+        private Vector2 playerOffset = new Vector2(0, 0); // Offset for replicating player movement
+        private Vector2 transOffset = new Vector2(0, 0);  // Offset for transition animation 
+        private Vector2 playerEdgeRelocate = new Vector2(0, 0);
 
 
         // Const 
@@ -101,7 +102,7 @@ namespace HackAndSlash
             minimap = GenerateTexture(roomColCount * WHOLE_WIDTH, roomRowCount * WHOLE_HEIGHT, pixel => transp);
             singleRoom = GenerateTexture(UNIT_WIDTH, UNIT_HEIGHT, pixel => fillColor);
             horizontalBridge = GenerateTexture(BRIDGE_LEN_0, BRIDGE_LEN_1, pixel => fillColor);
-            verticalBridge = GenerateTexture(BRIDGE_LEN_1, BRIDGE_LEN_0, pixel => fillColor);
+            verticalBridge = GenerateTexture(BRIDGE_LEN_0, BRIDGE_LEN_0, pixel => fillColor);
             playerNotation = GenerateTexture(PLAYER_NOTATION_SIZE, PLAYER_NOTATION_SIZE, pixel => playerFill);
 
             for (int i = 0; i < roomRowCount; i++)
@@ -156,6 +157,34 @@ namespace HackAndSlash
                 InnerFillData, 0, InnerFillData.Length); 
         }
 
+        private void AddBridge(int Direction)
+        {
+            const int HORIZONTAL_OFFST = 6;
+            const int VERTICAL_OFFSET = 4; 
+
+            Texture2D Bridge = (Direction == (int)GlobalSettings.Direction.Up || Direction == (int)GlobalSettings.Direction.Down) ?
+                verticalBridge : horizontalBridge;
+            Color[] BridgeData = new Color[Bridge.Width * Bridge.Height];
+            Bridge.GetData(BridgeData);
+
+            int VerticalPosition = currentFocusIndex[0] * WHOLE_HEIGHT;
+            int HorizontalPosition = currentFocusIndex[1] * WHOLE_WIDTH ;
+
+            if (Direction == (int)GlobalSettings.Direction.Left || Direction == (int)GlobalSettings.Direction.Right)
+            {
+                HorizontalPosition += ((Direction == (int)GlobalSettings.Direction.Left)? 0 : WHOLE_WIDTH) - 1;
+                VerticalPosition += VERTICAL_OFFSET; 
+            }
+            else if (Direction == (int)GlobalSettings.Direction.Up || Direction == (int)GlobalSettings.Direction.Down)
+            {
+                VerticalPosition += ((Direction == (int)GlobalSettings.Direction.Up) ? 0 : WHOLE_HEIGHT) - 1;
+                HorizontalPosition += HORIZONTAL_OFFST;
+            }
+
+            minimap.SetData(0, new Rectangle(HorizontalPosition, VerticalPosition, Bridge.Width, Bridge.Height), 
+                BridgeData, 0, BridgeData.Length);
+        }
+
         public void FlagExplored(int[] Index)
         {
             RoomVisibility[Index[0], Index[1]] = true;
@@ -166,20 +195,30 @@ namespace HackAndSlash
         {
             currentFocusIndex = Index;
 
-            if (currentFocusIndex[0] >= levelCycler.currentMapSet.GetLength(0) - 1)
+            if (currentFocusIndex[0] >= levelCycler.currentMapSet.GetLength(0) - 1) {
                 clipY = (levelCycler.currentMapSet.GetLength(0) - 2) * WHOLE_HEIGHT;
-            else if (currentFocusIndex[0] <= 0)
+            }    
+            else if (currentFocusIndex[0] <= 0) {
+                playerEdgeRelocate.Y = - UNIT_HEIGHT * SCALE_INDEX - PLAYER_NOTATION_SIZE * 2; 
                 clipY = 0;
-            else
+            }
+            else {
                 clipY = (currentFocusIndex[0] - 1) * WHOLE_HEIGHT;
+                playerEdgeRelocate.Y = 0;
+            }
 
-            if (currentFocusIndex[1] >= levelCycler.currentMapSet.GetLength(1) - 1)
+            if (currentFocusIndex[1] >= levelCycler.currentMapSet.GetLength(1) - 1) {
                 clipX = (levelCycler.currentMapSet.GetLength(1) - 2) * WHOLE_WIDTH;
-            else if (currentFocusIndex[1] <= 0)
-                clipX = 0;
-            else
-                clipX = (currentFocusIndex[1] - 1) * WHOLE_WIDTH;
 
+            }
+            else if (currentFocusIndex[1] <= 0) {
+                clipX = 0;
+                playerEdgeRelocate.X = -UNIT_WIDTH * SCALE_INDEX; 
+            }
+            else {
+                clipX = (currentFocusIndex[1] - 1) * WHOLE_WIDTH;
+                playerEdgeRelocate.X = 0;
+            }
 
         }
 
@@ -201,19 +240,25 @@ namespace HackAndSlash
 
         public void UpdateTransition(int Direction)
         {
+            AddBridge(Direction);
+
             switch (Direction)
             {
                 case (int)GlobalSettings.Direction.Up:
-                    transOffset.Y -= (float)(TRANSITION_STEP_Y);
+                    if (currentFocusIndex[0] > 1)
+                        transOffset.Y -= (float)(TRANSITION_STEP_Y);
                     break;
                 case (int)GlobalSettings.Direction.Down:
-                    transOffset.Y += (float)(TRANSITION_STEP_Y);
+                    if (currentFocusIndex[0] > 0)
+                        transOffset.Y += (float)(TRANSITION_STEP_Y);
                     break;
                 case (int)GlobalSettings.Direction.Right:
-                    transOffset.X += (float)(TRANSITION_STEP_X);
+                    if (currentFocusIndex[1] > 0)
+                        transOffset.X += (float)(TRANSITION_STEP_X);
                     break;
                 case (int)GlobalSettings.Direction.Left:
-                    transOffset.X -= (float)(TRANSITION_STEP_X);
+                    if (currentFocusIndex[1] > 1)
+                        transOffset.X -= (float)(TRANSITION_STEP_X);
                     break;
                 default:
                     break;
@@ -231,7 +276,8 @@ namespace HackAndSlash
                 Vector2.Zero, 4, SpriteEffects.None, 0f);
 
             // The tiny box denoting player's position 
-            spriteBatch.Draw(playerNotation, -3 * transOffset + playerOffset + new Vector2(
+            spriteBatch.Draw(playerNotation, 
+                -3 * transOffset + playerEdgeRelocate + playerOffset + new Vector2(
                 DRAW_POSITION_X + (int)(WHOLE_WIDTH * SCALE_INDEX * 1.5),
                 DRAW_POSITION_Y + (int)(WHOLE_HEIGHT * SCALE_INDEX * 1.5)),
                 null, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, 0f);
