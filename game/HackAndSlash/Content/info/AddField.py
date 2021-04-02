@@ -11,7 +11,7 @@ May not work on Mac and Linux
 '''
 
 FILE_TYPES = ["json"]
-ADD_KEY = "MysteryDoors"
+ADD_KEY = "Holes"
 ADD_VALUE = [False, False, False, False]
 
 DETAILING = True 

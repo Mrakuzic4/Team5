@@ -143,6 +143,34 @@ namespace HackAndSlash
             }
         }
 
+        public void HoleBridgeRooms(int Direction)
+        {
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    currentMapSet[currentLocationIndex[0] - 1, currentLocationIndex[1]].Holes[
+                        (int)GlobalSettings.Direction.Down] = true;
+                    break; 
+                case (int)GlobalSettings.Direction.Down:
+                    currentMapSet[currentLocationIndex[0] + 1, currentLocationIndex[1]].Holes[
+                        (int)GlobalSettings.Direction.Up] = true;
+                    break;
+
+                case (int)GlobalSettings.Direction.Left:
+                    currentMapSet[currentLocationIndex[0], currentLocationIndex[1] - 1].Holes[
+                        (int)GlobalSettings.Direction.Right] = true;
+                    break;
+
+                case (int)GlobalSettings.Direction.Right:
+                    currentMapSet[currentLocationIndex[0] - 1, currentLocationIndex[1] + 1].Holes[
+                        (int)GlobalSettings.Direction.Left] = true;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
     }
 
 }

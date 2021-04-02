@@ -101,6 +101,7 @@ namespace HackAndSlash
             defaultBlockIndex = currentMapInfo.DefaultBlock;
             doorOpen = currentMapInfo.OpenDoors;
             doorHiden = currentMapInfo.HiddenDoors;
+            doorHole = currentMapInfo.Holes; 
             doorLocked = currentMapInfo.LockedDoors;
             doorMys = currentMapInfo.MysteryDoors;
             mapMatrix = currentMapInfo.Arrangement;

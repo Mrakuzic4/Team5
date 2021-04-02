@@ -109,7 +109,10 @@ namespace HackAndSlash
                         bombAnimationState = animationState.explode;
                         int HoleDirection = new BombWallCollision(position, game.currentMapInfo).direction;
                         if (HoleDirection >= 0)
+                        {
                             game.currentLevel.AddHole(HoleDirection);
+                            game.levelCycleRecord.HoleBridgeRooms(HoleDirection);
+                        }
                     }
                     else if (useDurationCounter > EXPLOSION_DELAY) 
                     { 
