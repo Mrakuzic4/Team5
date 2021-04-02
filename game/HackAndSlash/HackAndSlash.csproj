@@ -246,6 +246,7 @@
     <Content Include="Content\images\MoblinUp.png" />
     <Content Include="Content\images\SnakeEnemyRight.png" />
     <Content Include="Content\images\ZeldaDying.png" />
+    <Content Include="Content\info\AddField.py" />
     <Content Include="Content\info\levelDemoM1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

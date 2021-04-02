@@ -63,6 +63,7 @@ namespace HackAndSlash
         private bool[] doorOpen =    { false, false, false, false };    // Highest priority 
         private bool[] doorHole=     { false, false, false, false };    // Second in command 
         private bool[] doorLocked =  { false, false, false, false };    // Lowest priority  
+        private bool[] doorMys =     { false, false, false, false };
         private bool[] doorHiden =   { false, false, false, false };    // Does not draw 
         private Dictionary<int, int> doorDirMapping = new Dictionary<int, int>(){
             {0, 1},
@@ -101,6 +102,7 @@ namespace HackAndSlash
             doorOpen = currentMapInfo.OpenDoors;
             doorHiden = currentMapInfo.HiddenDoors;
             doorLocked = currentMapInfo.LockedDoors;
+            doorMys = currentMapInfo.MysteryDoors;
             mapMatrix = currentMapInfo.Arrangement;
 
             // Generate placeholder textures 
@@ -212,6 +214,7 @@ namespace HackAndSlash
                 if (doorLocked[Dir]) Col = DOOR_LOCKED_INDEX;
                 if (doorHole[Dir])   Col = DOOR_HOLE_INDEX;
                 if (doorOpen[Dir])   Col = DOOR_OPEN_INDEX;
+                if (doorMys[Dir])    Col = DOOR_MYS_INDEX;
                 switch (Dir) {
                     case (int)GlobalSettings.Direction.Left:
                         DestRectangle.X = LeftPosition;
