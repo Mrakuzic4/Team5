@@ -1,10 +1,14 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+
+
+
 
 namespace HackAndSlash
 {
@@ -21,23 +25,45 @@ namespace HackAndSlash
         private Texture2D singleRoom;
         private Texture2D horizontalBridge;
         private Texture2D verticalBridge;
+        private Texture2D playerNotation;
+        private Texture2D borderLines; 
 
         private int roomRowCount;
         private int roomColCount;
 
+        // Regarding the drawing of the texture 
         public int[] currentFocusIndex { get; set; }
+        private double clipX = 0;
+        private double clipY = 0;
+        private Vector2 playerOffset = new Vector2(0, 0);
+        private Vector2 transOffset = new Vector2(0, 0);
 
+
+        // Const 
+        private const bool DISCOVER_MODE_FLAG = true;
         private const int SCALE_INDEX = 4;
+        private const int PLAYER_NOTATION_SIZE = 4;
+        private const int BORDER_WIDTH = 1; 
         private const int UNIT_WIDTH = 12;
         private const int UNIT_HEIGHT = 7;
         private const int WHOLE_WIDTH = 14;
         private const int WHOLE_HEIGHT = 9;
         private const int BRIDGE_LEN_0 = 2;
         private const int BRIDGE_LEN_1 = 1;
+        private const int DRAW_POSITION_X = 4 * GlobalSettings.BASE_SCALAR;
+        private const int DRAW_POSITION_Y = 6;
+        private const int DISPLAY_REGION_X = 3 * WHOLE_WIDTH;
+        private const int DISPLAY_REGION_Y = 3 * WHOLE_HEIGHT;
+        public const double SIZE_RATIO = (double)WHOLE_WIDTH / (double)(GlobalSettings.GAME_AREA_WIDTH);
+        private const double TRANSITION_STEP_Y = 8 * SIZE_RATIO;  // From class Level
+        private const double TRANSITION_STEP_X = 16 * SIZE_RATIO;
 
-        private Color defaultTint = Color.White;
-        private Color transp = Color.Transparent;
-        private Color fillColor = Color.Brown; 
+        //Misc 
+        private Color defaultTint = Color.White;  // Draw() method tint 
+        private Color transp = Color.Transparent; // Texture generation placeholder colod 
+        private Color fillColor = Color.Brown;    // Minimap room color
+        private Color playerFill = Color.Orange;  // Player box color 
+        private Color borderFill = Color.Crimson; // Border color 
 
         public Minimap(GraphicsDevice Graphics, SpriteBatch SB, LevelCycling LC)
         {
@@ -49,8 +75,11 @@ namespace HackAndSlash
             roomColCount = levelCycler.currentMapSet.GetLength(1);
 
             InitlizeMinimap();
+            GenerateBorder(); 
+            UpdateMinimap();
         }
 
+        // Util method of generating a texture2D filled with certain color 
         public Texture2D GenerateTexture(int width, int height, Func<int, Color> paint)
         {
             Texture2D texture = new Texture2D(graphics, width, height);
@@ -63,6 +92,7 @@ namespace HackAndSlash
             return texture;
         }
 
+        // Create/initilize all the textures and matrices 
         private void InitlizeMinimap()
         {
             AllRoom = new bool[roomRowCount, roomColCount];
@@ -72,17 +102,19 @@ namespace HackAndSlash
             singleRoom = GenerateTexture(UNIT_WIDTH, UNIT_HEIGHT, pixel => fillColor);
             horizontalBridge = GenerateTexture(BRIDGE_LEN_0, BRIDGE_LEN_1, pixel => fillColor);
             verticalBridge = GenerateTexture(BRIDGE_LEN_1, BRIDGE_LEN_0, pixel => fillColor);
+            playerNotation = GenerateTexture(PLAYER_NOTATION_SIZE, PLAYER_NOTATION_SIZE, pixel => playerFill);
 
-            for(int i = 0; i < roomRowCount; i++){
-                for (int j = 0; j < roomColCount; j++){
+            for (int i = 0; i < roomRowCount; i++)
+            {
+                for (int j = 0; j < roomColCount; j++)
+                {
                     AllRoom[i, j] = (levelCycler.currentMapSet[i, j] != null);
                     RoomVisibility[i, j] = (i == levelCycler.currentLocationIndex[0] && j == levelCycler.currentLocationIndex[1]);
                 }
             }
-
-            UpdateMinimap();
         }
 
+        // Update minimap depending on which room has been explored 
         private void UpdateMinimap()
         {
             Color[] RoomData = new Color[singleRoom.Width * singleRoom.Height];
@@ -102,23 +134,111 @@ namespace HackAndSlash
                         int PosX = j * WHOLE_WIDTH + 1;
                         int PosY = i * WHOLE_HEIGHT + 1;
 
-                        minimap.SetData(0, new Rectangle(PosX, PosY, 
-                            singleRoom.Width, singleRoom.Height), RoomData, 
+                        minimap.SetData(0, new Rectangle(PosX, PosY,
+                            singleRoom.Width, singleRoom.Height), RoomData,
                             0, RoomData.Length);
                     }
                 }
             }
         }
 
-        public void FlagExplored(int[] Index )
+        // Generate border texture 
+        private void GenerateBorder()
         {
-            RoomVisibility[Index[0], Index[1]] = true; 
+            Texture2D BorderInnerTransp = GenerateTexture(DISPLAY_REGION_X, DISPLAY_REGION_Y, pixel => transp);
+            Color[] InnerFillData = new Color[BorderInnerTransp.Width * BorderInnerTransp.Height];
+
+            borderLines = GenerateTexture(DISPLAY_REGION_X + BORDER_WIDTH * 2, 
+                DISPLAY_REGION_Y + BORDER_WIDTH * 2, pixel => borderFill);
+
+            BorderInnerTransp.GetData(InnerFillData);
+            borderLines.SetData(0, new Rectangle(1, 1, BorderInnerTransp.Width, BorderInnerTransp.Height),
+                InnerFillData, 0, InnerFillData.Length); 
+        }
+
+        public void FlagExplored(int[] Index)
+        {
+            RoomVisibility[Index[0], Index[1]] = true;
             UpdateMinimap();
+        }
+
+        public void SetPivot(int[] Index)
+        {
+            currentFocusIndex = Index;
+
+            if (currentFocusIndex[0] >= levelCycler.currentMapSet.GetLength(0) - 1)
+                clipY = (levelCycler.currentMapSet.GetLength(0) - 2) * WHOLE_HEIGHT;
+            else if (currentFocusIndex[0] <= 0)
+                clipY = 0;
+            else
+                clipY = (currentFocusIndex[0] - 1) * WHOLE_HEIGHT;
+
+            if (currentFocusIndex[1] >= levelCycler.currentMapSet.GetLength(1) - 1)
+                clipX = (levelCycler.currentMapSet.GetLength(1) - 2) * WHOLE_WIDTH;
+            else if (currentFocusIndex[1] <= 0)
+                clipX = 0;
+            else
+                clipX = (currentFocusIndex[1] - 1) * WHOLE_WIDTH;
+
+
+        }
+
+        public void UpdatePlayer(Vector2 PlayerPos)
+        {
+            Vector2 GameAreaMid = new Vector2(GlobalSettings.WINDOW_WIDTH / 2,
+                GlobalSettings.HEADSUP_DISPLAY + GlobalSettings.BORDER_OFFSET + GlobalSettings.GAME_AREA_HEIGHT / 2);
+
+            Vector2 RealOffset = PlayerPos - GameAreaMid;
+
+            playerOffset.X = (RealOffset.X / (GlobalSettings.GAME_AREA_WIDTH - GlobalSettings.BASE_SCALAR)
+                * UNIT_WIDTH * SCALE_INDEX) - PLAYER_NOTATION_SIZE;
+            playerOffset.Y = (RealOffset.Y / (GlobalSettings.GAME_AREA_HEIGHT - GlobalSettings.BASE_SCALAR)
+                * UNIT_HEIGHT * SCALE_INDEX) + PLAYER_NOTATION_SIZE;
+
+            transOffset = new Vector2(0, 0); 
+
+        }
+
+        public void UpdateTransition(int Direction)
+        {
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    transOffset.Y -= (float)(TRANSITION_STEP_Y);
+                    break;
+                case (int)GlobalSettings.Direction.Down:
+                    transOffset.Y += (float)(TRANSITION_STEP_Y);
+                    break;
+                case (int)GlobalSettings.Direction.Right:
+                    transOffset.X += (float)(TRANSITION_STEP_X);
+                    break;
+                case (int)GlobalSettings.Direction.Left:
+                    transOffset.X -= (float)(TRANSITION_STEP_X);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void Draw()
         {
-            spriteBatch.Draw(minimap, new Vector2(0, 0), defaultTint);
+            
+
+            // The minimap 
+            spriteBatch.Draw(minimap, new Vector2(DRAW_POSITION_X, DRAW_POSITION_Y),
+                new Rectangle((int)(clipX + transOffset.X - 1), (int)(clipY + transOffset.Y - 1), 
+                DISPLAY_REGION_X, DISPLAY_REGION_Y), defaultTint, 0f,
+                Vector2.Zero, 4, SpriteEffects.None, 0f);
+
+            // The tiny box denoting player's position 
+            spriteBatch.Draw(playerNotation, -3 * transOffset + playerOffset + new Vector2(
+                DRAW_POSITION_X + (int)(WHOLE_WIDTH * SCALE_INDEX * 1.5),
+                DRAW_POSITION_Y + (int)(WHOLE_HEIGHT * SCALE_INDEX * 1.5)),
+                null, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, 0f);
+
+            // The border 
+            spriteBatch.Draw(borderLines, new Vector2(DRAW_POSITION_X, DRAW_POSITION_Y), null,
+                defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, 0f);
         }
 
     }

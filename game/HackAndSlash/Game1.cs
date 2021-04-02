@@ -53,7 +53,8 @@ namespace HackAndSlash
         public Level currentLevel;
         public LevelCycling levelCycleRecord; 
         private MapGenerator generator;
-        private int transitionDir; 
+        private int transitionDir;
+        private Minimap miniMap;
         private int mapCycleIndex;
         // Partically due to planning, "level" and "map" are used interchangeable 
 
@@ -194,6 +195,9 @@ namespace HackAndSlash
             currentMapInfo = currentLevel.currentMapInfo;
             generator = new MapGenerator(currentMapInfo);
 
+            miniMap = new Minimap(GraphicsDevice, spriteBatch, levelCycleRecord);
+            miniMap.SetPivot(currentLevel.mapIndex);
+
             //Player
             PlayerMain = new Player(this);//Player object
 
@@ -261,6 +265,7 @@ namespace HackAndSlash
             else if (currentLevel.transitioning)
             {
                 currentLevel.Update(gameTime);
+                miniMap.UpdateTransition(transitionDir);
                 // Flagging transFinsihed into true is done in Update() method in Level.cs 
                 if (currentLevel.transFinsihed) 
                 {
@@ -269,7 +274,10 @@ namespace HackAndSlash
                     currentLevel.currentMapInfo = currentMapInfo;
                     currentLevel.MovedToRoom(transitionDir);
                     currentLevel.Generate();
-                    transitionDir = 5; 
+                    transitionDir = 5;
+
+                    miniMap.FlagExplored(currentLevel.mapIndex);
+                    miniMap.SetPivot(currentLevel.mapIndex);
 
                     blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
                     enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
@@ -309,6 +317,8 @@ namespace HackAndSlash
                         block.Update();
                     }
                 }
+
+                miniMap.UpdatePlayer(Player.GetPos());
 
                 PlayerMain.Update();
                 DrawHealth.Update();
@@ -356,6 +366,8 @@ namespace HackAndSlash
                  * Put UI and Headsup elements below to avoid being covered by overlay  
                  */
                 DrawHealth.Draw(spriteBatch, new Vector2(0, 100), Color.White);
+
+                miniMap.Draw();
             }
             
 
