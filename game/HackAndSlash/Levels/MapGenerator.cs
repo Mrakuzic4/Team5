@@ -26,7 +26,7 @@ namespace HackAndSlash
             return level;
         }
 
-        public List<IBlock> GetBlockList(SpriteBatch spriteBatch, SpriteFactory spriteFactory)
+        public List<IBlock> GetBlockList(SpriteBatch spriteBatch, SpriteFactory spriteFactory, Map MapInfo)
         {
             List<IBlock> BlockList = new List<IBlock>();
 
@@ -34,9 +34,43 @@ namespace HackAndSlash
             int ButtPosition = GlobalSettings.WINDOW_HEIGHT - 2 * GlobalSettings.BASE_SCALAR;
             int LeftPosition = GlobalSettings.BASE_SCALAR;
             int RightPosition = GlobalSettings.WINDOW_WIDTH - 2 * GlobalSettings.BASE_SCALAR;
-            int HorizontalPos, VerticalPos = 0; 
+            int HorizontalPos, VerticalPos = 0;
 
-            // The following are for the creation of walls (in lieu of boundary check)
+            Vector2 LeftDoorBlocking = new Vector2(1 * GlobalSettings.BASE_SCALAR, 
+                GlobalSettings.HEADSUP_DISPLAY + 5 * GlobalSettings.BASE_SCALAR);
+            Vector2 RightDoorBlocking = new Vector2(GlobalSettings.WINDOW_WIDTH - 2 * GlobalSettings.BASE_SCALAR, 
+                GlobalSettings.HEADSUP_DISPLAY + 5 * GlobalSettings.BASE_SCALAR);
+            Vector2 TopDoorBlocking = new Vector2((float)7.5 * GlobalSettings.BASE_SCALAR,
+                3 * GlobalSettings.BASE_SCALAR);
+            Vector2 BottomDoorBlocking = new Vector2((float)7.5 * GlobalSettings.BASE_SCALAR,
+                GlobalSettings.WINDOW_HEIGHT - 2 * GlobalSettings.BASE_SCALAR);
+
+            // Stuck a block if that direction has no entry  
+            for (int i = 0; i < MapInfo.OpenDoors.Length; i++) {
+                bool CouldPass = (MapInfo.HiddenDoors[i] || MapInfo.LockedDoors[i] || MapInfo.OpenDoors[i]);
+
+                if (!CouldPass) {
+                    switch (i)
+                    {
+                        case (int)GlobalSettings.Direction.Up:
+                            BlockList.Add(new BlockInvis(TopDoorBlocking, spriteBatch));
+                            break;
+                        case (int)GlobalSettings.Direction.Down:
+                            BlockList.Add(new BlockInvis(BottomDoorBlocking, spriteBatch));
+                            break;
+                        case (int)GlobalSettings.Direction.Right:
+                            BlockList.Add(new BlockInvis(RightDoorBlocking, spriteBatch));
+                            break;
+                        case (int)GlobalSettings.Direction.Left:
+                            BlockList.Add(new BlockInvis(LeftDoorBlocking, spriteBatch));
+                            break;
+                        default:
+                            break; 
+                    }
+                } 
+            }
+
+            // The following 2 for loops are for the creation of walls (in lieu of boundary check)
             for (int i = 0; i < GlobalSettings.TILE_COLUMN; i++)
             {   
                 // All resulting magic numbers are to avoid player

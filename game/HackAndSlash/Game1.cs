@@ -114,7 +114,7 @@ namespace HackAndSlash
                 currentLevel.currentMapInfo = currentMapInfo;
                 currentLevel.Generate();
 
-                blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
+                blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
                 enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
                 itemList = generator.GetItemList(spriteBatch, this);
 
@@ -225,7 +225,7 @@ namespace HackAndSlash
             textSprites = SpriteFactory.Instance.GetTextCharacters();
 
             //Create list of blocks
-            blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
+            blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
 
             //UI Elements
             pauseOverlay = new PauseOverlay(this, SpriteFactory.Instance.GetPauseOverlay(), 
@@ -279,7 +279,7 @@ namespace HackAndSlash
                     miniMap.FlagExplored(currentLevel.mapIndex);
                     miniMap.SetPivot(currentLevel.mapIndex);
 
-                    blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance);
+                    blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
                     enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
                     itemList = generator.GetItemList(spriteBatch, this);
 

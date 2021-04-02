@@ -21,6 +21,7 @@ namespace HackAndSlash
         private bool[,] AllRoom;        // If there's a room at that position 
         private bool[,] RoomVisibility; // If that room has been explored 
 
+        // Textures 
         private Texture2D minimap;
         private Texture2D singleRoom;
         private Texture2D horizontalBridge;
@@ -28,6 +29,7 @@ namespace HackAndSlash
         private Texture2D playerNotation;
         private Texture2D borderLines; 
 
+        // The size of the current maps 
         private int roomRowCount;
         private int roomColCount;
 
@@ -157,6 +159,7 @@ namespace HackAndSlash
                 InnerFillData, 0, InnerFillData.Length); 
         }
 
+        // Add the connection between 2 minimap blocks 
         private void AddBridge(int Direction)
         {
             const int HORIZONTAL_OFFST = 6;
@@ -185,16 +188,19 @@ namespace HackAndSlash
                 BridgeData, 0, BridgeData.Length);
         }
 
+        // Mark a room as explored and make it visible in minimap 
         public void FlagExplored(int[] Index)
         {
             RoomVisibility[Index[0], Index[1]] = true;
             UpdateMinimap();
         }
 
+        // Set current minimap display focus 
         public void SetPivot(int[] Index)
         {
             currentFocusIndex = Index;
 
+            // Dealing with outlier cases when there's no more area to clip or move
             if (currentFocusIndex[0] >= levelCycler.currentMapSet.GetLength(0) - 1) {
                 clipY = (levelCycler.currentMapSet.GetLength(0) - 2) * WHOLE_HEIGHT;
             }    
@@ -222,6 +228,7 @@ namespace HackAndSlash
 
         }
 
+        // Normal update to replicate player position 
         public void UpdatePlayer(Vector2 PlayerPos)
         {
             Vector2 GameAreaMid = new Vector2(GlobalSettings.WINDOW_WIDTH / 2,
@@ -238,6 +245,7 @@ namespace HackAndSlash
 
         }
 
+        // Update for transition animation 
         public void UpdateTransition(int Direction)
         {
             AddBridge(Direction);
@@ -267,8 +275,6 @@ namespace HackAndSlash
 
         public void Draw()
         {
-            
-
             // The minimap 
             spriteBatch.Draw(minimap, new Vector2(DRAW_POSITION_X, DRAW_POSITION_Y),
                 new Rectangle((int)(clipX + transOffset.X - 1), (int)(clipY + transOffset.Y - 1), 
