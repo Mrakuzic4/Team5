@@ -44,7 +44,7 @@ namespace HackAndSlash
         private bool canMove;
 
         //Player's Health
-        private const int INIT_MAX_HEALTH = 2; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
+        private const int INIT_MAX_HEALTH = 6; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
         private int maxHealth; 
         private int currentHealth;
 
