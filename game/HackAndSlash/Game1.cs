@@ -14,6 +14,8 @@ namespace HackAndSlash
 
         public GlobalSettings gameSettings;
 
+        public bool devMode = true;     // Whether or not o enable some keybind and functionalities 
+
         public bool elapsing = true;    // set to false when invoking pause, bag, transition, etc.
         public bool gamePaused = false; //set to true if pause button has been pressed
         public bool gameOver = false;   //set to true if pause button has been pressed
@@ -55,7 +57,6 @@ namespace HackAndSlash
         private MapGenerator generator;
         private int transitionDir;
         private Minimap miniMap;
-        private int mapCycleIndex;
         // Partically due to planning, "level" and "map" are used interchangeable 
 
         private Color defaultFill = Color.Black; 
@@ -92,6 +93,7 @@ namespace HackAndSlash
 
         public int numOfEnemy { get; set; }
         public int numOfDropped { get; set; }
+
         /* ============================================================
          * ======================== Methods ===========================
          * ============================================================ */
@@ -154,8 +156,6 @@ namespace HackAndSlash
         protected override void Initialize()
         {
             base.Initialize();
-
-            mapCycleIndex = 0;
 
             controllerList = new List<Object>();
             controllerList.Add(new KeyboardController(this));
