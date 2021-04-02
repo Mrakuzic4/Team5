@@ -51,6 +51,8 @@ namespace HackAndSlash
             enemyCollisionDetector = new EnemyCollisionDetector(game, this);
             enemyBlockCollision = new EnemyBlockCollision();
             hitbox = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+
+            directionHistory[Turn(GlobalSettings.RND.Next(3))] += 1;
         }
 
         //Loading the spritebatch 
@@ -69,7 +71,7 @@ namespace HackAndSlash
             position = pos;
         }
 
-        public void Turn(int Direction)
+        public int Turn(int Direction)
         {
             switch (Direction)
             {
@@ -86,6 +88,7 @@ namespace HackAndSlash
                     bugState.changeToMoveDown();
                     break;
             }
+            return Direction;
         }
 
         //updating the enemy

@@ -125,7 +125,8 @@ namespace HackAndSlash
         /// <param name="Index">Index of the item/enemy.</param>
         public void RemoveOneIndex(int Index)
         {
-            Map ActiveMap = currentMapSet[currentLocationIndex[0] - 1, currentLocationIndex[1]];
+            bool OneItemRemoved = false; 
+            Map ActiveMap = currentMapSet[currentLocationIndex[0], currentLocationIndex[1]];
 
             for (int i = 0; i < GlobalSettings.TILE_ROW; i++)
             {
@@ -134,7 +135,10 @@ namespace HackAndSlash
                     if(ActiveMap.Arrangement[i, j] == Index)
                     {
                         ActiveMap.Arrangement[i, j] = ActiveMap.DefaultBlock;
-                    }
+                        OneItemRemoved = true; 
+                    } 
+                    if (OneItemRemoved)
+                        break; 
                 }
             }
         }
