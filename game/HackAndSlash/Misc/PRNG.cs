@@ -31,6 +31,22 @@ namespace HackAndSlash
             return BestDirection;
         }
 
+        public int DirectionalMaskOnly(bool[] MaskedDirections)
+        {
+            int[] Possibilities = new int[] { 0, 0, 0, 0 };
+            int BestDirection = 0;
+
+            foreach (int Dirs in directionIter)
+            {
+                Possibilities[Dirs] = GlobalSettings.RND.Next();
+                if (Possibilities[Dirs] > Possibilities[BestDirection]
+                    && !MaskedDirections[Dirs])
+                    BestDirection = Dirs;
+            }
+
+            return BestDirection;
+        }
+
         /// <summary>
         /// 
         /// </summary>

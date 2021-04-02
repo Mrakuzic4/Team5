@@ -14,9 +14,9 @@ namespace HackAndSlash
 
         public GlobalSettings gameSettings;
 
-        public bool elapsing = true; // set to false when invoking pause, bag, transition, etc.
+        public bool elapsing = true;    // set to false when invoking pause, bag, transition, etc.
         public bool gamePaused = false; //set to true if pause button has been pressed
-        public bool gameOver = false; //set to true if pause button has been pressed
+        public bool gameOver = false;   //set to true if pause button has been pressed
 
 
         //Player
@@ -51,7 +51,7 @@ namespace HackAndSlash
         // Level and map related 
         public Map currentMapInfo;
         public Level currentLevel;
-        public LevelCycling levelCycleRecord; 
+        public LevelCycling levelCycleRecord; // Remove item from the map after pickup 
         private MapGenerator generator;
         private int transitionDir;
         private Minimap miniMap;

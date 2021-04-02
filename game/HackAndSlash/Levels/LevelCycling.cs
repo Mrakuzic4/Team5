@@ -12,7 +12,7 @@ namespace HackAndSlash
     public class LevelCycling
     {
 
-        private const int LEVEL_SIZE = 6;
+        private const int LEVEL_EAGLE_SIZE = 6;
 
         // Field created jjust to fullfill sprint 3 scycling feature 
         public List<Map> S3EagleCycle; // this is only used for sprint 3 
@@ -46,10 +46,10 @@ namespace HackAndSlash
             };
 
             string[,] EaglePaths = MapDatabase.eagle;
-            levelEagle = new Map[LEVEL_SIZE, LEVEL_SIZE]; 
-            for(int i = 0; i < LEVEL_SIZE; i++)
+            levelEagle = new Map[LEVEL_EAGLE_SIZE, LEVEL_EAGLE_SIZE]; 
+            for(int i = 0; i < LEVEL_EAGLE_SIZE; i++)
             {
-                for (int j = 0; j < LEVEL_SIZE; j++)
+                for (int j = 0; j < LEVEL_EAGLE_SIZE; j++)
                 {
                     if (EaglePaths[i, j] != null)
                         levelEagle[i, j] = new JsonParser(EaglePaths[i, j]).getCurrentMapInfo();
@@ -92,6 +92,8 @@ namespace HackAndSlash
                     return false;
             }
         }
+
+        // Return the room in that direction, assume there is one 
         public Map GetNextRoom(int Direction)
         {
             switch (Direction)
@@ -118,7 +120,7 @@ namespace HackAndSlash
         }
 
         /// <summary>
-        /// Remove the item/enemy from this room, so that the player cannot exploit on it. 
+        /// Remove the item/enemy from current room, so that the player cannot exploit on it. 
         /// </summary>
         /// <param name="Index">Index of the item/enemy.</param>
         public void RemoveOneIndex(int Index)
