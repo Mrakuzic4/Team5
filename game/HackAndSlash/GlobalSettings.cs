@@ -64,6 +64,7 @@ namespace HackAndSlash
         public const int SNAKE_ENEMY = -1;
         public const int BUG_ENEMY = -2;
         public const int MOBLIN_ENEMY = -3;
+        public const int BOSS_ENEMY = -4;
 
         // Misc
         public static Random RND = new Random(); 

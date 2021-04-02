@@ -1,12 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\game",
-    "\\game\\HackAndSlash",
-    "\\game\\HackAndSlash\\Commands",
-    "\\game\\HackAndSlash\\Enemy",
-    "\\PeerReviewS3"
+    ""
   ],
-  "SelectedNode": "\\game\\HackAndSlash.sln",
   "PreviewInSolutionExplorer": false
 }

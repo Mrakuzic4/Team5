@@ -144,6 +144,9 @@ namespace HackAndSlash
                         case GlobalSettings.MOBLIN_ENEMY:
                             EnemyList.Add(new MoblinEnemy(position, graphics, spriteBatch, game));
                             break;
+                        case GlobalSettings.BOSS_ENEMY:
+                            EnemyList.Add(new BossEnemy(position, graphics, spriteBatch, game));
+                            break;
                         default:
                             break; 
                     }

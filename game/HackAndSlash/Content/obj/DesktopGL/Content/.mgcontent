@@ -26,13 +26,15 @@
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/explosion.png</File>
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/firewall2.png</File>
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/firewall3.png</File>
+    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Compass.png</File>
+    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Forthis.png</File>
+    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Inventory.png</File>
+    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Level.png</File>
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Life.png</File>
-    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/red_-.png</File>
-    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/red_E.png</File>
-    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/red_F.png</File>
-    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/red_I.png</File>
-    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/red_L.png</File>
-    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/red_N.png</File>
+    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Map.png</File>
+    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Oldman1.png</File>
+    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Usebutton.png</File>
+    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/font/Oldman2.png</File>
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/Food.png</File>
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/HalfHeart.png</File>
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/LevelEagleBorder.png</File>
@@ -108,6 +110,8 @@
     <File>images/emptyHeart.png</File>
     <File xsi:nil="true" />
     <File>images/firewall.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

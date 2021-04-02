@@ -82,7 +82,9 @@
     <Compile Include="Enemy\BugEnemy.cs" />
     <Compile Include="Enemy\EnemySprite.cs" />
     <Compile Include="Enemy\IEnemy.cs" />
+    <Compile Include="Enemy\BossEnemy.cs" />
     <Compile Include="Enemy\MoblinEnemy.cs" />
+    <Compile Include="Enemy\BossItem.cs" />
     <Compile Include="Enemy\MoblinItem.cs" />
     <Compile Include="Enemy\SnakeEnemy.cs" />
     <Compile Include="Game1.cs" />
