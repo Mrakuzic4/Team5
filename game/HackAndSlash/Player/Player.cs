@@ -193,57 +193,76 @@ namespace HackAndSlash
 
         private void stayInBoundary()
         {
-            // Note that the level used a different directional index
+            int TriggerDistance = (int)(1.5 * GlobalSettings.BASE_SCALAR);
+            int compensateDistance = (int)(1.25 * GlobalSettings.BASE_SCALAR);
+
             int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
+            int topBound = GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY;
             int rightBound = GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
+            int leftBound = GlobalSettings.BORDER_OFFSET; 
+
 
             // left 
-            if (this.relPositionMC.X < GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR)
+            if (this.relPositionMC.X < leftBound)
             {
                 if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Left))
                 {
-                    game.currentLevel.TransDir = (int)GlobalSettings.Direction.Left;
-                    SetPos(new Vector2(rightBound + GlobalSettings.BASE_SCALAR, relPositionMC.Y));
-                    game.reset((int)GlobalSettings.Direction.Left);
+                    if (this.relPositionMC.X < leftBound - TriggerDistance)
+                    {
+                        game.currentLevel.TransDir = (int)GlobalSettings.Direction.Left;
+                        SetPos(new Vector2(rightBound + GlobalSettings.BASE_SCALAR, relPositionMC.Y));
+                        game.reset((int)GlobalSettings.Direction.Left);
+                    }
+                    
                 }
                 else
-                    this.relPositionMC.X = GlobalSettings.BORDER_OFFSET;
+                    this.relPositionMC.X = leftBound;
             }
 
             // right 
-            if (this.relPositionMC.X > rightBound + GlobalSettings.BASE_SCALAR)
+            if (this.relPositionMC.X > rightBound)
             {
                 if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Right))
                 {
-                    game.currentLevel.TransDir = (int)GlobalSettings.Direction.Right;
-                    SetPos(new Vector2(GlobalSettings.BASE_SCALAR, relPositionMC.Y));
-                    game.reset((int)GlobalSettings.Direction.Right);
+                    if (this.relPositionMC.X > rightBound + TriggerDistance)
+                    {
+                        game.currentLevel.TransDir = (int)GlobalSettings.Direction.Right;
+                        SetPos(new Vector2(GlobalSettings.BASE_SCALAR, relPositionMC.Y));
+                        game.reset((int)GlobalSettings.Direction.Right);
+                    }
+                    
                 }
                 else
                     this.relPositionMC.X = rightBound;
             }
 
             // Up
-            if (this.relPositionMC.Y < GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY - GlobalSettings.BASE_SCALAR)
+            if (this.relPositionMC.Y < topBound)
             {
                 if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Up))
                 {
-                    game.currentLevel.TransDir = (int)GlobalSettings.Direction.Up;
-                    SetPos(new Vector2(relPositionMC.X, bottomBound));
-                    game.reset((int)GlobalSettings.Direction.Up);
+                    if (this.relPositionMC.Y < topBound - TriggerDistance)
+                    {
+                        game.currentLevel.TransDir = (int)GlobalSettings.Direction.Up;
+                        SetPos(new Vector2(relPositionMC.X, bottomBound + GlobalSettings.BASE_SCALAR));
+                        game.reset((int)GlobalSettings.Direction.Up);
+                    }
                 }
                 else
-                    this.relPositionMC.Y = GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY;
+                    this.relPositionMC.Y = topBound;
             }
 
             //Bottom
-            if (this.relPositionMC.Y > bottomBound + GlobalSettings.BASE_SCALAR)
+            if (this.relPositionMC.Y > bottomBound)
             {
                 if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Down))
                 {
-                    game.currentLevel.TransDir = (int)GlobalSettings.Direction.Down;
-                    SetPos(new Vector2(relPositionMC.X, GlobalSettings.HEADSUP_DISPLAY + GlobalSettings.BASE_SCALAR));
-                    game.reset((int)GlobalSettings.Direction.Down);
+                    if (this.relPositionMC.Y > bottomBound + TriggerDistance)
+                    {
+                        game.currentLevel.TransDir = (int)GlobalSettings.Direction.Down;
+                        SetPos(new Vector2(relPositionMC.X, topBound - compensateDistance));
+                        game.reset((int)GlobalSettings.Direction.Down);
+                    }
                 }
                 else
                     this.relPositionMC.Y = bottomBound;

@@ -119,7 +119,6 @@ namespace HackAndSlash
             // Fill textures  
             AlterTexture();
             GenerateOverlay();
-
         }
         
         // Generate a texture filled with default color 
@@ -383,7 +382,8 @@ namespace HackAndSlash
             else
             {
                 Color tint = gameOver ? Color.Magenta : defaultTint;
-                spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), tint);
+                spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), null,
+                    defaultTint, 0f, Vector2.Zero, 1, SpriteEffects.None, 1f);
             }
                 
         }
