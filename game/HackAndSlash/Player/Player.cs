@@ -44,7 +44,7 @@ namespace HackAndSlash
         private bool canMove;
 
         //Player's Health
-        private const int INIT_MAX_HEALTH = 6; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
+        private const int INIT_MAX_HEALTH = 2; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
         private int maxHealth; 
         private int currentHealth;
 
@@ -144,6 +144,7 @@ namespace HackAndSlash
             {
                 this.game.elapsing = false;
                 this.game.gameOver = true;
+                this.game.inGameOverAnimation = true;
                 //game.reset(5); //Reset the room upon player's death.
                 //currentHealth = maxHealth; //fully heal Player after death
             }

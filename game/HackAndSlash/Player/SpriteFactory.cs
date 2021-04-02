@@ -27,6 +27,8 @@ namespace HackAndSlash
         private Texture2D ZeldaUseItemLeft;
         private Texture2D ZeldaUseItemRight;
 
+        private Texture2D ZeldaDying;
+
         private Texture2D fullHeart;
         private Texture2D halfHeart;
         private Texture2D emptyHeart;
@@ -114,6 +116,8 @@ namespace HackAndSlash
             ZeldaUseItemUp = content.Load<Texture2D>(IMDB.zeldaUseItemUp.pathName);
             ZeldaUseItemLeft = content.Load<Texture2D>(IMDB.zeldaUseItemLeft.pathName);
             ZeldaUseItemRight = content.Load<Texture2D>(IMDB.zeldaUseItemRight.pathName);
+
+            ZeldaDying = content.Load<Texture2D>(IMDB.zeldaDying.pathName);
 
             //Zelda's Health--full heart, half heart, empty heart
             fullHeart = content.Load<Texture2D>(IMDB.fullHeart.pathName);
@@ -316,6 +320,15 @@ namespace HackAndSlash
             DrawPlayer.Instance.Rows = IMDB.zeldaAttackDown.R;
             DrawPlayer.Instance.Columns = IMDB.zeldaAttackDown.C;
             DrawPlayer.Instance.SetTexture(ZeldaAttackDown);
+        }
+
+        //***************Below is player dying***************//
+
+        public void SetPlayerDying()
+        {
+            DrawPlayer.Instance.Rows = IMDB.zeldaDying.R;
+            DrawPlayer.Instance.Columns = IMDB.zeldaDying.C;
+            DrawPlayer.Instance.SetTexture(ZeldaDying);
         }
 
         //*************Below are Player use item*********************
