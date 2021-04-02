@@ -64,29 +64,37 @@ namespace HackAndSlash
 		public void Damaged()
 		{
 			game.Player = new DamagedPlayer(Player, game); //Decorator of the PlayerSprite
-
+			int MinKnockback = new MaxKnockback(game, game.Player.GetPos(), (int)playerDir).distance;
+			int KnockbackDist = MinKnockback > GlobalSettings.KNOCKBACK_DIST_X ? 
+				GlobalSettings.KNOCKBACK_DIST_X : MinKnockback; 
 			//Player falls back when hit by enemies.
 			switch (playerDir)
 			{
 				case GlobalSettings.Direction.Left:
-					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X + GlobalSettings.KNOCKBACK_DIST_X, Player.GetPos().Y));
+					
+
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(
+						Player.GetPos().X + KnockbackDist, Player.GetPos().Y));
 					break;
 
 				case GlobalSettings.Direction.Up:
 					//move the sprite
-					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X , Player.GetPos().Y + GlobalSettings.KNOCKBACK_DIST_X));
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(
+						Player.GetPos().X , Player.GetPos().Y + KnockbackDist));
 
 					break;
 
 				case GlobalSettings.Direction.Down:
 					//move the sprite
-					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X, Player.GetPos().Y - GlobalSettings.KNOCKBACK_DIST_X));
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(
+						Player.GetPos().X, Player.GetPos().Y - KnockbackDist));
 					break;
 
 				default: //Default to be right
 						 //move the sprite
 
-					Player.SetPos(new Microsoft.Xna.Framework.Vector2(Player.GetPos().X - GlobalSettings.KNOCKBACK_DIST_X, Player.GetPos().Y));
+					Player.SetPos(new Microsoft.Xna.Framework.Vector2(
+						Player.GetPos().X - KnockbackDist, Player.GetPos().Y));
 					break;
 			}
 

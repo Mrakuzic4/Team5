@@ -103,6 +103,7 @@
     <Compile Include="Levels\MapGenerator.cs" />
     <Compile Include="Levels\MapTransition.cs" />
     <Compile Include="Levels\Minimap.cs" />
+    <Compile Include="Misc\MaxKnockback.cs" />
     <Compile Include="Misc\PRNG.cs" />
     <Compile Include="Player\DrawPlayerHealth.cs" />
     <Compile Include="Player\UseItemPlayer.cs" />
