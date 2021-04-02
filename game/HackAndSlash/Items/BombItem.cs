@@ -271,7 +271,7 @@ namespace HackAndSlash
 
         public void SetToolbarPosition(int index)
         {
-            toolBarPosition = new Vector2(index * GlobalSettings.BASE_SCALAR, 0);
+            toolBarPosition = new Vector2((index + 4) * GlobalSettings.BASE_SCALAR, 0);
         }
 
 

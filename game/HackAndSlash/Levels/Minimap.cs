@@ -53,7 +53,7 @@ namespace HackAndSlash
         private const int WHOLE_HEIGHT = 9;
         private const int BRIDGE_LEN_0 = 2;
         private const int BRIDGE_LEN_1 = 1;
-        private const int DRAW_POSITION_X = 4 * GlobalSettings.BASE_SCALAR;
+        private const int DRAW_POSITION_X = 8;
         private const int DRAW_POSITION_Y = 6;
         private const int DISPLAY_REGION_X = 3 * WHOLE_WIDTH;
         private const int DISPLAY_REGION_Y = 3 * WHOLE_HEIGHT;

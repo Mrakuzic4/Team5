@@ -58,6 +58,7 @@ namespace HackAndSlash
         public const int BOMB_ITEM = -258;
         public const int THROWING_KNIFE_ITEM = -259;
         public const int FOOD_ITEM = -260;
+        public const int TRIFORCE_ITEM = -261;
 
         // Index for enemy 
         public const int SNAKE_ENEMY = -1;

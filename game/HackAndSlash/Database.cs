@@ -63,6 +63,7 @@ namespace HackAndSlash
         public ImageFile throwingKnifeLeft;
         public ImageFile throwingKnifeRight;
         public ImageFile food;
+        public ImageFile triforce;
 
         public ImageFile BG;
 
@@ -139,6 +140,7 @@ namespace HackAndSlash
             throwingKnifeLeft = new ImageFile("images/throwingKnifeLeft", 1, 1);
             throwingKnifeRight = new ImageFile("images/throwingKnifeRight", 1, 1);
             food = new ImageFile("images/Food", 1, 1);
+            triforce = new ImageFile("images/ChipBlock", 1, 1);
 
             BG = new ImageFile("images/BG", 1, 1);
 

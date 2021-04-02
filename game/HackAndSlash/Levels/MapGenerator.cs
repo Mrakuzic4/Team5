@@ -186,6 +186,9 @@ namespace HackAndSlash
                             ItemList.Add(new FoodItem(position, spriteBatch, game));
                             itemNum++;
                             break;
+                        case GlobalSettings.TRIFORCE_ITEM:
+                            ItemList.Add(new TriforceItem(position, spriteBatch, game));
+                            break;
                         default:
                             break;
                     }

@@ -61,6 +61,7 @@ namespace HackAndSlash
         private Texture2D ThrowingKnifeUpSprite;
         private Texture2D ThrowingKnifeDownSprite;
         private Texture2D FoodSprite;
+        private Texture2D TriforceSprite;
 
         private Texture2D BlockMovable;
         private Texture2D BlockAllMight; 
@@ -157,6 +158,7 @@ namespace HackAndSlash
             ThrowingKnifeLeftSprite = content.Load<Texture2D>(IMDB.throwingKnifeLeft.pathName);
             ThrowingKnifeRightSprite = content.Load<Texture2D>(IMDB.throwingKnifeRight.pathName);
             FoodSprite = content.Load<Texture2D>(IMDB.food.pathName);
+            TriforceSprite = content.Load<Texture2D>(IMDB.triforce.pathName);
 
             // More Content.Load calls follow
             BGSprite = content.Load<Texture2D>(IMDB.BG.pathName);
@@ -488,6 +490,12 @@ namespace HackAndSlash
             }
             return knifeSprite;
         }
+
+        public ISprite CreateTriforce()
+        {
+            return new ItemSprite(TriforceSprite, IMDB.triforce.C, IMDB.triforce.R);
+        }
+
 
         public ISprite CreateFood()
         {
