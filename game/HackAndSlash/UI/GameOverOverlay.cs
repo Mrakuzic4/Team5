@@ -18,6 +18,9 @@ namespace HackAndSlash
         private Vector2 SelectorContinueLoc = new Vector2(GlobalSettings.PAUSE_CONTINUE_X, GlobalSettings.PAUSE_CONTINUE_Y);
         private Vector2 SelectorQuitLoc = new Vector2(GlobalSettings.PAUSE_QUIT_X, GlobalSettings.PAUSE_QUIT_Y);
         private Vector2 CurrentSelection;
+        private int gameOverAnimationCounter;
+        private int animationSlower;
+
         public GameOverOverlay(Game1 game, Texture2D overlay, Texture2D swordSelector, SpriteBatch spriteBatch)
         {
             this.Game = game;
@@ -25,38 +28,63 @@ namespace HackAndSlash
             this.SwordSelector = swordSelector;
             this.spriteBatch = spriteBatch;
             CurrentSelection = SelectorContinueLoc;
+            gameOverAnimationCounter = 0;
+            animationSlower = 0;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.S))
+            animationSlower += gameTime.ElapsedGameTime.Milliseconds;
+            if(animationSlower>80)
             {
-                CurrentSelection = SelectorQuitLoc;
+                animationSlower = 0;
+                DrawPlayer.Instance.Frame++;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            DrawPlayer.Instance.Update();
+
+            gameOverAnimationCounter += gameTime.ElapsedGameTime.Milliseconds;
+            if (gameOverAnimationCounter > 3000)
             {
-                CurrentSelection = SelectorContinueLoc;
+
+                this.Game.inGameOverAnimation = false;
+                if (Keyboard.GetState().IsKeyDown(Keys.S))
+                {
+                    CurrentSelection = SelectorQuitLoc;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.W))
+                {
+                    CurrentSelection = SelectorContinueLoc;
+                }
+                if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                {
+                    //If chose to continue
+                    if (CurrentSelection == SelectorContinueLoc)
+                    {
+                        Game.elapsing = true;
+                        Game.gameOver = false;
+                        Game.reset(5); //Reset the room upon player's death
+                        Game.resetCurrentLevelGameOver();
+                        Game.Player.Healed(); //Restart the game with Player having 1 HP.
+                        gameOverAnimationCounter = 0;
+                    }
+                    else
+                    {
+                        Game.Exit();
+                    }
+                }
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+
+            else
             {
-                //If chose to continue
-                if (CurrentSelection == SelectorContinueLoc)
-                {
-                    Game.elapsing = true;
-                    Game.gameOver = false;
-                    Game.reset(5); //Reset the room upon player's death
-                    Game.Player.Healed(); //Restart the game with Player having 1 HP.
-                }
-                else
-                {
-                    Game.Exit();
-                }
+                SpriteFactory.Instance.SetPlayerDying();
             }
         }
 
         public void Draw()
         {
-            spriteBatch.Draw(Overlay, new Vector2(0, 0), Color.White);
-            spriteBatch.Draw(SwordSelector, CurrentSelection, Color.White);
+            
+                spriteBatch.Draw(Overlay, new Vector2(0, 0), Color.White);
+                spriteBatch.Draw(SwordSelector, CurrentSelection, Color.White);
+            
         }
     }
 }

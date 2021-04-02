@@ -76,6 +76,8 @@ namespace HackAndSlash
         //UI Elements
         private PauseOverlay pauseOverlay;
         private GameOverOverlay gameOverOverlay;
+        public Boolean inGameOverAnimation;
+        
 
         private Texture2D textSprites;
 
@@ -117,7 +119,7 @@ namespace HackAndSlash
                 itemList = generator.GetItemList(spriteBatch, this);
 
                 numOfEnemy = enemyList.Count();
-                numOfDropped = 0; 
+                numOfDropped = 0;
             }
             else
             {
@@ -165,6 +167,8 @@ namespace HackAndSlash
             graphics.PreferredBackBufferHeight = GlobalSettings.WINDOW_HEIGHT;
 
             graphics.ApplyChanges();
+
+            
         }
 
         /// <summary>
@@ -250,7 +254,12 @@ namespace HackAndSlash
             if (!elapsing)
             {
                 if (gamePaused) pauseOverlay.Update();
-                if (gameOver) gameOverOverlay.Update();
+                if (gameOver)
+                {
+                    currentLevel.setGameOver();
+                    gameOverOverlay.Update(gameTime);
+                    
+                }
             } 
             // Transitioning between rooms 
             else if (currentLevel.transitioning)
@@ -332,7 +341,7 @@ namespace HackAndSlash
 
             if(gamePaused){ 
                 pauseOverlay.Draw(); 
-            }else if (gameOver)
+            }else if (gameOver && !inGameOverAnimation)
             {
                 gameOverOverlay.Draw();
             }
@@ -364,6 +373,11 @@ namespace HackAndSlash
 
             spriteBatch.End();
             base.Draw(gameTime);
+        }
+
+        public void resetCurrentLevelGameOver()
+        {
+            currentLevel.resetGameOver();
         }
     }
 }

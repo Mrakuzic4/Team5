@@ -75,6 +75,7 @@ namespace HackAndSlash
         // Misc 
         private Color defaultColor = Color.Black;
         private Color defaultTint = Color.White;
+        private Boolean gameOver = false;
 
 
         /* ============================================================
@@ -115,6 +116,7 @@ namespace HackAndSlash
             // Fill textures  
             AlterTexture();
             GenerateOverlay();
+
         }
         
         // Generate a texture filled with default color 
@@ -362,7 +364,16 @@ namespace HackAndSlash
             }
             else
             {
-                spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
+                
+                if (gameOver)
+                {
+                    
+                    spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), Color.DarkMagenta);
+                }
+                else
+                {
+                    spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
+                }
             }
         }
 
@@ -375,9 +386,28 @@ namespace HackAndSlash
             }
             else
             {
-                spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
+                if (gameOver)
+                {
+                    
+                    spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), Color.Magenta);
+                }
+
+                else
+                {
+                    spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), defaultTint);
+                }
             }
                 
+        }
+
+        public void setGameOver()
+        {
+            gameOver = true;
+        }
+
+        public void resetGameOver()
+        {
+            gameOver = false;
         }
     }
 }

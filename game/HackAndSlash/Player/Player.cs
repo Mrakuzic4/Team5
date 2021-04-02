@@ -144,6 +144,7 @@ namespace HackAndSlash
             {
                 this.game.elapsing = false;
                 this.game.gameOver = true;
+                this.game.inGameOverAnimation = true;
                 //game.reset(5); //Reset the room upon player's death.
                 //currentHealth = maxHealth; //fully heal Player after death
             }
