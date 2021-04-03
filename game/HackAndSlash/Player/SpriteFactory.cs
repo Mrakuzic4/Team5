@@ -75,6 +75,8 @@ namespace HackAndSlash
         private Texture2D PauseOverlay;
         private Texture2D SwordSelector;
         private Texture2D GameOverOverlay;
+        private Texture2D InventoryText;
+        private Texture2D ItemSelector;
 
 
         private Texture2D TextCharacters;
@@ -189,6 +191,8 @@ namespace HackAndSlash
 
             SwordSelector = content.Load<Texture2D>(IMDB.SwordSelector.pathName);
             TextCharacters = content.Load<Texture2D>(IMDB.TextCharacters.pathName);
+            InventoryText = content.Load<Texture2D>(IMDB.InventoryText.pathName);
+            ItemSelector = content.Load<Texture2D>(IMDB.ItemSelector.pathName);
         }
 
         public Texture2D GetGameOverOverlay()
@@ -255,6 +259,16 @@ namespace HackAndSlash
         public Texture2D GetSwordSelector()
         {
             return SwordSelector;
+        }
+
+        public Texture2D GetInventoryText()
+        {
+            return InventoryText;
+        }
+
+        public Texture2D GetItemSelector()
+        {
+            return ItemSelector;
         }
 
         public Texture2D GetTextCharacters()

@@ -817,3 +817,4 @@ C:\Users\theah_000\Source\Repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\
 C:\Users\theah_000\Source\Repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Oldman1.xnb
 C:\Users\theah_000\Source\Repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Usebutton.xnb
 C:\Users\theah_000\Source\Repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Oldman2.xnb
+C:\Users\theah_000\Source\Repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\ItemSelector.xnb

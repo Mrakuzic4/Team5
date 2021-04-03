@@ -72,6 +72,7 @@
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeUp.png</File>
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/UI/GameOverOverlay.png</File>
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/UI/GamePauseOverlay.png</File>
+    <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/UI/ItemSelector.png</File>
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/UI/SwordSelector.png</File>
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/WholeHeart.png</File>
     <File>C:/Users/theah_000/Source/Repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaAttackDown.png</File>
@@ -151,6 +152,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>images/TextCharacters.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

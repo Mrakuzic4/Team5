@@ -229,7 +229,7 @@ namespace HackAndSlash
 
             //UI Elements
             pauseOverlay = new PauseOverlay(this, SpriteFactory.Instance.GetPauseOverlay(), 
-                SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
+                SpriteFactory.Instance.GetSwordSelector(), SpriteFactory.Instance.GetInventoryText(), SpriteFactory.Instance.GetItemSelector(), spriteBatch);;
             gameOverOverlay = new GameOverOverlay(this, SpriteFactory.Instance.GetGameOverOverlay(),
                             SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
         }

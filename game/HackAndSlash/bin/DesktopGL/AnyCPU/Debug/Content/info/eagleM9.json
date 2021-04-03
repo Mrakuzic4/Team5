@@ -1,21 +1,2 @@
-﻿{  
-
-      "Arrangement": [
-        [ 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0 ],
-        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0 ],
-        [ 0, 0, 32, 0, 0, 0, 0, 0, 0, 32, 0, 0 ],
-        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
-        [ 0, 0, 32, 0, 0, 0, 0, 0, 0, 32, 0, 0 ],
-        [ 0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0 ],
-        [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] 
-      ],
-
-      "DropPotions": 0,
-      "DropKeys": 0,
-       
-      "LockedDoors": [ false, false, false, false ],
-      "OpenDoors": [ true, true, false, false ],
-      "HiddenDoors": [ false, false, false, true ],
- 
-      "DefaultBlock": 0
-}  
+{"Arrangement": [[0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3, 0], [0, 0, 32, 0, 0, 0, 0, 0, 0, 32, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 32, 0, 0, 0, 0, 0, 0, 32, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], "DropPotions": 0, "DropKeys": 0, 
+"LockedDoors": [false, false, false, false], "OpenDoors": [true, true, false, false], "HiddenDoors": [false, false, false, true], "DefaultBlock": 0, "MysteryDoors": [false, false, false, false], "Holes": [false, false, false, false]}
