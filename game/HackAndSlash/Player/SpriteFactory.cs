@@ -77,6 +77,7 @@ namespace HackAndSlash
         private Texture2D GameOverOverlay;
         private Texture2D InventoryText;
         private Texture2D ItemSelector;
+        private Texture2D TitleScreenOverlay;
 
 
         private Texture2D TextCharacters;
@@ -188,6 +189,7 @@ namespace HackAndSlash
             //UI Related
             PauseOverlay = content.Load<Texture2D>(IMDB.PauseOverlay.pathName);
             GameOverOverlay = content.Load<Texture2D>(IMDB.GameOverOverlay.pathName);
+            TitleScreenOverlay = content.Load<Texture2D>(IMDB.TitleScreenOverlay.pathName);
 
             SwordSelector = content.Load<Texture2D>(IMDB.SwordSelector.pathName);
             TextCharacters = content.Load<Texture2D>(IMDB.TextCharacters.pathName);
@@ -255,6 +257,10 @@ namespace HackAndSlash
         public Texture2D GetPauseOverlay()
         {
             return PauseOverlay;
+        }
+        public Texture2D GetTitleScreen()
+        {
+            return TitleScreenOverlay;
         }
         public Texture2D GetSwordSelector()
         {

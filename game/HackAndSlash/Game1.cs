@@ -16,9 +16,10 @@ namespace HackAndSlash
 
         public bool devMode = true;     // Whether or not o enable some keybind and functionalities 
 
-        public bool elapsing = true;    // set to false when invoking pause, bag, transition, etc.
+        public bool elapsing = false;    // set to false when invoking pause, bag, transition, etc.
         public bool gamePaused = false; //set to true if pause button has been pressed
         public bool gameOver = false;   //set to true if pause button has been pressed
+        public bool titleMenu = true;
 
 
         //Player
@@ -77,6 +78,7 @@ namespace HackAndSlash
         //UI Elements
         private PauseOverlay pauseOverlay;
         private GameOverOverlay gameOverOverlay;
+        private TitleScreenOverlay titleScreen;
         public Boolean inGameOverAnimation;
         
 
@@ -232,6 +234,7 @@ namespace HackAndSlash
                 SpriteFactory.Instance.GetSwordSelector(), SpriteFactory.Instance.GetInventoryText(), SpriteFactory.Instance.GetItemSelector(), spriteBatch);;
             gameOverOverlay = new GameOverOverlay(this, SpriteFactory.Instance.GetGameOverOverlay(),
                             SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
+            titleScreen = new TitleScreenOverlay(this, SpriteFactory.Instance.GetTitleScreen(), spriteBatch);
         }
 
         /// <summary>
@@ -250,8 +253,9 @@ namespace HackAndSlash
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            if (titleMenu) titleScreen.Update();
             // Pausing or other thing that takes over the screen 
-            if (!elapsing)
+            else if (!elapsing)
             {
                 if (gamePaused) pauseOverlay.Update();
                 if (gameOver)
@@ -339,7 +343,8 @@ namespace HackAndSlash
             GraphicsDevice.Clear(defaultFill);
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp);
 
-            if(gamePaused){ 
+            if (titleMenu) titleScreen.Draw();
+            else if(gamePaused){ 
                 pauseOverlay.Draw(); 
             }else if (gameOver && !inGameOverAnimation)
             {

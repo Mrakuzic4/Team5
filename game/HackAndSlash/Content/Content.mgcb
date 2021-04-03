@@ -853,6 +853,18 @@
 /processorParam:TextureFormat=Color
 /build:images/UI/SwordSelector.png
 
+#begin images/UI/TitleScreens.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/UI/TitleScreens.png
+
 #begin images/WholeHeart.png
 /importer:TextureImporter
 /processor:TextureProcessor

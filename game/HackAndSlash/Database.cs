@@ -82,6 +82,7 @@ namespace HackAndSlash
         public ImageFile ItemSelector;
 
         public ImageFile GameOverOverlay;
+        public ImageFile TitleScreenOverlay;
 
         public ImageFile TextCharacters;
 
@@ -171,6 +172,7 @@ namespace HackAndSlash
             GameOverOverlay = new ImageFile("images/UI/GameOverOverlay", 1, 1);
             InventoryText = new ImageFile("images/Font/Font_Inventory", 1, 1);
             ItemSelector = new ImageFile("images/UI/ItemSelector", 1, 1);
+            TitleScreenOverlay = new ImageFile("images/UI/TitleScreens", 2, 2);
 
             TextCharacters = new ImageFile("images/TextCharacters", 4, 13);
         }

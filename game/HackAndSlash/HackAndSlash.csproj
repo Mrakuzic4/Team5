@@ -124,6 +124,7 @@
     <Compile Include="UI\GameOverOverlay.cs" />
     <Compile Include="UI\TextSprite.cs" />
     <Compile Include="UI\PauseOverlay.cs" />
+    <Compile Include="UI\TitleScreenOverlay.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
