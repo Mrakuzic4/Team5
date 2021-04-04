@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/ZeldaAttackLeft.png</SourceFile>
-  <SourceTime>2021-02-22T18:38:16.2974941-05:00</SourceTime>
-  <DestFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ZeldaAttackLeft.xnb</DestFile>
-  <DestTime>2021-04-03T17:07:03.6781451-04:00</DestTime>
+  <SourceFile>C:/Users/vidha/source/repos/sound/game/HackAndSlash/Content/images/ZeldaAttackLeft.png</SourceFile>
+  <SourceTime>2021-04-04T09:33:45.5902857-04:00</SourceTime>
+  <DestFile>C:/Users/vidha/source/repos/sound/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ZeldaAttackLeft.xnb</DestFile>
+  <DestTime>2021-04-04T10:48:24.2443311-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

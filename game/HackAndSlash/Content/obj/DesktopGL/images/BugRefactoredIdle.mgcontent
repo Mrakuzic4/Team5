@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/BugRefactoredIdle.png</SourceFile>
-  <SourceTime>2021-03-12T14:00:30.9565057-05:00</SourceTime>
-  <DestFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/bin/DesktopGL/images/BugRefactoredIdle.xnb</DestFile>
-  <DestTime>2021-04-03T18:17:26.1969608-04:00</DestTime>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/vidha/source/repos/sound/game/HackAndSlash/Content/images/BugRefactoredIdle.png</SourceFile>
+  <SourceTime>2021-04-04T09:33:45.5626158-04:00</SourceTime>
+  <DestFile>C:/Users/vidha/source/repos/sound/game/HackAndSlash/Content/bin/DesktopGL/images/BugRefactoredIdle.xnb</DestFile>
+  <DestTime>2021-04-04T09:59:47.9348119-04:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
+  <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2020-08-10T16:17:54-04:00</ProcessorTime>
+  <ProcessorTime>2018-12-08T11:35:54-05:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

@@ -189,6 +189,9 @@ namespace HackAndSlash
             //Get sprite from spriteFactory
             SpriteFactory.Instance.LoadAllTextures(Content);
 
+            //Load sounds
+            SoundFactory.Instance.LoadFactory(Content);
+
             /* =============================== In game contents =============================== */
 
             // The level map
