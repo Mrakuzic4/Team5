@@ -65,6 +65,7 @@ namespace HackAndSlash
                         Game.resetCurrentLevelGameOver();
                         Game.Player.Healed(); //Restart the game with Player having 1 HP.
                         gameOverAnimationCounter = 0;
+                        SoundFactory.Instance.DungeonSong();
                     }
                     else
                     {

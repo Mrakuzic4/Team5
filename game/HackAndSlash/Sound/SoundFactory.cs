@@ -25,8 +25,10 @@ namespace HackAndSlash
         private SoundEffect linkDeath;
         private SoundEffect bombDrop;
         private SoundEffect bombBlow;
-        private SoundEffect swordThrow; //arrow boomerang
+        private SoundEffect throwingKnife; //arrow boomerang
         private SoundEffect flameThrow; //candle
+        private SoundEffect triforceObtained;
+        private SoundEffect enemyDamaged;
         
         private SoundFactory()
         {
@@ -47,8 +49,10 @@ namespace HackAndSlash
             linkDeath = content.Load<SoundEffect>("sound/LOZ_Link_Die");
             bombDrop = content.Load<SoundEffect>("sound/LOZ_Bomb_Drop");
             bombBlow = content.Load<SoundEffect>("sound/LOZ_Bomb_Blow");
-            swordThrow = content.Load<SoundEffect>("sound/LOZ_Arrow_Boomerang");
+            throwingKnife = content.Load<SoundEffect>("sound/LOZ_Arrow_Boomerang");
             flameThrow = content.Load<SoundEffect>("sound/LOZ_Candle");
+            triforceObtained = content.Load<SoundEffect>("sound/LOZ_Fanfare");
+            enemyDamaged = content.Load<SoundEffect>("sound/LOZ_Enemy_Hit");
         }
 
         public static SoundFactory Instance
@@ -102,13 +106,28 @@ namespace HackAndSlash
         {
             return new SoundByte(bombBlow);
         }
-        public SoundByte SwordThrowEffect()
+        public SoundByte ThrowingKnifeEffect()
         {
-            return new SoundByte(swordThrow);
+            return new SoundByte(throwingKnife);
         }
         public SoundByte FlameThrowEffect()
         {
             return new SoundByte(flameThrow);
+        }
+
+        public SoundByte TriforceObtainedEffect()
+        {
+            return new SoundByte(triforceObtained);
+        }
+
+        public SoundByte EnemyDamagedEffect()
+        {
+            return new SoundByte(enemyDamaged);
+        }
+
+        public void StopSong()
+        {
+            MediaPlayer.Stop();
         }
     }
 }

@@ -131,8 +131,10 @@ namespace HackAndSlash
         {
             //Sprite Animation and Decorator
             playerStateMachine.Attack();
-
             this.swordEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckSwordEnemyCollisions());
+
+            //Sound
+            SoundFactory.Instance.SwordSlashEffect();
         }
 
         public void Damaged()
@@ -140,11 +142,16 @@ namespace HackAndSlash
             //Health goes down by a half heart when damaged
             currentHealth--;
             playerStateMachine.Damaged();
+
+            //Sound
+            SoundFactory.Instance.LinkDamagedEffect();
             if (currentHealth == 0)
             {
                 this.game.elapsing = false;
                 this.game.gameOver = true;
                 this.game.inGameOverAnimation = true;
+                SoundFactory.Instance.StopSong();
+                SoundFactory.Instance.LinkDeathEffect();
                 //game.reset(5); //Reset the room upon player's death.
                 //currentHealth = maxHealth; //fully heal Player after death
             }

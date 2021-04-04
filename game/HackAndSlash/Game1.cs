@@ -191,6 +191,7 @@ namespace HackAndSlash
 
             //Load sounds
             SoundFactory.Instance.LoadFactory(Content);
+            SoundFactory.Instance.TitleScreenSong();
 
             /* =============================== In game contents =============================== */
 

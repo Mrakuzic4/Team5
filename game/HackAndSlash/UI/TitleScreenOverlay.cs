@@ -64,6 +64,7 @@ namespace HackAndSlash
                     fadingOut = false;
                     Game.elapsing = true;
                     Game.titleMenu = false;
+                    SoundFactory.Instance.DungeonSong();
                 }
             }
         }
