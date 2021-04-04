@@ -92,8 +92,9 @@ namespace HackAndSlash
         public List<ILevel> levelList { get; set; }
         public List<IEnemy> enemyList { get; set; }
         public List<IItem> itemList { get; set; }
-
         public List<IItem> useableItemList { get; set; }
+
+        public ISpecialCases specialCases; 
 
         public int numOfEnemy { get; set; }
         public int numOfDropped { get; set; }
@@ -201,6 +202,8 @@ namespace HackAndSlash
 
             miniMap = new Minimap(GraphicsDevice, spriteBatch, levelCycleRecord);
             miniMap.SetPivot(currentLevel.mapIndex);
+
+            specialCases = new LevelEagleSpecialCases(); 
 
             //Player
             PlayerMain = new Player(this);//Player object
@@ -330,6 +333,7 @@ namespace HackAndSlash
                     }
                 }
 
+                specialCases.Update(this);
                 miniMap.UpdatePlayer(Player.GetPos());
 
                 PlayerMain.Update();

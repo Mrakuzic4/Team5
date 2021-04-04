@@ -100,5 +100,10 @@ namespace HackAndSlash
             rectangle = new Rectangle((int)location.X, (int)location.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
         }
 
+        public bool Moved()
+        {
+            return hasMoved; 
+        }
+
     }
 }

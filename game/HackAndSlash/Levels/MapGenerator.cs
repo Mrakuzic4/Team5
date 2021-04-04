@@ -47,7 +47,8 @@ namespace HackAndSlash
 
             // Stuck a block if that direction has no entry  
             for (int i = 0; i < MapInfo.OpenDoors.Length; i++) {
-                bool CouldPass = (MapInfo.HiddenDoors[i] || MapInfo.LockedDoors[i] || MapInfo.OpenDoors[i]);
+                bool CouldPass = (MapInfo.HiddenDoors[i] || MapInfo.LockedDoors[i] || 
+                    MapInfo.OpenDoors[i] || MapInfo.MysteryDoors[i]);
 
                 if (!CouldPass) {
                     switch (i)

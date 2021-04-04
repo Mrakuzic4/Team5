@@ -336,6 +336,14 @@ namespace HackAndSlash
             UpdateDrawDoors();
         }
 
+        // Open a mys door 
+        public void OpenMysDoor(int Dir)
+        {
+            doorOpen[Dir] = true;
+            doorMys[Dir] = false;
+            UpdateDrawDoors();
+        }
+
         // Only useful during map transition 
         public void Update(GameTime gameTime)
         {
