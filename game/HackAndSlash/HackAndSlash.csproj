@@ -121,6 +121,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprite.cs" />
+    <Compile Include="UI\GameWonOverlay.cs" />
     <Compile Include="UI\GameOverOverlay.cs" />
     <Compile Include="UI\TextSprite.cs" />
     <Compile Include="UI\PauseOverlay.cs" />
@@ -242,12 +243,14 @@
     <None Include="Content\bin\DesktopGL\images\sucOva.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucUp.xnb" />
     <Content Include="Content\images\levels\blockAllMight.png" />
+    <Content Include="Content\images\LinkTriforce.png" />
     <Content Include="Content\images\MoblinBomb.png" />
     <Content Include="Content\images\MoblinDown.png" />
     <Content Include="Content\images\MoblinLeft.png" />
     <Content Include="Content\images\MoblinRight.png" />
     <Content Include="Content\images\MoblinUp.png" />
     <Content Include="Content\images\SnakeEnemyRight.png" />
+    <Content Include="Content\images\UI\WinningScreen.png" />
     <Content Include="Content\images\ZeldaDying.png" />
     <Content Include="Content\info\AddField.py" />
     <Content Include="Content\info\levelDemoM1.json">

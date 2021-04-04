@@ -32,6 +32,7 @@ namespace HackAndSlash
         public ImageFile zeldaUseItemRight;
 
         public ImageFile zeldaDying;
+        public ImageFile zeldaWon;
 
         public ImageFile fullHeart;
         public ImageFile halfHeart;
@@ -83,6 +84,7 @@ namespace HackAndSlash
 
         public ImageFile GameOverOverlay;
         public ImageFile TitleScreenOverlay;
+        public ImageFile GameWonOverlay;
 
         public ImageFile TextCharacters;
 
@@ -112,6 +114,7 @@ namespace HackAndSlash
             zeldaUseItemRight = new ImageFile("images/ZeldaUseItemRight", 1, 1);
 
             zeldaDying = new ImageFile("images/ZeldaDying", 2, 1);
+            zeldaWon = new ImageFile("images/LinkTriforce", 1, 1);
 
             fullHeart = new ImageFile("images/fullHeart", 1, 1);
             halfHeart = new ImageFile("images/halfHeart", 1, 1);
@@ -173,6 +176,7 @@ namespace HackAndSlash
             InventoryText = new ImageFile("images/Font/Font_Inventory", 1, 1);
             ItemSelector = new ImageFile("images/UI/ItemSelector", 1, 1);
             TitleScreenOverlay = new ImageFile("images/UI/TitleScreens", 2, 2);
+            GameWonOverlay = new ImageFile("images/UI/WinningScreen", 1, 1);
 
             TextCharacters = new ImageFile("images/TextCharacters", 4, 13);
         }

@@ -63,8 +63,11 @@ namespace HackAndSlash
         {
             // Game Win State
             this.game.elapsing = false;
-            this.game.gameOver = true;
-            this.game.inGameOverAnimation = true;
+
+            this.game.gameWon = true;
+            this.game.inGameWonAnimation = true;
+            //this.game.gameOver = true;
+            //this.game.inGameOverAnimation = true;
         }
 
         public void UseItem(GlobalSettings.Direction currentPlayerDirection)

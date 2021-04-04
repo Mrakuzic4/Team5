@@ -77,7 +77,7 @@ namespace HackAndSlash
         private Color defaultColor = Color.Black;
         private Color defaultTint = Color.White;
         private Boolean gameOver = false;
-
+        private Boolean gameWon = false;
 
         /* ============================================================
          * ======================== Methods ===========================
@@ -367,7 +367,8 @@ namespace HackAndSlash
             }
             else
             {
-                Color tint = gameOver ? Color.DarkMagenta : defaultTint; 
+                Color tint = gameOver  ? Color.DarkMagenta : defaultTint;
+                tint = gameWon ? Color.Red : defaultTint;
                 spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), tint);
             }
         }
@@ -382,6 +383,7 @@ namespace HackAndSlash
             else
             {
                 Color tint = gameOver ? Color.Magenta : defaultTint;
+                tint = gameWon ? Color.Red : defaultTint;
                 spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), null,
                     defaultTint, 0f, Vector2.Zero, 1, SpriteEffects.None, 1f);
             }
@@ -396,6 +398,16 @@ namespace HackAndSlash
         public void resetGameOver()
         {
             gameOver = false;
+        }
+
+        public void setGameWon()
+        {
+            gameWon = true;
+        }
+
+        public void resetGameWon()
+        {
+            gameWon = false;
         }
     }
 }

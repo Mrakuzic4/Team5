@@ -28,6 +28,7 @@ namespace HackAndSlash
         private Texture2D ZeldaUseItemRight;
 
         private Texture2D ZeldaDying;
+        private Texture2D ZeldaWon;
 
         private Texture2D fullHeart;
         private Texture2D halfHeart;
@@ -78,6 +79,7 @@ namespace HackAndSlash
         private Texture2D InventoryText;
         private Texture2D ItemSelector;
         private Texture2D TitleScreenOverlay;
+        private Texture2D GameWonScreenOverlay;
 
 
         private Texture2D TextCharacters;
@@ -122,6 +124,7 @@ namespace HackAndSlash
             ZeldaUseItemRight = content.Load<Texture2D>(IMDB.zeldaUseItemRight.pathName);
 
             ZeldaDying = content.Load<Texture2D>(IMDB.zeldaDying.pathName);
+            ZeldaWon = content.Load<Texture2D>(IMDB.zeldaWon.pathName);
 
             //Zelda's Health--full heart, half heart, empty heart
             fullHeart = content.Load<Texture2D>(IMDB.fullHeart.pathName);
@@ -190,6 +193,7 @@ namespace HackAndSlash
             PauseOverlay = content.Load<Texture2D>(IMDB.PauseOverlay.pathName);
             GameOverOverlay = content.Load<Texture2D>(IMDB.GameOverOverlay.pathName);
             TitleScreenOverlay = content.Load<Texture2D>(IMDB.TitleScreenOverlay.pathName);
+            GameWonScreenOverlay = content.Load<Texture2D>(IMDB.GameWonOverlay.pathName);
 
             SwordSelector = content.Load<Texture2D>(IMDB.SwordSelector.pathName);
             TextCharacters = content.Load<Texture2D>(IMDB.TextCharacters.pathName);
@@ -353,6 +357,14 @@ namespace HackAndSlash
             DrawPlayer.Instance.SetTexture(ZeldaDying);
         }
 
+        //**************Below is player winning******************//
+
+        public void SetPlayerWon()
+        {
+            DrawPlayer.Instance.Rows = IMDB.zeldaWon.R;
+            DrawPlayer.Instance.Columns = IMDB.zeldaWon.C;
+            DrawPlayer.Instance.SetTexture(ZeldaWon);
+        }
         //*************Below are Player use item*********************
         public void SetUpUseItemPlayer()
         {
@@ -536,5 +548,11 @@ namespace HackAndSlash
                 (r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY)), spriteBatch, false);
         }
 
+        //****************************Below is game winning screen textures**************************//
+
+        public Texture2D getGameWonScreen()
+        {
+            return GameWonScreenOverlay;
+        }
     }
 }

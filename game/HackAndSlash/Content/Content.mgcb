@@ -541,6 +541,18 @@
 /processorParam:TextureFormat=Color
 /build:images/levels/eagleHoleVerticalUp.png
 
+#begin images/LinkTriforce.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/LinkTriforce.png
+
 #begin images/MoblinBomb.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -864,6 +876,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:images/UI/TitleScreens.png
+
+#begin images/UI/WinningScreen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/UI/WinningScreen.png
 
 #begin images/WholeHeart.png
 /importer:TextureImporter

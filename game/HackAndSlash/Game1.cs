@@ -18,9 +18,9 @@ namespace HackAndSlash
 
         public bool elapsing = false;    // set to false when invoking pause, bag, transition, etc.
         public bool gamePaused = false; //set to true if pause button has been pressed
-        public bool gameOver = false;   //set to true if pause button has been pressed
+        public bool gameOver = false;   
         public bool titleMenu = true;
-
+        public bool gameWon = false;
 
         //Player
         private IPlayer PlayerMain;
@@ -79,7 +79,9 @@ namespace HackAndSlash
         private PauseOverlay pauseOverlay;
         private GameOverOverlay gameOverOverlay;
         private TitleScreenOverlay titleScreen;
+        private GameWonOverlay gameWonScreenOverlay;
         public Boolean inGameOverAnimation;
+        public Boolean inGameWonAnimation;
         
 
         private Texture2D textSprites;
@@ -235,6 +237,7 @@ namespace HackAndSlash
             gameOverOverlay = new GameOverOverlay(this, SpriteFactory.Instance.GetGameOverOverlay(),
                             SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
             titleScreen = new TitleScreenOverlay(this, SpriteFactory.Instance.GetTitleScreen(), spriteBatch);
+            gameWonScreenOverlay = new GameWonOverlay(this, SpriteFactory.Instance.getGameWonScreen(), SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
         }
 
         /// <summary>
@@ -263,6 +266,11 @@ namespace HackAndSlash
                     currentLevel.setGameOver();
                     gameOverOverlay.Update(gameTime);
                     
+                }
+                if(gameWon)
+                {
+                    currentLevel.setGameWon();
+                    gameWonScreenOverlay.Update(gameTime);
                 }
             } 
             // Transitioning between rooms 
@@ -349,6 +357,11 @@ namespace HackAndSlash
             }else if (gameOver && !inGameOverAnimation)
             {
                 gameOverOverlay.Draw();
+            }
+
+            else if(gameWon && !inGameWonAnimation)
+            {
+                gameWonScreenOverlay.Draw();
             }
             else
             {

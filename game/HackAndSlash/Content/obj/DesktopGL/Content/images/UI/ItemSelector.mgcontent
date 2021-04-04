@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/images/UI/ItemSelector.png</SourceFile>
-  <SourceTime>2021-04-03T15:15:04.4435934-04:00</SourceTime>
-  <DestFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/UI/ItemSelector.xnb</DestFile>
-  <DestTime>2021-04-03T15:15:22.7243779-04:00</DestTime>
+  <SourceFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/UI/ItemSelector.png</SourceFile>
+  <SourceTime>2021-04-03T17:02:41.3736311-04:00</SourceTime>
+  <DestFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/bin/DesktopGL/Content/images/UI/ItemSelector.xnb</DestFile>
+  <DestTime>2021-04-03T17:07:02.384734-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

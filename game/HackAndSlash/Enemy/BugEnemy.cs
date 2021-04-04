@@ -188,6 +188,8 @@ namespace HackAndSlash
             //Remove bug from screen 3 seconds after death
             if (bugState.state == bugStateMachine.bugHealth.Die)
             {
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
                 deathTimer += gameTime.ElapsedGameTime.Milliseconds;
                 //wait 3 seconds
                 if (deathTimer > 2000)
@@ -195,6 +197,12 @@ namespace HackAndSlash
                     deathTimer = 0;
                     bugState.changeToNot();
                 }
+            }
+
+            if (bugState.state == bugStateMachine.bugHealth.Not)
+            {
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
             }
         }
 

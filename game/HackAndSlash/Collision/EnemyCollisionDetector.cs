@@ -31,13 +31,12 @@ namespace HackAndSlash.Collision
                     //right collision
                     if (collision.X >= hitbox.X)
                     {
-                        //System.Diagnostics.Debug.WriteLine("right collision detected");
+                       
                         return GlobalSettings.CollisionType.Right;
                     }
                     //left collision
                     else
                     {
-                        //System.Diagnostics.Debug.WriteLine("Left collision detected");
                         return GlobalSettings.CollisionType.Left;
                     }
                 }
@@ -47,13 +46,12 @@ namespace HackAndSlash.Collision
                     //top collision
                     if (collision.Y >= hitbox.Y)
                     {
-                        //System.Diagnostics.Debug.WriteLine("top collision detected");
                         return GlobalSettings.CollisionType.Top;
                     }
                     //bottom collision
                     else
                     {
-                        //System.Diagnostics.Debug.WriteLine("bottom collision detected");
+
                         return GlobalSettings.CollisionType.Bottom;
                     }
                 }

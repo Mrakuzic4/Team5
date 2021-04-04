@@ -110,6 +110,7 @@ namespace HackAndSlash
             }
 
             //Boundary collisions
+
             if (snakeState.state == snakeStateMachine.snakeHealth.MoveUp)
             {
                 // Move up
@@ -206,6 +207,8 @@ namespace HackAndSlash
             //Remove bug from screen 3 seconds after death
             if (snakeState.state == snakeStateMachine.snakeHealth.Die)
             {
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
                 deathTimer += gameTime.ElapsedGameTime.Milliseconds;
                 //wait 3 seconds
                 if (deathTimer > 3000)
@@ -213,6 +216,12 @@ namespace HackAndSlash
                     deathTimer = 0;
                     snakeState.changeToNot();
                 }
+            }
+
+            if(snakeState.state == snakeStateMachine.snakeHealth.Not)
+            {
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
             }
 
         }

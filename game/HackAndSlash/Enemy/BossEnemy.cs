@@ -118,6 +118,8 @@ namespace HackAndSlash
             //Remove moblin from screen 3 seconds after death
             if (bossState.state == bossStateMachine.bossHealth.Die)
             {
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
                 deathTimer += gameTime.ElapsedGameTime.Milliseconds;
                 //wait 3 seconds
                 if (deathTimer > 3000)
@@ -125,6 +127,12 @@ namespace HackAndSlash
                     deathTimer = 0;
                     bossState.changeToNot();
                 }
+            }
+
+            if (bossState.state == bossStateMachine.bossHealth.Not)
+            {
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
             }
             foreach (IItem bomb in bombItem)
             {
