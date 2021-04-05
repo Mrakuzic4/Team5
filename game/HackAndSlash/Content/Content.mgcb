@@ -383,7 +383,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:images/font/Oldman2.png
+/build:images/font/Oldman2.png;images/font/Font_Oldman2.png
 
 #begin images/Food.png
 /importer:TextureImporter
@@ -648,6 +648,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:images/Oldman.png
+
+#begin images/RedBall.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/RedBall.png
 
 #begin images/SnakeAttack.png
 /importer:TextureImporter

@@ -81,9 +81,13 @@ namespace HackAndSlash
         private Texture2D TitleScreenOverlay;
         private Texture2D GameWonScreenOverlay;
 
+        private Texture2D OldMan;
+        private Texture2D RedBall;
 
         private Texture2D TextCharacters;
 
+        private Texture2D Font_OldManText1;
+        private Texture2D Font_OldManText2;
         private Texture2D Font_Life;
 
         private static SpriteFactory instance = new SpriteFactory();
@@ -104,7 +108,13 @@ namespace HackAndSlash
         {
             IMDB = new ImageDatabase();
 
+            //NPC
+            OldMan = content.Load<Texture2D>(IMDB.OldMan.pathName);
+            RedBall = content.Load<Texture2D>(IMDB.RedBall.pathName);
+
             //Font
+            Font_OldManText1 = content.Load<Texture2D>(IMDB.Font_OldManText1.pathName);
+            Font_OldManText2 = content.Load<Texture2D>(IMDB.Font_OldManText2.pathName);
             Font_Life = content.Load<Texture2D>(IMDB.Font_Life.pathName);
 
             //Zelda
@@ -201,16 +211,34 @@ namespace HackAndSlash
             ItemSelector = content.Load<Texture2D>(IMDB.ItemSelector.pathName);
         }
 
-        public Texture2D GetGameOverOverlay()
+        public Texture2D GetRedBall()
         {
-            return GameOverOverlay;
+            return RedBall;
         }
+
+        public Texture2D GetOldMan()
+        {
+            return OldMan;
+        }
+        //***********Below are Player Fonts***************
+
+        public Texture2D GetOldManText1()
+        {
+            return Font_OldManText1;
+        }
+
+        public Texture2D GetOldManText2()
+        {
+            return Font_OldManText2;
+        }
+
+
 
         public Texture2D GetFontLife()
         {
             return Font_Life;
         }
-
+        //***********Below are Player HP***************
         public Texture2D GetFullHeart()
         {
             return fullHeart;
@@ -415,7 +443,10 @@ namespace HackAndSlash
             return new EnemySprite(SnakeDieSprite, IMDB.snakeDie.C, IMDB.snakeDie.R);
         }
 
-
+        public ISprite CreateOldMan()
+        {
+            return new EnemySprite(OldMan, IMDB.OldMan.C, IMDB.OldMan.R);
+        }
 
         public ISprite CreateBugIdle()
         {
@@ -486,7 +517,12 @@ namespace HackAndSlash
 
         //*************************Below are item  ***************************//
 
-        public  ISprite CreateFirewall()
+        public Texture2D CreateBurningFire()
+        {
+            return FirewallSprite; 
+        }
+
+        public ISprite CreateFirewall()
         {
             return new ItemSprite(FirewallSprite, IMDB.fireWall.C, IMDB.fireWall.R);
         }
@@ -549,10 +585,14 @@ namespace HackAndSlash
         }
 
         //****************************Below is game winning screen textures**************************//
-
         public Texture2D getGameWonScreen()
         {
             return GameWonScreenOverlay;
+        }
+        //****************************Below is game losing screen textures**************************//
+        public Texture2D GetGameOverOverlay()
+        {
+            return GameOverOverlay;
         }
     }
 }

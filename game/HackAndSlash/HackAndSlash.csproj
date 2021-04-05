@@ -86,10 +86,12 @@
     <Compile Include="Enemy\MoblinEnemy.cs" />
     <Compile Include="Enemy\BossItem.cs" />
     <Compile Include="Enemy\MoblinItem.cs" />
+    <Compile Include="Enemy\OldManNPC.cs" />
     <Compile Include="Enemy\SnakeEnemy.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GlobalSettings.cs" />
     <Compile Include="ISprite.cs" />
+    <Compile Include="Items\BurningFire.cs" />
     <Compile Include="Items\FoodItem.cs" />
     <Compile Include="Items\BombItem.cs" />
     <Compile Include="Items\TriforceItem.cs" />
@@ -374,6 +376,31 @@
     <Content Include="Content\images\ZeldaUseItemLeft.png" />
     <Content Include="Content\images\ZeldaUseItemRight.png" />
     <Content Include="Content\images\ZeldaUseItemUp.png" />
+    <Content Include="Content\sound\DungeonMusic.mp3" />
+    <Content Include="Content\sound\LOZ_Arrow_Boomerang.wav" />
+    <Content Include="Content\sound\LOZ_Bomb_Blow.wav" />
+    <Content Include="Content\sound\LOZ_Bomb_Drop.wav" />
+    <Content Include="Content\sound\LOZ_Boss_Scream1.wav" />
+    <Content Include="Content\sound\LOZ_Candle.wav" />
+    <Content Include="Content\sound\LOZ_Door_Unlock.wav" />
+    <Content Include="Content\sound\LOZ_Enemy_Hit.wav" />
+    <Content Include="Content\sound\LOZ_Fanfare.wav" />
+    <Content Include="Content\sound\LOZ_Get_Heart.wav" />
+    <Content Include="Content\sound\LOZ_Get_Item.wav" />
+    <Content Include="Content\sound\LOZ_Key_Appear.wav" />
+    <Content Include="Content\sound\LOZ_Link_Die.wav" />
+    <Content Include="Content\sound\LOZ_Link_Hurt.wav" />
+    <Content Include="Content\sound\LOZ_LowHealth.wav" />
+    <Content Include="Content\sound\LOZ_MagicalRod.wav" />
+    <Content Include="Content\sound\LOZ_Recorder.wav" />
+    <Content Include="Content\sound\LOZ_Secret.wav" />
+    <Content Include="Content\sound\LOZ_Shield.wav" />
+    <Content Include="Content\sound\LOZ_Stairs.wav" />
+    <Content Include="Content\sound\LOZ_Sword_Combined.wav" />
+    <Content Include="Content\sound\LOZ_Sword_Shoot.wav" />
+    <Content Include="Content\sound\LOZ_Sword_Slash.wav" />
+    <Content Include="Content\sound\LOZ_Text.wav" />
+    <Content Include="Content\sound\TitleScreenMp3.mp3" />
     <Content Include="Content\ZeldaDown.png" />
   </ItemGroup>
   <ItemGroup>

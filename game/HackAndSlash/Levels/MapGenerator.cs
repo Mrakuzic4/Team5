@@ -123,7 +123,7 @@ namespace HackAndSlash
 
         public List<IEnemy> GetEnemyList(SpriteBatch spriteBatch, GraphicsDevice graphics, Game1 game)
         {
-             List<IEnemy> EnemyList = new List<IEnemy>();
+            List<IEnemy> EnemyList = new List<IEnemy>();
 
             for (int r = 0; r < GlobalSettings.TILE_ROW; r++)
             {
@@ -147,6 +147,9 @@ namespace HackAndSlash
                             break;
                         case GlobalSettings.BOSS_ENEMY:
                             EnemyList.Add(new BossEnemy(position, graphics, spriteBatch, game));
+                            break;
+                        case GlobalSettings.NPC_OLD_MAN:
+                            EnemyList.Add(new OldManNPC(position, graphics, spriteBatch, game));
                             break;
                         default:
                             break; 
@@ -192,6 +195,9 @@ namespace HackAndSlash
                             break;
                         case GlobalSettings.TRIFORCE_ITEM:
                             ItemList.Add(new TriforceItem(position, spriteBatch, game));
+                            break;
+                        case GlobalSettings.BURNING_FIRE:
+                            ItemList.Add(new BurningFire(position, spriteBatch));
                             break;
                         default:
                             break;

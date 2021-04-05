@@ -25,6 +25,11 @@ namespace HackAndSlash
                 Room2_1(game);
             }
 
+            if (game.levelCycleRecord.currentLocationIndex.SequenceEqual(new int[] { 2, 0 }))
+            {   // Old man room 
+                Room2_1(game);
+            }
+
         }
 
         // Open mys door with block move 
@@ -40,6 +45,11 @@ namespace HackAndSlash
                         game.currentLevel.OpenMysDoor((int)GlobalSettings.Direction.Left);
                 }
             }
+
+        }
+
+        public void Draw()
+        {
 
         }
     }
