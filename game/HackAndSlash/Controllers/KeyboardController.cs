@@ -33,12 +33,8 @@ namespace HackAndSlash
                 {Keys.N, new AttackCommand(game)},
                 {Keys.D1, new UsePrimaryItemCommand(game)},
                 {Keys.D2, new UseSecondaryItemCommand(game)},
-                {Keys.E, new DamageCommand(game)},
                 {Keys.U, new ItemUseableCommand(game)},
                 {Keys.I, new ItemCycleCommand(game)},
-                //EnemyFunction
-                {Keys.O, new EnemyCycleCommandSnake(game)},
-                {Keys.P, new EnemyCycleCommandBug(game)},
                 //GameFunction
                 {Keys.R, new ResetCommand(game)},
                 {Keys.Q, new QuitCommand(game)},

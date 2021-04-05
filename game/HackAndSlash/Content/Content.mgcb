@@ -1093,11 +1093,23 @@
 /processorParam:TextureFormat=Color
 /build:images/ZeldaUseItemUp.png
 
+#begin sound/CoconutSong.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sound/CoconutSong.mp3
+
 #begin sound/DungeonMusic.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:sound/DungeonMusic.mp3
+
+#begin sound/GangTortureDance .mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sound/GangTortureDance .mp3
 
 #begin sound/LOZ_Arrow_Boomerang.wav
 /importer:WavImporter

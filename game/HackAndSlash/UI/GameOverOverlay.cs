@@ -46,11 +46,13 @@ namespace HackAndSlash
             {
 
                 this.Game.inGameOverAnimation = false;
-                if (Keyboard.GetState().IsKeyDown(Keys.S) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
+                if (Keyboard.GetState().IsKeyDown(Keys.S) || Keyboard.GetState().IsKeyDown(Keys.Down) || 
+                    GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
                 {
                     CurrentSelection = SelectorQuitLoc;
                 }
-                if (Keyboard.GetState().IsKeyDown(Keys.W) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))
+                if (Keyboard.GetState().IsKeyDown(Keys.W) || Keyboard.GetState().IsKeyDown(Keys.Up) || 
+                    GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))
                 {
                     CurrentSelection = SelectorContinueLoc;
                 }

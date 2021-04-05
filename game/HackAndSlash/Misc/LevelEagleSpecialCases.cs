@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace HackAndSlash
 {
@@ -25,10 +25,7 @@ namespace HackAndSlash
                 Room2_1(game);
             }
 
-            if (game.levelCycleRecord.currentLocationIndex.SequenceEqual(new int[] { 2, 0 }))
-            {   // Old man room 
-                Room2_1(game);
-            }
+            
 
         }
 
@@ -42,7 +39,17 @@ namespace HackAndSlash
                 {
                     BlockMovable BlockExaminer = (BlockMovable)block;
                     if (BlockExaminer.Moved())
+                    {
+                        Rectangle Position = BlockExaminer.rectangle;
+                        int X = (Position.X - GlobalSettings.BORDER_OFFSET) / GlobalSettings.BASE_SCALAR;
+                        int Y = (Position.Y - GlobalSettings.HEADSUP_DISPLAY - GlobalSettings.BORDER_OFFSET) / 
+                            GlobalSettings.BASE_SCALAR;
+
                         game.currentLevel.OpenMysDoor((int)GlobalSettings.Direction.Left);
+                        game.levelCycleRecord.RemoveOneIndex(GlobalSettings.HORIZONTAL_MOVE_BLOCK);
+
+                        game.levelCycleRecord.currentMapSet[2, 1].Arrangement[Y, X] = 32; 
+                    }
                 }
             }
 

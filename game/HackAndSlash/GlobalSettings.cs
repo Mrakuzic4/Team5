@@ -11,6 +11,8 @@ namespace HackAndSlash
 
     public class GlobalSettings
     {
+        public const bool DEV_MODE = true; 
+
         public const int GAME_AREA_WIDTH = 1024;
         public const int GAME_AREA_HEIGHT = 704;
         public const int HEADSUP_DISPLAY = 128; // 2 times 64
@@ -53,6 +55,11 @@ namespace HackAndSlash
          * Future updates might just get rid of these.
          */
         public const int CYCLE_BOUND = 17;
+
+        // Index for blocks 
+        public const int SOLID_BLOCK_BOUND = 32; 
+        public const int VERTICAL_MOVE_BLOCK = 40;
+        public const int HORIZONTAL_MOVE_BLOCK = 41;
 
         // Index for item 
         public const int FIREWALL_ITEM = -257;

@@ -38,11 +38,13 @@ namespace HackAndSlash
         }
         public void Update()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.S) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
+            if (Keyboard.GetState().IsKeyDown(Keys.S) || Keyboard.GetState().IsKeyDown(Keys.Down) ||
+                GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
             {
                 CurrentSelection = SelectorQuitLoc;
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.W) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))
+            if (Keyboard.GetState().IsKeyDown(Keys.W) || Keyboard.GetState().IsKeyDown(Keys.Up) || 
+                GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))
             {
                 CurrentSelection = SelectorContinueLoc;
             }
@@ -58,7 +60,8 @@ namespace HackAndSlash
                     Game.Exit();
                 }
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.A) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft))
+            if (Keyboard.GetState().IsKeyDown(Keys.A) || Keyboard.GetState().IsKeyDown(Keys.Left) || 
+                GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadLeft))
             {
                 if (delayCounter > GlobalSettings.DELAY_TIME)
                 {
@@ -70,7 +73,8 @@ namespace HackAndSlash
                     itemSelectorPos = itemList.Count() - 1;
                 }
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.D) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadRight))
+            if (Keyboard.GetState().IsKeyDown(Keys.D) || Keyboard.GetState().IsKeyDown(Keys.Right) || 
+                GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadRight))
             {
                 if (delayCounter > GlobalSettings.DELAY_TIME)
                 {
