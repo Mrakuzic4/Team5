@@ -1022,3 +1022,36 @@ C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCP
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Oldman.xnb
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\RedBall.xnb
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaDying.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sounds\TitleScreenMusic.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\WinningScreen.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Oldman2.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\LinkTriforce.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Oldman.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\RedBall.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\DungeonMusic.ogg
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\DungeonMusic.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Arrow_Boomerang.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Bomb_Blow.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Bomb_Drop.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Boss_Scream1.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Candle.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Door_Unlock.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Enemy_Hit.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Fanfare.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Get_Heart.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Get_Item.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Key_Appear.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Link_Die.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Link_Hurt.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_LowHealth.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_MagicalRod.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Recorder.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Secret.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Shield.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Stairs.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Sword_Combined.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Sword_Shoot.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Sword_Slash.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Text.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\TitleScreenMp3.ogg
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\TitleScreenMp3.xnb

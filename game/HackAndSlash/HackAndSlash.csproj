@@ -60,9 +60,6 @@
     <Compile Include="Commands\UsePrimaryItemCommand.cs" />
     <Compile Include="Commands\UseSecondaryItemCommand.cs" />
     <Compile Include="Commands\ItemUseableCommand.cs" />
-    <Compile Include="Commands\DamageCommand.cs" />
-    <Compile Include="Commands\EnemyCycleCommandBug.cs" />
-    <Compile Include="Commands\EnemyCycleCommandSnake.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ItemCycleCommand.cs" />
     <Compile Include="Commands\LevelCycleDownCommand.cs" />
