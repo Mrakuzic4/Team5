@@ -107,6 +107,7 @@ namespace HackAndSlash
                         // move to top left corner of explosion
                         position = new Vector2(position.X - spriteWidth * ((EXPLOSION_DIAMETER - 1) / 2), position.Y - spriteHeight * ((EXPLOSION_DIAMETER - 1) / 2));
                         bombAnimationState = animationState.explode;
+                        SoundFactory.Instance.BombBlowEffect();
                         int HoleDirection = new BombWallCollision(position, game.currentMapInfo).direction;
                         if (HoleDirection >= 0)
                         {
@@ -218,6 +219,7 @@ namespace HackAndSlash
                 ChangeToExpended();
                 toolBarPosition = new Vector2(0, -128);
             }
+            SoundFactory.Instance.GetItemEffect();
             numUses++;
         }
 
@@ -258,6 +260,7 @@ namespace HackAndSlash
                     itemState.ChangeToBeingUsed();
                     cooldown = ITEM_COOLDOWN;
                     numUses--;
+                    SoundFactory.Instance.BombDropEffect();
                     if (numUses < 0)
                     {
                         numUses = 0;

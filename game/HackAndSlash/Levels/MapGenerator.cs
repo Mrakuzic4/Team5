@@ -103,15 +103,15 @@ namespace HackAndSlash
                 {
                     int Index = mapInfo.Arrangement[r, c];
                     
-                    if (Index == 40)
+                    if (Index == GlobalSettings.VERTICAL_MOVE_BLOCK)
                     {
                         BlockList.Add(spriteFactory.CreateBlockMovableVertical(spriteBatch, r, c));
                     }
-                    else if (Index == 41)
+                    else if (Index == GlobalSettings.HORIZONTAL_MOVE_BLOCK)
                     {
                         BlockList.Add(spriteFactory.CreateBlockMovableHorizontal(spriteBatch, r, c));
                     }
-                    if (Index >= 32 && (Index!=40 && Index != 41))
+                    else if (Index >= GlobalSettings.SOLID_BLOCK_BOUND)
                     {
                         BlockList.Add(new BlockInvis(mapSettings.PlayAreaPosition(c, r), spriteBatch));
                     }
