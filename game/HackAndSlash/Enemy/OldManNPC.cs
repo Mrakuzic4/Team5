@@ -22,8 +22,7 @@ namespace HackAndSlash
 
         public OldManNPC(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch spriteBatch, Game1 game) 
         {
-            position = new Vector2 (startPosition.X, 
-                startPosition.Y  + GlobalSettings.HEADSUP_DISPLAY);
+            position = new Vector2 (startPosition.X, startPosition.Y);
             Graphics = graphics;
             this.spriteBatch = spriteBatch;
 
