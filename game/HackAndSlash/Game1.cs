@@ -14,8 +14,6 @@ namespace HackAndSlash
 
         public GlobalSettings gameSettings;
 
-        public bool devMode = true;     // Whether or not o enable some keybind and functionalities 
-
         public bool elapsing = false;    // set to false when invoking pause, bag, transition, etc.
         public bool gamePaused = false; //set to true if pause button has been pressed
         public bool gameOver = false;   

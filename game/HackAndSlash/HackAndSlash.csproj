@@ -106,6 +106,7 @@
     <Compile Include="Levels\MapGenerator.cs" />
     <Compile Include="Levels\MapTransition.cs" />
     <Compile Include="Levels\Minimap.cs" />
+    <Compile Include="Misc\DrawRectangle.cs" />
     <Compile Include="Misc\LevelEagleSpecialCases.cs" />
     <Compile Include="Misc\MaxKnockback.cs" />
     <Compile Include="Misc\PRNG.cs" />
@@ -373,7 +374,9 @@
     <Content Include="Content\images\ZeldaUseItemLeft.png" />
     <Content Include="Content\images\ZeldaUseItemRight.png" />
     <Content Include="Content\images\ZeldaUseItemUp.png" />
+    <Content Include="Content\sound\CoconutSong.mp3" />
     <Content Include="Content\sound\DungeonMusic.mp3" />
+    <Content Include="Content\sound\GangTortureDance .mp3" />
     <Content Include="Content\sound\LOZ_Arrow_Boomerang.wav" />
     <Content Include="Content\sound\LOZ_Bomb_Blow.wav" />
     <Content Include="Content\sound\LOZ_Bomb_Drop.wav" />
