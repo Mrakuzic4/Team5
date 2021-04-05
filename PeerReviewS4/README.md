@@ -11,7 +11,7 @@ For easier track of who has reviewed who's code and who is still waiting to be r
 | Harshitha Kommaraju (kommaraju.3)  | No  | YES |
 | Zane Mrakuzic (mrakuzic.4)  | No  | No |
 | Daniel Neff (neff.331)  | Yes  | No |
-| Jimmy Yuan (yuan.799)  | YES  | No |
+| Jimmy Yuan (yuan.799)  | YES  | Yes |
 
 Mark yourself and the one you reviewed as `Yes` after it's done. 
 
