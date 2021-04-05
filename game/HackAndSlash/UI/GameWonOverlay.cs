@@ -38,11 +38,11 @@ namespace HackAndSlash
             if (gameOverAnimationCounter > 4000)
             {
                 this.Game.inGameWonAnimation = false;
-                if (Keyboard.GetState().IsKeyDown(Keys.S) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
+                if (Keyboard.GetState().IsKeyDown(Keys.S) || Keyboard.GetState().IsKeyDown(Keys.Down)|| GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
                 {
                     CurrentSelection = SelectorQuitLoc;
                 }
-                if (Keyboard.GetState().IsKeyDown(Keys.W) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))
+                if (Keyboard.GetState().IsKeyDown(Keys.W) || Keyboard.GetState().IsKeyDown(Keys.Up) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadUp))
                 {
                     CurrentSelection = SelectorContinueLoc;
                 }
@@ -51,12 +51,7 @@ namespace HackAndSlash
                     //If chose to continue
                     if (CurrentSelection == SelectorContinueLoc)
                     {
-                        Game.elapsing = true;
-                        Game.gameWon = false;
-                        Game.reset(5); //Reset the room upon player's death
-                        Game.currentLevel.resetGameWon();
-                        Game.Player.Healed(); //Restart the game with Player having 1 HP.
-                        gameOverAnimationCounter = 0;
+                        Game.Exit();
                     }
                     else
                     {

@@ -54,6 +54,8 @@ namespace HackAndSlash
         private Texture2D MoblinMoveRightSprite;
         private Texture2D MoblinBombSprite;
 
+        private Texture2D AquaMentusSprite;
+
         private Texture2D FirewallSprite;
         private Texture2D BombSprite;
         private Texture2D ExplosionSprite;
@@ -164,6 +166,8 @@ namespace HackAndSlash
             MoblinMoveLeftSprite = content.Load<Texture2D>(IMDB.moblinMoveLeft.pathName);
             MoblinMoveRightSprite = content.Load<Texture2D>(IMDB.moblinMoveRight.pathName);
             MoblinBombSprite = content.Load<Texture2D>(IMDB.moblinBomb.pathName);
+
+            AquaMentusSprite = content.Load<Texture2D>(IMDB.aquamentus.pathName);
 
             //Item Sprites 
             FirewallSprite = content.Load<Texture2D>(IMDB.fireWall.pathName);
@@ -510,10 +514,16 @@ namespace HackAndSlash
             return new EnemySprite(MoblinMoveDownSprite, IMDB.moblinMoveDown.C, IMDB.moblinMoveDown.R);
         }
 
+        public ISprite CreateAquaMentus()
+        {
+            return new EnemySprite(AquaMentusSprite, IMDB.aquamentus.C, IMDB.aquamentus.R);
+        }
+
         public ISprite CreateEnemyBomb()
         {
             return new ItemSprite(MoblinBombSprite, IMDB.moblinBomb.C, IMDB.moblinBomb.R);
         }
+
 
         //*************************Below are item  ***************************//
 

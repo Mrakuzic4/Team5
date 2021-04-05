@@ -24,6 +24,7 @@ namespace HackAndSlash
         private int temp = 0; //counter to change states after a certain number of calls to update
 
         private System.Random random;
+        private int[] directionHistory = new int[] { 0, 0, 0, 0 };
         private int randomDirection = 0; //0-left, 1-up, 2-right, 3- down
 
         private EnemyCollisionDetector enemyCollisionDetector;
@@ -59,7 +60,7 @@ namespace HackAndSlash
             damageTaken = 0;
 
             bombItem = new MoblinItem(spriteBatch, game, this);
-
+            directionHistory[Turn(GlobalSettings.RND.Next(3))] += 1;
         }
 
         public Rectangle getRectangle()
@@ -79,6 +80,26 @@ namespace HackAndSlash
             position = pos;
         }
 
+        public int Turn(int Direction)
+        {
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Left:
+                    moblinState.changeToLeftMove();
+                    break;
+                case (int)GlobalSettings.Direction.Up:
+                    moblinState.changeToMoveUp();
+                    break;
+                case (int)GlobalSettings.Direction.Right:
+                    moblinState.changeToRightMove();
+                    break;
+                case (int)GlobalSettings.Direction.Down:
+                    moblinState.changeToMoveDown();
+                    break;
+            }
+            return Direction;
+        }
+
         //updating the enemy
         public void Update(GameTime gameTime)
         {
@@ -95,55 +116,69 @@ namespace HackAndSlash
                 }
             }
 
+            System.Console.WriteLine("In update"+moblinState.state);
             //Boundary collisions
             if (moblinState.state == moblinStateMachine.moblinHealth.MoveUp)
             {
                 // Move up
-                if (position.Y >= GlobalSettings.BORDER_OFFSET)
+                if (position.Y > GlobalSettings.BORDER_OFFSET)
                 {
-                   // position.Y--;
+                    position.Y--;
                 }
 
                 else
                 {
-                    moblinState.changeToMoveDown();
+                    int NewDirection = new PRNG().DirectionMask(directionHistory,
+                        new bool[] { false, false, false, true });
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
                 }
             }
             else if (moblinState.state == moblinStateMachine.moblinHealth.MoveDown)
             {
                 //Move down
-                if (position.Y <= bottomBound)
+                if (position.Y < bottomBound)
                 {
-                   // position.Y++;
+                   position.Y++;
                 }
 
                 else
                 {
-                    moblinState.changeToMoveUp();
+                    int NewDirection = new PRNG().DirectionMask(directionHistory,
+                        new bool[] { false, false, true, false });
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
                 }
             }
             else if (moblinState.state == moblinStateMachine.moblinHealth.MoveLeft)
             {
                 //Move left
-                if (position.X >= GlobalSettings.BORDER_OFFSET)
+                if (position.X > GlobalSettings.BORDER_OFFSET)
                 {
-                   // position.X--;
+                    position.X--;
                 }
                 else
                 {
-                    moblinState.changeToRightMove();
+                    int NewDirection = new PRNG().DirectionMask(directionHistory,
+                        new bool[] { true, false, false, false });
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
+
                 }
             }
             else if (moblinState.state == moblinStateMachine.moblinHealth.MoveRight)
             {
                 //Move right
-                if (position.X <= rightBound)
+                if (position.X < rightBound)
                 {
-                   // position.X++;
+                    position.X++;
                 }
                 else
                 {
-                    moblinState.changeToLeftMove();
+                    int NewDirection = new PRNG().DirectionMask(directionHistory,
+                        new bool[] { false, true, false, false });
+                    directionHistory[NewDirection] += 1;
+                    Turn(NewDirection);
                 }
             }
 
@@ -263,28 +298,24 @@ namespace HackAndSlash
         {
             direction = GlobalSettings.Direction.Right;
             moblinState.changeToRightMove();
-            //direction = GlobalSettings.Direction.Right;
         }
 
         public void changeToMoveLeft()
         {
             direction = GlobalSettings.Direction.Left;
             moblinState.changeToLeftMove();
-           // direction = GlobalSettings.Direction.Left;
         }
 
         public void changeToMoveUp()
         {
             direction = GlobalSettings.Direction.Up;
             moblinState.changeToMoveUp();
-            //direction = GlobalSettings.Direction.Up;
         }
 
         public void changeToMoveDown()
         {
-            direction = GlobalSettings.Direction.Right;
+            direction = GlobalSettings.Direction.Down;
             moblinState.changeToMoveDown();
-            //direction = GlobalSettings.Direction.Down;
         }
 
         public void changeToDie()
@@ -337,6 +368,7 @@ namespace HackAndSlash
             {
                 state = moblinHealth.MoveRight;
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinMoveRight();
+                System.Console.WriteLine("changed state to: " + state);
                 //get appropriate sprite from sprite factory
             }
         }
@@ -347,6 +379,7 @@ namespace HackAndSlash
             if (state != moblinHealth.MoveLeft)
             {
                 state = moblinHealth.MoveLeft;
+                System.Console.WriteLine("changed state to: " + state);
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinMoveLeft();
                 //get appropriate sprite from sprite factory
             }

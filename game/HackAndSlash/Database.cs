@@ -54,6 +54,8 @@ namespace HackAndSlash
         public ImageFile moblinMoveLeft;
         public ImageFile moblinBomb;
 
+        public ImageFile aquamentus;
+
         public ImageFile fireWall;
         public ImageFile bomb;
         public ImageFile explosion;
@@ -147,6 +149,8 @@ namespace HackAndSlash
             moblinMoveLeft = new ImageFile("images/MoblinLeft", 1, 2);
             moblinMoveRight = new ImageFile("images/MoblinRight", 1, 2);
             moblinBomb = new ImageFile("images/MoblinBomb", 1, 1);
+
+            aquamentus = new ImageFile("images/AquamentusSprite",1,1);
 
             fireWall = new ImageFile("images/firewall3", 1, 2);
             bomb = new ImageFile("images/Bomb", 1, 1);

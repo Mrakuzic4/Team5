@@ -15,6 +15,8 @@ namespace HackAndSlash
         private SpriteBatch spriteBatch; // the spritebatch used to draw the enemy
         private GraphicsDevice Graphics; // the graphics device used by the spritebatch
 
+       
+
         private int timeSinceDirectionChange = 0;
         private int deathTimer = 0;
         private int timeSinceLastFrame = 0; // used to slow down the rate of animation 
@@ -192,7 +194,7 @@ namespace HackAndSlash
                 rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
                 deathTimer += gameTime.ElapsedGameTime.Milliseconds;
                 //wait 3 seconds
-                if (deathTimer > 2000)
+                if (deathTimer > 1000)
                 {
                     deathTimer = 0;
                     bugState.changeToNot();

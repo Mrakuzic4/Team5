@@ -15,6 +15,7 @@ namespace HackAndSlash
         private Vector2 position; // the position of the enemy on screen
         private SpriteBatch spriteBatch; // the spritebatch used to draw the enemy
         private GraphicsDevice Graphics; // the graphics device used by the spritebatch
+        private Game1 game;
 
         private int timeSinceLastFrame=0; // used to slow down the rate of animation
         private int timeSinceDirectionChange = 0;
@@ -46,6 +47,7 @@ namespace HackAndSlash
             Graphics = graphics;
             spriteBatch = SB;
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            this.game = game;
 
             random = new System.Random();
 
@@ -211,9 +213,11 @@ namespace HackAndSlash
                 rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
                 deathTimer += gameTime.ElapsedGameTime.Milliseconds;
                 //wait 3 seconds
-                if (deathTimer > 3000)
+                if (deathTimer > 1500)
                 {
                     deathTimer = 0;
+                    IItem FoodItem = new FoodItem(position, spriteBatch, game);
+                    game.itemList.Add(FoodItem);
                     snakeState.changeToNot();
                 }
             }
