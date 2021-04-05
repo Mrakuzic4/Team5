@@ -16,6 +16,7 @@ namespace HackAndSlash
         private static SoundFactory instance;
         private Song titleScreen;
         private Song dungeon;
+        private Song[] devInAMode;
 
         private SoundEffect swordSlash;
         private SoundEffect linkDamaged;
@@ -40,6 +41,10 @@ namespace HackAndSlash
             //Songs
             titleScreen = content.Load<Song>("sound/TitleScreenMp3");
             dungeon = content.Load<Song>("sound/DungeonMusic");
+            devInAMode = new Song[] { 
+                content.Load<Song>("sound/CoconutSong"),
+                content.Load<Song>("sound/GangTortureDance ")};
+
 
             //Sound Effects
             swordSlash = content.Load<SoundEffect>("sound/LOZ_Sword_Slash");
@@ -75,7 +80,10 @@ namespace HackAndSlash
         }
         public SongByte DungeonSong()
         {
-            return new SongByte(dungeon);
+            if (!GlobalSettings.DEV_MODE)
+                return new SongByte(dungeon);
+            else
+                return new SongByte(devInAMode[GlobalSettings.RND.Next() % 2]);
         }
 
         //Sound Effects

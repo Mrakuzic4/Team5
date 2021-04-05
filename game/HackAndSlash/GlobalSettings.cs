@@ -11,7 +11,7 @@ namespace HackAndSlash
 
     public class GlobalSettings
     {
-        public bool DEV_MODE = true; 
+        public const bool DEV_MODE = true; 
 
         public const int GAME_AREA_WIDTH = 1024;
         public const int GAME_AREA_HEIGHT = 704;
