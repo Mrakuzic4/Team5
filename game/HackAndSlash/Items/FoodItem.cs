@@ -151,6 +151,7 @@ namespace HackAndSlash
                 ChangeToExpended();
                 toolBarPosition = new Vector2(0, -128);
             }
+            SoundFactory.Instance.GetItemEffect();
             numUses++;
         }
 
@@ -159,6 +160,7 @@ namespace HackAndSlash
             if (itemState.state == FoodStateMachine.ItemStates.Useable)
             {
                 player.Healed();
+                SoundFactory.Instance.GetHeartEffect();
                 numUses--;
                 itemState.ChangeToExpended();
 

@@ -62,6 +62,8 @@ namespace HackAndSlash
         public void CollectItem()
         {
             // Game Win State
+
+            SoundFactory.Instance.TriforceObtainedEffect();
             this.game.elapsing = false;
 
             this.game.gameWon = true;

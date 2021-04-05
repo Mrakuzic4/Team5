@@ -139,6 +139,7 @@ namespace HackAndSlash
                                 }
                                 break;
                         }
+                        SoundFactory.Instance.FlameThrowEffect();
                     }
 
                     break;
@@ -251,6 +252,7 @@ namespace HackAndSlash
                 ChangeToExpended();
                 toolBarPosition = new Vector2(0, -128);
             }
+            SoundFactory.Instance.GetItemEffect();
             numUses++;
         }
 

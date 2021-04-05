@@ -217,6 +217,7 @@ namespace HackAndSlash
                 ChangeToExpended();
                 toolBarPosition = new Vector2(0, -128);
             }
+            SoundFactory.Instance.GetItemEffect();
             numUses++;
         }
 
@@ -285,6 +286,7 @@ namespace HackAndSlash
                 playerDirection = currentPlayerDirection;// player Direction
                 // itemState.ChangeToBeingUsed();
                 cooldown = ITEM_COOLDOWN;
+                SoundFactory.Instance.ThrowingKnifeEffect();
                 numUses--;
                 if (numUses < 0)
                 {

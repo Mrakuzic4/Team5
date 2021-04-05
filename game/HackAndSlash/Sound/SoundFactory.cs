@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -29,6 +28,7 @@ namespace HackAndSlash
         private SoundEffect flameThrow; //candle
         private SoundEffect triforceObtained;
         private SoundEffect enemyDamaged;
+        private SoundEffect getHeart;
         
         private SoundFactory()
         {
@@ -53,6 +53,7 @@ namespace HackAndSlash
             flameThrow = content.Load<SoundEffect>("sound/LOZ_Candle");
             triforceObtained = content.Load<SoundEffect>("sound/LOZ_Fanfare");
             enemyDamaged = content.Load<SoundEffect>("sound/LOZ_Enemy_Hit");
+            getHeart = content.Load<SoundEffect>("sound/LOZ_Get_Heart");
         }
 
         public static SoundFactory Instance
@@ -123,6 +124,11 @@ namespace HackAndSlash
         public SoundByte EnemyDamagedEffect()
         {
             return new SoundByte(enemyDamaged);
+        }
+
+        public SoundByte GetHeartEffect()
+        {
+            return new SoundByte(getHeart);
         }
 
         public void StopSong()
