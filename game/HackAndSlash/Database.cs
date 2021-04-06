@@ -54,6 +54,9 @@ namespace HackAndSlash
         public ImageFile moblinMoveLeft;
         public ImageFile moblinBomb;
 
+        public ImageFile boss;
+        public ImageFile bossDie;
+
         public ImageFile fireWall;
         public ImageFile bomb;
         public ImageFile explosion;
@@ -148,6 +151,9 @@ namespace HackAndSlash
             moblinMoveRight = new ImageFile("images/MoblinRight", 1, 2);
             moblinBomb = new ImageFile("images/MoblinBomb", 1, 1);
 
+            boss = new ImageFile("images/Boss", 1, 4);
+            bossDie = new ImageFile("images/bossDie", 1, 1);
+
             fireWall = new ImageFile("images/firewall3", 1, 2);
             bomb = new ImageFile("images/Bomb", 1, 1);
             explosion = new ImageFile("images/explosion", 1, 3);
@@ -156,7 +162,7 @@ namespace HackAndSlash
             throwingKnifeLeft = new ImageFile("images/throwingKnifeLeft", 1, 1);
             throwingKnifeRight = new ImageFile("images/throwingKnifeRight", 1, 1);
             food = new ImageFile("images/Food", 1, 1);
-            triforce = new ImageFile("images/ChipBlock", 1, 1);
+            triforce = new ImageFile("images/Triforce", 1, 1);
 
             BG = new ImageFile("images/BG", 1, 1);
 

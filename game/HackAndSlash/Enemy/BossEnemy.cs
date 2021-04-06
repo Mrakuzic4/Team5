@@ -44,18 +44,18 @@ namespace HackAndSlash
         //make the constructor for the class
         public BossEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch SB, Game1 game)
         {
-            
-            position = startPosition;
+
+            position = new Vector2(startPosition.X - GlobalSettings.BASE_SCALAR, startPosition.Y - 2 * GlobalSettings.BASE_SCALAR);
             bossState = new bossStateMachine();
             Graphics = graphics;
             spriteBatch = SB;
-            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            rectangle = new Rectangle((int)position.X, (int)position.Y, 3 * GlobalSettings.BASE_SCALAR, 4 * GlobalSettings.BASE_SCALAR);
 
             random = new System.Random();
 
             enemyCollisionDetector = new EnemyCollisionDetector(game, this);
             enemyBlockCollision = new EnemyBlockCollision();
-            hitbox = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            hitbox = new Rectangle((int)position.X, (int)position.Y, 3 * GlobalSettings.BASE_SCALAR, 4 * GlobalSettings.BASE_SCALAR);
             damageTaken = 0;
             bombItem = new IItem[3];
             for (int i = 0; i <= 2; i++)
@@ -73,7 +73,7 @@ namespace HackAndSlash
 
         public Vector2 GetPos()
         {
-            return position;
+            return new Vector2(position.X - GlobalSettings.BASE_SCALAR, position.Y + GlobalSettings.BASE_SCALAR);
         }
 
         public void SetPos(Vector2 pos)
@@ -191,35 +191,6 @@ namespace HackAndSlash
         {
             bossState.changeToIdle();
         }
-
-        public void changeToMoveRight()
-        {
-            direction = GlobalSettings.Direction.Right;
-            bossState.changeToRightMove();
-            //direction = GlobalSettings.Direction.Right;
-        }
-
-        public void changeToMoveLeft()
-        {
-            direction = GlobalSettings.Direction.Left;
-            bossState.changeToLeftMove();
-           // direction = GlobalSettings.Direction.Left;
-        }
-
-        public void changeToMoveUp()
-        {
-            direction = GlobalSettings.Direction.Up;
-            bossState.changeToMoveUp();
-            //direction = GlobalSettings.Direction.Up;
-        }
-
-        public void changeToMoveDown()
-        {
-            direction = GlobalSettings.Direction.Right;
-            bossState.changeToMoveDown();
-            //direction = GlobalSettings.Direction.Down;
-        }
-
         public void changeToDie()
         {
             bossState.changeToDie();
@@ -234,20 +205,37 @@ namespace HackAndSlash
         {
             return direction;
         }
+
+        public void changeToMoveLeft()
+        {
+
+        }
+        public void changeToMoveRight()
+        {
+
+        }
+        public void changeToMoveUp()
+        {
+
+        }
+        public void changeToMoveDown()
+        {
+
+        }
     }
 
 
     public class bossStateMachine
     {
-        public enum bossHealth { Idle, MoveUp, MoveDown, MoveLeft, MoveRight, Die, Not }; // the different possible states
+        public enum bossHealth { Idle, Die, Not }; // the different possible states
         public bossHealth state; // the current health state of the moblin
-        public EnemySprite MachineEnemySprite; // The EnemySprite implementing ISprite
+        public BossSprite MachineEnemySprite; // The EnemySprite implementing ISprite
 
         //constructor for the class
         public bossStateMachine()
         {
-            state = bossHealth.MoveLeft;
-            MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinMoveLeft();
+            state = bossHealth.Idle;
+            MachineEnemySprite = (BossSprite)SpriteFactory.Instance.CreateBoss();
         }
 
 
@@ -257,54 +245,10 @@ namespace HackAndSlash
             if (state != bossHealth.Idle)
             {
                 state = bossHealth.Idle;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinIdle();
+                MachineEnemySprite = (BossSprite)SpriteFactory.Instance.CreateBoss();
                 //get appropriate sprite from sprite factory
             }
 
-        }
-
-        public void changeToRightMove()
-        {
-            //change to Attack if not already in Attack
-            if (state != bossHealth.MoveRight)
-            {
-                state = bossHealth.MoveRight;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinMoveRight();
-                //get appropriate sprite from sprite factory
-            }
-        }
-
-        public void changeToLeftMove()
-        {
-            //change to Move if not already Move
-            if (state != bossHealth.MoveLeft)
-            {
-                state = bossHealth.MoveLeft;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinMoveLeft();
-                //get appropriate sprite from sprite factory
-            }
-        }
-
-        public void changeToMoveUp()
-        {
-            //change to Move if not already Move
-            if (state != bossHealth.MoveUp)
-            {
-                state = bossHealth.MoveUp;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinMoveUp();
-                //get appropriate sprite from sprite factory
-            }
-        }
-
-        public void changeToMoveDown()
-        {
-            //change to Move if not already Move
-            if (state != bossHealth.MoveDown)
-            {
-                state = bossHealth.MoveDown;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinMoveDown();
-                //get appropriate sprite from sprite factory
-            }
         }
 
         public void changeToDie()
@@ -313,7 +257,7 @@ namespace HackAndSlash
             if (state != bossHealth.Die)
             {
                 state = bossHealth.Die;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinDie();
+                MachineEnemySprite = (BossSprite)SpriteFactory.Instance.CreateBossDie();
                 //get appropriate sprite from sprite factory
             }
         }

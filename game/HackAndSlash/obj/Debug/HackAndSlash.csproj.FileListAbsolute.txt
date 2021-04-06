@@ -1055,3 +1055,68 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Text.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\TitleScreenMp3.ogg
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\TitleScreenMp3.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Oldman2.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sounds\TitleScreenMusic.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_LowHealth.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\GameOverOverlay.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\ItemSelector.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\TitleScreens.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\WinningScreen.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Compass.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Forthis.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Inventory.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Level.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Life.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Map.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Oldman1.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Oldman2.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Usebutton.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\LinkTriforce.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\NES - The Legend of Zelda - Fonts.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Oldman.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\RedBall.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ZeldaDying.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\CoconutSong.ogg
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\CoconutSong.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\DungeonMusic.ogg
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\DungeonMusic.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\GangTortureDance .ogg
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\GangTortureDance .xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Arrow_Boomerang.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Bomb_Blow.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Bomb_Drop.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Boss_Scream1.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Candle.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Door_Unlock.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Enemy_Hit.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Fanfare.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Get_Heart.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Get_Item.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Key_Appear.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Link_Die.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Link_Hurt.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_MagicalRod.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Recorder.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Secret.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Shield.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Stairs.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Sword_Combined.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Sword_Shoot.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Sword_Slash.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Text.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\TitleScreenMp3.ogg
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\TitleScreenMp3.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM7.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM8.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM9.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM10.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM11.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM12.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM13.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM14.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM15.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM16.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM17.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Boss.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\bossDie.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Triforce.xnb

@@ -77,6 +77,7 @@
     <Compile Include="Controllers\MouseController.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Enemy\BugEnemy.cs" />
+    <Compile Include="Enemy\BossSprite.cs" />
     <Compile Include="Enemy\EnemySprite.cs" />
     <Compile Include="Enemy\IEnemy.cs" />
     <Compile Include="Enemy\BossEnemy.cs" />

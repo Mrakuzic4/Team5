@@ -64,6 +64,7 @@ namespace HackAndSlash
             // Game Win State
 
             SoundFactory.Instance.TriforceObtainedEffect();
+            ChangeToExpended();
             this.game.elapsing = false;
 
             this.game.gameWon = true;
@@ -107,7 +108,7 @@ namespace HackAndSlash
 
         public void ChangeToExpended()
         {
-
+            position = new Vector2(-64, 64);
         }
     }
 }

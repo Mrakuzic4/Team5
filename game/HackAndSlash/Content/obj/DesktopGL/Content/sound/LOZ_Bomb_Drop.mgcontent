@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/sound/LOZ_Bomb_Drop.wav</SourceFile>
-  <SourceTime>2021-04-04T11:41:48.8747623-04:00</SourceTime>
-  <DestFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/LOZ_Bomb_Drop.xnb</DestFile>
-  <DestTime>2021-04-05T10:08:42.1403689-04:00</DestTime>
+  <SourceFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Bomb_Drop.wav</SourceFile>
+  <SourceTime>2021-04-04T19:49:55.6221567-04:00</SourceTime>
+  <DestFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/LOZ_Bomb_Drop.xnb</DestFile>
+  <DestTime>2021-04-05T18:21:41.7032409-04:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

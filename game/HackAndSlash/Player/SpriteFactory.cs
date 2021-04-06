@@ -54,6 +54,9 @@ namespace HackAndSlash
         private Texture2D MoblinMoveRightSprite;
         private Texture2D MoblinBombSprite;
 
+        private Texture2D BossSprite;
+        private Texture2D BossDieSprite;
+
         private Texture2D FirewallSprite;
         private Texture2D BombSprite;
         private Texture2D ExplosionSprite;
@@ -164,6 +167,9 @@ namespace HackAndSlash
             MoblinMoveLeftSprite = content.Load<Texture2D>(IMDB.moblinMoveLeft.pathName);
             MoblinMoveRightSprite = content.Load<Texture2D>(IMDB.moblinMoveRight.pathName);
             MoblinBombSprite = content.Load<Texture2D>(IMDB.moblinBomb.pathName);
+
+            BossSprite = content.Load<Texture2D>(IMDB.boss.pathName);
+            BossDieSprite = content.Load<Texture2D>(IMDB.bossDie.pathName);
 
             //Item Sprites 
             FirewallSprite = content.Load<Texture2D>(IMDB.fireWall.pathName);
@@ -513,6 +519,16 @@ namespace HackAndSlash
         public ISprite CreateEnemyBomb()
         {
             return new ItemSprite(MoblinBombSprite, IMDB.moblinBomb.C, IMDB.moblinBomb.R);
+        }
+
+        public ISprite CreateBoss()
+        {
+            return new BossSprite(BossSprite, IMDB.boss.C, IMDB.boss.R);
+        }
+
+        public ISprite CreateBossDie()
+        {
+            return new BossSprite(BossDieSprite, IMDB.bossDie.C, IMDB.bossDie.R);
         }
 
         //*************************Below are item  ***************************//
