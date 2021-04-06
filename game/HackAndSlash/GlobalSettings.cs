@@ -11,7 +11,6 @@ namespace HackAndSlash
 
     public class GlobalSettings
     {
-        public const bool DEV_MODE = false; 
 
         public const int GAME_AREA_WIDTH = 1024;
         public const int GAME_AREA_HEIGHT = 704;
@@ -48,7 +47,7 @@ namespace HackAndSlash
         public const int PAUSE_QUIT_X = 310;
         public const int PAUSE_QUIT_Y = 512;
 
-        // Used only in LevelCycling FirstTimeStartUp() 
+        // Used to initlize level eagle startup location
         public static int[] STRAT_UP_INDEX = new int[] {5, 2};
 
         /* Some fields created for level cycling in sprint 3.
@@ -80,15 +79,6 @@ namespace HackAndSlash
         public static Random RND = new Random(); 
         public const int PRNG_WEIGHT = 10; // Increse this to make it more random
 
-        public GlobalSettings () {
-            // Hahaha
-        }
-
-
-        public Vector2 PlayAreaPosition(int x, int y)
-        {
-            return new Vector2(BORDER_OFFSET + x * BASE_SCALAR, HEADSUP_DISPLAY + BORDER_OFFSET + y * BASE_SCALAR);
-        }
 
     }
 

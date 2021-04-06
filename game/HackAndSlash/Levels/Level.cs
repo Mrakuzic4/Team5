@@ -54,7 +54,7 @@ namespace HackAndSlash
         private int[,] mapMatrix;
         public Map currentMapInfo { get;set; }
         private Map[] neighbors { get; set; }
-        public int[] mapIndex = GlobalSettings.STRAT_UP_INDEX;
+        public int[] mapIndex;
 
         public LevelCycling levelCycler; 
 
@@ -88,11 +88,13 @@ namespace HackAndSlash
         {
             graphics = Graphics;
             spriteBatch = SB;
-        }   
+        }
 
+        // Initlize for the 1st time, must be called after levelCycler is assigned 
         public void FirstTimeStartUp()
         {
             currentMapInfo = levelCycler.StartUpLevel();
+            mapIndex = levelCycler.currentLocationIndex;
         }
 
         public void Generate()

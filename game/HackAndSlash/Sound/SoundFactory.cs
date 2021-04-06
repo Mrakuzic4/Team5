@@ -13,6 +13,8 @@ namespace HackAndSlash
 {
     class SoundFactory
     {
+        private bool _DevsAreInMood = true;
+
         private static SoundFactory instance;
         private Song titleScreen;
         private Song dungeon;
@@ -80,10 +82,10 @@ namespace HackAndSlash
         }
         public SongByte DungeonSong()
         {
-            if (!GlobalSettings.DEV_MODE)
-                return new SongByte(dungeon);
-            else
+            if (_DevsAreInMood)
                 return new SongByte(devInAMode[GlobalSettings.RND.Next() % 2]);
+            else
+                return new SongByte(dungeon);
         }
 
         //Sound Effects

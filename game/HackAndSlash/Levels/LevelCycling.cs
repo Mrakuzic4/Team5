@@ -15,35 +15,16 @@ namespace HackAndSlash
         private const int LEVEL_EAGLE_SIZE = 6;
 
         // Field created jjust to fullfill sprint 3 scycling feature 
-        public List<Map> S3EagleCycle; // this is only used for sprint 3 
         public Map[,] levelEagle;
         public Map[,] levelCrescent; // For future use 
 
         public Map[,] currentMapSet;
-        public int[] currentLocationIndex = GlobalSettings.STRAT_UP_INDEX;
+        public int[] currentLocationIndex;
 
         public LevelCycling()
         {
-            S3EagleCycle = new List<Map>()
-            {
-                new JsonParser(MapDatabase.eagleM1).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM2).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM3).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM4).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM5).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM6).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM7).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM8).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM9).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM10).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM11).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM12).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM13).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM14).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM15).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM16).getCurrentMapInfo(),
-                new JsonParser(MapDatabase.eagleM17).getCurrentMapInfo()
-            };
+
+            currentLocationIndex = new int[] { GlobalSettings.STRAT_UP_INDEX[0], GlobalSettings.STRAT_UP_INDEX[1] };
 
             string[,] EaglePaths = MapDatabase.eagle;
             levelEagle = new Map[LEVEL_EAGLE_SIZE, LEVEL_EAGLE_SIZE]; 
@@ -62,6 +43,7 @@ namespace HackAndSlash
 
         }
         
+
         public Map StartUpLevel()
         {
             return levelEagle[GlobalSettings.STRAT_UP_INDEX[0], GlobalSettings.STRAT_UP_INDEX[1]]; // Only works for level eagle 

@@ -12,13 +12,19 @@ namespace HackAndSlash
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public GlobalSettings gameSettings;
+        public Misc utilMethods;
 
+        // Game states 
         public bool elapsing = false;    // set to false when invoking pause, bag, transition, etc.
-        public bool gamePaused = false; //set to true if pause button has been pressed
+        public bool gamePaused = false;  //set to true if pause button has been pressed
         public bool gameOver = false;   
         public bool titleMenu = true;
         public bool gameWon = false;
+
+        // Game parameters 
+        public bool _DevMode = false;
+        public bool _ShowBoundary = true;
+        public bool _FOG = true;
 
         //Player
         private IPlayer PlayerMain;
@@ -55,7 +61,9 @@ namespace HackAndSlash
         public LevelCycling levelCycleRecord; // Remove item from the map after pickup 
         private MapGenerator generator;
         private int transitionDir;
+        // Lossly connected to level and map 
         private Minimap miniMap;
+        private FOG fogOfWar; 
         // Partically due to planning, "level" and "map" are used interchangeable 
 
         private Color defaultFill = Color.Black; 
@@ -103,16 +111,90 @@ namespace HackAndSlash
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            gameSettings = new GlobalSettings();
+            utilMethods = new Misc();
             Content.RootDirectory = "Content";
         }
 
+        private void LoadAllClasses()
+        {
+            // The level map
+            levelCycleRecord = new LevelCycling();
+            currentLevel = new Level(GraphicsDevice, spriteBatch);
+            currentLevel.levelCycler = levelCycleRecord;
+            currentLevel.FirstTimeStartUp();
+            currentLevel.Generate();
+            currentMapInfo = currentLevel.currentMapInfo;
+            generator = new MapGenerator(currentMapInfo);
+
+            miniMap = new Minimap(GraphicsDevice, spriteBatch, levelCycleRecord);
+            miniMap.SetPivot(currentLevel.mapIndex);
+
+            specialCases = new LevelEagleSpecialCases();
+
+            //Player
+            PlayerMain = new Player(this);//Player object
+
+            //Player's Health 
+            this.DrawHealth = new DrawPlayerHealth(this, SpriteFactory.Instance.GetEmptyHeart(),
+                SpriteFactory.Instance.GetHalfHeart(),
+                SpriteFactory.Instance.GetFullHeart(),
+                SpriteFactory.Instance.GetFontLife());
+
+            fogOfWar = new FOG(PlayerMain.GetPos(), GraphicsDevice, spriteBatch);
+
+            // When testing new enemies, put them here 
+            if (_DevMode)
+            {
+                snakefirst = new SnakeEnemy(utilMethods.PlayAreaPosition(1, 3), GraphicsDevice, spriteBatch, this);
+                bugfirst = new BugEnemy(utilMethods.PlayAreaPosition(10, 2), GraphicsDevice, spriteBatch, this);
+                moblinfirst = new MoblinEnemy(utilMethods.PlayAreaPosition(10, 3), GraphicsDevice, spriteBatch, this);
+
+                enemyList = new List<IEnemy>()
+                {
+                    snakefirst,bugfirst,moblinfirst
+                };
+            }
+            else
+            {
+                enemyList = new List<IEnemy>();
+            }
+
+
+            // Items
+            itemList = generator.GetItemList(spriteBatch, this);
+            useableItemList = new List<IItem>();
+            textSprites = SpriteFactory.Instance.GetTextCharacters();
+
+            //Create list of blocks
+            blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
+
+            //UI Elements
+            pauseOverlay = new PauseOverlay(this, SpriteFactory.Instance.GetPauseOverlay(),
+                SpriteFactory.Instance.GetSwordSelector(), SpriteFactory.Instance.GetInventoryText(), SpriteFactory.Instance.GetItemSelector(), spriteBatch); ;
+            gameOverOverlay = new GameOverOverlay(this, SpriteFactory.Instance.GetGameOverOverlay(),
+                            SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
+            titleScreen = new TitleScreenOverlay(this, SpriteFactory.Instance.GetTitleScreen(), spriteBatch);
+            gameWonScreenOverlay = new GameWonOverlay(this, SpriteFactory.Instance.getGameWonScreen(), SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
+        }
+
+        /// <summary>
+        /// Rest or transit 
+        /// </summary>
+        /// <param name="Direction">
+        /// 0-3 to tranit to thte room at that direction;
+        /// 4 to back to the initial level;
+        /// 5 to reset current room. 
+        /// </param>
         public void reset(int Direction) {
 
             transitionDir = Direction;
             Level NextLevel;
 
-            if(Direction == 5)
+            if (Direction == 4)
+            {
+                LoadAllClasses();
+            }
+            else if (Direction == 5)
             {
                 currentLevel = generator.getLevel(GraphicsDevice, spriteBatch);
                 currentLevel.levelCycler = levelCycleRecord;
@@ -170,8 +252,6 @@ namespace HackAndSlash
             graphics.PreferredBackBufferHeight = GlobalSettings.WINDOW_HEIGHT;
 
             graphics.ApplyChanges();
-
-            
         }
 
         /// <summary>
@@ -193,62 +273,7 @@ namespace HackAndSlash
 
             /* =============================== In game contents =============================== */
 
-            // The level map
-            levelCycleRecord = new LevelCycling(); 
-            currentLevel = new Level(GraphicsDevice, spriteBatch);
-            currentLevel.levelCycler = levelCycleRecord; 
-            currentLevel.FirstTimeStartUp();
-            currentLevel.Generate();
-            currentMapInfo = currentLevel.currentMapInfo;
-            generator = new MapGenerator(currentMapInfo);
-
-            miniMap = new Minimap(GraphicsDevice, spriteBatch, levelCycleRecord);
-            miniMap.SetPivot(currentLevel.mapIndex);
-
-            specialCases = new LevelEagleSpecialCases(); 
-
-            //Player
-            PlayerMain = new Player(this);//Player object
-
-            //Player's Health 
-            this.DrawHealth = new DrawPlayerHealth(this,SpriteFactory.Instance.GetEmptyHeart(), 
-                SpriteFactory.Instance.GetHalfHeart(),
-                SpriteFactory.Instance.GetFullHeart(),
-                SpriteFactory.Instance.GetFontLife());
-
-            
-            // When testing new enemies, put them here 
-            if (GlobalSettings.DEV_MODE)
-            {
-                snakefirst = new SnakeEnemy(gameSettings.PlayAreaPosition(1, 3), GraphicsDevice, spriteBatch, this);
-                bugfirst = new BugEnemy(gameSettings.PlayAreaPosition(10, 2), GraphicsDevice, spriteBatch, this);
-                moblinfirst = new MoblinEnemy(gameSettings.PlayAreaPosition(10, 3), GraphicsDevice, spriteBatch, this);
-
-                enemyList = new List<IEnemy>()
-                {
-                    snakefirst,bugfirst,moblinfirst
-                };
-            } else
-            {
-                enemyList = new List<IEnemy>(); 
-            }
-            
-
-            // Items
-            itemList = generator.GetItemList(spriteBatch, this);
-            useableItemList = new List<IItem>();
-            textSprites = SpriteFactory.Instance.GetTextCharacters();
-
-            //Create list of blocks
-            blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
-
-            //UI Elements
-            pauseOverlay = new PauseOverlay(this, SpriteFactory.Instance.GetPauseOverlay(), 
-                SpriteFactory.Instance.GetSwordSelector(), SpriteFactory.Instance.GetInventoryText(), SpriteFactory.Instance.GetItemSelector(), spriteBatch);;
-            gameOverOverlay = new GameOverOverlay(this, SpriteFactory.Instance.GetGameOverOverlay(),
-                            SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
-            titleScreen = new TitleScreenOverlay(this, SpriteFactory.Instance.GetTitleScreen(), spriteBatch);
-            gameWonScreenOverlay = new GameWonOverlay(this, SpriteFactory.Instance.getGameWonScreen(), SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
+            LoadAllClasses();
         }
 
         /// <summary>
@@ -385,7 +410,7 @@ namespace HackAndSlash
 
                 foreach (IBlock block in blockList) { 
                     block.Draw();
-                    if (GlobalSettings.DEV_MODE) {
+                    if (_DevMode && _ShowBoundary) {
                         DrawRectangle enemyRect = new DrawRectangle(GraphicsDevice, spriteBatch, block.rectangle, Color.Yellow);
                         enemyRect.Draw();
                     }
@@ -397,7 +422,7 @@ namespace HackAndSlash
 
                 foreach (IEnemy enemy in enemyList) {
                     enemy.Draw();
-                    if (GlobalSettings.DEV_MODE) {
+                    if (_DevMode && _ShowBoundary) {
                         DrawRectangle enemyRect = new DrawRectangle(GraphicsDevice, spriteBatch, enemy.getRectangle(), Color.Red);
                         enemyRect.Draw();
                     }    

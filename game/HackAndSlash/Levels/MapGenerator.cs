@@ -11,12 +11,12 @@ namespace HackAndSlash
     class MapGenerator
     {
         Map mapInfo;
-        GlobalSettings mapSettings;
+        Misc utilMethods;
 
         public MapGenerator(Map MapInfo)
         {
             this.mapInfo = MapInfo;
-            mapSettings = new GlobalSettings();
+            utilMethods = new Misc();
         }
 
         public Level getLevel(GraphicsDevice GD, SpriteBatch spriteBatch)
@@ -113,7 +113,7 @@ namespace HackAndSlash
                     }
                     else if (Index >= GlobalSettings.SOLID_BLOCK_BOUND)
                     {
-                        BlockList.Add(new BlockInvis(mapSettings.PlayAreaPosition(c, r), spriteBatch));
+                        BlockList.Add(new BlockInvis(utilMethods.PlayAreaPosition(c, r), spriteBatch));
                     }
                 }
             }
@@ -133,7 +133,7 @@ namespace HackAndSlash
                      If Index is in between -1 and -255, add an enemy into the list
                      */
                     int Index = mapInfo.Arrangement[r, c];
-                    Vector2 position = mapSettings.PlayAreaPosition(c, r);
+                    Vector2 position = utilMethods.PlayAreaPosition(c, r);
                     switch (Index)
                     {
                         case GlobalSettings.SNAKE_ENEMY:
@@ -173,7 +173,7 @@ namespace HackAndSlash
                     /*
                      If Index is smaller than -256, add an item into the list
                      */
-                    Vector2 position = mapSettings.PlayAreaPosition(c, r);
+                    Vector2 position = utilMethods.PlayAreaPosition(c, r);
 
                     switch (Index)
                     {

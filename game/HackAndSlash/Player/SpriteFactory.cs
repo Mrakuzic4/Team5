@@ -76,6 +76,8 @@ namespace HackAndSlash
         private Texture2D[] LevelEagleDoorNormOpen;
         private Texture2D[] LevelEagleHoles;
 
+        private Texture2D FOGMask; 
+
         private Texture2D PauseOverlay;
         private Texture2D SwordSelector;
         private Texture2D GameOverOverlay;
@@ -206,6 +208,7 @@ namespace HackAndSlash
                 content.Load<Texture2D>(IMDB.LevelEagleHole[1].pathName),
                 content.Load<Texture2D>(IMDB.LevelEagleHole[2].pathName),
                 content.Load<Texture2D>(IMDB.LevelEagleHole[3].pathName)};
+            FOGMask = content.Load<Texture2D>(IMDB.FOGMask.pathName);
 
             //UI Related
             PauseOverlay = content.Load<Texture2D>(IMDB.PauseOverlay.pathName);
@@ -301,6 +304,11 @@ namespace HackAndSlash
         {
             return PauseOverlay;
         }
+        public Texture2D GetFOGMask()
+        {
+            return FOGMask;
+        }
+
         public Texture2D GetTitleScreen()
         {
             return TitleScreenOverlay;

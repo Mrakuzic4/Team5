@@ -98,6 +98,7 @@
     <Compile Include="Items\IItem.cs" />
     <Compile Include="Items\ItemCollisionHandler.cs" />
     <Compile Include="Items\ItemSprite.cs" />
+    <Compile Include="Levels\FOG.cs" />
     <Compile Include="Levels\ILevel.cs" />
     <Compile Include="Levels\IMap.cs" />
     <Compile Include="Levels\JsonParser.cs" />
@@ -105,8 +106,8 @@
     <Compile Include="Levels\LevelCycling.cs" />
     <Compile Include="Levels\Map.cs" />
     <Compile Include="Levels\MapGenerator.cs" />
-    <Compile Include="Levels\MapTransition.cs" />
     <Compile Include="Levels\Minimap.cs" />
+    <Compile Include="Misc\Misc.cs" />
     <Compile Include="Misc\DrawRectangle.cs" />
     <Compile Include="Misc\LevelEagleSpecialCases.cs" />
     <Compile Include="Misc\MaxKnockback.cs" />
@@ -251,6 +252,7 @@
     <Content Include="Content\images\AquamentusSprite.png" />
     <Content Include="Content\images\levels\blockAllMight.png" />
     <Content Include="Content\images\LinkTriforce.png" />
+    <Content Include="Content\images\Mask.png" />
     <Content Include="Content\images\MoblinBomb.png" />
     <Content Include="Content\images\MoblinDown.png" />
     <Content Include="Content\images\MoblinLeft.png" />
