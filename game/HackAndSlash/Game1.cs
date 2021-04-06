@@ -216,17 +216,23 @@ namespace HackAndSlash
                 SpriteFactory.Instance.GetFullHeart(),
                 SpriteFactory.Instance.GetFontLife());
 
-            /// TODO: Consider removing all explicit declarations of emeyies and only leave them in the list
-            ///       and access only by list index. 
-            //Enemy
-            snakefirst = new SnakeEnemy(gameSettings.PlayAreaPosition(1, 3), GraphicsDevice, spriteBatch, this);
-            bugfirst = new BugEnemy(gameSettings.PlayAreaPosition(10, 2), GraphicsDevice, spriteBatch, this);
-            moblinfirst = new MoblinEnemy(gameSettings.PlayAreaPosition(10, 3), GraphicsDevice, spriteBatch, this);
-
-            enemyList = new List<IEnemy>()
+            
+            // When testing new enemies, put them here 
+            if (GlobalSettings.DEV_MODE)
             {
-                snakefirst,bugfirst,moblinfirst
-            };
+                snakefirst = new SnakeEnemy(gameSettings.PlayAreaPosition(1, 3), GraphicsDevice, spriteBatch, this);
+                bugfirst = new BugEnemy(gameSettings.PlayAreaPosition(10, 2), GraphicsDevice, spriteBatch, this);
+                moblinfirst = new MoblinEnemy(gameSettings.PlayAreaPosition(10, 3), GraphicsDevice, spriteBatch, this);
+
+                enemyList = new List<IEnemy>()
+                {
+                    snakefirst,bugfirst,moblinfirst
+                };
+            } else
+            {
+                enemyList = new List<IEnemy>(); 
+            }
+            
 
             // Items
             itemList = generator.GetItemList(spriteBatch, this);
@@ -286,6 +292,7 @@ namespace HackAndSlash
                 // Flagging transFinsihed into true is done in Update() method in Level.cs 
                 if (currentLevel.transFinsihed) 
                 {
+                    // Generate the image for new room 
                     currentLevel = generator.getLevel(GraphicsDevice, spriteBatch);
                     currentLevel.levelCycler = levelCycleRecord;
                     currentLevel.currentMapInfo = currentMapInfo;
@@ -293,14 +300,17 @@ namespace HackAndSlash
                     currentLevel.Generate();
                     transitionDir = 5;
 
+                    // Update minimap visibility 
                     miniMap.FlagExplored(currentLevel.mapIndex);
                     miniMap.SetPivot(currentLevel.mapIndex);
 
+                    // Gnerate new lists 
                     blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
                     enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
                     itemList = generator.GetItemList(spriteBatch, this);
 
-                    numOfEnemy = enemyList.Count();
+                    // Not used in Sprint 4
+                    numOfEnemy = enemyList.Count(); 
                     numOfDropped = 0;
                 }
             }
@@ -373,9 +383,25 @@ namespace HackAndSlash
             {
                 currentLevel.Draw();
 
-                foreach (IBlock block in blockList) block.Draw();
-                foreach (IEnemy enemy in enemyList) enemy.Draw();
-                foreach (IItem item in itemList) item.Draw();
+                foreach (IBlock block in blockList) { 
+                    block.Draw();
+                    if (GlobalSettings.DEV_MODE) {
+                        DrawRectangle enemyRect = new DrawRectangle(GraphicsDevice, spriteBatch, block.rectangle, Color.Yellow);
+                        enemyRect.Draw();
+                    }
+                }
+
+                foreach (IItem item in itemList) {
+                    item.Draw();
+                } 
+
+                foreach (IEnemy enemy in enemyList) {
+                    enemy.Draw();
+                    if (GlobalSettings.DEV_MODE) {
+                        DrawRectangle enemyRect = new DrawRectangle(GraphicsDevice, spriteBatch, enemy.getRectangle(), Color.Red);
+                        enemyRect.Draw();
+                    }    
+                }
 
                 // Player is not drawn during transition 
                 if (!currentLevel.transitioning)

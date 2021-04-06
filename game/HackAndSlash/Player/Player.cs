@@ -51,21 +51,21 @@ namespace HackAndSlash
 
         public Player(Game1 game)
         {
-            playerStateMachine = new PlayerStateMachine(GlobalSettings.Direction.Right, game, this); //inital state face right
+            playerStateMachine = new PlayerStateMachine(GlobalSettings.Direction.Up, game, this); //inital state face right
             SpriteFactory.Instance.SetRightPlayer();//Set up the inital sprite
             timer = DELAY;//adding delay to the player sprite animation
 
             this.game = game;
 
             //Inital Position
-            relPositionMC.X = GlobalSettings.BORDER_OFFSET;
+            relPositionMC.X = GlobalSettings.WINDOW_WIDTH / 2 - GlobalSettings.BASE_SCALAR / 2; 
             relPositionMC.Y = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
 
             //Collision
             playerHitBox = new Rectangle((int)relPositionMC.X + GlobalSettings.PLAYER_HITBOX_X_OFFSET, 
                 (int)relPositionMC.Y + GlobalSettings.PLAYER_HITBOX_Y_OFFSET, 
                 GlobalSettings.PLAYER_HITBOX_WIDTH, GlobalSettings.PLAYER_HITBOX_HEIGHT);
-            playerCollisionDetector = new PlayerCollisionDetector( game);
+            playerCollisionDetector = new PlayerCollisionDetector(game);
             playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
             playerEnemyCollisionHandler = new PlayerEnemyCollisionHandler();
             swordEnemyCollisionHandler = new SwordEnemyCollisionHandler();

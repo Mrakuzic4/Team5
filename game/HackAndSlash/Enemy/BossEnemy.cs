@@ -41,6 +41,8 @@ namespace HackAndSlash
         //Moblin position
         private Rectangle rectangle { get; set; }
 
+        private Game1 game; 
+
         //make the constructor for the class
         public BossEnemy(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch SB, Game1 game)
         {
@@ -49,6 +51,7 @@ namespace HackAndSlash
             bossState = new bossStateMachine();
             Graphics = graphics;
             spriteBatch = SB;
+            this.game = game; 
             rectangle = new Rectangle((int)position.X, (int)position.Y, 3 * GlobalSettings.BASE_SCALAR, 4 * GlobalSettings.BASE_SCALAR);
 
             random = new System.Random();
@@ -183,6 +186,7 @@ namespace HackAndSlash
             {
                 damageTaken = 0;
                 bossState.changeToDie();
+                game.levelCycleRecord.RemoveOneIndex(GlobalSettings.BOSS_ENEMY);
             }
 
         }

@@ -93,6 +93,7 @@ namespace HackAndSlash
         public ImageFile RedBall;
         public ImageFile Font_OldManText1;
         public ImageFile Font_OldManText2;
+        public ImageFile CheatText;
 
         public ImageFile Font_Life;
 
@@ -192,6 +193,7 @@ namespace HackAndSlash
             SwordSelector = new ImageFile("images/UI/SwordSelector", 1, 1);
             GameOverOverlay = new ImageFile("images/UI/GameOverOverlay", 1, 1);
             InventoryText = new ImageFile("images/Font/Font_Inventory", 1, 1);
+            CheatText = new ImageFile("images/Font/Cheat", 1, 1);
             ItemSelector = new ImageFile("images/UI/ItemSelector", 1, 1);
             TitleScreenOverlay = new ImageFile("images/UI/TitleScreens", 2, 2);
             GameWonOverlay = new ImageFile("images/UI/WinningScreen", 1, 1);

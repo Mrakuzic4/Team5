@@ -15,8 +15,10 @@ namespace HackAndSlash
         private GraphicsDevice Graphics; // the graphics device used by the spritebatch
         public Rectangle rectangle { get; set; }
         private Vector2 position; // the position of the enemy on screen
+        private Vector2 textPosition;
 
-        private Texture2D oldManSprite; 
+        private Texture2D oldManSprite;
+        private Texture2D cheatText; 
 
         private Color tintColor = Color.White;
 
@@ -28,7 +30,11 @@ namespace HackAndSlash
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
 
-            oldManSprite = SpriteFactory.Instance.GetOldMan(); 
+            textPosition = new Vector2((int)position.X - (int)( 2.5 * GlobalSettings.BASE_SCALAR), 
+                (int)position.Y - (int)(1.5 * GlobalSettings.BASE_SCALAR));
+
+            oldManSprite = SpriteFactory.Instance.GetOldMan();
+            cheatText = SpriteFactory.Instance.GetCheatText();
         }
              
 
@@ -42,7 +48,9 @@ namespace HackAndSlash
         public void Draw()
         {
             spriteBatch.Draw(oldManSprite, position, null,
-                tintColor, 0f, Vector2.Zero, 4, SpriteEffects.None, 1f); 
+                tintColor, 0f, Vector2.Zero, 4, SpriteEffects.None, 1f);
+
+            spriteBatch.Draw(cheatText, textPosition, tintColor);
         }
 
         //changing the state of the enemy to be idle
@@ -101,7 +109,7 @@ namespace HackAndSlash
         //return current rectangle of enemy
         public Rectangle getRectangle()
         {
-            return new Rectangle();
+            return new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
         }
     }
 }

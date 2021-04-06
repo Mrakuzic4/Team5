@@ -22,14 +22,14 @@ namespace HackAndSlash
         private Color defaultTint = Color.White;  // Draw() method tint 
 
 
-        public DrawRectangle(GraphicsDevice Graphics, SpriteBatch SB, Rectangle P)
+        public DrawRectangle(GraphicsDevice Graphics, SpriteBatch SB, Rectangle P, Color fill)
         {
             graphics = Graphics;
             spriteBatch = SB;
             position = P;
 
             thickness = 4;
-            fillColor = Color.Blue;
+            fillColor = fill;
 
             Generate();
         }

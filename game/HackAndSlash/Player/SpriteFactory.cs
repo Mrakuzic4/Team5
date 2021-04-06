@@ -92,6 +92,7 @@ namespace HackAndSlash
         private Texture2D Font_OldManText1;
         private Texture2D Font_OldManText2;
         private Texture2D Font_Life;
+        private Texture2D Font_Cheat;
 
         private static SpriteFactory instance = new SpriteFactory();
 
@@ -181,6 +182,7 @@ namespace HackAndSlash
             ThrowingKnifeRightSprite = content.Load<Texture2D>(IMDB.throwingKnifeRight.pathName);
             FoodSprite = content.Load<Texture2D>(IMDB.food.pathName);
             TriforceSprite = content.Load<Texture2D>(IMDB.triforce.pathName);
+            Font_Cheat = content.Load<Texture2D>(IMDB.CheatText.pathName);
 
             // More Content.Load calls follow
             BGSprite = content.Load<Texture2D>(IMDB.BG.pathName);
@@ -238,7 +240,10 @@ namespace HackAndSlash
             return Font_OldManText2;
         }
 
-
+        public Texture2D GetCheatText()
+        {
+            return Font_Cheat;
+        }
 
         public Texture2D GetFontLife()
         {
