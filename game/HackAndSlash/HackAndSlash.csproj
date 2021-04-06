@@ -248,6 +248,7 @@
     <None Include="Content\bin\DesktopGL\images\sucLeft.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucOva.xnb" />
     <None Include="Content\bin\DesktopGL\images\sucUp.xnb" />
+    <Content Include="Content\images\AquamentusSprite.png" />
     <Content Include="Content\images\levels\blockAllMight.png" />
     <Content Include="Content\images\LinkTriforce.png" />
     <Content Include="Content\images\MoblinBomb.png" />

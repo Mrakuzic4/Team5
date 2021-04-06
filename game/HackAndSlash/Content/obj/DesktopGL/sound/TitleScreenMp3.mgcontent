@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/TitleScreenMp3.mp3</SourceFile>
-  <SourceTime>2021-04-04T19:19:29.5434267-04:00</SourceTime>
-  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/sound/TitleScreenMp3.xnb</DestFile>
-  <DestTime>2021-04-04T19:20:33.9911007-04:00</DestTime>
+  <SourceFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/TitleScreenMp3.mp3</SourceFile>
+  <SourceTime>2021-04-05T12:37:13.585717-04:00</SourceTime>
+  <DestFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/bin/DesktopGL/sound/TitleScreenMp3.xnb</DestFile>
+  <DestTime>2021-04-05T14:45:49.8220035-04:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/sound/TitleScreenMp3.ogg</string>
+    <string>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/bin/DesktopGL/sound/TitleScreenMp3.ogg</string>
   </BuildOutput>
 </PipelineBuildEvent>

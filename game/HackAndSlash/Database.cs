@@ -54,8 +54,12 @@ namespace HackAndSlash
         public ImageFile moblinMoveLeft;
         public ImageFile moblinBomb;
 
+<<<<<<< HEAD
         public ImageFile boss;
         public ImageFile bossDie;
+=======
+        public ImageFile aquamentus;
+>>>>>>> d5252aa180b2758748d2dbef5af09824141ea04d
 
         public ImageFile fireWall;
         public ImageFile bomb;
@@ -151,8 +155,12 @@ namespace HackAndSlash
             moblinMoveRight = new ImageFile("images/MoblinRight", 1, 2);
             moblinBomb = new ImageFile("images/MoblinBomb", 1, 1);
 
+<<<<<<< HEAD
             boss = new ImageFile("images/Boss", 1, 4);
             bossDie = new ImageFile("images/bossDie", 1, 1);
+=======
+            aquamentus = new ImageFile("images/AquamentusSprite",1,1);
+>>>>>>> d5252aa180b2758748d2dbef5af09824141ea04d
 
             fireWall = new ImageFile("images/firewall3", 1, 2);
             bomb = new ImageFile("images/Bomb", 1, 1);
