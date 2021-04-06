@@ -1,49 +1,56 @@
 # Team 5 3902 Game Documentation 
 
-## Keyboard Control (sprint 3)
+## Control (Version 4.05)
 
-* `WASD` and arrow keys for moving the player character  
-* `Z` and`N` to attack 
-* Number key `1`, `2`, and `3` to use the item _(if you have any)_
-* `Q` to quit 
-* `R` to reset _(It is recommanded that you pick up all the items before reseting)_
-* Mouse click `LMB` and `RMB` to switch between maps _(It is, again, recommanded that you pick up all the items before switching to other maps)_
-* `U` and `I` key to auto collect/reload the item in the map _(only for now)_
+* `WASD` and arrow keys for moving the player character.
+* `Z` and`N` to attack.
+* Number key `1` and `2` to use the item _(if you have any)_.
+* `Q` to quit.
+* `R` to reset (reset current room only).
+* Mouse click `LMB` and `RMB` to switch between maps.
+* `Escape` key to pause, the player can also switch items during the pause screen.
 
-  ### Gamepad Contol (not tested yet)
-  * `DPAD` direction buttons for moving the player character
-  * `A` button for attacking
+  ### Gamepad Contol 
+  * `DPAD` direction buttons for moving the player character.
+  * `A` button for attacking.
 
-  ### Features from previous patches but will likly be removed in the future
-  * `O` and `P` to toggle between enemy displayed in the map 
-
+  ### Features from previous patches that has been removed or only avilable in Developer Mode 
+  * `O` and `P` to toggle between enemy displayed in the map.
+  * `3` to use the third item.
+  * `U` and `I` key to auto collect/reload the item in the map.
+  
 ## Running the project
 * Project build using MonoGame 3.7.1 
 * This project uses NuGet package `Json.net` to parse Json files. 
 * Json files were hand-typen, and need to be marked as `Content` and `Always copy` in `Properties` in order to make the parser able to find them. 
 * Some debug and local files have been accidentally pushed into the repo during the dev provess, but constitutes no threat for compiling or running the peoject. 
+* Consider toggling on or off 
+  ```cs
+  public const bool DEV_MODE = true;
+  ``` 
+  in `GlobalSettings.cs` depending on your mood. 
 
-## Known issues 
+## Known ~~Features~~ Issues 
 
   ### Gaming experience 
 
-  * Player may clip through static blocks if more than one key is pressed 
-  * Enemies may suddenly become high on drugs if they find themseleves stuck in between 2 blocks 
-  * Link needs to squeeze himself against the block/wall in order to pass through some "bottlenecks"
-  * Link got the spirit and will try to use items even if he has none 
-  * Loading new maps may cause Link to stuck when using items 
-  * The newly loaded maps look confusing
+  * Some enemy has telepathy power, and the pain of dying experienced by them may invoke others who have alreday died, appear as force ghosts _"May the bug be with you"_. 
+  * Some enemy can perform **mircle** by walking on water. 
+  * Level loading logic may cause Link to prematurely step forward and got slapped on the face upon entering a new room (dang you probably won't notice if I don't tell you)
+  * Item switching does work, just might be a bit hard to notice where they are. 
+  * The boss respawns upon re-entering, providing the player with the experience of stabbing someone in the back.
+  * The game teaches the player that sometimes the effort of pushing a block can result in vein, the block moved, but that's it, no nada no zilch no nothing, like life. 
+  * _"If you kill, you better prepare to be killed"_. As such, after death, if the player is not mentally prepared enough before choosing to respwan, might die immediately again. 
 
   ### Code-wise 
   
-  * Some residues from discarded patches 
-  * Magic numbers in some files, but mostly sprint-3-specific
-  * More reguarding code quality in folder `PeerReviewS3`
-
+  * Still some magical numbers scattered around the galaxy. 
+  * Some commented out code left untouched for too long, forming their garbadge zones. 
+  * Moderate amount of duplication. 
 
 ## Devs 
 
-(Soted by last name)
+(Soted alphabetically by last name)
 * Vidhan Bhardwaj (bhardwaj.73)
 * Amarth Chen (chen.8759)
 * Harshitha Kommaraju (kommaraju.3)
