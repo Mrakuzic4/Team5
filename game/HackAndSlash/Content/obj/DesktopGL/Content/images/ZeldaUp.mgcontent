@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<<<<<<< HEAD
   <SourceFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaUp.png</SourceFile>
   <SourceTime>2021-03-11T14:38:49.6367379-05:00</SourceTime>
   <DestFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ZeldaUp.xnb</DestFile>
-  <DestTime>2021-04-05T18:21:34.2469561-04:00</DestTime>
-=======
-  <SourceFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/ZeldaUp.png</SourceFile>
-  <SourceTime>2021-02-22T12:45:07.0698103-05:00</SourceTime>
-  <DestFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/bin/DesktopGL/Content/images/ZeldaUp.xnb</DestFile>
-  <DestTime>2021-04-05T15:28:51.6096062-04:00</DestTime>
->>>>>>> d5252aa180b2758748d2dbef5af09824141ea04d
+  <DestTime>2021-04-05T22:11:47.6479723-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

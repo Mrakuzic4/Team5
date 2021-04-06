@@ -208,15 +208,9 @@ namespace HackAndSlash
 
         public void changeToMoveLeft()
         {
-<<<<<<< HEAD
-=======
-            direction = GlobalSettings.Direction.Down;
-            bossState.changeToMoveDown();
-            //direction = GlobalSettings.Direction.Down;
-        }
->>>>>>> d5252aa180b2758748d2dbef5af09824141ea04d
 
         }
+
         public void changeToMoveRight()
         {
 
@@ -242,11 +236,8 @@ namespace HackAndSlash
         public bossStateMachine()
         {
             state = bossHealth.Idle;
-<<<<<<< HEAD
             MachineEnemySprite = (BossSprite)SpriteFactory.Instance.CreateBoss();
-=======
-            MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateAquaMentus();
->>>>>>> d5252aa180b2758748d2dbef5af09824141ea04d
+
         }
 
 
@@ -256,10 +247,8 @@ namespace HackAndSlash
             if (state != bossHealth.Idle)
             {
                 state = bossHealth.Idle;
-<<<<<<< HEAD
                 MachineEnemySprite = (BossSprite)SpriteFactory.Instance.CreateBoss();
-=======
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateAquaMentus();
+
                 //get appropriate sprite from sprite factory
             }
 
@@ -267,49 +256,21 @@ namespace HackAndSlash
 
         public void changeToRightMove()
         {
-            //change to Attack if not already in Attack
-            if (state != bossHealth.MoveRight)
-            {
-                state = bossHealth.MoveRight;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateAquaMentus();
-                //get appropriate sprite from sprite factory
-            }
+
         }
 
         public void changeToLeftMove()
         {
-            //change to Move if not already Move
-            if (state != bossHealth.MoveLeft)
-            {
-                state = bossHealth.MoveLeft;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateAquaMentus();
-                //get appropriate sprite from sprite factory
-            }
+
         }
 
         public void changeToMoveUp()
         {
-            //change to Move if not already Move
-            if (state != bossHealth.MoveUp)
-            {
-                state = bossHealth.MoveUp;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateAquaMentus();
->>>>>>> d5252aa180b2758748d2dbef5af09824141ea04d
-                //get appropriate sprite from sprite factory
-            }
 
-<<<<<<< HEAD
-=======
+        }
         public void changeToMoveDown()
         {
-            //change to Move if not already Move
-            if (state != bossHealth.MoveDown)
-            {
-                state = bossHealth.MoveDown;
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateAquaMentus();
-                //get appropriate sprite from sprite factory
-            }
->>>>>>> d5252aa180b2758748d2dbef5af09824141ea04d
+
         }
 
         public void changeToDie()
@@ -318,11 +279,7 @@ namespace HackAndSlash
             if (state != bossHealth.Die)
             {
                 state = bossHealth.Die;
-<<<<<<< HEAD
                 MachineEnemySprite = (BossSprite)SpriteFactory.Instance.CreateBossDie();
-=======
-                MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateAquaMentus();
->>>>>>> d5252aa180b2758748d2dbef5af09824141ea04d
                 //get appropriate sprite from sprite factory
             }
         }
