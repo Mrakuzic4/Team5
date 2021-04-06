@@ -11,40 +11,28 @@
     * The item selection screen;
     * Implement resetting the level upon the player character's death;
     * Have a scrolling transition between rooms and the item selection menu;
+    * Player's health and HUD.
  
 - Overall team performance compared to Sprint4:
   * Each individual member contributed to the project and worked on their tasks.
-  * For last sprint, we mostly worked on our assigned tasks and there were less interference between team members.
-  * For this sprint, we have a higher momentum to work together.
-  * We, as a team, work with each other to get different functionalities done and help each other out when they get stuck.
-  * We arrange meetings and live share sessions to work together.
-  * We implemented Sprint3 in a much more efficient way than Sprint2. 
+  * We did better in creating and distributing tasks in Azure DevOps this sprint but still need improvement.
+  * We had the instructional break this sprint, and many of our teammates either went home or took a break.
+  * We did not make as much progress in sprint 4 as in sprint 3.
   
 - Changes made during this sprint
-  * Player collision with blocks and enemies and map boarders.
-  * Player items and sword collision with enemies.
-  * Player takes damages by colliding into enemies or hit by enemies.
-  * Enemies take damges by colliding into player's sword and player's item.
-  * Levels of map implemented with JSON file.
-  * Mouse right-click command to cycle through different levels of map.
-  * Added movable blocks.
+    * Added Game Music & Sound Effect;
+    * Added Transitioning between rooms;
+    * Added The winning game state on grabbing the triforce piece;
+    * Added Pausing command and screen;
+    * Added The game over screen;
+    * Added The item selection screen;
+    * Added HUD and player's health.
+    * Implemented resetting the level upon the player character's death;
   
 - Things aimed to be done differently next time
   * Start on the tasks early and formulate a planned approach
-  * Have a better burndown chart so that everyone can track the progress visually and help each other out
-
-# Progression and Burndown 
-
-- The first 2 weeks in sprint 3 are saturated with midterms, projects and labs, so most members were rather occupied.
-- Minor technique issues encountered during the process, including remote share session and commit conflict.
-- Burndown chart 
-  ![Burndown Chart](https://i.ibb.co/sRH6rYw/burndown-Chart.png)
-
-
-
-
-
-
+  * Do a better job in distributing tasks in Azure DevOps so that everyone can track the progress visually and help each other out
+  * Need to have a scrolling transition between rooms and the item selection menu next sprint.
 
 
 # Burndown Chart 
