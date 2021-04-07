@@ -275,17 +275,19 @@ namespace HackAndSlash
 
         public void Draw()
         {
+            Rectangle MiniMapSrcClip = new Rectangle((int)(clipX + transOffset.X - 1), (int)(clipY + transOffset.Y - 1),
+                DISPLAY_REGION_X, DISPLAY_REGION_Y);
+            Vector2 PlayerBoxLocation = -3 * transOffset + playerEdgeRelocate + playerOffset + new Vector2(
+                DRAW_POSITION_X + (int)(WHOLE_WIDTH * SCALE_INDEX * 1.5),
+                DRAW_POSITION_Y + (int)(WHOLE_HEIGHT * SCALE_INDEX * 1.5));
+
+
             // The minimap 
             spriteBatch.Draw(minimap, new Vector2(DRAW_POSITION_X, DRAW_POSITION_Y),
-                new Rectangle((int)(clipX + transOffset.X - 1), (int)(clipY + transOffset.Y - 1), 
-                DISPLAY_REGION_X, DISPLAY_REGION_Y), defaultTint, 0f,
-                Vector2.Zero, 4, SpriteEffects.None, layer);
+                MiniMapSrcClip, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer);
 
             // The tiny box denoting player's position 
-            spriteBatch.Draw(playerNotation, 
-                -3 * transOffset + playerEdgeRelocate + playerOffset + new Vector2(
-                DRAW_POSITION_X + (int)(WHOLE_WIDTH * SCALE_INDEX * 1.5),
-                DRAW_POSITION_Y + (int)(WHOLE_HEIGHT * SCALE_INDEX * 1.5)),
+            spriteBatch.Draw(playerNotation, PlayerBoxLocation,
                 null, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer + .1f);
 
             // The border 

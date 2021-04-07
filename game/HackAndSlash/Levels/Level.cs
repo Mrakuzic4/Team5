@@ -37,7 +37,7 @@ namespace HackAndSlash
         private Texture2D blockAllMight; // Containing all blocks 
 
         // Transiton related 
-        public int TransDir = (int)GlobalSettings.Direction.Left;
+        public int TransDir = (int)GlobalSettings.Direction.Left; 
         public bool transitioning = false;
         public bool transFinsihed = false;
         public Vector2[] nextLvPos = { 

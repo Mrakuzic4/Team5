@@ -125,6 +125,7 @@ namespace HackAndSlash
             }
         }
 
+        // Connect 2 rooms via a hole 
         public void HoleBridgeRooms(int Direction)
         {
             switch (Direction)

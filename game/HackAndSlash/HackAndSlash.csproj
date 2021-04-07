@@ -98,6 +98,10 @@
     <Compile Include="Items\IItem.cs" />
     <Compile Include="Items\ItemCollisionHandler.cs" />
     <Compile Include="Items\ItemSprite.cs" />
+    <Compile Include="Levels\DynamicGenerations\GeneratePlacement.cs" />
+    <Compile Include="Levels\DynamicGenerations\RoomGraph.cs" />
+    <Compile Include="Levels\DynamicGenerations\GenerateRoom.cs" />
+    <Compile Include="Levels\DynamicGenerations\GenerateLevel.cs" />
     <Compile Include="Levels\FOG.cs" />
     <Compile Include="Levels\ILevel.cs" />
     <Compile Include="Levels\IMap.cs" />
