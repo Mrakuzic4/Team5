@@ -180,7 +180,7 @@ namespace HackAndSlash
                     break;
                 case ThrowingKnifeStateMachine.ItemStates.Useable:
                     // In bag Draw on toolbar
-                    throwingKnifeSprite.Draw(spriteBatch, position, Color.White);
+                    throwingKnifeSprite.DrawOnBar(spriteBatch, position, Color.White);
                     // draw text with numUses
                     textSprites.Draw(spriteBatch, numUses.ToString(), new Vector2(toolBarPosition.X, toolBarPosition.Y + 64), Color.White);
                     break;

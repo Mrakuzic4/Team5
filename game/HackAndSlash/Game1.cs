@@ -421,6 +421,7 @@ namespace HackAndSlash
                 }
 
                 foreach (IItem item in itemList) {
+                    /// TODO: add test so that item are visible when being used 
                     if (item.InInventory() || !_FOG || utilMethods.InFogRange(PlayerMain.GetPos(), item.GetPos()))
                         item.Draw();
                     if (_DevMode && _ShowBoundary) {

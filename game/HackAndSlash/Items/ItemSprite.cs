@@ -21,6 +21,7 @@ namespace HackAndSlash
         private int delayCounter { get; set; }
 
         private float layer = 0.7f;
+        private float underLayer = 0.4f;
 
         public ItemSprite(Texture2D texture, int rows, int columns)
         {
@@ -62,9 +63,21 @@ namespace HackAndSlash
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color,
-                0f, Vector2.Zero, SpriteEffects.None, layer);
+                0f, Vector2.Zero, SpriteEffects.None, underLayer);
         }
 
+        public void DrawOnBar(SpriteBatch spriteBatch, Vector2 location, Color color)
+        {
+            int width = Texture.Width / Columns;
+            int height = Texture.Height / Rows;
+            int row = (int)((float)currentFrame / (float)Columns);
+            int column = currentFrame % Columns;
 
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color,
+                0f, Vector2.Zero, SpriteEffects.None, layer);
+        }
     }
 }

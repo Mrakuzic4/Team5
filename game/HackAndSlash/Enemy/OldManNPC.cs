@@ -34,6 +34,7 @@ namespace HackAndSlash
                 (int)position.Y - (int)(1.5 * GlobalSettings.BASE_SCALAR));
 
             oldManSprite = SpriteFactory.Instance.GetOldMan();
+
             cheatText = SpriteFactory.Instance.GetCheatText();
         }
              
@@ -48,7 +49,7 @@ namespace HackAndSlash
         public void Draw()
         {
             spriteBatch.Draw(oldManSprite, position, null,
-                tintColor, 0f, Vector2.Zero, 4, SpriteEffects.None, 1f);
+                tintColor, 0f, Vector2.Zero, 4, SpriteEffects.None, .4f);
 
             spriteBatch.Draw(cheatText, textPosition, tintColor);
         }

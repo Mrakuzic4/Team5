@@ -20,7 +20,7 @@ namespace HackAndSlash
         private Stopwatch stopwatch = new Stopwatch();
         private long timer;
         private int delayCounter { get; set; }
-
+        private float layer = 0.7f;
         public TextSprite(Texture2D texture, int rows, int columns)
         {
             stopwatch.Restart();
@@ -68,7 +68,8 @@ namespace HackAndSlash
                 Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
                 Rectangle destinationRectangle = new Rectangle((int)location.X + textPos, (int)location.Y, width, height);
                 textPos += 8;
-                spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
+                spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color,
+                    0f, Vector2.Zero, SpriteEffects.None, layer);
             }
 
 
