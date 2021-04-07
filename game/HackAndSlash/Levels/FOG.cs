@@ -12,9 +12,7 @@ namespace HackAndSlash
     class FOG
     {
 
-        private const int OFFEST_UNIT = 1;
-
-        private int scaler = 1 + OFFEST_UNIT * 2;
+        private int scaler;
         private int width;
         private int height; 
 
@@ -41,10 +39,16 @@ namespace HackAndSlash
             width = maskArea.Width;
             height = maskArea.Height;
 
-            position = new Vector2(- (scaler * (width / 2) - GlobalSettings.BASE_SCALAR / 2),
-                -(scaler * (height / 2) - GlobalSettings.BASE_SCALAR / 2));
+            SetRange(1);
 
             Generate();
+        }
+
+        public void SetRange(int Range)
+        {
+            scaler = Range + 2;
+            position = new Vector2(-((scaler * width / 2) - GlobalSettings.BASE_SCALAR / 2),
+                -((scaler * height / 2) - GlobalSettings.BASE_SCALAR / 2));
         }
 
         public Texture2D GenerateTexture(int width, int height, Func<int, Color> paint)

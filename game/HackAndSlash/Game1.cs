@@ -21,10 +21,11 @@ namespace HackAndSlash
         public bool titleMenu = true;
         public bool gameWon = false;
 
-        // Game parameters 
+        // Game parameters, need _ prefix 
         public bool _DevMode = false;
         public bool _ShowBoundary = true;
         public bool _FOG = true;
+        public int _FogRange = 1; 
 
         //Player
         private IPlayer PlayerMain;
@@ -141,6 +142,9 @@ namespace HackAndSlash
                 SpriteFactory.Instance.GetFontLife());
 
             fogOfWar = new FOG(GraphicsDevice, spriteBatch);
+            fogOfWar.SetRange(_FogRange);
+            utilMethods.SetFogRange(_FogRange);
+
 
             // When testing new enemies, put them here 
             if (_DevMode)
@@ -417,11 +421,19 @@ namespace HackAndSlash
                 }
 
                 foreach (IItem item in itemList) {
-                    item.Draw();
+                    if (item.InInventory() || !_FOG || utilMethods.InFogRange(PlayerMain.GetPos(), item.GetPos()))
+                        item.Draw();
+                    if (_DevMode && _ShowBoundary) {
+                        DrawRectangle ItemRect = new DrawRectangle(GraphicsDevice, spriteBatch,
+                            new Rectangle((int)item.GetPos().X, (int)item.GetPos().Y, 
+                            GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR), Color.Red);
+                        ItemRect.Draw();
+                    }
                 } 
 
                 foreach (IEnemy enemy in enemyList) {
-                    enemy.Draw();
+                    if (!_FOG || utilMethods.InFogRange(PlayerMain.GetPos(), enemy.GetPos()) )
+                        enemy.Draw();
                     if (_DevMode && _ShowBoundary) {
                         DrawRectangle enemyRect = new DrawRectangle(GraphicsDevice, spriteBatch, enemy.getRectangle(), Color.Red);
                         enemyRect.Draw();

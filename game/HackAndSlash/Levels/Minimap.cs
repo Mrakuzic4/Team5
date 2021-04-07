@@ -40,7 +40,7 @@ namespace HackAndSlash
         private Vector2 playerOffset = new Vector2(0, 0); // Offset for replicating player movement
         private Vector2 transOffset = new Vector2(0, 0);  // Offset for transition animation 
         private Vector2 playerEdgeRelocate = new Vector2(0, 0);
-        private float layer = 0.7f; 
+        private float layer = 0.9f; 
 
         // Const 
         private const bool DISCOVER_MODE_FLAG = true;
@@ -286,7 +286,7 @@ namespace HackAndSlash
                 -3 * transOffset + playerEdgeRelocate + playerOffset + new Vector2(
                 DRAW_POSITION_X + (int)(WHOLE_WIDTH * SCALE_INDEX * 1.5),
                 DRAW_POSITION_Y + (int)(WHOLE_HEIGHT * SCALE_INDEX * 1.5)),
-                null, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer);
+                null, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer + .1f);
 
             // The border 
             spriteBatch.Draw(borderLines, new Vector2(DRAW_POSITION_X, DRAW_POSITION_Y), null,

@@ -296,6 +296,15 @@ namespace HackAndSlash
 
         }
 
+        public bool InInventory()
+        {
+            return (itemState.state == ThrowingKnifeStateMachine.ItemStates.Useable);
+        }
+        public Vector2 GetPos()
+        {
+            return position;
+        }
+
         // returns collidableTiles for enemy damage or player collection
         public Rectangle[] getCollidableTiles(bool isEnemy)
         {

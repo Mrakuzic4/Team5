@@ -338,6 +338,14 @@ namespace HackAndSlash
             return RectanglesList;
         }
 
+        public bool InInventory()
+        {
+            return (itemState.state == FirewallStateMachine.ItemStates.Useable); 
+        }
+        public Vector2 GetPos()
+        {
+            return position;
+        }
         public void SetToolbarPosition(int index)
         {
             toolBarPosition = new Vector2((index + 4) * GlobalSettings.BASE_SCALAR, 0);

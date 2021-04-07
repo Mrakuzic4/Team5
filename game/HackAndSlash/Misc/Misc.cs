@@ -14,10 +14,26 @@ namespace HackAndSlash
 {
     public class Misc
     {
+        private const int BASE_RANGE = 1;
+
+        private int threshold = BASE_RANGE * GlobalSettings.BASE_SCALAR;
 
         public Misc()
         {
 
+        }
+
+        public void SetFogRange(int Range)
+        {
+            
+            threshold = (BASE_RANGE + Range) * GlobalSettings.BASE_SCALAR;
+        }
+        public bool InFogRange(Vector2 PlayerPos, Vector2 TargetPos)
+        {
+            Vector2 D = PlayerPos - TargetPos;
+            if (Math.Sqrt(D.X * D.X + D.Y * D.Y) < threshold)
+                return true;
+            return false;
         }
 
         public Vector2 PlayAreaPosition(int x, int y)

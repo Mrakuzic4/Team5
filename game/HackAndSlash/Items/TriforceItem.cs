@@ -78,6 +78,15 @@ namespace HackAndSlash
 
         }
 
+        public bool InInventory()
+        {
+            return inInventory;
+        }
+        public Vector2 GetPos()
+        {
+            return position;
+        }
+
         // returns collidableTiles for enemy damage or player collection
         public Rectangle[] getCollidableTiles(bool isEnemy)
         {

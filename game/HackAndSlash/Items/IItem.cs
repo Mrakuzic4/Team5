@@ -29,5 +29,10 @@ namespace HackAndSlash
         void SetToolbarPosition(int index);
 
         Rectangle[] getCollidableTiles(bool isEnemy);
+
+        bool InInventory();
+
+        Vector2 GetPos(); 
+        
     }
 }

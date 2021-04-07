@@ -43,6 +43,15 @@ namespace HackAndSlash
 
         }
 
+        public bool InInventory()
+        {
+            return false;
+        }
+        public Vector2 GetPos()
+        {
+            return position;
+        }
+
         public void ChangeToCollectable()
         {
 

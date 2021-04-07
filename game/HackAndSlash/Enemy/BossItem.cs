@@ -144,8 +144,14 @@ namespace HackAndSlash
             }
         }
 
-        
-
+        public bool InInventory()
+        {
+            return false;
+        }
+        public Vector2 GetPos()
+        {
+            return position;
+        }
         public Rectangle[] getCollidableTiles(bool isEnemy)
         {
             Rectangle[] RectanglesList = { new Rectangle(0, 0, 1, 1) };
