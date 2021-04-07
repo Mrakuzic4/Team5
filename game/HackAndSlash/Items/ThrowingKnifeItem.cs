@@ -296,9 +296,10 @@ namespace HackAndSlash
 
         }
 
-        public bool InInventory()
+        public bool FogBreaker()
         {
-            return (itemState.state == ThrowingKnifeStateMachine.ItemStates.Useable);
+            return (itemState.state == ThrowingKnifeStateMachine.ItemStates.Useable
+                || itemState.state == ThrowingKnifeStateMachine.ItemStates.BeingUsed);
         }
         public Vector2 GetPos()
         {

@@ -43,7 +43,7 @@ namespace HackAndSlash
 
         }
 
-        public bool InInventory()
+        public bool FogBreaker()
         {
             return false;
         }

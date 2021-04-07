@@ -12,6 +12,7 @@ namespace HackAndSlash
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        // Utility methods 
         public Misc utilMethods;
 
         // Game states 
@@ -25,7 +26,8 @@ namespace HackAndSlash
         public bool _DevMode = false;
         public bool _ShowBoundary = true;
         public bool _FOG = true;
-        public int _FogRange = 1; 
+        public int _FogRange = 1;
+        public bool _RdandomMap = false; // Not yet uesed 
 
         //Player
         private IPlayer PlayerMain;
@@ -126,7 +128,7 @@ namespace HackAndSlash
             currentLevel.Generate();
             currentMapInfo = currentLevel.currentMapInfo;
             generator = new MapGenerator(currentMapInfo);
-
+            // Minimap 
             miniMap = new Minimap(GraphicsDevice, spriteBatch, levelCycleRecord);
             miniMap.SetPivot(currentLevel.mapIndex);
 
@@ -141,6 +143,7 @@ namespace HackAndSlash
                 SpriteFactory.Instance.GetFullHeart(),
                 SpriteFactory.Instance.GetFontLife());
 
+            // Fog of war
             fogOfWar = new FOG(GraphicsDevice, spriteBatch);
             fogOfWar.SetRange(_FogRange);
             utilMethods.SetFogRange(_FogRange);
@@ -160,7 +163,7 @@ namespace HackAndSlash
             }
             else
             {
-                enemyList = new List<IEnemy>();
+                enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
             }
 
 
@@ -422,7 +425,7 @@ namespace HackAndSlash
 
                 foreach (IItem item in itemList) {
                     /// TODO: add test so that item are visible when being used 
-                    if (item.InInventory() || !_FOG || utilMethods.InFogRange(PlayerMain.GetPos(), item.GetPos()))
+                    if (item.FogBreaker() || !_FOG || utilMethods.InFogRange(PlayerMain.GetPos(), item.GetPos()))
                         item.Draw();
                     if (_DevMode && _ShowBoundary) {
                         DrawRectangle ItemRect = new DrawRectangle(GraphicsDevice, spriteBatch,

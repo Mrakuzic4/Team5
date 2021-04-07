@@ -30,7 +30,7 @@ namespace HackAndSlash
 
         Rectangle[] getCollidableTiles(bool isEnemy);
 
-        bool InInventory();
+        bool FogBreaker();
 
         Vector2 GetPos(); 
         

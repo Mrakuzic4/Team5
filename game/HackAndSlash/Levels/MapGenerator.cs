@@ -30,6 +30,15 @@ namespace HackAndSlash
         {
             List<IBlock> BlockList = new List<IBlock>();
 
+            const int DOOR_VERTICAL_MARK = 5;
+            const float DOOR_HORIZONTAL_MARK = 7.5f;
+            const int MID_DIVISION = 6;
+            const double LEFT_OFFSET = 1.25;
+            const double RIGHT_OFFSET = 2.75;
+            const int VERTICAL_DIVISION = 3;
+            const double UP_OFFSET = 2.25;
+            const double DOWN_OFFSET = 2.15;
+
             int TopPosition = GlobalSettings.HEADSUP_DISPLAY + GlobalSettings.BASE_SCALAR;
             int ButtPosition = GlobalSettings.WINDOW_HEIGHT - 2 * GlobalSettings.BASE_SCALAR;
             int LeftPosition = GlobalSettings.BASE_SCALAR;
@@ -37,12 +46,12 @@ namespace HackAndSlash
             int HorizontalPos, VerticalPos = 0;
 
             Vector2 LeftDoorBlocking = new Vector2(1 * GlobalSettings.BASE_SCALAR, 
-                GlobalSettings.HEADSUP_DISPLAY + 5 * GlobalSettings.BASE_SCALAR);
+                GlobalSettings.HEADSUP_DISPLAY + DOOR_VERTICAL_MARK * GlobalSettings.BASE_SCALAR);
             Vector2 RightDoorBlocking = new Vector2(GlobalSettings.WINDOW_WIDTH - 2 * GlobalSettings.BASE_SCALAR, 
-                GlobalSettings.HEADSUP_DISPLAY + 5 * GlobalSettings.BASE_SCALAR);
-            Vector2 TopDoorBlocking = new Vector2((float)7.5 * GlobalSettings.BASE_SCALAR,
+                GlobalSettings.HEADSUP_DISPLAY + DOOR_VERTICAL_MARK * GlobalSettings.BASE_SCALAR);
+            Vector2 TopDoorBlocking = new Vector2(DOOR_HORIZONTAL_MARK * GlobalSettings.BASE_SCALAR,
                 3 * GlobalSettings.BASE_SCALAR);
-            Vector2 BottomDoorBlocking = new Vector2((float)7.5 * GlobalSettings.BASE_SCALAR,
+            Vector2 BottomDoorBlocking = new Vector2(DOOR_HORIZONTAL_MARK * GlobalSettings.BASE_SCALAR,
                 GlobalSettings.WINDOW_HEIGHT - 2 * GlobalSettings.BASE_SCALAR);
 
             // Stuck a block if that direction has no entry  
@@ -70,26 +79,27 @@ namespace HackAndSlash
                     }
                 } 
             }
+            
 
             // The following 2 for loops are for the creation of walls (in lieu of boundary check)
             for (int i = 0; i < GlobalSettings.TILE_COLUMN; i++)
             {   
                 // All resulting magic numbers are to avoid player
                 // from stuck in between and cannot plass through doors 
-                if (i < 6)
-                    HorizontalPos = (int)((i + 1.25) * GlobalSettings.BASE_SCALAR);  
+                if (i < MID_DIVISION)
+                    HorizontalPos = (int)((i + LEFT_OFFSET) * GlobalSettings.BASE_SCALAR);  
                 else
-                    HorizontalPos = (int)((i + 2.75) * GlobalSettings.BASE_SCALAR);
+                    HorizontalPos = (int)((i + RIGHT_OFFSET) * GlobalSettings.BASE_SCALAR);
                 
                 BlockList.Add(new BlockInvis(new Vector2(HorizontalPos, TopPosition), spriteBatch));
                 BlockList.Add(new BlockInvis(new Vector2(HorizontalPos, ButtPosition), spriteBatch));
             }
             for (int i = 0; i < GlobalSettings.TILE_ROW; i++)
             {
-                if (i < 3)
-                    VerticalPos = GlobalSettings.HEADSUP_DISPLAY + (int)((i +2.25) * GlobalSettings.BASE_SCALAR);
-                if (i > 3)
-                    VerticalPos = GlobalSettings.HEADSUP_DISPLAY + (int)((i + 2.15) * GlobalSettings.BASE_SCALAR);
+                if (i < VERTICAL_DIVISION)
+                    VerticalPos = GlobalSettings.HEADSUP_DISPLAY + (int)((i + UP_OFFSET) * GlobalSettings.BASE_SCALAR);
+                if (i > VERTICAL_DIVISION)
+                    VerticalPos = GlobalSettings.HEADSUP_DISPLAY + (int)((i + DOWN_OFFSET) * GlobalSettings.BASE_SCALAR);
                 
                 BlockList.Add(new BlockInvis(new Vector2(LeftPosition, VerticalPos), spriteBatch));
                 BlockList.Add(new BlockInvis(new Vector2(RightPosition, VerticalPos), spriteBatch));

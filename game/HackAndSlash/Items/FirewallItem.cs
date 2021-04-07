@@ -338,9 +338,10 @@ namespace HackAndSlash
             return RectanglesList;
         }
 
-        public bool InInventory()
+        public bool FogBreaker()
         {
-            return (itemState.state == FirewallStateMachine.ItemStates.Useable); 
+            return (itemState.state == FirewallStateMachine.ItemStates.Useable
+                || itemState.state == FirewallStateMachine.ItemStates.BeingUsed); 
         }
         public Vector2 GetPos()
         {
