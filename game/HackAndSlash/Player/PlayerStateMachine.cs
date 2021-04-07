@@ -63,7 +63,7 @@ namespace HackAndSlash
 
 		public void Damaged()
 		{
-			game.Player = new DamagedPlayer(Player, game); //Decorator of the PlayerSprite
+			game.Player = new DamagedPlayer(game.Player, game); //Decorator of the PlayerSprite
 			int MinKnockback = new MaxKnockback(game, game.Player.GetPos(), (int)playerDir).distance;
 			int KnockbackDist = MinKnockback > GlobalSettings.KNOCKBACK_DIST_X ? 
 				GlobalSettings.KNOCKBACK_DIST_X : MinKnockback; 
@@ -101,7 +101,7 @@ namespace HackAndSlash
 		}
 		public void Attack()
         {
-			game.Player = new AttackPlayer(Player, game); //Decorator of the PlayerSprite
+			game.Player = new AttackPlayer(game.Player, game); //Decorator of the PlayerSprite
 			DrawPlayer.Instance.Attack = true;
 			switch (playerDir)
 			{
@@ -128,7 +128,7 @@ namespace HackAndSlash
 		}
 		public void UseItem()
 		{
-			game.Player = new UseItemPlayer(Player, game); //Decorator of the PlayerSprite
+			game.Player = new UseItemPlayer(game.Player, game); //Decorator of the PlayerSprite
 			switch (playerDir)
 			{
 				case GlobalSettings.Direction.Left:

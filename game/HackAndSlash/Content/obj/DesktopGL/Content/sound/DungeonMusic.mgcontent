@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/DungeonMusic.mp3</SourceFile>
-  <SourceTime>2021-04-04T19:49:55.619158-04:00</SourceTime>
-  <DestFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/DungeonMusic.xnb</DestFile>
-  <DestTime>2021-04-05T22:11:48.657351-04:00</DestTime>
+  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/DungeonMusic.mp3</SourceFile>
+  <SourceTime>2021-04-04T19:19:29.5244274-04:00</SourceTime>
+  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/DungeonMusic.xnb</DestFile>
+  <DestTime>2021-04-06T22:59:05.0042138-04:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/DungeonMusic.ogg</string>
+    <string>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/DungeonMusic.ogg</string>
   </BuildOutput>
 </PipelineBuildEvent>
