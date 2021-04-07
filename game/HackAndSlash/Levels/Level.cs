@@ -395,7 +395,7 @@ namespace HackAndSlash
                 Color tint = gameOver ? Color.Magenta : defaultTint;
                 tint = gameWon ? Color.Red : defaultTint;
                 spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), null,
-                    defaultTint, 0f, Vector2.Zero, 1, SpriteEffects.None, 1f);
+                    defaultTint, 0f, Vector2.Zero, 1, SpriteEffects.None, .5f);
             }
                 
         }

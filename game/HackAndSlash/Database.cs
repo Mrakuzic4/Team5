@@ -189,7 +189,7 @@ namespace HackAndSlash
                 new ImageFile("images/levels/eagleHoleVerticalDown", 1, 1),
                 new ImageFile("images/levels/eagleHoleHorizontalLeft", 1, 1),
                 new ImageFile("images/levels/eagleHoleHorizontalRight", 1, 1)};
-            FOGMask = new ImageFile("images/UI/GamePauseOverlay", 1, 1);
+            FOGMask = new ImageFile("images/Mask", 1, 1);
 
             //UI
             PauseOverlay = new ImageFile("images/UI/GamePauseOverlay", 1, 1);

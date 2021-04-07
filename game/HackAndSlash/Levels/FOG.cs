@@ -14,22 +14,37 @@ namespace HackAndSlash
 
         private const int OFFEST_UNIT = 1;
 
+        private int scaler = 1 + OFFEST_UNIT * 2;
+        private int width;
+        private int height; 
+
         private Vector2 position;
         private SpriteBatch spriteBatch; // the spritebatch used to draw the enemy
         private GraphicsDevice graphics; // the graphics device used by the spritebatch
 
         private Texture2D maskArea;
+        private Texture2D blackBlock;
 
+        private Color fillColor = Color.Black;  // Draw() method tint 
         private Color defaultTint = Color.White;  // Draw() method tint 
-        private Color transp = Color.Transparent; // Texture generation placeholder colod 
+        private double opacity = 0.9;
 
-        public FOG(Vector2 PlayerPos, GraphicsDevice G, SpriteBatch SB)
+        private float layer = 0.6f;
+
+        public FOG(GraphicsDevice G, SpriteBatch SB)
         {
-            position = PlayerPos;
             graphics = G;
             spriteBatch = SB;
 
             maskArea = SpriteFactory.Instance.GetFOGMask();
+
+            width = maskArea.Width;
+            height = maskArea.Height;
+
+            position = new Vector2(- (scaler * (width / 2) - GlobalSettings.BASE_SCALAR / 2),
+                -(scaler * (height / 2) - GlobalSettings.BASE_SCALAR / 2));
+
+            Generate();
         }
 
         public Texture2D GenerateTexture(int width, int height, Func<int, Color> paint)
@@ -46,13 +61,19 @@ namespace HackAndSlash
 
         private void Generate()
         {
-
+            blackBlock = GenerateTexture(GlobalSettings.WINDOW_WIDTH, GlobalSettings.WINDOW_HEIGHT, pixel => fillColor);
         }
 
-        public void Draw()
+        public void Draw(Vector2 PlayerPos, bool InTransition)
         {
-            spriteBatch.Draw(maskArea, position, null,
-                defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, 1f);
+            if (InTransition) {
+                spriteBatch.Draw(blackBlock, new Vector2(0, 0), null,
+                    defaultTint * (float)opacity, 0f, Vector2.Zero, 1, SpriteEffects.None, layer);
+            }
+            else {
+                spriteBatch.Draw(maskArea, position + PlayerPos, null,
+                    defaultTint * (float)opacity, 0f, Vector2.Zero, scaler, SpriteEffects.None, layer);
+            }
         }
     }
 }

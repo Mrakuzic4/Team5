@@ -140,7 +140,7 @@ namespace HackAndSlash
                 SpriteFactory.Instance.GetFullHeart(),
                 SpriteFactory.Instance.GetFontLife());
 
-            fogOfWar = new FOG(PlayerMain.GetPos(), GraphicsDevice, spriteBatch);
+            fogOfWar = new FOG(GraphicsDevice, spriteBatch);
 
             // When testing new enemies, put them here 
             if (_DevMode)
@@ -429,11 +429,14 @@ namespace HackAndSlash
                 }
 
                 // Player is not drawn during transition 
-                if (!currentLevel.transitioning)
-                {
+                if (!currentLevel.transitioning) {
                     PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
                 }
 
+                if (_FOG) {
+                    fogOfWar.Draw(PlayerMain.GetPos(), currentLevel.transitioning);
+                }
+                
                 // Masking part of the display, also used for masking extra transition animation 
                 currentLevel.DrawOverlay();
 
