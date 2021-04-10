@@ -133,6 +133,7 @@
     <Compile Include="Sound\SoundByte.cs" />
     <Compile Include="Sound\SoundFactory.cs" />
     <Compile Include="Sprite.cs" />
+    <Compile Include="UI\UpgradesOverlay.cs" />
     <Compile Include="UI\GameWonOverlay.cs" />
     <Compile Include="UI\GameOverOverlay.cs" />
     <Compile Include="UI\TextSprite.cs" />

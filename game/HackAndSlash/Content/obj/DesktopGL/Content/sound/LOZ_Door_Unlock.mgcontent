@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Door_Unlock.wav</SourceFile>
-  <SourceTime>2021-04-04T19:19:29.5264268-04:00</SourceTime>
-  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/LOZ_Door_Unlock.xnb</DestFile>
-  <DestTime>2021-04-10T14:45:08.5472615-04:00</DestTime>
+  <SourceFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Door_Unlock.wav</SourceFile>
+  <SourceTime>2021-04-04T19:49:55.6241553-04:00</SourceTime>
+  <DestFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/LOZ_Door_Unlock.xnb</DestFile>
+  <DestTime>2021-04-10T15:26:21.2830876-04:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

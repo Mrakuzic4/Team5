@@ -51,7 +51,7 @@ namespace HackAndSlash
                     //If chose to continue
                     if (CurrentSelection == SelectorContinueLoc)
                     {
-                        Game.Exit();
+                        Game.upgrading = true;
                     }
                     else
                     {

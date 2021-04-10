@@ -21,13 +21,15 @@ namespace HackAndSlash
         public bool gameOver = false;   
         public bool titleMenu = true;
         public bool gameWon = false;
+        public bool upgrading = false;
 
         // Game parameters, need _ prefix 
         public bool _DevMode = false;
         public bool _ShowBoundary = true;
         public bool _FOG = true;
         public int _FogRange = 1;
-        public bool _RdandomMap = false; // Not yet uesed 
+        public bool _RdandomMap = false; // Not yet used 
+        
 
         //Player
         private IPlayer PlayerMain;
@@ -89,8 +91,9 @@ namespace HackAndSlash
         private GameOverOverlay gameOverOverlay;
         private TitleScreenOverlay titleScreen;
         private GameWonOverlay gameWonScreenOverlay;
-        public Boolean inGameOverAnimation;
-        public Boolean inGameWonAnimation;
+        private UpgradesOverlay upgradesOverlay;
+        public bool inGameOverAnimation;
+        public bool inGameWonAnimation;
         
 
         private Texture2D textSprites;
@@ -183,6 +186,7 @@ namespace HackAndSlash
                             SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
             titleScreen = new TitleScreenOverlay(this, SpriteFactory.Instance.GetTitleScreen(), spriteBatch);
             gameWonScreenOverlay = new GameWonOverlay(this, SpriteFactory.Instance.getGameWonScreen(), SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
+            upgradesOverlay = new UpgradesOverlay(this, GraphicsDevice, spriteBatch);
         }
 
         /// <summary>
@@ -305,6 +309,12 @@ namespace HackAndSlash
             else if (!elapsing)
             {
                 if (gamePaused) pauseOverlay.Update();
+                if (upgrading)
+                {
+                    gameOver = false;
+                    gameWon = false;
+                    upgradesOverlay.Update();
+                }
                 if (gameOver)
                 {
                     currentLevel.setGameOver();
@@ -316,6 +326,7 @@ namespace HackAndSlash
                     currentLevel.setGameWon();
                     gameWonScreenOverlay.Update(gameTime);
                 }
+
             } 
             // Transitioning between rooms 
             else if (currentLevel.transitioning)
@@ -403,7 +414,12 @@ namespace HackAndSlash
             if (titleMenu) titleScreen.Draw();
             else if(gamePaused){ 
                 pauseOverlay.Draw(); 
-            }else if (gameOver && !inGameOverAnimation)
+            }
+            else if (upgrading)
+            {
+                upgradesOverlay.Draw();
+            }
+            else if (gameOver && !inGameOverAnimation)
             {
                 gameOverOverlay.Draw();
             }
@@ -412,6 +428,7 @@ namespace HackAndSlash
             {
                 gameWonScreenOverlay.Draw();
             }
+
             else
             {
                 currentLevel.Draw();

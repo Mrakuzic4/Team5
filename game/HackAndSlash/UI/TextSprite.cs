@@ -16,12 +16,13 @@ namespace HackAndSlash
         public int Columns { get; set; }
         private int totalFrames;
         private int currentFrame;
+        private int fontSize;
         private long animeDelay = GlobalSettings.DELAY_TIME;
         private Stopwatch stopwatch = new Stopwatch();
         private long timer;
         private int delayCounter { get; set; }
         private float layer = 0.7f;
-        public TextSprite(Texture2D texture, int rows, int columns)
+        public TextSprite(Texture2D texture, int rows, int columns, int fontSize)
         {
             stopwatch.Restart();
             Texture = texture;
@@ -30,6 +31,7 @@ namespace HackAndSlash
             totalFrames = rows * columns;
             currentFrame = 0;
             delayCounter = 0;
+            this.fontSize = fontSize;
         }
 
         public void Update()
@@ -54,7 +56,7 @@ namespace HackAndSlash
         {
         }
 
-        public void Draw(SpriteBatch spriteBatch, String stringInput, Vector2 location, Color color)
+        public void Draw(SpriteBatch spriteBatch, string stringInput, Vector2 location, Color color)
         {
             int textPos = 0;
             foreach (char character in stringInput)
@@ -65,9 +67,12 @@ namespace HackAndSlash
                 int row = (int)((float)currentFrame / (float)Columns);
                 int column = currentFrame % Columns;
 
+                int printWidth = fontSize * width;
+                int printHeight = fontSize * height;
+
                 Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-                Rectangle destinationRectangle = new Rectangle((int)location.X + textPos, (int)location.Y, width, height);
-                textPos += 8;
+                Rectangle destinationRectangle = new Rectangle((int)location.X + textPos, (int)location.Y, printWidth, printHeight);
+                textPos += printWidth;
                 spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color,
                     0f, Vector2.Zero, SpriteEffects.None, layer);
             }

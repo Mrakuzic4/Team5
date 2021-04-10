@@ -69,8 +69,6 @@ namespace HackAndSlash
             this.game.elapsing = false;
 
             this.game.gameWon = true;
-            // save data on game win (move to game state machines change to win method)
-            new JsonParser(SaveDatabase.saveFilePath, JsonParser.ParseMode.settingsMode).SaveToFile();
             this.game.inGameWonAnimation = true;
             //this.game.gameOver = true;
             //this.game.inGameOverAnimation = true;

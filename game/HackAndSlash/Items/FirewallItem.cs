@@ -52,7 +52,7 @@ namespace HackAndSlash
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
             firewallCollisionHandler = new ItemCollisionHandler(this.player);
-            textSprites = (TextSprite)SpriteFactory.Instance.CreateTextCharacters();
+            textSprites = (TextSprite)SpriteFactory.Instance.CreateTextCharacters(1);
 
         }
 

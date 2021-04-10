@@ -599,9 +599,9 @@ namespace HackAndSlash
             return new ItemSprite(ExplosionSprite, IMDB.explosion.C, IMDB.explosion.R);
         }
 
-        public ISprite CreateTextCharacters()
+        public ISprite CreateTextCharacters(int fontSize)
         {
-            return new TextSprite(TextCharacters, IMDB.TextCharacters.C, IMDB.TextCharacters.R);
+            return new TextSprite(TextCharacters, IMDB.TextCharacters.C, IMDB.TextCharacters.R, fontSize);
         }
 
         public ISprite CreateThrowingKnife(GlobalSettings.Direction direction)
