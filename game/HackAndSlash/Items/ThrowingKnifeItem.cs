@@ -22,13 +22,14 @@ namespace HackAndSlash
         private SpriteBatch spriteBatch;
 
         private ThrowingKnifeStateMachine itemState;
-        private static int numUses = 0;
-        private const int USE_DURATION = 100; // length of effect
+        private static int numUses = 0; 
         private int useDurationCounter = 0;
         private static int cooldown = 0; // item is useable if == 0 
         private const int ITEM_COOLDOWN = 30; // time in update cycles between uses 
-        private const int MAX_RANGE = 5; // range in # of sprites(tiles) 
+        private static int MAX_RANGE = GlobalSettings.saveSets.ItemRange; // range in # of sprites(tiles)
+        private static int USE_DURATION = MAX_RANGE * 20; // length of effect
         private Vector2 toolBarPosition;
+        
 
         public static bool inInventory = false;
 

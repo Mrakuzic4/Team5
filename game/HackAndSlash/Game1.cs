@@ -26,7 +26,7 @@ namespace HackAndSlash
         public bool _DevMode = false;
         public bool _ShowBoundary = true;
         public bool _FOG = true;
-        public int _FogRange = 1;
+        public int _FogRange = GlobalSettings.saveSets.VisibilityRadius;
         public bool _RdandomMap = false; // Not yet uesed 
 
         //Player

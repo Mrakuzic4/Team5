@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -238,5 +239,11 @@ namespace HackAndSlash
             };
 
   
+    }
+
+    public class SaveDatabase
+    {
+        // Correctly saves data to the AppData folder (just like a real game!)
+        public static string saveFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SaveFile.json");
     }
 }

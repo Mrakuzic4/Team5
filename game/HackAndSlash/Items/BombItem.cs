@@ -27,7 +27,7 @@ namespace HackAndSlash
         private const int ITEM_COOLDOWN = 30; // time in update cycles between uses
         private const int EXPLOSION_DELAY = 60;
         private const int NUM_BOMB_BLINKS = 4;
-        private const int EXPLOSION_DIAMETER = 3;
+        private int EXPLOSION_DIAMETER = GlobalSettings.saveSets.BombRadius;
         private Vector2 toolBarPosition;
 
         public static bool inInventory = false;

@@ -3,14 +3,12 @@
     "",
     "\\game",
     "\\game\\HackAndSlash",
-    "\\game\\HackAndSlash\\Enemy",
+    "\\game\\HackAndSlash\\Content",
     "\\game\\HackAndSlash\\Items",
     "\\game\\HackAndSlash\\Levels",
-    "\\game\\HackAndSlash\\obj",
-    "\\game\\HackAndSlash\\Player",
     "\\PeerReviewS3",
     "\\PeerReviewS4"
   ],
-  "SelectedNode": "\\game\\HackAndSlash\\Levels\\Minimap.cs",
+  "SelectedNode": "\\game\\HackAndSlash.sln",
   "PreviewInSolutionExplorer": false
 }

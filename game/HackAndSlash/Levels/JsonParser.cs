@@ -14,10 +14,14 @@ namespace HackAndSlash
         private string targetLocation = @"Content/info/levelDemoM1.json";
         private string targetContent;
         private Map currentMapInfo;
+        private SavedSettings currentSavedInfo;
+        public enum ParseMode { mapMode, settingsMode };
+        private ParseMode mode;
 
-        public JsonParser(string TargetFile)
+        public JsonParser(string TargetFile, ParseMode mode)
         {
-            targetLocation = TargetFile; 
+            targetLocation = TargetFile;
+            this.mode = mode;
             Parse();
         }
 
@@ -33,14 +37,29 @@ namespace HackAndSlash
         public void Parse()
         {
             ReadFile();
-
-            // If this line gives error, modify the properties of the .json file 
-            currentMapInfo = JsonConvert.DeserializeObject<Map>(targetContent);
-
+            if (mode == ParseMode.mapMode)
+            {
+                // If this line gives error, modify the properties of the .json file 
+                currentMapInfo = JsonConvert.DeserializeObject<Map>(targetContent);
+            }
+            else if (targetContent != null) {
+                currentSavedInfo = JsonConvert.DeserializeObject<SavedSettings>(targetContent);
+            }
         }
         public Map getCurrentMapInfo()
         {
             return currentMapInfo;
+        }
+
+        public SavedSettings getCurrentSavedSettings()
+        {
+            return currentSavedInfo;
+        }
+        public void SaveToFile()
+        {
+            string saveData = JsonConvert.SerializeObject(GlobalSettings.saveSets);
+            File.WriteAllText(targetLocation, saveData);
+            ReadFile();
         }
     }
 }

@@ -33,7 +33,7 @@ namespace HackAndSlash
                 for (int j = 0; j < LEVEL_EAGLE_SIZE; j++)
                 {
                     if (EaglePaths[i, j] != null)
-                        levelEagle[i, j] = new JsonParser(EaglePaths[i, j]).getCurrentMapInfo();
+                        levelEagle[i, j] = new JsonParser(EaglePaths[i, j], JsonParser.ParseMode.mapMode).getCurrentMapInfo();
                     else
                         levelEagle[i, j] = null;
                 }

@@ -44,9 +44,10 @@ namespace HackAndSlash
         private bool canMove;
 
         //Player's Health
-        private const int INIT_MAX_HEALTH = 6; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
+        private int INIT_MAX_HEALTH = GlobalSettings.saveSets.MaxHealth; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
         private int maxHealth; 
         private int currentHealth;
+        private int healPower = GlobalSettings.saveSets.HealPower;
 
 
         public Player(Game1 game)
@@ -159,7 +160,7 @@ namespace HackAndSlash
         // make player heal method in IPlayer and all player wrappers
         public void Healed()
         {
-            currentHealth++;
+            currentHealth += healPower;
             if (currentHealth > maxHealth)
             {
                 currentHealth = maxHealth;

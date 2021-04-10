@@ -128,6 +128,7 @@
     <Compile Include="Player\SpriteFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SavedSettings.cs" />
     <Compile Include="Sound\SongByte.cs" />
     <Compile Include="Sound\SoundByte.cs" />
     <Compile Include="Sound\SoundFactory.cs" />
@@ -215,6 +216,7 @@
     <None Include="bin\DesktopGL\AnyCPU\Debug\Content\images\sucLeft.xnb" />
     <None Include="bin\DesktopGL\AnyCPU\Debug\Content\images\sucOva.xnb" />
     <None Include="bin\DesktopGL\AnyCPU\Debug\Content\images\sucUp.xnb" />
+    <None Include="bin\DesktopGL\AnyCPU\Debug\Content\info\SaveFile.json" />
     <None Include="bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib" />
     <None Include="bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib" />
     <None Include="bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config" />
@@ -321,6 +323,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\info\eagleM17.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\info\NewSaveFile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />

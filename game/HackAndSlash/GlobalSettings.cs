@@ -79,6 +79,8 @@ namespace HackAndSlash
         public static Random RND = new Random(); 
         public const int PRNG_WEIGHT = 10; // Increse this to make it more random
 
+        public static SavedSettings saveSets = new JsonParser(SaveDatabase.saveFilePath, JsonParser.ParseMode.settingsMode).getCurrentSavedSettings();
+
 
     }
 
