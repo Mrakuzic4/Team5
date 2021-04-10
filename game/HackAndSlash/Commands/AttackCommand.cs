@@ -14,13 +14,10 @@ namespace HackAndSlash
 
         public AttackCommand(Game1 game)
         {
-
             this.game = game;
         }
         public void execute()
         {
-            //This is executed three times per
-
             game.Player.Attack();
         }
     }

@@ -73,7 +73,9 @@ namespace HackAndSlash
         public const int BUG_ENEMY = -2;
         public const int MOBLIN_ENEMY = -3;
         public const int BOSS_ENEMY = -4;
-        public const int NPC_OLD_MAN = -5; 
+        public const int NPC_OLD_MAN = -5;
+        public const int NPC_OLD_WOMAN = -6;
+
 
         // Misc
         public static Random RND = new Random(); 

@@ -98,11 +98,24 @@ namespace HackAndSlash
         public ImageFile Font_OldManText2;
         public ImageFile CheatText;
 
+        public ImageFile OldWoman;
+        public ImageFile Heart;
+        public ImageFile Refill;
+        public ImageFile Ruby;
+        public ImageFile Shield;
+
+
         public ImageFile Font_Life;
 
         public ImageDatabase()
         {
-            // Initilize images with path/name, column and row 
+            // Initilize images with path/name, column and row
+            OldWoman = new ImageFile("Merchant/Oldwoman", 1, 1);
+            Heart = new ImageFile("Merchant/Heart", 1, 1);
+            Refill = new ImageFile("Merchant/Refill", 1, 1);
+            Ruby = new ImageFile("Merchant/Ruby", 1, 1);
+            Shield = new ImageFile("Merchant/Shield", 1, 1);
+
             RedBall = new ImageFile("images/RedBall", 1, 1);
             OldMan = new ImageFile("images/Oldman", 1, 1);
 

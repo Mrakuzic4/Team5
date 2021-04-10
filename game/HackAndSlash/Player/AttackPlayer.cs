@@ -67,12 +67,11 @@ namespace HackAndSlash
         public void Move()
         {
             //Does not move during attack
-            //DecoratedPlayer.Move();
         }
 
         public void Attack()
         {
-            //Does not attack
+            //Does not attack again
         }
 
         public void Damaged()
