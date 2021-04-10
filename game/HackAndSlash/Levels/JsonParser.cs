@@ -31,6 +31,10 @@ namespace HackAndSlash
             if (File.Exists(targetLocation))
             {
                 targetContent = File.ReadAllText(targetLocation);
+            } else
+            {
+                targetContent = File.ReadAllText(@"Content/info/NewSaveFile.json");
+                File.WriteAllText(SaveDatabase.saveFilePath, targetContent);
             }
         }
 

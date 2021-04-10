@@ -216,6 +216,9 @@
     <None Include="bin\DesktopGL\AnyCPU\Debug\Content\images\sucLeft.xnb" />
     <None Include="bin\DesktopGL\AnyCPU\Debug\Content\images\sucOva.xnb" />
     <None Include="bin\DesktopGL\AnyCPU\Debug\Content\images\sucUp.xnb" />
+    <Content Include="bin\DesktopGL\AnyCPU\Debug\Content\info\NewSaveFile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="bin\DesktopGL\AnyCPU\Debug\Content\info\SaveFile.json" />
     <None Include="bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib" />
     <None Include="bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib" />

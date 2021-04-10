@@ -26,7 +26,7 @@ namespace HackAndSlash
         public bool _DevMode = false;
         public bool _ShowBoundary = true;
         public bool _FOG = true;
-        public int _FogRange = GlobalSettings.saveSets.VisibilityRadius;
+        public int _FogRange = 1;
         public bool _RdandomMap = false; // Not yet uesed 
 
         //Player
@@ -145,6 +145,7 @@ namespace HackAndSlash
 
             // Fog of war
             fogOfWar = new FOG(GraphicsDevice, spriteBatch);
+            _FogRange = GlobalSettings.saveSets.VisibilityRadius;
             fogOfWar.SetRange(_FogRange);
             utilMethods.SetFogRange(_FogRange);
 

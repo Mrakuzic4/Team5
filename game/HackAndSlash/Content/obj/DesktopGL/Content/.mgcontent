@@ -4,133 +4,133 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/AquamentusSprite.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/bg.jpg</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BlockBlank1.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BlockDemo.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/blockMovable.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BlockWater.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BlockX.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/Bomb.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/Boss.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/bossDie.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugDie.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugEnemyIdle.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugEnemyLeft.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugEnemyMoveDown.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugEnemyMoveUp.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugEnemyRight.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugIdle.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugMoveDown.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugMoveUp.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugRefactoredIdle.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ChipBlock.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/EmptyHeart.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/explosion.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/firewall2.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/firewall3.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/font/Cheat.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/font/Font_Compass.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/font/Font_Forthis.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/font/Font_Inventory.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/font/Font_Level.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/font/Font_Life.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/font/Font_Map.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/font/Font_Oldman1.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/font/Font_Usebutton.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/font/Oldman2.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/Food.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/HalfHeart.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/LevelEagleBorder.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/levels/blockAllMight.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/levels/eagleDoorHorizontalLeft.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/levels/eagleDoorHorizontalRight.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/levels/eagleDoors.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/levels/eagleDoorVerticalDown.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/levels/eagleDoorVerticalUp.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/levels/eagleHoleHorizontalLeft.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/levels/eagleHoleHorizontalRight.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/levels/eagleHoleVerticalDown.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/levels/eagleHoleVerticalUp.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/LinkTriforce.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/Mask.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/MoblinBomb.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/MoblinDown.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/MoblinLeft.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/MoblinRight.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/MoblinUp.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/NES - The Legend of Zelda - Fonts.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/NES - The Legend of Zelda - Link.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/Oldman.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/RedBall.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/SnakeAttack.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/SnakeDie.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/SnakeEnemyRight.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/SnakeIdle.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/SnakeLeftMoving.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/snakespritesheet.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucDown.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucLeft.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucOva.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/sucUp.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/TextSprites.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ThrowingKnifeDown.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ThrowingKnifeLeft.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ThrowingKnifeRight.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ThrowingKnifeUp.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/Triforce.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/UI/GameOverOverlay.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/UI/GamePauseOverlay.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/UI/ItemSelector.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/UI/SwordSelector.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/UI/TitleScreens.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/UI/WinningScreen.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/WholeHeart.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaAttackDown.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaAttackLeft.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaAttackRight.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaAttackUp.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaDown.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaDying.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaLeft.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaRight.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaUp.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaUseItemDown.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaUseItemLeft.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaUseItemRight.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/ZeldaUseItemUp.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Heart.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/NES - The Legend of Zelda - Items &amp; Weapons.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Refill.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Ruby.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Shield.png</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/CoconutSong.mp3</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/DungeonMusic.mp3</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/GangTortureDance .mp3</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Arrow_Boomerang.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Bomb_Blow.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Bomb_Drop.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Boss_Scream1.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Candle.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Door_Unlock.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Enemy_Hit.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Fanfare.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Get_Heart.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Get_Item.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Key_Appear.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Link_Die.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Link_Hurt.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_LowHealth.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_MagicalRod.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Recorder.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Secret.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Shield.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Stairs.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Sword_Combined.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Sword_Shoot.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Sword_Slash.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Text.wav</File>
-    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/TitleScreenMp3.mp3</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/AquamentusSprite.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/bg.jpg</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BlockBlank1.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BlockDemo.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/blockMovable.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BlockWater.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BlockX.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/Bomb.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/Boss.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/bossDie.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugDie.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugEnemyIdle.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugEnemyLeft.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugEnemyMoveDown.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugEnemyMoveUp.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugEnemyRight.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugIdle.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugMoveDown.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugMoveUp.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/BugRefactoredIdle.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ChipBlock.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/EmptyHeart.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/explosion.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/firewall2.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/firewall3.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/font/Cheat.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Compass.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Forthis.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Inventory.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Level.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Life.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Map.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Oldman1.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/font/Font_Usebutton.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/font/Oldman2.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/Food.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/HalfHeart.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/LevelEagleBorder.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/blockAllMight.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/eagleDoorHorizontalLeft.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/eagleDoorHorizontalRight.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/eagleDoors.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/eagleDoorVerticalDown.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/eagleDoorVerticalUp.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/eagleHoleHorizontalLeft.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/eagleHoleHorizontalRight.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/eagleHoleVerticalDown.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/levels/eagleHoleVerticalUp.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/LinkTriforce.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/Mask.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/MoblinBomb.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/MoblinDown.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/MoblinLeft.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/MoblinRight.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/MoblinUp.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/NES - The Legend of Zelda - Fonts.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/NES - The Legend of Zelda - Link.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/Oldman.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/RedBall.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/SnakeAttack.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/SnakeDie.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/SnakeEnemyRight.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/SnakeIdle.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/SnakeLeftMoving.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/snakespritesheet.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/sucDown.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/sucLeft.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/sucOva.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/sucUp.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/TextSprites.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeDown.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeLeft.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeRight.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeUp.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/Triforce.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/UI/GameOverOverlay.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/UI/GamePauseOverlay.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/UI/ItemSelector.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/UI/SwordSelector.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/UI/TitleScreens.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/UI/WinningScreen.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/WholeHeart.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaAttackDown.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaAttackLeft.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaAttackRight.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaAttackUp.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaDown.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaDying.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaLeft.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaRight.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaUp.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaUseItemDown.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaUseItemLeft.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaUseItemRight.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ZeldaUseItemUp.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/Merchant/Heart.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/Merchant/NES - The Legend of Zelda - Items &amp; Weapons.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/Merchant/Refill.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/Merchant/Ruby.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/Merchant/Shield.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/CoconutSong.mp3</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/DungeonMusic.mp3</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/GangTortureDance .mp3</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Arrow_Boomerang.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Bomb_Blow.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Bomb_Drop.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Boss_Scream1.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Candle.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Door_Unlock.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Enemy_Hit.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Fanfare.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Get_Heart.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Get_Item.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Key_Appear.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Link_Die.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Link_Hurt.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_LowHealth.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_MagicalRod.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Recorder.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Secret.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Shield.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Stairs.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Sword_Combined.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Sword_Shoot.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Sword_Slash.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/LOZ_Text.wav</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/TitleScreenMp3.mp3</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
