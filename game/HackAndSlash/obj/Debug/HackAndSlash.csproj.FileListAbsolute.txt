@@ -343,3 +343,5 @@ C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCP
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\Merchant\Refill.xnb
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\Merchant\Ruby.xnb
 C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\Merchant\Shield.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\NewSaveFile.json
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\Merchant\Oldwoman.xnb

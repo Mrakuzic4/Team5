@@ -161,6 +161,9 @@ namespace HackAndSlash
                         case GlobalSettings.NPC_OLD_MAN:
                             EnemyList.Add(new OldManNPC(position, graphics, spriteBatch, game));
                             break;
+                        case GlobalSettings.NPC_OLD_WOMAN:
+                            EnemyList.Add(new OldManNPC(position, graphics, spriteBatch, game));
+                            break;
                         default:
                             break; 
                     }

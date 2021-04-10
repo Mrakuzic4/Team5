@@ -89,6 +89,12 @@ namespace HackAndSlash
         private Texture2D OldMan;
         private Texture2D RedBall;
 
+        private Texture2D OldWoman;
+        private Texture2D Heart;
+        private Texture2D Refill;
+        private Texture2D Ruby;
+        private Texture2D Shield;
+
         private Texture2D TextCharacters;
 
         private Texture2D Font_OldManText1;
@@ -114,6 +120,13 @@ namespace HackAndSlash
         {
             IMDB = new ImageDatabase();
 
+            //Merchant
+            OldWoman = content.Load<Texture2D>(IMDB.OldWoman.pathName);
+            Heart = content.Load<Texture2D>(IMDB.Heart.pathName);
+            Refill = content.Load<Texture2D>(IMDB.Refill.pathName);
+            Ruby = content.Load<Texture2D>(IMDB.Ruby.pathName);
+            Shield = content.Load<Texture2D>(IMDB.Shield.pathName);
+            
             //NPC
             OldMan = content.Load<Texture2D>(IMDB.OldMan.pathName);
             RedBall = content.Load<Texture2D>(IMDB.RedBall.pathName);
@@ -220,6 +233,28 @@ namespace HackAndSlash
             TextCharacters = content.Load<Texture2D>(IMDB.TextCharacters.pathName);
             InventoryText = content.Load<Texture2D>(IMDB.InventoryText.pathName);
             ItemSelector = content.Load<Texture2D>(IMDB.ItemSelector.pathName);
+        }
+
+        //************Below are Merchant and NPC***********
+        public Texture2D GetOldWoman()
+        {
+            return OldWoman;
+        }
+        public Texture2D GetHeart()
+        {
+            return Heart;
+        }
+        public Texture2D GetRefill()
+        {
+            return Refill;
+        }
+        public Texture2D GetRuby()
+        {
+            return Ruby;
+        }
+        public Texture2D GetShield()
+        {
+            return Shield;
         }
 
         public Texture2D GetRedBall()
