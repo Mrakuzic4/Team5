@@ -66,6 +66,7 @@ namespace HackAndSlash
         private Texture2D ThrowingKnifeDownSprite;
         private Texture2D FoodSprite;
         private Texture2D TriforceSprite;
+        private Texture2D RupySprite;
 
         private Texture2D BlockMovable;
         private Texture2D BlockAllMight; 
@@ -124,7 +125,6 @@ namespace HackAndSlash
             OldWoman = content.Load<Texture2D>(IMDB.OldWoman.pathName);
             Heart = content.Load<Texture2D>(IMDB.Heart.pathName);
             Refill = content.Load<Texture2D>(IMDB.Refill.pathName);
-            Ruby = content.Load<Texture2D>(IMDB.Ruby.pathName);
             Shield = content.Load<Texture2D>(IMDB.Shield.pathName);
             
             //NPC
@@ -197,6 +197,7 @@ namespace HackAndSlash
             ThrowingKnifeRightSprite = content.Load<Texture2D>(IMDB.throwingKnifeRight.pathName);
             FoodSprite = content.Load<Texture2D>(IMDB.food.pathName);
             TriforceSprite = content.Load<Texture2D>(IMDB.triforce.pathName);
+            RupySprite = content.Load<Texture2D>(IMDB.rupy.pathName);
             Font_Cheat = content.Load<Texture2D>(IMDB.CheatText.pathName);
 
             // More Content.Load calls follow
@@ -247,10 +248,6 @@ namespace HackAndSlash
         public Texture2D GetRefill()
         {
             return Refill;
-        }
-        public Texture2D GetRuby()
-        {
-            return Ruby;
         }
         public Texture2D GetShield()
         {
@@ -632,6 +629,10 @@ namespace HackAndSlash
         public ISprite CreateFood()
         {
             return new ItemSprite(FoodSprite, IMDB.food.C, IMDB.food.R);
+        }
+        public ISprite CreateRupy()
+        {
+            return new ItemSprite(RupySprite, IMDB.rupy.C, IMDB.rupy.R);
         }
 
         //*****************************Below are block objects******************************//

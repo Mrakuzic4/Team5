@@ -177,7 +177,6 @@ namespace HackAndSlash
         {
             List<IItem> ItemList = new List<IItem>();
             int itemNum = 0;
-            bool hasFirewall = false;
             for (int r = 0; r < GlobalSettings.TILE_ROW; r++)
             {
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
@@ -211,6 +210,9 @@ namespace HackAndSlash
                             break;
                         case GlobalSettings.BURNING_FIRE:
                             ItemList.Add(new BurningFire(position, spriteBatch));
+                            break;
+                        case GlobalSettings.RUPY_ITEM:
+                            ItemList.Add(new RupyItem(position, spriteBatch, game));
                             break;
                         default:
                             break;

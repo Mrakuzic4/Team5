@@ -60,7 +60,7 @@ namespace HackAndSlash
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color,
                 0f, Vector2.Zero, SpriteEffects.None, underLayer);
@@ -74,7 +74,7 @@ namespace HackAndSlash
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color,
                 0f, Vector2.Zero, SpriteEffects.None, layer);

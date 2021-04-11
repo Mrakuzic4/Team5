@@ -68,6 +68,7 @@ namespace HackAndSlash
         public ImageFile throwingKnifeRight;
         public ImageFile food;
         public ImageFile triforce;
+        public ImageFile rupy;
 
         public ImageFile BG;
 
@@ -101,7 +102,6 @@ namespace HackAndSlash
         public ImageFile OldWoman;
         public ImageFile Heart;
         public ImageFile Refill;
-        public ImageFile Ruby;
         public ImageFile Shield;
 
 
@@ -113,7 +113,6 @@ namespace HackAndSlash
             OldWoman = new ImageFile("Merchant/Oldwoman", 1, 1);
             Heart = new ImageFile("Merchant/Heart", 1, 1);
             Refill = new ImageFile("Merchant/Refill", 1, 1);
-            Ruby = new ImageFile("Merchant/Ruby", 1, 1);
             Shield = new ImageFile("Merchant/Shield", 1, 1);
 
             RedBall = new ImageFile("images/RedBall", 1, 1);
@@ -182,6 +181,7 @@ namespace HackAndSlash
             throwingKnifeRight = new ImageFile("images/throwingKnifeRight", 1, 1);
             food = new ImageFile("images/Food", 1, 1);
             triforce = new ImageFile("images/Triforce", 1, 1);
+            rupy = new ImageFile("images/Rupy", 1, 1);
 
             BG = new ImageFile("images/BG", 1, 1);
 

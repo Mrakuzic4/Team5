@@ -721,6 +721,18 @@
 /processorParam:TextureFormat=Color
 /build:images/RedBall.png
 
+#begin images/Rupy.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/Rupy.png
+
 #begin images/SnakeAttack.png
 /importer:TextureImporter
 /processor:TextureProcessor

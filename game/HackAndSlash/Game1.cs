@@ -85,6 +85,7 @@ namespace HackAndSlash
         public FirewallItem firewallFirst;
         public BombItem bombFirst;
         public ThrowingKnifeItem throwingKnifeFirst;
+        public RupyItem mainRupy;
 
         //UI Elements
         private PauseOverlay pauseOverlay;
@@ -110,7 +111,7 @@ namespace HackAndSlash
 
         public int numOfEnemy { get; set; }
         public int numOfDropped { get; set; }
-
+        public int numRupies = 0;
         /* ============================================================
          * ======================== Methods ===========================
          * ============================================================ */
@@ -175,6 +176,7 @@ namespace HackAndSlash
             itemList = generator.GetItemList(spriteBatch, this);
             useableItemList = new List<IItem>();
             textSprites = SpriteFactory.Instance.GetTextCharacters();
+            mainRupy = new RupyItem(new Vector2(9 * GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR / 2), spriteBatch, this);
 
             //Create list of blocks
             blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
@@ -370,6 +372,20 @@ namespace HackAndSlash
                 foreach (IEnemy enemy in enemyList) enemy.Update(gameTime);
 
                 foreach (IItem item in itemList) item.Update();
+                if (!itemList.Contains(mainRupy))
+                {
+                    
+                    itemList.Add(mainRupy);
+                    if (RupyItem.numUses > 0) 
+                    {
+                        mainRupy.ChangeToUseable();
+                    } else
+                    {
+                        mainRupy.ChangeToExpended();
+                    }
+                    
+
+                }
                 foreach (IItem item in useableItemList)
                 {
                     // keep item uses between rooms
