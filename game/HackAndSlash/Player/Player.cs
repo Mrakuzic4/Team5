@@ -133,9 +133,18 @@ namespace HackAndSlash
             //Sprite Animation and Decorator
             playerStateMachine.Attack();
             this.swordEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckSwordEnemyCollisions());
-
+         
             //Sound
             SoundFactory.Instance.SwordSlashEffect();
+
+            if (currentHealth == maxHealth)
+            {
+                //shoot the sword
+                ThrowingKnifeItem shoot = new ThrowingKnifeItem(this.GetPos(),this.game.spriteBatch, game);
+                shoot.CollectItem();
+                shoot.UseItem(this.GetDir());
+
+            }
         }
 
         public void Damaged()
