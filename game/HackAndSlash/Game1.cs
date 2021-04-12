@@ -10,7 +10,7 @@ namespace HackAndSlash
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public SpriteBatch spriteBatch;
 
         // Utility methods 
         public Misc utilMethods;
