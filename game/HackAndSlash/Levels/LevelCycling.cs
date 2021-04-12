@@ -11,12 +11,15 @@ namespace HackAndSlash
 
     public class LevelCycling
     {
+        public bool useS4 = true; 
 
         private const int LEVEL_EAGLE_SIZE = 6;
 
         // Field created jjust to fullfill sprint 3 scycling feature 
         public Map[,] levelEagle;
         public Map[,] levelCrescent; // For future use 
+
+        private GenerateLevel levelRNG; 
 
         public Map[,] currentMapSet;
         public int[] currentLocationIndex;
@@ -39,14 +42,22 @@ namespace HackAndSlash
                 }
             }
 
-            currentMapSet = levelEagle; // For initilization, set eagle as the default level 
-
+            if (useS4)
+                currentMapSet = levelEagle; // For initilization, set eagle as the default level 
+            else
+            {
+                levelRNG = new GenerateLevel();
+                currentMapSet = levelRNG.GenerateLevelSet(8, 8);
+            }
         }
         
 
         public Map StartUpLevel()
         {
-            return levelEagle[GlobalSettings.STRAT_UP_INDEX[0], GlobalSettings.STRAT_UP_INDEX[1]]; // Only works for level eagle 
+            if (useS4)
+                return levelEagle[GlobalSettings.STRAT_UP_INDEX[0], GlobalSettings.STRAT_UP_INDEX[1]]; // Only works for level eagle 
+            else
+                return levelRNG.StartUpMap();
         }
 
         // If that direction has a room 

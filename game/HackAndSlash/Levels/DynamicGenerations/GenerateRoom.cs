@@ -16,14 +16,14 @@ namespace HackAndSlash
         public int defaultBlock { get; set; }
         public int dropPotions { get; set; }
         public int dropKeys { get; set; }
-        public bool doorState { get; set; }
+        public bool[] doorState { get; set; }
 
         public GenerateRoom()
         {
             defaultBlock = 0;
             dropKeys = 0;
             dropPotions = 0;
-            doorState = false; 
+            doorState = new bool[] {false, false, false, false }; 
         }
 
         public Map InitRoom()
@@ -40,13 +40,13 @@ namespace HackAndSlash
             template.DropKeys = dropKeys;
             template.DropPotions = dropPotions;
 
-            foreach (int Dir in new int[] {0, 1, 2, 3 }) {
-                template.HiddenDoors[Dir] = doorState;
-                template.LockedDoors[Dir] = doorState;
-                template.MysteryDoors[Dir] = doorState;
-                template.OpenDoors[Dir] = doorState;
-                template.Holes[Dir] = doorState;
-            }
+            
+            template.HiddenDoors = doorState;
+            template.LockedDoors = doorState;
+            template.MysteryDoors = doorState;
+            template.OpenDoors = doorState;
+            template.Holes = doorState;
+            
 
             return template;
         }

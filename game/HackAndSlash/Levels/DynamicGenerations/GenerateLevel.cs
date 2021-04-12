@@ -58,5 +58,12 @@ namespace HackAndSlash
 
         }
 
+        public Map StartUpMap()
+        {
+            int Row = levelSet.GetLength(0) - 1;
+            int Col = levelSet.GetLength(1) / 2;
+            return levelSet[Row, Col];
+        }
+
     }
 }

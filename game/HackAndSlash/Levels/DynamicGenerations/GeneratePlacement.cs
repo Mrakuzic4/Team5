@@ -13,22 +13,22 @@ namespace HackAndSlash
     class GeneratePlacement
     {
 
+        public int[] startUpLocation { get; set; }
+
         public GeneratePlacement()
         {
-
+            
         }
+
+
 
         public bool[,] GetPlacement(int Row, int Col)
         {
-            bool[,] Placement = new bool[Row, Col];
-
-            for (int i = 0; i < Placement.GetLength(0); i++)
-                for (int j = 0; j < Placement.GetLength(1); j++)
-                    Placement[i, j] = false;
+            RoomGraph graph = new RoomGraph(Row, Col);
+            graph.SetStartUp(Row - 1, Col / 2);
 
 
-
-            return Placement;
+            return graph.GetArrangement();
         }
 
     }
