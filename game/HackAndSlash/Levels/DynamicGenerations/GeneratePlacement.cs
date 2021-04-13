@@ -13,13 +13,16 @@ namespace HackAndSlash
     class GeneratePlacement
     {
         private const double THRESHOLD = 0.5;
-        private const double OFFSET = 0.5; 
+        private const double OFFSET = 0.5;
+        private const double EMPTY_LINE_WEIGHT = 2; 
+        private const double DIVERGE_WEIGHT = 2; 
+        private const double DIAGONAL_WEIGHT = 3;
+        private const double REGIONAL_WEIGHT = 0.75; 
         private const int UP = (int)GlobalSettings.Direction.Up;
         private const int DOWN = (int)GlobalSettings.Direction.Up;
         private const int LEFT = (int)GlobalSettings.Direction.Up;
         private const int RIGHT = (int)GlobalSettings.Direction.Up;
-
-        public double _Density = 0.5;
+        
         public int _RandWeight = 10;
         public bool _StartMiddle = false; // Middle or bottom 
 
@@ -33,8 +36,6 @@ namespace HackAndSlash
             row = Row;
             col = Col; 
         }
-
-
 
         public bool[,] GetPlacement()
         {
@@ -61,10 +62,20 @@ namespace HackAndSlash
                     {
                         int emptyCount = graph.EmptyCount(node.index, Direction);
                         double possbility = GlobalSettings.RND.NextDouble() - OFFSET;
+                        int directionCount = row;
+
                         if (Direction == UP || Direction == DOWN)
-                            possbility += emptyCount / (col - 1.0);
-                        else
-                            possbility += emptyCount / (row - 1.0);
+                            directionCount = col;
+                            
+                        possbility += EMPTY_LINE_WEIGHT * emptyCount / (directionCount - 1.0);
+
+                        if (Direction != node.expansionDir) {
+                            possbility = Math.Abs(possbility);
+                            possbility *= DIVERGE_WEIGHT; 
+                        }
+
+                        possbility += graph.EmptyRegionalRate(node.index, Direction) * REGIONAL_WEIGHT; 
+                        possbility -= graph.DiagonalEmptyRate(node.index, Direction) * DIAGONAL_WEIGHT;
 
                         if (graph.IsEmpty(node.index, Direction) && possbility > THRESHOLD)
                         {

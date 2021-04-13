@@ -19,6 +19,10 @@ namespace HackAndSlash
         public int levelSetRow { set; get; }
         public int levelSetCol { set; get; }
 
+        public int startUpCol { set; get; }
+
+        public int startUpRow { set; get; }
+
         public GenerateLevel()
         {
 
@@ -32,6 +36,9 @@ namespace HackAndSlash
             init();
             RegulateDoors();
 
+
+            
+            PickStartUpRoom();
 
             return levelSet;
         }
@@ -109,6 +116,19 @@ namespace HackAndSlash
             levelSet[CurrentPos[0] + (int)Offset.Y, CurrentPos[1] + (int)Offset.X].OpenDoors[nextRoomDoorDir] = true;
         }
 
+        private void PickStartUpRoom()
+        {
+            // Randomly pick a startup Room 
+            while (true)
+            {
+                startUpRow = GlobalSettings.RND.Next(levelSet.GetLength(0) - 1);
+                startUpCol = GlobalSettings.RND.Next(levelSet.GetLength(1) - 1);
+
+                if (levelSet[startUpRow, startUpCol] != null)
+                    break;
+            }
+        }
+
         public bool HasNextRoom(int[] CurrentPos, int Direction)
         {
             switch (Direction)
@@ -135,17 +155,7 @@ namespace HackAndSlash
         }
         public int[] StartUpMap()
         {
-            int Row;
-            int Col;
-            while (true)
-            {
-                Row = GlobalSettings.RND.Next(levelSet.GetLength(0) - 1);
-                Col = GlobalSettings.RND.Next(levelSet.GetLength(1) - 1);
-
-                if (levelSet[Row, Col] != null)
-                    break; 
-            }
-            return new int[] { Row, Col };
+            return new int[] { startUpRow, startUpCol };
         }
 
     }

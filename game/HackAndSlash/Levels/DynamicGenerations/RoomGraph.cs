@@ -10,6 +10,11 @@ using System.Collections.Generic;
 /// </summary>
 namespace HackAndSlash
 {
+
+    /// <summary>
+    /// A single node representing a room, created for easy access 
+    /// of relationship during placement creation. 
+    /// </summary>
     class RoomNode
     {
         public int expansionDir { set; get; }
@@ -92,6 +97,11 @@ namespace HackAndSlash
         }
     }
 
+    /// <summary>
+    /// The graph of the rooms. Created for easy access of 
+    /// misc conditions and polynomial calculations during 
+    /// placement creation. 
+    /// </summary>
     class RoomGraph
     {
         public int[] startUpLocation { get; set; }
@@ -169,7 +179,7 @@ namespace HackAndSlash
         }
 
         /// <summary>
-        /// Find the maxium amount of continuous empty space in that direction. 
+        /// Find the maxium amount of continuous empty space in that direction on a line. 
         /// </summary>
         /// <param name="CurrentPos"></param>
         /// <param name="Direction"></param>
@@ -208,6 +218,111 @@ namespace HackAndSlash
             
 
             return count; 
+        }
+
+        /// <summary>
+        /// Rate of emptiness in the square region at that direction.
+        /// </summary>
+        /// <param name="CurrentPos"></param>
+        /// <param name="Direction"></param>
+        /// <returns>A double between 0 to 1</returns>
+        public double EmptyRegionalRate(int[] CurrentPos, int Direction)
+        {
+            int allCount = 0, trueCount = 0;
+
+            int iStart = 0, iEnd = 0;
+            int jStart = 0, jEnd = 0;
+
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    iEnd = CurrentPos[0];
+                    jEnd = arrangement.GetLength(1); 
+                    
+                    break;
+
+                case (int)GlobalSettings.Direction.Down:
+                    if (CurrentPos[0] == arrangement.GetLength(0) - 1) return 0;
+                    iStart = CurrentPos[0];
+                    iEnd = arrangement.GetLength(0);
+                    jEnd = arrangement.GetLength(1);
+                    break;
+
+                case (int)GlobalSettings.Direction.Left:
+                    iEnd = arrangement.GetLength(0);
+                    jEnd = CurrentPos[1];
+                    break;
+
+                case (int)GlobalSettings.Direction.Right:
+                    if (CurrentPos[1] == arrangement.GetLength(1) - 1) return 0;
+                    iEnd = arrangement.GetLength(0);
+                    jStart = CurrentPos[1];
+                    jEnd = arrangement.GetLength(1);
+                    break;
+
+                default:
+                    break;
+            }
+
+            for (int i = iStart; i < iEnd; i++) {
+                for (int j = jStart; j < jEnd; j++) {
+                    if (arrangement[i, j])
+                        trueCount += 1;
+                    allCount += 1; 
+                }    
+            }
+
+            return (double)trueCount / allCount;
+        }
+
+        public double DiagonalEmptyRate(int[] CurrentPos, int Direction)
+        {
+            int trueCount = 0;
+            
+
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    if (CurrentPos[0] == 0) break; 
+
+                    if (CurrentPos[1] > 0)
+                        trueCount += arrangement[CurrentPos[0] - 1, CurrentPos[1] - 1] ? 1 : 0;
+                    if (CurrentPos[1] < arrangement.GetLength(1) - 1)
+                        trueCount += arrangement[CurrentPos[0] - 1, CurrentPos[1] + 1] ? 1 : 0;
+                    break;
+
+                case (int)GlobalSettings.Direction.Down:
+                    if (CurrentPos[0] == arrangement.GetLength(0) - 1) break;
+
+                    if (CurrentPos[1] > 0)
+                        trueCount += arrangement[CurrentPos[0] + 1, CurrentPos[1] - 1] ? 1 : 0;
+                    if (CurrentPos[1] < arrangement.GetLength(1) - 1)
+                        trueCount += arrangement[CurrentPos[0] + 1, CurrentPos[1] + 1] ? 1 : 0;
+                    break;
+
+                case (int)GlobalSettings.Direction.Left:
+                    if (CurrentPos[1] == 0) break;
+
+                    if (CurrentPos[0] > 0)
+                        trueCount += arrangement[CurrentPos[0] - 1, CurrentPos[1] - 1] ? 1 : 0;
+                    if (CurrentPos[0] < arrangement.GetLength(0) - 1)
+                        trueCount += arrangement[CurrentPos[0] + 1, CurrentPos[1] - 1] ? 1 : 0;
+                    break;
+
+                case (int)GlobalSettings.Direction.Right:
+                    if (CurrentPos[1] == arrangement.GetLength(1) - 1) break;
+
+                    if (CurrentPos[0] > 0)
+                        trueCount += arrangement[CurrentPos[0] - 1, CurrentPos[1] + 1] ? 1 : 0;
+                    if (CurrentPos[0] < arrangement.GetLength(0) - 1)
+                        trueCount += arrangement[CurrentPos[0] + 1, CurrentPos[1] + 1] ? 1 : 0;
+                    break;
+
+                default:
+                    break;
+            }
+
+            return trueCount / 2.0; 
         }
 
         public bool ReachingBorder(int[] CurrentPos)

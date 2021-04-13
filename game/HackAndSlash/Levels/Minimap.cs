@@ -60,6 +60,9 @@ namespace HackAndSlash
         public const double SIZE_RATIO = (double)WHOLE_WIDTH / (double)(GlobalSettings.GAME_AREA_WIDTH);
         private const double TRANSITION_STEP_Y = 8 * SIZE_RATIO;  // From class Level
         private const double TRANSITION_STEP_X = 16 * SIZE_RATIO;
+        private const int MAP_DISPLAY_X = 321; 
+        private const int MAP_DISPLAY_Y = 256; 
+
 
         //Misc 
         private Color defaultTint = Color.White;  // Draw() method tint 
@@ -293,6 +296,12 @@ namespace HackAndSlash
             // The border 
             spriteBatch.Draw(borderLines, new Vector2(DRAW_POSITION_X, DRAW_POSITION_Y), null,
                 defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer);
+        }
+
+        public void DrawMap()
+        {
+            spriteBatch.Draw(minimap, new Vector2(MAP_DISPLAY_X, MAP_DISPLAY_Y),
+                null, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer);
         }
 
     }

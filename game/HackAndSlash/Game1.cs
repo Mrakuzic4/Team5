@@ -22,6 +22,7 @@ namespace HackAndSlash
         public bool titleMenu = true;
         public bool gameWon = false;
         public bool upgrading = false;
+        public bool displayMap = false; 
 
         // Game parameters, need _ prefix 
         public bool _DevMode = false;
@@ -366,6 +367,7 @@ namespace HackAndSlash
             // i.e. the game area is running 
             else
             {
+                displayMap = false; 
                 foreach (IController controller in controllerList)
                 {
                     controller.Update();
@@ -498,6 +500,7 @@ namespace HackAndSlash
                 DrawHealth.Draw(spriteBatch, new Vector2(0, 100), Color.White);
 
                 miniMap.Draw();
+                if (displayMap) miniMap.DrawMap();
             }
             
 

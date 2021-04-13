@@ -38,7 +38,8 @@ namespace HackAndSlash
                 //GameFunction
                 {Keys.R, new ResetCommand(game)},
                 {Keys.Q, new QuitCommand(game)},
-                {Keys.Escape, new PauseCommand(game)}
+                {Keys.Escape, new PauseCommand(game)},
+                {Keys.Tab, new DisplayMapCommand(game)}
             };
         }
 
