@@ -124,8 +124,10 @@ namespace HackAndSlash
 
         private void LoadAllClasses()
         {
-            // The level map
-            levelCycleRecord = new LevelCycling();
+            // Setup stat for all the rooms 
+            levelCycleRecord = new LevelCycling(true); // "true" to use the S4 maps 
+
+            // Initlize first room 
             currentLevel = new Level(GraphicsDevice, spriteBatch);
             currentLevel.levelCycler = levelCycleRecord;
             currentLevel.FirstTimeStartUp();

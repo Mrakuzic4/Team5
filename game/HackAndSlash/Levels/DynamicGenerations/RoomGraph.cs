@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 
 /// <summary>
@@ -12,15 +12,91 @@ namespace HackAndSlash
 {
     class RoomNode
     {
+        public int expansionDir { set; get; }
+        public int[] index { set; get; }
 
+        public int dirCombo { set; get; }
+
+        public int maxCombo { set; get; }
+
+        public RoomNode(int[] Position, int Expansion)
+        {
+            index = Position;
+            expansionDir = Expansion;
+
+            maxCombo = 3; 
+        }
+
+        /// <summary>
+        /// Does not consider being in boundary, thus needing extra check
+        /// </summary>
+        /// <returns></returns>
+        public int[] PossibleExpandDir()
+        {
+            List<int> PossibleDir = new List<int>() { 0, 1, 2, 3 };
+
+            switch (expansionDir)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    PossibleDir.Remove((int)GlobalSettings.Direction.Down);
+                    break;
+
+                case (int)GlobalSettings.Direction.Down:
+                    PossibleDir.Remove((int)GlobalSettings.Direction.Up); 
+                    break;
+
+                case (int)GlobalSettings.Direction.Left:
+                    PossibleDir.Remove((int)GlobalSettings.Direction.Right); 
+                    break;
+
+                case (int)GlobalSettings.Direction.Right:
+                    PossibleDir.Remove((int)GlobalSettings.Direction.Left); 
+                    break;
+
+                default:
+                    break;
+            }
+
+            if (dirCombo >= maxCombo)
+                PossibleDir.Remove(expansionDir);
+
+            return PossibleDir.ToArray();
+        }
+
+        public int[] NeighborPos(int Direction)
+        {
+            Vector2 Offset = new Vector2(0, 0);
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    Offset.Y = -1;
+                    break;
+
+                case (int)GlobalSettings.Direction.Down:
+                    Offset.Y = 1;
+                    break;
+
+                case (int)GlobalSettings.Direction.Left:
+                    Offset.X = -1;
+                    break;
+
+                case (int)GlobalSettings.Direction.Right:
+                    Offset.X = 1;
+                    break;
+
+                default:
+                    break;
+            }
+
+            return new int[] { index[0] + (int)Offset.Y, index[1] + (int)Offset.X };
+        }
     }
 
     class RoomGraph
     {
         public int[] startUpLocation { get; set; }
         public int[] currentLocationIndex { get; set; }
-
-        private bool[,] arrangement;
+        public bool[,] arrangement { get; set; }
 
         public RoomGraph(int levelSetRow, int levelSetCol)
         {
@@ -39,29 +115,127 @@ namespace HackAndSlash
             arrangement[Row, Col] = true; 
         }
 
-        public bool IsEmpty(int Direction)
+        public bool IsEmpty(int[] CurrentPos, int Direction)
         {
             switch (Direction)
             {
                 case (int)GlobalSettings.Direction.Up:
-                    if (currentLocationIndex[0] <= 0) return false;
-                    return (arrangement[currentLocationIndex[0] - 1, currentLocationIndex[1]] == false);
+                    if (CurrentPos[0] <= 0) return false;
+                    return (arrangement[CurrentPos[0] - 1, CurrentPos[1]] == false);
 
                 case (int)GlobalSettings.Direction.Down:
-                    if (currentLocationIndex[0] >= arrangement.GetLength(0) - 1) return false;
-                    return (arrangement[currentLocationIndex[0] + 1, currentLocationIndex[1]] == false);
+                    if (CurrentPos[0] >= arrangement.GetLength(0) - 1) return false;
+                    return (arrangement[CurrentPos[0] + 1, CurrentPos[1]] == false);
 
                 case (int)GlobalSettings.Direction.Left:
-                    if (currentLocationIndex[1] <= 0) return false;
-                    return (arrangement[currentLocationIndex[0], currentLocationIndex[1] - 1] == false);
+                    if (CurrentPos[1] <= 0) return false;
+                    return (arrangement[CurrentPos[0], CurrentPos[1] - 1] == false);
 
                 case (int)GlobalSettings.Direction.Right:
-                    if (currentLocationIndex[1] >= arrangement.GetLength(1) - 1) return false;
-                    return (arrangement[currentLocationIndex[0], currentLocationIndex[1] + 1] == false);
+                    if (CurrentPos[1] >= arrangement.GetLength(1) - 1) return false;
+                    return (arrangement[CurrentPos[0], CurrentPos[1] + 1] == false);
 
                 default:
                     return false;
             }
+        }
+
+        public void AddRoom(int[] CurrentPos, int Direction)
+        {
+            Vector2 Offset = new Vector2(0, 0); 
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    Offset.Y = -1; 
+                    break;
+
+                case (int)GlobalSettings.Direction.Down:
+                    Offset.Y = 1; 
+                    break;
+
+                case (int)GlobalSettings.Direction.Left:
+                    Offset.X = -1; 
+                    break;
+
+                case (int)GlobalSettings.Direction.Right:
+                    Offset.X = 1;
+                    break;
+
+                default:
+                    break;
+            }
+
+            arrangement[CurrentPos[0] + (int)Offset.Y, CurrentPos[1] + (int)Offset.X] = true;
+        }
+
+        /// <summary>
+        /// Find the maxium amount of continuous empty space in that direction. 
+        /// </summary>
+        /// <param name="CurrentPos"></param>
+        /// <param name="Direction"></param>
+        /// <returns></returns>
+        public int EmptyCount(int[] CurrentPos, int Direction)
+        {
+            int count = 0;
+            int[] counter = new int[] { CurrentPos[0], CurrentPos[1] }; // Avoid reference 
+
+            
+            while (IsEmpty(counter, Direction))
+            {
+                switch (Direction)
+                {
+                    case (int)GlobalSettings.Direction.Up:
+                        counter[0] -= 1;
+                        break;
+
+                    case (int)GlobalSettings.Direction.Down:
+                        counter[0] += 1;
+                        break;
+
+                    case (int)GlobalSettings.Direction.Left:
+                        counter[1] -= 1;
+                        break;
+
+                    case (int)GlobalSettings.Direction.Right:
+                        counter[1] += 1;
+                        break;
+
+                    default:
+                        break;
+                }
+                count += 1; 
+            }
+            
+
+            return count; 
+        }
+
+        public bool ReachingBorder(int[] CurrentPos)
+        {
+            return (CurrentPos[0] == 0 ||
+                CurrentPos[1] == 0 ||
+                CurrentPos[0] == arrangement.GetLength(0) - 1 || 
+                CurrentPos[1] == arrangement.GetLength(1) - 1);
+        }
+
+        public bool ReachingCorner(int[] CurrentPos)
+        {
+            int row = arrangement.GetLength(0) - 1;
+            int col = arrangement.GetLength(1) - 1;
+
+            return (CurrentPos[0] == 0 && CurrentPos[1] == 0 ||
+                CurrentPos[0] == 0 && CurrentPos[1] == col ||
+                CurrentPos[0] == row && CurrentPos[1] == 0 ||
+                CurrentPos[0] == row && CurrentPos[1] == col );
+        }
+
+        public bool ReachingDeadend(int[] CurrentPos)
+        {
+            foreach (int Dir in new int[] { 0, 1, 2, 3 })
+                if (IsEmpty(CurrentPos, Dir))
+                    return false;
+            
+            return true; 
         }
 
         public bool[,] GetArrangement()
