@@ -11,10 +11,12 @@ namespace HackAndSlash
     {
         private Game1 game { get; set; }
         private Dictionary<Keys, ICommand> controllerMappings;
+        private KeyboardCheats keyboardCheats;
 
         public KeyboardController(Game1 game)
         {
             this.game = game;
+            keyboardCheats = new KeyboardCheats(game);
          
             //Add all default controls
             controllerMappings = new Dictionary<Keys, ICommand>()
@@ -73,6 +75,8 @@ namespace HackAndSlash
             if (Keyboard.GetState().IsKeyUp(Keys.D)) this.game.Player.unlockMovement();
             if (Keyboard.GetState().IsKeyUp(Keys.S)) this.game.Player.unlockMovement();
             if (Keyboard.GetState().IsKeyUp(Keys.A)) this.game.Player.unlockMovement();
+
+            keyboardCheats.Update(pressedKeys);
         }
     }
 }

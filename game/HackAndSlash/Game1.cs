@@ -93,6 +93,7 @@ namespace HackAndSlash
         private TitleScreenOverlay titleScreen;
         private GameWonOverlay gameWonScreenOverlay;
         private UpgradesOverlay upgradesOverlay;
+        public CheatText cheatText;
         public bool inGameOverAnimation;
         public bool inGameWonAnimation;
         
@@ -189,6 +190,7 @@ namespace HackAndSlash
             titleScreen = new TitleScreenOverlay(this, SpriteFactory.Instance.GetTitleScreen(), spriteBatch);
             gameWonScreenOverlay = new GameWonOverlay(this, SpriteFactory.Instance.getGameWonScreen(), SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
             upgradesOverlay = new UpgradesOverlay(this, GraphicsDevice, spriteBatch);
+            cheatText = new CheatText(this, spriteBatch);
         }
 
         /// <summary>
@@ -496,6 +498,7 @@ namespace HackAndSlash
                 DrawHealth.Draw(spriteBatch, new Vector2(0, 100), Color.White);
 
                 miniMap.Draw();
+                if (cheatText.activeText != null) cheatText.Draw();
             }
             
 

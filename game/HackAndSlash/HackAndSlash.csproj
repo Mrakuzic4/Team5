@@ -56,6 +56,7 @@
     <Compile Include="Collision\PlayerBlockCollisionHandler.cs" />
     <Compile Include="Collision\PlayerCollisionDetector.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
+    <Compile Include="Commands\GodModeCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\UsePrimaryItemCommand.cs" />
     <Compile Include="Commands\UseSecondaryItemCommand.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Commands\UsePlayerItemCommand.cs" />
     <Compile Include="Controllers\GamepadController.cs" />
     <Compile Include="Controllers\IController.cs" />
+    <Compile Include="Controllers\KeyboardCheats.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Controllers\MouseController.cs" />
     <Compile Include="Database.cs" />
@@ -112,6 +114,7 @@
     <Compile Include="Levels\Map.cs" />
     <Compile Include="Levels\MapGenerator.cs" />
     <Compile Include="Levels\Minimap.cs" />
+    <Compile Include="Misc\CheatText.cs" />
     <Compile Include="Misc\Misc.cs" />
     <Compile Include="Misc\DrawRectangle.cs" />
     <Compile Include="Misc\LevelEagleSpecialCases.cs" />

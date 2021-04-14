@@ -36,7 +36,8 @@ namespace HackAndSlash
         public const int PLAYER_HITBOX_X_OFFSET = 5;
 
         public const long DELAY_TIME = 100; // In ms
-        public const long DELAY_KEYBOARD = 200; // For keyboard pressing event 
+        public const long DELAY_KEYBOARD = 100; // For keyboard pressing event
+        public const long CHEAT_INPUT_TIMEOUT = 4000;
         public const long TITLE_DELAY = 150;
         public enum Direction { Left, Right, Up, Down };
         public const int RESET_DIRECTION = 4; // The 5th "direction" for resetting 
@@ -48,7 +49,7 @@ namespace HackAndSlash
         public const int PAUSE_QUIT_Y = 512;
 
         // Used to initlize level eagle startup location
-        public static int[] STRAT_UP_INDEX = new int[] {5, 2};
+        public static int[] STRAT_UP_INDEX = new int[] { 5, 2 };
 
         /* Some fields created for level cycling in sprint 3.
          * Future updates might just get rid of these.
@@ -56,7 +57,7 @@ namespace HackAndSlash
         public const int CYCLE_BOUND = 17;
 
         // Index for blocks 
-        public const int SOLID_BLOCK_BOUND = 32; 
+        public const int SOLID_BLOCK_BOUND = 32;
         public const int VERTICAL_MOVE_BLOCK = 40;
         public const int HORIZONTAL_MOVE_BLOCK = 41;
 
@@ -77,7 +78,8 @@ namespace HackAndSlash
         public const int NPC_OLD_MAN = -5;
         public const int NPC_OLD_WOMAN = -6;
 
-
+        //Cheats
+        public static bool GODMODE { get; set; } = false;
         // Misc
         public static Random RND = new Random(); 
         public const int PRNG_WEIGHT = 10; // Increse this to make it more random

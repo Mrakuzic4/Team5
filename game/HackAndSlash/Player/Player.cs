@@ -140,22 +140,26 @@ namespace HackAndSlash
 
         public void Damaged()
         {
-            //Health goes down by a half heart when damaged
-            currentHealth--;
-            playerStateMachine.Damaged();
-
-            //Sound
-            SoundFactory.Instance.LinkDamagedEffect();
-            if (currentHealth == 0)
+            if (!GlobalSettings.GODMODE) 
             {
-                this.game.elapsing = false;
-                this.game.gameOver = true;
-                this.game.inGameOverAnimation = true;
-                SoundFactory.Instance.StopSong();
-                SoundFactory.Instance.LinkDeathEffect();
-                //game.reset(5); //Reset the room upon player's death.
-                //currentHealth = maxHealth; //fully heal Player after death
+                //Health goes down by a half heart when damaged
+                currentHealth--;
+                playerStateMachine.Damaged();
+
+                //Sound
+                SoundFactory.Instance.LinkDamagedEffect();
+                if (currentHealth == 0)
+                {
+                    this.game.elapsing = false;
+                    this.game.gameOver = true;
+                    this.game.inGameOverAnimation = true;
+                    SoundFactory.Instance.StopSong();
+                    SoundFactory.Instance.LinkDeathEffect();
+                    //game.reset(5); //Reset the room upon player's death.
+                    //currentHealth = maxHealth; //fully heal Player after death
+                }
             }
+
         } 
         // make player heal method in IPlayer and all player wrappers
         public void Healed()
