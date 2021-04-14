@@ -15,6 +15,7 @@ namespace HackAndSlash
         private Vector2 position; // the position of the enemy on screen
         private SpriteBatch spriteBatch; // the spritebatch used to draw the enemy
         private GraphicsDevice Graphics; // the graphics device used by the spritebatch
+        private Game1 game;
 
         private int timeSinceLastFrame = 0; // used to slow down the rate of animation
         private int timeSinceLastBomb = 0;
@@ -61,6 +62,7 @@ namespace HackAndSlash
 
             bombItem = new MoblinItem(spriteBatch, game, this);
             directionHistory[Turn(GlobalSettings.RND.Next(3))] += 1;
+            this.game = game;
         }
 
         public Rectangle getRectangle()
@@ -232,6 +234,8 @@ namespace HackAndSlash
                 if (deathTimer > 3000)
                 {
                     deathTimer = 0;
+                    IItem FoodItem = new FoodItem(position, spriteBatch, game);
+                    game.itemList.Add(FoodItem);
                     moblinState.changeToNot();
                 }
             }

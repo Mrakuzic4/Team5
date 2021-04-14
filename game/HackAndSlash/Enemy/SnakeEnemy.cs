@@ -216,8 +216,10 @@ namespace HackAndSlash
                 if (deathTimer > 1500)
                 {
                     deathTimer = 0;
-                    IItem FoodItem = new FoodItem(position, spriteBatch, game);
-                    game.itemList.Add(FoodItem);
+                    // randomly drop rupys
+                    if (random.Next(0, 3) == 0) {
+                        game.itemList.Add(new RupyItem(position, spriteBatch, game)); 
+                    }  
                     snakeState.changeToNot();
                 }
             }

@@ -72,7 +72,6 @@ namespace HackAndSlash
             swordEnemyCollisionHandler = new SwordEnemyCollisionHandler();
 
             canMove = true;
-
             //Player's health initialize
             maxHealth = INIT_MAX_HEALTH;
             currentHealth = maxHealth;
@@ -140,9 +139,9 @@ namespace HackAndSlash
             if (currentHealth == maxHealth)
             {
                 //shoot the sword
-                ThrowingKnifeItem shoot = new ThrowingKnifeItem(this.GetPos(),this.game.spriteBatch, game);
-                shoot.CollectItem();
-                shoot.UseItem(this.GetDir());
+
+                game.fullHealthSword.CollectItem();
+                game.fullHealthSword.UseItem(this.GetDir());                
 
             }
         }

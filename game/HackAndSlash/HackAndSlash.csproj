@@ -96,6 +96,7 @@
     <Compile Include="Items\RupyItem.cs" />
     <Compile Include="Items\FoodItem.cs" />
     <Compile Include="Items\BombItem.cs" />
+    <Compile Include="Items\FlyingSwordItem.cs" />
     <Compile Include="Items\TriforceItem.cs" />
     <Compile Include="Items\ThrowingKnifeItem.cs" />
     <Compile Include="Items\FirewallItem.cs" />

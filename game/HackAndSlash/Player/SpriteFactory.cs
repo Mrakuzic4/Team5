@@ -64,6 +64,10 @@ namespace HackAndSlash
         private Texture2D ThrowingKnifeRightSprite;
         private Texture2D ThrowingKnifeUpSprite;
         private Texture2D ThrowingKnifeDownSprite;
+        private Texture2D SwordLeftSprite;
+        private Texture2D SwordRightSprite;
+        private Texture2D SwordUpSprite;
+        private Texture2D SwordDownSprite;
         private Texture2D FoodSprite;
         private Texture2D TriforceSprite;
         private Texture2D RupySprite;
@@ -195,6 +199,10 @@ namespace HackAndSlash
             ThrowingKnifeDownSprite = content.Load<Texture2D>(IMDB.throwingKnifeDown.pathName);
             ThrowingKnifeLeftSprite = content.Load<Texture2D>(IMDB.throwingKnifeLeft.pathName);
             ThrowingKnifeRightSprite = content.Load<Texture2D>(IMDB.throwingKnifeRight.pathName);
+            SwordUpSprite = content.Load<Texture2D>(IMDB.SwordUp.pathName);
+            SwordDownSprite = content.Load<Texture2D>(IMDB.SwordDown.pathName);
+            SwordLeftSprite = content.Load<Texture2D>(IMDB.SwordLeft.pathName);
+            SwordRightSprite = content.Load<Texture2D>(IMDB.SwordRight.pathName);
             FoodSprite = content.Load<Texture2D>(IMDB.food.pathName);
             TriforceSprite = content.Load<Texture2D>(IMDB.triforce.pathName);
             RupySprite = content.Load<Texture2D>(IMDB.rupy.pathName);
@@ -618,6 +626,25 @@ namespace HackAndSlash
 
             }
             return knifeSprite;
+        }
+
+        public ISprite CreateSword(GlobalSettings.Direction direction)
+        {
+            ISprite swordSprite = new ItemSprite(SwordUpSprite, IMDB.SwordUp.C, IMDB.SwordUp.R); ;
+            switch (direction)
+            {
+                case (GlobalSettings.Direction.Left):
+                    swordSprite = new ItemSprite(SwordLeftSprite, IMDB.SwordLeft.C, IMDB.SwordLeft.R);
+                    break;
+                case (GlobalSettings.Direction.Right):
+                    swordSprite = new ItemSprite(SwordRightSprite, IMDB.SwordRight.C, IMDB.SwordRight.R);
+                    break;
+                case (GlobalSettings.Direction.Down):
+                    swordSprite = new ItemSprite(SwordDownSprite, IMDB.SwordDown.C, IMDB.SwordDown.R);
+                    break;
+
+            }
+            return swordSprite;
         }
 
         public ISprite CreateTriforce()

@@ -87,6 +87,7 @@ namespace HackAndSlash
         public BombItem bombFirst;
         public ThrowingKnifeItem throwingKnifeFirst;
         public RupyItem mainRupy;
+        public FlyingSwordItem fullHealthSword;
 
         //UI Elements
         private PauseOverlay pauseOverlay;
@@ -181,7 +182,8 @@ namespace HackAndSlash
             useableItemList = new List<IItem>();
             textSprites = SpriteFactory.Instance.GetTextCharacters();
             mainRupy = new RupyItem(new Vector2(9 * GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR / 2), spriteBatch, this);
-
+            fullHealthSword = new FlyingSwordItem(new Vector2(-64, -64), spriteBatch, this);
+            itemList.Add(fullHealthSword);
             //Create list of blocks
             blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
 
@@ -388,9 +390,12 @@ namespace HackAndSlash
                     } else
                     {
                         mainRupy.ChangeToExpended();
-                    }
-                    
+                    } 
+                }
+                if (!itemList.Contains(fullHealthSword))
+                {
 
+                    itemList.Add(fullHealthSword);
                 }
                 foreach (IItem item in useableItemList)
                 {

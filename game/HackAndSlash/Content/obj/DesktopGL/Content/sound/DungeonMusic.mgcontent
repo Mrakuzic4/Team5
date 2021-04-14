@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/sound/DungeonMusic.mp3</SourceFile>
-  <SourceTime>2021-04-04T11:41:48.8727671-04:00</SourceTime>
-  <DestFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/DungeonMusic.xnb</DestFile>
-  <DestTime>2021-04-13T22:41:58.070821-04:00</DestTime>
+  <SourceFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/sound/DungeonMusic.mp3</SourceFile>
+  <SourceTime>2021-04-04T19:49:55.619158-04:00</SourceTime>
+  <DestFile>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/DungeonMusic.xnb</DestFile>
+  <DestTime>2021-04-14T10:03:12.181412-04:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/DungeonMusic.ogg</string>
+    <string>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/DungeonMusic.ogg</string>
   </BuildOutput>
 </PipelineBuildEvent>

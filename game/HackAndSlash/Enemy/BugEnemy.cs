@@ -14,6 +14,7 @@ namespace HackAndSlash
         private Vector2 position; // the position of the enemy on screen
         private SpriteBatch spriteBatch; // the spritebatch used to draw the enemy
         private GraphicsDevice Graphics; // the graphics device used by the spritebatch
+        private Game1 game;
 
        
 
@@ -55,6 +56,7 @@ namespace HackAndSlash
             hitbox = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
 
             directionHistory[Turn(GlobalSettings.RND.Next(3))] += 1;
+            this.game = game;
         }
 
         //Loading the spritebatch 
@@ -182,7 +184,7 @@ namespace HackAndSlash
             enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
             if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
             {
-                bugState.changeToDie();
+                changeToDie();
             }
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
@@ -231,7 +233,7 @@ namespace HackAndSlash
 
         public void damage()
         {
-            bugState.changeToDie();
+            changeToDie();
         }
 
         //Functions to switch the states
@@ -263,7 +265,11 @@ namespace HackAndSlash
         public void changeToDie()
         {
             bugState.changeToDie();
-        }
+            // randomly drop rupys
+            if (random.Next(0, 3) == 0)
+            {
+                game.itemList.Add(new RupyItem(position, spriteBatch, game));
+            }
 
         public void changeToNot()
         {

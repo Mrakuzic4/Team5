@@ -4,6 +4,10 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeDown.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeLeft.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeRight.png</File>
+    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeUp.png</File>
     <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/TextSprites.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/AquamentusSprite.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/bg.jpg</File>
@@ -122,8 +126,11 @@
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/TitleScreenMp3.mp3</File>
   </SourceFiles>
   <DestFiles>
-    <File>images/TextCharacters.png</File>
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>images/TextCharacters.png</File>
     <File>images/emptyHeart.png</File>
     <File>images/firewall.png</File>
     <File>images/font/Font_Oldman2.png</File>

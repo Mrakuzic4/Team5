@@ -22,7 +22,7 @@ namespace HackAndSlash
         private SpriteBatch spriteBatch;
 
         private ThrowingKnifeStateMachine itemState;
-        private static int numUses = 0; 
+        public static int numUses = 0; 
         private int useDurationCounter = 0;
         private static int cooldown = 0; // item is useable if == 0 
         private const int ITEM_COOLDOWN = 30; // time in update cycles between uses 
@@ -50,8 +50,8 @@ namespace HackAndSlash
             position = startPosition;
             itemState = new ThrowingKnifeStateMachine();
             throwingKnifeSprite = (ItemSprite)SpriteFactory.Instance.CreateThrowingKnife(GlobalSettings.Direction.Up);
-            spriteWidth = throwingKnifeSprite.Texture.Width / throwingKnifeSprite.Columns;
-            spriteHeight = throwingKnifeSprite.Texture.Height / throwingKnifeSprite.Rows;
+            spriteWidth = GlobalSettings.BASE_SCALAR;
+            spriteHeight = GlobalSettings.BASE_SCALAR;
             toolBarPosition = new Vector2(2 * GlobalSettings.BASE_SCALAR, 0);
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Rectangle[1];
@@ -241,7 +241,7 @@ namespace HackAndSlash
                         }
                         else
                         {
-                            itemState.ChangeToUseable();
+                            ChangeToUseable();
                         }
                         break;
                     case GlobalSettings.Direction.Right: // right
@@ -253,7 +253,7 @@ namespace HackAndSlash
                         }
                         else
                         {
-                            itemState.ChangeToUseable();
+                            ChangeToUseable();
                         }
                         break;
                     case GlobalSettings.Direction.Up: // up
@@ -265,7 +265,7 @@ namespace HackAndSlash
                         }
                         else
                         {
-                            itemState.ChangeToUseable();
+                            ChangeToUseable();
                         }
                         break;
                     case GlobalSettings.Direction.Down: // down
@@ -277,7 +277,7 @@ namespace HackAndSlash
                         }
                         else
                         {
-                            itemState.ChangeToUseable();
+                            ChangeToUseable();
                         }
                         break;
                 }
@@ -335,6 +335,7 @@ namespace HackAndSlash
         {
             //player collects item
             itemState.ChangeToUseable();
+            position = toolBarPosition;
             throwingKnifeSprite = (ItemSprite)SpriteFactory.Instance.CreateThrowingKnife(GlobalSettings.Direction.Up);
         }
 

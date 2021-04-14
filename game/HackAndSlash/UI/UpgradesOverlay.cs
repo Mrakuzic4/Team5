@@ -35,7 +35,7 @@ namespace HackAndSlash
             this.graphics = graphics;
             text = (TextSprite)SpriteFactory.Instance.CreateTextCharacters(3);
             bigText = (TextSprite)SpriteFactory.Instance.CreateTextCharacters(5);
-            swordSelector = SpriteFactory.Instance.CreateThrowingKnife(GlobalSettings.Direction.Right);
+            swordSelector = SpriteFactory.Instance.CreateSword(GlobalSettings.Direction.Right);
             positions = new int[7];
             for( int i = 0; i <= 6; i++)
             {
