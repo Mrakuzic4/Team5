@@ -11,6 +11,7 @@ namespace HackAndSlash
 
     public class LevelCycling
     {
+        public bool useS4 = true; // May alterd in game1.cs
 
         private const int LEVEL_EAGLE_SIZE = 6;
 
@@ -18,11 +19,14 @@ namespace HackAndSlash
         public Map[,] levelEagle;
         public Map[,] levelCrescent; // For future use 
 
+        private GenerateLevel levelRNG; 
+
         public Map[,] currentMapSet;
         public int[] currentLocationIndex;
 
-        public LevelCycling()
+        public LevelCycling(bool UseS4)
         {
+            useS4 = UseS4; 
 
             currentLocationIndex = new int[] { GlobalSettings.STRAT_UP_INDEX[0], GlobalSettings.STRAT_UP_INDEX[1] };
 
@@ -39,14 +43,26 @@ namespace HackAndSlash
                 }
             }
 
-            currentMapSet = levelEagle; // For initilization, set eagle as the default level 
-
+            if (useS4)
+                currentMapSet = levelEagle; // For initilization, set eagle as the default level 
+            else
+            {
+                levelRNG = new GenerateLevel();
+                currentMapSet = levelRNG.GenerateLevelSet(8, 8);
+            }
         }
         
 
         public Map StartUpLevel()
         {
-            return levelEagle[GlobalSettings.STRAT_UP_INDEX[0], GlobalSettings.STRAT_UP_INDEX[1]]; // Only works for level eagle 
+            if (useS4)
+                return levelEagle[GlobalSettings.STRAT_UP_INDEX[0], GlobalSettings.STRAT_UP_INDEX[1]]; // Only works for level eagle 
+            else
+            {
+                currentLocationIndex = levelRNG.StartUpMap();
+                return currentMapSet[currentLocationIndex[0], currentLocationIndex[1]]; 
+            }
+                
         }
 
         // If that direction has a room 

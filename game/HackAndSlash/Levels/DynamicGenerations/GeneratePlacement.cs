@@ -12,24 +12,87 @@ namespace HackAndSlash
 {
     class GeneratePlacement
     {
+        private const double THRESHOLD = 0.5;
+        private const double OFFSET = 0.5;
+        private const double EMPTY_LINE_WEIGHT = 2; 
+        private const double DIVERGE_WEIGHT = 2; 
+        private const double DIAGONAL_WEIGHT = 3;
+        private const double REGIONAL_WEIGHT = 0.75; 
+        private const int UP = (int)GlobalSettings.Direction.Up;
+        private const int DOWN = (int)GlobalSettings.Direction.Up;
+        private const int LEFT = (int)GlobalSettings.Direction.Up;
+        private const int RIGHT = (int)GlobalSettings.Direction.Up;
+        
+        public int _RandWeight = 10;
+        public bool _StartMiddle = false; // Middle or bottom 
 
-        public GeneratePlacement()
+        public int[] startUpLocation { get; set; }
+        private int row;
+        private int col; 
+        
+
+        public GeneratePlacement(int Row, int Col)
         {
-
+            row = Row;
+            col = Col; 
         }
 
-        public bool[,] GetPlacement(int Row, int Col)
+        public bool[,] GetPlacement()
         {
-            bool[,] Placement = new bool[Row, Col];
+            RoomGraph graph = new RoomGraph(row, col);
+            List<RoomNode> exploreLeads = new List<RoomNode>();
+            startUpLocation = _StartMiddle ? new int[] { row / 2, col/ 2} 
+                : new int[] { row - 1, col / 2 }; 
 
-            for (int i = 0; i < Placement.GetLength(0); i++)
-                for (int j = 0; j < Placement.GetLength(1); j++)
-                    Placement[i, j] = false;
+            graph.SetStartUp(startUpLocation[0], startUpLocation[1]);
+            exploreLeads.Add(new RoomNode(startUpLocation, UP)); 
+
+            while (exploreLeads.Count > 0)
+            {
+                foreach (RoomNode node in exploreLeads.ToArray())
+                {
+                    if (graph.ReachingCorner(node.index) || graph.ReachingDeadend(node.index))
+                    {
+                        exploreLeads.Remove(node);
+                        continue;
+                    }
+                        
+
+                    foreach (int Direction in node.PossibleExpandDir())
+                    {
+                        int emptyCount = graph.EmptyCount(node.index, Direction);
+                        double possbility = GlobalSettings.RND.NextDouble() - OFFSET;
+                        int directionCount = row;
+
+                        if (Direction == UP || Direction == DOWN)
+                            directionCount = col;
+                            
+                        possbility += EMPTY_LINE_WEIGHT * emptyCount / (directionCount - 1.0);
+
+                        if (Direction != node.expansionDir) {
+                            possbility = Math.Abs(possbility);
+                            possbility *= DIVERGE_WEIGHT; 
+                        }
+
+                        possbility += graph.EmptyRegionalRate(node.index, Direction) * REGIONAL_WEIGHT; 
+                        possbility -= graph.DiagonalEmptyRate(node.index, Direction) * DIAGONAL_WEIGHT;
+
+                        if (graph.IsEmpty(node.index, Direction) && possbility > THRESHOLD)
+                        {
+                            graph.AddRoom(node.index, Direction);
+                            RoomNode newNode = new RoomNode(node.NeighborPos(Direction), Direction);
+                            newNode.maxCombo = (Direction == node.expansionDir) ? node.maxCombo + 1 : 0;
+
+                            exploreLeads.Add(newNode);
+                        }
+                    }
+                    exploreLeads.Remove(node);
+                }
+            }
 
 
-
-            return Placement;
+            return graph.GetArrangement();
         }
-
     }
+
 }

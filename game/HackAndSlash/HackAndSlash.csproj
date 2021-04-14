@@ -55,6 +55,7 @@
     <Compile Include="Collision\SwordEnemyCollisionHandler.cs" />
     <Compile Include="Collision\PlayerBlockCollisionHandler.cs" />
     <Compile Include="Collision\PlayerCollisionDetector.cs" />
+    <Compile Include="Commands\DisplayMapCommand.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
     <Compile Include="Commands\GodModeCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />

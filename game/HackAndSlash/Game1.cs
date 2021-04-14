@@ -10,7 +10,7 @@ namespace HackAndSlash
     public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public SpriteBatch spriteBatch;
 
         // Utility methods 
         public Misc utilMethods;
@@ -22,6 +22,7 @@ namespace HackAndSlash
         public bool titleMenu = true;
         public bool gameWon = false;
         public bool upgrading = false;
+        public bool displayMap = false; 
 
         // Game parameters, need _ prefix 
         public bool _DevMode = false;
@@ -125,8 +126,10 @@ namespace HackAndSlash
 
         private void LoadAllClasses()
         {
-            // The level map
-            levelCycleRecord = new LevelCycling();
+            // Setup stat for all the rooms 
+            levelCycleRecord = new LevelCycling(true); // "true" to use the S4 maps 
+
+            // Initlize first room 
             currentLevel = new Level(GraphicsDevice, spriteBatch);
             currentLevel.levelCycler = levelCycleRecord;
             currentLevel.FirstTimeStartUp();
@@ -366,6 +369,7 @@ namespace HackAndSlash
             // i.e. the game area is running 
             else
             {
+                displayMap = false; 
                 foreach (IController controller in controllerList)
                 {
                     controller.Update();
@@ -498,7 +502,9 @@ namespace HackAndSlash
                 DrawHealth.Draw(spriteBatch, new Vector2(0, 100), Color.White);
 
                 miniMap.Draw();
+                if (displayMap) miniMap.DrawMap();
                 if (cheatText.activeText != null) cheatText.Draw();
+
             }
             
 
