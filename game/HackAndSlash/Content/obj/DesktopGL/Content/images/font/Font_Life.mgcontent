@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<<<<<<< HEAD
   <SourceFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/images/font/Font_Life.png</SourceFile>
   <SourceTime>2021-04-02T10:17:14.118866-04:00</SourceTime>
   <DestFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/font/Font_Life.xnb</DestFile>
-  <DestTime>2021-04-12T11:47:24.1369127-04:00</DestTime>
-=======
-  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/font/Font_Life.png</SourceFile>
-  <SourceTime>2021-03-31T18:02:43.0275563-04:00</SourceTime>
-  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/font/Font_Life.xnb</DestFile>
-  <DestTime>2021-04-12T10:23:59.5717582-04:00</DestTime>
->>>>>>> 2571dcc044db6b355ce19e8c8f4053d6e361b2f4
+  <DestTime>2021-04-13T22:41:46.6398928-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

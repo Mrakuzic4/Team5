@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<<<<<<< HEAD
   <SourceFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/sound/LOZ_Stairs.wav</SourceFile>
   <SourceTime>2021-04-04T11:41:48.8887258-04:00</SourceTime>
   <DestFile>C:/Users/djnef/OneDrive/Documents/CLASSES SP21/CSE 3902 - Project Interactive Systems/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/LOZ_Stairs.xnb</DestFile>
-  <DestTime>2021-04-12T11:47:40.8071622-04:00</DestTime>
-=======
-  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/LOZ_Stairs.wav</SourceFile>
-  <SourceTime>2021-04-04T19:19:29.5324277-04:00</SourceTime>
-  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/LOZ_Stairs.xnb</DestFile>
-  <DestTime>2021-04-12T10:24:08.4147593-04:00</DestTime>
->>>>>>> 2571dcc044db6b355ce19e8c8f4053d6e361b2f4
+  <DestTime>2021-04-13T22:42:04.2794071-04:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
