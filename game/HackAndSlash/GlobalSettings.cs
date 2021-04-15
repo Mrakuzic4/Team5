@@ -42,6 +42,7 @@ namespace HackAndSlash
         public enum roomTypes { Start, Boss, Merchant };
         public enum Direction { Left, Right, Up, Down };
         public const int RESET_DIRECTION = 4; // The 5th "direction" for resetting 
+        public enum GameStates { TitleMenu, Running, Paused, GameOver, GameWon, Upgrading }
         public enum CollisionType { None, Left, Right, Top, Bottom, };
 
         public const int PAUSE_CONTINUE_X = 185;

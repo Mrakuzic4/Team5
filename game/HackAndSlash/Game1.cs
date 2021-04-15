@@ -22,7 +22,8 @@ namespace HackAndSlash
         public bool titleMenu = true;
         public bool gameWon = false;
         public bool upgrading = false;
-        public bool displayMap = false; 
+        public bool displayMap = false;
+        public GlobalSettings.GameStates GameState { get; set; }
 
         // Game parameters, need _ prefix 
         public bool _DevMode = false;
@@ -127,6 +128,8 @@ namespace HackAndSlash
 
         private void LoadAllClasses()
         {
+            // Default gamestate
+            GameState = GlobalSettings.GameStates.TitleMenu;
             // Setup stat for all the rooms 
             levelCycleRecord = new LevelCycling(true); // "true" to use the S4 maps 
 

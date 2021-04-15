@@ -18,6 +18,7 @@ namespace HackAndSlash
         public KeyboardCheats (Game1 game)
         {
             this.Game = game;
+            //dictionary of all key combinations mapped to their respective cheats
             cheatMappings = new Dictionary<List<Keys>, ICommand>()
             {
                 {new List<Keys>() { Keys.W, Keys.W, Keys.S, Keys.S, Keys.A, Keys.D, Keys.A, Keys.D, Keys.Z, Keys.N }, new GodModeCommand(game) },
