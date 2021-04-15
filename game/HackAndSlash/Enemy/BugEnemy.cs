@@ -270,6 +270,7 @@ namespace HackAndSlash
             {
                 game.itemList.Add(new RupyItem(position, spriteBatch, game));
             }
+        }
 
         public void changeToNot()
         {

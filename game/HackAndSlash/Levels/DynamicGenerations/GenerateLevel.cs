@@ -14,7 +14,7 @@ namespace HackAndSlash
     class GenerateLevel
     {
 
-        public Map[,] levelSet; 
+        public Map[,] levelSet;
 
         public int levelSetRow { set; get; }
         public int levelSetCol { set; get; }
@@ -34,11 +34,10 @@ namespace HackAndSlash
             levelSetCol = Col;
 
             init();
-            RegulateDoors();
-
-
-            
             PickStartUpRoom();
+            PopulateRooms();
+
+            RegulateDoors();
 
             return levelSet;
         }
@@ -66,13 +65,13 @@ namespace HackAndSlash
             for (int i = 0; i < levelSet.GetLength(0); i++) {
                 for (int j = 0; j < levelSet.GetLength(1); j++) {
                     foreach (int Dir in iter) {
-                        if (HasNextRoom(new int[] {i, j }, Dir) && levelSet[i, j] != null) {
+                        if (HasNextRoom(new int[] { i, j }, Dir) && levelSet[i, j] != null) {
                             AddOpenDoors(new int[] { i, j }, Dir);
                         }
                     }
                 }
             }
-                
+
         }
 
         /// <summary>
@@ -91,7 +90,7 @@ namespace HackAndSlash
             {
                 case (int)GlobalSettings.Direction.Up:
                     Offset.Y = -1;
-                    nextRoomDoorDir = (int)GlobalSettings.Direction.Down; 
+                    nextRoomDoorDir = (int)GlobalSettings.Direction.Down;
                     break;
 
                 case (int)GlobalSettings.Direction.Down:
@@ -127,6 +126,32 @@ namespace HackAndSlash
                 if (levelSet[startUpRow, startUpCol] != null)
                     break;
             }
+        }
+
+        private void PopulateRooms()
+        {
+            for (int i = 0; i < levelSet.GetLength(0); i++) {
+                for (int j = 0; j < levelSet.GetLength(1); j++) {
+                    if (levelSet[i, j] != null) {
+                        GenerateRoom RoomGen = new GenerateRoom();
+                        RoomGen.InitRoom();
+
+                        if(! IsStartUpRoom(i, j)) {
+                            RoomGen.PopulateBlock();
+                            RoomGen.PopulateEnemy();
+                        }
+                        
+
+                        levelSet[i, j] = RoomGen.room;
+                    }
+                }
+            }
+
+        }
+        
+        private bool IsStartUpRoom(int row, int col)
+        {
+            return (row == startUpRow && col == startUpCol);
         }
 
         public bool HasNextRoom(int[] CurrentPos, int Direction)

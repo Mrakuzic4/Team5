@@ -24,6 +24,8 @@ namespace HackAndSlash
 
         public int maxCombo { set; get; }
 
+        public int roomType { get; set; }
+
         public RoomNode(int[] Position, int Expansion)
         {
             index = Position;
