@@ -18,7 +18,9 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            game.Player.Attack();
+            //game.Player.Attack();
+            //game.Player.HealthUp();
+            game.Player.ShieldUp();
         }
     }
 }

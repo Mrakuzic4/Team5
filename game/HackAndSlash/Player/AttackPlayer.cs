@@ -37,6 +37,21 @@ namespace HackAndSlash
             this.DecoratedPlayer.SetPos(pos);
         }
 
+        public bool isShield()
+        {
+            return this.DecoratedPlayer.isShield();
+        }
+
+        public void ShieldUp()
+        {
+            this.DecoratedPlayer.ShieldUp();
+        }
+
+        public void HealthUp()
+        {
+            this.DecoratedPlayer.HealthUp();
+        }
+
         public void Update()
         {
             timer--;

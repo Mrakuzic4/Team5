@@ -105,6 +105,7 @@ namespace HackAndSlash
         private Texture2D Font_OldManText1;
         private Texture2D Font_OldManText2;
         private Texture2D Font_Life;
+        private Texture2D Font_Shield;
         private Texture2D Font_Cheat;
 
         private static SpriteFactory instance = new SpriteFactory();
@@ -139,6 +140,7 @@ namespace HackAndSlash
             Font_OldManText1 = content.Load<Texture2D>(IMDB.Font_OldManText1.pathName);
             Font_OldManText2 = content.Load<Texture2D>(IMDB.Font_OldManText2.pathName);
             Font_Life = content.Load<Texture2D>(IMDB.Font_Life.pathName);
+            Font_Shield = content.Load<Texture2D>(IMDB.Font_Shield.pathName);
 
             //Zelda
             ZeldaDown = content.Load<Texture2D>(IMDB.zeldaDown.pathName);
@@ -291,6 +293,10 @@ namespace HackAndSlash
         public Texture2D GetFontLife()
         {
             return Font_Life;
+        }
+        public Texture2D GetFontShield()
+        {
+            return Font_Shield;
         }
         //***********Below are Player HP***************
         public Texture2D GetFullHeart()

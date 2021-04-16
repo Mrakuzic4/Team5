@@ -22,6 +22,9 @@ namespace HackAndSlash
         void ChangeDirection(GlobalSettings.Direction dir);
         int GetMaxHealth();
         int GetCurrentHealth();
+        bool isShield();
+        void ShieldUp();
+        void HealthUp();
 
     }
 }

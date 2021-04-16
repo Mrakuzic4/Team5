@@ -123,7 +123,7 @@
     <Compile Include="Misc\MaxKnockback.cs" />
     <Compile Include="Misc\PRNG.cs" />
     <Compile Include="Misc\SpecialCases.cs" />
-    <Compile Include="Player\DrawPlayerHealth.cs" />
+    <Compile Include="Player\DrawPlayerStat.cs" />
     <Compile Include="Player\UseItemPlayer.cs" />
     <Compile Include="Player\IPlayer.cs" />
     <Compile Include="Player\DamagedPlayer.cs" />

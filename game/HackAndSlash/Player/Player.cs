@@ -49,6 +49,8 @@ namespace HackAndSlash
         private int currentHealth;
         private int healPower = GlobalSettings.saveSets.HealPower;
 
+        //Player's Shield point
+        int shieldPoint;
 
         public Player(Game1 game)
         {
@@ -75,11 +77,7 @@ namespace HackAndSlash
             //Player's health initialize
             maxHealth = INIT_MAX_HEALTH;
             currentHealth = maxHealth;
-        }
-
-        public void unlockMovement()
-        {
-            this.canMove = true;
+            shieldPoint = 0;
         }
 
         public int GetMaxHealth()
@@ -109,6 +107,27 @@ namespace HackAndSlash
         public void ChangeDirection(GlobalSettings.Direction dir)
         {
             playerStateMachine.ChangeDirection(dir);
+        }
+        public bool isShield()
+        {
+            if (shieldPoint == 1) return true;
+            return false;
+        }
+        public void ShieldUp()
+        {
+            this.shieldPoint = 1;
+        }
+        public void HealthUp()
+        {
+            this.maxHealth += 2;
+        }
+
+        /// <summary>
+        /// Player only allows to move in one direction at a time.
+        /// </summary>
+        public void unlockMovement()
+        {
+            this.canMove = true;
         }
 
         public void Move()
@@ -151,7 +170,9 @@ namespace HackAndSlash
             if (!GlobalSettings.GODMODE) 
             {
                 //Health goes down by a half heart when damaged
-                currentHealth--;
+                //If has shield, health only goes down 1.
+                //If no shield, health goes down 2.
+                currentHealth = currentHealth - 2 + shieldPoint;
                 playerStateMachine.Damaged();
 
                 //Sound
@@ -163,8 +184,6 @@ namespace HackAndSlash
                     this.game.inGameOverAnimation = true;
                     SoundFactory.Instance.StopSong();
                     SoundFactory.Instance.LinkDeathEffect();
-                    //game.reset(5); //Reset the room upon player's death.
-                    //currentHealth = maxHealth; //fully heal Player after death
                 }
             }
 

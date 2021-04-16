@@ -147,10 +147,12 @@ namespace HackAndSlash
             PlayerMain = new Player(this);//Player object
 
             //Player's Health 
-            this.DrawHealth = new DrawPlayerHealth(this, SpriteFactory.Instance.GetEmptyHeart(),
+            this.DrawHealth = new DrawPlayerStat(this, SpriteFactory.Instance.GetEmptyHeart(),
                 SpriteFactory.Instance.GetHalfHeart(),
                 SpriteFactory.Instance.GetFullHeart(),
-                SpriteFactory.Instance.GetFontLife());
+                SpriteFactory.Instance.GetFontLife(),
+                SpriteFactory.Instance.GetFontShield(),
+                SpriteFactory.Instance.GetShield());
 
             // Fog of war
             fogOfWar = new FOG(GraphicsDevice, spriteBatch);

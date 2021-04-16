@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace HackAndSlash
 {
-    public class DrawPlayerHealth : ISprite
+    public class DrawPlayerStat : ISprite
     {
         private Game1 game;
 
@@ -13,7 +13,10 @@ namespace HackAndSlash
         Texture2D emptyHeart;
         Texture2D halfHeart;
         Texture2D fullHeart;
+        Texture2D shield;
         Texture2D fontLife;
+        Texture2D fontShield;
+
 
         //number of different hearts
         private int full; 
@@ -21,33 +24,45 @@ namespace HackAndSlash
         private int empty;
 
         private Rectangle destinationRectangle; //position of the heart that is to be drawn
-        private Rectangle fontRectangle; //position of the font that is to be drawn
+        private Rectangle shieldDestinationRectangle; //position of the shield that is to be drawn
+        private Rectangle lifeFontRectangle; //position of the font that is to be drawn
+        private Rectangle shieldFontRectangle; //position of the font that is to be drawn
 
         //Position of Hearts on HUD
-        private const int Y = 84;
+        private const int Y = 40;
         private const int X = 768;
         private const int DEST_SIZE = 32;
         private const int SRC_SIZE = 8;
 
-        //Position of Fonts on HUD
-        private const int Y_Font = 4;
+        //Position of Life Fonts on HUD
+        private const int LIFE_Y_Font = 4;
+        private const int SCALE = 3;
 
-        private const int SCALE = 4;
+        //Position of Shield Fonts on HUD
+        private const int SHIELD_Y_Font = 84;
+
+        //Position of Shield on HUD
+        private const int S_Y = 74;
+        private const int S_X = 980;
 
         private float layer = 0.9f; 
 
-        public DrawPlayerHealth(Game1 game, Texture2D emptyHeart, Texture2D halfHeart, Texture2D fullheart, Texture2D fontLife)
+        public DrawPlayerStat(Game1 game, Texture2D emptyHeart, Texture2D halfHeart, Texture2D fullheart, Texture2D fontLife, Texture2D fontShield, Texture2D shield)
         {
             this.game = game;
             this.fullHeart = fullheart;
             this.halfHeart = halfHeart;
             this.emptyHeart = emptyHeart;
+            this.shield = shield;
             this.full = this.game.Player.GetMaxHealth();
             this.half = 0;
             this.empty = 0;
             this.fontLife = fontLife;
+            this.fontShield = fontShield;
             destinationRectangle = new Rectangle(X, Y, DEST_SIZE, DEST_SIZE);
-            fontRectangle = new Rectangle(X, Y_Font, fontLife.Width*SCALE, fontLife.Height*SCALE);
+            lifeFontRectangle = new Rectangle(X, LIFE_Y_Font, fontLife.Width*SCALE, fontLife.Height*SCALE);
+            shieldFontRectangle = new Rectangle(X, SHIELD_Y_Font, fontShield.Width * SCALE, fontShield.Height * SCALE);
+            shieldDestinationRectangle = new Rectangle(S_X, S_Y, DEST_SIZE, DEST_SIZE*2);
         }
 
         /// <summary>
@@ -82,7 +97,7 @@ namespace HackAndSlash
         }
 
         /// <summary>
-        /// Draw different hearts on HUD.
+        /// Draw health point & shield point  on HUD.
         /// </summary>
         /// <param name="spriteBatch"></param>
         /// <param name="location"></param>
@@ -90,35 +105,57 @@ namespace HackAndSlash
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             //Draw font "-Life-"
-            Rectangle sourceRectangle = new Rectangle(0, 0, 48, 8);
-            spriteBatch.Draw(fontLife, fontRectangle, sourceRectangle, color, 
+            Rectangle sourceRectangle = new Rectangle(0, 0, fontLife.Width, fontLife.Height);
+            spriteBatch.Draw(fontLife, lifeFontRectangle, sourceRectangle, color, 
                 0f, Vector2.Zero, SpriteEffects.None, layer);
 
+            //Draw font "-Shield-"
+            sourceRectangle = new Rectangle(0, 0, fontShield.Width, fontShield.Height);
+            spriteBatch.Draw(fontShield, shieldFontRectangle, sourceRectangle, color,
+                0f, Vector2.Zero, SpriteEffects.None, layer);
+
+            //Draw Shield, depend on Player's stat
+            sourceRectangle = new Rectangle(0, 0, shield.Width, shield.Height); //reset source rectangle.
+            if (!game.Player.isShield())
+            {
+                spriteBatch.Draw(shield, shieldDestinationRectangle, sourceRectangle, Color.Gray,
+                    0f, Vector2.Zero, SpriteEffects.None, layer);
+            }
+            else
+            {
+                spriteBatch.Draw(shield, shieldDestinationRectangle, sourceRectangle, color,
+                    0f, Vector2.Zero, SpriteEffects.None, layer);
+            }
             //Draw Hearts
-            sourceRectangle = new Rectangle(0, 0, SRC_SIZE, SRC_SIZE); //reset source rectangle.
+            drawHeart(spriteBatch,color);
+        }
+
+        private void drawHeart(SpriteBatch spriteBatch, Color color)
+        {
+            Rectangle sourceRectangle = new Rectangle(0, 0, SRC_SIZE, SRC_SIZE); //reset source rectangle.
 
             //draw full hearts
-            for (int i = 1; i < full+1; i++)
+            for (int i = 1; i < full + 1; i++)
             {
-                spriteBatch.Draw(fullHeart, destinationRectangle, sourceRectangle, color, 
+                spriteBatch.Draw(fullHeart, destinationRectangle, sourceRectangle, color,
                     0f, Vector2.Zero, SpriteEffects.None, layer);
                 destinationRectangle = new Rectangle(X + DEST_SIZE * i, Y, DEST_SIZE, DEST_SIZE);
             }
             int destinationRectangleForHalf = destinationRectangle.X; //this is not true if there is no full hearts.
 
             //draw half hearts
-            for (int i = 1; i < half+1; i++)
+            for (int i = 1; i < half + 1; i++)
             {
-                spriteBatch.Draw(halfHeart, destinationRectangle, sourceRectangle, color, 
+                spriteBatch.Draw(halfHeart, destinationRectangle, sourceRectangle, color,
                     0f, Vector2.Zero, SpriteEffects.None, layer);
                 destinationRectangle = new Rectangle(destinationRectangleForHalf + DEST_SIZE * i, Y, DEST_SIZE, DEST_SIZE);
             }
             int destinationRectangleForEmpty = destinationRectangle.X;
 
             //draw empty hearts
-            for (int i = 1; i < empty+1; i++)
+            for (int i = 1; i < empty + 1; i++)
             {
-                spriteBatch.Draw(emptyHeart, destinationRectangle, sourceRectangle, color, 
+                spriteBatch.Draw(emptyHeart, destinationRectangle, sourceRectangle, color,
                     0f, Vector2.Zero, SpriteEffects.None, layer);
                 destinationRectangle = new Rectangle(destinationRectangleForEmpty + DEST_SIZE * i, Y, DEST_SIZE, DEST_SIZE);
             }

@@ -108,7 +108,7 @@ namespace HackAndSlash
         public ImageFile Refill;
         public ImageFile Shield;
 
-
+        public ImageFile Font_Shield;
         public ImageFile Font_Life;
 
         public ImageDatabase()
@@ -126,6 +126,7 @@ namespace HackAndSlash
             Font_OldManText2 = new ImageFile("images/font/Font_OldMan2", 1, 1);
 
             Font_Life = new ImageFile("images/font/Font_life", 1, 1);
+            Font_Shield = new ImageFile("images/font/Font_Shield", 1, 1);
 
             playerMoveUp = new ImageFile("images/sucUp", 1, 7);
             playerMoveDown = new ImageFile("images/sucDown", 1, 7);
