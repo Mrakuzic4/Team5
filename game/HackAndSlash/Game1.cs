@@ -595,11 +595,20 @@ namespace HackAndSlash
 
                 case GlobalSettings.GameStates.Transitioning:
                     currentLevel.Draw();
-                    if (_FOG)
-                    {
+                    if (_FOG) {
                         fogOfWar.Draw(PlayerMain.GetPos(), currentLevel.transitioning);
                     }
                     currentLevel.DrawOverlay();
+                    DrawHealth.Draw(spriteBatch, new Vector2(0, 100), Color.White);
+
+                    // Some way to keep the items during transition, maybe a player's item list? 
+                    foreach (IItem item in itemList) {
+                        if (item.FogBreaker() || !_FOG || utilMethods.InFogRange(PlayerMain.GetPos(), item.GetPos()))
+                            item.Draw();
+                    }
+
+                    miniMap.Draw();
+                    if (displayMap) miniMap.DrawMap();
                     break;
 
                 case GlobalSettings.GameStates.Running:
@@ -646,8 +655,7 @@ namespace HackAndSlash
                         PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
                     }
 
-                    if (_FOG)
-                    {
+                    if (_FOG) {
                         fogOfWar.Draw(PlayerMain.GetPos(), currentLevel.transitioning);
                     }
 
