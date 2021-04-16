@@ -356,23 +356,13 @@ C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debu
 C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\bin\DesktopGL\AnyCPU\Debug\Content\info\NewSaveFile.json
 C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\NewSaveFile.json
 C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Rupy.xnb
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Oldman2.xnb
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sounds\TitleScreenMusic.xnb
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\bug.xnb
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SmoothBlock.xnb
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeMoving.xnb
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\TextSprites.xnb
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
+=======
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Rupy.xnb
+C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\bin\DesktopGL\AnyCPU\Debug\Content\info\NewSaveFile.json
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordDown.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordLeft.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordRight.xnb
+C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordUp.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\GameOverOverlay.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\GamePauseOverlay.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\ItemSelector.xnb
@@ -399,12 +389,14 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Oldman1.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Oldman2.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Font_Usebutton.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\font\Oldman2.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\Merchant\Heart.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\Merchant\NES - The Legend of Zelda - Items & Weapons.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\Merchant\Oldwoman.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\Merchant\Refill.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\Merchant\Ruby.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\Merchant\Shield.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sounds\TitleScreenMusic.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\AquamentusSprite.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\bg.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BlockBlank1.xnb
@@ -415,6 +407,7 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Bomb.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Boss.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\bossDie.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\bug.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BugDie.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BugEnemyIdle.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\BugEnemyLeft.xnb
@@ -430,6 +423,10 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\explosion.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\firewall.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\firewall3.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordDown.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordLeft.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordRight.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordUp.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Food.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\fullHeart.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\halfHeart.xnb
@@ -445,17 +442,20 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Oldman.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\RedBall.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Rupy.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SmoothBlock.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeAttack.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeDie.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeEnemyRight.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeIdle.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeLeftMoving.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\SnakeMoving.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\snakespritesheet.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucDown.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucLeft.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucOva.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\sucUp.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\TextCharacters.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\TextSprites.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ThrowingKnifeDown.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ThrowingKnifeLeft.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\ThrowingKnifeRight.xnb
@@ -506,6 +506,17 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\LOZ_Text.xnb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\TitleScreenMp3.ogg
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\TitleScreenMp3.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\SDL2.dll
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\SDL2.dll
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\soft_oal.dll
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\soft_oal.dll
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\libSDL2-2.0.so.0
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\libSDL2-2.0.so.0
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x86\libopenal.so.1
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\x64\libopenal.so.1
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\libSDL2-2.0.0.dylib
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\libopenal.1.dylib
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll.config
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\bin\DesktopGL\AnyCPU\Debug\Content\info\NewSaveFile.json
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\levelDemoM1.json
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM1.json
@@ -527,8 +538,6 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM16.json
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\eagleM17.json
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\info\NewSaveFile.json
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\HackAndSlash.exe
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\HackAndSlash.pdb
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.dll
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Newtonsoft.Json.xml
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.csprojAssemblyReference.cache
@@ -536,14 +545,5 @@ C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Sy
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.csproj.CopyComplete
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.exe
 C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\obj\Debug\HackAndSlash.pdb
-=======
-C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\Rupy.xnb
-C:\Users\Jimmy Yuan\Documents\GitHub\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\bin\DesktopGL\AnyCPU\Debug\Content\info\NewSaveFile.json
-C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordDown.xnb
-C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordLeft.xnb
-C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordRight.xnb
-C:\Users\admin\source\repos\Team5(3)\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordUp.xnb
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordDown.xnb
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordLeft.xnb
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordRight.xnb
-C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\FlyingSwordUp.xnb
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\HackAndSlash.exe
+C:\Users\djnef\OneDrive\Documents\CLASSES SP21\CSE 3902 - Project Interactive Systems\Team5\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\HackAndSlash.pdb
