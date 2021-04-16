@@ -159,8 +159,8 @@ namespace HackAndSlash
                         RoomGen.SetPara(L1Dist, RowProgression, ColProgression);
 
                         if(! IsStartUpRoom(i, j)) {
-                            RoomGen.PopulateBlock();
                             RoomGen.PopulateEnemy();
+                            RoomGen.PopulateBlock();
                         }
                         RoomGen.PopulateItem();
 

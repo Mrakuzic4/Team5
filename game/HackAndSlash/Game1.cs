@@ -459,6 +459,8 @@ namespace HackAndSlash
             else
             {
                 currentLevel.Draw();
+                // Masking part of the display, also used for masking extra transition animation 
+                currentLevel.DrawOverlay();
 
                 foreach (IBlock block in blockList) { 
                     block.Draw();
@@ -498,8 +500,7 @@ namespace HackAndSlash
                     fogOfWar.Draw(PlayerMain.GetPos(), currentLevel.transitioning);
                 }
                 
-                // Masking part of the display, also used for masking extra transition animation 
-                currentLevel.DrawOverlay();
+                
 
                 /*
                  * Put UI and Headsup elements below to avoid being covered by overlay  

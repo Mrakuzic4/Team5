@@ -16,6 +16,7 @@ namespace HackAndSlash
 
         private const int ENEMY_MAX = 8; 
         private const int ENEMY_SPAWN_BIAS = 3;
+        private const int PATTERNED_BIAS = -10;
         private const int ITEM_TOLERANCE = 6;
         private const int ITEM_MAX = 4; 
         private const double WALKABLE_SPREAD_MAX = 0.6;
@@ -58,6 +59,16 @@ namespace HackAndSlash
             { true, false, false, false, false, false, false, false, false, false, false, true}
         };
 
+        private static bool[,] midOval = new bool[,] {
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, false, false, false, false, true, true, false, false, false, false, false},
+            { false, false, false, false, true, true, true, true, false, false, false, false},
+            { false, false, false, false, true, true, true, true, false, false, false, false},
+            { false, false, false, false, true, true, true, true, false, false, false, false},
+            { false, false, false, false, false, true, true, false, false, false, false, false},
+            { false, false, false, false, false, false, false, false, false, false, false, false}
+        };
+
         private static bool[,] cross = new bool[,] {
             { false, false, false, false, false, true, true, false, false, false, false, false},
             { false, false, false, false, false, true, true, false, false, false, false, false},
@@ -68,6 +79,16 @@ namespace HackAndSlash
             { false, false, false, false, false, true, true, false, false, false, false, false}
         };
 
+        private static bool[,] cornerDust = new bool[,] {
+            { true, true, true, false, false, false, false, false, false, true, true, true},
+            { true, true, false, false, false, false, false, false, false, false, true, true},
+            { true, false, false, false, false, false, false, false, false, false, false, true},
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { true, false, false, false, false, false, false, false, false, false, false, true},
+            { true, true, false, false, false, false, false, false, false, false, true, true},
+            { true, true, true, false, false, false, false, false, false, true, true, true}
+        };
+
         private static bool[,] grid = new bool[,] {
             { false, false, false, false, false, false, false, false, false, false, false, false},
             { false, true, false, true, false, true, true, false, true, false, true, false},
@@ -75,6 +96,46 @@ namespace HackAndSlash
             { false, true, false, true, false, true, true, false, true, false, true, false},
             { false, false, false, false, false, false, false, false, false, false, false, false},
             { false, true, false, true, false, true, true, false, true, false, true, false},
+            { false, false, false, false, false, false, false, false, false, false, false, false}
+        };
+
+        private static bool[,] square = new bool[,] {
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, false, false, false, false, true, true, false, false, false, false, false},
+            { false, false, false, false, false, true, true, false, false, false, false, false},
+            { false, false, false, false, false, true, true, false, false, false, false, false},
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, false, false, false, false, false, false, false, false, false, false, false}
+        };
+
+        private static bool[,] doubleRectangles = new bool[,] {
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, true, true, false, false, false, false, false, false, true, true, false},
+            { false, true, true, false, false, false, false, false, false, true, true, false},
+            { false, true, true, false, false, false, false, false, false, true, true, false},
+            { false, true, true, false, false, false, false, false, false, true, true, false},
+            { false, true, true, false, false, false, false, false, false, true, true, false},
+            { false, false, false, false, false, false, false, false, false, false, false, false}
+        };
+
+        private static bool[,] maze = new bool[,] {
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, true , false, true , true , true , false, true , true , true , true , false},
+            { false, true , false, false, false, true , false, true , false, false, false, false},
+            { false, true , false, true , false, true , true , true , false, true , true , false},
+            { false, true , false, true , false, true , false, true , false, false, false, false},
+            { false, true , true , true , false, true , false, true , true , true , true , false},
+            { false, false, false, false, false, false, false, false, false, false, false, false}
+        };
+
+        private static bool[,] pipe = new bool[,] {
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, true, true, true, true, true, true, true, true, true, true, false},
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, true, true, true, true, true, true, true, true, true, true, false},
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, true, true, true, true, true, true, true, true, true, true, false},
             { false, false, false, false, false, false, false, false, false, false, false, false}
         };
 
@@ -160,21 +221,51 @@ namespace HackAndSlash
 
         public void PopulateBlock()
         {
-            double walkableSpread = Math.Min(
+            int walkablePatternedRate;
+            int solidPatternedRate;
+            bool[,] Rand;
+
+            List<bool[,]> WalkableList = new List<bool[,]>();
+            List<bool[,]> SolidList = new List<bool[,]>();
+            WalkableList.Add(cross);
+            WalkableList.Add(corners);
+            WalkableList.Add(midOval);
+            SolidList.Add(grid);
+            SolidList.Add(corners);
+            SolidList.Add(doubleRectangles);
+            SolidList.Add(square);
+            SolidList.Add(cornerDust);
+            SolidList.Add(pipe);
+            SolidList.Add(maze);
+
+            walkableSpread = Math.Min(
                 (double)distFromStartup / (double)Math.Pow(room.Arrangement.GetLength(0), 2), 
                 WALKABLE_SPREAD_MAX);
-            double solidSpread = Math.Min(
+            solidSpread = Math.Min(
                 (double)distFromStartup / (double)Math.Pow(room.Arrangement.GetLength(0), 2), 
                 SOLID_SPREAD_MAX);
 
-            // Experimental feature 
-            bool[,] Rand = RandScatter(walkableSpread);
-            MaskOffDoorways(Rand);
+            walkablePatternedRate = (int)(100 * (1 - walkableSpread / WALKABLE_SPREAD_MAX)) - PATTERNED_BIAS;
+            solidPatternedRate = (int)(100 * (1 - solidSpread / SOLID_SPREAD_MAX)) - PATTERNED_BIAS;
+
+
+            if (GlobalSettings.RND.Next(100) < walkablePatternedRate) {
+                Rand = WalkableList[GlobalSettings.RND.Next(WalkableList.Count)] ;
+            }
+            else {
+                Rand = RandScatter(walkableSpread);
+                MaskOffDoorways(Rand);
+            }
             PopulatePattern(Rand, walkableBlockList[GlobalSettings.RND.Next(walkableBlockList.Length)]);
 
 
-            Rand = RandScatter(solidSpread);
-            MaskOffDoorways(Rand);
+            if (GlobalSettings.RND.Next(100) < solidPatternedRate) {
+                Rand = SolidList[GlobalSettings.RND.Next(SolidList.Count)];
+            }
+            else {
+                Rand = RandScatter(solidSpread);
+                MaskOffDoorways(Rand);
+            } 
             PopulatePattern(Rand, solidBlockLIst[GlobalSettings.RND.Next(solidBlockLIst.Length)]);
         }
 
@@ -190,7 +281,8 @@ namespace HackAndSlash
                         if (corners[i, j])
                             room.Arrangement[i, j] = itemList[GlobalSettings.RND.Next(itemList.Length)];
                     }
-                    else if (GlobalSettings.RND.Next(100) < Threshold && ItemCount < ITEM_MAX) {
+                    else if (GlobalSettings.RND.Next(100) < Threshold 
+                        && ItemCount < ITEM_MAX && !IsBlock(i, j)) {
                         room.Arrangement[i, j] = itemList[GlobalSettings.RND.Next(itemList.Length)];
                         ItemCount += 1;
                     }
@@ -203,11 +295,16 @@ namespace HackAndSlash
             return (room.Arrangement[row, col] > 0); 
         }
 
+        private bool IsItem(int row, int col)
+        {
+            return (room.Arrangement[row, col] < -256);
+        }
+
         private void PopulatePattern(bool[,] Pattern, int Index)
         {
             for (int i = 0; i < room.Arrangement.GetLength(0); i++){
                 for (int j = 0; j < room.Arrangement.GetLength(1); j++) {
-                    if (canPlace[i, j] && Pattern[i, j]) {
+                    if (Pattern[i, j]) {
                         room.Arrangement[i, j] = Index;
                     }
                 }

@@ -387,7 +387,8 @@ namespace HackAndSlash
         {
             if (transitioning)
             {
-                spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + delta, defaultTint);
+                spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + delta, null,
+                    defaultTint, 0f, Vector2.Zero, 1, SpriteEffects.None, .4f);
                 spriteBatch.Draw(headsUpFill, new Vector2(0, 0), defaultTint);
             }
             else
@@ -395,7 +396,7 @@ namespace HackAndSlash
                 Color tint = gameOver ? Color.Magenta : defaultTint;
                 tint = gameWon ? Color.Red : defaultTint;
                 spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), null,
-                    defaultTint, 0f, Vector2.Zero, 1, SpriteEffects.None, .5f);
+                    defaultTint, 0f, Vector2.Zero, 1, SpriteEffects.None, .4f);
             }
                 
         }
