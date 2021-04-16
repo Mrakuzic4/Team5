@@ -23,6 +23,9 @@ namespace HackAndSlash
 
         public int startUpRow { set; get; }
 
+        private int levelRowCount;
+        private int levelColCount; 
+
         public GenerateLevel()
         {
 
@@ -56,6 +59,10 @@ namespace HackAndSlash
                 for (int j = 0; j < levelSet.GetLength(1); j++)
                     if (Placement[i, j])
                         levelSet[i, j] = new GenerateRoom().InitRoom();
+
+            levelRowCount = levelSet.GetLength(0);
+            levelColCount = levelSet.GetLength(1);
+            
         }
 
         // Change doors depending on the inter-room relationship 
@@ -128,19 +135,34 @@ namespace HackAndSlash
             }
         }
 
+        private int L1DistanceFromStart(int row, int col)
+        {
+            return Math.Abs(row - startUpRow) + Math.Abs(col - startUpCol);
+        }
+
         private void PopulateRooms()
         {
+            int L1Dist;
+            double RowProgression = 0, ColProgression = 0;
+
+
             for (int i = 0; i < levelSet.GetLength(0); i++) {
                 for (int j = 0; j < levelSet.GetLength(1); j++) {
+
+                    L1Dist = L1DistanceFromStart(i, j);
+                    ColProgression = j / levelColCount; 
+                    RowProgression = i / levelRowCount;
+
                     if (levelSet[i, j] != null) {
                         GenerateRoom RoomGen = new GenerateRoom();
                         RoomGen.InitRoom();
+                        RoomGen.SetPara(L1Dist, RowProgression, ColProgression);
 
                         if(! IsStartUpRoom(i, j)) {
                             RoomGen.PopulateBlock();
                             RoomGen.PopulateEnemy();
                         }
-                        
+                        RoomGen.PopulateItem();
 
                         levelSet[i, j] = RoomGen.room;
                     }

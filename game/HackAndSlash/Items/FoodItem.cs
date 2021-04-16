@@ -59,6 +59,7 @@ namespace HackAndSlash
                     // check for collision collision -> collect Item
                     if(foodCollisionHandler.CheckForPlayerCollision(collidableTiles))
                     {
+                        game.levelCycleRecord.RemoveOneIndex(GlobalSettings.FOOD_ITEM);
                         CollectItem();
                     }
                     break;
