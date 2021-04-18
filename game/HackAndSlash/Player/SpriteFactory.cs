@@ -99,6 +99,9 @@ namespace HackAndSlash
         private Texture2D Refill;
         private Texture2D Ruby;
         private Texture2D Shield;
+        private Texture2D ZeldaGotRefill;
+        private Texture2D ZeldaGotShield;
+        private Texture2D ZeldaGotHeart;
 
         private Texture2D TextCharacters;
 
@@ -131,7 +134,10 @@ namespace HackAndSlash
             Heart = content.Load<Texture2D>(IMDB.Heart.pathName);
             Refill = content.Load<Texture2D>(IMDB.Refill.pathName);
             Shield = content.Load<Texture2D>(IMDB.Shield.pathName);
-            
+            ZeldaGotHeart = content.Load<Texture2D>(IMDB.ZeldaGotHeart.pathName);
+            ZeldaGotRefill = content.Load<Texture2D>(IMDB.ZeldaGotRefill.pathName);
+            ZeldaGotShield = content.Load<Texture2D>(IMDB.ZeldaGotShield.pathName);
+
             //NPC
             OldMan = content.Load<Texture2D>(IMDB.OldMan.pathName);
             RedBall = content.Load<Texture2D>(IMDB.RedBall.pathName);
@@ -247,14 +253,30 @@ namespace HackAndSlash
         }
 
         //************Below are Merchant and NPC***********
+        public void SetZeldaGotHeart()
+        {
+            DrawPlayer.Instance.Rows = IMDB.ZeldaGotHeart.R;
+            DrawPlayer.Instance.Columns = IMDB.ZeldaGotHeart.C;
+            DrawPlayer.Instance.SetTexture(ZeldaGotHeart);
+        }
+        public void SetZeldaGotRefill()
+        {
+            DrawPlayer.Instance.Rows = IMDB.ZeldaGotRefill.R;
+            DrawPlayer.Instance.Columns = IMDB.ZeldaGotRefill.C;
+            DrawPlayer.Instance.SetTexture(ZeldaGotRefill);
+        }
+        public void SetZeldaGotShield()
+        {
+            DrawPlayer.Instance.Rows = IMDB.ZeldaGotShield.R;
+            DrawPlayer.Instance.Columns = IMDB.ZeldaGotShield.C;
+            DrawPlayer.Instance.SetTexture(ZeldaGotShield);
+        }
+
         public Texture2D GetOldWoman()
         {
             return OldWoman;
         }
-        public Texture2D GetHeart()
-        {
-            return Heart;
-        }
+
         public Texture2D GetRefill()
         {
             return Refill;
@@ -262,6 +284,18 @@ namespace HackAndSlash
         public Texture2D GetShield()
         {
             return Shield;
+        }
+        public ISprite CreateRefill()
+        {
+            return new ItemSprite(Refill, IMDB.Shield.C, IMDB.Shield.R);
+        }
+        public ISprite CreateShield()
+        {
+            return new ItemSprite(Shield, IMDB.Shield.C, IMDB.Shield.R);
+        }
+        public ISprite CreateHeart()
+        {
+            return new ItemSprite(Heart, IMDB.Shield.C, IMDB.Shield.R);
         }
 
         public Texture2D GetRedBall()
@@ -657,8 +691,7 @@ namespace HackAndSlash
         {
             return new ItemSprite(TriforceSprite, IMDB.triforce.C, IMDB.triforce.R);
         }
-
-
+                
         public ISprite CreateFood()
         {
             return new ItemSprite(FoodSprite, IMDB.food.C, IMDB.food.R);

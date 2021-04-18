@@ -81,7 +81,7 @@ namespace HackAndSlash
 
         public void Move()
         {
-            DecoratedPlayer.Move();
+            //Does not move when using item.
         }
 
         public void Attack()

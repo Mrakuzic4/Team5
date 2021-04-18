@@ -70,6 +70,9 @@ namespace HackAndSlash
         public const int TRIFORCE_ITEM = -261;
         public const int BURNING_FIRE = -262;
         public const int RUPY_ITEM = -263;
+        public const int SHIELD_ITEM = -264;
+        public const int HEART_ITEM = -265;
+        public const int REFILL_ITEM = -266;
 
         // Index for enemy 
         public const int SNAKE_ENEMY = -1;

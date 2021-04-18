@@ -214,6 +214,15 @@ namespace HackAndSlash
                         case GlobalSettings.RUPY_ITEM:
                             ItemList.Add(new RupyItem(position, spriteBatch, game));
                             break;
+                        case GlobalSettings.SHIELD_ITEM:
+                            ItemList.Add(new ShieldItem(position, spriteBatch, game));
+                            break;
+                        case GlobalSettings.HEART_ITEM:
+                            ItemList.Add(new HeartItem(position, spriteBatch, game));
+                            break;
+                        case GlobalSettings.REFILL_ITEM:
+                            ItemList.Add(new RefillItem(position, spriteBatch, game));
+                            break;
                         default:
                             break;
                     }

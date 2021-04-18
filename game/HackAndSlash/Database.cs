@@ -108,6 +108,10 @@ namespace HackAndSlash
         public ImageFile Refill;
         public ImageFile Shield;
 
+        public ImageFile ZeldaGotShield;
+        public ImageFile ZeldaGotRefill;
+        public ImageFile ZeldaGotHeart;
+
         public ImageFile Font_Shield;
         public ImageFile Font_Life;
 
@@ -118,6 +122,9 @@ namespace HackAndSlash
             Heart = new ImageFile("Merchant/Heart", 1, 1);
             Refill = new ImageFile("Merchant/Refill", 1, 1);
             Shield = new ImageFile("Merchant/Shield", 1, 1);
+            ZeldaGotHeart = new ImageFile("Merchant/ZeldaGotHeart", 1, 1);
+            ZeldaGotRefill = new ImageFile("Merchant/ZeldaGotRefill", 1, 1);
+            ZeldaGotShield = new ImageFile("Merchant/ZeldaGotShield", 1, 1);
 
             RedBall = new ImageFile("images/RedBall", 1, 1);
             OldMan = new ImageFile("images/Oldman", 1, 1);

@@ -47,7 +47,7 @@ namespace HackAndSlash
         private int INIT_MAX_HEALTH = GlobalSettings.saveSets.MaxHealth; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
         private int maxHealth; 
         private int currentHealth;
-        private int healPower = GlobalSettings.saveSets.HealPower;
+       // private int healPower = GlobalSettings.saveSets.HealPower;
 
         //Player's Shield point
         int shieldPoint;
@@ -148,20 +148,20 @@ namespace HackAndSlash
 
         public void Attack()
         {
-            //Sprite Animation and Decorator
-            playerStateMachine.Attack();
-            this.swordEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckSwordEnemyCollisions());
-         
             //Sound
             SoundFactory.Instance.SwordSlashEffect();
 
             if (currentHealth == maxHealth)
             {
-                //shoot the sword
-
+                //shoot the sword when at full health
                 game.fullHealthSword.CollectItem();
-                game.fullHealthSword.UseItem(this.GetDir());                
-
+                game.fullHealthSword.UseItem(this.GetDir());
+            }
+            else
+            {
+                //Sprite Animation and Decorator
+                playerStateMachine.Attack();
+                this.swordEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckSwordEnemyCollisions());
             }
         }
 
@@ -191,7 +191,7 @@ namespace HackAndSlash
         // make player heal method in IPlayer and all player wrappers
         public void Healed()
         {
-            currentHealth += healPower;
+            currentHealth += GlobalSettings.saveSets.HealPower;
             if (currentHealth > maxHealth)
             {
                 currentHealth = maxHealth;

@@ -11,10 +11,11 @@ namespace HackAndSlash
         private IPlayer DecoratedPlayer;
         private Game1 game;
         private int timer;
+        private const int DELAY = 30;
 
         public AttackPlayer(IPlayer decoratedPlayer, Game1 game)
         {
-            timer = 30; //Added delay.
+            timer = DELAY; //Added delay.
             this.DecoratedPlayer = decoratedPlayer;
             this.game = game;
             DrawPlayer.Instance.Frame = 0;
@@ -56,6 +57,7 @@ namespace HackAndSlash
         {
             timer--;
             if (timer % 10 == 0) DrawPlayer.Instance.Frame += 1;
+
             if (timer == 0)
             {
                 DecoratedPlayer.Move();
