@@ -121,6 +121,7 @@
     <Compile Include="Levels\Map.cs" />
     <Compile Include="Levels\MapGenerator.cs" />
     <Compile Include="Levels\Minimap.cs" />
+    <Compile Include="Misc\OldGame1.cs" />
     <Compile Include="Misc\CheatText.cs" />
     <Compile Include="Misc\Misc.cs" />
     <Compile Include="Misc\DrawRectangle.cs" />
@@ -283,6 +284,7 @@
     <Content Include="Content\images\UI\WinningScreen.png" />
     <Content Include="Content\images\ZeldaDying.png" />
     <Content Include="Content\info\AddField.py" />
+    <Content Include="Content\info\GenerateNewMap.py" />
     <Content Include="Content\info\levelDemoM1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

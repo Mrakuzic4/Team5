@@ -24,7 +24,10 @@ namespace HackAndSlash
         public int startUpRow { set; get; }
 
         private int levelRowCount;
-        private int levelColCount; 
+        private int levelColCount;
+
+        private const int HIDDEN_DOOR_THRESHOLD = 20;
+        private const int MERCHANT_ROOM_COUNT = 2;
 
         public GenerateLevel()
         {
@@ -41,6 +44,8 @@ namespace HackAndSlash
             PopulateRooms();
 
             RegulateDoors();
+
+            SetMerchantRooms();
 
             return levelSet;
         }
@@ -62,23 +67,32 @@ namespace HackAndSlash
 
             levelRowCount = levelSet.GetLength(0);
             levelColCount = levelSet.GetLength(1);
-            
+
         }
 
         // Change doors depending on the inter-room relationship 
         private void RegulateDoors()
         {
             int[] iter = new int[] { 0, 1, 2, 3 };
-            for (int i = 0; i < levelSet.GetLength(0); i++) {
-                for (int j = 0; j < levelSet.GetLength(1); j++) {
-                    foreach (int Dir in iter) {
-                        if (HasNextRoom(new int[] { i, j }, Dir) && levelSet[i, j] != null) {
-                            AddOpenDoors(new int[] { i, j }, Dir);
+            for (int i = 0; i < levelSet.GetLength(0); i++)
+            {
+                for (int j = 0; j < levelSet.GetLength(1); j++)
+                {
+                    foreach (int Dir in iter)
+                    {
+                        if (HasNextRoom(new int[] { i, j }, Dir) && levelSet[i, j] != null)
+                        {
+                            if (GlobalSettings.RND.Next(100) < HIDDEN_DOOR_THRESHOLD)
+                            {
+                                AddHiddenDoors(new int[] { i, j }, Dir);
+                                AddItemInRoom(new int[] { i, j }, GlobalSettings.BOMB_ITEM, 1);
+                            }
+                            else
+                                AddOpenDoors(new int[] { i, j }, Dir);
                         }
                     }
                 }
             }
-
         }
 
         /// <summary>
@@ -122,6 +136,63 @@ namespace HackAndSlash
             levelSet[CurrentPos[0] + (int)Offset.Y, CurrentPos[1] + (int)Offset.X].OpenDoors[nextRoomDoorDir] = true;
         }
 
+        private void AddHiddenDoors(int[] CurrentPos, int Direction)
+        {
+            Vector2 Offset = new Vector2(0, 0);
+            int nextRoomDoorDir = 0;
+
+            levelSet[CurrentPos[0], CurrentPos[1]].OpenDoors[Direction] = false;
+            levelSet[CurrentPos[0], CurrentPos[1]].HiddenDoors[Direction] = true;
+
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    Offset.Y = -1;
+                    nextRoomDoorDir = (int)GlobalSettings.Direction.Down;
+                    break;
+
+                case (int)GlobalSettings.Direction.Down:
+                    Offset.Y = 1;
+                    nextRoomDoorDir = (int)GlobalSettings.Direction.Up;
+                    break;
+
+                case (int)GlobalSettings.Direction.Left:
+                    Offset.X = -1;
+                    nextRoomDoorDir = (int)GlobalSettings.Direction.Right;
+                    break;
+
+                case (int)GlobalSettings.Direction.Right:
+                    Offset.X = 1;
+                    nextRoomDoorDir = (int)GlobalSettings.Direction.Left;
+                    break;
+
+                default:
+                    break;
+            }
+
+            levelSet[CurrentPos[0] + (int)Offset.Y, CurrentPos[1] + (int)Offset.X].OpenDoors[nextRoomDoorDir] = false;
+            levelSet[CurrentPos[0] + (int)Offset.Y, CurrentPos[1] + (int)Offset.X].HiddenDoors[nextRoomDoorDir] = true;
+        }
+
+        private void AddItemInRoom(int[] CurrentPos, int ItemIndex, int Number)
+        {
+            GenerateRoom RoomGen = new GenerateRoom();
+            RoomGen.room = levelSet[CurrentPos[0], CurrentPos[1]];
+            int Count = 0;
+
+            while (Count > Number)
+            {
+                int pos1 = GlobalSettings.RND.Next(GlobalSettings.TILE_ROW);
+                int pos2 = GlobalSettings.RND.Next(GlobalSettings.TILE_COLUMN);
+
+                if (RoomGen.AddSoftIndex(CurrentPos, ItemIndex))
+                {
+                    Count++;
+                }
+            }
+        }
+
+
         private void PickStartUpRoom()
         {
             // Randomly pick a startup Room 
@@ -146,19 +217,23 @@ namespace HackAndSlash
             double RowProgression = 0, ColProgression = 0;
 
 
-            for (int i = 0; i < levelSet.GetLength(0); i++) {
-                for (int j = 0; j < levelSet.GetLength(1); j++) {
+            for (int i = 0; i < levelSet.GetLength(0); i++)
+            {
+                for (int j = 0; j < levelSet.GetLength(1); j++)
+                {
 
                     L1Dist = L1DistanceFromStart(i, j);
-                    ColProgression = j / levelColCount; 
+                    ColProgression = j / levelColCount;
                     RowProgression = i / levelRowCount;
 
-                    if (levelSet[i, j] != null) {
+                    if (levelSet[i, j] != null)
+                    {
                         GenerateRoom RoomGen = new GenerateRoom();
                         RoomGen.InitRoom();
                         RoomGen.SetPara(L1Dist, RowProgression, ColProgression);
 
-                        if(! IsStartUpRoom(i, j)) {
+                        if (!IsStartUpRoom(i, j))
+                        {
                             RoomGen.PopulateEnemy();
                             RoomGen.PopulateBlock();
                         }
@@ -168,9 +243,41 @@ namespace HackAndSlash
                     }
                 }
             }
-
         }
-        
+
+        private void SetMerchantRooms()
+        {
+
+            int count = 0;
+            int[] iter = new int[] { 0, 1, 2, 3 };
+
+            while (count < MERCHANT_ROOM_COUNT)
+            {
+                int row = GlobalSettings.RND.Next(levelSet.GetLength(0));
+                int col = GlobalSettings.RND.Next(levelSet.GetLength(1));
+
+                if (!IsStartUpRoom(row, col))
+                {
+                    GenerateRoom RoomGen = new GenerateRoom();
+                    RoomGen.InitRoom();
+                    RoomGen.SetAsMerchantRoom();
+
+                    levelSet[row, col] = RoomGen.room;
+
+                    foreach (int Dir in iter)
+                    {
+                        if (HasNextRoom(new int[] { col, row }, Dir))
+                        {
+                            AddHiddenDoors(new int[] { col, row }, Dir);
+                        }
+                    }
+
+                    count++;
+                }
+
+            }
+        }
+
         private bool IsStartUpRoom(int row, int col)
         {
             return (row == startUpRow && col == startUpCol);

@@ -275,6 +275,7 @@ namespace HackAndSlash
     public class SaveDatabase
     {
         // Correctly saves data to the AppData folder (just like a real game!)
-        public static string saveFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SaveFile.json");
+        // Amarth: I changed the name to NewSaveFile since it's having error reading 
+        public static string saveFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "NewSaveFile.json");
     }
 }

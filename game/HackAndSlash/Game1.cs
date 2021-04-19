@@ -132,7 +132,7 @@ namespace HackAndSlash
             GameState = GlobalSettings.GameStates.TitleMenu;
 
             // Setup stat for all the rooms 
-            levelCycleRecord = new LevelCycling(true); // "true" to use the S4 maps 
+            levelCycleRecord = new LevelCycling(false); // "true" to use the S4 maps 
 
             // Initlize first room 
             currentLevel = new Level(GraphicsDevice, spriteBatch, this);
@@ -429,115 +429,6 @@ namespace HackAndSlash
                     DrawHealth.Update();
                     break;
             }
-            // Pausing or other thing that takes over the screen 
-            //else if (!elapsing)
-            //{
-            //    if (gamePaused) pauseOverlay.Update();
-            //    if (upgrading)
-            //    {
-            //        gameOver = false;
-            //        gameWon = false;
-            //        upgradesOverlay.Update();
-            //    }
-            //    if (gameOver)
-            //    {
-            //        currentLevel.setGameOver();
-            //        gameOverOverlay.Update(gameTime);
-                    
-            //    }
-            //    if(gameWon)
-            //    {
-            //        currentLevel.setGameWon();
-            //        gameWonScreenOverlay.Update(gameTime);
-            //    }
-
-            //} 
-            //// Transitioning between rooms 
-            //else if (currentLevel.transitioning)
-            //{
-            //    currentLevel.Update(gameTime);
-            //    miniMap.UpdateTransition(transitionDir);
-            //    // Flagging transFinsihed into true is done in Update() method in Level.cs 
-            //    if (currentLevel.transFinsihed) 
-            //    {
-            //        // Generate the image for new room 
-            //        currentLevel = generator.getLevel(GraphicsDevice, spriteBatch, this);
-            //        currentLevel.levelCycler = levelCycleRecord;
-            //        currentLevel.currentMapInfo = currentMapInfo;
-            //        currentLevel.MovedToRoom(transitionDir);
-            //        currentLevel.Generate();
-            //        transitionDir = 5;
-
-            //        // Update minimap visibility 
-            //        miniMap.FlagExplored(currentLevel.mapIndex);
-            //        miniMap.SetPivot(currentLevel.mapIndex);
-
-            //        // Gnerate new lists 
-            //        blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
-            //        enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
-            //        itemList = generator.GetItemList(spriteBatch, this);
-
-            //        // Not used in Sprint 4
-            //        numOfEnemy = enemyList.Count(); 
-            //        numOfDropped = 0;
-            //    }
-            //}
-            //// When the pause, transit, or bag state is not flagged 
-            //// i.e. the game area is running 
-            //else
-            //{
-            //    displayMap = false; 
-            //    foreach (IController controller in controllerList)
-            //    {
-            //        controller.Update();
-            //    }
-
-            //    foreach (IEnemy enemy in enemyList) enemy.Update(gameTime);
-
-            //    foreach (IItem item in itemList) item.Update();
-            //    if (!itemList.Contains(mainRupy))
-            //    {
-                    
-            //        itemList.Add(mainRupy);
-            //        if (RupyItem.numUses > 0) 
-            //        {
-            //            mainRupy.ChangeToUseable();
-            //        } else
-            //        {
-            //            mainRupy.ChangeToExpended();
-            //        } 
-            //    }
-            //    if (!itemList.Contains(fullHealthSword))
-            //    {
-
-            //        itemList.Add(fullHealthSword);
-            //    }
-            //    foreach (IItem item in useableItemList)
-            //    {
-            //        // keep item uses between rooms
-            //        if (!itemList.Contains(item))
-            //        {
-            //            itemList.Add(item);
-            //        }
-            //        item.SetToolbarPosition(useableItemList.IndexOf(item));
-            //    }
-
-            //    if (blockList.OfType<BlockMovable>().Any())
-            //    {
-            //        List<BlockMovable> movableBlocks = blockList.OfType<BlockMovable>().ToList();
-            //        foreach (BlockMovable block in movableBlocks)
-            //        {
-            //            block.Update();
-            //        }
-            //    }
-
-            //    specialCases.Update(this);
-            //    miniMap.UpdatePlayer(Player.GetPos());
-
-            //    PlayerMain.Update();
-            //    DrawHealth.Update();
-
-                //Collision detector and handler of player
 
                 base.Update(gameTime);
             }
@@ -674,80 +565,6 @@ namespace HackAndSlash
                     if (cheatText.activeText != null) cheatText.Draw();
                     break;
             }
-            //if (titleMenu) titleScreen.Draw();
-            //else if(gamePaused){ 
-            //    pauseOverlay.Draw(); 
-            //}
-            //else if (upgrading)
-            //{
-            //    upgradesOverlay.Draw();
-            //}
-            //else if (gameOver && !inGameOverAnimation)
-            //{
-            //    gameOverOverlay.Draw();
-            //}
-
-            //else if(gameWon && !inGameWonAnimation)
-            //{
-            //    gameWonScreenOverlay.Draw();
-            //}
-
-            //else
-            //{
-            //    currentLevel.Draw();
-
-            //    foreach (IBlock block in blockList) { 
-            //        block.Draw();
-            //        if (_DevMode && _ShowBoundary) {
-            //            DrawRectangle enemyRect = new DrawRectangle(GraphicsDevice, spriteBatch, block.rectangle, Color.Yellow);
-            //            enemyRect.Draw();
-            //        }
-            //    }
-
-            //    foreach (IItem item in itemList) {
-            //        /// TODO: add test so that item are visible when being used 
-            //        if (item.FogBreaker() || !_FOG || utilMethods.InFogRange(PlayerMain.GetPos(), item.GetPos()))
-            //            item.Draw();
-            //        if (_DevMode && _ShowBoundary) {
-            //            DrawRectangle ItemRect = new DrawRectangle(GraphicsDevice, spriteBatch,
-            //                new Rectangle((int)item.GetPos().X, (int)item.GetPos().Y, 
-            //                GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR), Color.Red);
-            //            ItemRect.Draw();
-            //        }
-            //    } 
-
-            //    foreach (IEnemy enemy in enemyList) {
-            //        if (!_FOG || utilMethods.InFogRange(PlayerMain.GetPos(), enemy.GetPos()) )
-            //            enemy.Draw();
-            //        if (_DevMode && _ShowBoundary) {
-            //            DrawRectangle enemyRect = new DrawRectangle(GraphicsDevice, spriteBatch, enemy.getRectangle(), Color.Red);
-            //            enemyRect.Draw();
-            //        }    
-            //    }
-
-            //    // Player is not drawn during transition 
-            //    if (!currentLevel.transitioning) {
-            //        PlayerMain.Draw(spriteBatch, Player.GetPos(), Color.White);
-            //    }
-
-            //    if (_FOG) {
-            //        fogOfWar.Draw(PlayerMain.GetPos(), currentLevel.transitioning);
-            //    }
-                
-            //    // Masking part of the display, also used for masking extra transition animation 
-            //    currentLevel.DrawOverlay();
-
-            //    /*
-            //     * Put UI and Headsup elements below to avoid being covered by overlay  
-            //     */
-            //    DrawHealth.Draw(spriteBatch, new Vector2(0, 100), Color.White);
-
-            //    miniMap.Draw();
-            //    if (displayMap) miniMap.DrawMap();
-            //    if (cheatText.activeText != null) cheatText.Draw();
-
-            //}
-            
 
             spriteBatch.End();
             base.Draw(gameTime);
