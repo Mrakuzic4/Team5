@@ -231,6 +231,18 @@ namespace HackAndSlash
 
         }
 
+        public void CheckDoor()
+        {
+            // check distance -- game.Player.GetPos()
+     
+            // checkfacing diraction -- game.Player.GetDir();
+
+            //level.HasMysDoor()
+            //level.OpenMysDoor()
+
+            // --gem  RupyItem.numUses()
+        }
+
         private void stayInBoundary()
         {
             int TriggerDistance = (int)(1.5 * GlobalSettings.BASE_SCALAR);

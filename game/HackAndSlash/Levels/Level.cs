@@ -16,7 +16,7 @@ namespace HackAndSlash
     public class Level : ILevel
     {
         private const int ALL_MIGHT_DIV = 16;
-        private const int ALL_MIGH_COUNT = 256;
+        private const int ALL_MIGH_COUNT = 256; 
         private const int EDGE_PRESERVE = 17 * 4;
         private const int UPDATE_DELAY = 5; 
         private const int TRANSITION_STEP_Y = 8;
@@ -346,6 +346,11 @@ namespace HackAndSlash
             doorOpen[Dir] = true;
             doorMys[Dir] = false;
             UpdateDrawDoors();
+        }
+
+        public bool HasMysDoor(int Dir)
+        {
+            return doorMys[Dir];
         }
 
         // Only useful during map transition 

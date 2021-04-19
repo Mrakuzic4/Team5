@@ -29,6 +29,10 @@ namespace HackAndSlash
         public List<IBlock> GetBlockList(SpriteBatch spriteBatch, SpriteFactory spriteFactory, Map MapInfo)
         {
             List<IBlock> BlockList = new List<IBlock>();
+            List<int> Untouchables = new List<int>() {
+                GlobalSettings.NPC_OLD_MAN,
+                GlobalSettings.NPC_OLD_WOMAN
+            };
 
             const int DOOR_VERTICAL_MARK = 5;
             const float DOOR_HORIZONTAL_MARK = 7.5f;
@@ -121,7 +125,7 @@ namespace HackAndSlash
                     {
                         BlockList.Add(spriteFactory.CreateBlockMovableHorizontal(spriteBatch, r, c));
                     }
-                    else if (Index >= GlobalSettings.SOLID_BLOCK_BOUND)
+                    else if (Index >= GlobalSettings.SOLID_BLOCK_BOUND || Untouchables.Contains(Index))
                     {
                         BlockList.Add(new BlockInvis(utilMethods.PlayAreaPosition(c, r), spriteBatch));
                     }

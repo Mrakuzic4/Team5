@@ -341,6 +341,20 @@ namespace HackAndSlash
                 GlobalSettings.RND.Next(merchantCharaList.Length)];
         }
 
+        public void SetAsBossRoom()
+        {
+            room.DefaultBlock = blackRoomInedx;
+
+            int RowMid = 3;
+            int ColMid = 7;
+
+            FloodMap(defaultBlock);
+
+            room.Arrangement[RowMid, ColMid] = merchantCharaList[
+                GlobalSettings.RND.Next(merchantCharaList.Length)];
+            room.Arrangement[RowMid, ColMid+1] = GlobalSettings.TRIFORCE_ITEM;
+        }
+
         public bool AddSoftIndex(int[] Position, int Index)
         {
             if (IsBlock(Position[0], Position[1]))

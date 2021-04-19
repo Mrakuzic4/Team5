@@ -26,8 +26,9 @@ namespace HackAndSlash
         private int levelRowCount;
         private int levelColCount;
 
-        private const int HIDDEN_DOOR_THRESHOLD = 20;
+        private const int HIDDEN_DOOR_THRESHOLD = 0;
         private const int MERCHANT_ROOM_COUNT = 2;
+        private const int BOSS_ROOM_COUNT = 1;
 
         public GenerateLevel()
         {
@@ -174,6 +175,44 @@ namespace HackAndSlash
             levelSet[CurrentPos[0] + (int)Offset.Y, CurrentPos[1] + (int)Offset.X].HiddenDoors[nextRoomDoorDir] = true;
         }
 
+        private void AddMysDoors(int[] CurrentPos, int Direction)
+        {
+            Vector2 Offset = new Vector2(0, 0);
+            int nextRoomDoorDir = 0;
+
+            levelSet[CurrentPos[0], CurrentPos[1]].OpenDoors[Direction] = false;
+            levelSet[CurrentPos[0], CurrentPos[1]].MysteryDoors[Direction] = true;
+
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    Offset.Y = -1;
+                    nextRoomDoorDir = (int)GlobalSettings.Direction.Down;
+                    break;
+
+                case (int)GlobalSettings.Direction.Down:
+                    Offset.Y = 1;
+                    nextRoomDoorDir = (int)GlobalSettings.Direction.Up;
+                    break;
+
+                case (int)GlobalSettings.Direction.Left:
+                    Offset.X = -1;
+                    nextRoomDoorDir = (int)GlobalSettings.Direction.Right;
+                    break;
+
+                case (int)GlobalSettings.Direction.Right:
+                    Offset.X = 1;
+                    nextRoomDoorDir = (int)GlobalSettings.Direction.Left;
+                    break;
+
+                default:
+                    break;
+            }
+
+            levelSet[CurrentPos[0] + (int)Offset.Y, CurrentPos[1] + (int)Offset.X].OpenDoors[nextRoomDoorDir] = false;
+            levelSet[CurrentPos[0] + (int)Offset.Y, CurrentPos[1] + (int)Offset.X].MysteryDoors[nextRoomDoorDir] = true;
+        }
+
         private void AddItemInRoom(int[] CurrentPos, int ItemIndex, int Number)
         {
             GenerateRoom RoomGen = new GenerateRoom();
@@ -252,6 +291,39 @@ namespace HackAndSlash
             int[] iter = new int[] { 0, 1, 2, 3 };
 
             while (count < MERCHANT_ROOM_COUNT)
+            {
+                int row = GlobalSettings.RND.Next(levelSet.GetLength(0));
+                int col = GlobalSettings.RND.Next(levelSet.GetLength(1));
+
+                if (!IsStartUpRoom(row, col))
+                {
+                    GenerateRoom RoomGen = new GenerateRoom();
+                    RoomGen.InitRoom();
+                    RoomGen.SetAsMerchantRoom();
+
+                    levelSet[row, col] = RoomGen.room;
+
+                    foreach (int Dir in iter)
+                    {
+                        if (HasNextRoom(new int[] { row, col }, Dir))
+                        {
+                            AddMysDoors(new int[] { row, col }, Dir);
+                        }
+                    }
+
+                    count++;
+                }
+
+            }
+        }
+
+        private void SetBossRooms()
+        {
+
+            int count = 0;
+            int[] iter = new int[] { 0, 1, 2, 3 };
+
+            while (count < BOSS_ROOM_COUNT)
             {
                 int row = GlobalSettings.RND.Next(levelSet.GetLength(0));
                 int col = GlobalSettings.RND.Next(levelSet.GetLength(1));
