@@ -26,20 +26,23 @@ namespace HackAndSlash
             InputDelay.Restart();
             Timeout.Restart();
         }
-        public void Update (Buttons inputButton)
+        public void Update(List<Buttons> pressedButtons)
         {
             //only add new button to the buffer if a certain time has elapsed to prevent the same button being added from multiple frames
             if (InputDelay.ElapsedMilliseconds > GlobalSettings.DELAY_KEYBOARD)
             {
-                ButtonBuffer.Add(inputButton);
-                InputDelay.Restart();
-                
+                if (pressedButtons.Count > 0)
+                {
+                    ButtonBuffer.Add(pressedButtons[0]);
+                    InputDelay.Restart();
+                    Timeout.Restart();
+                }
+  
             }
             //clear the buffer after a certain timeout interval has elapsed
             if (Timeout.ElapsedMilliseconds > GlobalSettings.CHEAT_INPUT_TIMEOUT)
             {
                 ButtonBuffer.Clear();
-                Timeout.Restart();
             }
             //if the cheatMappings dictionary contains the sequence of keys, execute the cheat code
             foreach(List<Buttons> b in cheatMappings.Keys)

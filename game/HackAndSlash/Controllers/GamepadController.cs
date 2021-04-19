@@ -56,15 +56,17 @@ namespace HackAndSlash
         {
              if (capabilities.IsConnected && capabilities.GamePadType == GamePadType.GamePad)
             {
+                List<Buttons> pressedButtons = new List<Buttons>();
                 GamePadState state = GamePad.GetState(PlayerIndex.One);
                 foreach (Buttons button in controllerMappings.Keys)
                 {
                     if (state.IsButtonDown(button)) 
                     {
                         controllerMappings[button].execute();
-                        gamepadCheats.Update(button);
+                        pressedButtons.Add(button);
                     }
                 }
+                gamepadCheats.Update(pressedButtons);
             }
         }
     }

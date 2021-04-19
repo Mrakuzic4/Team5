@@ -37,13 +37,13 @@ namespace HackAndSlash
                 {
                     KeyBuffer.Add(inputKeys[0]);
                     InputDelay.Restart();
+                    Timeout.Restart();
                 }
             }
             //clear the buffer after a certain timeout interval has elapsed
             if (Timeout.ElapsedMilliseconds > GlobalSettings.CHEAT_INPUT_TIMEOUT)
             {
                 KeyBuffer.Clear();
-                Timeout.Restart();
             }
             //if the cheatMappings dictionary contains the sequence of keys, execute the cheat code
             foreach(List<Keys> k in cheatMappings.Keys)
