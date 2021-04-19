@@ -66,8 +66,8 @@ namespace HackAndSlash
 
             SoundFactory.Instance.TriforceObtainedEffect();
             ChangeToExpended();
-            this.game.elapsing = false;
-
+            game.GameState = GlobalSettings.GameStates.GameWon;
+            game.currentLevel.setGameWon();
             this.game.gameWon = true;
             this.game.inGameWonAnimation = true;
             //this.game.gameOver = true;

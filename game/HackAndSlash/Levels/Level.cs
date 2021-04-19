@@ -28,6 +28,7 @@ namespace HackAndSlash
 
         private GraphicsDevice graphics;
         private SpriteBatch spriteBatch;
+        private Game1 game;
 
         // Textures 
         public Texture2D headsUpFill; 
@@ -84,10 +85,11 @@ namespace HackAndSlash
          * ============================================================ */
 
 
-        public Level(GraphicsDevice Graphics, SpriteBatch SB)
+        public Level(GraphicsDevice Graphics, SpriteBatch SB, Game1 Game)
         {
             graphics = Graphics;
             spriteBatch = SB;
+            game = Game;
         }
 
         // Initlize for the 1st time, must be called after levelCycler is assigned 
@@ -365,6 +367,7 @@ namespace HackAndSlash
             {
                 transFinsihed = true;
                 transitioning = false;
+                game.GameState = GlobalSettings.GameStates.Running;
             }
         }
 

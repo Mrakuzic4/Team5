@@ -179,7 +179,8 @@ namespace HackAndSlash
                 SoundFactory.Instance.LinkDamagedEffect();
                 if (currentHealth == 0)
                 {
-                    this.game.elapsing = false;
+                    this.game.GameState = GlobalSettings.GameStates.GameOver;
+                    this.game.currentLevel.setGameOver();
                     this.game.gameOver = true;
                     this.game.inGameOverAnimation = true;
                     SoundFactory.Instance.StopSong();

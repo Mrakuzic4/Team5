@@ -37,11 +37,12 @@ namespace HackAndSlash
 
         public const long DELAY_TIME = 100; // In ms
         public const long DELAY_KEYBOARD = 100; // For keyboard pressing event
-        public const long CHEAT_INPUT_TIMEOUT = 4000;
+        public const long CHEAT_INPUT_TIMEOUT = 1500;
         public const long TITLE_DELAY = 150;
         public enum roomTypes { Start, Boss, Merchant };
         public enum Direction { Left, Right, Up, Down };
         public const int RESET_DIRECTION = 4; // The 5th "direction" for resetting 
+        public enum GameStates { TitleMenu, Running, Paused, GameOver, GameWon, Upgrading, Transitioning }
         public enum CollisionType { None, Left, Right, Top, Bottom, };
 
         public const int PAUSE_CONTINUE_X = 185;

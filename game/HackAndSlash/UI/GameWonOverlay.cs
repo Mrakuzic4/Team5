@@ -37,6 +37,7 @@ namespace HackAndSlash
             gameOverAnimationCounter += gameTime.ElapsedGameTime.Milliseconds;
             if (gameOverAnimationCounter > 4000)
             {
+                this.Game.GameState = GlobalSettings.GameStates.GameWon;
                 this.Game.inGameWonAnimation = false;
                 if (Keyboard.GetState().IsKeyDown(Keys.S) || Keyboard.GetState().IsKeyDown(Keys.Down)|| GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
                 {
@@ -51,7 +52,7 @@ namespace HackAndSlash
                     //If chose to continue
                     if (CurrentSelection == SelectorContinueLoc)
                     {
-                        Game.upgrading = true;
+                        Game.GameState = GlobalSettings.GameStates.Upgrading;
                     }
                     else
                     {

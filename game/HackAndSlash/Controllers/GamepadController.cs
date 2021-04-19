@@ -13,6 +13,7 @@ namespace HackAndSlash
         private Game1 Game;
         GamePadCapabilities capabilities;
         private Dictionary<Buttons, ICommand> controllerMappings;
+        private GamepadCheats gamepadCheats;
 
         /// <summary>
         /// Constructor. Defines the default controls in controllerMappings dictionary and
@@ -32,8 +33,10 @@ namespace HackAndSlash
                 {Buttons.DPadLeft, new MoveLeftCommand(game) },
                 {Buttons.DPadRight, new MoveRightCommand(game) },
                 {Buttons.DPadUp, new MoveUpCommand(game) },
-                {Buttons.Start, new PauseCommand(game) }
+                {Buttons.Start, new PauseCommand(game) },
+                {Buttons.Back, new DisplayMapCommand(game) }
             };
+            gamepadCheats = new GamepadCheats(game);
         }
 
         /// <summary>
@@ -53,14 +56,17 @@ namespace HackAndSlash
         {
              if (capabilities.IsConnected && capabilities.GamePadType == GamePadType.GamePad)
             {
+                List<Buttons> pressedButtons = new List<Buttons>();
                 GamePadState state = GamePad.GetState(PlayerIndex.One);
                 foreach (Buttons button in controllerMappings.Keys)
                 {
                     if (state.IsButtonDown(button)) 
                     {
                         controllerMappings[button].execute();
+                        pressedButtons.Add(button);
                     }
                 }
+                gamepadCheats.Update(pressedButtons);
             }
         }
     }

@@ -62,8 +62,7 @@ namespace HackAndSlash
                 if (fadeOpacity >= 255)
                 {
                     fadingOut = false;
-                    Game.elapsing = true;
-                    Game.titleMenu = false;
+                    Game.GameState = GlobalSettings.GameStates.Running;
                     SoundFactory.Instance.DungeonSong();
                 }
             }

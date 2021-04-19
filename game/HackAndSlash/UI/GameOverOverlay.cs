@@ -44,7 +44,7 @@ namespace HackAndSlash
             gameOverAnimationCounter += gameTime.ElapsedGameTime.Milliseconds;
             if (gameOverAnimationCounter > 3000)
             {
-
+                this.Game.GameState = GlobalSettings.GameStates.GameOver;
                 this.Game.inGameOverAnimation = false;
                 if (Keyboard.GetState().IsKeyDown(Keys.S) || Keyboard.GetState().IsKeyDown(Keys.Down) || 
                     GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
@@ -61,8 +61,7 @@ namespace HackAndSlash
                     //If chose to continue
                     if (CurrentSelection == SelectorContinueLoc)
                     {
-                        Game.elapsing = true;
-                        Game.gameOver = false;
+                        Game.GameState = GlobalSettings.GameStates.Running;
                         Game.reset(5); //Reset the room upon player's death
                         Game.resetCurrentLevelGameOver();
                         Game.Player.Healed(); //Restart the game with Player having 1 HP.

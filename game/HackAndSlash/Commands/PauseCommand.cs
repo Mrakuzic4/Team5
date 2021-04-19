@@ -16,8 +16,7 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            game.elapsing = false;
-            game.gamePaused = true;
+            game.GameState = GlobalSettings.GameStates.Paused;
         }
     }
 }

@@ -75,6 +75,7 @@
     <Compile Include="Commands\UsePlayerItemCommand.cs" />
     <Compile Include="Controllers\GamepadController.cs" />
     <Compile Include="Controllers\IController.cs" />
+    <Compile Include="Controllers\GamepadCheats.cs" />
     <Compile Include="Controllers\KeyboardCheats.cs" />
     <Compile Include="Controllers\KeyboardController.cs" />
     <Compile Include="Controllers\MouseController.cs" />

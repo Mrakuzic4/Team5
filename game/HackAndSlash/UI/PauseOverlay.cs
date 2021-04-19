@@ -52,8 +52,7 @@ namespace HackAndSlash
             {
                 if (CurrentSelection == SelectorContinueLoc)
                 {
-                    Game.elapsing = true;
-                    Game.gamePaused = false;
+                    Game.GameState = GlobalSettings.GameStates.Running;
                 }
                 else
                 {

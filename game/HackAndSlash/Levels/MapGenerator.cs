@@ -19,9 +19,9 @@ namespace HackAndSlash
             utilMethods = new Misc();
         }
 
-        public Level getLevel(GraphicsDevice GD, SpriteBatch spriteBatch)
+        public Level getLevel(GraphicsDevice GD, SpriteBatch spriteBatch, Game1 game)
         {
-            Level level = new Level(GD, spriteBatch);
+            Level level = new Level(GD, spriteBatch, game);
 
             return level;
         }
