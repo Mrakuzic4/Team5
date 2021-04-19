@@ -108,6 +108,7 @@
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Heart.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/NES - The Legend of Zelda - Items &amp; Weapons.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Oldwoman.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Price.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Refill.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Ruby.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Shield.png</File>
@@ -231,6 +232,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>images/fullHeart.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

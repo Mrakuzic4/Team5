@@ -25,7 +25,11 @@ namespace HackAndSlash
 
         private GlobalSettings.Direction direction;
         private bool isAttack;
+        private bool getItem;
+
         public bool Attack { set { isAttack = value; } }
+        public bool Item { set { getItem = value; } }
+
 
         public int Frame
         {
@@ -58,6 +62,8 @@ namespace HackAndSlash
             Rows = 1;
             Columns = 7;
             totalFrames = Rows * Columns;
+            isAttack = false;
+            getItem = false;
         }
 
         public Vector2 GetPos()
@@ -122,7 +128,11 @@ namespace HackAndSlash
                     destinationRectangle = new Rectangle((int)location.X, (int)(location.Y-60), width * 4, height * 4);
                 }
             }
-               
+            if (getItem)
+            {
+                destinationRectangle = new Rectangle((int)location.X, (int)(location.Y - 60), width * 4, height * 4);
+            }
+
 
             spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
 

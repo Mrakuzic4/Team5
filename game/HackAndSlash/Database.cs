@@ -111,6 +111,7 @@ namespace HackAndSlash
         public ImageFile ZeldaGotShield;
         public ImageFile ZeldaGotRefill;
         public ImageFile ZeldaGotHeart;
+        public ImageFile Price;
 
         public ImageFile Font_Shield;
         public ImageFile Font_Life;
@@ -118,6 +119,7 @@ namespace HackAndSlash
         public ImageDatabase()
         {
             // Initilize images with path/name, column and row
+            Price = new ImageFile("Merchant/Price", 4, 1);
             OldWoman = new ImageFile("Merchant/Oldwoman", 1, 1);
             Heart = new ImageFile("Merchant/Heart", 1, 1);
             Refill = new ImageFile("Merchant/Refill", 1, 1);

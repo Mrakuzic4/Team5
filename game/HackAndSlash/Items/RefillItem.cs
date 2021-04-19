@@ -64,15 +64,18 @@ namespace HackAndSlash
         /// </summary>
         public void CollectItem()
         {
-            GlobalSettings.saveSets.HealPower++;
-            //Remove the item, make sure the player only collects once!
-            ChangeToExpended();
-            collidableTiles[0] = new Rectangle(0, 0, 0, 0);
-
-            SoundFactory.Instance.TriforceObtainedEffect();
-            SpriteFactory.Instance.SetZeldaGotRefill(); //CHANGE THIS!!!!!!!!!
-            //DrawPlayer.Instance.Attack = true; //Adjust the player sprite's position
-            this.game.Player = new UseItemPlayer(game.Player,game);
+            if (RupyItem.numUses >= 100)
+            {
+                RupyItem.numUses -= 100;
+                GlobalSettings.saveSets.HealPower++;
+                //Remove the item, make sure the player only collects once!
+                ChangeToExpended();
+                collidableTiles[0] = new Rectangle(0, 0, 0, 0);
+                SoundFactory.Instance.TriforceObtainedEffect();
+                SpriteFactory.Instance.SetZeldaGotRefill();
+                DrawPlayer.Instance.Item = true; //Adjust the player sprite's position
+                this.game.Player = new UseItemPlayer(game.Player, game);
+            }
         }
 
         public void UseItem(GlobalSettings.Direction currentPlayerDirection)

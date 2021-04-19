@@ -93,6 +93,7 @@
     <Compile Include="GlobalSettings.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="Items\BurningFire.cs" />
+    <Compile Include="Items\Price.cs" />
     <Compile Include="Items\RupyItem.cs" />
     <Compile Include="Items\FoodItem.cs" />
     <Compile Include="Items\BombItem.cs" />

@@ -102,6 +102,7 @@ namespace HackAndSlash
         private Texture2D ZeldaGotRefill;
         private Texture2D ZeldaGotShield;
         private Texture2D ZeldaGotHeart;
+        private Texture2D Price;
 
         private Texture2D TextCharacters;
 
@@ -130,6 +131,7 @@ namespace HackAndSlash
             IMDB = new ImageDatabase();
 
             //Merchant
+            Price = content.Load<Texture2D>(IMDB.Price.pathName);
             OldWoman = content.Load<Texture2D>(IMDB.OldWoman.pathName);
             Heart = content.Load<Texture2D>(IMDB.Heart.pathName);
             Refill = content.Load<Texture2D>(IMDB.Refill.pathName);
@@ -284,6 +286,10 @@ namespace HackAndSlash
         public Texture2D GetShield()
         {
             return Shield;
+        }
+        public Texture2D CreatePrice()
+        {
+            return Price;
         }
         public ISprite CreateRefill()
         {

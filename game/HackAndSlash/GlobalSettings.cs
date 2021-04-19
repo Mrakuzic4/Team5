@@ -73,6 +73,8 @@ namespace HackAndSlash
         public const int SHIELD_ITEM = -264;
         public const int HEART_ITEM = -265;
         public const int REFILL_ITEM = -266;
+        public const int PRICE = -267;
+
 
         // Index for enemy 
         public const int SNAKE_ENEMY = -1;

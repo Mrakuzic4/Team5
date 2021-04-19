@@ -223,6 +223,9 @@ namespace HackAndSlash
                         case GlobalSettings.REFILL_ITEM:
                             ItemList.Add(new RefillItem(position, spriteBatch, game));
                             break;
+                        case GlobalSettings.PRICE:
+                            ItemList.Add(new Price(position, spriteBatch, game));
+                            break;
                         default:
                             break;
                     }

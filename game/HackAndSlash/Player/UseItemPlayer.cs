@@ -77,6 +77,7 @@ namespace HackAndSlash
         {
             game.Player = DecoratedPlayer; //set it back to movement state.
             DrawPlayer.Instance.Attack = false;
+            DrawPlayer.Instance.Item = false;
         }
 
         public void Move()
