@@ -22,6 +22,7 @@ namespace HackAndSlash
         private int deathTimer = 0;
         private int timeSinceLastFrame = 0; // used to slow down the rate of animation 
         private int milliSecondsPerFrame = 80;
+        private int dieTotalTime = 500; 
         private int temp = 0;//counter to change states after a certain number of calls to update
 
         private System.Random random;
@@ -195,8 +196,7 @@ namespace HackAndSlash
                 hitbox.Location = new Point(0, 0);
                 rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
                 deathTimer += gameTime.ElapsedGameTime.Milliseconds;
-                //wait 3 seconds
-                if (deathTimer > 1000)
+                if (deathTimer > dieTotalTime)
                 {
                     deathTimer = 0;
                     bugState.changeToNot();

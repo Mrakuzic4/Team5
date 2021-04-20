@@ -21,7 +21,8 @@ namespace HackAndSlash
         private int timeSinceLastBomb = 0;
         private int timeSinceDirectionChange = 0;
         private int deathTimer = 0;
-        private int milliSecondsPerFrame = 80;
+        private int milliSecondsPerFrame = 60;
+        private int dieTotalTime = 500;
         private int temp = 0; //counter to change states after a certain number of calls to update
 
         private System.Random random;
@@ -230,8 +231,7 @@ namespace HackAndSlash
                 hitbox.Location = new Point(0, 0);
                 rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
                 deathTimer += gameTime.ElapsedGameTime.Milliseconds;
-                //wait 3 seconds
-                if (deathTimer > 3000)
+                if (deathTimer > dieTotalTime)
                 {
                     deathTimer = 0;
                     IItem FoodItem = new FoodItem(position, spriteBatch, game);
