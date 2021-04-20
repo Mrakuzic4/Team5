@@ -102,33 +102,48 @@ namespace HackAndSlash
 		public void Attack()
         {
 			game.Player = new AttackPlayer(game.Player, game); //Decorator of the PlayerSprite
-			DrawPlayer.Instance.Attack = true;
-			switch (playerDir)
+
+			if (game.Player.GetCurrentHealth() == game.Player.GetMaxHealth())
 			{
-				case GlobalSettings.Direction.Left:
-					SpriteFactory.Instance.SetLeftAttackPlayer();
-					DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Left);
-					break;
+				game.fullHealthSword.CollectItem();
+				game.fullHealthSword.UseItem(game.Player.GetDir());
+				Shoot();
+			}
+			else
+			{
+				DrawPlayer.Instance.Attack = true;
+				switch (playerDir)
+				{
+					case GlobalSettings.Direction.Left:
+						SpriteFactory.Instance.SetLeftAttackPlayer();
+						DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Left);
+						break;
 
-				case GlobalSettings.Direction.Up:
-					SpriteFactory.Instance.SetUpAttackPlayer();
-					DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Up);
-					break;
+					case GlobalSettings.Direction.Up:
+						SpriteFactory.Instance.SetUpAttackPlayer();
+						DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Up);
+						break;
 
-				case GlobalSettings.Direction.Down:
-					SpriteFactory.Instance.SetDownAttackPlayer();
-					DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Down);
-					break;
+					case GlobalSettings.Direction.Down:
+						SpriteFactory.Instance.SetDownAttackPlayer();
+						DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Down);
+						break;
 
-				default: //Default to be right
-					SpriteFactory.Instance.SetRightAttackPlayer();
-					DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Right);
-					break;
+					default: //Default to be right
+						SpriteFactory.Instance.SetRightAttackPlayer();
+						DrawPlayer.Instance.SetDirection(GlobalSettings.Direction.Right);
+						break;
+				}
 			}
 		}
 		public void UseItem()
 		{
 			game.Player = new UseItemPlayer(game.Player, game); //Decorator of the PlayerSprite
+			Shoot();
+		}
+
+		private void Shoot()
+        {
 			switch (playerDir)
 			{
 				case GlobalSettings.Direction.Left:
@@ -148,6 +163,7 @@ namespace HackAndSlash
 					break;
 			}
 		}
+
 
 	}
 }
