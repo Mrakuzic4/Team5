@@ -19,6 +19,7 @@ namespace HackAndSlash
         private Rectangle playerHitBox;
 
         private PlayerCollisionDetector playerCollisionDetector;
+        private PlayerDoorCollision playerDoorCollisionDetector; 
 
         private PlayerBlockCollisionHandler playerBlockCollisionHandler;
         private PlayerEnemyCollisionHandler playerEnemyCollisionHandler;
@@ -69,6 +70,7 @@ namespace HackAndSlash
                 (int)relPositionMC.Y + GlobalSettings.PLAYER_HITBOX_Y_OFFSET, 
                 GlobalSettings.PLAYER_HITBOX_WIDTH, GlobalSettings.PLAYER_HITBOX_HEIGHT);
             playerCollisionDetector = new PlayerCollisionDetector(game);
+            playerDoorCollisionDetector = new PlayerDoorCollision();
             playerBlockCollisionHandler = new PlayerBlockCollisionHandler();
             playerEnemyCollisionHandler = new PlayerEnemyCollisionHandler();
             swordEnemyCollisionHandler = new SwordEnemyCollisionHandler();
@@ -196,6 +198,7 @@ namespace HackAndSlash
 
             //Player Boundary Check
             stayInBoundary();
+            CheckDoor();
 
             //Player Collision Detector
             //hitbox for player, wraps around player.
@@ -224,12 +227,18 @@ namespace HackAndSlash
 
         public void CheckDoor()
         {
-            // check distance -- game.Player.GetPos()
-     
-            // checkfacing diraction -- game.Player.GetDir();
+            // check possible direction 
+            int ActivationDirection = playerDoorCollisionDetector.ReachingDirection(relPositionMC);
 
-            //level.HasMysDoor()
-            //level.OpenMysDoor()
+            // checkfacing diraction -- game.Player.GetDir();
+            if( (int)GetDir() == ActivationDirection 
+                && game.currentLevel.HasMysDoor(ActivationDirection)
+                && RupyItem.numUses >= GlobalSettings.OPEN_DOOR_COST) {
+                game.currentLevel.OpenMysDoor(ActivationDirection);
+                game.levelCycleRecord.OpenBothDoors(ActivationDirection);
+                RupyItem.numUses -= GlobalSettings.OPEN_DOOR_COST; 
+
+            }
 
             // --gem  RupyItem.numUses()
         }
@@ -246,12 +255,9 @@ namespace HackAndSlash
 
 
             // left 
-            if (this.relPositionMC.X < leftBound)
-            {
-                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Left))
-                {
-                    if (this.relPositionMC.X < leftBound - TriggerDistance)
-                    {
+            if (this.relPositionMC.X < leftBound) {
+                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Left)) {
+                    if (this.relPositionMC.X < leftBound - TriggerDistance)  {
                         game.currentLevel.TransDir = (int)GlobalSettings.Direction.Left;
                         SetPos(new Vector2(rightBound + GlobalSettings.BASE_SCALAR, relPositionMC.Y));
                         game.reset((int)GlobalSettings.Direction.Left);
@@ -263,12 +269,9 @@ namespace HackAndSlash
             }
 
             // right 
-            if (this.relPositionMC.X > rightBound)
-            {
-                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Right))
-                {
-                    if (this.relPositionMC.X > rightBound + TriggerDistance)
-                    {
+            if (this.relPositionMC.X > rightBound) {
+                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Right)) {
+                    if (this.relPositionMC.X > rightBound + TriggerDistance) {
                         game.currentLevel.TransDir = (int)GlobalSettings.Direction.Right;
                         SetPos(new Vector2(GlobalSettings.BASE_SCALAR, relPositionMC.Y));
                         game.reset((int)GlobalSettings.Direction.Right);
@@ -280,12 +283,9 @@ namespace HackAndSlash
             }
 
             // Up
-            if (this.relPositionMC.Y < topBound)
-            {
-                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Up))
-                {
-                    if (this.relPositionMC.Y < topBound - TriggerDistance)
-                    {
+            if (this.relPositionMC.Y < topBound)  {
+                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Up)) {
+                    if (this.relPositionMC.Y < topBound - TriggerDistance)  {
                         game.currentLevel.TransDir = (int)GlobalSettings.Direction.Up;
                         SetPos(new Vector2(relPositionMC.X, bottomBound + GlobalSettings.BASE_SCALAR));
                         game.reset((int)GlobalSettings.Direction.Up);
@@ -296,12 +296,9 @@ namespace HackAndSlash
             }
 
             //Bottom
-            if (this.relPositionMC.Y > bottomBound)
-            {
-                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Down))
-                {
-                    if (this.relPositionMC.Y > bottomBound + TriggerDistance)
-                    {
+            if (this.relPositionMC.Y > bottomBound) {
+                if (game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Down)) {
+                    if (this.relPositionMC.Y > bottomBound + TriggerDistance)  {
                         game.currentLevel.TransDir = (int)GlobalSettings.Direction.Down;
                         SetPos(new Vector2(relPositionMC.X, topBound - compensateDistance));
                         game.reset((int)GlobalSettings.Direction.Down);

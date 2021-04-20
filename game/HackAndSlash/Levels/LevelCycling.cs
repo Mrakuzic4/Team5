@@ -170,6 +170,37 @@ namespace HackAndSlash
             }
         }
 
+        public void OpenBothDoors(int Direction)
+        {
+            int[] NextRoomIndex = new int[] { 0, 0};
+            int NextRoomDoorDir = 0; 
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    NextRoomIndex = new int[] { currentLocationIndex[0] - 1, currentLocationIndex[1]};
+                    NextRoomDoorDir = (int)GlobalSettings.Direction.Down;
+                    break;
+                case (int)GlobalSettings.Direction.Down:
+                    NextRoomIndex = new int[] { currentLocationIndex[0] + 1, currentLocationIndex[1] };
+                    NextRoomDoorDir = (int)GlobalSettings.Direction.Up;
+                    break;
+                case (int)GlobalSettings.Direction.Left:
+                    NextRoomIndex = new int[] { currentLocationIndex[0], currentLocationIndex[1] - 1 };
+                    NextRoomDoorDir = (int)GlobalSettings.Direction.Right;
+                    break;
+                case (int)GlobalSettings.Direction.Right:
+                    NextRoomIndex = new int[] { currentLocationIndex[0] - 1, currentLocationIndex[1] + 1 };
+                    NextRoomDoorDir = (int)GlobalSettings.Direction.Left;
+                    break;
+                default:
+                    break;
+            }
+            currentMapSet[NextRoomIndex[0], NextRoomIndex[1]].OpenDoors[NextRoomDoorDir] = true;
+            currentMapSet[NextRoomIndex[0], NextRoomIndex[1]].MysteryDoors[NextRoomDoorDir] = false;
+
+        }
+
+
     }
 
 }

@@ -47,6 +47,7 @@
     <Compile Include="Blocks\BlockInvis.cs" />
     <Compile Include="Blocks\BlockMovable.cs" />
     <Compile Include="Blocks\IBlock.cs" />
+    <Compile Include="Collision\PlayerDoorCollision.cs" />
     <Compile Include="Collision\BombWallCollision.cs" />
     <Compile Include="Collision\EnemyBlockCollision.cs" />
     <Compile Include="Collision\EnemyCollisionDetector.cs" />
