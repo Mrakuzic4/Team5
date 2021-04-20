@@ -24,9 +24,9 @@ namespace HackAndSlash
         public Map[,] currentMapSet;
         public int[] currentLocationIndex;
 
-        public LevelCycling(bool UseS4)
+        public LevelCycling(int MapSize)
         {
-            useS4 = UseS4; 
+            useS4 = false; 
 
             currentLocationIndex = new int[] { GlobalSettings.STRAT_UP_INDEX[0], GlobalSettings.STRAT_UP_INDEX[1] };
 
@@ -48,7 +48,7 @@ namespace HackAndSlash
             else
             {
                 levelRNG = new GenerateLevel();
-                currentMapSet = levelRNG.GenerateLevelSet(8, 8);
+                currentMapSet = levelRNG.GenerateLevelSet(MapSize, MapSize);
             }
         }
         

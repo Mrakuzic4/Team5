@@ -30,10 +30,10 @@ namespace HackAndSlash
         public bool _ShowBoundary = true;
         public bool _FOG = true;
         public int _FogRange = 1;
-        public bool _UseOldMap = false; // Not yet used 
-        public bool _EnableMouseTeleport = true;
+        public bool _EnableMouseTeleport = false; // Controls mouse left and right click teleportation 
         public bool _AngelicMode = true;
-        
+        public bool _AllowManualRest = false; // Controls if the player could use `R` key 
+        public int _MapSize = 9; 
 
         //Player
         private IPlayer PlayerMain;
@@ -118,6 +118,10 @@ namespace HackAndSlash
         public int numOfEnemy { get; set; }
         public int numOfDropped { get; set; }
         public int numRupies = 0;
+
+        private int idleSoundTimer = 0;
+        private int idleSoundInterval = 5000;
+        private int nextIdleSoundPlayTime = 5000; 
         /* ============================================================
          * ======================== Methods ===========================
          * ============================================================ */
@@ -134,7 +138,7 @@ namespace HackAndSlash
             GameState = GlobalSettings.GameStates.TitleMenu;
 
             // Setup stat for all the rooms 
-            levelCycleRecord = new LevelCycling(_UseOldMap); 
+            levelCycleRecord = new LevelCycling(_MapSize); 
 
             // Initlize first room 
             currentLevel = new Level(GraphicsDevice, spriteBatch, this);
@@ -379,6 +383,7 @@ namespace HackAndSlash
 
                 case GlobalSettings.GameStates.Running:
                     displayMap = false;
+
                     foreach (IController controller in controllerList)
                     {
                         controller.Update();
@@ -424,11 +429,19 @@ namespace HackAndSlash
                         }
                     }
 
-                    specialCases.Update(this);
+                    //specialCases.Update(this);
                     miniMap.UpdatePlayer(Player.GetPos());
 
                     PlayerMain.Update();
                     DrawHealth.Update();
+
+                    idleSoundTimer += gameTime.ElapsedGameTime.Milliseconds;
+                    if (idleSoundTimer > nextIdleSoundPlayTime) {
+                        idleSoundTimer = 0;
+                        nextIdleSoundPlayTime = GlobalSettings.RND.Next(idleSoundInterval, idleSoundInterval * 4);
+                        SoundFactory.Instance.GetIdleSounds();
+                    }
+
                     break;
             }
 

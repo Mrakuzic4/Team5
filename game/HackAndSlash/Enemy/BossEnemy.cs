@@ -22,6 +22,7 @@ namespace HackAndSlash
         private int deathTimer = 0;
         private int milliSecondsPerFrame = 80;
         private int temp = 0; //counter to change states after a certain number of calls to update
+        private bool firstTimeEncounter = true; 
 
         private System.Random random;
         private int randomDirection = 0; //0-left, 1-up, 2-right, 3- down
@@ -87,6 +88,7 @@ namespace HackAndSlash
         //updating the enemy
         public void Update(GameTime gameTime)
         {
+            
             timeSinceLastBomb += gameTime.ElapsedGameTime.Milliseconds;
             timeSinceLastFrame += gameTime.ElapsedGameTime.Milliseconds; //counting elapsed time since last update
             if (timeSinceLastFrame > milliSecondsPerFrame) // executing when milliSecondsPerFrame seconds have passed
@@ -147,6 +149,11 @@ namespace HackAndSlash
 
         public void Draw()
         {
+            if (firstTimeEncounter)
+            {
+                SoundFactory.Instance.BossScreamEffect();
+                firstTimeEncounter = false;
+            }
             if (bossState.state == bossStateMachine.bossHealth.Die)
             {
                 tintColor = Color.Red;

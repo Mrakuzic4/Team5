@@ -1411,6 +1411,12 @@
 /processorParam:Quality=Best
 /build:sound/dserp.wav
 
+#begin sound/dserpatt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/dserpatt.wav
+
 #begin sound/DungeonMusic.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -1428,6 +1434,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sound/explodesWall.wav
+
+#begin sound/FaerieFire.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/FaerieFire.wav
 
 #begin sound/GangTortureDance .mp3
 /importer:Mp3Importer
@@ -1453,11 +1465,113 @@
 /processorParam:Quality=Best
 /build:sound/HandOfMidas.wav
 
+#begin sound/idleSound1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound1.wav
+
+#begin sound/idleSound10.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound10.wav
+
+#begin sound/idleSound11.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound11.wav
+
+#begin sound/idleSound12.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound12.wav
+
+#begin sound/idleSound13.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound13.wav
+
+#begin sound/idleSound14.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound14.wav
+
+#begin sound/idleSound15.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound15.wav
+
+#begin sound/idleSound2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound2.wav
+
+#begin sound/idleSound3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound3.wav
+
+#begin sound/idleSound4.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound4.wav
+
+#begin sound/idleSound5.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound5.wav
+
+#begin sound/IdleSound6.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/IdleSound6.wav
+
+#begin sound/idleSound7.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound7.wav
+
+#begin sound/idleSound8.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound8.wav
+
+#begin sound/idleSound9.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/idleSound9.wav
+
+#begin sound/ItemDrop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/ItemDrop.wav
+
 #begin sound/ItemPickup.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sound/ItemPickup.wav
+
+#begin sound/lghit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/lghit.wav
 
 #begin sound/LOZ_Arrow_Boomerang.wav
 /importer:WavImporter
