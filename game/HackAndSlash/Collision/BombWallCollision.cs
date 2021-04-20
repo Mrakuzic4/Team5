@@ -46,13 +46,10 @@ namespace HackAndSlash
             return Direction; 
         }
 
+        // This methods went throught some modifications and is now basically useless 
         private bool CanAddHole(int Direction, Map MapInfo)
         {
-            if (Direction < 0) return false;
-
-            if (MapInfo.HiddenDoors[Direction]) return true; 
-
-            return false ; 
+            return (Direction > 0); 
         }
 
 

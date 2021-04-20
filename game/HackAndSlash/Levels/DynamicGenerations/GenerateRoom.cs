@@ -12,6 +12,7 @@ namespace HackAndSlash
 {
     class GenerateRoom
     {
+        private bool dev = false;
         public Map room { get; set; }
 
         private const int ENEMY_MAX = 8;
@@ -21,6 +22,10 @@ namespace HackAndSlash
         private const int ITEM_MAX = 4;
         private const double WALKABLE_SPREAD_MAX = 0.6;
         private const double SOLID_SPREAD_MAX = 0.2;
+        private const int MESSY_THRESHOLD = 4;
+        private const double MESSY_DIVIDER = 2;
+        private const int TREASURE_POSSIBILITY = 20;
+        private const int TREASURE_RANGE = 3;
 
         private double walkableSpread;
         private double solidSpread;
@@ -155,6 +160,16 @@ namespace HackAndSlash
             { false, false, false, false, false, false, false, false, false, false, false, false}
         };
 
+        private static bool[,] treasure = new bool[,] {
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, false, false, false, false, true , true , false, false, false, false, false},
+            { false, false, false, false, true , true , true , true , false, false, false, false},
+            { false, false, false, true , true , true , true , true , true , false, false, false},
+            { false, false, false, false, true , true , true , true , false, false, false, false},
+            { false, false, false, false, false, true , true , false, false, false, false, false},
+            { false, false, false, false, false, false, false, false, false, false, false, false}
+        };
+
         private static bool[,] allFalse = new bool[,] {
             { false, false, false, false, false, false, false, false, false, false, false, false},
             { false, false, false, false, false, false, false, false, false, false, false, false},
@@ -216,6 +231,11 @@ namespace HackAndSlash
 
         public void PopulateEnemy()
         {
+            if (dev) {
+                room.Arrangement[3, 7] = (int)GlobalSettings.BOSS_ENEMY;
+            }
+
+
             // Amount of enemy in this room 
             int enemyCount = (int)(ENEMY_MAX * (
                 (double)distFromStartup / Math.Pow(room.Arrangement.GetLength(0), 1)));
@@ -268,28 +288,28 @@ namespace HackAndSlash
             solidPatternedRate = (int)(100 * (1 - solidSpread / SOLID_SPREAD_MAX)) - PATTERNED_BIAS;
 
 
-            if (GlobalSettings.RND.Next(100) < walkablePatternedRate)
-            {
+            if (GlobalSettings.RND.Next(100) < walkablePatternedRate) {
                 Rand = WalkableList[GlobalSettings.RND.Next(WalkableList.Count)];
             }
-            else
-            {
+            else {
                 Rand = RandScatter(walkableSpread);
                 MaskOffDoorways(Rand);
             }
             PopulatePattern(Rand, walkableBlockList[GlobalSettings.RND.Next(walkableBlockList.Length)]);
 
 
-            if (GlobalSettings.RND.Next(100) < solidPatternedRate)
-            {
+            if (GlobalSettings.RND.Next(100) < solidPatternedRate) {
                 Rand = SolidList[GlobalSettings.RND.Next(SolidList.Count)];
             }
-            else
-            {
+            else {
                 Rand = RandScatter(solidSpread);
                 MaskOffDoorways(Rand);
             }
-            PopulatePattern(Rand, solidBlockLIst[GlobalSettings.RND.Next(solidBlockLIst.Length)]);
+            
+            if (distFromStartup > MESSY_THRESHOLD)
+                PopulatePatternRand(Rand, solidBlockLIst, (int)(distFromStartup / MESSY_DIVIDER));
+            else
+                PopulatePattern(Rand, solidBlockLIst[GlobalSettings.RND.Next(solidBlockLIst.Length)]);
         }
 
         public void PopulateItem()
@@ -298,18 +318,24 @@ namespace HackAndSlash
             int Threshold = (int)(100 * ((double)TotalitemNow / room.Arrangement.Length));
             int ItemCount = 0;
 
+            // Startup investment, give the player a small fortune 
+            if (distFromStartup < TREASURE_RANGE && GlobalSettings.RND.Next(100) < TREASURE_POSSIBILITY)
+            {
+                bool[,] ptn = Subtract(FindIndexInRange(room.Arrangement, solidBlockLIst), treasure);
+                PopulatePattern(ptn, GlobalSettings.RUPY_ITEM);
+            }
+                
+
             for (int i = 0; i < room.Arrangement.GetLength(0); i++)
             {
                 for (int j = 0; j < room.Arrangement.GetLength(1); j++)
                 {
-                    if (distFromStartup == 0)
-                    {
+                    if (distFromStartup == 0)  {
                         if (corners[i, j])
                             room.Arrangement[i, j] = itemList[GlobalSettings.RND.Next(itemList.Length)];
                     }
                     else if (GlobalSettings.RND.Next(100) < Threshold
-                        && ItemCount < ITEM_MAX && !IsBlock(i, j))
-                    {
+                        && ItemCount < ITEM_MAX && !IsBlock(i, j)) {
                         room.Arrangement[i, j] = itemList[GlobalSettings.RND.Next(itemList.Length)];
                         ItemCount += 1;
                     }
@@ -343,16 +369,14 @@ namespace HackAndSlash
 
         public void SetAsBossRoom()
         {
-            room.DefaultBlock = blackRoomInedx;
 
             int RowMid = 3;
             int ColMid = 7;
 
             FloodMap(defaultBlock);
 
-            room.Arrangement[RowMid, ColMid] = merchantCharaList[
-                GlobalSettings.RND.Next(merchantCharaList.Length)];
-            room.Arrangement[RowMid, ColMid+1] = GlobalSettings.TRIFORCE_ITEM;
+            room.Arrangement[RowMid, ColMid] = (int)GlobalSettings.BOSS_ENEMY;
+            room.Arrangement[RowMid, ColMid + 1] = (int)GlobalSettings.TRIFORCE_ITEM;
         }
 
         public bool AddSoftIndex(int[] Position, int Index)
@@ -385,6 +409,29 @@ namespace HackAndSlash
                     if (Pattern[i, j])
                     {
                         room.Arrangement[i, j] = Index;
+                    }
+                }
+            }
+        }
+
+        private void PopulatePatternRand(bool[,] Pattern, int[] ListOfIndex, int MaxType)
+        {
+            List<int> ActualList = new List<int>(); ;
+
+            if (MaxType > ListOfIndex.Length)
+                for (int i = 0; i < MaxType; i++)
+                    ActualList.Add(ListOfIndex[i]);
+            else {
+                ActualList = new List<int>(ListOfIndex);
+            }
+
+            for (int i = 0; i < room.Arrangement.GetLength(0); i++)
+            {
+                for (int j = 0; j < room.Arrangement.GetLength(1); j++)
+                {
+                    if (Pattern[i, j])
+                    {
+                        room.Arrangement[i, j] = ActualList[GlobalSettings.RND.Next(ActualList.Count)];
                     }
                 }
             }
@@ -425,6 +472,31 @@ namespace HackAndSlash
             return scatter;
         }
 
+        private bool[,] Subtract(bool[,] m1, bool[,] m2)
+        {
+            bool[,] result = new bool[room.Arrangement.GetLength(0), room.Arrangement.GetLength(1)];
+            for (int i = 0; i < room.Arrangement.GetLength(0); i++) {
+                for (int j = 0; j < room.Arrangement.GetLength(1); j++) {
+                    result[i, j] = m1[i, j] ? false : m2[i, j];
+                }
+            }
+            return result;
+        }
+
+        private bool[,] FindIndexInRange(int [,] Matrix, int[] RangeList)
+        {
+            bool[,] result = new bool[room.Arrangement.GetLength(0), room.Arrangement.GetLength(1)];
+            List<int> lst = new List<int>(RangeList);
+
+            for (int i = 0; i < room.Arrangement.GetLength(0); i++) {
+                for (int j = 0; j < room.Arrangement.GetLength(1); j++) {
+                    result[i, j] = lst.Contains(Matrix[i, j]);
+                }
+            }
+
+            return result; 
+        }
+
         private void FloodMap(int Index)
         {
             for (int i = 0; i < room.Arrangement.GetLength(0); i++)
@@ -451,6 +523,7 @@ namespace HackAndSlash
                 GlobalSettings.BOMB_ITEM,
                 GlobalSettings.THROWING_KNIFE_ITEM,
                 GlobalSettings.FOOD_ITEM,
+                GlobalSettings.RUPY_ITEM
             };
             merchantItems = new int[] {
                 GlobalSettings.REFILL_ITEM,

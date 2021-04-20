@@ -14,12 +14,15 @@ namespace HackAndSlash
 {
     class Minimap
     {
+        private bool dev = false;
+
         private GraphicsDevice graphics;
         private SpriteBatch spriteBatch;
         private LevelCycling levelCycler;
 
         private bool[,] AllRoom;        // If there's a room at that position 
         private bool[,] RoomVisibility; // If that room has been explored 
+        private int[,] RoomTypeIndex; 
 
         // Textures 
         private Texture2D minimap;
@@ -27,7 +30,9 @@ namespace HackAndSlash
         private Texture2D horizontalBridge;
         private Texture2D verticalBridge;
         private Texture2D playerNotation;
-        private Texture2D borderLines; 
+        private Texture2D borderLines;
+        private Texture2D merchantRoom;
+        private Texture2D bossRoom; 
 
         // The size of the current maps 
         private int roomRowCount;
@@ -61,7 +66,8 @@ namespace HackAndSlash
         private const double TRANSITION_STEP_Y = 8 * SIZE_RATIO;  // From class Level
         private const double TRANSITION_STEP_X = 16 * SIZE_RATIO;
         private const int MAP_DISPLAY_X = 321; 
-        private const int MAP_DISPLAY_Y = 256; 
+        private const int MAP_DISPLAY_Y = 256;
+        private const int SCALE_FACTOR = 4; 
 
 
         //Misc 
@@ -70,6 +76,9 @@ namespace HackAndSlash
         private Color fillColor = Color.Brown;    // Minimap room color
         private Color playerFill = Color.Orange;  // Player box color 
         private Color borderFill = Color.Crimson; // Border color 
+        private Color merchantRoomColor = Color.Bisque;
+        private Color bossRoomColor = Color.CornflowerBlue;
+        private enum RoomTypes {Default, Merchant, Boss};
 
         public Minimap(GraphicsDevice Graphics, SpriteBatch SB, LevelCycling LC)
         {
@@ -103,18 +112,21 @@ namespace HackAndSlash
         {
             AllRoom = new bool[roomRowCount, roomColCount];
             RoomVisibility = new bool[roomRowCount, roomColCount];
+            RoomTypeIndex = new int[roomRowCount, roomColCount];
 
             minimap = GenerateTexture(roomColCount * WHOLE_WIDTH, roomRowCount * WHOLE_HEIGHT, pixel => transp);
             singleRoom = GenerateTexture(UNIT_WIDTH, UNIT_HEIGHT, pixel => fillColor);
             horizontalBridge = GenerateTexture(BRIDGE_LEN_0, BRIDGE_LEN_1, pixel => fillColor);
             verticalBridge = GenerateTexture(BRIDGE_LEN_0, BRIDGE_LEN_0, pixel => fillColor);
             playerNotation = GenerateTexture(PLAYER_NOTATION_SIZE, PLAYER_NOTATION_SIZE, pixel => playerFill);
+            merchantRoom = GenerateTexture(UNIT_WIDTH, UNIT_HEIGHT, pixel => merchantRoomColor);
+            bossRoom = GenerateTexture(UNIT_WIDTH, UNIT_HEIGHT, pixel => bossRoomColor);
 
-            for (int i = 0; i < roomRowCount; i++)
-            {
+            for (int i = 0; i < roomRowCount; i++) {
                 for (int j = 0; j < roomColCount; j++)
                 {
                     AllRoom[i, j] = (levelCycler.currentMapSet[i, j] != null);
+                    RoomTypeIndex[i, j] = 0; 
                     RoomVisibility[i, j] = (i == levelCycler.currentLocationIndex[0] && j == levelCycler.currentLocationIndex[1]);
                 }
             }
@@ -127,7 +139,6 @@ namespace HackAndSlash
             Color[] BridgeVerData = new Color[verticalBridge.Width * verticalBridge.Height];
             Color[] BridgeHorData = new Color[horizontalBridge.Width * horizontalBridge.Height];
 
-            singleRoom.GetData<Color>(RoomData);
             verticalBridge.GetData<Color>(BridgeVerData);
             horizontalBridge.GetData<Color>(BridgeHorData);
 
@@ -139,6 +150,18 @@ namespace HackAndSlash
                     {
                         int PosX = j * WHOLE_WIDTH + 1;
                         int PosY = i * WHOLE_HEIGHT + 1;
+
+                        switch (RoomTypeIndex[i, j]){
+                            case (int)RoomTypes.Merchant:
+                                merchantRoom.GetData<Color>(RoomData);
+                                break;
+                            case (int)RoomTypes.Boss:
+                                bossRoom.GetData<Color>(RoomData);
+                                break;
+                            default:
+                                singleRoom.GetData<Color>(RoomData);
+                                break;
+                        }
 
                         minimap.SetData(0, new Rectangle(PosX, PosY,
                             singleRoom.Width, singleRoom.Height), RoomData,
@@ -192,8 +215,33 @@ namespace HackAndSlash
         }
 
         // Mark a room as explored and make it visible in minimap 
-        public void FlagExplored(int[] Index)
+        public void FlagExplored(int[] Index, Map MapInfo)
         {
+            int RoomType = 0;
+            List<int> merchantCharaList = new List<int>() {
+                GlobalSettings.NPC_OLD_MAN,
+                GlobalSettings.NPC_OLD_WOMAN
+            };
+            List<int> bossCharaList = new List<int>() {
+                GlobalSettings.BOSS_ENEMY
+            };
+
+            for (int i = 0; i < MapInfo.Arrangement.GetLength(0); i++) {
+                for (int j = 0; j < MapInfo.Arrangement.GetLength(1); j++) {
+                    int nowIndex = MapInfo.Arrangement[i, j];
+                    int bossInd = GlobalSettings.BOSS_ENEMY;
+                    if (merchantCharaList.Contains(MapInfo.Arrangement[i, j])) {
+                        RoomTypeIndex[Index[0], Index[1]] = (int)RoomTypes.Merchant;
+                        break;
+                    }
+                    
+                    else if (MapInfo.Arrangement[i, j] == GlobalSettings.BOSS_ENEMY) {
+                        RoomTypeIndex[Index[0], Index[1]] = (int)RoomTypes.Boss;
+                        break;
+                    }
+                }
+            }
+
             RoomVisibility[Index[0], Index[1]] = true;
             UpdateMinimap();
         }
@@ -276,6 +324,7 @@ namespace HackAndSlash
             }
         }
 
+        // Top-left corner display 
         public void Draw()
         {
             Rectangle MiniMapSrcClip = new Rectangle((int)(clipX + transOffset.X - 1), (int)(clipY + transOffset.Y - 1),
@@ -287,21 +336,30 @@ namespace HackAndSlash
 
             // The minimap 
             spriteBatch.Draw(minimap, new Vector2(DRAW_POSITION_X, DRAW_POSITION_Y),
-                MiniMapSrcClip, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer);
+                MiniMapSrcClip, defaultTint, 0f, Vector2.Zero, SCALE_FACTOR, SpriteEffects.None, layer);
 
             // The tiny box denoting player's position 
             spriteBatch.Draw(playerNotation, PlayerBoxLocation,
-                null, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer + .1f);
+                null, defaultTint, 0f, Vector2.Zero, SCALE_FACTOR, SpriteEffects.None, layer + .1f);
 
             // The border 
             spriteBatch.Draw(borderLines, new Vector2(DRAW_POSITION_X, DRAW_POSITION_Y), null,
-                defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer);
+                defaultTint, 0f, Vector2.Zero, SCALE_FACTOR, SpriteEffects.None, layer);
         }
 
+        // Tab display 
         public void DrawMap()
         {
+            Vector2 PlayerDot = new Vector2(
+                currentFocusIndex[1] * WHOLE_WIDTH * 4 + MAP_DISPLAY_X + (WHOLE_WIDTH - PLAYER_NOTATION_SIZE) * 2,
+                currentFocusIndex[0] * WHOLE_HEIGHT * 4 + MAP_DISPLAY_Y + (WHOLE_HEIGHT - PLAYER_NOTATION_SIZE) * 2
+                ) ;
+
+            spriteBatch.Draw(playerNotation, PlayerDot,
+                null, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer + .1f);
+
             spriteBatch.Draw(minimap, new Vector2(MAP_DISPLAY_X, MAP_DISPLAY_Y),
-                null, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer);
+                null, defaultTint, 0f, Vector2.Zero, SCALE_FACTOR, SpriteEffects.None, layer);
         }
 
     }

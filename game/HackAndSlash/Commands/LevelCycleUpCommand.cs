@@ -16,15 +16,17 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            if (Game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Up))
-            {
-                Game.currentLevel.TransDir = (int)GlobalSettings.Direction.Up;
-                Game.reset((int)GlobalSettings.Direction.Up);
-            }
-            else if (Game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Down))
-            {
-                Game.currentLevel.TransDir = (int)GlobalSettings.Direction.Down;
-                Game.reset((int)GlobalSettings.Direction.Down);
+            if (Game._EnableMouseTeleport) { 
+                if (Game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Up))
+                {
+                    Game.currentLevel.TransDir = (int)GlobalSettings.Direction.Up;
+                    Game.reset((int)GlobalSettings.Direction.Up);
+                }
+                else if (Game.currentLevel.CanGoThrough((int)GlobalSettings.Direction.Down))
+                {
+                    Game.currentLevel.TransDir = (int)GlobalSettings.Direction.Down;
+                    Game.reset((int)GlobalSettings.Direction.Down);
+                }
             }
         }
     }

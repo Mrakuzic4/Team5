@@ -60,6 +60,7 @@ namespace HackAndSlash
                     if(rupyCollisionHandler.CheckForPlayerCollision(collidableTiles))
                     {
                         CollectItem();
+                        game.levelCycleRecord.RemoveOneIndex(GlobalSettings.RUPY_ITEM);
                     }
                     break;
                 case RupyStateMachine.ItemStates.Useable:

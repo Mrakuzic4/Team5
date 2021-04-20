@@ -30,7 +30,8 @@ namespace HackAndSlash
         public bool _ShowBoundary = true;
         public bool _FOG = true;
         public int _FogRange = 1;
-        public bool _RdandomMap = false; // Not yet used 
+        public bool _UseOldMap = false; // Not yet used 
+        public bool _EnableMouseTeleport = true;
         
 
         //Player
@@ -132,7 +133,7 @@ namespace HackAndSlash
             GameState = GlobalSettings.GameStates.TitleMenu;
 
             // Setup stat for all the rooms 
-            levelCycleRecord = new LevelCycling(false); // "true" to use the S4 maps 
+            levelCycleRecord = new LevelCycling(_UseOldMap); 
 
             // Initlize first room 
             currentLevel = new Level(GraphicsDevice, spriteBatch, this);
@@ -361,7 +362,7 @@ namespace HackAndSlash
                         transitionDir = 5;
 
                         // Update minimap visibility 
-                        miniMap.FlagExplored(currentLevel.mapIndex);
+                        miniMap.FlagExplored(currentLevel.mapIndex, currentMapInfo);
                         miniMap.SetPivot(currentLevel.mapIndex);
 
                         // Gnerate new lists 

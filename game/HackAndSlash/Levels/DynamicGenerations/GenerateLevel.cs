@@ -13,6 +13,7 @@ namespace HackAndSlash
 {
     class GenerateLevel
     {
+        private bool dev = false;
 
         public Map[,] levelSet;
 
@@ -44,6 +45,7 @@ namespace HackAndSlash
             PickStartUpRoom();
             PopulateRooms();
 
+            SetBossRooms();
             RegulateDoors();
 
             SetMerchantRooms();
@@ -260,7 +262,6 @@ namespace HackAndSlash
             {
                 for (int j = 0; j < levelSet.GetLength(1); j++)
                 {
-
                     L1Dist = L1DistanceFromStart(i, j);
                     ColProgression = j / levelColCount;
                     RowProgression = i / levelRowCount;
@@ -317,37 +318,41 @@ namespace HackAndSlash
             }
         }
 
-        private void SetBossRooms()
+        private int SetBossRooms()
         {
 
             int count = 0;
             int[] iter = new int[] { 0, 1, 2, 3 };
+            GenerateRoom RoomGen = new GenerateRoom();
+            RoomGen.InitRoom();
+
+            if (dev) { 
+                if(HasNextRoom(new int[] { startUpRow,  startUpCol}, (int)GlobalSettings.Direction.Up)) {
+                    RoomGen.SetAsBossRoom();
+                    levelSet[startUpRow - 1, startUpCol] = RoomGen.room;
+                }
+                else if (HasNextRoom(new int[] { startUpRow, startUpCol }, (int)GlobalSettings.Direction.Down)) {
+                    RoomGen.SetAsBossRoom();
+                    levelSet[startUpRow + 1, startUpCol] = RoomGen.room;
+                }
+                return 0; 
+            }
 
             while (count < BOSS_ROOM_COUNT)
             {
+                
                 int row = GlobalSettings.RND.Next(levelSet.GetLength(0));
                 int col = GlobalSettings.RND.Next(levelSet.GetLength(1));
 
                 if (!IsStartUpRoom(row, col))
                 {
-                    GenerateRoom RoomGen = new GenerateRoom();
-                    RoomGen.InitRoom();
-                    RoomGen.SetAsMerchantRoom();
-
+                    RoomGen.SetAsBossRoom();
                     levelSet[row, col] = RoomGen.room;
-
-                    foreach (int Dir in iter)
-                    {
-                        if (HasNextRoom(new int[] { col, row }, Dir))
-                        {
-                            AddHiddenDoors(new int[] { col, row }, Dir);
-                        }
-                    }
-
                     count++;
                 }
-
             }
+
+            return 0; 
         }
 
         private bool IsStartUpRoom(int row, int col)
