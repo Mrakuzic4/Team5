@@ -151,18 +151,9 @@ namespace HackAndSlash
             //Sound
             SoundFactory.Instance.SwordSlashEffect();
 
-            if (currentHealth == maxHealth)
-            {
-                //shoot the sword when at full health
-                game.fullHealthSword.CollectItem();
-                game.fullHealthSword.UseItem(this.GetDir());
-            }
-            else
-            {
-                //Sprite Animation and Decorator
-                playerStateMachine.Attack();
-                this.swordEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckSwordEnemyCollisions());
-            }
+            //Sprite Animation and Decorator
+            playerStateMachine.Attack();
+            this.swordEnemyCollisionHandler.HandleCollision(game.Player, playerCollisionDetector.CheckSwordEnemyCollisions());
         }
 
         public void Damaged()
