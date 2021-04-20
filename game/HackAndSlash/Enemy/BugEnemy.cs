@@ -198,8 +198,10 @@ namespace HackAndSlash
                 deathTimer += gameTime.ElapsedGameTime.Milliseconds;
                 if (deathTimer > dieTotalTime)
                 {
+                    SoundFactory.Instance.BugDies();
                     deathTimer = 0;
                     bugState.changeToNot();
+                    game.levelCycleRecord.RemoveOneIndex(GlobalSettings.BUG_ENEMY);
                 }
             }
 

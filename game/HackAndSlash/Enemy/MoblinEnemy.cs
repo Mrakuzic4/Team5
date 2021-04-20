@@ -225,7 +225,7 @@ namespace HackAndSlash
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
 
-            //Remove moblin from screen 3 seconds after death
+            //Remove moblin from screen shortly after death
             if (moblinState.state == moblinStateMachine.moblinHealth.Die)
             {
                 hitbox.Location = new Point(0, 0);
@@ -233,8 +233,10 @@ namespace HackAndSlash
                 deathTimer += gameTime.ElapsedGameTime.Milliseconds;
                 if (deathTimer > dieTotalTime)
                 {
+                    SoundFactory.Instance.MoblinDies();
                     deathTimer = 0;
                     IItem FoodItem = new FoodItem(position, spriteBatch, game);
+                    game.levelCycleRecord.RemoveOneIndex(GlobalSettings.MOBLIN_ENEMY);
                     game.itemList.Add(FoodItem);
                     moblinState.changeToNot();
                 }

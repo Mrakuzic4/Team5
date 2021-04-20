@@ -147,7 +147,7 @@ namespace HackAndSlash
             miniMap = new Minimap(GraphicsDevice, spriteBatch, levelCycleRecord);
             miniMap.SetPivot(currentLevel.mapIndex);
 
-            specialCases = new LevelEagleSpecialCases();
+            specialCases = new LevelBSpecialCases();
 
             //Player
             PlayerMain = new Player(this);//Player object
@@ -219,11 +219,11 @@ namespace HackAndSlash
             transitionDir = Direction;
             Level NextLevel;
 
-            if (Direction == 4)
+            if (Direction == 4) // Total reset 
             {
                 LoadAllClasses();
             }
-            else if (Direction == 5)
+            else if (Direction == 5)  // Reset current room
             {
                 currentLevel = generator.getLevel(GraphicsDevice, spriteBatch, this);
                 currentLevel.levelCycler = levelCycleRecord;

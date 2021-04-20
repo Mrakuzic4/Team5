@@ -1381,11 +1381,35 @@
 /processorParam:TextureFormat=Color
 /build:Merchant/ZeldaGotShield.png
 
+#begin sound/BeetleDeath.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/BeetleDeath.wav
+
+#begin sound/bhit1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/bhit1.wav
+
 #begin sound/CoconutSong.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:sound/CoconutSong.mp3
+
+#begin sound/diablod.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/diablod.wav
+
+#begin sound/dserp.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/dserp.wav
 
 #begin sound/DungeonMusic.mp3
 /importer:Mp3Importer
@@ -1393,11 +1417,47 @@
 /processorParam:Quality=Best
 /build:sound/DungeonMusic.mp3
 
+#begin sound/EnchantedMango.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/EnchantedMango.wav
+
+#begin sound/explodesWall.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/explodesWall.wav
+
 #begin sound/GangTortureDance .mp3
 /importer:Mp3Importer
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:sound/GangTortureDance .mp3
+
+#begin sound/garbud01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/garbud01.wav
+
+#begin sound/garbud04.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/garbud04.wav
+
+#begin sound/HandOfMidas.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/HandOfMidas.wav
+
+#begin sound/ItemPickup.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/ItemPickup.wav
 
 #begin sound/LOZ_Arrow_Boomerang.wav
 /importer:WavImporter
@@ -1537,9 +1597,81 @@
 /processorParam:Quality=Best
 /build:sound/LOZ_Text.wav
 
+#begin sound/mobdead.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/mobdead.wav
+
+#begin sound/Satanic.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/Satanic.wav
+
 #begin sound/TitleScreenMp3.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:sound/TitleScreenMp3.mp3
+
+#begin sound/walk1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/walk1.wav
+
+#begin sound/walk2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/walk2.wav
+
+#begin sound/walk3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/walk3.wav
+
+#begin sound/walk4.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/walk4.wav
+
+#begin sound/zhar01.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/zhar01.wav
+
+#begin sound/zhar02.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/zhar02.wav
+
+#begin sounds/HappyNoise.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/HappyNoise.wav
+
+#begin sounds/TitleMusicHappy.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/TitleMusicHappy.mp3
+
+#begin sounds/TitleMusicHappy.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/TitleMusicHappy.wav
+
+#begin sounds/TitleScreenMusic.wav
+/importer:WavImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/TitleScreenMusic.wav
 

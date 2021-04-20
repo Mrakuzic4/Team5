@@ -161,7 +161,7 @@ namespace HackAndSlash
             if (itemState.state == FoodStateMachine.ItemStates.Useable)
             {
                 player.Healed();
-                SoundFactory.Instance.GetHeartEffect();
+                SoundFactory.Instance.EatFood();
                 numUses--;
                 itemState.ChangeToExpended();
 

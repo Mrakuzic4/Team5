@@ -27,7 +27,7 @@ namespace HackAndSlash
         private int levelRowCount;
         private int levelColCount;
 
-        private const int HIDDEN_DOOR_THRESHOLD = 0;
+        private const int HIDDEN_DOOR_THRESHOLD = 10;
         private const int MERCHANT_ROOM_COUNT = 2;
         private const int BOSS_ROOM_COUNT = 1;
 

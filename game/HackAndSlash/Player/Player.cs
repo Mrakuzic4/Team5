@@ -141,6 +141,7 @@ namespace HackAndSlash
                 timer--;
                 if (timer == 0)
                 {
+                    SoundFactory.Instance.GetWalking();
                     DrawPlayer.Instance.Frame++;
                     timer = DELAY;
                 }
@@ -236,8 +237,8 @@ namespace HackAndSlash
                 && RupyItem.numUses >= GlobalSettings.OPEN_DOOR_COST) {
                 game.currentLevel.OpenMysDoor(ActivationDirection);
                 game.levelCycleRecord.OpenBothDoors(ActivationDirection);
-                RupyItem.numUses -= GlobalSettings.OPEN_DOOR_COST; 
-
+                RupyItem.numUses -= GlobalSettings.OPEN_DOOR_COST;
+                SoundFactory.Instance.GetPayDoorsEffect();
             }
 
             // --gem  RupyItem.numUses()

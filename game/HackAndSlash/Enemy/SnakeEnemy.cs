@@ -32,7 +32,7 @@ namespace HackAndSlash
         private Rectangle hitbox;
 
         private int damageTaken;
-        private Color tintColor;
+        private Color tintColor = Color.White;
 
         private int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
         private int rightBound = GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
@@ -215,12 +215,14 @@ namespace HackAndSlash
                 //wait 3 seconds
                 if (deathTimer > 1500)
                 {
+                    SoundFactory.Instance.SnakeDies();
                     deathTimer = 0;
                     // randomly drop rupys
                     if (random.Next(0, 3) == 0) {
                         game.itemList.Add(new RupyItem(position, spriteBatch, game)); 
                     }  
                     snakeState.changeToNot();
+                    game.levelCycleRecord.RemoveOneIndex(GlobalSettings.SNAKE_ENEMY);
                 }
             }
 
@@ -237,7 +239,8 @@ namespace HackAndSlash
         {
             if (snakeState.state == snakeStateMachine.snakeHealth.Die)
             {
-                tintColor = Color.Red;
+                //tintColor = Color.Red;
+                tintColor = Color.White;
                 snakeState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
             }
 

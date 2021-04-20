@@ -13,11 +13,14 @@ namespace HackAndSlash
 {
     class SoundFactory
     {
-        private bool _DevsAreInMood = true;
+        private bool _HappyMusics = true;
+        private bool _DevsAreInMood = false;
 
         private static SoundFactory instance;
         private Song titleScreen;
         private Song dungeon;
+        private Song titleScreenHappy;
+        private Song dungeonHappy;
         private Song[] devInAMode;
 
         private SoundEffect swordSlash;
@@ -32,7 +35,19 @@ namespace HackAndSlash
         private SoundEffect triforceObtained;
         private SoundEffect enemyDamaged;
         private SoundEffect getHeart;
-        
+        private SoundEffect payDoors;
+        private SoundEffect eatFood;
+        private SoundEffect itemPickup;
+        private SoundEffect damgedHappy;
+        private SoundEffect wallBroken;
+        private SoundEffect[] walking;
+        private SoundEffect snakeDie;
+        private SoundEffect moblinDie;
+        private SoundEffect beetleDie;
+        private SoundEffect[] merchant;
+        private SoundEffect deathHappy; 
+
+
         private SoundFactory()
         {
 
@@ -43,6 +58,10 @@ namespace HackAndSlash
             //Songs
             titleScreen = content.Load<Song>("sound/TitleScreenMp3");
             dungeon = content.Load<Song>("sound/DungeonMusic");
+
+            titleScreenHappy = content.Load<Song>("sounds/TitleMusicHappy");
+            dungeonHappy = content.Load<Song>("sounds/HappyNoise");
+
             devInAMode = new Song[] { 
                 content.Load<Song>("sound/CoconutSong"),
                 content.Load<Song>("sound/GangTortureDance ")};
@@ -61,6 +80,27 @@ namespace HackAndSlash
             triforceObtained = content.Load<SoundEffect>("sound/LOZ_Fanfare");
             enemyDamaged = content.Load<SoundEffect>("sound/LOZ_Enemy_Hit");
             getHeart = content.Load<SoundEffect>("sound/LOZ_Get_Heart");
+            payDoors = content.Load<SoundEffect>("sound/HandOfMidas");
+            eatFood = content.Load<SoundEffect>("sound/EnchantedMango");
+            itemPickup = content.Load<SoundEffect>("sound/ItemPickup");
+            damgedHappy = content.Load<SoundEffect>("sound/bhit1");
+            wallBroken = content.Load<SoundEffect>("sound/explodesWall");
+            snakeDie = content.Load<SoundEffect>("sound/dserp");
+            moblinDie = content.Load<SoundEffect>("sound/mobdead");
+            beetleDie = content.Load<SoundEffect>("sound/BeetleDeath");
+            deathHappy = content.Load<SoundEffect>("sound/Satanic");
+            merchant = new SoundEffect[] {
+                content.Load<SoundEffect>("sound/zhar01"),
+                content.Load<SoundEffect>("sound/zhar02"),
+                content.Load<SoundEffect>("sound/garbud01"),
+                content.Load<SoundEffect>("sound/garbud04")
+            };
+            walking = new SoundEffect[] {
+                content.Load<SoundEffect>("sound/walk1"),
+                content.Load<SoundEffect>("sound/walk2"),
+                content.Load<SoundEffect>("sound/walk3"),
+                content.Load<SoundEffect>("sound/walk4")
+            };
         }
 
         public static SoundFactory Instance
@@ -78,11 +118,17 @@ namespace HackAndSlash
         //Songs
         public SongByte TitleScreenSong()
         {
-            return new SongByte(titleScreen);
+            if (_HappyMusics)
+                return new SongByte(titleScreenHappy);
+            else 
+                return new SongByte(titleScreen);
         }
         public SongByte DungeonSong()
         {
-            if (_DevsAreInMood)
+            if (_HappyMusics) {
+                return new SongByte(dungeonHappy);
+            }
+            else if (_DevsAreInMood)
                 return new SongByte(devInAMode[GlobalSettings.RND.Next() % 2]);
             else
                 return new SongByte(dungeon);
@@ -95,11 +141,33 @@ namespace HackAndSlash
         }
         public SoundByte LinkDamagedEffect()
         {
-            return new SoundByte(linkDamaged);
+            if (_HappyMusics)
+                return new SoundByte(damgedHappy);
+            else 
+                return new SoundByte(linkDamaged);
         }
         public SoundByte GetItemEffect()
         {
-            return new SoundByte(getItem);
+            if (_HappyMusics)
+                return new SoundByte(itemPickup);
+            else 
+                return new SoundByte(getItem);
+        }
+        public SoundByte BreakWall()
+        {
+            return new SoundByte(wallBroken);
+        }
+        public SoundByte GetWalking()
+        {
+            return new SoundByte(walking[GlobalSettings.RND.Next() % walking.Length]);
+        }
+        public SoundByte EatFood()
+        {
+            return new SoundByte(eatFood);
+        }
+        public SoundByte MerchantSpeak()
+        {
+            return new SoundByte(merchant[GlobalSettings.RND.Next() % merchant.Length]);
         }
         public SoundByte BossScreamEffect()
         {
@@ -107,7 +175,21 @@ namespace HackAndSlash
         }
         public SoundByte LinkDeathEffect()
         {
+            if (_HappyMusics)
+                return new SoundByte(deathHappy);
             return new SoundByte(linkDeath);
+        }
+        public SoundByte SnakeDies()
+        {
+            return new SoundByte(snakeDie);
+        }
+        public SoundByte MoblinDies()
+        {
+            return new SoundByte(moblinDie);
+        }
+        public SoundByte BugDies()
+        {
+            return new SoundByte(beetleDie); 
         }
         public SoundByte BombDropEffect()
         {
@@ -141,6 +223,10 @@ namespace HackAndSlash
             return new SoundByte(getHeart);
         }
 
+        public SoundByte GetPayDoorsEffect()
+        {
+            return new SoundByte(payDoors);
+        }
         public void StopSong()
         {
             MediaPlayer.Stop();

@@ -104,6 +104,7 @@ namespace HackAndSlash
                     costs[3] = GlobalSettings.saveSets.HealPower * 10;
                     costs[4] = GlobalSettings.saveSets.MaxHealth * 5;
                     upgraded[5] = true;
+                    Game.reset(4);
                 }
                 else if (CurrentSelection.Y == positions[6])
                 {

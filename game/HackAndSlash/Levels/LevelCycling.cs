@@ -189,7 +189,7 @@ namespace HackAndSlash
                     NextRoomDoorDir = (int)GlobalSettings.Direction.Right;
                     break;
                 case (int)GlobalSettings.Direction.Right:
-                    NextRoomIndex = new int[] { currentLocationIndex[0] - 1, currentLocationIndex[1] + 1 };
+                    NextRoomIndex = new int[] { currentLocationIndex[0], currentLocationIndex[1] + 1 };
                     NextRoomDoorDir = (int)GlobalSettings.Direction.Left;
                     break;
                 default:

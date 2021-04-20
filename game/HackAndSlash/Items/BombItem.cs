@@ -109,8 +109,9 @@ namespace HackAndSlash
                         bombAnimationState = animationState.explode;
                         SoundFactory.Instance.BombBlowEffect();
                         int HoleDirection = new BombWallCollision(position, game.currentMapInfo).direction;
-                        if (HoleDirection >= 0)
+                        if (HoleDirection >= 0 && game.levelCycleRecord.HasNextRoom(HoleDirection))
                         {
+                            SoundFactory.Instance.BreakWall();
                             game.currentLevel.AddHole(HoleDirection);
                             game.levelCycleRecord.HoleBridgeRooms(HoleDirection);
                         }
