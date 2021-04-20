@@ -32,6 +32,7 @@ namespace HackAndSlash
         public int _FogRange = 1;
         public bool _UseOldMap = false; // Not yet used 
         public bool _EnableMouseTeleport = true;
+        public bool _AngelicMode = true;
         
 
         //Player

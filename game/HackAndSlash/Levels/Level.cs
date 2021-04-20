@@ -161,7 +161,8 @@ namespace HackAndSlash
         // Overwrite the texture, add the border and tiles 
         private void AlterTexture()
         {
-            Texture2D Border = SpriteFactory.Instance.GetLevelEagleBorder();
+            Texture2D Border = game._AngelicMode ? SpriteFactory.Instance.GetLevelBloodBorder():
+                SpriteFactory.Instance.GetLevelEagleBorder();
             int CountBorder = Border.Width * Border.Height;
             Color[] RawDataBorder = new Color[CountBorder];
             Border.GetData<Color>(RawDataBorder);
@@ -196,7 +197,8 @@ namespace HackAndSlash
         // Update the doors, used both in initialization and when new doors are being dynamically added 
         public void UpdateDrawDoors()
         {
-            Texture2D doors = SpriteFactory.Instance.GetLevelEagleDoors();
+            Texture2D doors = game._AngelicMode? SpriteFactory.Instance.GetLevelBloodDoors():
+                SpriteFactory.Instance.GetLevelEagleDoors();
             int DoorSizeUnit = GlobalSettings.BASE_SCALAR * 2;
 
             int HorizontalPos = GlobalSettings.GAME_AREA_WIDTH / 2 - GlobalSettings.BASE_SCALAR;

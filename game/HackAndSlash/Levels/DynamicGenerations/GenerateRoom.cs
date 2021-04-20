@@ -16,7 +16,7 @@ namespace HackAndSlash
         public Map room { get; set; }
 
         private const int ENEMY_MAX = 8;
-        private const int ENEMY_SPAWN_BIAS = 3;
+        private const int ENEMY_SPAWN_BIAS = 15;
         private const int PATTERNED_BIAS = -10;
         private const int ITEM_TOLERANCE = 6;
         private const int ITEM_MAX = 4;
@@ -185,11 +185,36 @@ namespace HackAndSlash
         public GenerateRoom()
         {
             // Setup the template 
-            defaultBlock = 0;
             dropKeys = 0;
             dropPotions = 0;
 
-            UseStyleOne(); // Maybe later moved into other parts 
+            enemyList = new int[]{
+                GlobalSettings.SNAKE_ENEMY,
+                GlobalSettings.BUG_ENEMY,
+                GlobalSettings.MOBLIN_ENEMY
+            };
+            itemList = new int[] {
+                GlobalSettings.FIREWALL_ITEM,
+                GlobalSettings.BOMB_ITEM,
+                GlobalSettings.THROWING_KNIFE_ITEM,
+                GlobalSettings.FOOD_ITEM,
+                GlobalSettings.RUPY_ITEM
+            };
+            merchantItems = new int[] {
+                GlobalSettings.REFILL_ITEM,
+                GlobalSettings.HEART_ITEM,
+                GlobalSettings.SHIELD_ITEM
+            };
+            merchantCharaList = new int[] {
+                GlobalSettings.NPC_OLD_MAN,
+                GlobalSettings.NPC_OLD_WOMAN
+            };
+
+
+            bossIndex = GlobalSettings.BOSS_ENEMY;
+
+
+            UseStyleTwo(); // Maybe later moved into other parts 
         }
 
         /// <summary>
@@ -247,7 +272,8 @@ namespace HackAndSlash
             {
                 for (int j = 0; j < room.Arrangement.GetLength(1); j++)
                 {
-                    if (GlobalSettings.RND.Next(100) < Threshold && !IsBlock(i, j)
+                    //if (GlobalSettings.RND.Next(100) < Threshold && !IsBlock(i, j) && Count < enemyCount && canPlace[i, j])
+                    if (GlobalSettings.RND.Next(100) < Threshold 
                         && Count < enemyCount && canPlace[i, j])
                     {
                         room.Arrangement[i, j] = enemyList[GlobalSettings.RND.Next(enemyList.Length)];
@@ -295,7 +321,10 @@ namespace HackAndSlash
                 Rand = RandScatter(walkableSpread);
                 MaskOffDoorways(Rand);
             }
-            PopulatePattern(Rand, walkableBlockList[GlobalSettings.RND.Next(walkableBlockList.Length)]);
+            if (distFromStartup > MESSY_THRESHOLD)
+                PopulatePatternRand(Rand, walkableBlockList, (int)(distFromStartup / MESSY_DIVIDER));
+            else
+                PopulatePattern(Rand, walkableBlockList[GlobalSettings.RND.Next(walkableBlockList.Length)]);
 
 
             if (GlobalSettings.RND.Next(100) < solidPatternedRate) {
@@ -419,7 +448,7 @@ namespace HackAndSlash
             List<int> ActualList = new List<int>(); ;
 
             if (MaxType > ListOfIndex.Length)
-                for (int i = 0; i < MaxType; i++)
+                for (int i = 0; i < ListOfIndex.Length; i++)
                     ActualList.Add(ListOfIndex[i]);
             else {
                 ActualList = new List<int>(ListOfIndex);
@@ -510,34 +539,22 @@ namespace HackAndSlash
 
         public void UseStyleOne()
         {
-            enemyList = new int[]{
-                GlobalSettings.SNAKE_ENEMY,
-                GlobalSettings.BUG_ENEMY,
-                GlobalSettings.MOBLIN_ENEMY
-            };
+
+            defaultBlock = 0;
             walkableBlockList = new int[] { 2 };
             solidBlockLIst = new int[] { 32, 33, 35, 36, 37, 38 };
             blackRoomInedx = 1;
-            itemList = new int[] {
-                GlobalSettings.FIREWALL_ITEM,
-                GlobalSettings.BOMB_ITEM,
-                GlobalSettings.THROWING_KNIFE_ITEM,
-                GlobalSettings.FOOD_ITEM,
-                GlobalSettings.RUPY_ITEM
-            };
-            merchantItems = new int[] {
-                GlobalSettings.REFILL_ITEM,
-                GlobalSettings.HEART_ITEM,
-                GlobalSettings.SHIELD_ITEM
-            };
-            merchantCharaList = new int[] {
-                GlobalSettings.NPC_OLD_MAN,
-                GlobalSettings.NPC_OLD_WOMAN
-            };
 
 
-            bossIndex = GlobalSettings.BOSS_ENEMY;
+        }
 
+        public void UseStyleTwo()
+        {
+
+            defaultBlock = 16;
+            walkableBlockList = new int[] { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
+            solidBlockLIst = new int[] { 42, 43, 44, 45, 46, 47, 48, 49 };
+            blackRoomInedx = 1;
 
         }
 

@@ -81,7 +81,9 @@ namespace HackAndSlash
         public ImageFile BlockDemo;
         public ImageFile BlockBlank1;
         public ImageFile LevelEagleBorder;
-        public ImageFile LevelEagleDoors; 
+        public ImageFile LevelEagleDoors;
+        public ImageFile LevelBloodBorder;
+        public ImageFile LevelBloodDoors;
         public ImageFile[] LevelEagleDoorNormOpen;
         public ImageFile[] LevelEagleHole;
 
@@ -203,7 +205,7 @@ namespace HackAndSlash
 
             BG = new ImageFile("images/BG", 1, 1);
 
-            BlockMovable = new ImageFile("images/blockMovable", 1, 1);
+            BlockMovable = new ImageFile("images/MoveableBlood", 1, 1);
 
             // For level blocks, they must be the same size as BASE_SCALAR
             BlockDemo = new ImageFile("images/BlockDemo", 1, 1);
@@ -211,6 +213,8 @@ namespace HackAndSlash
             BlockAllMight = new ImageFile("images/levels/blockAllMight", 1, 1);
             LevelEagleBorder = new ImageFile("images/LevelEagleBorder", 1, 1);
             LevelEagleDoors = new ImageFile("images/levels/eagleDoors", 5, 4);
+            LevelBloodBorder = new ImageFile("images/levels/BloodWall", 1, 1);
+            LevelBloodDoors = new ImageFile("images/levels/bloodDoors", 5, 4);
             LevelEagleDoorNormOpen = new ImageFile[] {
                 new ImageFile("images/levels/eagleDoorVerticalUp", 1, 1),
                 new ImageFile("images/levels/eagleDoorVerticalDown", 1, 1),

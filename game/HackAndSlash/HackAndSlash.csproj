@@ -273,6 +273,8 @@
     <None Include="Content\bin\DesktopGL\images\sucUp.xnb" />
     <Content Include="Content\images\AquamentusSprite.png" />
     <Content Include="Content\images\levels\blockAllMight.png" />
+    <Content Include="Content\images\levels\bloodDoors.png" />
+    <Content Include="Content\images\levels\BloodWall.png" />
     <Content Include="Content\images\LinkTriforce.png" />
     <Content Include="Content\images\Mask.png" />
     <Content Include="Content\images\MoblinBomb.png" />
