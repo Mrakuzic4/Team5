@@ -70,6 +70,17 @@ namespace HackAndSlash
             { true, false, false, false, false, false, false, false, false, false, false, true}
         };
 
+        private static bool[,] cornerBig = new bool[,] {
+            { true , true , false, false, false, false, false, false, false, false, true , true },
+            { true , false, false, false, false, false, false, false, false, false, false, true },
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { false, false, false, false, false, false, false, false, false, false, false, false},
+            { true , false, false, false, false, false, false, false, false, false, false, true },
+            { true , true , false, false, false, false, false, false, false, false, true , true }
+        };
+
+
         private static bool[,] midOval = new bool[,] {
             { false, false, false, false, false, false, false, false, false, false, false, false},
             { false, false, false, false, false, true, true, false, false, false, false, false},
@@ -360,8 +371,7 @@ namespace HackAndSlash
                 for (int j = 0; j < room.Arrangement.GetLength(1); j++)
                 {
                     if (distFromStartup == 0)  {
-                        if (corners[i, j])
-                            room.Arrangement[i, j] = itemList[GlobalSettings.RND.Next(itemList.Length)];
+                        PopulatePattern(cornerBig, GlobalSettings.BOMB_ITEM);
                     }
                     else if (GlobalSettings.RND.Next(100) < Threshold
                         && ItemCount < ITEM_MAX && !IsBlock(i, j)) {

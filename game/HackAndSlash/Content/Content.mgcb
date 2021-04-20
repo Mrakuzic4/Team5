@@ -1603,6 +1603,18 @@
 /processorParam:Quality=Best
 /build:sound/mobdead.wav
 
+#begin sound/NeutralFellSpirit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/NeutralFellSpirit.wav
+
+#begin sound/RefresherOrb.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/RefresherOrb.wav
+
 #begin sound/Satanic.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

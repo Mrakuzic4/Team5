@@ -21,6 +21,7 @@ namespace HackAndSlash
         private Texture2D cheatText; 
 
         private Color tintColor = Color.White;
+        private bool neverBeenCalled = true; 
 
         public OldManNPC(Vector2 startPosition, GraphicsDevice graphics, SpriteBatch spriteBatch, Game1 game) 
         {
@@ -48,6 +49,12 @@ namespace HackAndSlash
         //Draw method for each of the enemies
         public void Draw()
         {
+            if (neverBeenCalled)
+            {
+                SoundFactory.Instance.MerchantSpeak();
+                neverBeenCalled = false;
+            }
+
             spriteBatch.Draw(oldManSprite, position, null,
                 tintColor, 0f, Vector2.Zero, 4, SpriteEffects.None, .4f);
 

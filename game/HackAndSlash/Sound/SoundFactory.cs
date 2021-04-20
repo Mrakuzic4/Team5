@@ -43,9 +43,10 @@ namespace HackAndSlash
         private SoundEffect[] walking;
         private SoundEffect snakeDie;
         private SoundEffect moblinDie;
-        private SoundEffect beetleDie;
+        private SoundEffect[] beetleDie;
         private SoundEffect[] merchant;
-        private SoundEffect deathHappy; 
+        private SoundEffect deathHappy;
+        private SoundEffect happyEnding;
 
 
         private SoundFactory()
@@ -87,8 +88,13 @@ namespace HackAndSlash
             wallBroken = content.Load<SoundEffect>("sound/explodesWall");
             snakeDie = content.Load<SoundEffect>("sound/dserp");
             moblinDie = content.Load<SoundEffect>("sound/mobdead");
-            beetleDie = content.Load<SoundEffect>("sound/BeetleDeath");
+            beetleDie = new SoundEffect[] { 
+                content.Load<SoundEffect>("sound/BeetleDeath"),
+                content.Load<SoundEffect>("sound/NeutralFellSpirit")
+            };
             deathHappy = content.Load<SoundEffect>("sound/Satanic");
+            happyEnding = content.Load<SoundEffect>("sound/RefresherOrb");
+
             merchant = new SoundEffect[] {
                 content.Load<SoundEffect>("sound/zhar01"),
                 content.Load<SoundEffect>("sound/zhar02"),
@@ -189,7 +195,7 @@ namespace HackAndSlash
         }
         public SoundByte BugDies()
         {
-            return new SoundByte(beetleDie); 
+            return new SoundByte(beetleDie[GlobalSettings.RND.Next() % beetleDie.Length]); 
         }
         public SoundByte BombDropEffect()
         {
@@ -210,6 +216,8 @@ namespace HackAndSlash
 
         public SoundByte TriforceObtainedEffect()
         {
+            if (_HappyMusics)
+                return new SoundByte(happyEnding);
             return new SoundByte(triforceObtained);
         }
 
