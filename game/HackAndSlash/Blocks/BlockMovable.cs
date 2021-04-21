@@ -12,10 +12,15 @@ namespace HackAndSlash
     {
         private Texture2D block;
         private Vector2 location { get; set; }
+        public Vector2 initialPosition { get; set; }
         private SpriteBatch spriteBatch;
+
         private bool vertical; //if true block moves vertically, if false block moves horizontally
         private bool isMoving; //holds whether the block is currently moving
         private bool hasMoved; //holds whether the block has already been moved or not
+        private bool soundPlayed = false;
+        public bool eventTriggered { set; get; }
+
         private int counter;
         private GlobalSettings.CollisionType collisionType { get; set; }
         public Rectangle rectangle { get; set; }
@@ -29,8 +34,12 @@ namespace HackAndSlash
             this.location = location;
             this.block = block;
             this.vertical = vertical;
+
+            initialPosition = new Vector2(location.X, location.Y); // To avoid shallow copy 
             isMoving = false;
             hasMoved = false;
+            eventTriggered = false;
+
             counter = 0;
             collisionType = GlobalSettings.CollisionType.None;
             rectangle = new Rectangle((int)location.X, (int)location.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
@@ -43,10 +52,16 @@ namespace HackAndSlash
         {
             if (hasMoved == false && isMoving == true)
             {
+                if (!soundPlayed) {
+                    SoundFactory.Instance.BlockMoving();
+                    soundPlayed = true;
+                }
                 if (vertical == true) HandleVerticalCollision();
                 else HandleHorizontalCollision();
                 counter++;
-                if (counter == 64) hasMoved = true;
+                if (counter == GlobalSettings.BASE_SCALAR) { 
+                    hasMoved = true; 
+                }
             }
         }
         public void Draw()

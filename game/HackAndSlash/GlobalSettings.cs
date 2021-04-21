@@ -43,7 +43,7 @@ namespace HackAndSlash
         public enum roomTypes { Start, Boss, Merchant };
         public enum Direction { Left, Right, Up, Down };
         public const int RESET_DIRECTION = 4; // The 5th "direction" for resetting 
-        public enum GameStates { TitleMenu, Running, Paused, GameOver, GameWon, Upgrading, Transitioning }
+        public enum GameStates { TitleMenu, Running, Paused, GameOver, GameWon, Transitioning }
         public enum CollisionType { None, Left, Right, Top, Bottom, };
 
         public const int PAUSE_CONTINUE_X = 185;
@@ -86,7 +86,7 @@ namespace HackAndSlash
         public const int NPC_OLD_MAN = -5;
         public const int NPC_OLD_WOMAN = -6;
 
-        public const int OPEN_DOOR_COST = 10;
+        public const int OPEN_DOOR_TRIBUTE = 5; // Part of the money goes into opening the door 
 
         //Cheats
         public static bool GODMODE { get; set; } = false;
@@ -94,7 +94,7 @@ namespace HackAndSlash
         public static Random RND = new Random(); 
         public const int PRNG_WEIGHT = 10; // Increse this to make it more random
 
-        public static SavedSettings saveSets = new JsonParser(SaveDatabase.saveFilePath, JsonParser.ParseMode.settingsMode).getCurrentSavedSettings();
+        //public static SavedSettings saveSets = new JsonParser(SaveDatabase.saveFilePath, JsonParser.ParseMode.settingsMode).getCurrentSavedSettings();
 
 
     }

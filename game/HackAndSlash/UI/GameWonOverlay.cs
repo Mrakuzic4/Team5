@@ -52,7 +52,7 @@ namespace HackAndSlash
                     //If chose to continue
                     if (CurrentSelection == SelectorContinueLoc)
                     {
-                        Game.GameState = GlobalSettings.GameStates.Upgrading;
+                        Game.GameState = GlobalSettings.GameStates.TitleMenu;
                     }
                     else
                     {

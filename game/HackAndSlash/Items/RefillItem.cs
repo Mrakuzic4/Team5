@@ -67,8 +67,8 @@ namespace HackAndSlash
             if (RupyItem.numUses >= 100)
             {
                 RupyItem.numUses -= 100;
-                GlobalSettings.saveSets.HealPower++;
                 //Remove the item, make sure the player only collects once!
+                game.levelCycleRecord.RemoveOneIndex(GlobalSettings.REFILL_ITEM);
                 ChangeToExpended();
                 collidableTiles[0] = new Rectangle(0, 0, 0, 0);
                 SoundFactory.Instance.TriforceObtainedEffect();

@@ -47,6 +47,8 @@ namespace HackAndSlash
         private SoundEffect[] moblinAttack; 
         private SoundEffect[] beetleDie;
         private SoundEffect[] merchant;
+        private SoundEffect[] RandomDrop;
+        private SoundEffect[] blockMoving;
         private SoundEffect deathHappy;
         private SoundEffect happyEnding;
         private SoundEffect[] idling;
@@ -155,6 +157,15 @@ namespace HackAndSlash
                 content.Load<SoundEffect>("sound/walk3"),
                 content.Load<SoundEffect>("sound/walk4")
             };
+            RandomDrop = new SoundEffect[] {
+                content.Load<SoundEffect>("sound/flipbody"),
+                content.Load<SoundEffect>("sound/flipbook"),
+                content.Load<SoundEffect>("sound/fliplarm")
+            };
+            blockMoving = new SoundEffect[] {
+                content.Load<SoundEffect>("sound/zdvrdy00"),
+                content.Load<SoundEffect>("sound/zgupss00")
+            };
         }
 
         public static SoundFactory Instance
@@ -255,6 +266,13 @@ namespace HackAndSlash
         public SoundByte BugDies()
         {
             return new SoundByte(beetleDie[GlobalSettings.RND.Next() % beetleDie.Length]); 
+        }
+        public SoundByte PlayRandomDrop() { 
+            return new SoundByte(RandomDrop[GlobalSettings.RND.Next() % RandomDrop.Length]);
+        }
+        public SoundByte BlockMoving()
+        {
+            return new SoundByte(blockMoving[GlobalSettings.RND.Next() % blockMoving.Length]);
         }
         public SoundByte BombDropEffect()
         {

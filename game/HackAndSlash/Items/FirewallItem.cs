@@ -22,7 +22,7 @@ namespace HackAndSlash
         private int useDurationCounter = 0; 
         private static int cooldown = 0; // item is useable if == 0 
         private const int ITEM_COOLDOWN = 1; // time in update cycles between uses 
-        private static int MAX_RANGE = GlobalSettings.saveSets.ItemRange; // range in # of sprites(tiles)
+        private static int MAX_RANGE = 4; // range in # of sprites(tiles)
         private static int USE_DURATION = MAX_RANGE * 20;
         private const int MIDDLE = 30;
         int SWORD_TIP = 20; //the hitbox of the sword would be a rectangle instead of a square, this is the parameter for the narrower part of the rectangle.

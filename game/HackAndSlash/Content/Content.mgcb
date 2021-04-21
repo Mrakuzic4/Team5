@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:images/AquamentusSprite.png
 
-#begin images/bar.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:images/bar.png
-
 #begin images/bg.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1357,18 +1345,6 @@
 /processorParam:TextureFormat=Color
 /build:Merchant/Shield.png
 
-#begin Merchant/ShieldItem.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Merchant/ShieldItem.png
-
 #begin Merchant/ZeldaGotHeart.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1464,6 +1440,24 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sound/FaerieFire.wav
+
+#begin sound/flipbody.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/flipbody.wav
+
+#begin sound/flipbook.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/flipbook.wav
+
+#begin sound/fliplarm.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/fliplarm.wav
 
 #begin sound/GangTortureDance .mp3
 /importer:Mp3Importer
@@ -1842,6 +1836,18 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sound/walk4.wav
+
+#begin sound/zdvrdy00.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/zdvrdy00.wav
+
+#begin sound/zgupss00.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/zgupss00.wav
 
 #begin sound/zhar01.wav
 /importer:WavImporter

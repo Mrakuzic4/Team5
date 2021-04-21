@@ -47,7 +47,7 @@ namespace HackAndSlash
 
         //Player's Health
         
-        private int INIT_MAX_HEALTH = GlobalSettings.saveSets.MaxHealth; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
+        private int INIT_MAX_HEALTH = 8; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
         private int maxHealth; 
         private int currentHealth;
        // private int healPower = GlobalSettings.saveSets.HealPower;
@@ -187,7 +187,7 @@ namespace HackAndSlash
         // make player heal method in IPlayer and all player wrappers
         public void Healed()
         {
-            currentHealth += GlobalSettings.saveSets.HealPower;
+            currentHealth += 1;
             if (currentHealth > maxHealth)
             {
                 currentHealth = maxHealth;
@@ -234,12 +234,12 @@ namespace HackAndSlash
 
             if( (int)GetDir() == ActivationDirection 
                 && game.currentLevel.HasMysDoor(ActivationDirection)
-                && RupyItem.numUses >= GlobalSettings.OPEN_DOOR_COST) 
+                && RupyItem.numUses >= 0) 
             {
                 game.currentLevel.OpenMysDoor(ActivationDirection);
                 game.levelCycleRecord.OpenBothDoors(ActivationDirection);
                 game.levelCycleRecord.PreemptiveForceOpening(ActivationDirection);
-                RupyItem.numUses -= GlobalSettings.OPEN_DOOR_COST;
+                RupyItem.numUses -= RupyItem.numUses / GlobalSettings.OPEN_DOOR_TRIBUTE;
                 SoundFactory.Instance.GetPayDoorsEffect();
             }
         }

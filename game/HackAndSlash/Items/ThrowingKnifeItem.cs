@@ -26,7 +26,7 @@ namespace HackAndSlash
         private int useDurationCounter = 0;
         private static int cooldown = 0; // item is useable if == 0 
         private const int ITEM_COOLDOWN = 1; // time in update cycles between uses 
-        private static int MAX_RANGE = GlobalSettings.saveSets.ItemRange; // range in # of sprites(tiles)
+        private static int MAX_RANGE = 4; // range in # of sprites(tiles)
         private static int USE_DURATION = MAX_RANGE * 20; // length of effect
         private Vector2 toolBarPosition;
         private const int MIDDLE = 30;

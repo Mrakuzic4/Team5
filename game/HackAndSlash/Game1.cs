@@ -21,19 +21,20 @@ namespace HackAndSlash
         public bool gameOver = false;   
         public bool titleMenu = true;
         public bool gameWon = false;
-        public bool upgrading = false;
+        //public bool upgrading = false;
         public bool displayMap = false;
         public GlobalSettings.GameStates GameState { get; set; }
 
         // Game parameters, need _ prefix 
-        public bool _DevMode = true;
+        public bool _DevMode = false;
         public bool _ShowBoundary = true;
         public bool _FOG = true;
         public int _FogRange = 1;
         public bool _EnableMouseTeleport = false; // Controls mouse left and right click teleportation 
         public bool _AngelicMode = true;
         public bool _AllowManualRest = false; // Controls if the player could use `R` key 
-        public int _MapSize = 9; 
+        public int _MapSize = 9;
+        public int _DropRateBaseline = 50; 
 
         //Player
         private IPlayer PlayerMain;
@@ -49,8 +50,20 @@ namespace HackAndSlash
             }
         }
 
-        //Player's Stat on HUD
-        private ISprite DrawPlayerStat;
+        //Player's Health
+        private ISprite DrawHealth;
+
+
+        //Player's SwordHitBox
+        private Rectangle swordHitbox;
+
+        public Rectangle SwordHitBox
+        {
+            set
+            {
+                swordHitbox = value;
+            }
+        }
 
         // Level and map related 
         public Map currentMapInfo;
@@ -85,7 +98,7 @@ namespace HackAndSlash
         private GameOverOverlay gameOverOverlay;
         private TitleScreenOverlay titleScreen;
         private GameWonOverlay gameWonScreenOverlay;
-        private UpgradesOverlay upgradesOverlay;
+        //private UpgradesOverlay upgradesOverlay;
         public CheatText cheatText;
         public bool inGameOverAnimation;
         public bool inGameWonAnimation;
@@ -144,12 +157,16 @@ namespace HackAndSlash
             //Player
             PlayerMain = new Player(this);//Player object
 
-            //Player's Stat 
-            this.DrawPlayerStat = new DrawPlayerStat(this);
+            //Player's Health 
+            this.DrawHealth = new DrawPlayerStat(this, SpriteFactory.Instance.GetEmptyHeart(),
+                SpriteFactory.Instance.GetHalfHeart(),
+                SpriteFactory.Instance.GetFullHeart(),
+                SpriteFactory.Instance.GetFontLife(),
+                SpriteFactory.Instance.GetFontShield(),
+                SpriteFactory.Instance.GetShield());
 
             // Fog of war
             fogOfWar = new FOG(GraphicsDevice, spriteBatch);
-            _FogRange = GlobalSettings.saveSets.VisibilityRadius;
             fogOfWar.SetRange(_FogRange);
             utilMethods.SetFogRange(_FogRange);
 
@@ -168,24 +185,24 @@ namespace HackAndSlash
                 itemList = new List<IItem>()
                 {
                     new ThrowingKnifeItem(Player.GetPos(),spriteBatch,this),new FirewallItem(Player.GetPos(),spriteBatch,this), new BombItem(Player.GetPos(),spriteBatch,this)
-
                 };
             }
             else
             {
                 enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
+                itemList = generator.GetItemList(spriteBatch, this);
             }
             
 
             // Items
-           // itemList = generator.GetItemList(spriteBatch, this);
+            //itemList = generator.GetItemList(spriteBatch, this);
             useableItemList = new List<IItem>();
             textSprites = SpriteFactory.Instance.GetTextCharacters();
             mainRupy = new RupyItem(new Vector2(9 * GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR / 2), spriteBatch, this);
             fullHealthSword = new FlyingSwordItem(new Vector2(-64, -64), spriteBatch, this);
             //itemList.Add(fullHealthSword);
             //Create list of blocks
-            blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
+            blockList = generator.GetBlockList(spriteBatch, GraphicsDevice, currentMapInfo);
 
             //UI Elements
             pauseOverlay = new PauseOverlay(this, SpriteFactory.Instance.GetPauseOverlay(),
@@ -195,7 +212,7 @@ namespace HackAndSlash
                             SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
             titleScreen = new TitleScreenOverlay(this, SpriteFactory.Instance.GetTitleScreen(), spriteBatch);
             gameWonScreenOverlay = new GameWonOverlay(this, SpriteFactory.Instance.getGameWonScreen(), SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
-            upgradesOverlay = new UpgradesOverlay(this, GraphicsDevice, spriteBatch);
+            //upgradesOverlay = new UpgradesOverlay(this, GraphicsDevice, spriteBatch);
             cheatText = new CheatText(this, spriteBatch);
         }
 
@@ -223,7 +240,7 @@ namespace HackAndSlash
                 currentLevel.currentMapInfo = currentMapInfo;
                 currentLevel.Generate();
 
-                blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
+                blockList = generator.GetBlockList(spriteBatch, GraphicsDevice, currentMapInfo);
                 enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
                 itemList = generator.GetItemList(spriteBatch, this);
 
@@ -335,11 +352,11 @@ namespace HackAndSlash
                     gameOverOverlay.Update(gameTime);
                     break;
 
-                case GlobalSettings.GameStates.Upgrading:
-                    gameOver = false;
-                    gameWon = false;
-                    upgradesOverlay.Update();
-                    break;
+                //case GlobalSettings.GameStates.Upgrading:
+                //    gameOver = false;
+                //    gameWon = false;
+                //    //upgradesOverlay.Update();
+                //    break;
 
                 case GlobalSettings.GameStates.Transitioning:
                     currentLevel.Update(gameTime);
@@ -360,7 +377,7 @@ namespace HackAndSlash
                         miniMap.SetPivot(currentLevel.mapIndex);
 
                         // Gnerate new lists 
-                        blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
+                        blockList = generator.GetBlockList(spriteBatch, GraphicsDevice, currentMapInfo);
                         enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
                         itemList = generator.GetItemList(spriteBatch, this);
 
@@ -415,15 +432,16 @@ namespace HackAndSlash
                         foreach (BlockMovable block in movableBlocks)
                         {
                             block.Update();
+                            new BlockMoveListener(this, block).CheckMovement();
                         }
                     }
 
-                    //specialCases.Update(this);
+                    
                     miniMap.UpdatePlayer(Player.GetPos());
 
                     PlayerMain.Update();
-                    DrawPlayerStat.Update();
-                    DrawItemCD.Instance.Update();
+                    DrawHealth.Update();
+
                     idleSoundTimer += gameTime.ElapsedGameTime.Milliseconds;
                     if (idleSoundTimer > nextIdleSoundPlayTime) {
                         idleSoundTimer = 0;
@@ -486,9 +504,9 @@ namespace HackAndSlash
                     else gameOverOverlay.Draw();
                     break;
 
-                case GlobalSettings.GameStates.Upgrading:
-                    upgradesOverlay.Draw();
-                    break;
+                //case GlobalSettings.GameStates.Upgrading:
+                //    upgradesOverlay.Draw();
+                //    break;
 
                 case GlobalSettings.GameStates.Transitioning:
                     currentLevel.Draw();
@@ -496,6 +514,8 @@ namespace HackAndSlash
                         fogOfWar.Draw(PlayerMain.GetPos(), currentLevel.transitioning);
                     }
                     currentLevel.DrawOverlay();
+                    DrawHealth.Draw(spriteBatch, new Vector2(0, 100), Color.White);
+
                     // Some way to keep the items during transition, maybe a player's item list? 
                     foreach (IItem item in itemList) {
                         if (item.FogBreaker() || !_FOG || utilMethods.InFogRange(PlayerMain.GetPos(), item.GetPos()))
@@ -535,7 +555,7 @@ namespace HackAndSlash
 
                     foreach (IEnemy enemy in enemyList)
                     {
-                        if (!_FOG || utilMethods.InFogRange(PlayerMain.GetPos(), enemy.GetPos()))
+                        if (!_FOG || utilMethods.InFogRangeEmeny(PlayerMain.GetPos(), enemy))
                             enemy.Draw();
                         if (_DevMode && _ShowBoundary)
                         {
@@ -560,8 +580,8 @@ namespace HackAndSlash
                     /*
                      * Put UI and Headsup elements below to avoid being covered by overlay  
                      */
-                    DrawPlayerStat.Draw(spriteBatch, new Vector2(0, 100), Color.White);
-                    DrawItemCD.Instance.Draw(spriteBatch, new Vector2(0, 100), Color.White);
+                    DrawHealth.Draw(spriteBatch, new Vector2(0, 100), Color.White);
+
                     miniMap.Draw();
                     if (displayMap) miniMap.DrawMap();
                     if (cheatText.activeText != null) cheatText.Draw();

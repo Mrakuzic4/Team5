@@ -30,6 +30,7 @@ namespace HackAndSlash
         private const int HIDDEN_DOOR_THRESHOLD = 6;
         private const int MERCHANT_ROOM_COUNT = 2;
         private const int BOSS_ROOM_COUNT = 1;
+        private const int BOSS_ROOM_DIST = 6; 
 
         public GenerateLevel()
         {
@@ -139,6 +140,11 @@ namespace HackAndSlash
             levelSet[CurrentPos[0] + (int)Offset.Y, CurrentPos[1] + (int)Offset.X].OpenDoors[nextRoomDoorDir] = true;
         }
 
+        /// <summary>
+        /// Mark other doors as none and can only be opened by bomb. 
+        /// </summary>
+        /// <param name="CurrentPos"></param>
+        /// <param name="Direction"></param>
         private void AddHiddenDoors(int[] CurrentPos, int Direction)
         {
             Vector2 Offset = new Vector2(0, 0);
@@ -177,6 +183,11 @@ namespace HackAndSlash
             levelSet[CurrentPos[0] + (int)Offset.Y, CurrentPos[1] + (int)Offset.X].HiddenDoors[nextRoomDoorDir] = true;
         }
 
+        /// <summary>
+        /// Add mystery door at that direction. 
+        /// </summary>
+        /// <param name="CurrentPos"></param>
+        /// <param name="Direction"></param>
         private void AddMysDoors(int[] CurrentPos, int Direction)
         {
             Vector2 Offset = new Vector2(0, 0);
@@ -215,6 +226,12 @@ namespace HackAndSlash
             levelSet[CurrentPos[0] + (int)Offset.Y, CurrentPos[1] + (int)Offset.X].MysteryDoors[nextRoomDoorDir] = true;
         }
 
+        /// <summary>
+        /// Place n items of certain kind randomly in that room. 
+        /// </summary>
+        /// <param name="CurrentPos"></param>
+        /// <param name="ItemIndex"></param>
+        /// <param name="Number"></param>
         private void AddItemInRoom(int[] CurrentPos, int ItemIndex, int Number)
         {
             GenerateRoom RoomGen = new GenerateRoom();
@@ -252,6 +269,9 @@ namespace HackAndSlash
             return Math.Abs(row - startUpRow) + Math.Abs(col - startUpCol);
         }
 
+        /// <summary>
+        /// Iterate through the rooms and add items, blocks, and enemies in them.
+        /// </summary>
         private void PopulateRooms()
         {
             int L1Dist;
@@ -285,6 +305,10 @@ namespace HackAndSlash
             }
         }
 
+        /// <summary>
+        /// Randomly select n rooms and make them as merchant room.
+        /// merchant rooms are locked by money. 
+        /// </summary>
         private void SetMerchantRooms()
         {
 
@@ -318,6 +342,11 @@ namespace HackAndSlash
             }
         }
 
+        /// <summary>
+        /// Randomly picking rooms, it it's far enough from startup room,
+        /// set it as boss room. 
+        /// </summary>
+        /// <returns></returns>
         private int SetBossRooms()
         {
 
@@ -344,7 +373,7 @@ namespace HackAndSlash
                 int row = GlobalSettings.RND.Next(levelSet.GetLength(0));
                 int col = GlobalSettings.RND.Next(levelSet.GetLength(1));
 
-                if (!IsStartUpRoom(row, col))
+                if (!IsStartUpRoom(row, col) && L1DistanceFromStart(row, col) > BOSS_ROOM_DIST)
                 {
                     RoomGen.SetAsBossRoom();
                     levelSet[row, col] = RoomGen.room;
@@ -355,11 +384,24 @@ namespace HackAndSlash
             return 0; 
         }
 
+        /// <summary>
+        /// Whether or not a given room is the startup room. 
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        /// <returns></returns>
         private bool IsStartUpRoom(int row, int col)
         {
             return (row == startUpRow && col == startUpCol);
         }
 
+        /// <summary>
+        /// If that direction of that room has a neighbor. 
+        /// True sight included.
+        /// </summary>
+        /// <param name="CurrentPos"></param>
+        /// <param name="Direction"></param>
+        /// <returns></returns>
         public bool HasNextRoom(int[] CurrentPos, int Direction)
         {
             switch (Direction)

@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework;
 
 namespace HackAndSlash
 {
+    // This thing is essentially unused and useless
     public interface ILevel
     {
         void Update(GameTime gameTime);

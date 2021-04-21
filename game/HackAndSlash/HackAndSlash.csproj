@@ -95,7 +95,6 @@
     <Compile Include="GlobalSettings.cs" />
     <Compile Include="ISprite.cs" />
     <Compile Include="Items\BurningFire.cs" />
-    <Compile Include="Items\DrawItemCD.cs" />
     <Compile Include="Items\Price.cs" />
     <Compile Include="Items\RupyItem.cs" />
     <Compile Include="Items\FoodItem.cs" />
@@ -123,6 +122,8 @@
     <Compile Include="Levels\Map.cs" />
     <Compile Include="Levels\MapGenerator.cs" />
     <Compile Include="Levels\Minimap.cs" />
+    <Compile Include="Misc\BlockMoveListener.cs" />
+    <Compile Include="Misc\BlockTexture.cs" />
     <Compile Include="Misc\RandomDrop.cs" />
     <Compile Include="Misc\LevelBSpecialCases.cs" />
     <Compile Include="Misc\OldGame1.cs" />
