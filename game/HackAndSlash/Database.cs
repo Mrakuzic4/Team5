@@ -109,13 +109,11 @@ namespace HackAndSlash
         public ImageFile Heart;
         public ImageFile Refill;
         public ImageFile Shield;
-        public ImageFile ShieldItem;
 
         public ImageFile ZeldaGotShield;
         public ImageFile ZeldaGotRefill;
         public ImageFile ZeldaGotHeart;
         public ImageFile Price;
-        public ImageFile Bar;
 
         public ImageFile Font_Shield;
         public ImageFile Font_Life;
@@ -123,13 +121,11 @@ namespace HackAndSlash
         public ImageDatabase()
         {
             // Initilize images with path/name, column and row
-            Bar = new ImageFile("images/Bar", 1, 1);
-            Price = new ImageFile("Merchant/Price", 1, 1);
+            Price = new ImageFile("Merchant/Price", 4, 1);
             OldWoman = new ImageFile("Merchant/Oldwoman", 1, 1);
             Heart = new ImageFile("Merchant/Heart", 1, 1);
             Refill = new ImageFile("Merchant/Refill", 1, 1);
             Shield = new ImageFile("Merchant/Shield", 1, 1);
-            ShieldItem = new ImageFile("Merchant/ShieldItem", 1, 1);
             ZeldaGotHeart = new ImageFile("Merchant/ZeldaGotHeart", 1, 1);
             ZeldaGotRefill = new ImageFile("Merchant/ZeldaGotRefill", 1, 1);
             ZeldaGotShield = new ImageFile("Merchant/ZeldaGotShield", 1, 1);
