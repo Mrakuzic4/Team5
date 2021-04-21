@@ -10,13 +10,26 @@ namespace HackAndSlash
 {
     class MapGenerator
     {
+        public bool _happyMode = true; 
+
         Map mapInfo;
         Misc utilMethods;
+
+        private List<int> movableBlockList; 
 
         public MapGenerator(Map MapInfo)
         {
             this.mapInfo = MapInfo;
             utilMethods = new Misc();
+
+            // For creating movable blocks
+            if (_happyMode) {
+                movableBlockList = new List<int> { 40, 41, 42, 43, 44, 45, 46, 47, 48 };
+            }
+            else {
+                movableBlockList = new List<int> { 32, 33, 35, 36, 37, 38 };
+            }
+
         }
 
         public Level getLevel(GraphicsDevice GD, SpriteBatch spriteBatch, Game1 game)
@@ -26,7 +39,7 @@ namespace HackAndSlash
             return level;
         }
 
-        public List<IBlock> GetBlockList(SpriteBatch spriteBatch, SpriteFactory spriteFactory, Map MapInfo)
+        public List<IBlock> GetBlockList(SpriteBatch spriteBatch, GraphicsDevice Graphics, Map MapInfo)
         {
             List<IBlock> BlockList = new List<IBlock>();
             List<int> Untouchables = new List<int>() {
@@ -116,14 +129,21 @@ namespace HackAndSlash
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
                 {
                     int Index = mapInfo.Arrangement[r, c];
-                    
-                    if (Index == GlobalSettings.VERTICAL_MOVE_BLOCK)
+                    int RowPosition = r * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET + GlobalSettings.HEADSUP_DISPLAY;
+                    int ColPosition = c * GlobalSettings.BASE_SCALAR + GlobalSettings.BORDER_OFFSET;
+                    int RandIndex = GlobalSettings.RND.Next() % movableBlockList.Count;
+
+                    if (Index == GlobalSettings.VERTICAL_MOVE_BLOCK) 
                     {
-                        BlockList.Add(spriteFactory.CreateBlockMovableVertical(spriteBatch, r, c));
+                        BlockList.Add(new BlockMovable(
+                            new BlockTexture(spriteBatch, Graphics, movableBlockList[RandIndex]).GetTexture(), 
+                            new Vector2(ColPosition, RowPosition), spriteBatch, true));
                     }
-                    else if (Index == GlobalSettings.HORIZONTAL_MOVE_BLOCK)
+                    else if (Index == GlobalSettings.HORIZONTAL_MOVE_BLOCK) 
                     {
-                        BlockList.Add(spriteFactory.CreateBlockMovableHorizontal(spriteBatch, r, c));
+                        BlockList.Add(
+                            new BlockMovable(new BlockTexture(spriteBatch, Graphics, movableBlockList[RandIndex]).GetTexture(),
+                            new Vector2(ColPosition, RowPosition), spriteBatch, false));
                     }
                     else if (Index >= GlobalSettings.SOLID_BLOCK_BOUND || Untouchables.Contains(Index))
                     {

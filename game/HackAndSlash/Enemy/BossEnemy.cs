@@ -40,6 +40,9 @@ namespace HackAndSlash
         private int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
         private int rightBound = GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
         //Moblin position
+
+        private const int BOSS_HEIGHT = 4 * GlobalSettings.BASE_SCALAR;
+        private const int BOSS_WIDTH = 3 * GlobalSettings.BASE_SCALAR;
         private Rectangle rectangle { get; set; }
 
         private Game1 game; 
@@ -53,13 +56,13 @@ namespace HackAndSlash
             Graphics = graphics;
             spriteBatch = SB;
             this.game = game; 
-            rectangle = new Rectangle((int)position.X, (int)position.Y, 3 * GlobalSettings.BASE_SCALAR, 4 * GlobalSettings.BASE_SCALAR);
+            rectangle = new Rectangle((int)position.X, (int)position.Y, BOSS_WIDTH, BOSS_HEIGHT);
 
             random = new System.Random();
 
             enemyCollisionDetector = new EnemyCollisionDetector(game, this);
             enemyBlockCollision = new EnemyBlockCollision();
-            hitbox = new Rectangle((int)position.X, (int)position.Y, 3 * GlobalSettings.BASE_SCALAR, 4 * GlobalSettings.BASE_SCALAR);
+            hitbox = new Rectangle((int)position.X, (int)position.Y, BOSS_WIDTH, BOSS_HEIGHT);
             damageTaken = 0;
             bombItem = new IItem[3];
             for (int i = 0; i <= 2; i++)
@@ -118,7 +121,7 @@ namespace HackAndSlash
                 bossState.changeToDie();
             }
 
-            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            rectangle = new Rectangle((int)position.X, (int)position.Y, BOSS_WIDTH, BOSS_HEIGHT);
 
             //Remove moblin from screen 3 seconds after death
             if (bossState.state == bossStateMachine.bossHealth.Die)

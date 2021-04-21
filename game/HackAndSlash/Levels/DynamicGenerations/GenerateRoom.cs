@@ -22,6 +22,9 @@ namespace HackAndSlash
         private const int ITEM_MAX = 4;
         private const double WALKABLE_SPREAD_MAX = 0.6;
         private const double SOLID_SPREAD_MAX = 0.2;
+        private const double MOVABLE_SPREAD_MAX = 0.1;
+        private const double MOVABLE_SPREAD_SCALAR = 50; // Controls the growing rate of movable blocks
+        private const int MOVABLE_MUTE_DISTANCE = 4; 
         private const int MESSY_THRESHOLD = 4;
         private const double MESSY_DIVIDER = 2;
         private const int TREASURE_POSSIBILITY = 20;
@@ -29,6 +32,7 @@ namespace HackAndSlash
 
         private double walkableSpread;
         private double solidSpread;
+        private double movableSpread; 
         private int distFromStartup;
         private double rowProgression;
         private double colProgression;
@@ -43,6 +47,7 @@ namespace HackAndSlash
         public int[] enemyList { get; set; }
         public int[] walkableBlockList { get; set; }
         public int[] solidBlockLIst { get; set; }
+        public int[] movableBlockLIst { get; set; }
         public int[] itemList { get; set; }
         public int[] merchantItems { get; set; }
         public int[] merchantCharaList { get; set; }
@@ -181,6 +186,17 @@ namespace HackAndSlash
             { false, false, false, false, false, false, false, false, false, false, false, false}
         };
 
+        private static bool[,] CanPlaceMovable = new bool[,] {
+            { true , true , true , true , false, false, false, false, true , true , true , true },
+            { false, true , true , true , true , false, false, true , true , true , true , false},
+            { false, false, true , true , true , true , true , true , true , true , false, false},
+            { false, false, true , true , true , true , true , true , true , true , false, false},
+            { false, false, true , true , true , true , true , true , true , true , false, false},
+            { false, true , true , true , true , false, false, true , true , true , true , false},
+            { true , true , true , true , false, false, false, false, true , true , true , true }
+        };
+
+
         private static bool[,] allFalse = new bool[,] {
             { false, false, false, false, false, false, false, false, false, false, false, false},
             { false, false, false, false, false, false, false, false, false, false, false, false},
@@ -220,7 +236,10 @@ namespace HackAndSlash
                 GlobalSettings.NPC_OLD_MAN,
                 GlobalSettings.NPC_OLD_WOMAN
             };
-
+            movableBlockLIst = new int[] {
+                GlobalSettings.VERTICAL_MOVE_BLOCK,
+                GlobalSettings.HORIZONTAL_MOVE_BLOCK
+            };
 
             bossIndex = GlobalSettings.BOSS_ENEMY;
 
@@ -320,11 +339,14 @@ namespace HackAndSlash
             solidSpread = Math.Min(
                 (double)distFromStartup / (double)Math.Pow(room.Arrangement.GetLength(0), 2),
                 SOLID_SPREAD_MAX);
+            movableSpread = Math.Min((double)(distFromStartup - MOVABLE_MUTE_DISTANCE) / MOVABLE_SPREAD_SCALAR, 
+                MOVABLE_SPREAD_MAX); 
 
             walkablePatternedRate = (int)(100 * (1 - walkableSpread / WALKABLE_SPREAD_MAX)) - PATTERNED_BIAS;
             solidPatternedRate = (int)(100 * (1 - solidSpread / SOLID_SPREAD_MAX)) - PATTERNED_BIAS;
 
 
+            // Walkable blocks
             if (GlobalSettings.RND.Next(100) < walkablePatternedRate) {
                 Rand = WalkableList[GlobalSettings.RND.Next(WalkableList.Count)];
             }
@@ -337,7 +359,7 @@ namespace HackAndSlash
             else
                 PopulatePattern(Rand, walkableBlockList[GlobalSettings.RND.Next(walkableBlockList.Length)]);
 
-
+            // Soild blocks
             if (GlobalSettings.RND.Next(100) < solidPatternedRate) {
                 Rand = SolidList[GlobalSettings.RND.Next(SolidList.Count)];
             }
@@ -350,6 +372,10 @@ namespace HackAndSlash
                 PopulatePatternRand(Rand, solidBlockLIst, (int)(distFromStartup / MESSY_DIVIDER));
             else
                 PopulatePattern(Rand, solidBlockLIst[GlobalSettings.RND.Next(solidBlockLIst.Length)]);
+
+            // Movable blocks 
+            PopulatePattern(AND(RandScatter(movableSpread), CanPlaceMovable),
+                movableBlockLIst[GlobalSettings.RND.Next(movableBlockLIst.Length)]);
         }
 
         public void PopulateItem()
@@ -382,6 +408,11 @@ namespace HackAndSlash
             }
         }
 
+        /// <summary>
+        /// Set the current room as merchant room. 
+        /// Merchant room can only be entered after paying some money.
+        /// And can make item purchase inside.  
+        /// </summary>
         public void SetAsMerchantRoom()
         {
             room.DefaultBlock = blackRoomInedx;
@@ -406,6 +437,10 @@ namespace HackAndSlash
                 GlobalSettings.RND.Next(merchantCharaList.Length)];
         }
 
+        /// <summary>
+        /// Set the current room as boss room. 
+        /// Boss room has a boss, who, upon death, drops triforce. 
+        /// </summary>
         public void SetAsBossRoom()
         {
 
@@ -452,6 +487,12 @@ namespace HackAndSlash
             }
         }
 
+        /// <summary>
+        /// Randomly fill different indexes on a given matrix. 
+        /// </summary>
+        /// <param name="Pattern"></param>
+        /// <param name="ListOfIndex"></param>
+        /// <param name="MaxType"></param>
         private void PopulatePatternRand(bool[,] Pattern, int[] ListOfIndex, int MaxType)
         {
             List<int> ActualList = new List<int>(); ;
@@ -486,8 +527,15 @@ namespace HackAndSlash
             }
         }
 
+        /// <summary>
+        /// Scatter randomly. 
+        /// </summary>
+        /// <param name="Density"></param>
+        /// <returns></returns>
         private bool[,] RandScatter(double Density)
         {
+            if (Density <= 0) return allFalse;
+
             int Threshold = (int)(GlobalSettings.TILE_COLUMN * GlobalSettings.TILE_ROW * Density) * 100;
             Threshold /= (GlobalSettings.TILE_COLUMN * GlobalSettings.TILE_ROW);
             bool[,] scatter = new bool[room.Arrangement.GetLength(0), room.Arrangement.GetLength(1)];
@@ -510,12 +558,37 @@ namespace HackAndSlash
             return scatter;
         }
 
+        /// <summary>
+        /// Substract one matrix from another. 
+        /// </summary>
+        /// <param name="m1"></param>
+        /// <param name="m2"></param>
+        /// <returns></returns>
         private bool[,] Subtract(bool[,] m1, bool[,] m2)
         {
             bool[,] result = new bool[room.Arrangement.GetLength(0), room.Arrangement.GetLength(1)];
             for (int i = 0; i < room.Arrangement.GetLength(0); i++) {
                 for (int j = 0; j < room.Arrangement.GetLength(1); j++) {
                     result[i, j] = m1[i, j] ? false : m2[i, j];
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// AND operation of 2 matrices.
+        /// </summary>
+        /// <param name="m1"></param>
+        /// <param name="m2"></param>
+        /// <returns></returns>
+        private bool[,] AND(bool[,] m1, bool[,] m2)
+        {
+            bool[,] result = new bool[room.Arrangement.GetLength(0), room.Arrangement.GetLength(1)];
+            for (int i = 0; i < room.Arrangement.GetLength(0); i++)
+            {
+                for (int j = 0; j < room.Arrangement.GetLength(1); j++)
+                {
+                    result[i, j] = m1[i, j] && m2[i, j];
                 }
             }
             return result;

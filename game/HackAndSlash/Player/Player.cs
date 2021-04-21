@@ -234,12 +234,12 @@ namespace HackAndSlash
 
             if( (int)GetDir() == ActivationDirection 
                 && game.currentLevel.HasMysDoor(ActivationDirection)
-                && RupyItem.numUses >= GlobalSettings.OPEN_DOOR_COST) 
+                && RupyItem.numUses >= 0) 
             {
                 game.currentLevel.OpenMysDoor(ActivationDirection);
                 game.levelCycleRecord.OpenBothDoors(ActivationDirection);
                 game.levelCycleRecord.PreemptiveForceOpening(ActivationDirection);
-                RupyItem.numUses -= GlobalSettings.OPEN_DOOR_COST;
+                RupyItem.numUses -= RupyItem.numUses / GlobalSettings.OPEN_DOOR_TRIBUTE;
                 SoundFactory.Instance.GetPayDoorsEffect();
             }
         }
