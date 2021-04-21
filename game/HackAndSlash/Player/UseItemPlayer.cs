@@ -19,6 +19,7 @@ namespace HackAndSlash
             this.DecoratedPlayer = decoratedPlayer;
             this.game = game;
             DrawPlayer.Instance.Frame = 0;
+            DrawItemCD.Instance.setCD(); //CD of using an item
         }
         public int GetMaxHealth()
         {

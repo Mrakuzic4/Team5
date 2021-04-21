@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/AquamentusSprite.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/bar.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/bg.jpg</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BlockBlank1.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BlockDemo.png</File>
@@ -115,6 +116,7 @@
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Refill.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Ruby.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/Shield.png</File>
+    <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/ShieldItem.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/ZeldaGotHeart.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/ZeldaGotRefill.png</File>
     <File>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/Merchant/ZeldaGotShield.png</File>
@@ -220,6 +222,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>images/emptyHeart.png</File>
     <File xsi:nil="true" />
     <File>images/firewall.png</File>
@@ -290,6 +293,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>images/fullHeart.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
