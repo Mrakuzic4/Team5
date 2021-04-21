@@ -26,7 +26,7 @@ namespace HackAndSlash
         public GlobalSettings.GameStates GameState { get; set; }
 
         // Game parameters, need _ prefix 
-        public bool _DevMode = false;
+        public bool _DevMode = true;
         public bool _ShowBoundary = true;
         public bool _FOG = true;
         public int _FogRange = 1;
@@ -182,20 +182,24 @@ namespace HackAndSlash
                 {
                     snakefirst,bugfirst,moblinfirst
                 };
+                itemList = new List<IItem>()
+                {
+                    new ThrowingKnifeItem(Player.GetPos(),spriteBatch,this),new FirewallItem(Player.GetPos(),spriteBatch,this), new BombItem(Player.GetPos(),spriteBatch,this)
+                };
             }
             else
             {
                 enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
             }
-
+            
 
             // Items
-            itemList = generator.GetItemList(spriteBatch, this);
+            //itemList = generator.GetItemList(spriteBatch, this);
             useableItemList = new List<IItem>();
             textSprites = SpriteFactory.Instance.GetTextCharacters();
             mainRupy = new RupyItem(new Vector2(9 * GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR / 2), spriteBatch, this);
             fullHealthSword = new FlyingSwordItem(new Vector2(-64, -64), spriteBatch, this);
-            itemList.Add(fullHealthSword);
+            //itemList.Add(fullHealthSword);
             //Create list of blocks
             blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
 
