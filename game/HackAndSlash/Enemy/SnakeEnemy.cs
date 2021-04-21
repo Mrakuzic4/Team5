@@ -218,7 +218,7 @@ namespace HackAndSlash
                     SoundFactory.Instance.SnakeDies();
                     deathTimer = 0;
                     // randomly drop things
-                    if (GlobalSettings.RND.Next(100) < game._DropRateBaseline)
+                    if (GlobalSettings.RND.Next(100) < 50)
                         game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
 
                     snakeState.changeToNot();

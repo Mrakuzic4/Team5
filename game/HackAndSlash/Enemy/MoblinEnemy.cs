@@ -236,7 +236,7 @@ namespace HackAndSlash
                     SoundFactory.Instance.MoblinDies();
                     deathTimer = 0;
                     game.levelCycleRecord.RemoveOneIndex(GlobalSettings.MOBLIN_ENEMY);
-                    if (GlobalSettings.RND.Next(100) < game._DropRateBaseline) 
+                    if (GlobalSettings.RND.Next(100) < 50)
                         game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
                     moblinState.changeToNot();
                 }

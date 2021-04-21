@@ -86,7 +86,7 @@ namespace HackAndSlash
         public const int NPC_OLD_MAN = -5;
         public const int NPC_OLD_WOMAN = -6;
 
-        public const int OPEN_DOOR_TRIBUTE = 5; // Part of the money goes into opening the door 
+        public const int OPEN_DOOR_COST = 10;
 
         //Cheats
         public static bool GODMODE { get; set; } = false;

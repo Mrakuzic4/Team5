@@ -63,7 +63,7 @@ namespace HackAndSlash
 
         public void Draw()
         {
-            spriteBatch.Draw(RectangleLine, new Vector2( position.X, position.Y), null, defaultTint);
+            spriteBatch.Draw(RectangleLine, position, null, defaultTint);
         }
     }
 }

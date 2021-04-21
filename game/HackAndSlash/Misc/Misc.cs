@@ -35,25 +35,6 @@ namespace HackAndSlash
                 return true;
             return false;
         }
-        public bool InFogRangeEmeny(Vector2 PlayerPos, IEnemy TargetEnemy)
-        {
-            bool result = false;
-
-            if (TargetEnemy is BossEnemy) {
-                TargetEnemy = (BossEnemy)TargetEnemy;
-                Rectangle BossRect = TargetEnemy.getRectangle();
-                int[] Xs = new int[] {BossRect.X, BossRect.X + BossRect.Width };
-                int[] Ys = new int[] {BossRect.Y, BossRect.Y + BossRect.Height};
-                foreach(int x in Xs) { 
-                    foreach (int y in Ys) {
-                        result |= InFogRange(PlayerPos, new Vector2(x, y));
-                    }
-                }
-                return result;
-            }
-            
-            return InFogRange(PlayerPos, TargetEnemy.GetPos());
-        }
 
         public Vector2 PlayAreaPosition(int x, int y)
         {

@@ -32,7 +32,6 @@ namespace HackAndSlash
 
         public IItem RandItem()
         {
-            SoundFactory.Instance.PlayRandomDrop();
             return items[GlobalSettings.RND.Next() % items.Count];
         }
 

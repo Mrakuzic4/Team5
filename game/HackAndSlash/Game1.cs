@@ -26,15 +26,14 @@ namespace HackAndSlash
         public GlobalSettings.GameStates GameState { get; set; }
 
         // Game parameters, need _ prefix 
-        public bool _DevMode = false;
+        public bool _DevMode = true;
         public bool _ShowBoundary = true;
         public bool _FOG = true;
         public int _FogRange = 1;
         public bool _EnableMouseTeleport = false; // Controls mouse left and right click teleportation 
         public bool _AngelicMode = true;
         public bool _AllowManualRest = false; // Controls if the player could use `R` key 
-        public int _MapSize = 9;
-        public int _DropRateBaseline = 50; 
+        public int _MapSize = 9; 
 
         //Player
         private IPlayer PlayerMain;
@@ -175,7 +174,6 @@ namespace HackAndSlash
             else
             {
                 enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
-                itemList = generator.GetItemList(spriteBatch, this);
             }
             
 
@@ -187,7 +185,7 @@ namespace HackAndSlash
             fullHealthSword = new FlyingSwordItem(new Vector2(-64, -64), spriteBatch, this);
             //itemList.Add(fullHealthSword);
             //Create list of blocks
-            blockList = generator.GetBlockList(spriteBatch, GraphicsDevice, currentMapInfo);
+            blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
 
             //UI Elements
             pauseOverlay = new PauseOverlay(this, SpriteFactory.Instance.GetPauseOverlay(),
@@ -225,7 +223,7 @@ namespace HackAndSlash
                 currentLevel.currentMapInfo = currentMapInfo;
                 currentLevel.Generate();
 
-                blockList = generator.GetBlockList(spriteBatch, GraphicsDevice, currentMapInfo);
+                blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
                 enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
                 itemList = generator.GetItemList(spriteBatch, this);
 
@@ -362,7 +360,7 @@ namespace HackAndSlash
                         miniMap.SetPivot(currentLevel.mapIndex);
 
                         // Gnerate new lists 
-                        blockList = generator.GetBlockList(spriteBatch, GraphicsDevice, currentMapInfo);
+                        blockList = generator.GetBlockList(spriteBatch, SpriteFactory.Instance, currentMapInfo);
                         enemyList = generator.GetEnemyList(spriteBatch, GraphicsDevice, this);
                         itemList = generator.GetItemList(spriteBatch, this);
 
@@ -417,11 +415,10 @@ namespace HackAndSlash
                         foreach (BlockMovable block in movableBlocks)
                         {
                             block.Update();
-                            new BlockMoveListener(this, block).CheckMovement();
                         }
                     }
 
-                    
+                    //specialCases.Update(this);
                     miniMap.UpdatePlayer(Player.GetPos());
 
                     PlayerMain.Update();
@@ -538,7 +535,7 @@ namespace HackAndSlash
 
                     foreach (IEnemy enemy in enemyList)
                     {
-                        if (!_FOG || utilMethods.InFogRangeEmeny(PlayerMain.GetPos(), enemy))
+                        if (!_FOG || utilMethods.InFogRange(PlayerMain.GetPos(), enemy.GetPos()))
                             enemy.Draw();
                         if (_DevMode && _ShowBoundary)
                         {
