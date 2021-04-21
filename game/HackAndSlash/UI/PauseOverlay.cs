@@ -12,6 +12,7 @@ namespace HackAndSlash
     class PauseOverlay
     {
         private Game1 Game;
+        private GraphicsDevice graphicsDevice; 
         private Texture2D Overlay;
         private Texture2D SwordSelector;
         private Texture2D ItemSelector;
@@ -23,20 +24,21 @@ namespace HackAndSlash
         private int itemSelectorPos;
         private List<IItem> itemList;
         private int delayCounter;
-        public PauseOverlay(Game1 game, Texture2D overlay, Texture2D swordSelector, Texture2D inventoryText, Texture2D itemSelector, SpriteBatch spriteBatch)
+        public PauseOverlay(Game1 game, Texture2D overlay, Texture2D swordSelector, Texture2D inventoryText,
+            GraphicsDevice GD, SpriteBatch spriteBatch)
         {
             this.Game = game;
             this.Overlay = overlay;
             this.SwordSelector = swordSelector;
             this.spriteBatch = spriteBatch;
             this.InventoryText = inventoryText;
-            this.ItemSelector = itemSelector;
+            this.graphicsDevice = GD;
             CurrentSelection = SelectorContinueLoc;
             itemSelectorPos = 0;
             itemList = game.useableItemList;
             delayCounter = 100;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.S) || Keyboard.GetState().IsKeyDown(Keys.Down) ||
                 GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown))
@@ -97,7 +99,7 @@ namespace HackAndSlash
             {
                 item.Update();
             }
-            delayCounter += 2;
+            delayCounter += gameTime.ElapsedGameTime.Milliseconds;
         }
 
         public void Draw()
@@ -108,10 +110,21 @@ namespace HackAndSlash
                 item.SetToolbarPosition(itemList.IndexOf(item));
                 item.Draw(); 
             }
-            spriteBatch.Draw(InventoryText, new Vector2(4 * GlobalSettings.BASE_SCALAR, 76), Color.White);
+            spriteBatch.Draw(InventoryText, new Vector2(4 * GlobalSettings.BASE_SCALAR, 96), Color.White);
+
+            Game.miniMap.DrawMapPause();
+
             if (itemList.Count > 0) 
             {
-                spriteBatch.Draw(ItemSelector, new Vector2((4 + itemSelectorPos) * GlobalSettings.BASE_SCALAR, 74), Color.White); 
+                Vector2 ToolBarPos = new Vector2((4 + itemSelectorPos) * GlobalSettings.BASE_SCALAR, 
+                    GlobalSettings.TOOLBAR_OFFSET);
+
+                DrawRectangle SelectionRect = new DrawRectangle(graphicsDevice, spriteBatch, 
+                    new Rectangle((int)ToolBarPos.X, (int)ToolBarPos.Y, 
+                    GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR), Color.Yellow);
+
+                SelectionRect.Draw();
+                //spriteBatch.Draw(ItemSelector, , Color.White); 
             }
             spriteBatch.Draw(SwordSelector, CurrentSelection, Color.White);
         }

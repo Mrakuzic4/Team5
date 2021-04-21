@@ -25,6 +25,7 @@ namespace HackAndSlash
         public const int TILE_ROW = 7;
         public const int TILE_COLUMN = 12;
         public const int MAX_DISPLAY_DIV = 6;
+        public const int TOOLBAR_OFFSET = 16; 
 
         public const int STEP_SIZE_X = 5; // Distance moved in each update 
         public const int STEP_SIZE_Y = 5;

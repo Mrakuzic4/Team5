@@ -12,12 +12,12 @@ namespace HackAndSlash
     class BombWallCollision
     {
         public int direction { get; set; }
-        public const int RANGE = 3 * GlobalSettings.BASE_SCALAR; 
+        public const int RANGE = 3 * GlobalSettings.BASE_SCALAR;
+        private const int TOLERANCE = 32; 
 
         public BombWallCollision(Vector2 Pos, Map MapInfo)
         {
-            if (!CanAddHole(CanReachWall(Pos), MapInfo))
-                direction = -1; 
+            CanAddHole(CanReachWall(Pos), MapInfo); 
         }
 
         private int CanReachWall(Vector2 Pos)
@@ -28,16 +28,18 @@ namespace HackAndSlash
 
             if (Pos.X > HorizontalDoor - RANGE && Pos.X < HorizontalDoor)
             {
-                if (Pos.Y <= GlobalSettings.HEADSUP_DISPLAY + GlobalSettings.BORDER_OFFSET)
+                if (Pos.Y <= GlobalSettings.HEADSUP_DISPLAY + GlobalSettings.BORDER_OFFSET + TOLERANCE)
                     Direction = (int)GlobalSettings.Direction.Up;
-                else if (Pos.Y >= GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET)
+                else if (Pos.Y >= GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET
+                    - GlobalSettings.BASE_SCALAR * 2 - TOLERANCE)
                     Direction = (int)GlobalSettings.Direction.Down;
             } 
             else if (Pos.Y > VerticalDoor - RANGE && Pos.Y < VerticalDoor)
             {
-                if (Pos.X <= GlobalSettings.BORDER_OFFSET)
+                if (Pos.X <= GlobalSettings.BORDER_OFFSET + TOLERANCE)
                     Direction = (int)GlobalSettings.Direction.Left;
-                else if (Pos.X >= GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET)
+                else if (Pos.X >= GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET - 
+                    GlobalSettings.BASE_SCALAR * 2 - TOLERANCE)
                     Direction = (int)GlobalSettings.Direction.Right; 
             }
 

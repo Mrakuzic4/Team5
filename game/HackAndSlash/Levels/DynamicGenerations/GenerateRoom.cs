@@ -415,7 +415,6 @@ namespace HackAndSlash
             FloodMap(defaultBlock);
 
             room.Arrangement[RowMid, ColMid] = (int)GlobalSettings.BOSS_ENEMY;
-            room.Arrangement[RowMid, ColMid + 1] = (int)GlobalSettings.TRIFORCE_ITEM;
         }
 
         public bool AddSoftIndex(int[] Position, int Index)

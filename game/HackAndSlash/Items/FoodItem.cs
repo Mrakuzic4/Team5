@@ -40,7 +40,7 @@ namespace HackAndSlash
 
             position = startPosition;
             spriteBatch = gameSpriteBatch;
-            toolBarPosition = new Vector2(4 * GlobalSettings.BASE_SCALAR, 0);
+            toolBarPosition = new Vector2(4 * GlobalSettings.BASE_SCALAR, GlobalSettings.TOOLBAR_OFFSET);
             itemState = new FoodStateMachine();
             itemState.ChangeToCollectable();
             foodSprite = (ItemSprite)SpriteFactory.Instance.CreateFood();
@@ -189,7 +189,7 @@ namespace HackAndSlash
 
         public void SetToolbarPosition(int index)
         {
-            toolBarPosition = new Vector2((index + 4) * GlobalSettings.BASE_SCALAR, 0);
+            toolBarPosition = new Vector2((index + 4) * GlobalSettings.BASE_SCALAR, GlobalSettings.TOOLBAR_OFFSET);
         }
 
 

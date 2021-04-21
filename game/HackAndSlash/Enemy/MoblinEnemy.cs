@@ -235,9 +235,9 @@ namespace HackAndSlash
                 {
                     SoundFactory.Instance.MoblinDies();
                     deathTimer = 0;
-                    IItem FoodItem = new FoodItem(position, spriteBatch, game);
                     game.levelCycleRecord.RemoveOneIndex(GlobalSettings.MOBLIN_ENEMY);
-                    game.itemList.Add(FoodItem);
+                    if (GlobalSettings.RND.Next(100) < 50)
+                        game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
                     moblinState.changeToNot();
                 }
             }

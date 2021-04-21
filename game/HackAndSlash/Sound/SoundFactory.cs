@@ -23,7 +23,7 @@ namespace HackAndSlash
         private Song dungeonHappy;
         private Song[] devInAMode;
 
-        private SoundEffect swordSlash;
+        private SoundEffect[] swordSlash;
         private SoundEffect linkDamaged;
         private SoundEffect getItem;
         private SoundEffect bossScream;
@@ -31,7 +31,7 @@ namespace HackAndSlash
         private SoundEffect linkDeath;
         private SoundEffect bombDrop;
         private SoundEffect bombBlow;
-        private SoundEffect throwingKnife; //arrow boomerang
+        private SoundEffect[] throwingKnife; //arrow boomerang
         private SoundEffect flameThrow; //candle
         private SoundEffect triforceObtained;
         private SoundEffect enemyDamaged;
@@ -44,6 +44,7 @@ namespace HackAndSlash
         private SoundEffect[] walking;
         private SoundEffect[] snakeDie;
         private SoundEffect[] moblinDie;
+        private SoundEffect[] moblinAttack; 
         private SoundEffect[] beetleDie;
         private SoundEffect[] merchant;
         private SoundEffect deathHappy;
@@ -71,7 +72,14 @@ namespace HackAndSlash
 
 
             //Sound Effects
-            swordSlash = content.Load<SoundEffect>("sound/LOZ_Sword_Slash");
+            //swordSlash = content.Load<SoundEffect>("sound/LOZ_Sword_Slash");
+            swordSlash = new SoundEffect[] {
+                content.Load<SoundEffect>("sound/Terrorblade_melee_preattack1"),
+                content.Load<SoundEffect>("sound/Terrorblade_melee_preattack2"),
+                content.Load<SoundEffect>("sound/Terrorblade_melee_preattack3"),
+                content.Load<SoundEffect>("sound/Terrorblade_melee_preattack4")
+
+            };
             linkDamaged = content.Load<SoundEffect>("sound/LOZ_Link_Hurt");
             getItem = content.Load<SoundEffect>("sound/LOZ_Get_Item");
             bossScream = content.Load<SoundEffect>("sound/LOZ_Boss_Scream1");
@@ -79,7 +87,11 @@ namespace HackAndSlash
             linkDeath = content.Load<SoundEffect>("sound/LOZ_Link_Die");
             bombDrop = content.Load<SoundEffect>("sound/LOZ_Bomb_Drop");
             bombBlow = content.Load<SoundEffect>("sound/LOZ_Bomb_Blow");
-            throwingKnife = content.Load<SoundEffect>("sound/LOZ_Arrow_Boomerang");
+            throwingKnife = new SoundEffect[] { 
+                content.Load<SoundEffect>("sound/SilencerProjectileLaunch1"),
+                content.Load<SoundEffect>("sound/SilencerProjectileLaunch2"),
+                content.Load<SoundEffect>("sound/SilencerProjectileLaunch3")
+            };
             flameThrow = content.Load<SoundEffect>("sound/LOZ_Candle");
             triforceObtained = content.Load<SoundEffect>("sound/LOZ_Fanfare");
             enemyDamaged = content.Load<SoundEffect>("sound/LOZ_Enemy_Hit");
@@ -99,7 +111,11 @@ namespace HackAndSlash
                 content.Load<SoundEffect>("sound/dserp"),
                 content.Load<SoundEffect>("sound/dserpatt")
             };
-            moblinDie = new SoundEffect[] { 
+            moblinAttack = new SoundEffect[] { 
+                content.Load<SoundEffect>("sound/OutworldDevourerPreattack1"),
+                content.Load<SoundEffect>("sound/OutworldDevourerPreattack2")
+            };
+            moblinDie = new SoundEffect[] {
                 content.Load<SoundEffect>("sound/mobdead"),
                 content.Load<SoundEffect>("sound/lghit")
             };
@@ -175,7 +191,7 @@ namespace HackAndSlash
         //Sound Effects
         public SoundByte SwordSlashEffect()
         {
-            return new SoundByte(swordSlash);
+            return new SoundByte(swordSlash[GlobalSettings.RND.Next() % swordSlash.Length]);
         }
         public SoundByte LinkDamagedEffect()
         {
@@ -232,6 +248,10 @@ namespace HackAndSlash
         {
             return new SoundByte(moblinDie[GlobalSettings.RND.Next() % moblinDie.Length]);
         }
+        public SoundByte MoblinShoots()
+        {
+            return new SoundByte(moblinAttack[GlobalSettings.RND.Next() % moblinAttack.Length]);
+        }
         public SoundByte BugDies()
         {
             return new SoundByte(beetleDie[GlobalSettings.RND.Next() % beetleDie.Length]); 
@@ -246,7 +266,7 @@ namespace HackAndSlash
         }
         public SoundByte ThrowingKnifeEffect()
         {
-            return new SoundByte(throwingKnife);
+            return new SoundByte(throwingKnife[GlobalSettings.RND.Next() % throwingKnife.Length]);
         }
         public SoundByte FlameThrowEffect()
         {

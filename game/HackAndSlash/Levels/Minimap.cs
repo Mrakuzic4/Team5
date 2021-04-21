@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework;
 
 namespace HackAndSlash
 {
-    class Minimap
+    public class Minimap
     {
         private bool dev = false;
 
@@ -65,7 +65,7 @@ namespace HackAndSlash
         public const double SIZE_RATIO = (double)WHOLE_WIDTH / (double)(GlobalSettings.GAME_AREA_WIDTH);
         private const double TRANSITION_STEP_Y = 8 * SIZE_RATIO;  // From class Level
         private const double TRANSITION_STEP_X = 16 * SIZE_RATIO;
-        private const int MAP_DISPLAY_X = 321; 
+        private const int MAP_DISPLAY_X = 320; 
         private const int MAP_DISPLAY_Y = 256;
         private const int SCALE_FACTOR = 4; 
 
@@ -226,6 +226,11 @@ namespace HackAndSlash
                 GlobalSettings.BOSS_ENEMY
             };
 
+            foreach (int i in new int[] {0, 1, 2, 3 }) {
+                if (MapInfo.LockedDoors[i] || MapInfo.MysteryDoors[i] || MapInfo.OpenDoors[i])
+                    AddBridge(i);
+            }
+
             for (int i = 0; i < MapInfo.Arrangement.GetLength(0); i++) {
                 for (int j = 0; j < MapInfo.Arrangement.GetLength(1); j++) {
                     int nowIndex = MapInfo.Arrangement[i, j];
@@ -359,6 +364,22 @@ namespace HackAndSlash
                 null, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer + .1f);
 
             spriteBatch.Draw(minimap, new Vector2(MAP_DISPLAY_X, MAP_DISPLAY_Y),
+                null, defaultTint, 0f, Vector2.Zero, SCALE_FACTOR, SpriteEffects.None, layer);
+        }
+
+        public void DrawMapPause()
+        {
+            Vector2 PauseDrawPos = new Vector2(GlobalSettings.WINDOW_WIDTH / 2 - minimap.Width * 2, 
+                GlobalSettings.BASE_SCALAR * 2);
+            Vector2 PlayerDot = new Vector2(
+                currentFocusIndex[1] * WHOLE_WIDTH * 4 + (WHOLE_WIDTH - PLAYER_NOTATION_SIZE) * 2,
+                currentFocusIndex[0] * WHOLE_HEIGHT * 4 + (WHOLE_HEIGHT - PLAYER_NOTATION_SIZE) * 2
+                ) + PauseDrawPos;
+
+            spriteBatch.Draw(playerNotation, PlayerDot,
+                null, defaultTint, 0f, Vector2.Zero, 4, SpriteEffects.None, layer + .1f);
+
+            spriteBatch.Draw(minimap, PauseDrawPos,
                 null, defaultTint, 0f, Vector2.Zero, SCALE_FACTOR, SpriteEffects.None, layer);
         }
 

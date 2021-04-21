@@ -71,7 +71,7 @@ namespace HackAndSlash
         private MapGenerator generator;
         private int transitionDir;
         // Lossly connected to level and map 
-        private Minimap miniMap;
+        public Minimap miniMap;
         private FOG fogOfWar; 
         // Partically due to planning, "level" and "map" are used interchangeable 
 
@@ -201,7 +201,8 @@ namespace HackAndSlash
 
             //UI Elements
             pauseOverlay = new PauseOverlay(this, SpriteFactory.Instance.GetPauseOverlay(),
-                SpriteFactory.Instance.GetSwordSelector(), SpriteFactory.Instance.GetInventoryText(), SpriteFactory.Instance.GetItemSelector(), spriteBatch); ;
+                SpriteFactory.Instance.GetSwordSelector(), SpriteFactory.Instance.GetInventoryText(),
+                GraphicsDevice, spriteBatch); ;
             gameOverOverlay = new GameOverOverlay(this, SpriteFactory.Instance.GetGameOverOverlay(),
                             SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
             titleScreen = new TitleScreenOverlay(this, SpriteFactory.Instance.GetTitleScreen(), spriteBatch);
@@ -333,7 +334,7 @@ namespace HackAndSlash
                     break;
 
                 case GlobalSettings.GameStates.Paused:
-                    pauseOverlay.Update();
+                    pauseOverlay.Update(gameTime);
                     break;
 
                 case GlobalSettings.GameStates.GameWon:

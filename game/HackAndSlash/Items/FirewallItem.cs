@@ -47,7 +47,7 @@ namespace HackAndSlash
             firewallSprite = (ItemSprite)SpriteFactory.Instance.CreateFirewall();
             spriteWidth = firewallSprite.Texture.Width / firewallSprite.Columns;
             spriteHeight = firewallSprite.Texture.Height / firewallSprite.Rows;
-            toolBarPosition = new Vector2(0, 0);
+            toolBarPosition = new Vector2(0, GlobalSettings.TOOLBAR_OFFSET);
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
@@ -350,7 +350,7 @@ namespace HackAndSlash
         }
         public void SetToolbarPosition(int index)
         {
-            toolBarPosition = new Vector2((index + 4) * GlobalSettings.BASE_SCALAR, 0);
+            toolBarPosition = new Vector2((index + 4) * GlobalSettings.BASE_SCALAR, GlobalSettings.TOOLBAR_OFFSET);
         }
 
         public void ChangeToCollectable()

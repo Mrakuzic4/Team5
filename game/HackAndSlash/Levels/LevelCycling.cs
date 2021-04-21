@@ -161,7 +161,7 @@ namespace HackAndSlash
                     break;
 
                 case (int)GlobalSettings.Direction.Right:
-                    currentMapSet[currentLocationIndex[0] - 1, currentLocationIndex[1] + 1].Holes[
+                    currentMapSet[currentLocationIndex[0], currentLocationIndex[1] + 1].Holes[
                         (int)GlobalSettings.Direction.Left] = true;
                     break;
 
@@ -200,6 +200,38 @@ namespace HackAndSlash
 
         }
 
+        public void PreemptiveForceOpening(int Direction)
+        {
+            int[] NextRoomIndex = new int[] { 0, 0 };
+            int[] temp = new int[] { currentLocationIndex[0], currentLocationIndex[1] }; 
+            switch (Direction)
+            {
+                case (int)GlobalSettings.Direction.Up:
+                    NextRoomIndex = new int[] { currentLocationIndex[0] - 1, currentLocationIndex[1] };
+                    break;
+                case (int)GlobalSettings.Direction.Down:
+                    NextRoomIndex = new int[] { currentLocationIndex[0] + 1, currentLocationIndex[1] };
+                    break;
+                case (int)GlobalSettings.Direction.Left:
+                    NextRoomIndex = new int[] { currentLocationIndex[0], currentLocationIndex[1] - 1 };
+                    break;
+                case (int)GlobalSettings.Direction.Right:
+                    NextRoomIndex = new int[] { currentLocationIndex[0], currentLocationIndex[1] + 1 };
+                    break;
+                default:
+                    break;
+            }
+
+
+            foreach (int Dir in new int[] {0, 1, 2, 3 }){
+                if (HasNextRoom(Dir)) {
+                    OpenBothDoors(Dir);
+                }
+            }
+
+            currentLocationIndex = new int[] { temp[0], temp[1] };
+
+        }
 
     }
 

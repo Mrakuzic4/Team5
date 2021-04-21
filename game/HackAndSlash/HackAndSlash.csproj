@@ -122,6 +122,7 @@
     <Compile Include="Levels\Map.cs" />
     <Compile Include="Levels\MapGenerator.cs" />
     <Compile Include="Levels\Minimap.cs" />
+    <Compile Include="Misc\RandomDrop.cs" />
     <Compile Include="Misc\LevelBSpecialCases.cs" />
     <Compile Include="Misc\OldGame1.cs" />
     <Compile Include="Misc\CheatText.cs" />

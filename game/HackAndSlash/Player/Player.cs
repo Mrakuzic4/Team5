@@ -234,9 +234,11 @@ namespace HackAndSlash
             // checkfacing diraction -- game.Player.GetDir();
             if( (int)GetDir() == ActivationDirection 
                 && game.currentLevel.HasMysDoor(ActivationDirection)
-                && RupyItem.numUses >= GlobalSettings.OPEN_DOOR_COST) {
+                && RupyItem.numUses >= GlobalSettings.OPEN_DOOR_COST) 
+            {
                 game.currentLevel.OpenMysDoor(ActivationDirection);
                 game.levelCycleRecord.OpenBothDoors(ActivationDirection);
+                game.levelCycleRecord.PreemptiveForceOpening(ActivationDirection);
                 RupyItem.numUses -= GlobalSettings.OPEN_DOOR_COST;
                 SoundFactory.Instance.GetPayDoorsEffect();
             }

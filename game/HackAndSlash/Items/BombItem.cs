@@ -48,7 +48,7 @@ namespace HackAndSlash
 
             position = startPosition;
             spriteBatch = gameSpriteBatch;
-            toolBarPosition = new Vector2(GlobalSettings.BASE_SCALAR, 0);
+            toolBarPosition = new Vector2(GlobalSettings.BASE_SCALAR, GlobalSettings.TOOLBAR_OFFSET);
             itemState = new BombStateMachine();
             itemState.ChangeToCollectable();
             bombSprite = (ItemSprite)SpriteFactory.Instance.CreateBomb();
@@ -105,7 +105,8 @@ namespace HackAndSlash
                     {
                         // explode then gone
                         // move to top left corner of explosion
-                        position = new Vector2(position.X - spriteWidth * ((EXPLOSION_DIAMETER - 1) / 2), position.Y - spriteHeight * ((EXPLOSION_DIAMETER - 1) / 2));
+                        position = new Vector2(position.X - spriteWidth * ((EXPLOSION_DIAMETER - 1) / 2), 
+                            position.Y - spriteHeight * ((EXPLOSION_DIAMETER - 1) / 2));
                         bombAnimationState = animationState.explode;
                         SoundFactory.Instance.BombBlowEffect();
                         int HoleDirection = new BombWallCollision(position, game.currentMapInfo).direction;
@@ -293,7 +294,7 @@ namespace HackAndSlash
 
         public void SetToolbarPosition(int index)
         {
-            toolBarPosition = new Vector2((index + 4) * GlobalSettings.BASE_SCALAR, 0);
+            toolBarPosition = new Vector2((index + 4) * GlobalSettings.BASE_SCALAR, GlobalSettings.TOOLBAR_OFFSET);
         }
 
 

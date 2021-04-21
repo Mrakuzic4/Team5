@@ -27,6 +27,8 @@ namespace HackAndSlash
         private int useDurationCounter = 0;
         private const int MAX_RANGE = 5; // range in # of sprites(tiles) 
 
+        private bool firstTimeShowup = false;
+
         public Rectangle[] collidableTiles;
         public EnemyItemCollisionHandler moblinBombCollisionHandler;
 
@@ -37,13 +39,15 @@ namespace HackAndSlash
         {
             this.game = game;
             this.enemy = enemy;
-
+            spriteBatch = gameSpriteBatch;
             position = enemy.GetPos();
+
             itemState = new MoblinBombStateMachine();
             bombSprite = (ItemSprite)SpriteFactory.Instance.CreateEnemyBomb();
             spriteWidth = GlobalSettings.BASE_SCALAR;
             spriteHeight = GlobalSettings.BASE_SCALAR;
-            spriteBatch = gameSpriteBatch;
+
+            firstTimeShowup = true; 
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
             moblinBombCollisionHandler = new EnemyItemCollisionHandler(this.game.Player);
@@ -133,6 +137,11 @@ namespace HackAndSlash
 
         public void Draw()
         {
+            if (firstTimeShowup) {
+                firstTimeShowup = false;
+                SoundFactory.Instance.MoblinShoots();
+            }
+
             switch (itemState.state)
             {
                 case MoblinBombStateMachine.ItemStates.BeingUsed:

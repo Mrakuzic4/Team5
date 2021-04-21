@@ -1723,6 +1723,18 @@
 /processorParam:Quality=Best
 /build:sound/NeutralFellSpirit.wav
 
+#begin sound/OutworldDevourerPreattack1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/OutworldDevourerPreattack1.wav
+
+#begin sound/OutworldDevourerPreattack2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/OutworldDevourerPreattack2.wav
+
 #begin sound/RefresherOrb.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -1734,6 +1746,48 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sound/Satanic.wav
+
+#begin sound/SilencerProjectileLaunch1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/SilencerProjectileLaunch1.wav
+
+#begin sound/SilencerProjectileLaunch2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/SilencerProjectileLaunch2.wav
+
+#begin sound/SilencerProjectileLaunch3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/SilencerProjectileLaunch3.wav
+
+#begin sound/Terrorblade_melee_preattack1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/Terrorblade_melee_preattack1.wav
+
+#begin sound/Terrorblade_melee_preattack2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/Terrorblade_melee_preattack2.wav
+
+#begin sound/Terrorblade_melee_preattack3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/Terrorblade_melee_preattack3.wav
+
+#begin sound/Terrorblade_melee_preattack4.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/Terrorblade_melee_preattack4.wav
 
 #begin sound/TitleScreenMp3.mp3
 /importer:Mp3Importer

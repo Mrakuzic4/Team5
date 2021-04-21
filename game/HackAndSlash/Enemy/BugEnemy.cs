@@ -202,6 +202,8 @@ namespace HackAndSlash
                     deathTimer = 0;
                     bugState.changeToNot();
                     game.levelCycleRecord.RemoveOneIndex(GlobalSettings.BUG_ENEMY);
+                    if (GlobalSettings.RND.Next(100) < 50)
+                        game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
                 }
             }
 

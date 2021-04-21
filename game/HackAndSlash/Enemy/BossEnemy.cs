@@ -130,6 +130,8 @@ namespace HackAndSlash
                 if (deathTimer > 3000)
                 {
                     deathTimer = 0;
+                    game.levelCycleRecord.RemoveOneIndex(GlobalSettings.BOSS_ENEMY);
+                    game.itemList.Add(new RandomDrop(position, spriteBatch, game).DropFinal());
                     bossState.changeToNot();
                 }
             }
