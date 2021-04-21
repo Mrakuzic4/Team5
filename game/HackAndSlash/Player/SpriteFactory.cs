@@ -101,10 +101,12 @@ namespace HackAndSlash
         private Texture2D Refill;
         private Texture2D Ruby;
         private Texture2D Shield;
+        private Texture2D ShieldItem;
         private Texture2D ZeldaGotRefill;
         private Texture2D ZeldaGotShield;
         private Texture2D ZeldaGotHeart;
         private Texture2D Price;
+        private Texture2D Bar;
 
         private Texture2D TextCharacters;
 
@@ -133,6 +135,8 @@ namespace HackAndSlash
             IMDB = new ImageDatabase();
 
             //Merchant
+            Bar = content.Load<Texture2D>(IMDB.Bar.pathName);
+            ShieldItem = content.Load<Texture2D>(IMDB.ShieldItem.pathName);
             Price = content.Load<Texture2D>(IMDB.Price.pathName);
             OldWoman = content.Load<Texture2D>(IMDB.OldWoman.pathName);
             Heart = content.Load<Texture2D>(IMDB.Heart.pathName);
@@ -259,6 +263,10 @@ namespace HackAndSlash
         }
 
         //************Below are Merchant and NPC***********
+        public Texture2D GetBar()
+        {
+            return Bar;
+        }
         public void SetZeldaGotHeart()
         {
             DrawPlayer.Instance.Rows = IMDB.ZeldaGotHeart.R;
@@ -290,6 +298,10 @@ namespace HackAndSlash
         public Texture2D GetShield()
         {
             return Shield;
+        }
+        public Texture2D GetShieldItem()
+        {
+            return ShieldItem;
         }
         public Texture2D CreatePrice()
         {
