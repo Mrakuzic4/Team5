@@ -252,7 +252,7 @@ namespace HackAndSlash
 
                 Rectangle checkTile = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
                 List<IBlock> blockList = game.blockList;
-                if (bombCollisionHandler.CheckForWall(checkTile) || bombCollisionHandler.CheckForBlock(checkTile, blockList))
+                if (bombCollisionHandler.CheckForWall(checkTile))
                 {
                     // cant use Item, change to useable
                     itemState.ChangeToUseable();
