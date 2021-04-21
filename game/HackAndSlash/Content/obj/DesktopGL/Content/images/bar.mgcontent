@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/bar.png</SourceFile>
-  <SourceTime>2021-04-21T16:58:43.7492609-04:00</SourceTime>
+  <SourceTime>2021-04-21T18:22:34.4328588-04:00</SourceTime>
   <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/bar.xnb</DestFile>
-  <DestTime>2021-04-21T16:59:56.3466892-04:00</DestTime>
+  <DestTime>2021-04-21T18:25:01.0527269-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
