@@ -83,7 +83,7 @@ namespace HackAndSlash
             }
             else
             {
-                spriteBatch.Draw(SpriteFactory.Instance.GetGameOverOverlay(), new Vector2(0, 0), Color.White);
+                spriteBatch.Draw(SpriteFactory.Instance.getGameWonScreen(), new Vector2(0, 0), Color.White);
                 spriteBatch.Draw(SwordSelector, CurrentSelection, Color.White);
             }
             
