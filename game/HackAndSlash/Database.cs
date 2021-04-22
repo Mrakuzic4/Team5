@@ -55,6 +55,12 @@ namespace HackAndSlash
         public ImageFile moblinMoveLeft;
         public ImageFile moblinBomb;
 
+        public ImageFile goriyaMoveDown;
+        public ImageFile goriyaMoveUp;
+        public ImageFile goriyaMoveLeft;
+        public ImageFile goriyaMoveRight;
+        public ImageFile goriyaBoomerang;
+
         public ImageFile boss;
         public ImageFile bossDie;
 
@@ -187,6 +193,12 @@ namespace HackAndSlash
             moblinMoveLeft = new ImageFile("images/MoblinLeft", 1, 2);
             moblinMoveRight = new ImageFile("images/MoblinRight", 1, 2);
             moblinBomb = new ImageFile("images/MoblinBomb", 1, 1);
+
+            goriyaMoveDown = new ImageFile("images/GoriyaDown",1,1);
+            goriyaMoveUp = new ImageFile("images/GoriyaUp",1,1);
+            goriyaMoveLeft = new ImageFile("images/GoriyaLeft",1,1);
+            goriyaMoveRight = new ImageFile("images/GoriyaRight",1,1);
+            goriyaBoomerang = new ImageFile("images/GoriyaBoomerang", 1, 3);
 
             boss = new ImageFile("images/Boss", 1, 4);
             bossDie = new ImageFile("images/bossDie", 1, 1);

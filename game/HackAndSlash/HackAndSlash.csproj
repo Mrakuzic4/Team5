@@ -86,8 +86,10 @@
     <Compile Include="Enemy\EnemySprite.cs" />
     <Compile Include="Enemy\IEnemy.cs" />
     <Compile Include="Enemy\BossEnemy.cs" />
+    <Compile Include="Enemy\GoriyaEnemy.cs" />
     <Compile Include="Enemy\MoblinEnemy.cs" />
     <Compile Include="Enemy\BossItem.cs" />
+    <Compile Include="Enemy\GoriyaItem.cs" />
     <Compile Include="Enemy\MoblinItem.cs" />
     <Compile Include="Enemy\OldManNPC.cs" />
     <Compile Include="Enemy\SnakeEnemy.cs" />
@@ -428,6 +430,11 @@
     <Content Include="bin\DesktopGL\AnyCPU\Release\Content\sound\GangTortureDance .ogg" />
     <Content Include="bin\DesktopGL\AnyCPU\Release\Content\sound\TitleScreenMp3.ogg" />
     <Content Include="Content\images\AquamentusSprite.png" />
+    <Content Include="Content\images\GoriyaBoomerang.png" />
+    <Content Include="Content\images\GoriyaDown.png" />
+    <Content Include="Content\images\GoriyaLeft.png" />
+    <Content Include="Content\images\GoriyaRight.png" />
+    <Content Include="Content\images\GoriyaUp.png" />
     <Content Include="Content\images\levels\blockAllMight.png" />
     <Content Include="Content\images\levels\bloodDoors.png" />
     <Content Include="Content\images\levels\BloodWall.png" />

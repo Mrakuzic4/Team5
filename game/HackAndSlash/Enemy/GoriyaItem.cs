@@ -10,19 +10,19 @@ using HackAndSlash.Collision;
 
 namespace HackAndSlash
 {
-    public class MoblinItem : IItem
+    public class GoriyaItem : IItem
     {
 
         private Game1 game;
         private IEnemy enemy; //enemy reference
 
-        private ItemSprite bombSprite;
+        private ItemSprite boomerangSprite;
         public int spriteWidth, spriteHeight;
         public Vector2 position;
 
         private SpriteBatch spriteBatch;
 
-        private MoblinBombStateMachine itemState;
+        private GoriyaBoomerangStateMachine itemState;
         private const int USE_DURATION = 160; // length of effect
         private int useDurationCounter = 0;
         private const int MAX_RANGE = 5; // range in # of sprites(tiles) 
@@ -30,35 +30,35 @@ namespace HackAndSlash
         private bool firstTimeShowup = false;
 
         public Rectangle[] collidableTiles;
-        public EnemyItemCollisionHandler moblinBombCollisionHandler;
+        public EnemyItemCollisionHandler goriyaBoomerangCollisionHandler;
 
         private GlobalSettings.Direction enemyDirection;
 
         // Constructor
-        public MoblinItem(SpriteBatch gameSpriteBatch, Game1 game, IEnemy enemy)
+        public GoriyaItem(SpriteBatch gameSpriteBatch, Game1 game, IEnemy enemy)
         {
             this.game = game;
             this.enemy = enemy;
             spriteBatch = gameSpriteBatch;
             position = enemy.GetPos();
 
-            itemState = new MoblinBombStateMachine();
-            bombSprite = (ItemSprite)SpriteFactory.Instance.CreateEnemyBomb();
+            itemState = new GoriyaBoomerangStateMachine();
+            boomerangSprite = (ItemSprite)SpriteFactory.Instance.CreateGoriyaBoomerang();
             spriteWidth = GlobalSettings.BASE_SCALAR;
             spriteHeight = GlobalSettings.BASE_SCALAR;
 
             firstTimeShowup = true; 
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
-            moblinBombCollisionHandler = new EnemyItemCollisionHandler(this.game.Player);
+            goriyaBoomerangCollisionHandler = new EnemyItemCollisionHandler(this.game.Player);
         }
 
         public void Update()
         {
             switch (itemState.state)
             {
-                case MoblinBombStateMachine.ItemStates.BeingUsed:
-                    bombSprite.Update();
+                case GoriyaBoomerangStateMachine.ItemStates.BeingUsed:
+                    boomerangSprite.Update();
                     useDurationCounter++;
                     if (useDurationCounter >= USE_DURATION)
                     {
@@ -66,7 +66,7 @@ namespace HackAndSlash
                         ChangeToExpended();   
                     }
 
-                    if (moblinBombCollisionHandler.CheckForPlayerCollision(collidableTiles[0]))
+                    if (goriyaBoomerangCollisionHandler.CheckForPlayerCollision(collidableTiles[0]))
                     {
                         this.game.Player.Damaged();
                         ChangeToExpended();
@@ -80,7 +80,7 @@ namespace HackAndSlash
                         {
                             case GlobalSettings.Direction.Left: // left
                                 checkTile = new Rectangle((int)position.X - spriteWidth, (int)position.Y, spriteWidth, spriteHeight);
-                                if (!moblinBombCollisionHandler.CheckForWall(checkTile) && !moblinBombCollisionHandler.CheckForBlock(checkTile, blockList))
+                                if (!goriyaBoomerangCollisionHandler.CheckForWall(checkTile) && !goriyaBoomerangCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.X -= 2*spriteWidth;
                                 } 
@@ -91,7 +91,7 @@ namespace HackAndSlash
                                 break;
                             case GlobalSettings.Direction.Right: // right
                                 checkTile = new Rectangle((int)position.X + spriteWidth, (int)position.Y, spriteWidth, spriteHeight);
-                                if (!moblinBombCollisionHandler.CheckForWall(checkTile) && !moblinBombCollisionHandler.CheckForBlock(checkTile, blockList))
+                                if (!goriyaBoomerangCollisionHandler.CheckForWall(checkTile) && !goriyaBoomerangCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.X += 2*spriteWidth;
                                 }
@@ -103,7 +103,7 @@ namespace HackAndSlash
                                 break;
                             case GlobalSettings.Direction.Up: // up
                                 checkTile = new Rectangle((int)position.X, (int)position.Y - spriteHeight, spriteWidth, spriteHeight);
-                                if (!moblinBombCollisionHandler.CheckForWall(checkTile) && !moblinBombCollisionHandler.CheckForBlock(checkTile, blockList))
+                                if (!goriyaBoomerangCollisionHandler.CheckForWall(checkTile) && !goriyaBoomerangCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.Y -= 2*spriteHeight;
                                 }
@@ -115,7 +115,7 @@ namespace HackAndSlash
                                 break;
                             case GlobalSettings.Direction.Down: // down
                                 checkTile = new Rectangle((int)position.X, (int)position.Y + spriteHeight, spriteWidth, spriteHeight);
-                                if (!moblinBombCollisionHandler.CheckForWall(checkTile) && !moblinBombCollisionHandler.CheckForBlock(checkTile, blockList))
+                                if (!goriyaBoomerangCollisionHandler.CheckForWall(checkTile) && !goriyaBoomerangCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.Y += 2*spriteHeight;
                                 }
@@ -128,7 +128,7 @@ namespace HackAndSlash
                         }                        
                     }
                     break;
-                case MoblinBombStateMachine.ItemStates.Expended:
+                case GoriyaBoomerangStateMachine.ItemStates.Expended:
                     collidableTiles = new Rectangle[1];
                     collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
                     break;
@@ -144,12 +144,12 @@ namespace HackAndSlash
 
             switch (itemState.state)
             {
-                case MoblinBombStateMachine.ItemStates.BeingUsed:
-                    bombSprite.Draw(spriteBatch, position, Color.White);
+                case GoriyaBoomerangStateMachine.ItemStates.BeingUsed:
+                    boomerangSprite.Draw(spriteBatch, position, Color.White);
                     collidableTiles = new Rectangle[1];
                     collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
                     break;
-                case MoblinBombStateMachine.ItemStates.Expended:
+                case GoriyaBoomerangStateMachine.ItemStates.Expended:
                     collidableTiles = new Rectangle[1];
                     collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
                     break;
@@ -167,7 +167,7 @@ namespace HackAndSlash
         public Rectangle[] getCollidableTiles(bool isEnemy)
         {
             Rectangle[] RectanglesList = { new Rectangle(0, 0, 1, 1) };
-            if ((isEnemy && itemState.state == MoblinBombStateMachine.ItemStates.BeingUsed) || (!isEnemy && itemState.state == MoblinBombStateMachine.ItemStates.BeingUsed))
+            if ((isEnemy && itemState.state == GoriyaBoomerangStateMachine.ItemStates.BeingUsed) || (!isEnemy && itemState.state == GoriyaBoomerangStateMachine.ItemStates.BeingUsed))
                 RectanglesList = collidableTiles;
 
             return RectanglesList;
@@ -176,7 +176,7 @@ namespace HackAndSlash
         public void ChangeToBeingUsed()
         {
             itemState.ChangeToBeingUsed();
-            bombSprite = (ItemSprite)SpriteFactory.Instance.CreateEnemyBomb();
+            boomerangSprite = (ItemSprite)SpriteFactory.Instance.CreateGoriyaBoomerang();
             position = enemy.GetPos();
             enemyDirection = enemy.GetDirection();
             
@@ -212,11 +212,11 @@ namespace HackAndSlash
 
     }
 
-    public class MoblinBombStateMachine
+    public class GoriyaBoomerangStateMachine
     {
         public enum ItemStates { BeingUsed, Expended };
         public ItemStates state;
-        public MoblinBombStateMachine()
+        public GoriyaBoomerangStateMachine()
         {
             state = ItemStates.Expended;
         }

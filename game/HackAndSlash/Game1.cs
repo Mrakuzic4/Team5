@@ -27,7 +27,7 @@ namespace HackAndSlash
 
         // Game parameters, need _ prefix 
         public bool _DevMode = true;
-        public bool _ShowBoundary = true;
+        public bool _ShowBoundary = false;
         public bool _FOG = true;
         public int _FogRange = 1;
         public bool _EnableMouseTeleport = false; // Controls mouse left and right click teleportation 
@@ -68,11 +68,7 @@ namespace HackAndSlash
         // Sprites  
         public IItem ItemHolder { get; set; }
         
-        // Please consider removing these explicit declerations since some of them are pretty much 
-        // only used in load content and never used once new rooms are loaded 
-        public SnakeEnemy snakefirst;
-        public BugEnemy bugfirst;
-        public MoblinEnemy moblinfirst;
+        
 
         public FirewallItem firewallFirst;
         public BombItem bombFirst;
@@ -157,13 +153,8 @@ namespace HackAndSlash
             // When testing new enemies, put them here 
             if (_DevMode)
             {
-                snakefirst = new SnakeEnemy(utilMethods.PlayAreaPosition(1, 3), GraphicsDevice, spriteBatch, this);
-                bugfirst = new BugEnemy(utilMethods.PlayAreaPosition(10, 2), GraphicsDevice, spriteBatch, this);
-                moblinfirst = new MoblinEnemy(utilMethods.PlayAreaPosition(10, 3), GraphicsDevice, spriteBatch, this);
-
                 enemyList = new List<IEnemy>()
                 {
-                    snakefirst,bugfirst,moblinfirst
                 };
                 itemList = new List<IItem>()
                 {

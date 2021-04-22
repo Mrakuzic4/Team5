@@ -54,6 +54,12 @@ namespace HackAndSlash
         private Texture2D MoblinMoveRightSprite;
         private Texture2D MoblinBombSprite;
 
+        private Texture2D GoriyaMoveUpSprite;
+        private Texture2D GoriyaMoveDownSprite;
+        private Texture2D GoriyaMoveLeftSprite;
+        private Texture2D GoriyaMoveRightSprite;
+        private Texture2D GoriyaBoomerangSprite;
+
         private Texture2D BossSprite;
         private Texture2D BossDieSprite;
 
@@ -203,6 +209,12 @@ namespace HackAndSlash
             MoblinMoveLeftSprite = content.Load<Texture2D>(IMDB.moblinMoveLeft.pathName);
             MoblinMoveRightSprite = content.Load<Texture2D>(IMDB.moblinMoveRight.pathName);
             MoblinBombSprite = content.Load<Texture2D>(IMDB.moblinBomb.pathName);
+
+            GoriyaMoveUpSprite = content.Load<Texture2D>(IMDB.goriyaMoveUp.pathName);
+            GoriyaMoveDownSprite = content.Load<Texture2D>(IMDB.goriyaMoveDown.pathName);
+            GoriyaMoveLeftSprite = content.Load<Texture2D>(IMDB.goriyaMoveLeft.pathName);
+            GoriyaMoveRightSprite = content.Load<Texture2D>(IMDB.goriyaMoveRight.pathName);
+            GoriyaBoomerangSprite = content.Load<Texture2D>(IMDB.goriyaBoomerang.pathName);
 
             BossSprite = content.Load<Texture2D>(IMDB.boss.pathName);
             BossDieSprite = content.Load<Texture2D>(IMDB.bossDie.pathName);
@@ -642,6 +654,42 @@ namespace HackAndSlash
         public ISprite CreateEnemyBomb()
         {
             return new ItemSprite(MoblinBombSprite, IMDB.moblinBomb.C, IMDB.moblinBomb.R);
+        }
+
+        public ISprite CreateGoriyaMoveUp()
+        {
+            return new EnemySprite(GoriyaMoveUpSprite, IMDB.goriyaMoveUp.C, IMDB.goriyaMoveUp.R);
+        }
+
+        public ISprite CreateGoriyaMoveDown()
+        {
+            return new EnemySprite(GoriyaMoveDownSprite, IMDB.goriyaMoveDown.C, IMDB.goriyaMoveDown.R);
+        }
+
+        public ISprite CreateGoriyaMoveLeft()
+        {
+            return new EnemySprite(GoriyaMoveLeftSprite, IMDB.goriyaMoveLeft.C, IMDB.goriyaMoveLeft.R);
+        }
+
+
+        public ISprite CreateGoriyaMoveRight()
+        {
+            return new EnemySprite(GoriyaMoveRightSprite, IMDB.goriyaMoveRight.C, IMDB.goriyaMoveRight.R);
+        }
+
+        public ISprite CreateGoriyaDie()
+        {
+            return new EnemySprite(GoriyaMoveDownSprite, IMDB.goriyaMoveDown.C, IMDB.goriyaMoveDown.R);
+        }
+
+        public ISprite CreateGoriyaIdle()
+        {
+            return new EnemySprite(GoriyaMoveDownSprite, IMDB.goriyaMoveDown.C, IMDB.goriyaMoveDown.R);
+        }
+
+        public ISprite CreateGoriyaBoomerang()
+        {
+            return new ItemSprite(GoriyaBoomerangSprite, IMDB.goriyaBoomerang.C, IMDB.goriyaBoomerang.R);
         }
 
         public ISprite CreateBoss()

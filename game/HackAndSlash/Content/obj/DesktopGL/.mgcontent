@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Profile>Reach</Profile>
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeDown.png</File>
-    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeLeft.png</File>
-    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeRight.png</File>
-    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/ThrowingKnifeUp.png</File>
-    <File>C:/Users/admin/source/repos/Team5(3)/game/HackAndSlash/Content/images/TextSprites.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/AquamentusSprite.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/bar.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/bg.jpg</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/BlockBlank1.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/BlockDemo.png</File>
@@ -17,6 +13,8 @@
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/BlockWater.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/BlockX.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/Bomb.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/Boss.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/bossDie.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/BugDie.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/BugEnemyIdle.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/BugEnemyLeft.png</File>
@@ -32,6 +30,11 @@
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/explosion.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/firewall2.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/firewall3.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/FlyingSwordDown.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/FlyingSwordLeft.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/FlyingSwordRight.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/FlyingSwordUp.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/font/Cheat.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/font/Font_Compass.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/font/Font_Forthis.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/font/Font_Inventory.png</File>
@@ -39,12 +42,20 @@
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/font/Font_Life.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/font/Font_Map.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/font/Font_Oldman1.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/font/Font_Shield.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/font/Font_Usebutton.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/font/Oldman2.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/Food.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/GoriyaBoomerang.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/GoriyaDown.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/GoriyaLeft.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/GoriyaRight.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/GoriyaUp.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/HalfHeart.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/LevelEagleBorder.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/levels/blockAllMight.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/levels/bloodDoors.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/levels/BloodWall.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/levels/eagleDoorHorizontalLeft.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/levels/eagleDoorHorizontalRight.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/levels/eagleDoors.png</File>
@@ -55,15 +66,18 @@
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/levels/eagleHoleVerticalDown.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/levels/eagleHoleVerticalUp.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/LinkTriforce.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/Mask.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/MoblinBomb.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/MoblinDown.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/MoblinLeft.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/MoblinRight.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/MoblinUp.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/MoveableBlood.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/NES - The Legend of Zelda - Fonts.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/NES - The Legend of Zelda - Link.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/Oldman.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/RedBall.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/Rupy.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/SnakeAttack.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/SnakeDie.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/SnakeEnemyRight.png</File>
@@ -79,6 +93,7 @@
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/ThrowingKnifeLeft.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/ThrowingKnifeRight.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/ThrowingKnifeUp.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/Triforce.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/UI/GameOverOverlay.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/UI/GamePauseOverlay.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/UI/ItemSelector.png</File>
@@ -99,7 +114,49 @@
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/ZeldaUseItemLeft.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/ZeldaUseItemRight.png</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/ZeldaUseItemUp.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/Merchant/Heart.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/Merchant/NES - The Legend of Zelda - Items &amp; Weapons.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/Merchant/Oldwoman.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/Merchant/Price.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/Merchant/Refill.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/Merchant/Ruby.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/Merchant/Shield.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/Merchant/ShieldItem.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/Merchant/ZeldaGotHeart.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/Merchant/ZeldaGotRefill.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/Merchant/ZeldaGotShield.png</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/BeetleDeath.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/bhit1.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/CoconutSong.mp3</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/diablod.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/dserp.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/dserpatt.wav</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/DungeonMusic.mp3</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/EnchantedMango.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/explodesWall.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/FaerieFire.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/GangTortureDance .mp3</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/garbud01.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/garbud04.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/HandOfMidas.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound1.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound10.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound11.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound12.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound13.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound14.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound15.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound2.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound3.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound4.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound5.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/IdleSound6.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound7.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound8.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/idleSound9.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/ItemDrop.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/ItemPickup.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/lghit.wav</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/LOZ_Arrow_Boomerang.wav</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/LOZ_Bomb_Blow.wav</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/LOZ_Bomb_Drop.wav</File>
@@ -123,19 +180,231 @@
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/LOZ_Sword_Shoot.wav</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/LOZ_Sword_Slash.wav</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/LOZ_Text.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/mobdead.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/NeutralFellSpirit.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/OutworldDevourerPreattack1.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/OutworldDevourerPreattack2.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/RefresherOrb.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/Satanic.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/SilencerProjectileLaunch1.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/SilencerProjectileLaunch2.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/SilencerProjectileLaunch3.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/Terrorblade_melee_preattack1.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/Terrorblade_melee_preattack2.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/Terrorblade_melee_preattack3.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/Terrorblade_melee_preattack4.wav</File>
     <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/TitleScreenMp3.mp3</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/walk1.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/walk2.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/walk3.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/walk4.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/zhar01.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sound/zhar02.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sounds/HappyNoise.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sounds/TitleMusicHappy.mp3</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sounds/TitleMusicHappy.wav</File>
+    <File>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/sounds/TitleScreenMusic.wav</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
-    <File>images/TextCharacters.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>images/emptyHeart.png</File>
+    <File xsi:nil="true" />
     <File>images/firewall.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>images/font/Font_Oldman2.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>images/halfHeart.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>images/Zelda.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>images/TextCharacters.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>images/fullHeart.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

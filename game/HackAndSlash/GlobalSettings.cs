@@ -85,6 +85,7 @@ namespace HackAndSlash
         public const int BOSS_ENEMY = -4;
         public const int NPC_OLD_MAN = -5;
         public const int NPC_OLD_WOMAN = -6;
+        public const int GORIYA_ENEMY = -7;
 
         public const int OPEN_DOOR_COST = 10;
 
