@@ -91,6 +91,7 @@ namespace HackAndSlash
 
         //Cheats
         public static bool GODMODE { get; set; } = false;
+        public const int MAX_ITEMS = 99; // used for max items cheat
         // Misc
         public static Random RND = new Random(); 
         public const int PRNG_WEIGHT = 10; // Increse this to make it more random

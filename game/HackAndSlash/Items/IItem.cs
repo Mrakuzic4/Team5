@@ -28,6 +28,8 @@ namespace HackAndSlash
 
         void SetToolbarPosition(int index);
 
+        void SetMax();
+
         Rectangle[] getCollidableTiles(bool isEnemy);
 
         bool FogBreaker();

@@ -293,6 +293,11 @@ namespace HackAndSlash
         {
         }
 
+        public void SetMax()
+        {
+
+        }
+
 
         public void ChangeToCollectable()
         {

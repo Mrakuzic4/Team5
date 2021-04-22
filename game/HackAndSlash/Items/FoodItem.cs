@@ -153,7 +153,7 @@ namespace HackAndSlash
                 toolBarPosition = new Vector2(0, -128);
             }
             SoundFactory.Instance.GetItemEffect();
-            numUses++;
+            if (numUses < GlobalSettings.MAX_ITEMS) numUses++;
         }
 
         public void UseItem(GlobalSettings.Direction currentPlayerDirection)
@@ -190,6 +190,11 @@ namespace HackAndSlash
         public void SetToolbarPosition(int index)
         {
             toolBarPosition = new Vector2((index + 4) * GlobalSettings.BASE_SCALAR, GlobalSettings.TOOLBAR_OFFSET);
+        }
+
+        public void SetMax()
+        {
+            numUses = GlobalSettings.MAX_ITEMS;
         }
 
 

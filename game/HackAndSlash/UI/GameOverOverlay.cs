@@ -70,7 +70,7 @@ namespace HackAndSlash
                     }
                     else
                     {
-                        Game.Exit();
+                        Game.GameState = GlobalSettings.GameStates.Upgrading;
                     }
                 }
             }

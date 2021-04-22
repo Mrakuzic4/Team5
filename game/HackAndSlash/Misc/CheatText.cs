@@ -13,10 +13,10 @@ namespace HackAndSlash
         private Game1 game;
         private TextSprite textsprite;
         private SpriteBatch spritebatch;
-        private string[] texts = { "GOD MODE ACTIVATED" };
+        private string[] texts = { "GOD MODE ACTIVATED", "HEAL ACTIVATED" , "MAX ITEMS ACTIVATED"};
         private int counter;
-        private const int displayTime = 256;
-        public enum cheats { GODMODE }
+        private const int displayTime = 180;
+        public enum cheats { GODMODE , HEAL , MAX_ITEMS }
         public cheats? activeText { get; set; }
         public CheatText (Game1 game, SpriteBatch spritebatch)
         {

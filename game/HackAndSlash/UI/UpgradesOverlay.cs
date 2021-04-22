@@ -16,17 +16,20 @@ namespace HackAndSlash
         private Vector2 CurrentSelection;
         private int delayCounter;
         private int optionHeight = 64;
-        private string[] options = { "ITEM RANGE", "BOMB RADIUS", "VISIBILITY RADIUS", "HEAL POWER", "MAXIMUM HEALTH", "RESET SAVE FILE", "EXIT" };
+
+        private SettingsOption[] optionsList = { new SettingsOption("ITEM RANGE", GlobalSettings.saveSets.ItemRange, 10, 5),
+                    new SettingsOption("BOMB RADIUS", GlobalSettings.saveSets.BombRadius, 7, 10),
+                    new SettingsOption("VISIBILITY RADUIS", GlobalSettings.saveSets.VisibilityRadius, 16, 5),
+                    new SettingsOption("HEAL POWER", GlobalSettings.saveSets.HealPower, 10, 10),
+                    new SettingsOption("MAX HEALTH", GlobalSettings.saveSets.MaxHealth, 16, 10) };
+
         private int[] positions;
-        private int[] costs;
-        private int[] settingLimits = { 16, 10, 16, 10, 16 };
-        private bool[] upgraded = { false, false, false, false, false, false, false };
         private SavedSettings settings = GlobalSettings.saveSets;
-        private int[] settingValues;
-        ISprite swordSelector;
-        GraphicsDevice graphics;
-        TextSprite text;
-        TextSprite bigText;
+        private ISprite swordSelector;
+        private GraphicsDevice graphics;
+        private TextSprite text;
+        private TextSprite bigText;
+        private Texture2D bg = SpriteFactory.Instance.getGameWonScreen();
 
         public UpgradesOverlay(Game1 game, GraphicsDevice graphics, SpriteBatch spriteBatch)
         {
@@ -36,19 +39,11 @@ namespace HackAndSlash
             text = (TextSprite)SpriteFactory.Instance.CreateTextCharacters(3);
             bigText = (TextSprite)SpriteFactory.Instance.CreateTextCharacters(5);
             swordSelector = SpriteFactory.Instance.CreateSword(GlobalSettings.Direction.Right);
-            positions = new int[7];
-            for( int i = 0; i <= 6; i++)
+            positions = new int[8];
+            for (int i = 0; i <= 7; i++)
             {
                 positions[i] = (2 + i) * 64;
             }
-            int[] Values = { settings.ItemRange, settings.BombRadius, settings.VisibilityRadius, settings.HealPower, settings.MaxHealth };
-            settingValues = Values;
-            costs = new int[5];
-            costs[0] = GlobalSettings.saveSets.ItemRange * 5;
-            costs[1] = GlobalSettings.saveSets.BombRadius * 10;
-            costs[2] = GlobalSettings.saveSets.VisibilityRadius * 5;
-            costs[3] = GlobalSettings.saveSets.HealPower * 10;
-            costs[4] = GlobalSettings.saveSets.MaxHealth * 10;
             CurrentSelection = new Vector2(0, positions[0]);
             delayCounter = 0;
         }
@@ -57,7 +52,7 @@ namespace HackAndSlash
             if (delayCounter >= 30 && (Keyboard.GetState().IsKeyDown(Keys.S) || Keyboard.GetState().IsKeyDown(Keys.Down) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.DPadDown)))
             {
                 CurrentSelection.Y += optionHeight;
-                if(CurrentSelection.Y > positions[6])
+                if (CurrentSelection.Y > positions[7])
                 {
                     CurrentSelection.Y = positions[0];
                 }
@@ -68,58 +63,62 @@ namespace HackAndSlash
                 CurrentSelection.Y -= optionHeight;
                 if (CurrentSelection.Y < positions[0])
                 {
-                    CurrentSelection.Y = positions[6];
+                    CurrentSelection.Y = positions[7];
                 }
                 delayCounter = 0;
             }
             if (delayCounter >= 30 && (Keyboard.GetState().IsKeyDown(Keys.Enter) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.A)))
             {
                 //If chose to continue
-                for(int i = 0; i < 5; i++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if (CurrentSelection.Y == positions[i] && !upgraded[i] && settingValues[i] < settingLimits[i] && RupyItem.numUses > costs[i])
+                    if (CurrentSelection.Y == positions[i] && optionsList[i].CanBeUpgraded())
                     {
-                        settingValues[i]++;
-                        // Max health upgrades by 2 each time
-                        if(i == 4)
-                        {
-                            settingValues[i]++;
-                        }
-                        RupyItem.numUses -= costs[i];
-                        upgraded[i] = true;
+                        optionsList[i].Increment();
+                        RupyItem.numUses -= optionsList[i].cost;
                     }
                 }
                 if (CurrentSelection.Y == positions[5])
                 {
                     // set to default values
-                    settingValues[0] = 3;
-                    settingValues[1] = 3;
-                    settingValues[2] = 2;
-                    settingValues[3] = 1;
-                    settingValues[4] = 6;
+                    settings = new JsonParser(@"Content/info/NewSaveFile.json", JsonParser.ParseMode.settingsMode).getCurrentSavedSettings();
+                    optionsList[0].settingValue = settings.ItemRange;
+                    optionsList[1].settingValue = settings.BombRadius;
+                    optionsList[2].settingValue = settings.VisibilityRadius;
+                    optionsList[3].settingValue = settings.HealPower;
+                    optionsList[4].settingValue = settings.MaxHealth;
                     // reset cost value based on new settings values
-                    costs[0] = GlobalSettings.saveSets.ItemRange * 5;
-                    costs[1] = GlobalSettings.saveSets.BombRadius * 10;
-                    costs[2] = GlobalSettings.saveSets.VisibilityRadius * 5;
-                    costs[3] = GlobalSettings.saveSets.HealPower * 10;
-                    costs[4] = GlobalSettings.saveSets.MaxHealth * 5;
-                    upgraded[5] = true;
-                    Game.reset(4);
+                    foreach (SettingsOption option in optionsList)
+                    {
+                        option.CalculateCost();
+                        option.upgraded = false;
+                        option.updateColor();
+                    }
                 }
-                else if (CurrentSelection.Y == positions[6])
+                else
                 {
                     // save data on game win (move to game state machines change to win method)
-                    settings.ItemRange = settingValues[0];
-                    settings.BombRadius = settingValues[1];
-                    settings.VisibilityRadius = settingValues[2];
-                    settings.HealPower = settingValues[3];
-                    settings.MaxHealth = settingValues[4];
+                    settings.ItemRange = optionsList[0].settingValue;
+                    settings.BombRadius = optionsList[1].settingValue;
+                    settings.VisibilityRadius = optionsList[2].settingValue;
+                    settings.HealPower = optionsList[3].settingValue;
+                    settings.MaxHealth = optionsList[4].settingValue;
 
                     GlobalSettings.saveSets = settings;
                     new JsonParser(SaveDatabase.saveFilePath, JsonParser.ParseMode.settingsMode).SaveToFile();
-                    Game.Exit();
+                    if (CurrentSelection.Y == positions[6])
+                    {
+                        Game.Exit();
+                    }
+                    
+                    else if (CurrentSelection.Y == positions[7])
+                    {
+
+                        Game.reset(4);
+                    }
                 }
-                delayCounter = 0;
+
+                    delayCounter = 0;
 
             }
             delayCounter++;
@@ -127,37 +126,90 @@ namespace HackAndSlash
         }
 
         public void Draw()
-        { 
-            spriteBatch.Draw(GenerateTexture(GlobalSettings.WINDOW_WIDTH, GlobalSettings.WINDOW_HEIGHT, pixel => Color.Black), new Vector2(0, 0), Color.White);
+        {
+            spriteBatch.Draw(bg, new Vector2(0, 0), Color.White);
             bigText.Draw(spriteBatch, "UPGRADES MENU", new Vector2(0, 0), Color.White);
             for (int i = 0; i <= 4; i++)
             {
-                string printString = options[i] + " " + (settingValues[i] + 1) + " X " + costs[i];
-                if (i == 4)
-                {
-                    printString = options[i] + " " + (settingValues[i] + 2) + " X " + costs[i];
-                }
-                text.Draw(spriteBatch, printString, new Vector2(64, positions[i]), upgraded[i] ? Color.Gray : Color.White);
+                text.Draw(spriteBatch, optionsList[i].PrintString(), new Vector2(64, positions[i]), optionsList[i].drawColor);
             }
-            for (int i = 5; i <= 6; i++)
-            {
-                text.Draw(spriteBatch, options[i], new Vector2(64, positions[i]), upgraded[i] ? Color.Gray : Color.White);
-            }
+            text.Draw(spriteBatch, "RESET SAVE FILE", new Vector2(64, positions[5]), Color.White);
+            text.Draw(spriteBatch, "SAVE AND EXIT", new Vector2(64, positions[6]), Color.White);
+            text.Draw(spriteBatch, "PLAY AGAIN", new Vector2(64, positions[7]), Color.White);
             swordSelector.Draw(spriteBatch, new Vector2(CurrentSelection.X, CurrentSelection.Y - 20), Color.White);
             Game.mainRupy.Draw();
-            
+        }
+    }
+
+    class SettingsOption
+    {
+
+        public int cost;
+        public int settingLimit;
+        public bool upgraded;
+        public string name;
+        public int settingValue;
+        private int incAmount = 1;
+        private int costMod;
+        public Color drawColor = Color.White;
+
+        public SettingsOption(string name, int value, int limit, int costMod)
+        {
+            this.name = name;
+            upgraded = false;
+            settingLimit = limit;
+            settingValue = value;
+            this.costMod = costMod;
+            CalculateCost();
+            updateColor();
+            if (name == "MAX HEALTH")
+            {
+                incAmount = 2;
+            }
         }
 
-        public Texture2D GenerateTexture(int width, int height, Func<int, Color> paint)
+        public bool CanBeUpgraded()
         {
-            Texture2D texture = new Texture2D(graphics, width, height);
+            if (!upgraded && settingValue < settingLimit && RupyItem.numUses >= cost)
+            {
+                upgraded = true;
+                updateColor();
+                return true;
+            }
+            return false;
+        }
 
-            Color[] data = new Color[width * height];
-            for (int pixel = 0; pixel < data.Count(); pixel++)
-                data[pixel] = paint(pixel);
+        public string PrintString()
+        {
+            return name + " " + (settingValue + incAmount) + " X " + cost;
+        }
 
-            texture.SetData(data);
-            return texture;
+        public void Increment()
+        {
+            settingValue += incAmount;
+            updateColor();
+            CalculateCost();
+        }
+
+        public void CalculateCost()
+        {
+            cost = settingValue * costMod;
+        }
+
+        public void updateColor()
+        {
+            if (settingValue >= settingLimit)
+            {
+                drawColor = Color.Red;
+            }
+            else if (upgraded)
+            {
+                drawColor = Color.Gray;
+            }
+            else
+            {
+                drawColor = Color.White;
+            }
         }
     }
 }
