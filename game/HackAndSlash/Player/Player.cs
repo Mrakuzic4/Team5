@@ -2,6 +2,7 @@
 
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace HackAndSlash
 {
@@ -45,6 +46,7 @@ namespace HackAndSlash
         private bool canMove;
 
         //Player's Health
+        
         private int INIT_MAX_HEALTH = GlobalSettings.saveSets.MaxHealth; //6 indicates 3 full hearts, maxHealth can change when player picks up heart
         private int maxHealth; 
         private int currentHealth;
@@ -171,7 +173,7 @@ namespace HackAndSlash
 
                 //Sound
                 SoundFactory.Instance.LinkDamagedEffect();
-                if (currentHealth == 0)
+                if (currentHealth <= 0)
                 {
                     this.game.GameState = GlobalSettings.GameStates.GameOver;
                     this.game.currentLevel.setGameOver();
@@ -181,7 +183,6 @@ namespace HackAndSlash
                     SoundFactory.Instance.LinkDeathEffect();
                 }
             }
-
         } 
         // make player heal method in IPlayer and all player wrappers
         public void Healed()
@@ -231,7 +232,6 @@ namespace HackAndSlash
             // check possible direction 
             int ActivationDirection = playerDoorCollisionDetector.ReachingDirection(relPositionMC);
 
-            // checkfacing diraction -- game.Player.GetDir();
             if( (int)GetDir() == ActivationDirection 
                 && game.currentLevel.HasMysDoor(ActivationDirection)
                 && RupyItem.numUses >= GlobalSettings.OPEN_DOOR_COST) 
@@ -242,8 +242,6 @@ namespace HackAndSlash
                 RupyItem.numUses -= GlobalSettings.OPEN_DOOR_COST;
                 SoundFactory.Instance.GetPayDoorsEffect();
             }
-
-            // --gem  RupyItem.numUses()
         }
 
         private void stayInBoundary()
