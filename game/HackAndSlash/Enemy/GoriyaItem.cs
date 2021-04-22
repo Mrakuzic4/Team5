@@ -209,6 +209,11 @@ namespace HackAndSlash
         {
 
         }
+        
+        public void SetMax()
+        {
+
+        }
 
     }
 
