@@ -235,7 +235,7 @@ namespace HackAndSlash
             CheatText = new ImageFile("images/Font/Cheat", 1, 1);
             ItemSelector = new ImageFile("images/UI/ItemSelector", 1, 1);
             TitleScreenOverlay = new ImageFile("images/UI/TitleScreens", 2, 2);
-            GameWonOverlay = new ImageFile("images/UI/WinningScreen", 1, 1);
+            GameWonOverlay = new ImageFile("images/UI/GameWonOverlay", 1, 1);
 
             TextCharacters = new ImageFile("images/TextCharacters", 4, 13);
         }

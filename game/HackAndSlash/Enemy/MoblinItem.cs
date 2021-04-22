@@ -210,6 +210,11 @@ namespace HackAndSlash
 
         }
 
+        public void SetMax()
+        {
+
+        }
+
     }
 
     public class MoblinBombStateMachine

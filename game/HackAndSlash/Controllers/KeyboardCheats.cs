@@ -23,7 +23,9 @@ namespace HackAndSlash
             {
                 {new List<Keys>() { Keys.W, Keys.W, Keys.S, Keys.S, Keys.A, Keys.D, Keys.A, Keys.D, Keys.Z, Keys.N }, new GodModeCommand(game) },
                 {new List<Keys>() { Keys.Up, Keys.Up, Keys.Down, Keys.Down, Keys.Left, Keys.Right, Keys.Left, Keys.Right, 
-                    Keys.Z, Keys.N}, new GodModeCommand(game) }
+                    Keys.Z, Keys.N}, new GodModeCommand(game) },
+                {new List<Keys>() { Keys.H, Keys.E, Keys.A, Keys.L, Keys.M, Keys.E }, new HealCheatCommand(game) },
+                {new List<Keys>() { Keys.I, Keys.T, Keys.E, Keys.M, Keys.S, Keys.P, Keys.L, Keys.Z }, new MaxItemsCommand(game) }
             };
             InputDelay.Restart();
             Timeout.Restart();

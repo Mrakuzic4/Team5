@@ -52,6 +52,11 @@ namespace HackAndSlash
             return position;
         }
 
+        public void SetMax()
+        {
+
+        }
+
         public void ChangeToCollectable()
         {
 

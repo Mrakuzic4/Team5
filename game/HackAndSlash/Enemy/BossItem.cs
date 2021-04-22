@@ -197,6 +197,10 @@ namespace HackAndSlash
 
         }
 
+        public void SetMax()
+        {
+
+        }
     }
 
     public class BossBombStateMachine

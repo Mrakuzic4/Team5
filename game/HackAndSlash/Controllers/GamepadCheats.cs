@@ -21,7 +21,11 @@ namespace HackAndSlash
             cheatMappings = new Dictionary<List<Buttons>, ICommand>()
             {
                 {new List<Buttons>() { Buttons.DPadUp, Buttons.DPadUp, Buttons.DPadDown, Buttons.DPadDown, Buttons.DPadLeft, 
-                    Buttons.DPadRight, Buttons.DPadLeft, Buttons.DPadRight, Buttons.B, Buttons.A }, new GodModeCommand(game) }
+                    Buttons.DPadRight, Buttons.DPadLeft, Buttons.DPadRight, Buttons.B, Buttons.A }, new GodModeCommand(game) },
+                {new List<Buttons>() { Buttons.A, Buttons.DPadDown, Buttons.X, Buttons.DPadDown, Buttons.DPadUp, Buttons.DPadUp }, 
+                    new HealCheatCommand(game) },
+                {new List<Buttons>() { Buttons.LeftTrigger, Buttons.RightTrigger, Buttons.Y, Buttons.A, Buttons.DPadDown}, 
+                    new MaxItemsCommand(game) }
             };
             InputDelay.Restart();
             Timeout.Restart();

@@ -176,6 +176,10 @@ namespace HackAndSlash
             toolBarPosition = new Vector2((index + 4) * GlobalSettings.BASE_SCALAR, 0);
         }
 
+        public void SetMax()
+        {
+
+        }
 
         public void ChangeToCollectable()
         {
