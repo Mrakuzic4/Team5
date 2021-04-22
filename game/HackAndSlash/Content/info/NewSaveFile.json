@@ -1,7 +1,7 @@
 {
-  "ItemRange": 5,
+  "ItemRange": 3,
   "BombRadius": 3,
   "VisibilityRadius": 2,
-  "HealPower": 2,
+  "HealPower": 1,
   "MaxHealth":  8
 }

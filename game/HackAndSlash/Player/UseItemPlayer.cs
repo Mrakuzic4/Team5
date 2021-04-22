@@ -11,7 +11,7 @@ namespace HackAndSlash
         private IPlayer DecoratedPlayer;
         private Game1 game;
         private int timer;
-        private const int TIME = 85; //added delay
+        private const int TIME = 285; //added delay
 
         public UseItemPlayer(IPlayer decoratedPlayer, Game1 game)
         {
@@ -19,6 +19,7 @@ namespace HackAndSlash
             this.DecoratedPlayer = decoratedPlayer;
             this.game = game;
             DrawPlayer.Instance.Frame = 0;
+            DrawItemCD.Instance.setCD(); //CD of using an item
         }
         public int GetMaxHealth()
         {
@@ -82,12 +83,12 @@ namespace HackAndSlash
 
         public void Move()
         {
-            //Does not move when using item.
+            DecoratedPlayer.Move();
         }
 
         public void Attack()
         {
-            //Does not attack when using item.
+            DecoratedPlayer.Attack();
         }
 
         public void Damaged()

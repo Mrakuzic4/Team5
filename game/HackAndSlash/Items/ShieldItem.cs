@@ -26,6 +26,7 @@ namespace HackAndSlash
 
         public Rectangle[] collidableTiles;
         public ItemCollisionHandler TriforceCollisionHandler;
+        private const float UNDERLAYER = 0.4f;
 
         // Constructor
         public ShieldItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game)
@@ -46,7 +47,6 @@ namespace HackAndSlash
         public void Update()
         {
             // check for collision collision -> collect Item
-            // if numUses != 0
             if (TriforceCollisionHandler.CheckForPlayerCollision(collidableTiles))
             {
                 CollectItem();
@@ -56,8 +56,11 @@ namespace HackAndSlash
 
         public void Draw()
         {
-            // Draw on ground
-            shieldSprite.Draw(spriteBatch, position, Color.White);
+            Rectangle sourceRectangle = new Rectangle(0, 0, shieldSprite.Texture.Width, shieldSprite.Texture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, shieldSprite.Texture.Width, shieldSprite.Texture.Height);
+
+            spriteBatch.Draw(shieldSprite.Texture, destinationRectangle, sourceRectangle, Color.White,
+                0f, Vector2.Zero, SpriteEffects.None, UNDERLAYER);
         }
         /// <summary>
         /// Increase the Shield Point.

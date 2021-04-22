@@ -169,6 +169,7 @@ namespace HackAndSlash
             levelTexture.SetData(0, new Rectangle(0, 0, Border.Width, Border.Height), RawDataBorder, 0, CountBorder);
 
             // Add tiles 
+            
             for (int r = 0; r < GlobalSettings.TILE_ROW; r++)
             {
                 for (int c = 0; c < GlobalSettings.TILE_COLUMN; c++)
@@ -191,6 +192,8 @@ namespace HackAndSlash
                         RawDataNow, 0, CountNow);
                 }
             }
+            
+
             UpdateDrawDoors();
         }
 

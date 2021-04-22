@@ -1,5 +1,4 @@
 ﻿
-using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
@@ -16,7 +15,6 @@ namespace HackAndSlash
         Texture2D shield;
         Texture2D fontLife;
         Texture2D fontShield;
-
 
         //number of different hearts
         private int full; 
@@ -39,26 +37,26 @@ namespace HackAndSlash
         private const int SCALE = 3;
 
         //Position of Shield Fonts on HUD
-        private const int SHIELD_Y_Font = 84;
+        private const int SHIELD_Y_Font = 90;
 
         //Position of Shield on HUD
-        private const int S_Y = 74;
+        private const int S_Y = 76;
         private const int S_X = 980;
 
-        private float layer = 0.9f; 
+        private const float LAYER = 0.9f;
 
-        public DrawPlayerStat(Game1 game, Texture2D emptyHeart, Texture2D halfHeart, Texture2D fullheart, Texture2D fontLife, Texture2D fontShield, Texture2D shield)
+        public DrawPlayerStat(Game1 game)
         {
             this.game = game;
-            this.fullHeart = fullheart;
-            this.halfHeart = halfHeart;
-            this.emptyHeart = emptyHeart;
-            this.shield = shield;
             this.full = this.game.Player.GetMaxHealth();
             this.half = 0;
             this.empty = 0;
-            this.fontLife = fontLife;
-            this.fontShield = fontShield;
+            this.fullHeart = SpriteFactory.Instance.GetFullHeart();
+            this.halfHeart = SpriteFactory.Instance.GetHalfHeart();
+            this.emptyHeart = SpriteFactory.Instance.GetEmptyHeart();
+            this.shield = SpriteFactory.Instance.GetShieldItem();
+            this.fontLife = SpriteFactory.Instance.GetFontLife();
+            this.fontShield = SpriteFactory.Instance.GetFontShield();
             destinationRectangle = new Rectangle(X, Y, DEST_SIZE, DEST_SIZE);
             lifeFontRectangle = new Rectangle(X, LIFE_Y_Font, fontLife.Width*SCALE, fontLife.Height*SCALE);
             shieldFontRectangle = new Rectangle(X, SHIELD_Y_Font, fontShield.Width * SCALE, fontShield.Height * SCALE);
@@ -107,24 +105,24 @@ namespace HackAndSlash
             //Draw font "-Life-"
             Rectangle sourceRectangle = new Rectangle(0, 0, fontLife.Width, fontLife.Height);
             spriteBatch.Draw(fontLife, lifeFontRectangle, sourceRectangle, color, 
-                0f, Vector2.Zero, SpriteEffects.None, layer);
+                0f, Vector2.Zero, SpriteEffects.None, LAYER);
 
             //Draw font "-Shield-"
             sourceRectangle = new Rectangle(0, 0, fontShield.Width, fontShield.Height);
             spriteBatch.Draw(fontShield, shieldFontRectangle, sourceRectangle, color,
-                0f, Vector2.Zero, SpriteEffects.None, layer);
+                0f, Vector2.Zero, SpriteEffects.None, LAYER);
 
             //Draw Shield, depend on Player's stat
             sourceRectangle = new Rectangle(0, 0, shield.Width, shield.Height); //reset source rectangle.
             if (!game.Player.isShield())
             {
                 spriteBatch.Draw(shield, shieldDestinationRectangle, sourceRectangle, Color.Gray,
-                    0f, Vector2.Zero, SpriteEffects.None, layer);
+                    0f, Vector2.Zero, SpriteEffects.None, LAYER);
             }
             else
             {
                 spriteBatch.Draw(shield, shieldDestinationRectangle, sourceRectangle, color,
-                    0f, Vector2.Zero, SpriteEffects.None, layer);
+                    0f, Vector2.Zero, SpriteEffects.None, LAYER);
             }
             //Draw Hearts
             drawHeart(spriteBatch,color);
@@ -138,7 +136,7 @@ namespace HackAndSlash
             for (int i = 1; i < full + 1; i++)
             {
                 spriteBatch.Draw(fullHeart, destinationRectangle, sourceRectangle, color,
-                    0f, Vector2.Zero, SpriteEffects.None, layer);
+                    0f, Vector2.Zero, SpriteEffects.None, LAYER);
                 destinationRectangle = new Rectangle(X + DEST_SIZE * i, Y, DEST_SIZE, DEST_SIZE);
             }
             int destinationRectangleForHalf = destinationRectangle.X; //this is not true if there is no full hearts.
@@ -147,7 +145,7 @@ namespace HackAndSlash
             for (int i = 1; i < half + 1; i++)
             {
                 spriteBatch.Draw(halfHeart, destinationRectangle, sourceRectangle, color,
-                    0f, Vector2.Zero, SpriteEffects.None, layer);
+                    0f, Vector2.Zero, SpriteEffects.None, LAYER);
                 destinationRectangle = new Rectangle(destinationRectangleForHalf + DEST_SIZE * i, Y, DEST_SIZE, DEST_SIZE);
             }
             int destinationRectangleForEmpty = destinationRectangle.X;
@@ -156,7 +154,7 @@ namespace HackAndSlash
             for (int i = 1; i < empty + 1; i++)
             {
                 spriteBatch.Draw(emptyHeart, destinationRectangle, sourceRectangle, color,
-                    0f, Vector2.Zero, SpriteEffects.None, layer);
+                    0f, Vector2.Zero, SpriteEffects.None, LAYER);
                 destinationRectangle = new Rectangle(destinationRectangleForEmpty + DEST_SIZE * i, Y, DEST_SIZE, DEST_SIZE);
             }
             destinationRectangle = new Rectangle(X, Y, DEST_SIZE, DEST_SIZE); //reset the dest rectangle

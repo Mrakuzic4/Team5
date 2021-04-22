@@ -25,11 +25,11 @@ namespace HackAndSlash
         public static int numUses = 0; 
         private int useDurationCounter = 0;
         private static int cooldown = 0; // item is useable if == 0 
-        private const int ITEM_COOLDOWN = 30; // time in update cycles between uses 
+        private const int ITEM_COOLDOWN = 1; // time in update cycles between uses 
         private static int MAX_RANGE = GlobalSettings.saveSets.ItemRange; // range in # of sprites(tiles)
         private static int USE_DURATION = MAX_RANGE * 20; // length of effect
         private Vector2 toolBarPosition;
-        
+        private const int MIDDLE = 30;
 
         public static bool inInventory = false;
 
@@ -60,7 +60,7 @@ namespace HackAndSlash
             textSprites = (TextSprite)SpriteFactory.Instance.CreateTextCharacters(1);
         }
 
-        public void Update()
+    public void Update()
         {
             switch (itemState.state)
             {
@@ -111,7 +111,7 @@ namespace HackAndSlash
                         switch (playerDirection)
                         {
                             case GlobalSettings.Direction.Left: // left
-                                checkTile = new Rectangle((int)position.X - spriteWidth, (int)position.Y, spriteWidth, spriteHeight);
+                                checkTile = new Rectangle((int)position.X - spriteWidth, (int)position.Y+MIDDLE, MIDDLE, MIDDLE);
                                 if (!throwingKnifeCollisionHandler.CheckForWall(checkTile) && !throwingKnifeCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.X -= spriteWidth;
@@ -122,7 +122,7 @@ namespace HackAndSlash
                                 }
                                 break;
                             case GlobalSettings.Direction.Right: // right
-                                checkTile = new Rectangle((int)position.X + spriteWidth, (int)position.Y, spriteWidth, spriteHeight);
+                                checkTile = new Rectangle((int)position.X + spriteWidth, (int)position.Y + MIDDLE, MIDDLE, MIDDLE);
                                 if (!throwingKnifeCollisionHandler.CheckForWall(checkTile) && !throwingKnifeCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.X += spriteWidth;
@@ -133,7 +133,7 @@ namespace HackAndSlash
                                 }
                                 break;
                             case GlobalSettings.Direction.Up: // up
-                                checkTile = new Rectangle((int)position.X, (int)position.Y - spriteHeight, spriteWidth, spriteHeight);
+                                checkTile = new Rectangle((int)position.X+MIDDLE, (int)position.Y - spriteHeight, MIDDLE, MIDDLE);
                                 if (!throwingKnifeCollisionHandler.CheckForWall(checkTile) && !throwingKnifeCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.Y -= spriteHeight;
@@ -144,7 +144,7 @@ namespace HackAndSlash
                                 }
                                 break;
                             case GlobalSettings.Direction.Down: // down
-                                checkTile = new Rectangle((int)position.X, (int)position.Y + spriteHeight, spriteWidth, spriteHeight);
+                                checkTile = new Rectangle((int)position.X+MIDDLE, (int)position.Y + spriteHeight, MIDDLE, MIDDLE);
                                 if (!throwingKnifeCollisionHandler.CheckForWall(checkTile) && !throwingKnifeCollisionHandler.CheckForBlock(checkTile, blockList))
                                 {
                                     position.Y += spriteHeight;
@@ -233,7 +233,7 @@ namespace HackAndSlash
                 switch (currentPlayerDirection)
                 {
                     case GlobalSettings.Direction.Left: // left
-                        checkTile = new Rectangle((int)currentPlayerPosition.X - spriteWidth, (int)currentPlayerPosition.Y, spriteWidth, spriteHeight);
+                        checkTile = new Rectangle((int)position.X - spriteWidth, (int)position.Y + MIDDLE, MIDDLE, MIDDLE);
                         if (!throwingKnifeCollisionHandler.CheckForWall(checkTile) && !throwingKnifeCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.X -= spriteWidth;
@@ -245,7 +245,7 @@ namespace HackAndSlash
                         }
                         break;
                     case GlobalSettings.Direction.Right: // right
-                        checkTile = new Rectangle((int)currentPlayerPosition.X + spriteWidth, (int)currentPlayerPosition.Y, spriteWidth, spriteHeight);
+                        checkTile = new Rectangle((int)position.X + spriteWidth, (int)position.Y + MIDDLE, MIDDLE, MIDDLE);
                         if (!throwingKnifeCollisionHandler.CheckForWall(checkTile) && !throwingKnifeCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.X += spriteWidth;
@@ -257,7 +257,7 @@ namespace HackAndSlash
                         }
                         break;
                     case GlobalSettings.Direction.Up: // up
-                        checkTile = new Rectangle((int)currentPlayerPosition.X, (int)currentPlayerPosition.Y - spriteHeight, spriteWidth, spriteHeight);
+                        checkTile = new Rectangle((int)position.X + MIDDLE, (int)position.Y - spriteHeight, MIDDLE, MIDDLE);
                         if (!throwingKnifeCollisionHandler.CheckForWall(checkTile) && !throwingKnifeCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.Y -= spriteHeight;
@@ -269,7 +269,7 @@ namespace HackAndSlash
                         }
                         break;
                     case GlobalSettings.Direction.Down: // down
-                        checkTile = new Rectangle((int)currentPlayerPosition.X, (int)currentPlayerPosition.Y + spriteHeight, spriteWidth, spriteHeight);
+                        checkTile = new Rectangle((int)position.X + MIDDLE, (int)position.Y + spriteHeight, MIDDLE, MIDDLE);
                         if (!throwingKnifeCollisionHandler.CheckForWall(checkTile) && !throwingKnifeCollisionHandler.CheckForBlock(checkTile, blockList))
                         {
                             currentPlayerPosition.Y += spriteHeight;

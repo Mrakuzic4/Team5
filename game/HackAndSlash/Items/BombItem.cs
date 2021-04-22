@@ -29,6 +29,9 @@ namespace HackAndSlash
         private const int NUM_BOMB_BLINKS = 4;
         private int EXPLOSION_DIAMETER = GlobalSettings.saveSets.BombRadius;
         private Vector2 toolBarPosition;
+        private const int MIDDLE = 30;
+        private const int SWORD_TIP = 20; //the hitbox of the sword would be a rectangle instead of a square, this is the parameter for the narrower part of the rectangle.
+
 
         public static bool inInventory = false;
 
@@ -60,6 +63,30 @@ namespace HackAndSlash
             bombCollisionHandler = new ItemCollisionHandler(this.player);
             textSprites = (TextSprite)SpriteFactory.Instance.CreateTextCharacters(1);
         }
+        private Rectangle getHitBox()
+        {
+            Rectangle Hitbox;
+
+            switch (game.Player.GetDir())
+            {
+                //width and height set of the sword hitbox set to Base_SCALAR, Base_SCALAR/2
+                case GlobalSettings.Direction.Right:
+                    //Player's sword hitbox is located at the hand of the player
+                    Hitbox = new Rectangle((int)game.Player.GetPos().X + GlobalSettings.BASE_SCALAR, (int)game.Player.GetPos().Y + MIDDLE, GlobalSettings.BASE_SCALAR, SWORD_TIP);
+                    break;
+                case GlobalSettings.Direction.Left:
+                    Hitbox = new Rectangle((int)game.Player.GetPos().X - GlobalSettings.BASE_SCALAR, (int)game.Player.GetPos().Y + MIDDLE, GlobalSettings.BASE_SCALAR, SWORD_TIP);
+                    break;
+                case GlobalSettings.Direction.Up:
+                    Hitbox = new Rectangle((int)game.Player.GetPos().X + MIDDLE, (int)game.Player.GetPos().Y - GlobalSettings.BASE_SCALAR, SWORD_TIP, GlobalSettings.BASE_SCALAR);
+                    break;
+                default:
+                    Hitbox = new Rectangle((int)game.Player.GetPos().X + MIDDLE, (int)game.Player.GetPos().Y + GlobalSettings.BASE_SCALAR, SWORD_TIP, GlobalSettings.BASE_SCALAR);
+                    break;
+            }
+            return Hitbox;
+        }
+
         public void Update()
         {
             switch (itemState.state)
@@ -250,7 +277,7 @@ namespace HackAndSlash
                 collidableTiles = new Rectangle[1];
                 collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteHeight, spriteWidth);
 
-                Rectangle checkTile = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
+                Rectangle checkTile = getHitBox();
                 List<IBlock> blockList = game.blockList;
                 if (bombCollisionHandler.CheckForWall(checkTile))
                 {
