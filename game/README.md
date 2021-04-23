@@ -7,6 +7,7 @@
 * Number key `1` and `2` to use the item _(if you have any)_.
 * `Q` to quit.
 * `R` to reset (reset current room only).
+* `V`to go to the sound menu.
 * Mouse click `LMB` and `RMB` to switch between maps.
 * `Escape` key to pause, the player can also switch items during the pause screen.
 
