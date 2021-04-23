@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 using static HackAndSlash.GlobalSettings;
 
 namespace HackAndSlash.Collision
@@ -14,19 +15,33 @@ namespace HackAndSlash.Collision
             switch (collisionType)
             {
                 case CollisionType.Right:
-                    //enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X - GlobalSettings.STEP_SIZE_X, enemy.GetPos().Y));
+
+                    //if ((enemy.GetDirection() == GlobalSettings.Direction.Right))
+                    //{
+                        enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X - 1, enemy.GetPos().Y));
+                    //}
                     enemy.changeToMoveLeft();
                     break;
                 case CollisionType.Left:
-                    //enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X + GlobalSettings.STEP_SIZE_X, enemy.GetPos().Y));
+                    //if((enemy.GetDirection() == GlobalSettings.Direction.Left))
+                    //{
+                        enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X + 1, enemy.GetPos().Y));
+                    //}
                     enemy.changeToMoveRight();
                     break;
                 case CollisionType.Top:
-                    //enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X, enemy.GetPos().Y - GlobalSettings.STEP_SIZE_Y));
+                    //if ((enemy.GetDirection() == GlobalSettings.Direction.Up))
+                    //{
+                        enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X, enemy.GetPos().Y + 1));
+                    //}
                     enemy.changeToMoveDown();
                     break;
                 case CollisionType.Bottom:
-                    //enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X, enemy.GetPos().Y + GlobalSettings.STEP_SIZE_Y));
+
+                    //if ((enemy.GetDirection() == GlobalSettings.Direction.Down))
+                    //{
+                        enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X, enemy.GetPos().Y - 1));
+                    //}
                     enemy.changeToMoveUp();
                     break;
             }

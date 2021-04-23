@@ -28,6 +28,7 @@ namespace HackAndSlash
         private System.Random random;
         private int[] directionHistory = new int[] { 0, 0, 0, 0 }; 
         private int randomDirection = 0; //0-left, 1-up, 2-right, 3- down
+        public GlobalSettings.Direction direction { get; set; }
 
         private Color tintColor;
         private int damageTaken;
@@ -59,6 +60,7 @@ namespace HackAndSlash
             hitbox = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
 
             directionHistory[Turn(GlobalSettings.RND.Next(3))] += 1;
+            direction = GlobalSettings.Direction.Left;
             this.game = game;
             damageTaken = 0;
             totalLives = 1;
@@ -85,16 +87,16 @@ namespace HackAndSlash
             switch (Direction)
             {
                 case (int)GlobalSettings.Direction.Left:
-                    bugState.changeToMoveLeft();
+                    changeToMoveLeft();
                     break;
                 case (int)GlobalSettings.Direction.Up:
-                    bugState.changeToMoveUp();
-                    break;
+                    changeToMoveUp();
+                     break;
                 case (int)GlobalSettings.Direction.Right:
-                    bugState.changeToMoveRight();
+                    changeToMoveRight();
                     break;
                 case (int)GlobalSettings.Direction.Down:
-                    bugState.changeToMoveDown();
+                    changeToMoveDown();
                     break;
             }
             return Direction;
@@ -157,10 +159,12 @@ namespace HackAndSlash
 
                 else
                 {
+
                     int NewDirection = new PRNG().DirectionMask(directionHistory,
                         new bool[] { false, false, true, false });
                     directionHistory[NewDirection] += 1;
                     Turn(NewDirection);
+                    //also  change the position in these cases to avoid corner conflict
                 }
             }
             else if (bugState.state == bugStateMachine.bugHealth.MoveLeft)
@@ -238,7 +242,7 @@ namespace HackAndSlash
                 {
                     SoundFactory.Instance.BugDies();
                     deathTimer = 0;
-                    bugState.changeToNot();
+                    changeToNot();
                     game.levelCycleRecord.RemoveOneIndex(GlobalSettings.BUG_ENEMY);
                     if(GlobalSettings.NIGHTMAREMODE)
                     {
@@ -320,7 +324,7 @@ namespace HackAndSlash
             if (damageTaken == totalLives)
             {
                 damageTaken = 0;
-                bugState.changeToDie();
+                changeToDie();
             }
         }
 
@@ -332,22 +336,26 @@ namespace HackAndSlash
 
         public void changeToMoveUp()
         {
+            direction = GlobalSettings.Direction.Up;
             bugState.changeToMoveUp();
         }
 
         public void changeToMoveDown()
         {
+            direction = GlobalSettings.Direction.Down;
             bugState.changeToMoveDown();
         }
 
         public void changeToMoveLeft()
         {
-            bugState.changeToMoveDown();
+            direction = GlobalSettings.Direction.Left;
+            bugState.changeToMoveLeft();
         }
 
         public void changeToMoveRight()
         {
-            bugState.changeToMoveDown();
+            direction = GlobalSettings.Direction.Right;
+            bugState.changeToMoveRight();
         }
 
         public void changeToDie()
@@ -363,7 +371,7 @@ namespace HackAndSlash
 
         public GlobalSettings.Direction GetDirection()
         {
-            return GlobalSettings.Direction.Right;
+            return direction;
         }
     }
 

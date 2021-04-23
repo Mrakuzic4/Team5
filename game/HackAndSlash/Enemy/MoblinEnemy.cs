@@ -51,6 +51,7 @@ namespace HackAndSlash
             
             position = startPosition;
             moblinState = new moblinStateMachine();
+            direction = GlobalSettings.Direction.Left;
             Graphics = graphics;
             spriteBatch = SB;
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
@@ -90,16 +91,16 @@ namespace HackAndSlash
             switch (Direction)
             {
                 case (int)GlobalSettings.Direction.Left:
-                    moblinState.changeToLeftMove();
+                    changeToMoveLeft();
                     break;
                 case (int)GlobalSettings.Direction.Up:
-                    moblinState.changeToMoveUp();
+                    changeToMoveUp();
                     break;
                 case (int)GlobalSettings.Direction.Right:
-                    moblinState.changeToRightMove();
+                    changeToMoveRight();
                     break;
                 case (int)GlobalSettings.Direction.Down:
-                    moblinState.changeToMoveDown();
+                    changeToMoveDown();
                     break;
             }
             return Direction;
@@ -224,19 +225,19 @@ namespace HackAndSlash
                 {
                     case 0:
                         direction = GlobalSettings.Direction.Left;
-                        moblinState.changeToLeftMove();
+                        changeToMoveLeft();
                         break;
                     case 1:
                         direction = GlobalSettings.Direction.Up;
-                        moblinState.changeToMoveUp();
+                        changeToMoveUp();
                         break;
                     case 2:
                         direction = GlobalSettings.Direction.Right;
-                        moblinState.changeToRightMove();
+                        changeToMoveRight();
                         break;
                     case 3:
                         direction = GlobalSettings.Direction.Down;
-                        moblinState.changeToMoveDown();
+                        changeToMoveDown();
                         break;
                 }
             }
@@ -251,7 +252,7 @@ namespace HackAndSlash
             enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
             if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
             {
-                moblinState.changeToDie();
+                changeToDie();
             }
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
@@ -269,7 +270,7 @@ namespace HackAndSlash
                     game.levelCycleRecord.RemoveOneIndex(GlobalSettings.MOBLIN_ENEMY);
                     if (GlobalSettings.RND.Next(100) < 50)
                         game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
-                    moblinState.changeToNot();
+                    changeToNot();
                 }
             }
 
@@ -338,7 +339,7 @@ namespace HackAndSlash
             if (damageTaken == totalLives)
             {
                 damageTaken = 0;
-                moblinState.changeToDie();
+                changeToDie();
             }
 
         }
@@ -422,7 +423,6 @@ namespace HackAndSlash
             {
                 state = moblinHealth.MoveRight;
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinMoveRight();
-                System.Console.WriteLine("changed state to: " + state);
                 //get appropriate sprite from sprite factory
             }
         }
@@ -433,7 +433,6 @@ namespace HackAndSlash
             if (state != moblinHealth.MoveLeft)
             {
                 state = moblinHealth.MoveLeft;
-                System.Console.WriteLine("changed state to: " + state);
                 MachineEnemySprite = (EnemySprite)SpriteFactory.Instance.CreateMoblinMoveLeft();
                 //get appropriate sprite from sprite factory
             }

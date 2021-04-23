@@ -26,6 +26,7 @@ namespace HackAndSlash
         private System.Random random;
         private int[] directionHistory = new int[] { 0, 0, 0, 0 };
         private int randomDirection = 0; //0-left, 1-up, 2-right, 3- down
+        public GlobalSettings.Direction direction { get; set; }
 
         private EnemyCollisionDetector enemyCollisionDetector;
         private EnemyBlockCollision enemyBlockCollision;
@@ -45,6 +46,7 @@ namespace HackAndSlash
         {
             position = startPosition;
             snakeState = new snakeStateMachine();
+            direction = GlobalSettings.Direction.Up;
             Graphics = graphics;
             spriteBatch = SB;
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
@@ -83,16 +85,16 @@ namespace HackAndSlash
             switch (Direction)
             {
                 case (int)GlobalSettings.Direction.Left:
-                    snakeState.changeToLeftMove();
+                    changeToMoveLeft();
                     break;
                 case (int)GlobalSettings.Direction.Up:
-                    snakeState.changeToMoveUp();
+                    changeToMoveUp();
                     break;
                 case (int)GlobalSettings.Direction.Right:
-                    snakeState.changeToRightMove();
+                    changeToMoveRight();
                     break;
                 case (int)GlobalSettings.Direction.Down:
-                    snakeState.changeToMoveDown();
+                    changeToMoveDown();
                     break;
             }
             return Direction; 
@@ -135,6 +137,7 @@ namespace HackAndSlash
                     int NewDirection = new PRNG().DirectionMask(directionHistory,
                         new bool[] { false, false, false, true });
                     directionHistory[NewDirection] += 1;
+ 
                     Turn(NewDirection);
                 }
             }
@@ -159,6 +162,7 @@ namespace HackAndSlash
                         new bool[] { false, false, true, false });
                     directionHistory[NewDirection] += 1;
                     Turn(NewDirection);
+                    
                 }
             }
             else if (snakeState.state == snakeStateMachine.snakeHealth.MoveLeft)
@@ -182,6 +186,7 @@ namespace HackAndSlash
                         new bool[] { true, false, false, false });
                     directionHistory[NewDirection] += 1;
                     Turn(NewDirection);
+                    
                 }
             }
             else if (snakeState.state == snakeStateMachine.snakeHealth.MoveRight)
@@ -205,6 +210,7 @@ namespace HackAndSlash
                         new bool[] { false, true, false, false });
                     directionHistory[NewDirection] += 1;
                     Turn(NewDirection);
+                    
                 }
             }
 
@@ -215,16 +221,20 @@ namespace HackAndSlash
                 switch (randomDirection)
                 {
                     case 0:
-                        snakeState.changeToLeftMove();
+                        direction = GlobalSettings.Direction.Left;
+                        changeToMoveLeft();
                         break;
                     case 1:
-                        snakeState.changeToMoveUp();
+                        direction = GlobalSettings.Direction.Up;
+                        changeToMoveUp();
                         break;
                     case 2:
-                        snakeState.changeToRightMove();
+                        direction = GlobalSettings.Direction.Right;
+                        changeToMoveRight();
                         break;
                     case 3:
-                        snakeState.changeToMoveDown();
+                        direction = GlobalSettings.Direction.Down;
+                        changeToMoveDown();
                         break;
                 }
             }
@@ -233,7 +243,7 @@ namespace HackAndSlash
             enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
             if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
             {
-                snakeState.changeToDie();
+                changeToDie();
             }
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
@@ -253,7 +263,7 @@ namespace HackAndSlash
                     if (GlobalSettings.RND.Next(100) < 50)
                         game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
 
-                    snakeState.changeToNot();
+                    changeToNot();
                     game.levelCycleRecord.RemoveOneIndex(GlobalSettings.SNAKE_ENEMY);
                 }
             }
@@ -336,21 +346,26 @@ namespace HackAndSlash
 
         public void changeToMoveRight()
         {
+            direction = GlobalSettings.Direction.Right;
             snakeState.changeToRightMove();
+            
         }
 
         public void changeToMoveLeft()
         {
+            direction = GlobalSettings.Direction.Left;
             snakeState.changeToLeftMove();
         }
 
         public void changeToMoveUp()
         {
+            direction = GlobalSettings.Direction.Up;
             snakeState.changeToMoveUp();
         }
 
         public void changeToMoveDown()
         {
+            direction = GlobalSettings.Direction.Down;
             snakeState.changeToMoveDown();
         }
 
@@ -366,7 +381,7 @@ namespace HackAndSlash
 
         public GlobalSettings.Direction GetDirection()
         {
-            return GlobalSettings.Direction.Right;
+            return direction;
         }
     }
 

@@ -51,6 +51,7 @@ namespace HackAndSlash
             
             position = startPosition;
             goriyaState = new goriyaStateMachine();
+            direction = GlobalSettings.Direction.Left;
             Graphics = graphics;
             spriteBatch = SB;
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
@@ -90,16 +91,16 @@ namespace HackAndSlash
             switch (Direction)
             {
                 case (int)GlobalSettings.Direction.Left:
-                    goriyaState.changeToLeftMove();
+                    changeToMoveLeft();
                     break;
                 case (int)GlobalSettings.Direction.Up:
-                    goriyaState.changeToMoveUp();
+                    changeToMoveUp();
                     break;
                 case (int)GlobalSettings.Direction.Right:
-                    goriyaState.changeToRightMove();
+                    changeToMoveRight();
                     break;
                 case (int)GlobalSettings.Direction.Down:
-                    goriyaState.changeToMoveDown();
+                    changeToMoveDown();
                     break;
             }
             return Direction;
@@ -224,19 +225,19 @@ namespace HackAndSlash
                 {
                     case 0:
                         direction = GlobalSettings.Direction.Left;
-                        goriyaState.changeToLeftMove();
+                        changeToMoveLeft();
                         break;
                     case 1:
                         direction = GlobalSettings.Direction.Up;
-                        goriyaState.changeToMoveUp();
+                        changeToMoveUp();
                         break;
                     case 2:
                         direction = GlobalSettings.Direction.Right;
-                        goriyaState.changeToRightMove();
+                        changeToMoveRight();
                         break;
                     case 3:
                         direction = GlobalSettings.Direction.Down;
-                        goriyaState.changeToMoveDown();
+                        changeToMoveDown();
                         break;
                 }
             }
@@ -251,7 +252,7 @@ namespace HackAndSlash
             enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
             if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
             {
-                goriyaState.changeToDie();
+                changeToDie();
             }
 
             rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
@@ -269,7 +270,7 @@ namespace HackAndSlash
                     game.levelCycleRecord.RemoveOneIndex(GlobalSettings.GORIYA_ENEMY);
                     if (GlobalSettings.RND.Next(100) < 50)
                         game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
-                    goriyaState.changeToNot();
+                    changeToNot();
                 }
             }
 
@@ -326,21 +327,42 @@ namespace HackAndSlash
 
         public void damage()
         {
-            damageTaken++;
-            if (GlobalSettings.NIGHTMAREMODE)
+            Boolean shielded = isGoriyaShielded();
+
+            if (!shielded)
             {
-                totalLives = 5;
-            }
-            else
-            {
-                totalLives = 3;
-            }
-            if (damageTaken == totalLives)
-            {
-                damageTaken = 0;
-                goriyaState.changeToDie();
+                damageTaken++;
+                if (GlobalSettings.NIGHTMAREMODE)
+                {
+                    totalLives = 5;
+                }
+                else
+                {
+                    totalLives = 3;
+                }
+                if (damageTaken == totalLives)
+                {
+                    damageTaken = 0;
+                    changeToDie();
+                }
             }
 
+        }
+
+        Boolean isGoriyaShielded()
+        {
+            bool shield = true;
+            if ((direction == GlobalSettings.Direction.Up || direction == GlobalSettings.Direction.Down) && (game.Player.GetDir() == GlobalSettings.Direction.Left || game.Player.GetDir() == GlobalSettings.Direction.Right))
+            {
+                shield = false;
+            }
+
+            if ((direction == GlobalSettings.Direction.Right || direction == GlobalSettings.Direction.Left) && (game.Player.GetDir() == GlobalSettings.Direction.Up || game.Player.GetDir() == GlobalSettings.Direction.Down))
+            {
+                shield = false;
+            }
+
+            return shield;
         }
         //Functions to switch the states
         public void changeToIdle()
