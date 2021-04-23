@@ -37,5 +37,5 @@
 
 # Burndown Chart 
 
-![Burndown Chart](https://i.ibb.co/Pj7fpS2/burndown-Chart-S4.png)
+![Burndown Chart](https://media.discordapp.net/attachments/813492502119710720/835256444449194034/burndownChartS5.png?width=1653&height=878)
 
