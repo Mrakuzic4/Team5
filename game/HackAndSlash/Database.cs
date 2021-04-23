@@ -257,7 +257,7 @@ namespace HackAndSlash
             TitleScreenOverlay = new ImageFile("images/UI/TitleScreens", 2, 2);
             GameWonOverlay = new ImageFile("images/UI/GameWonOverlay", 1, 1);
             SoundMenuOverlay = new ImageFile("images/UI/SoundMenuOverlay", 1, 1);
-            VolumeSlider = new ImageFile("images/UI/VolumeSlider", 1, 1);
+            VolumeSlider = new ImageFile("images/UI/VolumeSlider1", 1, 1);
 
             TextCharacters = new ImageFile("images/TextCharacters", 4, 13);
             nightmareModeText = new ImageFile("images/nightmareModeText", 1, 1);

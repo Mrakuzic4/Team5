@@ -23,34 +23,34 @@ namespace HackAndSlash
             this.Overlay = overlay;
             this.VolumeSlider = volumeSlider;
             this.spriteBatch = spriteBatch;
-            this.posY = 600;
+            this.posY = GlobalSettings.VOLUME_TOP_LIMIT;
         }
         public void Update()
         {
             //Song Selection
             if (Keyboard.GetState().IsKeyDown(Keys.D1))
             {
-                SoundFactory.Instance.SongSelect(1);
+                SoundFactory.Instance.SongSelect(GlobalSettings.SONG_ONE);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D2))
             {
-                SoundFactory.Instance.SongSelect(2);
+                SoundFactory.Instance.SongSelect(GlobalSettings.SONG_TWO);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D3))
             {
-                SoundFactory.Instance.SongSelect(3);
+                SoundFactory.Instance.SongSelect(GlobalSettings.SONG_THREE);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D4))
             {
-                SoundFactory.Instance.SongSelect(4);
+                SoundFactory.Instance.SongSelect(GlobalSettings.SONG_FOUR);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D5))
             {
-                SoundFactory.Instance.SongSelect(5);
+                SoundFactory.Instance.SongSelect(GlobalSettings.SONG_FIVE);
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D6))
             {
-                SoundFactory.Instance.SongSelect(6);
+                SoundFactory.Instance.SongSelect(GlobalSettings.SONG_SIX);
             }
 
             //Volume Slider
@@ -59,7 +59,7 @@ namespace HackAndSlash
                 //Increase volume
                 SoundFactory.Instance.IncreaseVol();
                 //Slider animation logic
-                if (posY >= 600)
+                if (posY >= GlobalSettings.VOLUME_TOP_LIMIT)
                 {
                     posY--;
                 }
@@ -69,7 +69,7 @@ namespace HackAndSlash
                 //Decrease volume
                 SoundFactory.Instance.DecreaseVol();
                 //Slider animation logic
-                if (posY <= 735)
+                if (posY <= GlobalSettings.VOLUME_BOTTOM_LIMIT)
                 {
                     posY++;
                 }
@@ -85,7 +85,7 @@ namespace HackAndSlash
         public void Draw()
         {
             spriteBatch.Draw(Overlay, new Vector2(0, 0), Color.White);
-            spriteBatch.Draw(VolumeSlider, new Vector2(469, posY), Color.White);
+            spriteBatch.Draw(VolumeSlider, new Vector2(GlobalSettings.VOLUME_SLIDE_POS_X, posY), Color.White);
         }
     }
 }

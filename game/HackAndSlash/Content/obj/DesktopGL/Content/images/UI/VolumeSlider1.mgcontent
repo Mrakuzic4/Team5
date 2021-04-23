@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/UI/VolumeSlider.png</SourceFile>
-  <SourceTime>2021-04-22T20:36:36.9265242-04:00</SourceTime>
-  <DestFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/bin/DesktopGL/images/UI/VolumeSlider.xnb</DestFile>
-  <DestTime>2021-04-22T20:38:44.3773671-04:00</DestTime>
+  <SourceFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/UI/VolumeSlider1.png</SourceFile>
+  <SourceTime>2021-04-23T17:45:37.807988-04:00</SourceTime>
+  <DestFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/bin/DesktopGL/Content/images/UI/VolumeSlider1.xnb</DestFile>
+  <DestTime>2021-04-23T17:47:40.3446475-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

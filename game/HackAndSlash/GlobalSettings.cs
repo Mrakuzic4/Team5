@@ -95,6 +95,17 @@ namespace HackAndSlash
         public const int MAX_ITEMS = 99; // used for max items cheat
         public const int MAX_RUPEES = 999; // used for max rupees cheat
 
+        //Sound Menu
+        public const int VOLUME_SLIDE_POS_X = 467;
+        public const int VOLUME_TOP_LIMIT = 600;
+        public const int VOLUME_BOTTOM_LIMIT = 735;
+        public const int SONG_ONE = 1;
+        public const int SONG_TWO = 2;
+        public const int SONG_THREE = 3;
+        public const int SONG_FOUR = 4;
+        public const int SONG_FIVE = 5;
+        public const int SONG_SIX = 6;
+
         // Misc
         public static Random RND = new Random(); 
         public const int PRNG_WEIGHT = 10; // Increse this to make it more random
@@ -102,7 +113,6 @@ namespace HackAndSlash
         public float volume = 1f;
 
         public static SavedSettings saveSets = new JsonParser(SaveDatabase.saveFilePath, JsonParser.ParseMode.settingsMode).getCurrentSavedSettings();
-
 
     }
 

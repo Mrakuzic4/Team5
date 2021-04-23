@@ -58,6 +58,7 @@ namespace HackAndSlash
         private SoundEffect nightmareMode;
 
         private float volume = 1f;
+        private int lastSong = 1;
         private SoundFactory()
         {
 
@@ -83,7 +84,6 @@ namespace HackAndSlash
 
 
             //Sound Effects
-            //swordSlash = content.Load<SoundEffect>("sound/LOZ_Sword_Slash");
             swordSlash = new SoundEffect[] {
                 content.Load<SoundEffect>("sound/Terrorblade_melee_preattack1"),
                 content.Load<SoundEffect>("sound/Terrorblade_melee_preattack2"),
@@ -169,32 +169,64 @@ namespace HackAndSlash
 
             nightmareMode = content.Load<SoundEffect>("sound/horrorghostscream");
         }
-
+        
+        //Sound Menu
         public void SongSelect(int songNum)
         {
             switch (songNum)
             {
                 case 1:
+                    lastSong = 1;
                     DungeonSongOne();
                     break;
                 case 2:
+                    lastSong = 2;
                     DungeonSongTwo();
                     break;
                 case 3:
+                    lastSong = 3;
                     DungeonSongThree();
                     break;
                 case 4:
+                    lastSong = 4;
                     DungeonSongFour();
                     break;
                 case 5:
+                    lastSong = 5;
                     DungeonSongFive();
                     break;
                 case 6:
+                    lastSong = 6;
                     DungeonSongSix();
+                    break;
+                default:
+                    lastSong = 1;
+                    DungeonSongOne();
                     break;
             }
         }
+        public SongByte PlayLast()
+        {
+            switch (lastSong)
+            {
+                case 1:
+                    return new SongByte(dungeon1);
+                case 2:
+                    return new SongByte(dungeon2);
+                case 3:
+                    return new SongByte(dungeon3);
+                case 4:
+                    return new SongByte(dungeon4);
+                case 5:
+                    return new SongByte(dungeon5);
+                case 6:
+                    return new SongByte(dungeon6);
+                default:
+                    return new SongByte(dungeon1);
+            }
+        }
 
+        //Instance
         public static SoundFactory Instance
         {
             get
@@ -216,7 +248,6 @@ namespace HackAndSlash
             }
             MediaPlayer.Volume = volume;
         }
-
         public void IncreaseVol()
         {
             if (volume < 1f)
@@ -225,6 +256,7 @@ namespace HackAndSlash
             }
             MediaPlayer.Volume = volume;
         }
+
         //Songs
         public SongByte TitleScreenSong()
         {
@@ -235,35 +267,30 @@ namespace HackAndSlash
         }
         public SongByte DungeonSongOne()
         {
-            //if (_HappyMusics) {
-                //return new SongByte(dungeonHappy);
-            //}
-            //else if (_DevsAreInMood)
-                //return new SongByte(devInAMode[GlobalSettings.RND.Next() % 2]);
-            //else
-            return new SongByte(dungeon1);
+            if (_HappyMusics) {
+                return new SongByte(dungeonHappy);
+            }
+            else if (_DevsAreInMood)
+                return new SongByte(devInAMode[GlobalSettings.RND.Next() % 2]);
+            else
+                return new SongByte(dungeon1);
         }
-
         public SongByte DungeonSongTwo()
         {
             return new SongByte(dungeon2);
         }
-
         public SongByte DungeonSongThree()
         {
             return new SongByte(dungeon3);
         }
-
         public SongByte DungeonSongFour()
         {
             return new SongByte(dungeon4);
         }
-
         public SongByte DungeonSongFive()
         {
             return new SongByte(dungeon5);
         }
-
         public SongByte DungeonSongSix()
         {
             return new SongByte(dungeon6);
@@ -345,12 +372,10 @@ namespace HackAndSlash
         {
             return new SoundByte(bombBlow);
         }
-
         public SoundByte NightmareMode()
         {
             return new SoundByte(nightmareMode);
         }
-
         public SoundByte ThrowingKnifeEffect()
         {
             return new SoundByte(throwingKnife[GlobalSettings.RND.Next() % throwingKnife.Length]);
@@ -359,24 +384,20 @@ namespace HackAndSlash
         {
             return new SoundByte(flameThrow);
         }
-
         public SoundByte TriforceObtainedEffect()
         {
             if (_HappyMusics)
                 return new SoundByte(happyEnding);
             return new SoundByte(triforceObtained);
         }
-
         public SoundByte EnemyDamagedEffect()
         {
             return new SoundByte(enemyDamaged);
         }
-
         public SoundByte GetHeartEffect()
         {
             return new SoundByte(getHeart);
         }
-
         public SoundByte GetPayDoorsEffect()
         {
             return new SoundByte(payDoors);

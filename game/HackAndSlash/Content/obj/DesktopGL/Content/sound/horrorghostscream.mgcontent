@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/sound/horrorghostscream.wav</SourceFile>
-  <SourceTime>2021-04-23T10:35:42.5030239-04:00</SourceTime>
-  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/horrorghostscream.xnb</DestFile>
-  <DestTime>2021-04-23T11:18:51.9311053-04:00</DestTime>
+  <SourceFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/sound/horrorghostscream.wav</SourceFile>
+  <SourceTime>2021-04-23T00:06:50.7803754-04:00</SourceTime>
+  <DestFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/bin/DesktopGL/Content/sound/horrorghostscream.xnb</DestFile>
+  <DestTime>2021-04-23T17:44:24.575631-04:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

@@ -1129,7 +1129,7 @@
 /processorParam:TextureFormat=Color
 /build:images/UI/TitleScreens.png
 
-#begin images/UI/VolumeSlider.png
+#begin images/UI/VolumeSlider1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -1139,7 +1139,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:images/UI/VolumeSlider.png
+/build:images/UI/VolumeSlider1.png
 
 #begin images/UI/WinningScreen.png
 /importer:TextureImporter

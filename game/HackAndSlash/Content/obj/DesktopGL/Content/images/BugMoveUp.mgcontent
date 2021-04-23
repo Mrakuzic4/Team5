@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/images/BugMoveUp.png</SourceFile>
-  <SourceTime>2021-02-17T22:04:07.1967147-05:00</SourceTime>
-  <DestFile>C:/Users/Jimmy Yuan/Documents/GitHub/Team5/game/HackAndSlash/Content/bin/DesktopGL/Content/images/BugMoveUp.xnb</DestFile>
-  <DestTime>2021-04-23T11:18:37.341818-04:00</DestTime>
+  <SourceFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/BugMoveUp.png</SourceFile>
+  <SourceTime>2021-04-22T15:48:18.5956799-04:00</SourceTime>
+  <DestFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/bin/DesktopGL/Content/images/BugMoveUp.xnb</DestFile>
+  <DestTime>2021-04-23T17:44:08.6804644-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

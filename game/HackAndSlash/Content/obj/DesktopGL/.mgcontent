@@ -70,6 +70,7 @@
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/MoveableBlood.png</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/NES - The Legend of Zelda - Fonts.png</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/NES - The Legend of Zelda - Link.png</File>
+    <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/nightmareModeText.png</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/Oldman.png</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/RedBall.png</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/Rupy.png</File>
@@ -96,7 +97,7 @@
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/UI/SoundMenuOverlay.png</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/UI/SwordSelector.png</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/UI/TitleScreens.png</File>
-    <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/UI/VolumeSlider.png</File>
+    <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/UI/VolumeSlider1.png</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/UI/WinningScreen.png</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/WholeHeart.png</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/ZeldaAttackDown.png</File>
@@ -142,6 +143,7 @@
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/sound/garbud01.wav</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/sound/garbud04.wav</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/sound/HandOfMidas.wav</File>
+    <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/sound/horrorghostscream.wav</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/sound/idleSound1.wav</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/sound/idleSound10.wav</File>
     <File>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/sound/idleSound11.wav</File>
@@ -288,6 +290,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>images/TextCharacters.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
@@ -304,6 +307,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>images/fullHeart.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
