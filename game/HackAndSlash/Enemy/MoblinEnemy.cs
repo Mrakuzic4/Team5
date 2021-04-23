@@ -23,7 +23,6 @@ namespace HackAndSlash
         private int deathTimer = 0;
         private int milliSecondsPerFrame = 60;
         private int dieTotalTime = 500;
-        private int temp = 0; //counter to change states after a certain number of calls to update
 
         private System.Random random;
         private int[] directionHistory = new int[] { 0, 0, 0, 0 };

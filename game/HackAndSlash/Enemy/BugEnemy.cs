@@ -23,11 +23,9 @@ namespace HackAndSlash
         private int timeSinceLastFrame = 0; // used to slow down the rate of animation 
         private int milliSecondsPerFrame = 80;
         private int dieTotalTime = 500; 
-        private int temp = 0;//counter to change states after a certain number of calls to update
 
         private System.Random random;
         private int[] directionHistory = new int[] { 0, 0, 0, 0 }; 
-        private int randomDirection = 0; //0-left, 1-up, 2-right, 3- down
         public GlobalSettings.Direction direction { get; set; }
 
         private Color tintColor;

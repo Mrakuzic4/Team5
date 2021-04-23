@@ -21,7 +21,6 @@ namespace HackAndSlash
         private int timeSinceDirectionChange = 0;
         private int deathTimer = 0;
         private int milliSecondsPerFrame = 80;
-        private int temp = 0; //counter to change states after a certain number of calls to update
         private bool firstTimeEncounter = true; 
 
         private System.Random random;

@@ -109,7 +109,6 @@ namespace HackAndSlash
         private Texture2D OldWoman;
         private Texture2D Heart;
         private Texture2D Refill;
-        private Texture2D Ruby;
         private Texture2D Shield;
         private Texture2D ShieldItem;
         private Texture2D ZeldaGotRefill;
