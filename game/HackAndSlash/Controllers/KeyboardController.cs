@@ -43,7 +43,8 @@ namespace HackAndSlash
                 {Keys.Escape, new PauseCommand(game)},
                 {Keys.Tab, new DisplayMapCommand(game)},
                 {Keys.C,new CancelNightmareModeCommand(game)},
-                {Keys.M, new NightmareModeCommand(game)}
+                {Keys.M, new NightmareModeCommand(game)},
+                {Keys.V, new SoundMenuCommand(game)}
             };
         }
 

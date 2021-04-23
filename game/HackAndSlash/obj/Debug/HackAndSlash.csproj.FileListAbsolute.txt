@@ -948,3 +948,5 @@ C:\Users\vidha\source\repos\game\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Ne
 C:\Users\vidha\source\repos\game\game\HackAndSlash\obj\Debug\HackAndSlash.csproj.CopyComplete
 C:\Users\vidha\source\repos\game\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\VolumeSlider.xnb
 C:\Users\vidha\source\repos\game\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\UI\SoundMenuOverlay.xnb
+C:\Users\vidha\source\repos\game\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\sound\horrorghostscream.xnb
+C:\Users\vidha\source\repos\game\game\HackAndSlash\bin\DesktopGL\AnyCPU\Debug\Content\images\nightmareModeText.xnb

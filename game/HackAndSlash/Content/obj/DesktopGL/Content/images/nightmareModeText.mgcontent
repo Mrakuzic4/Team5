@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/images/nightmareModeText.png</SourceFile>
-  <SourceTime>2021-04-22T16:29:45.8563928-04:00</SourceTime>
-  <DestFile>C:/Users/hkomm/git/repository/HighSixMain/game/HackAndSlash/Content/bin/DesktopGL/Content/images/nightmareModeText.xnb</DestFile>
-  <DestTime>2021-04-22T17:17:41.6561037-04:00</DestTime>
+  <SourceFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/images/nightmareModeText.png</SourceFile>
+  <SourceTime>2021-04-23T00:06:50.7604281-04:00</SourceTime>
+  <DestFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/bin/DesktopGL/Content/images/nightmareModeText.xnb</DestFile>
+  <DestTime>2021-04-23T00:12:13.3766901-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
