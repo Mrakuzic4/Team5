@@ -13,12 +13,17 @@ namespace HackAndSlash
 {
     class SoundFactory
     {
-        private bool _HappyMusics = true;
+        private bool _HappyMusics = false;
         private bool _DevsAreInMood = false;
 
         private static SoundFactory instance;
         private Song titleScreen;
-        private Song dungeon;
+        private Song dungeon1;
+        private Song dungeon2;
+        private Song dungeon3;
+        private Song dungeon4;
+        private Song dungeon5;
+        private Song dungeon6;
         private Song titleScreenHappy;
         private Song dungeonHappy;
         private Song[] devInAMode;
@@ -51,7 +56,7 @@ namespace HackAndSlash
         private SoundEffect happyEnding;
         private SoundEffect[] idling;
 
-
+        private float volume = 1f;
         private SoundFactory()
         {
 
@@ -61,7 +66,12 @@ namespace HackAndSlash
         {
             //Songs
             titleScreen = content.Load<Song>("sound/TitleScreenMp3");
-            dungeon = content.Load<Song>("sound/DungeonMusic");
+            dungeon1 = content.Load<Song>("sound/DungeonMusic");
+            dungeon2 = content.Load<Song>("sound/DungeonMusic2");
+            dungeon3 = content.Load<Song>("sound/DungeonMusic3");
+            dungeon4 = content.Load<Song>("sound/DungeonMusic4");
+            dungeon5 = content.Load<Song>("sound/DungeonMusic5");
+            dungeon6 = content.Load<Song>("sound/DungeonMusic6");
 
             titleScreenHappy = content.Load<Song>("sounds/TitleMusicHappy");
             dungeonHappy = content.Load<Song>("sounds/HappyNoise");
@@ -157,6 +167,31 @@ namespace HackAndSlash
             };
         }
 
+        public void SongSelect(int songNum)
+        {
+            switch (songNum)
+            {
+                case 1:
+                    DungeonSongOne();
+                    break;
+                case 2:
+                    DungeonSongTwo();
+                    break;
+                case 3:
+                    DungeonSongThree();
+                    break;
+                case 4:
+                    DungeonSongFour();
+                    break;
+                case 5:
+                    DungeonSongFive();
+                    break;
+                case 6:
+                    DungeonSongSix();
+                    break;
+            }
+        }
+
         public static SoundFactory Instance
         {
             get
@@ -169,6 +204,24 @@ namespace HackAndSlash
             }
         }
 
+        //Volume
+        public void DecreaseVol()
+        {
+            if (volume > 0f)
+            {
+                volume = volume - .01f;
+            }
+            MediaPlayer.Volume = volume;
+        }
+
+        public void IncreaseVol()
+        {
+            if (volume < 1f)
+            {
+                volume = volume + .01f;
+            }
+            MediaPlayer.Volume = volume;
+        }
         //Songs
         public SongByte TitleScreenSong()
         {
@@ -177,15 +230,40 @@ namespace HackAndSlash
             else 
                 return new SongByte(titleScreen);
         }
-        public SongByte DungeonSong()
+        public SongByte DungeonSongOne()
         {
-            if (_HappyMusics) {
-                return new SongByte(dungeonHappy);
-            }
-            else if (_DevsAreInMood)
-                return new SongByte(devInAMode[GlobalSettings.RND.Next() % 2]);
-            else
-                return new SongByte(dungeon);
+            //if (_HappyMusics) {
+                //return new SongByte(dungeonHappy);
+            //}
+            //else if (_DevsAreInMood)
+                //return new SongByte(devInAMode[GlobalSettings.RND.Next() % 2]);
+            //else
+            return new SongByte(dungeon1);
+        }
+
+        public SongByte DungeonSongTwo()
+        {
+            return new SongByte(dungeon2);
+        }
+
+        public SongByte DungeonSongThree()
+        {
+            return new SongByte(dungeon3);
+        }
+
+        public SongByte DungeonSongFour()
+        {
+            return new SongByte(dungeon4);
+        }
+
+        public SongByte DungeonSongFive()
+        {
+            return new SongByte(dungeon5);
+        }
+
+        public SongByte DungeonSongSix()
+        {
+            return new SongByte(dungeon6);
         }
 
         //Sound Effects

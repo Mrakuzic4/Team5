@@ -99,10 +99,12 @@ namespace HackAndSlash
         public ImageFile SwordSelector;
         public ImageFile InventoryText;
         public ImageFile ItemSelector;
+        public ImageFile VolumeSlider;
 
         public ImageFile GameOverOverlay;
         public ImageFile TitleScreenOverlay;
         public ImageFile GameWonOverlay;
+        public ImageFile SoundMenuOverlay;
 
         public ImageFile TextCharacters;
         public ImageFile OldMan;
@@ -252,6 +254,8 @@ namespace HackAndSlash
             ItemSelector = new ImageFile("images/UI/ItemSelector", 1, 1);
             TitleScreenOverlay = new ImageFile("images/UI/TitleScreens", 2, 2);
             GameWonOverlay = new ImageFile("images/UI/GameWonOverlay", 1, 1);
+            SoundMenuOverlay = new ImageFile("images/UI/SoundMenuOverlay", 1, 1);
+            VolumeSlider = new ImageFile("images/UI/VolumeSlider", 1, 1);
 
             TextCharacters = new ImageFile("images/TextCharacters", 4, 13);
         }

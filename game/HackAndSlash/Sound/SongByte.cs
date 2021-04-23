@@ -14,7 +14,6 @@ namespace HackAndSlash
         public SongByte(Song song)
         {
             MediaPlayer.Play(song);
-            MediaPlayer.Volume = .4f;
             MediaPlayer.IsRepeating = true;
         }
     }

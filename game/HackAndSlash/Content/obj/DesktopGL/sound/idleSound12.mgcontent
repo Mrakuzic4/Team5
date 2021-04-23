@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/sound/idleSound12.wav</SourceFile>
+  <SourceTime>2021-04-22T15:48:19.125213-04:00</SourceTime>
+  <DestFile>C:/Users/vidha/source/repos/game/game/HackAndSlash/Content/bin/DesktopGL/sound/idleSound12.xnb</DestFile>
+  <DestTime>2021-04-22T16:44:00.9259229-04:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2018-12-08T11:35:54-05:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

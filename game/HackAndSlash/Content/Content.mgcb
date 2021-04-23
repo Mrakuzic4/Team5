@@ -1081,6 +1081,18 @@
 /processorParam:TextureFormat=Color
 /build:images/UI/ItemSelector.png
 
+#begin images/UI/SoundMenuOverlay.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/UI/SoundMenuOverlay.png
+
 #begin images/UI/SwordSelector.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1104,6 +1116,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:images/UI/TitleScreens.png
+
+#begin images/UI/VolumeSlider.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/UI/VolumeSlider.png
 
 #begin images/UI/WinningScreen.png
 /importer:TextureImporter
@@ -1458,6 +1482,36 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:sound/DungeonMusic.mp3
+
+#begin sound/DungeonMusic2.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sound/DungeonMusic2.mp3
+
+#begin sound/DungeonMusic3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sound/DungeonMusic3.mp3
+
+#begin sound/DungeonMusic4.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sound/DungeonMusic4.mp3
+
+#begin sound/DungeonMusic5.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sound/DungeonMusic5.mp3
+
+#begin sound/DungeonMusic6.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sound/DungeonMusic6.mp3
 
 #begin sound/EnchantedMango.wav
 /importer:WavImporter

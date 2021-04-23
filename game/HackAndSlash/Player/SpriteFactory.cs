@@ -98,6 +98,8 @@ namespace HackAndSlash
         private Texture2D ItemSelector;
         private Texture2D TitleScreenOverlay;
         private Texture2D GameWonScreenOverlay;
+        private Texture2D SoundMenuOverlay;
+        private Texture2D VolumeSlider;
 
         private Texture2D OldMan;
         private Texture2D RedBall;
@@ -267,11 +269,13 @@ namespace HackAndSlash
             GameOverOverlay = content.Load<Texture2D>(IMDB.GameOverOverlay.pathName);
             TitleScreenOverlay = content.Load<Texture2D>(IMDB.TitleScreenOverlay.pathName);
             GameWonScreenOverlay = content.Load<Texture2D>(IMDB.GameWonOverlay.pathName);
+            SoundMenuOverlay = content.Load<Texture2D>(IMDB.SoundMenuOverlay.pathName);
 
             SwordSelector = content.Load<Texture2D>(IMDB.SwordSelector.pathName);
             TextCharacters = content.Load<Texture2D>(IMDB.TextCharacters.pathName);
             InventoryText = content.Load<Texture2D>(IMDB.InventoryText.pathName);
             ItemSelector = content.Load<Texture2D>(IMDB.ItemSelector.pathName);
+            VolumeSlider = content.Load<Texture2D>(IMDB.VolumeSlider.pathName);
         }
 
         //************Below are Merchant and NPC***********
@@ -802,6 +806,16 @@ namespace HackAndSlash
         public Texture2D GetGameOverOverlay()
         {
             return GameOverOverlay;
+        }
+        //****************************Below is sound menu screen textures**************************//
+        public Texture2D GetSoundMenuOverlay()
+        {
+            return SoundMenuOverlay;
+        }
+
+        public Texture2D GetVolumeSlider()
+        {
+            return VolumeSlider;
         }
     }
 }

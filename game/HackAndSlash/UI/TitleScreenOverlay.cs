@@ -63,7 +63,7 @@ namespace HackAndSlash
                 {
                     fadingOut = false;
                     Game.GameState = GlobalSettings.GameStates.Running;
-                    SoundFactory.Instance.DungeonSong();
+                    SoundFactory.Instance.DungeonSongOne();
                 }
             }
         }

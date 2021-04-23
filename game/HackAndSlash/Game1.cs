@@ -82,6 +82,7 @@ namespace HackAndSlash
         private TitleScreenOverlay titleScreen;
         private GameWonOverlay gameWonScreenOverlay;
         private UpgradesOverlay upgradesOverlay;
+        private SoundMenuOverlay soundMenuOverlay;
         public CheatText cheatText;
         public bool inGameOverAnimation;
         public bool inGameWonAnimation;
@@ -187,6 +188,7 @@ namespace HackAndSlash
             titleScreen = new TitleScreenOverlay(this, SpriteFactory.Instance.GetTitleScreen(), spriteBatch);
             gameWonScreenOverlay = new GameWonOverlay(this, SpriteFactory.Instance.getGameWonScreen(), SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
             upgradesOverlay = new UpgradesOverlay(this, GraphicsDevice, spriteBatch);
+            soundMenuOverlay = new SoundMenuOverlay(this, SpriteFactory.Instance.GetSoundMenuOverlay(), SpriteFactory.Instance.GetVolumeSlider(), spriteBatch);
             cheatText = new CheatText(this, spriteBatch);
         }
 
@@ -332,6 +334,10 @@ namespace HackAndSlash
                     upgradesOverlay.Update();
                     break;
 
+                case GlobalSettings.GameStates.SoundMenu:
+                    soundMenuOverlay.Update();
+                    break;
+
                 case GlobalSettings.GameStates.Transitioning:
                     currentLevel.Update(gameTime);
                     miniMap.UpdateTransition(transitionDir);
@@ -447,6 +453,10 @@ namespace HackAndSlash
 
                 case GlobalSettings.GameStates.Paused:
                     pauseOverlay.Draw();
+                    break;
+
+                case GlobalSettings.GameStates.SoundMenu:
+                    soundMenuOverlay.Draw();
                     break;
 
                 case GlobalSettings.GameStates.GameWon:
