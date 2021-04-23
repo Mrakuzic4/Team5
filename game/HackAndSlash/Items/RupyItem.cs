@@ -139,7 +139,7 @@ namespace HackAndSlash
         {
             ChangeToUseable();
             SoundFactory.Instance.GetItemEffect();
-            numUses++;
+            if (numUses < GlobalSettings.MAX_RUPEES) numUses++;
         }
 
         public void UseItem(GlobalSettings.Direction currentPlayerDirection)
@@ -178,7 +178,7 @@ namespace HackAndSlash
 
         public void SetMax()
         {
-
+            numUses = GlobalSettings.MAX_RUPEES;
         }
 
         public void ChangeToCollectable()

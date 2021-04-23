@@ -17,7 +17,7 @@ namespace HackAndSlash
         {
             foreach (IItem item in Game.useableItemList)
             {
-                 item.SetMax();
+                 if (!(item is RupyItem)) item.SetMax();
             }
             Game.cheatText.activeText = CheatText.cheats.MAX_ITEMS;
         }

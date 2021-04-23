@@ -63,6 +63,8 @@
     <Compile Include="Commands\GodModeCommand.cs" />
     <Compile Include="Commands\HealCheatCommand.cs" />
     <Compile Include="Commands\MaxItemsCommand.cs" />
+    <Compile Include="Commands\MaxRupeesCommand.cs" />
+    <Compile Include="Commands\NoFogCommand.cs" />
     <Compile Include="Commands\PauseCommand.cs" />
     <Compile Include="Commands\UsePrimaryItemCommand.cs" />
     <Compile Include="Commands\UseSecondaryItemCommand.cs" />

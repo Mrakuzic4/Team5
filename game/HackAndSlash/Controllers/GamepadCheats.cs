@@ -22,10 +22,14 @@ namespace HackAndSlash
             {
                 {new List<Buttons>() { Buttons.DPadUp, Buttons.DPadUp, Buttons.DPadDown, Buttons.DPadDown, Buttons.DPadLeft, 
                     Buttons.DPadRight, Buttons.DPadLeft, Buttons.DPadRight, Buttons.B, Buttons.A }, new GodModeCommand(game) },
-                {new List<Buttons>() { Buttons.A, Buttons.DPadDown, Buttons.X, Buttons.DPadDown, Buttons.DPadUp, Buttons.DPadUp }, 
+                {new List<Buttons>() { Buttons.A, Buttons.DPadDown, Buttons.B, Buttons.DPadDown, Buttons.DPadUp, Buttons.DPadUp }, 
                     new HealCheatCommand(game) },
-                {new List<Buttons>() { Buttons.LeftTrigger, Buttons.RightTrigger, Buttons.Y, Buttons.A, Buttons.DPadDown}, 
-                    new MaxItemsCommand(game) }
+                {new List<Buttons>() { Buttons.B, Buttons.B, Buttons.A, Buttons.A, Buttons.DPadDown, Buttons.DPadRight, Buttons.DPadRight}, 
+                    new MaxItemsCommand(game) },
+                {new List<Buttons>() {Buttons.DPadUp, Buttons.DPadDown, Buttons.B, Buttons.A, Buttons.DPadUp, Buttons.DPadDown, Buttons.Back}, 
+                    new MaxRupeesCommand(game) },
+                {new List<Buttons>() {Buttons.DPadUp, Buttons.B, Buttons.DPadUp, Buttons.A, Buttons.DPadLeft, Buttons.DPadRight, Buttons.DPadLeft },
+                    new NoFogCommand(game) }
             };
             InputDelay.Restart();
             Timeout.Restart();

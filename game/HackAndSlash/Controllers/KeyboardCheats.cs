@@ -25,7 +25,10 @@ namespace HackAndSlash
                 {new List<Keys>() { Keys.Up, Keys.Up, Keys.Down, Keys.Down, Keys.Left, Keys.Right, Keys.Left, Keys.Right, 
                     Keys.Z, Keys.N}, new GodModeCommand(game) },
                 {new List<Keys>() { Keys.H, Keys.E, Keys.A, Keys.L, Keys.M, Keys.E }, new HealCheatCommand(game) },
-                {new List<Keys>() { Keys.I, Keys.T, Keys.E, Keys.M, Keys.S, Keys.P, Keys.L, Keys.Z }, new MaxItemsCommand(game) }
+                {new List<Keys>() { Keys.I, Keys.T, Keys.E, Keys.M, Keys.S, Keys.P, Keys.L, Keys.Z }, new MaxItemsCommand(game) },
+                {new List<Keys>() { Keys.P, Keys.A, Keys.Y, Keys.D, Keys.A, Keys.Y}, new MaxRupeesCommand(game) },
+                {new List<Keys>() { Keys.L, Keys.I, Keys.G, Keys.H, Keys.T, Keys.S, Keys.W, Keys.I, Keys.T, Keys.C, Keys.H},
+                    new NoFogCommand(game) }
             };
             InputDelay.Restart();
             Timeout.Restart();
@@ -42,7 +45,7 @@ namespace HackAndSlash
                     Timeout.Restart();
                 }
             }
-            //clear the buffer after a certain timeout interval has elapsed
+            //clear the buffer after a certain timeout interval has elapsed with no new keys added to buffer
             if (Timeout.ElapsedMilliseconds > GlobalSettings.CHEAT_INPUT_TIMEOUT)
             {
                 KeyBuffer.Clear();

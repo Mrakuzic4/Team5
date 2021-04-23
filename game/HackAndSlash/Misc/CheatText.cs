@@ -13,10 +13,16 @@ namespace HackAndSlash
         private Game1 game;
         private TextSprite textsprite;
         private SpriteBatch spritebatch;
-        private string[] texts = { "GOD MODE ACTIVATED", "HEAL ACTIVATED" , "MAX ITEMS ACTIVATED"};
+        private string[] texts = { 
+                                    "GOD MODE ACTIVATED", 
+                                    "HEAL ACTIVATED" , 
+                                    "MAX ITEMS ACTIVATED", 
+                                    "MAX RUPEES ACTIVATED",
+                                    "NO FOG ACTIVATED"
+                                    };
         private int counter;
         private const int displayTime = 180;
-        public enum cheats { GODMODE , HEAL , MAX_ITEMS }
+        public enum cheats { GODMODE , HEAL , MAX_ITEMS , MAX_RUPEES , NO_FOG}
         public cheats? activeText { get; set; }
         public CheatText (Game1 game, SpriteBatch spritebatch)
         {
@@ -28,8 +34,11 @@ namespace HackAndSlash
         }
         public void Draw()
         {
-            textsprite.Draw(spritebatch, texts[(int)activeText], new Vector2(GlobalSettings.WINDOW_WIDTH / 4, 
-                GlobalSettings.WINDOW_HEIGHT / 2), Color.White);
+            // calculations to (relatively) center text on screen 
+            float xPos = GlobalSettings.WINDOW_WIDTH / texts[(int)activeText].ToString().Length;
+            xPos = xPos * 5;
+
+            textsprite.Draw(spritebatch, texts[(int)activeText], new Vector2(xPos, GlobalSettings.WINDOW_HEIGHT / 2), Color.White);
             counter++;
             if (counter == displayTime)
             {

@@ -10,9 +10,29 @@
 * Mouse click `LMB` and `RMB` to switch between maps.
 * `Escape` key to pause, the player can also switch items during the pause screen.
 
-  ### Gamepad Contol 
+  ### Keyboard Cheats
+  * `W` `W` `S` `S` `A` `D` `A` `D` `Z` `N` to activate godmode.
+    * Equivalent arrow keys + `Z` `N` also activates godmode.
+  * `H` `E` `A` `L` `M` `E` to active the healing cheat.
+  * `I` `T` `E` `M` `S` `P` `L` `Z` to activate max items. Must have items in inventory for them to be affected.
+  * `P` `A` `Y` `D` `A` `Y` to active max rupees.
+  * `L` `I` `G` `H` `T` `S` `W` `I` `T` `C` `H` to disable fog. 
+  
+  ## Gamepad Contol 
   * `DPAD` direction buttons for moving the player character.
   * `A` button for attacking.
+  * `B` button for using primary item.
+  * `X` button for using secondary item.
+  * `Start` to pause the game.
+  * `Back` to
+
+  ### Gamepad Cheats
+  * *All directions correspond to `DPAD` buttons.*
+  * `UP` `UP` `DOWN` `DOWN` `LEFT` `RIGHT` `LEFT` `RIGHT` `B` `A` to active godmode.
+  * `A` `DOWN` `B` `DOWN` `UP` `UP` to activate healing cheat.
+  * `B` `B` `A` `A` `DOWN` `RIGHT` `RIGHT` to activate max items.
+  * `UP` `DOWN` `B` `A` `UP` `DOWN` `BACK` to active max rupees.
+  * `UP` `B` `UP` `A` `LEFT` `RIGHT` `LEFT` to disable fog. 
 
   ### Features from previous patches that has been removed or only avilable in Developer Mode 
   * `O` and `P` to toggle between enemy displayed in the map.
