@@ -100,6 +100,8 @@ namespace HackAndSlash
         public ImageFile InventoryText;
         public ImageFile ItemSelector;
 
+        public ImageFile nightmareModeText;
+
         public ImageFile GameOverOverlay;
         public ImageFile TitleScreenOverlay;
         public ImageFile GameWonOverlay;
@@ -254,6 +256,7 @@ namespace HackAndSlash
             GameWonOverlay = new ImageFile("images/UI/GameWonOverlay", 1, 1);
 
             TextCharacters = new ImageFile("images/TextCharacters", 4, 13);
+            nightmareModeText = new ImageFile("images/nightmareModeText", 1, 1);
         }
     }
 

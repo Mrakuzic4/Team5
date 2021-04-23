@@ -99,6 +99,8 @@ namespace HackAndSlash
         private Texture2D TitleScreenOverlay;
         private Texture2D GameWonScreenOverlay;
 
+        private Texture2D nightmareModetext;
+
         private Texture2D OldMan;
         private Texture2D RedBall;
 
@@ -268,6 +270,8 @@ namespace HackAndSlash
             TitleScreenOverlay = content.Load<Texture2D>(IMDB.TitleScreenOverlay.pathName);
             GameWonScreenOverlay = content.Load<Texture2D>(IMDB.GameWonOverlay.pathName);
 
+            nightmareModetext = content.Load<Texture2D>(IMDB.nightmareModeText.pathName);
+
             SwordSelector = content.Load<Texture2D>(IMDB.SwordSelector.pathName);
             TextCharacters = content.Load<Texture2D>(IMDB.TextCharacters.pathName);
             InventoryText = content.Load<Texture2D>(IMDB.InventoryText.pathName);
@@ -434,6 +438,11 @@ namespace HackAndSlash
         public Texture2D GetTitleScreen()
         {
             return TitleScreenOverlay;
+        }
+
+        public Texture2D GetNightmareModeText()
+        {
+            return nightmareModetext;
         }
         public Texture2D GetSwordSelector()
         {

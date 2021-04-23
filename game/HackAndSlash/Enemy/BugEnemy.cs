@@ -30,6 +30,8 @@ namespace HackAndSlash
         private int randomDirection = 0; //0-left, 1-up, 2-right, 3- down
 
         private Color tintColor;
+        private int damageTaken;
+        private int totalLives;
 
         private EnemyCollisionDetector enemyCollisionDetector;
         private EnemyBlockCollision enemyBlockCollision;
@@ -58,6 +60,8 @@ namespace HackAndSlash
 
             directionHistory[Turn(GlobalSettings.RND.Next(3))] += 1;
             this.game = game;
+            damageTaken = 0;
+            totalLives = 1;
         }
 
         //Loading the spritebatch 
@@ -116,7 +120,15 @@ namespace HackAndSlash
                 // Move up
                 if (position.Y > GlobalSettings.BORDER_OFFSET)
                 {
-                    position.Y--;
+                    if(GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.Y-=2;
+                    }
+                    else
+                    {
+                        position.Y--;
+                    }
+                    
                 }
 
                 else
@@ -132,7 +144,15 @@ namespace HackAndSlash
                 //Move down
                 if (position.Y < bottomBound)
                 {
-                    position.Y++;
+                    if(GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.Y += 2;
+                    }
+                    else
+                    {
+                        position.Y++;
+                    }
+                    
                 }
 
                 else
@@ -148,8 +168,18 @@ namespace HackAndSlash
                 //Move left
                 if (position.X > GlobalSettings.BORDER_OFFSET)
                 {
-                    position.X--;
-                } else if (position.X <= GlobalSettings.BORDER_OFFSET)
+                    if(GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.X-= 2;
+                    }
+
+                    else
+                    {
+                        position.X--;
+                    }
+                } 
+                
+                else 
                 {
                     int NewDirection = new PRNG().DirectionMask(directionHistory,
                         new bool[] { true, false, false, false });
@@ -162,9 +192,17 @@ namespace HackAndSlash
                 //Move right
                 if (position.X < rightBound)
                 {
-                    position.X++;
+                    if(GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.X += 2;
+                    }
+
+                    else
+                    {
+                        position.X++;
+                    }
                 }
-                else if (position.X >= rightBound)
+                else 
                 {
                     int NewDirection = new PRNG().DirectionMask(directionHistory,
                         new bool[] { false, true, false, false });
@@ -202,8 +240,18 @@ namespace HackAndSlash
                     deathTimer = 0;
                     bugState.changeToNot();
                     game.levelCycleRecord.RemoveOneIndex(GlobalSettings.BUG_ENEMY);
-                    if (GlobalSettings.RND.Next(100) < 50)
-                        game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
+                    if(GlobalSettings.NIGHTMAREMODE)
+                    {
+                        if (GlobalSettings.RND.Next(100) < 20)
+                        {
+                            game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
+                        }
+                    }
+                    else
+                    {
+                        if (GlobalSettings.RND.Next(100) < 50)
+                            game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
+                    }
                 }
             }
 
@@ -224,8 +272,31 @@ namespace HackAndSlash
 
             else if((bugState.state != bugStateMachine.bugHealth.Not) && (bugState.state != bugStateMachine.bugHealth.Die))
             {
-                tintColor = Color.White;
-                bugState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                if (damageTaken == 1)
+                {
+                    tintColor = Color.Pink;
+                    bugState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
+                if (damageTaken == 2)
+                {
+                    tintColor = Color.BlueViolet;
+                    bugState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
+                if (damageTaken == 3)
+                {
+                    tintColor = Color.Brown;
+                    bugState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
+                if (damageTaken == 4)
+                {
+                    tintColor = Color.OrangeRed;
+                    bugState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
+                else
+                {
+                    tintColor = Color.White;
+                    bugState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
             }
 
         }
@@ -237,7 +308,20 @@ namespace HackAndSlash
 
         public void damage()
         {
-            changeToDie();
+            damageTaken++;
+            if (GlobalSettings.NIGHTMAREMODE)
+            {
+                totalLives = 5;
+            }
+            else
+            {
+                totalLives = 1;
+            }
+            if (damageTaken == totalLives)
+            {
+                damageTaken = 0;
+                bugState.changeToDie();
+            }
         }
 
         //Functions to switch the states
@@ -269,11 +353,7 @@ namespace HackAndSlash
         public void changeToDie()
         {
             bugState.changeToDie();
-            // randomly drop rupys
-            if (random.Next(0, 3) == 0)
-            {
-                game.itemList.Add(new RupyItem(position, spriteBatch, game));
-            }
+            
         }
 
         public void changeToNot()

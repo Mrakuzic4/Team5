@@ -805,6 +805,18 @@
 /processorParam:TextureFormat=Color
 /build:images/NES - The Legend of Zelda - Link.png;images/Zelda.png
 
+#begin images/nightmareModeText.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/nightmareModeText.png
+
 #begin images/Oldman.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1500,6 +1512,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:sound/HandOfMidas.wav
+
+#begin sound/horrorghostscream.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sound/horrorghostscream.wav
 
 #begin sound/idleSound1.wav
 /importer:WavImporter

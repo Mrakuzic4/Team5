@@ -163,7 +163,28 @@ namespace HackAndSlash
 
         public void Damaged()
         {
-            if (!GlobalSettings.GODMODE) 
+            if(GlobalSettings.NIGHTMAREMODE)
+            {
+                //Health goes down by a half heart when damaged
+                //If has shield, health only goes down 1.
+                //If no shield, health goes down 2.
+                currentHealth = currentHealth - 4 +shieldPoint;
+                playerStateMachine.Damaged();
+
+                //Sound
+                SoundFactory.Instance.LinkDamagedEffect();
+                if (currentHealth <= 0)
+                {
+                    this.game.GameState = GlobalSettings.GameStates.GameOver;
+                    this.game.currentLevel.setGameOver();
+                    this.game.gameOver = true;
+                    GlobalSettings.NIGHTMAREMODE = false;
+                    this.game.inGameOverAnimation = true;
+                    SoundFactory.Instance.StopSong();
+                    SoundFactory.Instance.LinkDeathEffect();
+                }
+            }
+            else if (!GlobalSettings.GODMODE) 
             {
                 //Health goes down by a half heart when damaged
                 //If has shield, health only goes down 1.
@@ -178,6 +199,7 @@ namespace HackAndSlash
                     this.game.GameState = GlobalSettings.GameStates.GameOver;
                     this.game.currentLevel.setGameOver();
                     this.game.gameOver = true;
+                    GlobalSettings.NIGHTMAREMODE = false;
                     this.game.inGameOverAnimation = true;
                     SoundFactory.Instance.StopSong();
                     SoundFactory.Instance.LinkDeathEffect();

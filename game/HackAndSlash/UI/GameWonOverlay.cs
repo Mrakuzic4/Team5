@@ -73,8 +73,6 @@ namespace HackAndSlash
             {
                 sourceRectangle = new Rectangle(0, 0, Overlay.Width, Overlay.Height);
                 int current = (gameOverAnimationCounter / 4000) *Game.GraphicsDevice.Viewport.Width;
-                System.Console.WriteLine("Current: " +current);
-                System.Console.WriteLine("Right x coordinate: "+(Game.GraphicsDevice.Viewport.Width - (gameOverAnimationCounter / 4000) * Game.GraphicsDevice.Viewport.Width));
                 destinationRectangleLeft = new Rectangle(0, 0, (gameOverAnimationCounter / 4000) * Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
                 destinationRectangleRight = new Rectangle((Game.GraphicsDevice.Viewport.Width - (gameOverAnimationCounter / 4000) * Game.GraphicsDevice.Viewport.Width), 0, (gameOverAnimationCounter / 4000) * Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height);
                 //spriteBatch.Draw(SpriteFactory.Instance.getGameWonScreen(), destinationRectangleLeft, sourceRectangle, Color.White);

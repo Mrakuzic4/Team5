@@ -32,6 +32,7 @@ namespace HackAndSlash
         private Rectangle hitbox;
 
         private int damageTaken;
+        private int totalLives;
         private Color tintColor = Color.White;
 
         private int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
@@ -55,6 +56,7 @@ namespace HackAndSlash
             enemyBlockCollision = new EnemyBlockCollision();
             hitbox = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
             damageTaken = 0;
+            totalLives = 2;
 
             directionHistory[Turn(GlobalSettings.RND.Next(3))] += 1;
         }
@@ -118,7 +120,14 @@ namespace HackAndSlash
                 // Move up
                 if (position.Y > GlobalSettings.BORDER_OFFSET)
                 {
-                    position.Y--;
+                    if (GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.Y -= 2;
+                    }
+                    else
+                    {
+                        position.Y--;
+                    }
                 }
 
                 else
@@ -134,7 +143,14 @@ namespace HackAndSlash
                 //Move down
                 if (position.Y < bottomBound)
                 {
-                    position.Y++;
+                    if (GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.Y += 2;
+                    }
+                    else
+                    {
+                        position.Y++;
+                    }
                 }
 
                 else
@@ -150,7 +166,15 @@ namespace HackAndSlash
                 //Move left
                 if (position.X > GlobalSettings.BORDER_OFFSET)
                 {
-                    position.X--;
+                    if (GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.X -= 2;
+                    }
+
+                    else
+                    {
+                        position.X--;
+                    }
                 }
                 else
                 {
@@ -165,7 +189,15 @@ namespace HackAndSlash
                 //Move right
                 if (position.X < rightBound)
                 {
-                    position.X++;
+                    if (GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.X += 2;
+                    }
+
+                    else
+                    {
+                        position.X++;
+                    }
                 }
                 else
                 {
@@ -228,6 +260,7 @@ namespace HackAndSlash
 
             if(snakeState.state == snakeStateMachine.snakeHealth.Not)
             {
+                
                 hitbox.Location = new Point(0, 0);
                 rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
             }
@@ -248,6 +281,21 @@ namespace HackAndSlash
             {
                 if (damageTaken == 1)
                 {
+                    tintColor = Color.Pink;
+                    snakeState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
+                if (damageTaken == 2)
+                {
+                    tintColor = Color.BlueViolet;
+                    snakeState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
+                if (damageTaken == 3)
+                {
+                    tintColor = Color.Brown;
+                    snakeState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
+                if (damageTaken == 4)
+                {
                     tintColor = Color.OrangeRed;
                     snakeState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
                 }
@@ -263,12 +311,20 @@ namespace HackAndSlash
        
         public void damage()
         {
+            Console.WriteLine(damageTaken);
             damageTaken++;
-
-            if(damageTaken == 2)
+            if(GlobalSettings.NIGHTMAREMODE)
+            {
+                totalLives = 5;
+            }
+            else
+            {
+                totalLives = 2;
+            }
+            if(damageTaken == totalLives)
             {
                 damageTaken = 0;
-                snakeState.changeToDie();
+                changeToDie();
             }
 
         }

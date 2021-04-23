@@ -50,6 +50,7 @@ namespace HackAndSlash
         private SoundEffect deathHappy;
         private SoundEffect happyEnding;
         private SoundEffect[] idling;
+        private SoundEffect nightmareMode;
 
 
         private SoundFactory()
@@ -155,6 +156,8 @@ namespace HackAndSlash
                 content.Load<SoundEffect>("sound/walk3"),
                 content.Load<SoundEffect>("sound/walk4")
             };
+
+            nightmareMode = content.Load<SoundEffect>("sound/horrorghostscream");
         }
 
         public static SoundFactory Instance
@@ -264,6 +267,12 @@ namespace HackAndSlash
         {
             return new SoundByte(bombBlow);
         }
+
+        public SoundByte NightmareMode()
+        {
+            return new SoundByte(nightmareMode);
+        }
+
         public SoundByte ThrowingKnifeEffect()
         {
             return new SoundByte(throwingKnife[GlobalSettings.RND.Next() % throwingKnife.Length]);

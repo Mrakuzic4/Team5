@@ -37,6 +37,7 @@ namespace HackAndSlash
         public GlobalSettings.Direction direction {get;set;}
 
         private int damageTaken;
+        private int totalLives;
         private Color tintColor;
 
         private int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
@@ -60,6 +61,7 @@ namespace HackAndSlash
             enemyBlockCollision = new EnemyBlockCollision();
             hitbox = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
             damageTaken = 0;
+            totalLives = 3;
 
             boomerangItem = new GoriyaItem(spriteBatch, game, this);
             directionHistory[Turn(GlobalSettings.RND.Next(3))] += 1;
@@ -125,7 +127,14 @@ namespace HackAndSlash
                 // Move up
                 if (position.Y > GlobalSettings.BORDER_OFFSET)
                 {
-                    position.Y--;
+                    if (GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.Y -= 2;
+                    }
+                    else
+                    {
+                        position.Y--;
+                    }
                 }
 
                 else
@@ -141,7 +150,14 @@ namespace HackAndSlash
                 //Move down
                 if (position.Y < bottomBound)
                 {
-                   position.Y++;
+                    if (GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.Y += 2;
+                    }
+                    else
+                    {
+                        position.Y++;
+                    }
                 }
 
                 else
@@ -157,7 +173,15 @@ namespace HackAndSlash
                 //Move left
                 if (position.X > GlobalSettings.BORDER_OFFSET)
                 {
-                    position.X--;
+                    if (GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.X -= 2;
+                    }
+
+                    else
+                    {
+                        position.X--;
+                    }
                 }
                 else
                 {
@@ -173,7 +197,15 @@ namespace HackAndSlash
                 //Move right
                 if (position.X < rightBound)
                 {
-                    position.X++;
+                    if (GlobalSettings.NIGHTMAREMODE)
+                    {
+                        position.X += 2;
+                    }
+
+                    else
+                    {
+                        position.X++;
+                    }
                 }
                 else
                 {
@@ -272,6 +304,16 @@ namespace HackAndSlash
                     tintColor = Color.Magenta;
                     goriyaState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
                 }
+                else if (damageTaken == 3)
+                {
+                    tintColor = Color.Brown;
+                    goriyaState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
+                else if (damageTaken == 4)
+                {
+                    tintColor = Color.Pink;
+                    goriyaState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
                 else
                 {
                     tintColor = Color.White;
@@ -285,8 +327,15 @@ namespace HackAndSlash
         public void damage()
         {
             damageTaken++;
-            System.Console.WriteLine("damage");
-            if (damageTaken == 3)
+            if (GlobalSettings.NIGHTMAREMODE)
+            {
+                totalLives = 5;
+            }
+            else
+            {
+                totalLives = 3;
+            }
+            if (damageTaken == totalLives)
             {
                 damageTaken = 0;
                 goriyaState.changeToDie();

@@ -28,7 +28,7 @@ namespace HackAndSlash
         // Game parameters, need _ prefix 
         public bool _DevMode = true;
         public bool _ShowBoundary = false;
-        public bool _FOG = true;
+        public bool _FOG = false;
         public int _FogRange = 1;
         public bool _EnableMouseTeleport = false; // Controls mouse left and right click teleportation 
         public bool _AngelicMode = false;
@@ -67,8 +67,8 @@ namespace HackAndSlash
 
         // Sprites  
         public IItem ItemHolder { get; set; }
-        
-        
+
+        public BugEnemy bugfirst;
 
         public FirewallItem firewallFirst;
         public BombItem bombFirst;
@@ -85,7 +85,8 @@ namespace HackAndSlash
         public CheatText cheatText;
         public bool inGameOverAnimation;
         public bool inGameWonAnimation;
-        
+
+        private TextSprite nighmareModeText;
 
         private Texture2D textSprites;
 
@@ -153,8 +154,10 @@ namespace HackAndSlash
             // When testing new enemies, put them here 
             if (_DevMode)
             {
+                bugfirst = new BugEnemy(utilMethods.PlayAreaPosition(10, 3), GraphicsDevice, spriteBatch, this);
                 enemyList = new List<IEnemy>()
                 {
+                    bugfirst
                 };
                 itemList = new List<IItem>()
                 {
@@ -187,6 +190,9 @@ namespace HackAndSlash
             titleScreen = new TitleScreenOverlay(this, SpriteFactory.Instance.GetTitleScreen(), spriteBatch);
             gameWonScreenOverlay = new GameWonOverlay(this, SpriteFactory.Instance.getGameWonScreen(), SpriteFactory.Instance.GetSwordSelector(), spriteBatch);
             upgradesOverlay = new UpgradesOverlay(this, GraphicsDevice, spriteBatch);
+
+            nighmareModeText = new TextSprite(SpriteFactory.Instance.GetNightmareModeText(),1,1,40);
+
             cheatText = new CheatText(this, spriteBatch);
         }
 
@@ -425,6 +431,7 @@ namespace HackAndSlash
                     break;
             }
 
+            if (GlobalSettings.NIGHTMAREMODE) { nighmareModeText.Update(); }
                 base.Update(gameTime);
             }
             
@@ -559,6 +566,8 @@ namespace HackAndSlash
                     break;
             }
 
+            if (GlobalSettings.NIGHTMAREMODE)
+            { nighmareModeText.Draw(spriteBatch, new Vector2(450, 50), Color.White); }
             spriteBatch.End();
             base.Draw(gameTime);
         }
