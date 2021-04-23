@@ -10,12 +10,16 @@ Author of the .cs file being reviewed: Zane
 
 Number of minutes taken to complete the review: 20
 
-For code's Readability: Codes are pretty straight forward and easy to understand. However, there are a few fields that are not used and some consle print messages in the draw() method. 
-Perhaps do a little clean up would be awesome. Moreover, I would recommend to comment the code to increase the readability.
+For code's Readability: 
+Variables and methods are named in a way that are easy to follow. Codes are pretty straight forward and easy to understand. 
+Brilliant way to implement the selection menu. Very easy to follow in update method.
 
-For codes' Maintainability: Low Coupling and high cohesion. For the overlay implementation, it is very simple to change the overlay page as the page sprite
-can be easily changed in the constructor. However, inside the update method, the implementation only works for slection between two options.
-It might require extra work and refactor in order to have three or more options in the future.
+For codes' Maintainability: The code is easily maintainable. In the future, if more options are needed at the upgrade overlay page. They can be easily added.
 
-A hypothetical change: The options in the gamewon page changed from two options to three options. The whole implementation might need to change
-in update() method.
+A hypothetical change: 
+
+There are lots of magic numbers in the final. Please make sure to avoid them by defining private constant. 
+
+I don't know why some instance variables are defined inside the constructor and some are not. Maybe it would be better if defining variable in a consistent spot?
+
+Update method is a little too longer. Maybe split it into different helper methods would be better.
