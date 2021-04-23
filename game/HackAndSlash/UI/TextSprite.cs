@@ -54,6 +54,16 @@ namespace HackAndSlash
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
+            int width = Texture.Width / Columns;
+            int height = Texture.Height / Rows;
+            int row = (int)((float)currentFrame / (float)Columns);
+            int column = currentFrame % Columns;
+
+            
+            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y,2* GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public void Draw(SpriteBatch spriteBatch, string stringInput, Vector2 location, Color color)

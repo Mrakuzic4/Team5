@@ -68,6 +68,7 @@ namespace HackAndSlash
             ChangeToExpended();
             game.GameState = GlobalSettings.GameStates.GameWon;
             game.currentLevel.setGameWon();
+            GlobalSettings.NIGHTMAREMODE = false;
             this.game.gameWon = true;
             this.game.inGameWonAnimation = true;
             //this.game.gameOver = true;

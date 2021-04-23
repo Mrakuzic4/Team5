@@ -202,7 +202,8 @@ namespace HackAndSlash
             enemyList = new int[]{
                 GlobalSettings.SNAKE_ENEMY,
                 GlobalSettings.BUG_ENEMY,
-                GlobalSettings.MOBLIN_ENEMY
+                GlobalSettings.MOBLIN_ENEMY,
+                GlobalSettings.GORIYA_ENEMY
             };
             itemList = new int[] {
                 GlobalSettings.FIREWALL_ITEM,

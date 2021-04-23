@@ -35,6 +35,7 @@ namespace HackAndSlash
         public GlobalSettings.Direction direction {get;set;}
 
         private int damageTaken;
+        private int totalLives;
         private Color tintColor;
 
         private int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
@@ -61,6 +62,7 @@ namespace HackAndSlash
             enemyBlockCollision = new EnemyBlockCollision();
             hitbox = new Rectangle((int)position.X, (int)position.Y, 3 * GlobalSettings.BASE_SCALAR, 4 * GlobalSettings.BASE_SCALAR);
             damageTaken = 0;
+            totalLives = 0;
             bombItem = new IItem[3];
             for (int i = 0; i <= 2; i++)
             {
@@ -174,6 +176,16 @@ namespace HackAndSlash
                     tintColor = Color.Magenta;
                     bossState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
                 }
+                else if (damageTaken == 3)
+                {
+                    tintColor = Color.Pink;
+                    bossState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
+                else if (damageTaken == 4)
+                {
+                    tintColor = Color.BlueViolet;
+                    bossState.MachineEnemySprite.Draw(spriteBatch, position, tintColor);
+                }
                 else
                 {
                     tintColor = Color.White;
@@ -190,12 +202,18 @@ namespace HackAndSlash
         public void damage()
         {
             damageTaken++;
-
-            if (damageTaken == 3)
+            if (GlobalSettings.NIGHTMAREMODE)
+            {
+                totalLives = 5;
+            }
+            else
+            {
+                totalLives = 3;
+            }
+            if (damageTaken == totalLives)
             {
                 damageTaken = 0;
                 bossState.changeToDie();
-                game.levelCycleRecord.RemoveOneIndex(GlobalSettings.BOSS_ENEMY);
             }
 
         }

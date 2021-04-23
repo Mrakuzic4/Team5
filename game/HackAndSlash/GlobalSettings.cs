@@ -91,6 +91,7 @@ namespace HackAndSlash
 
         //Cheats
         public static bool GODMODE { get; set; } = false;
+        public static bool NIGHTMAREMODE { get; set; } = false;
         public const int MAX_ITEMS = 99; // used for max items cheat
         public const int MAX_RUPEES = 999; // used for max rupees cheat
 

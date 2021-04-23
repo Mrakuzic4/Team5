@@ -383,33 +383,39 @@ namespace HackAndSlash
 
         public void Draw()
         {
+            Color tint = gameOver ? Color.DarkMagenta : defaultTint;
+            tint = gameWon ? Color.Red : defaultTint;
+            tint = GlobalSettings.NIGHTMAREMODE ? Color.Purple : defaultTint;
+
             if (transitioning)
             {
-                spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + delta, defaultTint);
-                spriteBatch.Draw(nextLevelTexture, nextLvPos[TransDir] + delta, defaultTint);
+                spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + delta, tint);
+                spriteBatch.Draw(nextLevelTexture, nextLvPos[TransDir] + delta, tint);
             }
             else
             {
-                Color tint = gameOver  ? Color.DarkMagenta : defaultTint;
-                tint = gameWon ? Color.Red : defaultTint;
+                
                 spriteBatch.Draw(levelTexture, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), tint);
             }
         }
 
         public void DrawOverlay()
         {
+            Color tint = gameOver ? Color.DarkMagenta : defaultTint;
+            tint = gameWon ? Color.Red : defaultTint;
+            tint = GlobalSettings.NIGHTMAREMODE ? Color.Purple : defaultTint;
+
             if (transitioning)
             {
                 spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY) + delta, null,
-                    defaultTint, 0f, Vector2.Zero, 1, SpriteEffects.None, .4f);
-                spriteBatch.Draw(headsUpFill, new Vector2(0, 0), defaultTint);
+                    tint, 0f, Vector2.Zero, 1, SpriteEffects.None, .4f);
+                spriteBatch.Draw(headsUpFill, new Vector2(0, 0), tint);
             }
             else
             {
-                Color tint = gameOver ? Color.Magenta : defaultTint;
-                tint = gameWon ? Color.Red : defaultTint;
+                
                 spriteBatch.Draw(levelOverlay, new Vector2(0, GlobalSettings.HEADSUP_DISPLAY), null,
-                    defaultTint, 0f, Vector2.Zero, 1, SpriteEffects.None, .4f);
+                    tint, 0f, Vector2.Zero, 1, SpriteEffects.None, .4f);
             }
                 
         }

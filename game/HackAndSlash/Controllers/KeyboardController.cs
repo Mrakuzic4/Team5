@@ -17,7 +17,7 @@ namespace HackAndSlash
         {
             this.game = game;
             keyboardCheats = new KeyboardCheats(game);
-         
+
             //Add all default controls
             controllerMappings = new Dictionary<Keys, ICommand>()
             {
@@ -42,7 +42,8 @@ namespace HackAndSlash
                 {Keys.Q, new QuitCommand(game)},
                 {Keys.Escape, new PauseCommand(game)},
                 {Keys.Tab, new DisplayMapCommand(game)},
-                {Keys.V, new SoundMenuCommand(game)}
+                {Keys.C,new CancelNightmareModeCommand(game)},
+                {Keys.M, new NightmareModeCommand(game)}
             };
         }
 

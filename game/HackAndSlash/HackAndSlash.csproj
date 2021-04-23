@@ -58,6 +58,8 @@
     <Compile Include="Collision\PlayerCollisionDetector.cs" />
     <Compile Include="Commands\DisplayMapCommand.cs" />
     <Compile Include="Commands\AttackCommand.cs" />
+    <Compile Include="Commands\CancelNightmareModeCommand.cs" />
+    <Compile Include="Commands\NightmareModeCommand.cs" />
     <Compile Include="Commands\GodModeCommand.cs" />
     <Compile Include="Commands\HealCheatCommand.cs" />
     <Compile Include="Commands\MaxItemsCommand.cs" />
@@ -451,6 +453,7 @@
     <Content Include="Content\images\MoblinLeft.png" />
     <Content Include="Content\images\MoblinRight.png" />
     <Content Include="Content\images\MoblinUp.png" />
+    <Content Include="Content\images\nightmareModeText.png" />
     <Content Include="Content\images\SnakeEnemyRight.png" />
     <Content Include="Content\images\UI\WinningScreen.png" />
     <Content Include="Content\images\ZeldaDying.png" />
@@ -578,6 +581,7 @@
     <Content Include="Content\sound\CoconutSong.mp3" />
     <Content Include="Content\sound\DungeonMusic.mp3" />
     <Content Include="Content\sound\GangTortureDance .mp3" />
+    <Content Include="Content\sound\horrorghostscream.wav" />
     <Content Include="Content\sound\LOZ_Arrow_Boomerang.wav" />
     <Content Include="Content\sound\LOZ_Bomb_Blow.wav" />
     <Content Include="Content\sound\LOZ_Bomb_Drop.wav" />
