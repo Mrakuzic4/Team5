@@ -6,9 +6,9 @@ For easier track of who has reviewed who's code and who is still waiting to be r
  
 | Member  | Review written | Being reviewed |
 | ------------- | ------------- | ------------- |
-| Vidhan Bhardwaj (bhardwaj.73)  | No  | YES |
+| Vidhan Bhardwaj (bhardwaj.73)  | YES  | YES |
 | Amarth Chen (chen.8759)  | No | No |
-| Harshitha Kommaraju (kommaraju.3)  | No  | No |
+| Harshitha Kommaraju (kommaraju.3)  | No  | YES |
 | Zane Mrakuzic (mrakuzic.4)  | No | YES |
 | Daniel Neff (neff.331)  | YES  | No |
 | Jimmy Yuan (yuan.799)  | YES  | No |
