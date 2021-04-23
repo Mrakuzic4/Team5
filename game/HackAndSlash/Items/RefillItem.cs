@@ -1,12 +1,6 @@
 ﻿
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 
 namespace HackAndSlash
 {
@@ -16,7 +10,7 @@ namespace HackAndSlash
         private Game1 game;
         private IPlayer player; //Player reference
 
-        private ItemSprite shieldSprite;
+        private ItemSprite refillSprite;
         public int spriteWidth, spriteHeight;
         public Vector2 position;
 
@@ -25,7 +19,11 @@ namespace HackAndSlash
         public static bool inInventory = false;
 
         public Rectangle[] collidableTiles;
-        public ItemCollisionHandler TriforceCollisionHandler;
+        public ItemCollisionHandler Handler;
+        private const float UNDERLAYER = 0.4f;
+        private const int WIDTH = 80;
+        private const int HEIGHT = 75;
+        private const int OUT_OF_MAP = -200;
 
         // Constructor
         public RefillItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game)
@@ -34,30 +32,33 @@ namespace HackAndSlash
             this.player = this.game.Player; //Reference of player from Game1
 
             position = startPosition;
-            shieldSprite = (ItemSprite)SpriteFactory.Instance.CreateRefill();
-            spriteWidth = shieldSprite.Texture.Width / shieldSprite.Columns;
-            spriteHeight = shieldSprite.Texture.Height / shieldSprite.Rows;
+            refillSprite = (ItemSprite)SpriteFactory.Instance.CreateRefill();
+            spriteWidth = refillSprite.Texture.Width / refillSprite.Columns;
+            spriteHeight = refillSprite.Texture.Height / refillSprite.Rows;
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
-            TriforceCollisionHandler = new ItemCollisionHandler(this.player);
+            Handler = new ItemCollisionHandler(this.player);
         }
 
         public void Update()
         {
             // check for collision collision -> collect Item
-            // if numUses != 0
-            if (TriforceCollisionHandler.CheckForPlayerCollision(collidableTiles))
+            if (Handler.CheckForPlayerCollision(collidableTiles))
             {
                 CollectItem();
             }
-            shieldSprite.Update();
+            refillSprite.Update();
         }
 
         public void Draw()
         {
             // Draw on ground
-            shieldSprite.Draw(spriteBatch, position, Color.White);
+            Rectangle sourceRectangle = new Rectangle(0, 0, refillSprite.Texture.Width, refillSprite.Texture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
+
+            spriteBatch.Draw(refillSprite.Texture, destinationRectangle, sourceRectangle, Color.White,
+                0f, Vector2.Zero, SpriteEffects.None, UNDERLAYER);
         }
         /// <summary>
         /// Increase the Heal Power of every food!
@@ -74,7 +75,7 @@ namespace HackAndSlash
                 SoundFactory.Instance.TriforceObtainedEffect();
                 SpriteFactory.Instance.SetZeldaGotRefill();
                 DrawPlayer.Instance.Item = true; //Adjust the player sprite's position
-                this.game.Player = new UseItemPlayer(game.Player, game);
+                this.game.Player = new BuyItemPlayer(game.Player, game);
             }
         }
 
@@ -127,7 +128,7 @@ namespace HackAndSlash
 
         public void ChangeToExpended()
         {
-            position = new Vector2(-64, 64);
+            position = new Vector2(OUT_OF_MAP, GlobalSettings.BASE_SCALAR);
         }
     }
 }

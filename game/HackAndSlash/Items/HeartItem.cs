@@ -1,12 +1,6 @@
 ﻿
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 
 namespace HackAndSlash
 {
@@ -25,7 +19,12 @@ namespace HackAndSlash
         public static bool inInventory = false;
 
         public Rectangle[] collidableTiles;
-        public ItemCollisionHandler TriforceCollisionHandler;
+        public ItemCollisionHandler Handler;
+        private const float UNDERLAYER = 0.4f;
+        private const int WIDTH = 90;
+        private const int HEIGHT = 75;
+        private const int OUT_OF_MAP = -200;
+
 
         // Constructor
         public HeartItem(Vector2 startPosition, SpriteBatch gameSpriteBatch, Game1 game)
@@ -40,14 +39,13 @@ namespace HackAndSlash
             spriteBatch = gameSpriteBatch;
             collidableTiles = new Rectangle[1];
             collidableTiles[0] = new Rectangle((int)position.X, (int)position.Y, spriteWidth, spriteHeight);
-            TriforceCollisionHandler = new ItemCollisionHandler(this.player);
+            Handler = new ItemCollisionHandler(this.player);
         }
 
         public void Update()
         {
             // check for collision collision -> collect Item
-            // if numUses != 0
-            if (TriforceCollisionHandler.CheckForPlayerCollision(collidableTiles))
+            if (Handler.CheckForPlayerCollision(collidableTiles))
             {
                 CollectItem();
             }
@@ -57,7 +55,11 @@ namespace HackAndSlash
         public void Draw()
         {
             // Draw on ground
-            heartSprite.Draw(spriteBatch, position, Color.White);
+            Rectangle sourceRectangle = new Rectangle(0, 0, heartSprite.Texture.Width, heartSprite.Texture.Height);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, WIDTH, HEIGHT);
+
+            spriteBatch.Draw(heartSprite.Texture, destinationRectangle, sourceRectangle, Color.White,
+                0f, Vector2.Zero, SpriteEffects.None, UNDERLAYER);
         }
         /// <summary>
         /// Increase the Maximum Health.
@@ -75,7 +77,7 @@ namespace HackAndSlash
                 SoundFactory.Instance.TriforceObtainedEffect();
                 SpriteFactory.Instance.SetZeldaGotHeart();
                 DrawPlayer.Instance.Item = true; //Adjust the player sprite's position
-                this.game.Player = new UseItemPlayer(game.Player, game);
+                this.game.Player = new BuyItemPlayer(game.Player, game);
             }
         }
 
@@ -128,7 +130,7 @@ namespace HackAndSlash
 
         public void ChangeToExpended()
         {
-            position = new Vector2(-64, 64);
+            position = new Vector2(OUT_OF_MAP, GlobalSettings.BASE_SCALAR);
         }
     }
 }

@@ -127,7 +127,7 @@ namespace HackAndSlash
 
         public void Draw()
         {
-            spriteBatch.Draw(bg, new Vector2(0, 0), Color.White);
+            //spriteBatch.Draw(bg, new Vector2(0, 0), Color.White);
             bigText.Draw(spriteBatch, "UPGRADES MENU", new Vector2(0, 0), Color.White);
             for (int i = 0; i <= 4; i++)
             {

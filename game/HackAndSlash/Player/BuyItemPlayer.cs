@@ -6,20 +6,18 @@ using Microsoft.Xna.Framework;
 namespace HackAndSlash
 {
 
-    public class UseItemPlayer : IPlayer
+    public class BuyItemPlayer : IPlayer
     {
         private IPlayer DecoratedPlayer;
         private Game1 game;
         private int timer;
-        private const int TIME = 285; //added delay
+        private const int DELAY = 85;
 
-        public UseItemPlayer(IPlayer decoratedPlayer, Game1 game)
+        public BuyItemPlayer(IPlayer decoratedPlayer, Game1 game)
         {
-            timer = TIME; //Added delay.
+            timer = DELAY; //Added delay.
             this.DecoratedPlayer = decoratedPlayer;
             this.game = game;
-            DrawPlayer.Instance.Frame = 0;
-            DrawItemCD.Instance.setCD(); //CD of using an item
         }
         public int GetMaxHealth()
         {
@@ -39,10 +37,6 @@ namespace HackAndSlash
             this.DecoratedPlayer.SetPos(pos);
         }
 
-        public void unlockMovement()
-        {
-            this.DecoratedPlayer.unlockMovement();
-        }
         public bool isShield()
         {
             return this.DecoratedPlayer.isShield();
@@ -63,10 +57,16 @@ namespace HackAndSlash
             timer--;
             if (timer == 0)
             {
-                DecoratedPlayer.Move();
+                DrawPlayer.Instance.Item = false;
                 RemoveDecorator(); //Set it back to orignal state
+                DecoratedPlayer.Move();
             }
             DecoratedPlayer.Update();
+        }
+
+        public void unlockMovement()
+        {
+            this.DecoratedPlayer.unlockMovement();
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
@@ -77,24 +77,23 @@ namespace HackAndSlash
         public void RemoveDecorator()
         {
             game.Player = DecoratedPlayer; //set it back to movement state.
-            DrawPlayer.Instance.Attack = false;
+            DrawPlayer.Instance.Item = false;
         }
 
         public void Move()
         {
-            DecoratedPlayer.Move();
+            //Does not move during attack
         }
 
         public void Attack()
         {
-            DecoratedPlayer.Attack();
+            //Does not attack 
         }
 
         public void Damaged()
         {
             DecoratedPlayer.Damaged();
         }
-
         public void Healed()
         {
             DecoratedPlayer.Healed();
@@ -111,7 +110,7 @@ namespace HackAndSlash
         }
         public void UseItem()
         {
-            //Does not UseItem
+            //Does not use item when attacking.
         }
     }
 
