@@ -21,11 +21,14 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            if (stopwatch.ElapsedMilliseconds >  delay)
+            if (game._DevMode)
             {
-                foreach (IItem item in game.itemList) item.CollectItem();
+                if (stopwatch.ElapsedMilliseconds > delay)
+                {
+                    foreach (IItem item in game.itemList) item.CollectItem();
+                }
+                stopwatch.Restart();
             }
-            stopwatch.Restart();
         }
     }
 }

@@ -20,20 +20,22 @@ namespace HackAndSlash
         }
         public void execute()
         {
-            //if delay time has elapsed
-            if (game.useableItemList.Count() > 0 && stopwatch.ElapsedMilliseconds > delay)
+            if (game._DevMode)
             {
-                IItem temp = game.useableItemList[0];
-                int count = game.useableItemList.Count();
-                for (int i = 1; i < count; i++)
+                //if delay time has elapsed
+                if (game.useableItemList.Count() > 0 && stopwatch.ElapsedMilliseconds > delay)
                 {
-                    game.useableItemList[i - 1] = game.useableItemList[i];
+                    IItem temp = game.useableItemList[0];
+                    int count = game.useableItemList.Count();
+                    for (int i = 1; i < count; i++)
+                    {
+                        game.useableItemList[i - 1] = game.useableItemList[i];
+                    }
+                    game.useableItemList[count - 1] = temp;
+
+                    stopwatch.Restart();
                 }
-                game.useableItemList[count - 1] = temp;
-
-                stopwatch.Restart();
             }
-
             
         }
     }
