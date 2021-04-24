@@ -15,33 +15,20 @@ namespace HackAndSlash.Collision
             switch (collisionType)
             {
                 case CollisionType.Right:
-
-                    //if ((enemy.GetDirection() == GlobalSettings.Direction.Right))
-                    //{
-                        enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X - 1, enemy.GetPos().Y));
-                    //}
+                    enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X - 1, enemy.GetPos().Y));
+                    Console.WriteLine("right collision");
                     enemy.changeToMoveLeft();
                     break;
                 case CollisionType.Left:
-                    //if((enemy.GetDirection() == GlobalSettings.Direction.Left))
-                    //{
-                        enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X + 1, enemy.GetPos().Y));
-                    //}
+                    enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X + 1, enemy.GetPos().Y));
                     enemy.changeToMoveRight();
                     break;
                 case CollisionType.Top:
-                    //if ((enemy.GetDirection() == GlobalSettings.Direction.Up))
-                    //{
-                        enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X, enemy.GetPos().Y + 1));
-                    //}
+                    enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X, enemy.GetPos().Y + 1));
                     enemy.changeToMoveDown();
                     break;
                 case CollisionType.Bottom:
-
-                    //if ((enemy.GetDirection() == GlobalSettings.Direction.Down))
-                    //{
-                        enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X, enemy.GetPos().Y - 1));
-                    //}
+                    enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X, enemy.GetPos().Y - 1));
                     enemy.changeToMoveUp();
                     break;
             }

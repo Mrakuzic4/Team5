@@ -115,7 +115,14 @@ namespace HackAndSlash
             }
 
             //Boundary collisions
-            if (bugState.state == bugStateMachine.bugHealth.MoveUp)
+            if (bugState.state == bugStateMachine.bugHealth.Not)
+            {
+                position.X = 0;
+                position.Y = 0;
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            }
+            else if (bugState.state == bugStateMachine.bugHealth.MoveUp)
             {
                 // Move up
                 if (position.Y > GlobalSettings.BORDER_OFFSET)
@@ -212,26 +219,7 @@ namespace HackAndSlash
                     Turn(NewDirection);
                 }
             }
-
-            if (timeSinceDirectionChange > 8000 && bugState.state!= bugStateMachine.bugHealth.Not && bugState.state != bugStateMachine.bugHealth.Die)
-            {
-                timeSinceDirectionChange = 0;
-                int NewDirection = new PRNG().Directional(directionHistory);
-                directionHistory[NewDirection] += 1;
-                Turn(NewDirection);
-            }
-
-            hitbox.Location = new Point((int)position.X , (int)position.Y);
-            enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
-            if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
-            {
-                changeToDie();
-            }
-
-            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
-
-            //Remove bug from screen 3 seconds after death
-            if (bugState.state == bugStateMachine.bugHealth.Die)
+            else if (bugState.state == bugStateMachine.bugHealth.Die)
             {
                 hitbox.Location = new Point(0, 0);
                 rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
@@ -242,7 +230,7 @@ namespace HackAndSlash
                     deathTimer = 0;
                     changeToNot();
                     game.levelCycleRecord.RemoveOneIndex(GlobalSettings.BUG_ENEMY);
-                    if(GlobalSettings.NIGHTMAREMODE)
+                    if (GlobalSettings.NIGHTMAREMODE)
                     {
                         if (GlobalSettings.RND.Next(100) < 20)
                         {
@@ -257,11 +245,27 @@ namespace HackAndSlash
                 }
             }
 
-            if (bugState.state == bugStateMachine.bugHealth.Not)
+            hitbox.Location = new Point((int)position.X , (int)position.Y);
+            enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
+            if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
             {
-                hitbox.Location = new Point(0, 0);
-                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+                changeToDie();
             }
+
+            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+
+            if (timeSinceDirectionChange > 8000 && bugState.state != bugStateMachine.bugHealth.Not && bugState.state != bugStateMachine.bugHealth.Die)
+            {
+                timeSinceDirectionChange = 0;
+                int NewDirection = new PRNG().Directional(directionHistory);
+                directionHistory[NewDirection] += 1;
+                Turn(NewDirection);
+            }
+
+            //Remove bug from screen 3 seconds after death
+
+
+
         }
 
         public void Draw()

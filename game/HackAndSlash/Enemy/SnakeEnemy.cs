@@ -212,7 +212,39 @@ namespace HackAndSlash
                     
                 }
             }
+            else if (snakeState.state == snakeStateMachine.snakeHealth.Die)
+            {
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+                deathTimer += gameTime.ElapsedGameTime.Milliseconds;
+                //wait 3 seconds
+                if (deathTimer > 1500)
+                {
+                    SoundFactory.Instance.SnakeDies();
+                    deathTimer = 0;
+                    // randomly drop things
+                    if (GlobalSettings.RND.Next(100) < 50)
+                        game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
 
+                    changeToNot();
+                    game.levelCycleRecord.RemoveOneIndex(GlobalSettings.SNAKE_ENEMY);
+                }
+            }
+            else if (snakeState.state == snakeStateMachine.snakeHealth.Not)
+            {
+                position.X = 0;
+                position.Y = 0;
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            }
+
+            hitbox.Location = new Point((int)position.X, (int)position.Y);
+            enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
+            if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
+            {
+                changeToDie();
+            }
+            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
             if (timeSinceDirectionChange > 8000 && snakeState.state != snakeStateMachine.snakeHealth.Not && snakeState.state != snakeStateMachine.snakeHealth.Die)
             {
                 timeSinceDirectionChange = 0;
@@ -236,42 +268,6 @@ namespace HackAndSlash
                         changeToMoveDown();
                         break;
                 }
-            }
-
-            hitbox.Location = new Point((int)position.X, (int)position.Y);
-            enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
-            if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
-            {
-                changeToDie();
-            }
-
-            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
-
-            //Remove bug from screen 3 seconds after death
-            if (snakeState.state == snakeStateMachine.snakeHealth.Die)
-            {
-                hitbox.Location = new Point(0, 0);
-                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
-                deathTimer += gameTime.ElapsedGameTime.Milliseconds;
-                //wait 3 seconds
-                if (deathTimer > 1500)
-                {
-                    SoundFactory.Instance.SnakeDies();
-                    deathTimer = 0;
-                    // randomly drop things
-                    if (GlobalSettings.RND.Next(100) < 50)
-                        game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
-
-                    changeToNot();
-                    game.levelCycleRecord.RemoveOneIndex(GlobalSettings.SNAKE_ENEMY);
-                }
-            }
-
-            if(snakeState.state == snakeStateMachine.snakeHealth.Not)
-            {
-                
-                hitbox.Location = new Point(0, 0);
-                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
             }
 
         }

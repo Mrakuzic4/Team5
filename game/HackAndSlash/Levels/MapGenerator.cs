@@ -162,6 +162,9 @@ namespace HackAndSlash
                         case GlobalSettings.BOSS_ENEMY:
                             EnemyList.Add(new BossEnemy(position, graphics, spriteBatch, game));
                             break;
+                        case GlobalSettings.GORIYA_ENEMY:
+                            EnemyList.Add(new GoriyaEnemy(position, graphics, spriteBatch, game));
+                            break;
                         case GlobalSettings.NPC_OLD_MAN:
                             EnemyList.Add(new OldManNPC(position, graphics, spriteBatch, game));
                             break;

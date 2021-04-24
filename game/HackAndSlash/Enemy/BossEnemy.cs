@@ -18,13 +18,11 @@ namespace HackAndSlash
 
         private int timeSinceLastFrame = 0; // used to slow down the rate of animation
         private int timeSinceLastBomb = 0;
-        private int timeSinceDirectionChange = 0;
         private int deathTimer = 0;
         private int milliSecondsPerFrame = 80;
         private bool firstTimeEncounter = true; 
 
-        private System.Random random;
-        private int randomDirection = 0; //0-left, 1-up, 2-right, 3- down
+        
 
         private EnemyCollisionDetector enemyCollisionDetector;
         private EnemyBlockCollision enemyBlockCollision;
@@ -37,8 +35,6 @@ namespace HackAndSlash
         private int totalLives;
         private Color tintColor;
 
-        private int bottomBound = GlobalSettings.WINDOW_HEIGHT - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
-        private int rightBound = GlobalSettings.WINDOW_WIDTH - GlobalSettings.BORDER_OFFSET - GlobalSettings.BASE_SCALAR;
         //Moblin position
         private Rectangle rectangle { get; set; }
 
@@ -55,7 +51,7 @@ namespace HackAndSlash
             this.game = game; 
             rectangle = new Rectangle((int)position.X, (int)position.Y, 3 * GlobalSettings.BASE_SCALAR, 4 * GlobalSettings.BASE_SCALAR);
 
-            random = new System.Random();
+            
 
             enemyCollisionDetector = new EnemyCollisionDetector(game, this);
             enemyBlockCollision = new EnemyBlockCollision();
@@ -137,8 +133,10 @@ namespace HackAndSlash
                 }
             }
 
-            if (bossState.state == bossStateMachine.bossHealth.Not)
+            else if (bossState.state == bossStateMachine.bossHealth.Not)
             {
+                position.X = 0;
+                position.Y = 0;
                 hitbox.Location = new Point(0, 0);
                 rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
             }
