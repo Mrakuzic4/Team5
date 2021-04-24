@@ -8,6 +8,8 @@
 * `Q` to quit.
 * `R` to reset (reset current room only).
 * `V`to go to the sound menu.
+* `M`to activate nightmare mode.
+* `C`to deactivate nightmare mode.
 * Mouse click `LMB` and `RMB` to switch between maps.
 * `Escape` key to pause, the player can also switch items during the pause screen.
 
