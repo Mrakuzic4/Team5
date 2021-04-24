@@ -25,7 +25,6 @@ namespace HackAndSlash
         private static int MAX_RANGE = GlobalSettings.saveSets.ItemRange; // range in # of sprites(tiles)
         private static int USE_DURATION = MAX_RANGE * 20;
         private const int MIDDLE = 30;
-        int SWORD_TIP = 20; //the hitbox of the sword would be a rectangle instead of a square, this is the parameter for the narrower part of the rectangle.
 
         private Vector2 toolBarPosition;
 

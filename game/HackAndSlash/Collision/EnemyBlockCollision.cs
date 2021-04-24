@@ -16,7 +16,6 @@ namespace HackAndSlash.Collision
             {
                 case CollisionType.Right:
                     enemy.SetPos(new Microsoft.Xna.Framework.Vector2(enemy.GetPos().X - 1, enemy.GetPos().Y));
-                    Console.WriteLine("right collision");
                     enemy.changeToMoveLeft();
                     break;
                 case CollisionType.Left:

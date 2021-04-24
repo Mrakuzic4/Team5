@@ -316,7 +316,6 @@ namespace HackAndSlash
        
         public void damage()
         {
-            Console.WriteLine(damageTaken);
             damageTaken++;
             if(GlobalSettings.NIGHTMAREMODE)
             {
