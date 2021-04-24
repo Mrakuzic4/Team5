@@ -226,7 +226,7 @@ namespace HackAndSlash
             bossIndex = GlobalSettings.BOSS_ENEMY;
 
 
-            UseStyleOne(); // Maybe later moved into other parts 
+            UseStyleTwo(); // Maybe later moved into other parts 
         }
 
         /// <summary>

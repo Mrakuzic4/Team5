@@ -28,10 +28,10 @@ namespace HackAndSlash
         // Game parameters, need _ prefix 
         public bool _DevMode = false;
         public bool _ShowBoundary = false;
-        public bool _FOG = false;
+        public bool _FOG = true;
         public int _FogRange = 1;
         public bool _EnableMouseTeleport = false; // Controls mouse left and right click teleportation 
-        public bool _AngelicMode = false;
+        public bool _AngelicMode = true;
         public bool _AllowManualRest = false; // Controls if the player could use `R` key 
         public int _MapSize = 9; 
 

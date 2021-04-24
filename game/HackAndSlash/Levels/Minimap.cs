@@ -217,6 +217,7 @@ namespace HackAndSlash
         // Mark a room as explored and make it visible in minimap 
         public void FlagExplored(int[] Index, Map MapInfo)
         {
+            int RoomType = 0;
             List<int> merchantCharaList = new List<int>() {
                 GlobalSettings.NPC_OLD_MAN,
                 GlobalSettings.NPC_OLD_WOMAN
@@ -233,6 +234,7 @@ namespace HackAndSlash
             for (int i = 0; i < MapInfo.Arrangement.GetLength(0); i++) {
                 for (int j = 0; j < MapInfo.Arrangement.GetLength(1); j++) {
                     int nowIndex = MapInfo.Arrangement[i, j];
+                    int bossInd = GlobalSettings.BOSS_ENEMY;
                     if (merchantCharaList.Contains(MapInfo.Arrangement[i, j])) {
                         RoomTypeIndex[Index[0], Index[1]] = (int)RoomTypes.Merchant;
                         break;
