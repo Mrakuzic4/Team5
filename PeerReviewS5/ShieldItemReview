@@ -1,0 +1,31 @@
+Author: Amarth Chen (.8759)
+
+Date: 23 Apr 2021
+
+Sprint Number: 5
+
+Name of the .cs file being reviewed: `ShieldItem.cs`
+
+Author of the .cs file being reviewed: Jimmy Yuan (yuan.799)
+
+Number of minutes taken to complete the review: roughly 5 minutes 
+
+---
+
+That's the 4rd peer review of the project and again, there's not much new stuff to say, especially since it's another item with much of the code inherited from previous .  
+
+# Readability
+
+As having seen items for 2 months, these code are very easy to understand. 
+
+# Maintainability
+
+All good. 
+
+# Hypothetical change
+
+* `OUT_OF_MAP`, as something used by almost all enemies and items should be have a larger scope. So does the same field in other classes. 
+* A problem in most of the item and enemy class: haveing too many duplications while not a lot is differet. Consider merging the classes with same feature as one, 
+and only passin different parameters to make necessary changes. 
+* not perticularly the problem of this file but it contributed to it: `SpriteFactory` is doing way too much, more than what the name might suggest. 
+It has not only `Texture2D` generation, but ISprite, IBlocks as well, it can even change game and player states. Consider dividing them into parts. 
