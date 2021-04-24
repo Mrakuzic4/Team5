@@ -13,6 +13,7 @@ Team5
 │   ├── README.md              # Documentation of the game 
 │   ├── Sprint3Reflection.md   # Sprint reflection for Sprint3, including burndown 
 │   ├── Sprint4Reflection.md   # Sprint reflection for Sprint4, including burndown 
+│   ├── Sprint5Reflection.md   # Sprint reflection for Sprint5, including burndown 
 │   └── ...
 ├── PeerReviewS3               # Folder for the code reviews between members in Sprint 3 
 │   └── ...
