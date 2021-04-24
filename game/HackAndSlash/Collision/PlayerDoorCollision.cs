@@ -11,9 +11,6 @@ namespace HackAndSlash
 {
     class PlayerDoorCollision
     {
-
-        private Vector2 playerPos;
-        private Level currentLevel;
         private const int TOLERANCE = 8;
         private const int ACTIVATION_RANGE = 32;
 

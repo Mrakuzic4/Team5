@@ -215,7 +215,37 @@ namespace HackAndSlash
                     Turn(NewDirection);
                 }
             }
+            else if (moblinState.state == moblinStateMachine.moblinHealth.Die)
+            {
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+                deathTimer += gameTime.ElapsedGameTime.Milliseconds;
+                if (deathTimer > dieTotalTime)
+                {
+                    SoundFactory.Instance.MoblinDies();
+                    deathTimer = 0;
+                    game.levelCycleRecord.RemoveOneIndex(GlobalSettings.MOBLIN_ENEMY);
+                    if (GlobalSettings.RND.Next(100) < 50)
+                        game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
+                    changeToNot();
+                }
+            }
+            else if (moblinState.state == moblinStateMachine.moblinHealth.Not)
+            {
+                position.X = 0;
+                position.Y = 0;
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            }
 
+            hitbox.Location = new Point((int)position.X, (int)position.Y);
+            enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
+            if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
+            {
+                changeToDie();
+            }
+            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            bombItem.Update();
             if (timeSinceDirectionChange > 8000 && moblinState.state != moblinStateMachine.moblinHealth.Not && moblinState.state != moblinStateMachine.moblinHealth.Die)
             {
                 timeSinceDirectionChange = 0;
@@ -240,46 +270,11 @@ namespace HackAndSlash
                         break;
                 }
             }
-
             if (timeSinceLastBomb > 4000 && moblinState.state != moblinStateMachine.moblinHealth.Not && moblinState.state != moblinStateMachine.moblinHealth.Die)
             {
                 timeSinceLastBomb = 0;
                 bombItem.ChangeToBeingUsed();
             }
-
-            hitbox.Location = new Point((int)position.X, (int)position.Y);
-            enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
-            if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
-            {
-                changeToDie();
-            }
-
-            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
-
-            //Remove moblin from screen shortly after death
-            if (moblinState.state == moblinStateMachine.moblinHealth.Die)
-            {
-                hitbox.Location = new Point(0, 0);
-                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
-                deathTimer += gameTime.ElapsedGameTime.Milliseconds;
-                if (deathTimer > dieTotalTime)
-                {
-                    SoundFactory.Instance.MoblinDies();
-                    deathTimer = 0;
-                    game.levelCycleRecord.RemoveOneIndex(GlobalSettings.MOBLIN_ENEMY);
-                    if (GlobalSettings.RND.Next(100) < 50)
-                        game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
-                    changeToNot();
-                }
-            }
-
-            if (moblinState.state == moblinStateMachine.moblinHealth.Not)
-            {
-                hitbox.Location = new Point(0, 0);
-                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
-            }
-
-            bombItem.Update();
 
         }
 

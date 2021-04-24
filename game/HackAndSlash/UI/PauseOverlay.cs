@@ -15,7 +15,6 @@ namespace HackAndSlash
         private GraphicsDevice graphicsDevice; 
         private Texture2D Overlay;
         private Texture2D SwordSelector;
-        private Texture2D ItemSelector;
         private Texture2D InventoryText;
         private SpriteBatch spriteBatch;
         private Vector2 SelectorContinueLoc = new Vector2(GlobalSettings.PAUSE_CONTINUE_X, GlobalSettings.PAUSE_CONTINUE_Y);
@@ -124,7 +123,6 @@ namespace HackAndSlash
                     GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR), Color.Yellow);
 
                 SelectionRect.Draw();
-                //spriteBatch.Draw(ItemSelector, , Color.White); 
             }
             spriteBatch.Draw(SwordSelector, CurrentSelection, Color.White);
         }

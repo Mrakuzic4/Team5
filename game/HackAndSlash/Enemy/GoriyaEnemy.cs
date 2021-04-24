@@ -215,6 +215,39 @@ namespace HackAndSlash
                     Turn(NewDirection);
                 }
             }
+            else if (goriyaState.state == goriyaStateMachine.goriyaHealth.Not)
+            {
+                position.X = 0;
+                position.Y = 0;
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            }
+            else if (goriyaState.state == goriyaStateMachine.goriyaHealth.Die)
+            {
+                hitbox.Location = new Point(0, 0);
+                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+                deathTimer += gameTime.ElapsedGameTime.Milliseconds;
+                if (deathTimer > dieTotalTime)
+                {
+                    SoundFactory.Instance.MoblinDies();
+                    deathTimer = 0;
+                    game.levelCycleRecord.RemoveOneIndex(GlobalSettings.GORIYA_ENEMY);
+                    if (GlobalSettings.RND.Next(100) < 50)
+                        game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
+                    changeToNot();
+                }
+            }
+
+
+            hitbox.Location = new Point((int)position.X, (int)position.Y);
+            enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
+            if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
+            {
+                changeToDie();
+            }
+
+            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
+            boomerangItem.Update();
 
             if (timeSinceDirectionChange > 8000 && goriyaState.state != goriyaStateMachine.goriyaHealth.Not && goriyaState.state != goriyaStateMachine.goriyaHealth.Die)
             {
@@ -240,46 +273,11 @@ namespace HackAndSlash
                         break;
                 }
             }
-
             if (timeSinceLastBomb > 4000 && goriyaState.state != goriyaStateMachine.goriyaHealth.Not && goriyaState.state != goriyaStateMachine.goriyaHealth.Die)
             {
                 timeSinceLastBomb = 0;
                 boomerangItem.ChangeToBeingUsed();
             }
-
-            hitbox.Location = new Point((int)position.X, (int)position.Y);
-            enemyBlockCollision.HandleCollision(this, enemyCollisionDetector.CheckBlockCollisions(hitbox));
-            if (enemyCollisionDetector.CheckItemCollision(hitbox) != GlobalSettings.CollisionType.None)
-            {
-                changeToDie();
-            }
-
-            rectangle = new Rectangle((int)position.X, (int)position.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
-
-            //Remove moblin from screen shortly after death
-            if (goriyaState.state == goriyaStateMachine.goriyaHealth.Die)
-            {
-                hitbox.Location = new Point(0, 0);
-                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
-                deathTimer += gameTime.ElapsedGameTime.Milliseconds;
-                if (deathTimer > dieTotalTime)
-                {
-                    SoundFactory.Instance.MoblinDies();
-                    deathTimer = 0;
-                    game.levelCycleRecord.RemoveOneIndex(GlobalSettings.GORIYA_ENEMY);
-                    if (GlobalSettings.RND.Next(100) < 50)
-                        game.itemList.Add(new RandomDrop(position, spriteBatch, game).RandItem());
-                    changeToNot();
-                }
-            }
-
-            if (goriyaState.state == goriyaStateMachine.goriyaHealth.Not)
-            {
-                hitbox.Location = new Point(0, 0);
-                rectangle = new Rectangle(hitbox.X, hitbox.Y, GlobalSettings.BASE_SCALAR, GlobalSettings.BASE_SCALAR);
-            }
-
-            boomerangItem.Update();
 
         }
 
