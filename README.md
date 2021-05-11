@@ -1,7 +1,8 @@
 # Lit version 
 
-This version is aimed at web release, thus having some of the features removed due to accessibility on browsers. 
+Turned out 3.7.1 web version cannot compile normally, or that the compile result cannot run
+normally on either Chrome or Firefox, even with local servers on. 
 
-Please DO NOT commit into this branch. 
+This has now turned into a complete rewrite of the project. 
 
 
