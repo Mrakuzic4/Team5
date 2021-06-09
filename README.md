@@ -1,5 +1,13 @@
 # Team5
 
+<p align="center"><img src="https://github.com/Mrakuzic4/Team5/blob/main/game/hEyfU35.png" width="512" /></p>
+
+<p align="center">
+For how this game is played, see the <a href="https://github.com/Mrakuzic4/Team5/blob/main/game/README.md">documentation</a>. 
+</p>
+
+-------------------------------------------------------
+
 Folder structure: 
  
 ~~To be honest this is just for grader...~~
